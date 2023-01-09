@@ -1,0 +1,112 @@
+@layer base {
+  body {
+    font-family: Inter, 'Noto Sans TC';
+  }
+
+  /* Header */
+  $text-heading-config: (
+    xl: (
+      'size': 'text-4xl',
+      'height': 'leading-10',
+      'weight': 'font-bold',
+    ),
+    l: (
+      'size': 'text-3xl',
+      'height': 'leading-9',
+      'weight': 'font-bold',
+    ),
+    m: (
+      'size': 'text-2xl',
+      'height': 'leading-8',
+      'weight': 'font-bold',
+    ),
+    s: (
+      'size': 'text-xl',
+      'height': 'leading-7',
+      'weight': 'font-bold',
+    ),
+    xs: (
+      'size': 'text-lg',
+      'height': 'leading-7',
+      'weight': 'font-bold',
+    ),
+  );
+
+  @each $name, $value in $text-heading-config {
+    $size: map-get($value, size);
+    $height: map-get($value, height);
+    $weight: map-get($value, weight);
+
+    .text-heading-#{$name} {
+      @apply #{$size $height $weight};
+    }
+  }
+
+  /* Body */
+  $text-body-config: (
+    l: (
+      'size': 'text-lg',
+      'height': 'leading-7',
+      'weight': 'font-normal',
+    ),
+    m: (
+      'size': 'text-base',
+      'height': 'leading-6',
+      'weight': 'font-normal',
+    ),
+    s: (
+      'size': 'text-sm',
+      'height': 'leading-5',
+      'weight': 'font-normal',
+    ),
+    xs: (
+      'size': 'text-xs',
+      'height': 'leading-4',
+      'weight': 'font-normal',
+    ),
+  );
+
+  @each $name, $value in $text-body-config {
+    $size: map-get($value, size);
+    $height: map-get($value, height);
+    $weight: map-get($value, weight);
+
+    .text-body-#{$name} {
+      @apply #{$size $height $weight};
+    }
+  }
+
+  /* Body Bold */
+  $text-body-bold-config: (
+    l: (
+      'size': 'text-lg',
+      'height': 'leading-7',
+      'weight': 'font-medium',
+    ),
+    m: (
+      'size': 'text-base',
+      'height': 'leading-6',
+      'weight': 'font-medium',
+    ),
+    s: (
+      'size': 'text-sm',
+      'height': 'leading-5',
+      'weight': 'font-medium',
+    ),
+    xs: (
+      'size': 'text-xs',
+      'height': 'leading-4',
+      'weight': 'font-medium',
+    ),
+  );
+
+  @each $name, $value in $text-body-bold-config {
+    $size: map-get($value, size);
+    $height: map-get($value, height);
+    $weight: map-get($value, weight);
+
+    .text-body-bold-#{$name} {
+      @apply #{$size $height $weight};
+    }
+  }
+}
