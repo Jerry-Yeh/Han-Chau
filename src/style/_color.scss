@@ -1,0 +1,174 @@
+@layer base {
+  /* Text */
+  $text-config: (
+    primary: 'slate-900',
+    secondary: 'slate-600',
+    tertiary: 'slate-500',
+    placeholder: 'slate-400',
+    disabled: 'slate-300',
+    onColor: 'white',
+    hightlight: 'teal-700',
+    success: 'emerald-700',
+    destructive: 'rose-700',
+    warning: 'amber-700',
+  );
+
+  @each $name, $value in $text-config {
+    .text-#{$name} {
+      @apply text-#{$value};
+    }
+  }
+
+  /* Background Base */
+  $background-config: (
+    primary: 'white',
+    secondary: 'slate-50',
+    tertiary: 'slate-100',
+    pressed: 'slate-200',
+    disabled: 'slate-50',
+    hover: 'slate-100',
+    success: 'emerald-700',
+    destructive: 'rose-700',
+    warning: 'amber-700',
+  );
+
+  @each $name, $value in $background-config {
+    .bg-#{$name} {
+      @apply bg-#{$value};
+    }
+  }
+
+  /* Background highlight */
+  $highlight: 'teal-500';
+  $background-highlight-config: (
+    hover: 'teal-600',
+    pressed: 'teal-700',
+    disabled: 'slate-200',
+    light: 'teal-50',
+    light-hover: 'teal-100',
+    light-pressed: 'teal-200',
+  );
+
+  .bg-highlight {
+    @apply #{$highlight};
+  }
+
+  @each $name, $value in $background-highlight-config {
+    .bg-#{$name} {
+      @apply bg-highlight-#{$value};
+    }
+  }
+
+  /* Background success */
+  $success: 'emerald-500';
+  $background-success-config: (
+    hover: 'emerald-600',
+    pressed: 'emerald-700',
+    disabled: 'slate-50',
+    light: 'emerald-50',
+    light-hover: 'emerald-100',
+    light-pressed: 'emerald-200',
+  );
+
+  .bg-success {
+    @apply #{$success};
+  }
+
+  @each $name, $value in $background-success-config {
+    .bg-#{$name} {
+      @apply bg-success-#{$value};
+    }
+  }
+
+  /* Background destructive */
+  $destructive: 'rose-500';
+  $background-destructive-config: (
+    hover: 'rose-600',
+    pressed: 'rose-700',
+    disabled: 'rose-300',
+    light: 'rose-50',
+    light-hover: 'rose-100',
+    light-pressed: 'rose-200',
+  );
+
+  .bg-destructive {
+    @apply #{$destructive};
+  }
+
+  @each $name, $value in $background-destructive-config {
+    .bg-#{$name} {
+      @apply bg-destructive-#{$value};
+    }
+  }
+
+  /* Background warning */
+  $warning: 'amber-500';
+  $background-warning-config: (
+    hover: 'amber-600',
+    pressed: 'amber-700',
+    disabled: 'slate-300',
+    light: 'amber-50',
+    light-hover: 'amber-100',
+    light-pressed: 'amber-200',
+  );
+
+  .bg-warning {
+    @apply #{$warning};
+  }
+
+  @each $name, $value in $background-warning-config {
+    .bg-#{$name} {
+      @apply bg-warning-#{$value};
+    }
+  }
+
+  /* Icon */
+  $icon-config: (
+    primary: 'slate-600',
+    secondary: 'slate-500',
+    tertiary: 'slate-400',
+    disabled: 'slate-300',
+    onColor: 'white',
+    hover: 'slate-800',
+    pressed: 'slate-900',
+    highlight: 'teal-600',
+    success: 'emerald-600',
+    destructive: 'rose-800',
+    warning: 'amber-600',
+  );
+
+  @each $name, $value in $icon-config {
+    .icon-#{$name} {
+      @apply fill-#{$value};
+    }
+  }
+
+  /* Border */
+  $border-config: (
+    primary: 'slate-400',
+    secondary: 'slate-200',
+    disabled: 'slate-300',
+    onColor: 'white',
+    hover: 'slate-500',
+    pressed: 'slate-600',
+    active: 'teal-500',
+    destructive: 'rose-500',
+  );
+
+  $ring-config: (
+    active: 'teal-100',
+    destructive: 'rose-100',
+  );
+
+  @each $name, $value in $border-config {
+    .border-#{$name} {
+      @apply border-#{$value};
+    }
+  }
+
+  @each $name, $value in $ring-config {
+    .ring-#{$name} {
+      @apply ring-#{$value};
+    }
+  }
+}
