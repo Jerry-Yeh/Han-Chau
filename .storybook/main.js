@@ -25,6 +25,9 @@ module.exports = {
         include: ['storybook-addon-designs'],
       },
       base: './',
+      build: {
+        minify: false,
+      },
     });
   },
 };
