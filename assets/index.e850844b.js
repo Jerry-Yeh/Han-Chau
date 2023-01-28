@@ -1,2 +1,19 @@
-var l=(()=>{let e;return typeof window<"u"?e=window:typeof globalThis<"u"?e=globalThis:typeof global<"u"?e=global:typeof self<"u"?e=self:e={},e})();export{l as s};
+var scope = (() => {
+  let win;
+  if (typeof window !== "undefined") {
+    win = window;
+  } else if (typeof globalThis !== "undefined") {
+    win = globalThis;
+  } else if (typeof global !== "undefined") {
+    win = global;
+  } else if (typeof self !== "undefined") {
+    win = self;
+  } else {
+    win = {};
+  }
+  return win;
+})();
+export {
+  scope as s
+};
 //# sourceMappingURL=index.e850844b.js.map

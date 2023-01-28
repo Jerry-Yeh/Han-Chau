@@ -1,5 +1,43 @@
-import{M as l}from"./chunk-MA2MUXQN.648116b1.js";import"./chunk-R4NKYYJA.15989c7a.js";import{j as e,a as t,F as c}from"./jsx-runtime.db436af5.js";import{u as a}from"./index.53276623.js";import"./iframe.4bd8a3e9.js";import"../sb-preview/runtime.mjs";import"./index.2e2f892a.js";import"./_commonjsHelpers.712cc82f.js";import"./index.31ab949d.js";import"./_getTag.d1b75f35.js";import"./index.e850844b.js";const d=""+new URL("code-brackets.9ef6443e.svg",import.meta.url).href,p=""+new URL("colors.ac9401f3.svg",import.meta.url).href,m=""+new URL("comments.f15a6837.svg",import.meta.url).href,h=""+new URL("direction.94a9917f.svg",import.meta.url).href,g=""+new URL("flow.275142c6.svg",import.meta.url).href,u=""+new URL("plugin.57148314.svg",import.meta.url).href,f=""+new URL("repo.fb4ece47.svg",import.meta.url).href,b=""+new URL("stackalt.2ad81543.svg",import.meta.url).href;function k(o={}){const{wrapper:i}=Object.assign({},a(),o.components);return i?e(i,{...o,children:e(s,{})}):s();function s(){const r=Object.assign({h1:"h1",p:"p",strong:"strong",code:"code",a:"a"},a(),o.components);return t(c,{children:[e(l,{title:"Example/Introduction"}),`
-`,e("style",{children:`
+import { M as Meta } from "./chunk-MA2MUXQN.648116b1.js";
+import "./chunk-R4NKYYJA.15989c7a.js";
+import { j as jsx, a as jsxs, F as Fragment } from "./jsx-runtime.db436af5.js";
+import { u as useMDXComponents } from "./index.53276623.js";
+import "./iframe.4bd8a3e9.js";
+import "../sb-preview/runtime.mjs";
+import "./index.2e2f892a.js";
+import "./_commonjsHelpers.712cc82f.js";
+import "./index.31ab949d.js";
+import "./_getTag.d1b75f35.js";
+import "./index.e850844b.js";
+const Code = "" + new URL("code-brackets.9ef6443e.svg", import.meta.url).href;
+const Colors = "" + new URL("colors.ac9401f3.svg", import.meta.url).href;
+const Comments = "" + new URL("comments.f15a6837.svg", import.meta.url).href;
+const Direction = "" + new URL("direction.94a9917f.svg", import.meta.url).href;
+const Flow = "" + new URL("flow.275142c6.svg", import.meta.url).href;
+const Plugin = "" + new URL("plugin.57148314.svg", import.meta.url).href;
+const Repo = "" + new URL("repo.fb4ece47.svg", import.meta.url).href;
+const StackAlt = "" + new URL("stackalt.2ad81543.svg", import.meta.url).href;
+function MDXContent(props = {}) {
+  const {
+    wrapper: MDXLayout
+  } = Object.assign({}, useMDXComponents(), props.components);
+  return MDXLayout ? /* @__PURE__ */ jsx(MDXLayout, {
+    ...props,
+    children: /* @__PURE__ */ jsx(_createMdxContent, {})
+  }) : _createMdxContent();
+  function _createMdxContent() {
+    const _components = Object.assign({
+      h1: "h1",
+      p: "p",
+      strong: "strong",
+      code: "code",
+      a: "a"
+    }, useMDXComponents(), props.components);
+    return /* @__PURE__ */ jsxs(Fragment, {
+      children: [/* @__PURE__ */ jsx(Meta, {
+        title: "Example/Introduction"
+      }), "\n", /* @__PURE__ */ jsx("style", {
+        children: `
     .subheading {
       --mediumdark: '#999999';
       font-weight: 900;
@@ -99,24 +137,180 @@ import{M as l}from"./chunk-MA2MUXQN.648116b1.js";import"./chunk-R4NKYYJA.15989c7
       font-size: 12px;
       display: inline-block;
     }
-  `}),`
-`,e(r.h1,{children:"Welcome to Storybook"}),`
-`,t(r.p,{children:[`Storybook helps you build UI components in isolation from your app's business logic, data, and context.
-That makes it easy to develop hard-to-reach states. Save these UI states as `,e(r.strong,{children:"stories"})," to revisit during development, testing, or QA."]}),`
-`,t(r.p,{children:[`Browse example stories now by navigating to them in the sidebar.
-View their code in the `,e(r.code,{children:"stories"}),` directory to learn how they work.
-We recommend building UIs with a `,e(r.a,{href:"https://componentdriven.org",children:e(r.strong,{children:"component-driven"})})," process starting with atomic components and ending with pages."]}),`
-`,e("div",{className:"subheading",children:"Configure"}),`
-`,t("div",{className:"link-list",children:[t("a",{className:"link-item",href:"https://storybook.js.org/docs/react/addons/addon-types",target:"_blank",children:[e("img",{src:u,alt:"plugin"}),e("span",{children:t(r.p,{children:[e("strong",{children:"Presets for popular tools"}),`
-Easy setup for TypeScript, SCSS and more.`]})})]}),t("a",{className:"link-item",href:"https://storybook.js.org/docs/react/configure/webpack",target:"_blank",children:[e("img",{src:b,alt:"Build"}),e("span",{children:t(r.p,{children:[e("strong",{children:"Build configuration"}),`
-How to customize webpack and Babel`]})})]}),t("a",{className:"link-item",href:"https://storybook.js.org/docs/react/configure/styling-and-css",target:"_blank",children:[e("img",{src:p,alt:"colors"}),e("span",{children:t(r.p,{children:[e("strong",{children:"Styling"}),`
-How to load and configure CSS libraries`]})})]}),t("a",{className:"link-item",href:"https://storybook.js.org/docs/react/get-started/setup#configure-storybook-for-your-stack",target:"_blank",children:[e("img",{src:g,alt:"flow"}),e("span",{children:t(r.p,{children:[e("strong",{children:"Data"}),`
-Providers and mocking for data libraries`]})})]})]}),`
-`,e("div",{className:"subheading",children:"Learn"}),`
-`,t("div",{className:"link-list",children:[t("a",{className:"link-item",href:"https://storybook.js.org/docs",target:"_blank",children:[e("img",{src:f,alt:"repo"}),e("span",{children:t(r.p,{children:[e("strong",{children:"Storybook documentation"}),`
-Configure, customize, and extend`]})})]}),t("a",{className:"link-item",href:"https://storybook.js.org/tutorials/",target:"_blank",children:[e("img",{src:h,alt:"direction"}),e("span",{children:t(r.p,{children:[e("strong",{children:"In-depth guides"}),`
-Best practices from leading teams`]})})]}),t("a",{className:"link-item",href:"https://github.com/storybookjs/storybook",target:"_blank",children:[e("img",{src:d,alt:"code"}),e("span",{children:t(r.p,{children:[e("strong",{children:"GitHub project"}),`
-View the source and add issues`]})})]}),t("a",{className:"link-item",href:"https://discord.gg/storybook",target:"_blank",children:[e("img",{src:m,alt:"comments"}),e("span",{children:t(r.p,{children:[e("strong",{children:"Discord chat"}),`
-Chat with maintainers and the community`]})})]})]}),`
-`,e("div",{className:"tip-wrapper",children:t(r.p,{children:[e("span",{className:"tip",children:"Tip"}),"Edit the Markdown in ",e("code",{children:"stories/Introduction.stories.mdx"})]})})]})}}const x=()=>{throw new Error("Docs-only story")};x.parameters={docsOnly:!0};const n={title:"Example/Introduction",tags:["stories-mdx"],includeStories:["__page"]};n.parameters=n.parameters||{};n.parameters.docs={...n.parameters.docs||{},page:k};const E=["__page"];export{E as __namedExportsOrder,x as __page,n as default};
+  `
+      }), "\n", /* @__PURE__ */ jsx(_components.h1, {
+        children: "Welcome to Storybook"
+      }), "\n", /* @__PURE__ */ jsxs(_components.p, {
+        children: ["Storybook helps you build UI components in isolation from your app's business logic, data, and context.\nThat makes it easy to develop hard-to-reach states. Save these UI states as ", /* @__PURE__ */ jsx(_components.strong, {
+          children: "stories"
+        }), " to revisit during development, testing, or QA."]
+      }), "\n", /* @__PURE__ */ jsxs(_components.p, {
+        children: ["Browse example stories now by navigating to them in the sidebar.\nView their code in the ", /* @__PURE__ */ jsx(_components.code, {
+          children: "stories"
+        }), " directory to learn how they work.\nWe recommend building UIs with a ", /* @__PURE__ */ jsx(_components.a, {
+          href: "https://componentdriven.org",
+          children: /* @__PURE__ */ jsx(_components.strong, {
+            children: "component-driven"
+          })
+        }), " process starting with atomic components and ending with pages."]
+      }), "\n", /* @__PURE__ */ jsx("div", {
+        className: "subheading",
+        children: "Configure"
+      }), "\n", /* @__PURE__ */ jsxs("div", {
+        className: "link-list",
+        children: [/* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://storybook.js.org/docs/react/addons/addon-types",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: Plugin,
+            alt: "plugin"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "Presets for popular tools"
+              }), "\nEasy setup for TypeScript, SCSS and more."]
+            })
+          })]
+        }), /* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://storybook.js.org/docs/react/configure/webpack",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: StackAlt,
+            alt: "Build"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "Build configuration"
+              }), "\nHow to customize webpack and Babel"]
+            })
+          })]
+        }), /* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://storybook.js.org/docs/react/configure/styling-and-css",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: Colors,
+            alt: "colors"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "Styling"
+              }), "\nHow to load and configure CSS libraries"]
+            })
+          })]
+        }), /* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://storybook.js.org/docs/react/get-started/setup#configure-storybook-for-your-stack",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: Flow,
+            alt: "flow"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "Data"
+              }), "\nProviders and mocking for data libraries"]
+            })
+          })]
+        })]
+      }), "\n", /* @__PURE__ */ jsx("div", {
+        className: "subheading",
+        children: "Learn"
+      }), "\n", /* @__PURE__ */ jsxs("div", {
+        className: "link-list",
+        children: [/* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://storybook.js.org/docs",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: Repo,
+            alt: "repo"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "Storybook documentation"
+              }), "\nConfigure, customize, and extend"]
+            })
+          })]
+        }), /* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://storybook.js.org/tutorials/",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: Direction,
+            alt: "direction"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "In-depth guides"
+              }), "\nBest practices from leading teams"]
+            })
+          })]
+        }), /* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://github.com/storybookjs/storybook",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: Code,
+            alt: "code"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "GitHub project"
+              }), "\nView the source and add issues"]
+            })
+          })]
+        }), /* @__PURE__ */ jsxs("a", {
+          className: "link-item",
+          href: "https://discord.gg/storybook",
+          target: "_blank",
+          children: [/* @__PURE__ */ jsx("img", {
+            src: Comments,
+            alt: "comments"
+          }), /* @__PURE__ */ jsx("span", {
+            children: /* @__PURE__ */ jsxs(_components.p, {
+              children: [/* @__PURE__ */ jsx("strong", {
+                children: "Discord chat"
+              }), "\nChat with maintainers and the community"]
+            })
+          })]
+        })]
+      }), "\n", /* @__PURE__ */ jsx("div", {
+        className: "tip-wrapper",
+        children: /* @__PURE__ */ jsxs(_components.p, {
+          children: [/* @__PURE__ */ jsx("span", {
+            className: "tip",
+            children: "Tip"
+          }), "Edit the Markdown in ", /* @__PURE__ */ jsx("code", {
+            children: "stories/Introduction.stories.mdx"
+          })]
+        })
+      })]
+    });
+  }
+}
+const __page = () => {
+  throw new Error("Docs-only story");
+};
+__page.parameters = {
+  docsOnly: true
+};
+const componentMeta = {
+  title: "Example/Introduction",
+  tags: ["stories-mdx"],
+  includeStories: ["__page"]
+};
+componentMeta.parameters = componentMeta.parameters || {};
+componentMeta.parameters.docs = {
+  ...componentMeta.parameters.docs || {},
+  page: MDXContent
+};
+const __namedExportsOrder = ["__page"];
+export {
+  __namedExportsOrder,
+  __page,
+  componentMeta as default
+};
 //# sourceMappingURL=Introduction.stories.af7751db.js.map

@@ -1,2 +1,190 @@
-import{s as u}from"./index.e850844b.js";var z="measureEnabled";const W=__STORYBOOK_MODULE_PREVIEW_API__.useEffect;function Y(){let e=u.document.documentElement,t=Math.max(e.scrollHeight,e.offsetHeight);return{width:Math.max(e.scrollWidth,e.offsetWidth),height:t}}function j(){let e=u.document.createElement("canvas");e.id="storybook-addon-measure";let t=e.getContext("2d"),{width:o,height:l}=Y();return P(e,t,{width:o,height:l}),e.style.position="absolute",e.style.left="0",e.style.top="0",e.style.zIndex="2147483647",e.style.pointerEvents="none",u.document.body.appendChild(e),{canvas:e,context:t,width:o,height:l}}function P(e,t,{width:o,height:l}){e.style.width=`${o}px`,e.style.height=`${l}px`;let i=u.window.devicePixelRatio;e.width=Math.floor(o*i),e.height=Math.floor(l*i),t.scale(i,i)}var m={};function K(){m.canvas||(m=j())}function X(){m.context&&m.context.clearRect(0,0,m.width,m.height)}function V(e){X(),e(m.context)}function Z(){P(m.canvas,m.context,{width:0,height:0});let{width:e,height:t}=Y();P(m.canvas,m.context,{width:e,height:t}),m.width=e,m.height=t}function U(){m.canvas&&(X(),m.canvas.parentNode.removeChild(m.canvas),m={})}var w={margin:"#f6b26b",border:"#ffe599",padding:"#93c47d",content:"#6fa8dc",text:"#232020"},c=6;function T(e,{x:t,y:o,w:l,h:i,r:n}){t=t-l/2,o=o-i/2,l<2*n&&(n=l/2),i<2*n&&(n=i/2),e.beginPath(),e.moveTo(t+n,o),e.arcTo(t+l,o,t+l,o+i,n),e.arcTo(t+l,o+i,t,o+i,n),e.arcTo(t,o+i,t,o,n),e.arcTo(t,o,t+l,o,n),e.closePath()}function G(e,{padding:t,border:o,width:l,height:i,top:n,left:r}){let f=l-o.left-o.right-t.left-t.right,a=i-t.top-t.bottom-o.top-o.bottom,s=r+o.left+t.left,h=n+o.top+t.top;return e==="top"?s+=f/2:e==="right"?(s+=f,h+=a/2):e==="bottom"?(s+=f/2,h+=a):e==="left"?h+=a/2:e==="center"&&(s+=f/2,h+=a/2),{x:s,y:h}}function J(e,t,{margin:o,border:l,padding:i},n,r){let f=d=>0,a=0,s=0,h=r?1:.5,g=r?n*2:0;return e==="padding"?f=d=>i[d]*h+g:e==="border"?f=d=>i[d]+l[d]*h+g:e==="margin"&&(f=d=>i[d]+l[d]+o[d]*h+g),t==="top"?s=-f("top"):t==="right"?a=f("right"):t==="bottom"?s=f("bottom"):t==="left"&&(a=-f("left")),{offsetX:a,offsetY:s}}function Q(e,t){return Math.abs(e.x-t.x)<Math.abs(e.w+t.w)/2&&Math.abs(e.y-t.y)<Math.abs(e.h+t.h)/2}function x(e,t,o){return e==="top"?t.y=o.y-o.h-c:e==="right"?t.x=o.x+o.w/2+c+t.w/2:e==="bottom"?t.y=o.y+o.h+c:e==="left"&&(t.x=o.x-o.w/2-c-t.w/2),{x:t.x,y:t.y}}function _(e,t,{x:o,y:l,w:i,h:n},r){return T(e,{x:o,y:l,w:i,h:n,r:3}),e.fillStyle=`${w[t]}dd`,e.fill(),e.strokeStyle=w[t],e.stroke(),e.fillStyle=w.text,e.fillText(r,o,l),T(e,{x:o,y:l,w:i,h:n,r:3}),e.fillStyle=`${w[t]}dd`,e.fill(),e.strokeStyle=w[t],e.stroke(),e.fillStyle=w.text,e.fillText(r,o,l),{x:o,y:l,w:i,h:n}}function C(e,t){e.font="600 12px monospace",e.textBaseline="middle",e.textAlign="center";let o=e.measureText(t),l=o.actualBoundingBoxAscent+o.actualBoundingBoxDescent,i=o.width+c*2,n=l+c*2;return{w:i,h:n}}function tt(e,t,{type:o,position:l="center",text:i},n,r=!1){let{x:f,y:a}=G(l,t),{offsetX:s,offsetY:h}=J(o,l,t,c+1,r);f+=s,a+=h;let{w:g,h:d}=C(e,i);if(n&&Q({x:f,y:a,w:g,h:d},n)){let M=x(l,{x:f,y:a,w:g,h:d},n);f=M.x,a=M.y}return _(e,o,{x:f,y:a,w:g,h:d},i)}function et(e,{w:t,h:o}){let l=t*.5+c,i=o*.5+c;return{offsetX:(e.x==="left"?-1:1)*l,offsetY:(e.y==="top"?-1:1)*i}}function ot(e,t,{type:o,text:l}){let{floatingAlignment:i,extremities:n}=t,r=n[i.x],f=n[i.y],{w:a,h:s}=C(e,l),{offsetX:h,offsetY:g}=et(i,{w:a,h:s});return r+=h,f+=g,_(e,o,{x:r,y:f,w:a,h:s},l)}function E(e,t,o,l){let i=[];o.forEach((n,r)=>{let f=l&&n.position==="center"?ot(e,t,n):tt(e,t,n,i[r-1],l);i[r]=f})}function it(e,t,o,l){let i=o.reduce((n,r)=>(Object.prototype.hasOwnProperty.call(n,r.position)||(n[r.position]=[]),n[r.position].push(r),n),{});i.top&&E(e,t,i.top,l),i.right&&E(e,t,i.right,l),i.bottom&&E(e,t,i.bottom,l),i.left&&E(e,t,i.left,l),i.center&&E(e,t,i.center,l)}var A={margin:"#f6b26ba8",border:"#ffe599a8",padding:"#93c47d8c",content:"#6fa8dca8"},R=30;function p(e){return parseInt(e.replace("px",""),10)}function b(e){return Number.isInteger(e)?e:e.toFixed(2)}function v(e){return e.filter(t=>t.text!==0&&t.text!=="0")}function lt(e){let t={top:u.window.scrollY,bottom:u.window.scrollY+u.window.innerHeight,left:u.window.scrollX,right:u.window.scrollX+u.window.innerWidth},o={top:Math.abs(t.top-e.top),bottom:Math.abs(t.bottom-e.bottom),left:Math.abs(t.left-e.left),right:Math.abs(t.right-e.right)};return{x:o.left>o.right?"left":"right",y:o.top>o.bottom?"top":"bottom"}}function nt(e){let t=u.getComputedStyle(e),{top:o,left:l,right:i,bottom:n,width:r,height:f}=e.getBoundingClientRect(),{marginTop:a,marginBottom:s,marginLeft:h,marginRight:g,paddingTop:d,paddingBottom:M,paddingLeft:O,paddingRight:k,borderBottomWidth:F,borderTopWidth:I,borderLeftWidth:$,borderRightWidth:D}=t;o=o+u.window.scrollY,l=l+u.window.scrollX,n=n+u.window.scrollY,i=i+u.window.scrollX;let y={top:p(a),bottom:p(s),left:p(h),right:p(g)},N={top:p(d),bottom:p(M),left:p(O),right:p(k)},q={top:p(I),bottom:p(F),left:p($),right:p(D)},L={top:o-y.top,bottom:n+y.bottom,left:l-y.left,right:i+y.right};return{margin:y,padding:N,border:q,top:o,left:l,bottom:n,right:i,width:r,height:f,extremities:L,floatingAlignment:lt(L)}}function ft(e,{margin:t,width:o,height:l,top:i,left:n,bottom:r,right:f}){let a=l+t.bottom+t.top;e.fillStyle=A.margin,e.fillRect(n,i-t.top,o,t.top),e.fillRect(f,i-t.top,t.right,a),e.fillRect(n,r,o,t.bottom),e.fillRect(n-t.left,i-t.top,t.left,a);let s=[{type:"margin",text:b(t.top),position:"top"},{type:"margin",text:b(t.right),position:"right"},{type:"margin",text:b(t.bottom),position:"bottom"},{type:"margin",text:b(t.left),position:"left"}];return v(s)}function rt(e,{padding:t,border:o,width:l,height:i,top:n,left:r,bottom:f,right:a}){let s=l-o.left-o.right,h=i-t.top-t.bottom-o.top-o.bottom;e.fillStyle=A.padding,e.fillRect(r+o.left,n+o.top,s,t.top),e.fillRect(a-t.right-o.right,n+t.top+o.top,t.right,h),e.fillRect(r+o.left,f-t.bottom-o.bottom,s,t.bottom),e.fillRect(r+o.left,n+t.top+o.top,t.left,h);let g=[{type:"padding",text:t.top,position:"top"},{type:"padding",text:t.right,position:"right"},{type:"padding",text:t.bottom,position:"bottom"},{type:"padding",text:t.left,position:"left"}];return v(g)}function at(e,{border:t,width:o,height:l,top:i,left:n,bottom:r,right:f}){let a=l-t.top-t.bottom;e.fillStyle=A.border,e.fillRect(n,i,o,t.top),e.fillRect(n,r-t.bottom,o,t.bottom),e.fillRect(n,i+t.top,t.left,a),e.fillRect(f-t.right,i+t.top,t.right,a);let s=[{type:"border",text:t.top,position:"top"},{type:"border",text:t.right,position:"right"},{type:"border",text:t.bottom,position:"bottom"},{type:"border",text:t.left,position:"left"}];return v(s)}function st(e,{padding:t,border:o,width:l,height:i,top:n,left:r}){let f=l-o.left-o.right-t.left-t.right,a=i-t.top-t.bottom-o.top-o.bottom;return e.fillStyle=A.content,e.fillRect(r+o.left+t.left,n+o.top+t.top,f,a),[{type:"content",position:"center",text:`${b(f)} x ${b(a)}`}]}function ht(e){return t=>{if(e&&t){let o=nt(e),l=ft(t,o),i=rt(t,o),n=at(t,o),r=st(t,o),f=o.width<=R*3||o.height<=R;it(t,o,[...r,...i,...n,...l],f)}}}function mt(e){V(ht(e))}var ut=(e,t)=>{let o=u.document.elementFromPoint(e,t),l=i=>{if(i&&i.shadowRoot){let n=i.shadowRoot.elementFromPoint(e,t);return i.isEqualNode(n)?i:n.shadowRoot?l(n):n}return i};return l(o)||o},B,S={x:0,y:0};function H(e,t){B=ut(e,t),mt(B)}var dt=(e,t)=>{let{measureEnabled:o}=t.globals;return W(()=>{let l=i=>{window.requestAnimationFrame(()=>{i.stopPropagation(),S.x=i.clientX,S.y=i.clientY})};return document.addEventListener("pointermove",l),()=>{document.removeEventListener("pointermove",l)}},[]),W(()=>{let l=n=>{window.requestAnimationFrame(()=>{n.stopPropagation(),H(n.clientX,n.clientY)})},i=()=>{window.requestAnimationFrame(()=>{Z()})};return o&&(document.addEventListener("pointerover",l),K(),window.addEventListener("resize",i),H(S.x,S.y)),()=>{window.removeEventListener("resize",i),U()}},[o]),e()},pt=[dt],ct={[z]:!1};export{pt as decorators,ct as globals};
+import { s as scope } from "./index.e850844b.js";
+var PARAM_KEY = "measureEnabled";
+const useEffect = __STORYBOOK_MODULE_PREVIEW_API__.useEffect;
+function getDocumentWidthAndHeight() {
+  let container = scope.document.documentElement, height = Math.max(container.scrollHeight, container.offsetHeight);
+  return { width: Math.max(container.scrollWidth, container.offsetWidth), height };
+}
+function createCanvas() {
+  let canvas = scope.document.createElement("canvas");
+  canvas.id = "storybook-addon-measure";
+  let context = canvas.getContext("2d"), { width, height } = getDocumentWidthAndHeight();
+  return setCanvasWidthAndHeight(canvas, context, { width, height }), canvas.style.position = "absolute", canvas.style.left = "0", canvas.style.top = "0", canvas.style.zIndex = "2147483647", canvas.style.pointerEvents = "none", scope.document.body.appendChild(canvas), { canvas, context, width, height };
+}
+function setCanvasWidthAndHeight(canvas, context, { width, height }) {
+  canvas.style.width = `${width}px`, canvas.style.height = `${height}px`;
+  let scale = scope.window.devicePixelRatio;
+  canvas.width = Math.floor(width * scale), canvas.height = Math.floor(height * scale), context.scale(scale, scale);
+}
+var state = {};
+function init() {
+  state.canvas || (state = createCanvas());
+}
+function clear() {
+  state.context && state.context.clearRect(0, 0, state.width, state.height);
+}
+function draw(callback) {
+  clear(), callback(state.context);
+}
+function rescale() {
+  setCanvasWidthAndHeight(state.canvas, state.context, { width: 0, height: 0 });
+  let { width, height } = getDocumentWidthAndHeight();
+  setCanvasWidthAndHeight(state.canvas, state.context, { width, height }), state.width = width, state.height = height;
+}
+function destroy() {
+  state.canvas && (clear(), state.canvas.parentNode.removeChild(state.canvas), state = {});
+}
+var colors = { margin: "#f6b26b", border: "#ffe599", padding: "#93c47d", content: "#6fa8dc", text: "#232020" }, labelPadding = 6;
+function roundedRect(context, { x, y, w, h, r }) {
+  x = x - w / 2, y = y - h / 2, w < 2 * r && (r = w / 2), h < 2 * r && (r = h / 2), context.beginPath(), context.moveTo(x + r, y), context.arcTo(x + w, y, x + w, y + h, r), context.arcTo(x + w, y + h, x, y + h, r), context.arcTo(x, y + h, x, y, r), context.arcTo(x, y, x + w, y, r), context.closePath();
+}
+function positionCoordinate(position, { padding, border, width, height, top, left }) {
+  let contentWidth = width - border.left - border.right - padding.left - padding.right, contentHeight = height - padding.top - padding.bottom - border.top - border.bottom, x = left + border.left + padding.left, y = top + border.top + padding.top;
+  return position === "top" ? x += contentWidth / 2 : position === "right" ? (x += contentWidth, y += contentHeight / 2) : position === "bottom" ? (x += contentWidth / 2, y += contentHeight) : position === "left" ? y += contentHeight / 2 : position === "center" && (x += contentWidth / 2, y += contentHeight / 2), { x, y };
+}
+function offset(type, position, { margin, border, padding }, labelPaddingSize, external) {
+  let shift = (dir) => 0, offsetX = 0, offsetY = 0, locationMultiplier = external ? 1 : 0.5, labelPaddingShift = external ? labelPaddingSize * 2 : 0;
+  return type === "padding" ? shift = (dir) => padding[dir] * locationMultiplier + labelPaddingShift : type === "border" ? shift = (dir) => padding[dir] + border[dir] * locationMultiplier + labelPaddingShift : type === "margin" && (shift = (dir) => padding[dir] + border[dir] + margin[dir] * locationMultiplier + labelPaddingShift), position === "top" ? offsetY = -shift("top") : position === "right" ? offsetX = shift("right") : position === "bottom" ? offsetY = shift("bottom") : position === "left" && (offsetX = -shift("left")), { offsetX, offsetY };
+}
+function collide(a, b) {
+  return Math.abs(a.x - b.x) < Math.abs(a.w + b.w) / 2 && Math.abs(a.y - b.y) < Math.abs(a.h + b.h) / 2;
+}
+function overlapAdjustment(position, currentRect, prevRect) {
+  return position === "top" ? currentRect.y = prevRect.y - prevRect.h - labelPadding : position === "right" ? currentRect.x = prevRect.x + prevRect.w / 2 + labelPadding + currentRect.w / 2 : position === "bottom" ? currentRect.y = prevRect.y + prevRect.h + labelPadding : position === "left" && (currentRect.x = prevRect.x - prevRect.w / 2 - labelPadding - currentRect.w / 2), { x: currentRect.x, y: currentRect.y };
+}
+function textWithRect(context, type, { x, y, w, h }, text) {
+  return roundedRect(context, { x, y, w, h, r: 3 }), context.fillStyle = `${colors[type]}dd`, context.fill(), context.strokeStyle = colors[type], context.stroke(), context.fillStyle = colors.text, context.fillText(text, x, y), roundedRect(context, { x, y, w, h, r: 3 }), context.fillStyle = `${colors[type]}dd`, context.fill(), context.strokeStyle = colors[type], context.stroke(), context.fillStyle = colors.text, context.fillText(text, x, y), { x, y, w, h };
+}
+function configureText(context, text) {
+  context.font = "600 12px monospace", context.textBaseline = "middle", context.textAlign = "center";
+  let metrics = context.measureText(text), actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent, w = metrics.width + labelPadding * 2, h = actualHeight + labelPadding * 2;
+  return { w, h };
+}
+function drawLabel(context, measurements, { type, position = "center", text }, prevRect, external = false) {
+  let { x, y } = positionCoordinate(position, measurements), { offsetX, offsetY } = offset(type, position, measurements, labelPadding + 1, external);
+  x += offsetX, y += offsetY;
+  let { w, h } = configureText(context, text);
+  if (prevRect && collide({ x, y, w, h }, prevRect)) {
+    let adjusted = overlapAdjustment(position, { x, y, w, h }, prevRect);
+    x = adjusted.x, y = adjusted.y;
+  }
+  return textWithRect(context, type, { x, y, w, h }, text);
+}
+function floatingOffset(alignment, { w, h }) {
+  let deltaW = w * 0.5 + labelPadding, deltaH = h * 0.5 + labelPadding;
+  return { offsetX: (alignment.x === "left" ? -1 : 1) * deltaW, offsetY: (alignment.y === "top" ? -1 : 1) * deltaH };
+}
+function drawFloatingLabel(context, measurements, { type, text }) {
+  let { floatingAlignment: floatingAlignment2, extremities } = measurements, x = extremities[floatingAlignment2.x], y = extremities[floatingAlignment2.y], { w, h } = configureText(context, text), { offsetX, offsetY } = floatingOffset(floatingAlignment2, { w, h });
+  return x += offsetX, y += offsetY, textWithRect(context, type, { x, y, w, h }, text);
+}
+function drawStack(context, measurements, stack, external) {
+  let rects = [];
+  stack.forEach((l, idx) => {
+    let rect = external && l.position === "center" ? drawFloatingLabel(context, measurements, l) : drawLabel(context, measurements, l, rects[idx - 1], external);
+    rects[idx] = rect;
+  });
+}
+function labelStacks(context, measurements, labels, externalLabels) {
+  let stacks = labels.reduce((acc, l) => (Object.prototype.hasOwnProperty.call(acc, l.position) || (acc[l.position] = []), acc[l.position].push(l), acc), {});
+  stacks.top && drawStack(context, measurements, stacks.top, externalLabels), stacks.right && drawStack(context, measurements, stacks.right, externalLabels), stacks.bottom && drawStack(context, measurements, stacks.bottom, externalLabels), stacks.left && drawStack(context, measurements, stacks.left, externalLabels), stacks.center && drawStack(context, measurements, stacks.center, externalLabels);
+}
+var colors2 = { margin: "#f6b26ba8", border: "#ffe599a8", padding: "#93c47d8c", content: "#6fa8dca8" }, SMALL_NODE_SIZE = 30;
+function pxToNumber(px) {
+  return parseInt(px.replace("px", ""), 10);
+}
+function round(value) {
+  return Number.isInteger(value) ? value : value.toFixed(2);
+}
+function filterZeroValues(labels) {
+  return labels.filter((l) => l.text !== 0 && l.text !== "0");
+}
+function floatingAlignment(extremities) {
+  let windowExtremities = { top: scope.window.scrollY, bottom: scope.window.scrollY + scope.window.innerHeight, left: scope.window.scrollX, right: scope.window.scrollX + scope.window.innerWidth }, distances = { top: Math.abs(windowExtremities.top - extremities.top), bottom: Math.abs(windowExtremities.bottom - extremities.bottom), left: Math.abs(windowExtremities.left - extremities.left), right: Math.abs(windowExtremities.right - extremities.right) };
+  return { x: distances.left > distances.right ? "left" : "right", y: distances.top > distances.bottom ? "top" : "bottom" };
+}
+function measureElement(element) {
+  let style = scope.getComputedStyle(element), { top, left, right, bottom, width, height } = element.getBoundingClientRect(), { marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight, borderBottomWidth, borderTopWidth, borderLeftWidth, borderRightWidth } = style;
+  top = top + scope.window.scrollY, left = left + scope.window.scrollX, bottom = bottom + scope.window.scrollY, right = right + scope.window.scrollX;
+  let margin = { top: pxToNumber(marginTop), bottom: pxToNumber(marginBottom), left: pxToNumber(marginLeft), right: pxToNumber(marginRight) }, padding = { top: pxToNumber(paddingTop), bottom: pxToNumber(paddingBottom), left: pxToNumber(paddingLeft), right: pxToNumber(paddingRight) }, border = { top: pxToNumber(borderTopWidth), bottom: pxToNumber(borderBottomWidth), left: pxToNumber(borderLeftWidth), right: pxToNumber(borderRightWidth) }, extremities = { top: top - margin.top, bottom: bottom + margin.bottom, left: left - margin.left, right: right + margin.right };
+  return { margin, padding, border, top, left, bottom, right, width, height, extremities, floatingAlignment: floatingAlignment(extremities) };
+}
+function drawMargin(context, { margin, width, height, top, left, bottom, right }) {
+  let marginHeight = height + margin.bottom + margin.top;
+  context.fillStyle = colors2.margin, context.fillRect(left, top - margin.top, width, margin.top), context.fillRect(right, top - margin.top, margin.right, marginHeight), context.fillRect(left, bottom, width, margin.bottom), context.fillRect(left - margin.left, top - margin.top, margin.left, marginHeight);
+  let marginLabels = [{ type: "margin", text: round(margin.top), position: "top" }, { type: "margin", text: round(margin.right), position: "right" }, { type: "margin", text: round(margin.bottom), position: "bottom" }, { type: "margin", text: round(margin.left), position: "left" }];
+  return filterZeroValues(marginLabels);
+}
+function drawPadding(context, { padding, border, width, height, top, left, bottom, right }) {
+  let paddingWidth = width - border.left - border.right, paddingHeight = height - padding.top - padding.bottom - border.top - border.bottom;
+  context.fillStyle = colors2.padding, context.fillRect(left + border.left, top + border.top, paddingWidth, padding.top), context.fillRect(right - padding.right - border.right, top + padding.top + border.top, padding.right, paddingHeight), context.fillRect(left + border.left, bottom - padding.bottom - border.bottom, paddingWidth, padding.bottom), context.fillRect(left + border.left, top + padding.top + border.top, padding.left, paddingHeight);
+  let paddingLabels = [{ type: "padding", text: padding.top, position: "top" }, { type: "padding", text: padding.right, position: "right" }, { type: "padding", text: padding.bottom, position: "bottom" }, { type: "padding", text: padding.left, position: "left" }];
+  return filterZeroValues(paddingLabels);
+}
+function drawBorder(context, { border, width, height, top, left, bottom, right }) {
+  let borderHeight = height - border.top - border.bottom;
+  context.fillStyle = colors2.border, context.fillRect(left, top, width, border.top), context.fillRect(left, bottom - border.bottom, width, border.bottom), context.fillRect(left, top + border.top, border.left, borderHeight), context.fillRect(right - border.right, top + border.top, border.right, borderHeight);
+  let borderLabels = [{ type: "border", text: border.top, position: "top" }, { type: "border", text: border.right, position: "right" }, { type: "border", text: border.bottom, position: "bottom" }, { type: "border", text: border.left, position: "left" }];
+  return filterZeroValues(borderLabels);
+}
+function drawContent(context, { padding, border, width, height, top, left }) {
+  let contentWidth = width - border.left - border.right - padding.left - padding.right, contentHeight = height - padding.top - padding.bottom - border.top - border.bottom;
+  return context.fillStyle = colors2.content, context.fillRect(left + border.left + padding.left, top + border.top + padding.top, contentWidth, contentHeight), [{ type: "content", position: "center", text: `${round(contentWidth)} x ${round(contentHeight)}` }];
+}
+function drawBoxModel(element) {
+  return (context) => {
+    if (element && context) {
+      let measurements = measureElement(element), marginLabels = drawMargin(context, measurements), paddingLabels = drawPadding(context, measurements), borderLabels = drawBorder(context, measurements), contentLabels = drawContent(context, measurements), externalLabels = measurements.width <= SMALL_NODE_SIZE * 3 || measurements.height <= SMALL_NODE_SIZE;
+      labelStacks(context, measurements, [...contentLabels, ...paddingLabels, ...borderLabels, ...marginLabels], externalLabels);
+    }
+  };
+}
+function drawSelectedElement(element) {
+  draw(drawBoxModel(element));
+}
+var deepElementFromPoint = (x, y) => {
+  let element = scope.document.elementFromPoint(x, y), crawlShadows = (node) => {
+    if (node && node.shadowRoot) {
+      let nestedElement = node.shadowRoot.elementFromPoint(x, y);
+      return node.isEqualNode(nestedElement) ? node : nestedElement.shadowRoot ? crawlShadows(nestedElement) : nestedElement;
+    }
+    return node;
+  };
+  return crawlShadows(element) || element;
+};
+var nodeAtPointerRef, pointer = { x: 0, y: 0 };
+function findAndDrawElement(x, y) {
+  nodeAtPointerRef = deepElementFromPoint(x, y), drawSelectedElement(nodeAtPointerRef);
+}
+var withMeasure = (StoryFn, context) => {
+  let { measureEnabled } = context.globals;
+  return useEffect(() => {
+    let onPointerMove = (event) => {
+      window.requestAnimationFrame(() => {
+        event.stopPropagation(), pointer.x = event.clientX, pointer.y = event.clientY;
+      });
+    };
+    return document.addEventListener("pointermove", onPointerMove), () => {
+      document.removeEventListener("pointermove", onPointerMove);
+    };
+  }, []), useEffect(() => {
+    let onPointerOver = (event) => {
+      window.requestAnimationFrame(() => {
+        event.stopPropagation(), findAndDrawElement(event.clientX, event.clientY);
+      });
+    }, onResize = () => {
+      window.requestAnimationFrame(() => {
+        rescale();
+      });
+    };
+    return measureEnabled && (document.addEventListener("pointerover", onPointerOver), init(), window.addEventListener("resize", onResize), findAndDrawElement(pointer.x, pointer.y)), () => {
+      window.removeEventListener("resize", onResize), destroy();
+    };
+  }, [measureEnabled]), StoryFn();
+};
+var decorators = [withMeasure], globals = { [PARAM_KEY]: false };
+export {
+  decorators,
+  globals
+};
 //# sourceMappingURL=preview.74e62a71.js.map

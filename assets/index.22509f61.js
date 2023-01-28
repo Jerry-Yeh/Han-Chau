@@ -1,2 +1,220 @@
-import{s as g}from"./index.e850844b.js";const C=__STORYBOOK_MODULE_PREVIEW_API__.addons,A=__STORYBOOK_MODULE_CLIENT_LOGGER__.once,D=__STORYBOOK_MODULE_CLIENT_LOGGER__.logger,T=__STORYBOOK_MODULE_CORE_EVENTS__.FORCE_REMOUNT,L=__STORYBOOK_MODULE_CORE_EVENTS__.IGNORED_EXCEPTION,U=__STORYBOOK_MODULE_CORE_EVENTS__.SET_CURRENT_STORY,B=__STORYBOOK_MODULE_CORE_EVENTS__.STORY_RENDER_PHASE_CHANGED;var j=(n=>(n.DONE="done",n.ERROR="error",n.ACTIVE="active",n.WAITING="waiting",n))(j||{}),E={CALL:"storybook/instrumenter/call",SYNC:"storybook/instrumenter/sync",START:"storybook/instrumenter/start",BACK:"storybook/instrumenter/back",GOTO:"storybook/instrumenter/goto",NEXT:"storybook/instrumenter/next",END:"storybook/instrumenter/end"},w,b=((w=g.FEATURES)==null?void 0:w.interactionsDebugger)!==!0,m={debugger:!b,start:!1,back:!1,goto:!1,next:!1,end:!1},y=new Error("This function ran after the play function completed. Did you forget to `await` it?"),N=n=>Object.prototype.toString.call(n)==="[object Object]",M=n=>Object.prototype.toString.call(n)==="[object Module]",Y=n=>{if(!N(n)&&!M(n))return!1;if(n.constructor===void 0)return!0;let s=n.constructor.prototype;return!(!N(s)||Object.prototype.hasOwnProperty.call(s,"isPrototypeOf")===!1)},P=n=>{try{return new n.constructor}catch{return{}}},p=()=>({renderPhase:void 0,isDebugging:!1,isPlaying:!1,isLocked:!1,cursor:0,calls:[],shadowCalls:[],callRefsByResult:new Map,chainedCallIds:new Set,ancestors:[],playUntil:void 0,resolvers:{},syncTimeout:void 0}),I=(n,s=!1)=>{let l=(s?n.shadowCalls:n.calls).filter(i=>i.retain);if(!l.length)return;let c=new Map(Array.from(n.callRefsByResult.entries()).filter(([,i])=>i.retain));return{cursor:l.length,calls:l,callRefsByResult:c}},k=class{constructor(){this.initialized=!1,this.channel=C.getChannel(),this.state=g.window.parent.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER_STATE__||{};let n=({storyId:e,isPlaying:r=!0,isDebugging:t=!1})=>{let o=this.getState(e);this.setState(e,{...p(),...I(o,t),shadowCalls:t?o.shadowCalls:[],chainedCallIds:t?o.chainedCallIds:new Set,playUntil:t?o.playUntil:void 0,isPlaying:r,isDebugging:t}),this.sync(e)};this.channel.on(T,n),this.channel.on(B,({storyId:e,newPhase:r})=>{let{isDebugging:t}=this.getState(e);this.setState(e,{renderPhase:r}),r==="preparing"&&t&&n({storyId:e}),r==="playing"&&n({storyId:e,isDebugging:t}),r==="played"&&this.setState(e,{isLocked:!1,isPlaying:!1,isDebugging:!1}),r==="errored"&&this.setState(e,{isLocked:!1,isPlaying:!1})}),this.channel.on(U,()=>{this.initialized?this.cleanup():this.initialized=!0});let s=({storyId:e,playUntil:r})=>{this.getState(e).isDebugging||this.setState(e,({calls:o})=>({calls:[],shadowCalls:o.map(a=>({...a,status:"waiting"})),isDebugging:!0}));let t=this.getLog(e);this.setState(e,({shadowCalls:o})=>{var d;if(r||!t.length)return{playUntil:r};let a=o.findIndex(h=>h.id===t[0].callId);return{playUntil:(d=o.slice(0,a).filter(h=>h.interceptable&&!h.ancestors.length).slice(-1)[0])==null?void 0:d.id}}),this.channel.emit(T,{storyId:e,isDebugging:!0})},l=({storyId:e})=>{var o;let r=this.getLog(e).filter(a=>!a.ancestors.length),t=r.reduceRight((a,d,h)=>a>=0||d.status==="waiting"?a:h,-1);s({storyId:e,playUntil:(o=r[t-1])==null?void 0:o.callId})},c=({storyId:e,callId:r})=>{var O;let{calls:t,shadowCalls:o,resolvers:a}=this.getState(e),d=t.find(({id:u})=>u===r),h=o.find(({id:u})=>u===r);if(!d&&h&&Object.values(a).length>0){let u=(O=this.getLog(e).find(S=>S.status==="waiting"))==null?void 0:O.callId;h.id!==u&&this.setState(e,{playUntil:h.id}),Object.values(a).forEach(S=>S())}else s({storyId:e,playUntil:r})},i=({storyId:e})=>{var t;let{resolvers:r}=this.getState(e);if(Object.values(r).length>0)Object.values(r).forEach(o=>o());else{let o=(t=this.getLog(e).find(a=>a.status==="waiting"))==null?void 0:t.callId;o?s({storyId:e,playUntil:o}):_({storyId:e})}},_=({storyId:e})=>{this.setState(e,{playUntil:void 0,isDebugging:!1}),Object.values(this.getState(e).resolvers).forEach(r=>r())};this.channel.on(E.START,s),this.channel.on(E.BACK,l),this.channel.on(E.GOTO,c),this.channel.on(E.NEXT,i),this.channel.on(E.END,_)}getState(n){return this.state[n]||p()}setState(n,s){let l=this.getState(n),c=typeof s=="function"?s(l):s;this.state={...this.state,[n]:{...l,...c}},g.window.parent.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER_STATE__=this.state}cleanup(){this.state=Object.entries(this.state).reduce((s,[l,c])=>{let i=I(c);return i&&(s[l]=Object.assign(p(),i)),s},{});let n={controlStates:m,logItems:[]};this.channel.emit(E.SYNC,n),g.window.parent.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER_STATE__=this.state}getLog(n){let{calls:s,shadowCalls:l}=this.getState(n),c=[...l];s.forEach((_,e)=>{c[e]=_});let i=new Set;return c.reduceRight((_,e)=>(e.args.forEach(r=>{r!=null&&r.__callId__&&i.add(r.__callId__)}),e.path.forEach(r=>{r.__callId__&&i.add(r.__callId__)}),(e.interceptable||e.exception)&&!i.has(e.id)&&(_.unshift({callId:e.id,status:e.status,ancestors:e.ancestors}),i.add(e.id)),_),[])}instrument(n,s){if(!Y(n))return n;let{mutate:l=!1,path:c=[]}=s;return Object.keys(n).reduce((i,_)=>{let e=n[_];return typeof e!="function"?(i[_]=this.instrument(e,{...s,path:c.concat(_)}),i):typeof e.__originalFn__=="function"?(i[_]=e,i):(i[_]=(...r)=>this.track(_,e,r,s),i[_].__originalFn__=e,Object.defineProperty(i[_],"name",{value:_,writable:!1}),Object.keys(e).length>0&&Object.assign(i[_],this.instrument({...e},{...s,path:c.concat(_)})),i)},l?n:P(n))}track(n,s,l,c){var u,S,f,R;let i=((u=l==null?void 0:l[0])==null?void 0:u.__storyId__)||((R=(f=(S=g.__STORYBOOK_PREVIEW__)==null?void 0:S.selectionStore)==null?void 0:f.selection)==null?void 0:R.storyId),{cursor:_,ancestors:e}=this.getState(i);this.setState(i,{cursor:_+1});let r=`${e.slice(-1)[0]||i} [${_}] ${n}`,{path:t=[],intercept:o=!1,retain:a=!1}=c,d=typeof o=="function"?o(n,t):o,h={id:r,cursor:_,storyId:i,ancestors:e,path:t,method:n,args:l,interceptable:d,retain:a},O=(d&&!e.length?this.intercept:this.invoke).call(this,s,h,c);return this.instrument(O,{...c,mutate:!0,path:[{__callId__:h.id}]})}intercept(n,s,l){let{chainedCallIds:c,isDebugging:i,playUntil:_}=this.getState(s.storyId),e=c.has(s.id);return!i||e||_?(_===s.id&&this.setState(s.storyId,{playUntil:void 0}),this.invoke(n,s,l)):new Promise(r=>{this.setState(s.storyId,({resolvers:t})=>({isLocked:!1,resolvers:{...t,[s.id]:r}}))}).then(()=>(this.setState(s.storyId,r=>{let{[s.id]:t,...o}=r.resolvers;return{isLocked:!0,resolvers:o}}),this.invoke(n,s,l)))}invoke(n,s,l){let{callRefsByResult:c,renderPhase:i}=this.getState(s.storyId),_=t=>{var o,a;if(c.has(t))return c.get(t);if(t instanceof Array)return t.map(_);if(t instanceof Date)return{__date__:{value:t.toISOString()}};if(t instanceof Error){let{name:d,message:h,stack:O}=t;return{__error__:{name:d,message:h,stack:O}}}if(t instanceof RegExp){let{flags:d,source:h}=t;return{__regexp__:{flags:d,source:h}}}if(t instanceof g.window.HTMLElement){let{prefix:d,localName:h,id:O,classList:u,innerText:S}=t,f=Array.from(u);return{__element__:{prefix:d,localName:h,id:O,classNames:f,innerText:S}}}return typeof t=="function"?{__function__:{name:t.name}}:typeof t=="symbol"?{__symbol__:{description:t.description}}:typeof t=="object"&&((o=t==null?void 0:t.constructor)==null?void 0:o.name)&&((a=t==null?void 0:t.constructor)==null?void 0:a.name)!=="Object"?{__class__:{name:t.constructor.name}}:Object.prototype.toString.call(t)==="[object Object]"?Object.fromEntries(Object.entries(t).map(([d,h])=>[d,_(h)])):t},e={...s,args:s.args.map(_)};s.path.forEach(t=>{t!=null&&t.__callId__&&this.setState(s.storyId,({chainedCallIds:o})=>({chainedCallIds:new Set(Array.from(o).concat(t.__callId__))}))});let r=t=>{if(t instanceof Error){let{name:o,message:a,stack:d,callId:h=s.id}=t,O={name:o,message:a,stack:d,callId:h};if(this.update({...e,status:"error",exception:O}),this.setState(s.storyId,u=>({callRefsByResult:new Map([...Array.from(u.callRefsByResult.entries()),[t,{__callId__:s.id,retain:s.retain}]])})),s.ancestors.length)throw Object.prototype.hasOwnProperty.call(t,"callId")||Object.defineProperty(t,"callId",{value:s.id}),t;if(t!==y)throw D.warn(t),L}throw t};try{if(i==="played"&&!s.retain)throw y;let t=(l.getArgs?l.getArgs(s,this.getState(s.storyId)):s.args).map(a=>typeof a!="function"||Object.keys(a).length?a:(...d)=>{let{cursor:h,ancestors:O}=this.getState(s.storyId);this.setState(s.storyId,{cursor:0,ancestors:[...O,s.id]});let u=()=>this.setState(s.storyId,{cursor:h,ancestors:O}),S=!1;try{let f=a(...d);return f instanceof Promise?(S=!0,f.finally(u)):f}finally{S||u()}}),o=n(...t);return o&&["object","function","symbol"].includes(typeof o)&&this.setState(s.storyId,a=>({callRefsByResult:new Map([...Array.from(a.callRefsByResult.entries()),[o,{__callId__:s.id,retain:s.retain}]])})),this.update({...e,status:o instanceof Promise?"active":"done"}),o instanceof Promise?o.then(a=>(this.update({...e,status:"done"}),a),r):o}catch(t){return r(t)}}update(n){this.channel.emit(E.CALL,n),this.setState(n.storyId,({calls:s})=>{let l=s.concat(n).reduce((c,i)=>Object.assign(c,{[i.id]:i}),{});return{calls:Object.values(l).sort((c,i)=>c.id.localeCompare(i.id,void 0,{numeric:!0}))}}),this.sync(n.storyId)}sync(n){let s=()=>{var o;let{isLocked:l,isPlaying:c}=this.getState(n),i=this.getLog(n),_=(o=i.filter(({ancestors:a})=>!a.length).find(a=>a.status==="waiting"))==null?void 0:o.callId,e=i.some(a=>a.status==="active");if(b||l||e||i.length===0){let a={controlStates:m,logItems:i};this.channel.emit(E.SYNC,a);return}let r=i.some(a=>["done","error"].includes(a.status)),t={controlStates:{debugger:!0,start:r,back:r,goto:!0,next:c,end:c},logItems:i,pausedAt:_};this.channel.emit(E.SYNC,t)};this.setState(n,({syncTimeout:l})=>(clearTimeout(l),{syncTimeout:setTimeout(s,0)}))}};function K(n,s={}){var l,c,i,_;try{let e=!1,r=!1;return(c=(l=g.window.location)==null?void 0:l.search)!=null&&c.includes("instrument=true")?e=!0:(_=(i=g.window.location)==null?void 0:i.search)!=null&&_.includes("instrument=false")&&(r=!0),g.window.parent===g.window&&!e||r?n:(g.window.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER__||(g.window.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER__=new k),g.window.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER__.instrument(n,s))}catch(e){return A.warn(e),n}}export{K as i};
+var _a;
+import { s as scope } from "./index.e850844b.js";
+const addons = __STORYBOOK_MODULE_PREVIEW_API__.addons;
+const once = __STORYBOOK_MODULE_CLIENT_LOGGER__.once;
+const logger = __STORYBOOK_MODULE_CLIENT_LOGGER__.logger;
+const FORCE_REMOUNT = __STORYBOOK_MODULE_CORE_EVENTS__.FORCE_REMOUNT;
+const IGNORED_EXCEPTION = __STORYBOOK_MODULE_CORE_EVENTS__.IGNORED_EXCEPTION;
+const SET_CURRENT_STORY = __STORYBOOK_MODULE_CORE_EVENTS__.SET_CURRENT_STORY;
+const STORY_RENDER_PHASE_CHANGED = __STORYBOOK_MODULE_CORE_EVENTS__.STORY_RENDER_PHASE_CHANGED;
+var CallStates = ((CallStates2) => (CallStates2.DONE = "done", CallStates2.ERROR = "error", CallStates2.ACTIVE = "active", CallStates2.WAITING = "waiting", CallStates2))(CallStates || {});
+var EVENTS = { CALL: "storybook/instrumenter/call", SYNC: "storybook/instrumenter/sync", START: "storybook/instrumenter/start", BACK: "storybook/instrumenter/back", GOTO: "storybook/instrumenter/goto", NEXT: "storybook/instrumenter/next", END: "storybook/instrumenter/end" }, debuggerDisabled = ((_a = scope.FEATURES) == null ? void 0 : _a.interactionsDebugger) !== true, controlsDisabled = { debugger: !debuggerDisabled, start: false, back: false, goto: false, next: false, end: false }, alreadyCompletedException = new Error("This function ran after the play function completed. Did you forget to `await` it?"), isObject = (o) => Object.prototype.toString.call(o) === "[object Object]", isModule = (o) => Object.prototype.toString.call(o) === "[object Module]", isInstrumentable = (o) => {
+  if (!isObject(o) && !isModule(o))
+    return false;
+  if (o.constructor === void 0)
+    return true;
+  let proto = o.constructor.prototype;
+  return !(!isObject(proto) || Object.prototype.hasOwnProperty.call(proto, "isPrototypeOf") === false);
+}, construct = (obj) => {
+  try {
+    return new obj.constructor();
+  } catch {
+    return {};
+  }
+}, getInitialState = () => ({ renderPhase: void 0, isDebugging: false, isPlaying: false, isLocked: false, cursor: 0, calls: [], shadowCalls: [], callRefsByResult: /* @__PURE__ */ new Map(), chainedCallIds: /* @__PURE__ */ new Set(), ancestors: [], playUntil: void 0, resolvers: {}, syncTimeout: void 0 }), getRetainedState = (state, isDebugging = false) => {
+  let calls = (isDebugging ? state.shadowCalls : state.calls).filter((call) => call.retain);
+  if (!calls.length)
+    return;
+  let callRefsByResult = new Map(Array.from(state.callRefsByResult.entries()).filter(([, ref]) => ref.retain));
+  return { cursor: calls.length, calls, callRefsByResult };
+}, Instrumenter = class {
+  constructor() {
+    this.initialized = false;
+    this.channel = addons.getChannel(), this.state = scope.window.parent.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER_STATE__ || {};
+    let resetState = ({ storyId, isPlaying = true, isDebugging = false }) => {
+      let state = this.getState(storyId);
+      this.setState(storyId, { ...getInitialState(), ...getRetainedState(state, isDebugging), shadowCalls: isDebugging ? state.shadowCalls : [], chainedCallIds: isDebugging ? state.chainedCallIds : /* @__PURE__ */ new Set(), playUntil: isDebugging ? state.playUntil : void 0, isPlaying, isDebugging }), this.sync(storyId);
+    };
+    this.channel.on(FORCE_REMOUNT, resetState), this.channel.on(STORY_RENDER_PHASE_CHANGED, ({ storyId, newPhase }) => {
+      let { isDebugging } = this.getState(storyId);
+      this.setState(storyId, { renderPhase: newPhase }), newPhase === "preparing" && isDebugging && resetState({ storyId }), newPhase === "playing" && resetState({ storyId, isDebugging }), newPhase === "played" && this.setState(storyId, { isLocked: false, isPlaying: false, isDebugging: false }), newPhase === "errored" && this.setState(storyId, { isLocked: false, isPlaying: false });
+    }), this.channel.on(SET_CURRENT_STORY, () => {
+      this.initialized ? this.cleanup() : this.initialized = true;
+    });
+    let start = ({ storyId, playUntil }) => {
+      this.getState(storyId).isDebugging || this.setState(storyId, ({ calls }) => ({ calls: [], shadowCalls: calls.map((call) => ({ ...call, status: "waiting" })), isDebugging: true }));
+      let log = this.getLog(storyId);
+      this.setState(storyId, ({ shadowCalls }) => {
+        var _a2;
+        if (playUntil || !log.length)
+          return { playUntil };
+        let firstRowIndex = shadowCalls.findIndex((call) => call.id === log[0].callId);
+        return { playUntil: (_a2 = shadowCalls.slice(0, firstRowIndex).filter((call) => call.interceptable && !call.ancestors.length).slice(-1)[0]) == null ? void 0 : _a2.id };
+      }), this.channel.emit(FORCE_REMOUNT, { storyId, isDebugging: true });
+    }, back = ({ storyId }) => {
+      var _a2;
+      let log = this.getLog(storyId).filter((call) => !call.ancestors.length), last = log.reduceRight((res, item, index) => res >= 0 || item.status === "waiting" ? res : index, -1);
+      start({ storyId, playUntil: (_a2 = log[last - 1]) == null ? void 0 : _a2.callId });
+    }, goto = ({ storyId, callId }) => {
+      var _a2;
+      let { calls, shadowCalls, resolvers } = this.getState(storyId), call = calls.find(({ id }) => id === callId), shadowCall = shadowCalls.find(({ id }) => id === callId);
+      if (!call && shadowCall && Object.values(resolvers).length > 0) {
+        let nextId = (_a2 = this.getLog(storyId).find((c) => c.status === "waiting")) == null ? void 0 : _a2.callId;
+        shadowCall.id !== nextId && this.setState(storyId, { playUntil: shadowCall.id }), Object.values(resolvers).forEach((resolve) => resolve());
+      } else
+        start({ storyId, playUntil: callId });
+    }, next = ({ storyId }) => {
+      var _a2;
+      let { resolvers } = this.getState(storyId);
+      if (Object.values(resolvers).length > 0)
+        Object.values(resolvers).forEach((resolve) => resolve());
+      else {
+        let nextId = (_a2 = this.getLog(storyId).find((c) => c.status === "waiting")) == null ? void 0 : _a2.callId;
+        nextId ? start({ storyId, playUntil: nextId }) : end({ storyId });
+      }
+    }, end = ({ storyId }) => {
+      this.setState(storyId, { playUntil: void 0, isDebugging: false }), Object.values(this.getState(storyId).resolvers).forEach((resolve) => resolve());
+    };
+    this.channel.on(EVENTS.START, start), this.channel.on(EVENTS.BACK, back), this.channel.on(EVENTS.GOTO, goto), this.channel.on(EVENTS.NEXT, next), this.channel.on(EVENTS.END, end);
+  }
+  getState(storyId) {
+    return this.state[storyId] || getInitialState();
+  }
+  setState(storyId, update) {
+    let state = this.getState(storyId), patch = typeof update == "function" ? update(state) : update;
+    this.state = { ...this.state, [storyId]: { ...state, ...patch } }, scope.window.parent.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER_STATE__ = this.state;
+  }
+  cleanup() {
+    this.state = Object.entries(this.state).reduce((acc, [storyId, state]) => {
+      let retainedState = getRetainedState(state);
+      return retainedState && (acc[storyId] = Object.assign(getInitialState(), retainedState)), acc;
+    }, {});
+    let payload = { controlStates: controlsDisabled, logItems: [] };
+    this.channel.emit(EVENTS.SYNC, payload), scope.window.parent.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER_STATE__ = this.state;
+  }
+  getLog(storyId) {
+    let { calls, shadowCalls } = this.getState(storyId), merged = [...shadowCalls];
+    calls.forEach((call, index) => {
+      merged[index] = call;
+    });
+    let seen = /* @__PURE__ */ new Set();
+    return merged.reduceRight((acc, call) => (call.args.forEach((arg) => {
+      (arg == null ? void 0 : arg.__callId__) && seen.add(arg.__callId__);
+    }), call.path.forEach((node) => {
+      node.__callId__ && seen.add(node.__callId__);
+    }), (call.interceptable || call.exception) && !seen.has(call.id) && (acc.unshift({ callId: call.id, status: call.status, ancestors: call.ancestors }), seen.add(call.id)), acc), []);
+  }
+  instrument(obj, options) {
+    if (!isInstrumentable(obj))
+      return obj;
+    let { mutate = false, path = [] } = options;
+    return Object.keys(obj).reduce((acc, key) => {
+      let value = obj[key];
+      return typeof value != "function" ? (acc[key] = this.instrument(value, { ...options, path: path.concat(key) }), acc) : typeof value.__originalFn__ == "function" ? (acc[key] = value, acc) : (acc[key] = (...args) => this.track(key, value, args, options), acc[key].__originalFn__ = value, Object.defineProperty(acc[key], "name", { value: key, writable: false }), Object.keys(value).length > 0 && Object.assign(acc[key], this.instrument({ ...value }, { ...options, path: path.concat(key) })), acc);
+    }, mutate ? obj : construct(obj));
+  }
+  track(method, fn, args, options) {
+    var _a2, _b, _c, _d;
+    let storyId = ((_a2 = args == null ? void 0 : args[0]) == null ? void 0 : _a2.__storyId__) || ((_d = (_c = (_b = scope.__STORYBOOK_PREVIEW__) == null ? void 0 : _b.selectionStore) == null ? void 0 : _c.selection) == null ? void 0 : _d.storyId), { cursor, ancestors } = this.getState(storyId);
+    this.setState(storyId, { cursor: cursor + 1 });
+    let id = `${ancestors.slice(-1)[0] || storyId} [${cursor}] ${method}`, { path = [], intercept = false, retain = false } = options, interceptable = typeof intercept == "function" ? intercept(method, path) : intercept, call = { id, cursor, storyId, ancestors, path, method, args, interceptable, retain }, result = (interceptable && !ancestors.length ? this.intercept : this.invoke).call(this, fn, call, options);
+    return this.instrument(result, { ...options, mutate: true, path: [{ __callId__: call.id }] });
+  }
+  intercept(fn, call, options) {
+    let { chainedCallIds, isDebugging, playUntil } = this.getState(call.storyId), isChainedUpon = chainedCallIds.has(call.id);
+    return !isDebugging || isChainedUpon || playUntil ? (playUntil === call.id && this.setState(call.storyId, { playUntil: void 0 }), this.invoke(fn, call, options)) : new Promise((resolve) => {
+      this.setState(call.storyId, ({ resolvers }) => ({ isLocked: false, resolvers: { ...resolvers, [call.id]: resolve } }));
+    }).then(() => (this.setState(call.storyId, (state) => {
+      let { [call.id]: _, ...resolvers } = state.resolvers;
+      return { isLocked: true, resolvers };
+    }), this.invoke(fn, call, options)));
+  }
+  invoke(fn, call, options) {
+    let { callRefsByResult, renderPhase } = this.getState(call.storyId), serializeValues = (value) => {
+      var _a2, _b;
+      if (callRefsByResult.has(value))
+        return callRefsByResult.get(value);
+      if (value instanceof Array)
+        return value.map(serializeValues);
+      if (value instanceof Date)
+        return { __date__: { value: value.toISOString() } };
+      if (value instanceof Error) {
+        let { name, message, stack } = value;
+        return { __error__: { name, message, stack } };
+      }
+      if (value instanceof RegExp) {
+        let { flags, source } = value;
+        return { __regexp__: { flags, source } };
+      }
+      if (value instanceof scope.window.HTMLElement) {
+        let { prefix, localName, id, classList, innerText } = value, classNames = Array.from(classList);
+        return { __element__: { prefix, localName, id, classNames, innerText } };
+      }
+      return typeof value == "function" ? { __function__: { name: value.name } } : typeof value == "symbol" ? { __symbol__: { description: value.description } } : typeof value == "object" && ((_a2 = value == null ? void 0 : value.constructor) == null ? void 0 : _a2.name) && ((_b = value == null ? void 0 : value.constructor) == null ? void 0 : _b.name) !== "Object" ? { __class__: { name: value.constructor.name } } : Object.prototype.toString.call(value) === "[object Object]" ? Object.fromEntries(Object.entries(value).map(([key, val]) => [key, serializeValues(val)])) : value;
+    }, info = { ...call, args: call.args.map(serializeValues) };
+    call.path.forEach((ref) => {
+      (ref == null ? void 0 : ref.__callId__) && this.setState(call.storyId, ({ chainedCallIds }) => ({ chainedCallIds: new Set(Array.from(chainedCallIds).concat(ref.__callId__)) }));
+    });
+    let handleException = (e) => {
+      if (e instanceof Error) {
+        let { name, message, stack, callId = call.id } = e, exception = { name, message, stack, callId };
+        if (this.update({ ...info, status: "error", exception }), this.setState(call.storyId, (state) => ({ callRefsByResult: new Map([...Array.from(state.callRefsByResult.entries()), [e, { __callId__: call.id, retain: call.retain }]]) })), call.ancestors.length)
+          throw Object.prototype.hasOwnProperty.call(e, "callId") || Object.defineProperty(e, "callId", { value: call.id }), e;
+        if (e !== alreadyCompletedException)
+          throw logger.warn(e), IGNORED_EXCEPTION;
+      }
+      throw e;
+    };
+    try {
+      if (renderPhase === "played" && !call.retain)
+        throw alreadyCompletedException;
+      let finalArgs = (options.getArgs ? options.getArgs(call, this.getState(call.storyId)) : call.args).map((arg) => typeof arg != "function" || Object.keys(arg).length ? arg : (...args) => {
+        let { cursor, ancestors } = this.getState(call.storyId);
+        this.setState(call.storyId, { cursor: 0, ancestors: [...ancestors, call.id] });
+        let restore = () => this.setState(call.storyId, { cursor, ancestors }), willRestore = false;
+        try {
+          let res = arg(...args);
+          return res instanceof Promise ? (willRestore = true, res.finally(restore)) : res;
+        } finally {
+          willRestore || restore();
+        }
+      }), result = fn(...finalArgs);
+      return result && ["object", "function", "symbol"].includes(typeof result) && this.setState(call.storyId, (state) => ({ callRefsByResult: new Map([...Array.from(state.callRefsByResult.entries()), [result, { __callId__: call.id, retain: call.retain }]]) })), this.update({ ...info, status: result instanceof Promise ? "active" : "done" }), result instanceof Promise ? result.then((value) => (this.update({ ...info, status: "done" }), value), handleException) : result;
+    } catch (e) {
+      return handleException(e);
+    }
+  }
+  update(call) {
+    this.channel.emit(EVENTS.CALL, call), this.setState(call.storyId, ({ calls }) => {
+      let callsById = calls.concat(call).reduce((a, c) => Object.assign(a, { [c.id]: c }), {});
+      return { calls: Object.values(callsById).sort((a, b) => a.id.localeCompare(b.id, void 0, { numeric: true })) };
+    }), this.sync(call.storyId);
+  }
+  sync(storyId) {
+    let synchronize = () => {
+      var _a2;
+      let { isLocked, isPlaying } = this.getState(storyId), logItems = this.getLog(storyId), pausedAt = (_a2 = logItems.filter(({ ancestors }) => !ancestors.length).find((item) => item.status === "waiting")) == null ? void 0 : _a2.callId, hasActive = logItems.some((item) => item.status === "active");
+      if (debuggerDisabled || isLocked || hasActive || logItems.length === 0) {
+        let payload2 = { controlStates: controlsDisabled, logItems };
+        this.channel.emit(EVENTS.SYNC, payload2);
+        return;
+      }
+      let hasPrevious = logItems.some((item) => ["done", "error"].includes(item.status)), payload = { controlStates: { debugger: true, start: hasPrevious, back: hasPrevious, goto: true, next: isPlaying, end: isPlaying }, logItems, pausedAt };
+      this.channel.emit(EVENTS.SYNC, payload);
+    };
+    this.setState(storyId, ({ syncTimeout }) => (clearTimeout(syncTimeout), { syncTimeout: setTimeout(synchronize, 0) }));
+  }
+};
+function instrument(obj, options = {}) {
+  var _a2, _b, _c, _d;
+  try {
+    let forceInstrument = false, skipInstrument = false;
+    return ((_b = (_a2 = scope.window.location) == null ? void 0 : _a2.search) == null ? void 0 : _b.includes("instrument=true")) ? forceInstrument = true : ((_d = (_c = scope.window.location) == null ? void 0 : _c.search) == null ? void 0 : _d.includes("instrument=false")) && (skipInstrument = true), scope.window.parent === scope.window && !forceInstrument || skipInstrument ? obj : (scope.window.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER__ || (scope.window.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER__ = new Instrumenter()), scope.window.__STORYBOOK_ADDON_INTERACTIONS_INSTRUMENTER__.instrument(obj, options));
+  } catch (e) {
+    return once.warn(e), obj;
+  }
+}
+export {
+  instrument as i
+};
 //# sourceMappingURL=index.22509f61.js.map

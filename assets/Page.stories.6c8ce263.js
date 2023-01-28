@@ -1,73 +1,16992 @@
-import{i as vd}from"./index.22509f61.js";import{a as yd,c as Zi,g as yy}from"./_commonjsHelpers.712cc82f.js";import{d as my}from"./index.67736049.js";import{R as by}from"./index.2e2f892a.js";import{H as hy}from"./Header.498a2bb5.js";import{a as it,j as z}from"./jsx-runtime.db436af5.js";import"./index.e850844b.js";function gy(e,t){for(var r=0;r<t.length;r++){const n=t[r];if(typeof n!="string"&&!Array.isArray(n)){for(const a in n)if(a!=="default"&&!(a in e)){const o=Object.getOwnPropertyDescriptor(n,a);o&&Object.defineProperty(e,a,o.get?o:{enumerable:!0,get:()=>n[a]})}}}return Object.freeze(Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}))}var ge={},eu={exports:{}};(function(e){const r=(o=0)=>l=>`\x1B[${38+o};5;${l}m`,n=(o=0)=>(l,u,i)=>`\x1B[${38+o};2;${l};${u};${i}m`;function a(){const o=new Map,l={modifier:{reset:[0,0],bold:[1,22],dim:[2,22],italic:[3,23],underline:[4,24],overline:[53,55],inverse:[7,27],hidden:[8,28],strikethrough:[9,29]},color:{black:[30,39],red:[31,39],green:[32,39],yellow:[33,39],blue:[34,39],magenta:[35,39],cyan:[36,39],white:[37,39],blackBright:[90,39],redBright:[91,39],greenBright:[92,39],yellowBright:[93,39],blueBright:[94,39],magentaBright:[95,39],cyanBright:[96,39],whiteBright:[97,39]},bgColor:{bgBlack:[40,49],bgRed:[41,49],bgGreen:[42,49],bgYellow:[43,49],bgBlue:[44,49],bgMagenta:[45,49],bgCyan:[46,49],bgWhite:[47,49],bgBlackBright:[100,49],bgRedBright:[101,49],bgGreenBright:[102,49],bgYellowBright:[103,49],bgBlueBright:[104,49],bgMagentaBright:[105,49],bgCyanBright:[106,49],bgWhiteBright:[107,49]}};l.color.gray=l.color.blackBright,l.bgColor.bgGray=l.bgColor.bgBlackBright,l.color.grey=l.color.blackBright,l.bgColor.bgGrey=l.bgColor.bgBlackBright;for(const[u,i]of Object.entries(l)){for(const[s,d]of Object.entries(i))l[s]={open:`\x1B[${d[0]}m`,close:`\x1B[${d[1]}m`},i[s]=l[s],o.set(d[0],d[1]);Object.defineProperty(l,u,{value:i,enumerable:!1})}return Object.defineProperty(l,"codes",{value:o,enumerable:!1}),l.color.close="\x1B[39m",l.bgColor.close="\x1B[49m",l.color.ansi256=r(),l.color.ansi16m=n(),l.bgColor.ansi256=r(10),l.bgColor.ansi16m=n(10),Object.defineProperties(l,{rgbToAnsi256:{value:(u,i,s)=>u===i&&i===s?u<8?16:u>248?231:Math.round((u-8)/247*24)+232:16+36*Math.round(u/255*5)+6*Math.round(i/255*5)+Math.round(s/255*5),enumerable:!1},hexToRgb:{value:u=>{const i=/(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(u.toString(16));if(!i)return[0,0,0];let{colorString:s}=i.groups;s.length===3&&(s=s.split("").map(f=>f+f).join(""));const d=Number.parseInt(s,16);return[d>>16&255,d>>8&255,d&255]},enumerable:!1},hexToAnsi256:{value:u=>l.rgbToAnsi256(...l.hexToRgb(u)),enumerable:!1}}),l}Object.defineProperty(e,"exports",{enumerable:!0,get:a})})(eu);var Ee={};Object.defineProperty(Ee,"__esModule",{value:!0});Ee.printIteratorEntries=_y;Ee.printIteratorValues=Ry;Ee.printListItems=Py;Ee.printObjectProperties=wy;const Ey=(e,t)=>{const r=Object.keys(e).sort(t);return Object.getOwnPropertySymbols&&Object.getOwnPropertySymbols(e).forEach(n=>{Object.getOwnPropertyDescriptor(e,n).enumerable&&r.push(n)}),r};function _y(e,t,r,n,a,o,l=": "){let u="",i=e.next();if(!i.done){u+=t.spacingOuter;const s=r+t.indent;for(;!i.done;){const d=o(i.value[0],t,s,n,a),f=o(i.value[1],t,s,n,a);u+=s+d+l+f,i=e.next(),i.done?t.min||(u+=","):u+=","+t.spacingInner}u+=t.spacingOuter+r}return u}function Ry(e,t,r,n,a,o){let l="",u=e.next();if(!u.done){l+=t.spacingOuter;const i=r+t.indent;for(;!u.done;)l+=i+o(u.value,t,i,n,a),u=e.next(),u.done?t.min||(l+=","):l+=","+t.spacingInner;l+=t.spacingOuter+r}return l}function Py(e,t,r,n,a,o){let l="";if(e.length){l+=t.spacingOuter;const u=r+t.indent;for(let i=0;i<e.length;i++)l+=u,i in e&&(l+=o(e[i],t,u,n,a)),i<e.length-1?l+=","+t.spacingInner:t.min||(l+=",");l+=t.spacingOuter+r}return l}function wy(e,t,r,n,a,o){let l="";const u=Ey(e,t.compareKeys);if(u.length){l+=t.spacingOuter;const i=r+t.indent;for(let s=0;s<u.length;s++){const d=u[s],f=o(d,t,i,n,a),p=o(e[d],t,i,n,a);l+=i+f+": "+p,s<u.length-1?l+=","+t.spacingInner:t.min||(l+=",")}l+=t.spacingOuter+r}return l}var Ie={};Object.defineProperty(Ie,"__esModule",{value:!0});Ie.test=Ie.serialize=Ie.default=void 0;var ns=Ee,Lr=function(){return typeof globalThis<"u"?globalThis:typeof Lr<"u"?Lr:typeof self<"u"?self:typeof window<"u"?window:Function("return this")()}(),bl=Lr["jest-symbol-do-not-touch"]||Lr.Symbol;const Cy=typeof bl=="function"&&bl.for?bl.for("jest.asymmetricMatcher"):1267621,gr=" ",md=(e,t,r,n,a,o)=>{const l=e.toString();return l==="ArrayContaining"||l==="ArrayNotContaining"?++n>t.maxDepth?"["+l+"]":l+gr+"["+(0,ns.printListItems)(e.sample,t,r,n,a,o)+"]":l==="ObjectContaining"||l==="ObjectNotContaining"?++n>t.maxDepth?"["+l+"]":l+gr+"{"+(0,ns.printObjectProperties)(e.sample,t,r,n,a,o)+"}":l==="StringMatching"||l==="StringNotMatching"||l==="StringContaining"||l==="StringNotContaining"?l+gr+o(e.sample,t,r,n,a):e.toAsymmetricMatcher()};Ie.serialize=md;const bd=e=>e&&e.$$typeof===Cy;Ie.test=bd;const Oy={serialize:md,test:bd};var Sy=Oy;Ie.default=Sy;var Be={},$y=({onlyFirst:e=!1}={})=>{const t=["[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)","(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))"].join("|");return new RegExp(t,e?void 0:"g")};Object.defineProperty(Be,"__esModule",{value:!0});Be.test=Be.serialize=Be.default=void 0;var hd=gd($y),x=gd(eu.exports);function gd(e){return e&&e.__esModule?e:{default:e}}const Ty=e=>e.replace((0,hd.default)(),t=>{switch(t){case x.default.red.close:case x.default.green.close:case x.default.cyan.close:case x.default.gray.close:case x.default.white.close:case x.default.yellow.close:case x.default.bgRed.close:case x.default.bgGreen.close:case x.default.bgYellow.close:case x.default.inverse.close:case x.default.dim.close:case x.default.bold.close:case x.default.reset.open:case x.default.reset.close:return"</>";case x.default.red.open:return"<red>";case x.default.green.open:return"<green>";case x.default.cyan.open:return"<cyan>";case x.default.gray.open:return"<gray>";case x.default.white.open:return"<white>";case x.default.yellow.open:return"<yellow>";case x.default.bgRed.open:return"<bgRed>";case x.default.bgGreen.open:return"<bgGreen>";case x.default.bgYellow.open:return"<bgYellow>";case x.default.inverse.open:return"<inverse>";case x.default.dim.open:return"<dim>";case x.default.bold.open:return"<bold>";default:return""}}),Ed=e=>typeof e=="string"&&!!e.match((0,hd.default)());Be.test=Ed;const _d=(e,t,r,n,a,o)=>o(Ty(e),t,r,n,a);Be.serialize=_d;const qy={serialize:_d,test:Ed};var Ay=qy;Be.default=Ay;var je={};Object.defineProperty(je,"__esModule",{value:!0});je.test=je.serialize=je.default=void 0;var as=Ee;const xy=" ",Rd=["DOMStringMap","NamedNodeMap"],My=/^(HTML\w*Collection|NodeList)$/,Iy=e=>Rd.indexOf(e)!==-1||My.test(e),Pd=e=>e&&e.constructor&&!!e.constructor.name&&Iy(e.constructor.name);je.test=Pd;const By=e=>e.constructor.name==="NamedNodeMap",wd=(e,t,r,n,a,o)=>{const l=e.constructor.name;return++n>t.maxDepth?"["+l+"]":(t.min?"":l+xy)+(Rd.indexOf(l)!==-1?"{"+(0,as.printObjectProperties)(By(e)?Array.from(e).reduce((u,i)=>(u[i.name]=i.value,u),{}):{...e},t,r,n,a,o)+"}":"["+(0,as.printListItems)(Array.from(e),t,r,n,a,o)+"]")};je.serialize=wd;const jy={serialize:wd,test:Pd};var Ny=jy;je.default=Ny;var Ne={},F={},tu={};Object.defineProperty(tu,"__esModule",{value:!0});tu.default=Dy;function Dy(e){return e.replace(/</g,"&lt;").replace(/>/g,"&gt;")}Object.defineProperty(F,"__esModule",{value:!0});F.printText=F.printProps=F.printElementAsLeaf=F.printElement=F.printComment=F.printChildren=void 0;var Cd=ky(tu);function ky(e){return e&&e.__esModule?e:{default:e}}const Ly=(e,t,r,n,a,o,l)=>{const u=n+r.indent,i=r.colors;return e.map(s=>{const d=t[s];let f=l(d,r,u,a,o);return typeof d!="string"&&(f.indexOf(`
-`)!==-1&&(f=r.spacingOuter+u+f+r.spacingOuter+n),f="{"+f+"}"),r.spacingInner+n+i.prop.open+s+i.prop.close+"="+i.value.open+f+i.value.close}).join("")};F.printProps=Ly;const Fy=(e,t,r,n,a,o)=>e.map(l=>t.spacingOuter+r+(typeof l=="string"?Od(l,t):o(l,t,r,n,a))).join("");F.printChildren=Fy;const Od=(e,t)=>{const r=t.colors.content;return r.open+(0,Cd.default)(e)+r.close};F.printText=Od;const Uy=(e,t)=>{const r=t.colors.comment;return r.open+"<!--"+(0,Cd.default)(e)+"-->"+r.close};F.printComment=Uy;const Vy=(e,t,r,n,a)=>{const o=n.colors.tag;return o.open+"<"+e+(t&&o.close+t+n.spacingOuter+a+o.open)+(r?">"+o.close+r+n.spacingOuter+a+o.open+"</"+e:(t&&!n.min?"":" ")+"/")+">"+o.close};F.printElement=Vy;const Hy=(e,t)=>{const r=t.colors.tag;return r.open+"<"+e+r.close+" \u2026"+r.open+" />"+r.close};F.printElementAsLeaf=Hy;Object.defineProperty(Ne,"__esModule",{value:!0});Ne.test=Ne.serialize=Ne.default=void 0;var ut=F;const Wy=1,Sd=3,$d=8,Td=11,zy=/^((HTML|SVG)\w*)?Element$/,Ky=e=>{try{return typeof e.hasAttribute=="function"&&e.hasAttribute("is")}catch{return!1}},Gy=e=>{const t=e.constructor.name,{nodeType:r,tagName:n}=e,a=typeof n=="string"&&n.includes("-")||Ky(e);return r===Wy&&(zy.test(t)||a)||r===Sd&&t==="Text"||r===$d&&t==="Comment"||r===Td&&t==="DocumentFragment"},qd=e=>{var t;return(e==null||(t=e.constructor)===null||t===void 0?void 0:t.name)&&Gy(e)};Ne.test=qd;function Yy(e){return e.nodeType===Sd}function Jy(e){return e.nodeType===$d}function hl(e){return e.nodeType===Td}const Ad=(e,t,r,n,a,o)=>{if(Yy(e))return(0,ut.printText)(e.data,t);if(Jy(e))return(0,ut.printComment)(e.data,t);const l=hl(e)?"DocumentFragment":e.tagName.toLowerCase();return++n>t.maxDepth?(0,ut.printElementAsLeaf)(l,t):(0,ut.printElement)(l,(0,ut.printProps)(hl(e)?[]:Array.from(e.attributes).map(u=>u.name).sort(),hl(e)?{}:Array.from(e.attributes).reduce((u,i)=>(u[i.name]=i.value,u),{}),t,r+t.indent,n,a,o),(0,ut.printChildren)(Array.prototype.slice.call(e.childNodes||e.children),t,r+t.indent,n,a,o),t,r)};Ne.serialize=Ad;const Xy={serialize:Ad,test:qd};var Qy=Xy;Ne.default=Qy;var De={};Object.defineProperty(De,"__esModule",{value:!0});De.test=De.serialize=De.default=void 0;var Wt=Ee;const Zy="@@__IMMUTABLE_ITERABLE__@@",em="@@__IMMUTABLE_LIST__@@",tm="@@__IMMUTABLE_KEYED__@@",rm="@@__IMMUTABLE_MAP__@@",os="@@__IMMUTABLE_ORDERED__@@",nm="@@__IMMUTABLE_RECORD__@@",am="@@__IMMUTABLE_SEQ__@@",om="@@__IMMUTABLE_SET__@@",lm="@@__IMMUTABLE_STACK__@@",Et=e=>"Immutable."+e,sn=e=>"["+e+"]",zt=" ",ls="\u2026",im=(e,t,r,n,a,o,l)=>++n>t.maxDepth?sn(Et(l)):Et(l)+zt+"{"+(0,Wt.printIteratorEntries)(e.entries(),t,r,n,a,o)+"}";function um(e){let t=0;return{next(){if(t<e._keys.length){const r=e._keys[t++];return{done:!1,value:[r,e.get(r)]}}return{done:!0,value:void 0}}}}const sm=(e,t,r,n,a,o)=>{const l=Et(e._name||"Record");return++n>t.maxDepth?sn(l):l+zt+"{"+(0,Wt.printIteratorEntries)(um(e),t,r,n,a,o)+"}"},cm=(e,t,r,n,a,o)=>{const l=Et("Seq");return++n>t.maxDepth?sn(l):e[tm]?l+zt+"{"+(e._iter||e._object?(0,Wt.printIteratorEntries)(e.entries(),t,r,n,a,o):ls)+"}":l+zt+"["+(e._iter||e._array||e._collection||e._iterable?(0,Wt.printIteratorValues)(e.values(),t,r,n,a,o):ls)+"]"},gl=(e,t,r,n,a,o,l)=>++n>t.maxDepth?sn(Et(l)):Et(l)+zt+"["+(0,Wt.printIteratorValues)(e.values(),t,r,n,a,o)+"]",xd=(e,t,r,n,a,o)=>e[rm]?im(e,t,r,n,a,o,e[os]?"OrderedMap":"Map"):e[em]?gl(e,t,r,n,a,o,"List"):e[om]?gl(e,t,r,n,a,o,e[os]?"OrderedSet":"Set"):e[lm]?gl(e,t,r,n,a,o,"Stack"):e[am]?cm(e,t,r,n,a,o):sm(e,t,r,n,a,o);De.serialize=xd;const Md=e=>e&&(e[Zy]===!0||e[nm]===!0);De.test=Md;const dm={serialize:xd,test:Md};var fm=dm;De.default=fm;var ke={},Id={exports:{}},A={};/** @license React v17.0.2
+var _a, _b;
+import { i as instrument } from "./index.22509f61.js";
+import { a as getAugmentedNamespace, c as commonjsGlobal, g as getDefaultExportFromCjs } from "./_commonjsHelpers.712cc82f.js";
+import { d as dedent } from "./index.67736049.js";
+import { R as React } from "./index.2e2f892a.js";
+import { H as Header } from "./Header.498a2bb5.js";
+import { a as jsxs, j as jsx } from "./jsx-runtime.db436af5.js";
+import "./index.e850844b.js";
+function _mergeNamespaces(n2, m2) {
+  for (var i = 0; i < m2.length; i++) {
+    const e2 = m2[i];
+    if (typeof e2 !== "string" && !Array.isArray(e2)) {
+      for (const k in e2) {
+        if (k !== "default" && !(k in n2)) {
+          const d2 = Object.getOwnPropertyDescriptor(e2, k);
+          if (d2) {
+            Object.defineProperty(n2, k, d2.get ? d2 : {
+              enumerable: true,
+              get: () => e2[k]
+            });
+          }
+        }
+      }
+    }
+  }
+  return Object.freeze(Object.defineProperty(n2, Symbol.toStringTag, { value: "Module" }));
+}
+var build$1 = {};
+var ansiStyles = { exports: {} };
+(function(module2) {
+  const ANSI_BACKGROUND_OFFSET = 10;
+  const wrapAnsi256 = (offset = 0) => (code) => `\x1B[${38 + offset};5;${code}m`;
+  const wrapAnsi16m = (offset = 0) => (red, green, blue) => `\x1B[${38 + offset};2;${red};${green};${blue}m`;
+  function assembleStyles() {
+    const codes = /* @__PURE__ */ new Map();
+    const styles = {
+      modifier: {
+        reset: [0, 0],
+        bold: [1, 22],
+        dim: [2, 22],
+        italic: [3, 23],
+        underline: [4, 24],
+        overline: [53, 55],
+        inverse: [7, 27],
+        hidden: [8, 28],
+        strikethrough: [9, 29]
+      },
+      color: {
+        black: [30, 39],
+        red: [31, 39],
+        green: [32, 39],
+        yellow: [33, 39],
+        blue: [34, 39],
+        magenta: [35, 39],
+        cyan: [36, 39],
+        white: [37, 39],
+        blackBright: [90, 39],
+        redBright: [91, 39],
+        greenBright: [92, 39],
+        yellowBright: [93, 39],
+        blueBright: [94, 39],
+        magentaBright: [95, 39],
+        cyanBright: [96, 39],
+        whiteBright: [97, 39]
+      },
+      bgColor: {
+        bgBlack: [40, 49],
+        bgRed: [41, 49],
+        bgGreen: [42, 49],
+        bgYellow: [43, 49],
+        bgBlue: [44, 49],
+        bgMagenta: [45, 49],
+        bgCyan: [46, 49],
+        bgWhite: [47, 49],
+        bgBlackBright: [100, 49],
+        bgRedBright: [101, 49],
+        bgGreenBright: [102, 49],
+        bgYellowBright: [103, 49],
+        bgBlueBright: [104, 49],
+        bgMagentaBright: [105, 49],
+        bgCyanBright: [106, 49],
+        bgWhiteBright: [107, 49]
+      }
+    };
+    styles.color.gray = styles.color.blackBright;
+    styles.bgColor.bgGray = styles.bgColor.bgBlackBright;
+    styles.color.grey = styles.color.blackBright;
+    styles.bgColor.bgGrey = styles.bgColor.bgBlackBright;
+    for (const [groupName, group] of Object.entries(styles)) {
+      for (const [styleName, style] of Object.entries(group)) {
+        styles[styleName] = {
+          open: `\x1B[${style[0]}m`,
+          close: `\x1B[${style[1]}m`
+        };
+        group[styleName] = styles[styleName];
+        codes.set(style[0], style[1]);
+      }
+      Object.defineProperty(styles, groupName, {
+        value: group,
+        enumerable: false
+      });
+    }
+    Object.defineProperty(styles, "codes", {
+      value: codes,
+      enumerable: false
+    });
+    styles.color.close = "\x1B[39m";
+    styles.bgColor.close = "\x1B[49m";
+    styles.color.ansi256 = wrapAnsi256();
+    styles.color.ansi16m = wrapAnsi16m();
+    styles.bgColor.ansi256 = wrapAnsi256(ANSI_BACKGROUND_OFFSET);
+    styles.bgColor.ansi16m = wrapAnsi16m(ANSI_BACKGROUND_OFFSET);
+    Object.defineProperties(styles, {
+      rgbToAnsi256: {
+        value: (red, green, blue) => {
+          if (red === green && green === blue) {
+            if (red < 8) {
+              return 16;
+            }
+            if (red > 248) {
+              return 231;
+            }
+            return Math.round((red - 8) / 247 * 24) + 232;
+          }
+          return 16 + 36 * Math.round(red / 255 * 5) + 6 * Math.round(green / 255 * 5) + Math.round(blue / 255 * 5);
+        },
+        enumerable: false
+      },
+      hexToRgb: {
+        value: (hex) => {
+          const matches2 = /(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(hex.toString(16));
+          if (!matches2) {
+            return [0, 0, 0];
+          }
+          let { colorString } = matches2.groups;
+          if (colorString.length === 3) {
+            colorString = colorString.split("").map((character2) => character2 + character2).join("");
+          }
+          const integer = Number.parseInt(colorString, 16);
+          return [
+            integer >> 16 & 255,
+            integer >> 8 & 255,
+            integer & 255
+          ];
+        },
+        enumerable: false
+      },
+      hexToAnsi256: {
+        value: (hex) => styles.rgbToAnsi256(...styles.hexToRgb(hex)),
+        enumerable: false
+      }
+    });
+    return styles;
+  }
+  Object.defineProperty(module2, "exports", {
+    enumerable: true,
+    get: assembleStyles
+  });
+})(ansiStyles);
+var collections = {};
+Object.defineProperty(collections, "__esModule", {
+  value: true
+});
+collections.printIteratorEntries = printIteratorEntries;
+collections.printIteratorValues = printIteratorValues;
+collections.printListItems = printListItems;
+collections.printObjectProperties = printObjectProperties;
+const getKeysOfEnumerableProperties = (object, compareKeys) => {
+  const keys8 = Object.keys(object).sort(compareKeys);
+  if (Object.getOwnPropertySymbols) {
+    Object.getOwnPropertySymbols(object).forEach((symbol) => {
+      if (Object.getOwnPropertyDescriptor(object, symbol).enumerable) {
+        keys8.push(symbol);
+      }
+    });
+  }
+  return keys8;
+};
+function printIteratorEntries(iterator, config2, indentation, depth, refs, printer2, separator = ": ") {
+  let result = "";
+  let current = iterator.next();
+  if (!current.done) {
+    result += config2.spacingOuter;
+    const indentationNext = indentation + config2.indent;
+    while (!current.done) {
+      const name = printer2(
+        current.value[0],
+        config2,
+        indentationNext,
+        depth,
+        refs
+      );
+      const value = printer2(
+        current.value[1],
+        config2,
+        indentationNext,
+        depth,
+        refs
+      );
+      result += indentationNext + name + separator + value;
+      current = iterator.next();
+      if (!current.done) {
+        result += "," + config2.spacingInner;
+      } else if (!config2.min) {
+        result += ",";
+      }
+    }
+    result += config2.spacingOuter + indentation;
+  }
+  return result;
+}
+function printIteratorValues(iterator, config2, indentation, depth, refs, printer2) {
+  let result = "";
+  let current = iterator.next();
+  if (!current.done) {
+    result += config2.spacingOuter;
+    const indentationNext = indentation + config2.indent;
+    while (!current.done) {
+      result += indentationNext + printer2(current.value, config2, indentationNext, depth, refs);
+      current = iterator.next();
+      if (!current.done) {
+        result += "," + config2.spacingInner;
+      } else if (!config2.min) {
+        result += ",";
+      }
+    }
+    result += config2.spacingOuter + indentation;
+  }
+  return result;
+}
+function printListItems(list, config2, indentation, depth, refs, printer2) {
+  let result = "";
+  if (list.length) {
+    result += config2.spacingOuter;
+    const indentationNext = indentation + config2.indent;
+    for (let i = 0; i < list.length; i++) {
+      result += indentationNext;
+      if (i in list) {
+        result += printer2(list[i], config2, indentationNext, depth, refs);
+      }
+      if (i < list.length - 1) {
+        result += "," + config2.spacingInner;
+      } else if (!config2.min) {
+        result += ",";
+      }
+    }
+    result += config2.spacingOuter + indentation;
+  }
+  return result;
+}
+function printObjectProperties(val, config2, indentation, depth, refs, printer2) {
+  let result = "";
+  const keys8 = getKeysOfEnumerableProperties(val, config2.compareKeys);
+  if (keys8.length) {
+    result += config2.spacingOuter;
+    const indentationNext = indentation + config2.indent;
+    for (let i = 0; i < keys8.length; i++) {
+      const key = keys8[i];
+      const name = printer2(key, config2, indentationNext, depth, refs);
+      const value = printer2(val[key], config2, indentationNext, depth, refs);
+      result += indentationNext + name + ": " + value;
+      if (i < keys8.length - 1) {
+        result += "," + config2.spacingInner;
+      } else if (!config2.min) {
+        result += ",";
+      }
+    }
+    result += config2.spacingOuter + indentation;
+  }
+  return result;
+}
+var AsymmetricMatcher = {};
+Object.defineProperty(AsymmetricMatcher, "__esModule", {
+  value: true
+});
+AsymmetricMatcher.test = AsymmetricMatcher.serialize = AsymmetricMatcher.default = void 0;
+var _collections$3 = collections;
+var global$1 = function() {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  } else if (typeof global$1 !== "undefined") {
+    return global$1;
+  } else if (typeof self !== "undefined") {
+    return self;
+  } else if (typeof window !== "undefined") {
+    return window;
+  } else {
+    return Function("return this")();
+  }
+}();
+var Symbol$2 = global$1["jest-symbol-do-not-touch"] || global$1.Symbol;
+const asymmetricMatcher = typeof Symbol$2 === "function" && Symbol$2.for ? Symbol$2.for("jest.asymmetricMatcher") : 1267621;
+const SPACE$2 = " ";
+const serialize$6 = (val, config2, indentation, depth, refs, printer2) => {
+  const stringedValue = val.toString();
+  if (stringedValue === "ArrayContaining" || stringedValue === "ArrayNotContaining") {
+    if (++depth > config2.maxDepth) {
+      return "[" + stringedValue + "]";
+    }
+    return stringedValue + SPACE$2 + "[" + (0, _collections$3.printListItems)(
+      val.sample,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer2
+    ) + "]";
+  }
+  if (stringedValue === "ObjectContaining" || stringedValue === "ObjectNotContaining") {
+    if (++depth > config2.maxDepth) {
+      return "[" + stringedValue + "]";
+    }
+    return stringedValue + SPACE$2 + "{" + (0, _collections$3.printObjectProperties)(
+      val.sample,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer2
+    ) + "}";
+  }
+  if (stringedValue === "StringMatching" || stringedValue === "StringNotMatching") {
+    return stringedValue + SPACE$2 + printer2(val.sample, config2, indentation, depth, refs);
+  }
+  if (stringedValue === "StringContaining" || stringedValue === "StringNotContaining") {
+    return stringedValue + SPACE$2 + printer2(val.sample, config2, indentation, depth, refs);
+  }
+  return val.toAsymmetricMatcher();
+};
+AsymmetricMatcher.serialize = serialize$6;
+const test$6 = (val) => val && val.$$typeof === asymmetricMatcher;
+AsymmetricMatcher.test = test$6;
+const plugin$6 = {
+  serialize: serialize$6,
+  test: test$6
+};
+var _default$2p = plugin$6;
+AsymmetricMatcher.default = _default$2p;
+var ConvertAnsi = {};
+var ansiRegex = ({ onlyFirst = false } = {}) => {
+  const pattern = [
+    "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
+    "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))"
+  ].join("|");
+  return new RegExp(pattern, onlyFirst ? void 0 : "g");
+};
+Object.defineProperty(ConvertAnsi, "__esModule", {
+  value: true
+});
+ConvertAnsi.test = ConvertAnsi.serialize = ConvertAnsi.default = void 0;
+var _ansiRegex = _interopRequireDefault$d(ansiRegex);
+var _ansiStyles$1 = _interopRequireDefault$d(ansiStyles.exports);
+function _interopRequireDefault$d(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+const toHumanReadableAnsi = (text) => text.replace((0, _ansiRegex.default)(), (match) => {
+  switch (match) {
+    case _ansiStyles$1.default.red.close:
+    case _ansiStyles$1.default.green.close:
+    case _ansiStyles$1.default.cyan.close:
+    case _ansiStyles$1.default.gray.close:
+    case _ansiStyles$1.default.white.close:
+    case _ansiStyles$1.default.yellow.close:
+    case _ansiStyles$1.default.bgRed.close:
+    case _ansiStyles$1.default.bgGreen.close:
+    case _ansiStyles$1.default.bgYellow.close:
+    case _ansiStyles$1.default.inverse.close:
+    case _ansiStyles$1.default.dim.close:
+    case _ansiStyles$1.default.bold.close:
+    case _ansiStyles$1.default.reset.open:
+    case _ansiStyles$1.default.reset.close:
+      return "</>";
+    case _ansiStyles$1.default.red.open:
+      return "<red>";
+    case _ansiStyles$1.default.green.open:
+      return "<green>";
+    case _ansiStyles$1.default.cyan.open:
+      return "<cyan>";
+    case _ansiStyles$1.default.gray.open:
+      return "<gray>";
+    case _ansiStyles$1.default.white.open:
+      return "<white>";
+    case _ansiStyles$1.default.yellow.open:
+      return "<yellow>";
+    case _ansiStyles$1.default.bgRed.open:
+      return "<bgRed>";
+    case _ansiStyles$1.default.bgGreen.open:
+      return "<bgGreen>";
+    case _ansiStyles$1.default.bgYellow.open:
+      return "<bgYellow>";
+    case _ansiStyles$1.default.inverse.open:
+      return "<inverse>";
+    case _ansiStyles$1.default.dim.open:
+      return "<dim>";
+    case _ansiStyles$1.default.bold.open:
+      return "<bold>";
+    default:
+      return "";
+  }
+});
+const test$5 = (val) => typeof val === "string" && !!val.match((0, _ansiRegex.default)());
+ConvertAnsi.test = test$5;
+const serialize$5 = (val, config2, indentation, depth, refs, printer2) => printer2(toHumanReadableAnsi(val), config2, indentation, depth, refs);
+ConvertAnsi.serialize = serialize$5;
+const plugin$5 = {
+  serialize: serialize$5,
+  test: test$5
+};
+var _default$2o = plugin$5;
+ConvertAnsi.default = _default$2o;
+var DOMCollection$1 = {};
+Object.defineProperty(DOMCollection$1, "__esModule", {
+  value: true
+});
+DOMCollection$1.test = DOMCollection$1.serialize = DOMCollection$1.default = void 0;
+var _collections$2 = collections;
+const SPACE$1 = " ";
+const OBJECT_NAMES = ["DOMStringMap", "NamedNodeMap"];
+const ARRAY_REGEXP = /^(HTML\w*Collection|NodeList)$/;
+const testName = (name) => OBJECT_NAMES.indexOf(name) !== -1 || ARRAY_REGEXP.test(name);
+const test$4 = (val) => val && val.constructor && !!val.constructor.name && testName(val.constructor.name);
+DOMCollection$1.test = test$4;
+const isNamedNodeMap = (collection) => collection.constructor.name === "NamedNodeMap";
+const serialize$4 = (collection, config2, indentation, depth, refs, printer2) => {
+  const name = collection.constructor.name;
+  if (++depth > config2.maxDepth) {
+    return "[" + name + "]";
+  }
+  return (config2.min ? "" : name + SPACE$1) + (OBJECT_NAMES.indexOf(name) !== -1 ? "{" + (0, _collections$2.printObjectProperties)(
+    isNamedNodeMap(collection) ? Array.from(collection).reduce((props, attribute) => {
+      props[attribute.name] = attribute.value;
+      return props;
+    }, {}) : { ...collection },
+    config2,
+    indentation,
+    depth,
+    refs,
+    printer2
+  ) + "}" : "[" + (0, _collections$2.printListItems)(
+    Array.from(collection),
+    config2,
+    indentation,
+    depth,
+    refs,
+    printer2
+  ) + "]");
+};
+DOMCollection$1.serialize = serialize$4;
+const plugin$4 = {
+  serialize: serialize$4,
+  test: test$4
+};
+var _default$2n = plugin$4;
+DOMCollection$1.default = _default$2n;
+var DOMElement = {};
+var markup = {};
+var escapeHTML$2 = {};
+Object.defineProperty(escapeHTML$2, "__esModule", {
+  value: true
+});
+escapeHTML$2.default = escapeHTML$1;
+function escapeHTML$1(str) {
+  return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+Object.defineProperty(markup, "__esModule", {
+  value: true
+});
+markup.printText = markup.printProps = markup.printElementAsLeaf = markup.printElement = markup.printComment = markup.printChildren = void 0;
+var _escapeHTML = _interopRequireDefault$c(escapeHTML$2);
+function _interopRequireDefault$c(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+const printProps$1 = (keys8, props, config2, indentation, depth, refs, printer2) => {
+  const indentationNext = indentation + config2.indent;
+  const colors = config2.colors;
+  return keys8.map((key) => {
+    const value = props[key];
+    let printed = printer2(value, config2, indentationNext, depth, refs);
+    if (typeof value !== "string") {
+      if (printed.indexOf("\n") !== -1) {
+        printed = config2.spacingOuter + indentationNext + printed + config2.spacingOuter + indentation;
+      }
+      printed = "{" + printed + "}";
+    }
+    return config2.spacingInner + indentation + colors.prop.open + key + colors.prop.close + "=" + colors.value.open + printed + colors.value.close;
+  }).join("");
+};
+markup.printProps = printProps$1;
+const printChildren$1 = (children, config2, indentation, depth, refs, printer2) => children.map(
+  (child) => config2.spacingOuter + indentation + (typeof child === "string" ? printText$1(child, config2) : printer2(child, config2, indentation, depth, refs))
+).join("");
+markup.printChildren = printChildren$1;
+const printText$1 = (text, config2) => {
+  const contentColor = config2.colors.content;
+  return contentColor.open + (0, _escapeHTML.default)(text) + contentColor.close;
+};
+markup.printText = printText$1;
+const printComment$1 = (comment, config2) => {
+  const commentColor = config2.colors.comment;
+  return commentColor.open + "<!--" + (0, _escapeHTML.default)(comment) + "-->" + commentColor.close;
+};
+markup.printComment = printComment$1;
+const printElement$1 = (type2, printedProps, printedChildren, config2, indentation) => {
+  const tagColor = config2.colors.tag;
+  return tagColor.open + "<" + type2 + (printedProps && tagColor.close + printedProps + config2.spacingOuter + indentation + tagColor.open) + (printedChildren ? ">" + tagColor.close + printedChildren + config2.spacingOuter + indentation + tagColor.open + "</" + type2 : (printedProps && !config2.min ? "" : " ") + "/") + ">" + tagColor.close;
+};
+markup.printElement = printElement$1;
+const printElementAsLeaf$1 = (type2, config2) => {
+  const tagColor = config2.colors.tag;
+  return tagColor.open + "<" + type2 + tagColor.close + " \u2026" + tagColor.open + " />" + tagColor.close;
+};
+markup.printElementAsLeaf = printElementAsLeaf$1;
+Object.defineProperty(DOMElement, "__esModule", {
+  value: true
+});
+DOMElement.test = DOMElement.serialize = DOMElement.default = void 0;
+var _markup$2 = markup;
+const ELEMENT_NODE$2 = 1;
+const TEXT_NODE$3 = 3;
+const COMMENT_NODE$2 = 8;
+const FRAGMENT_NODE$1 = 11;
+const ELEMENT_REGEXP$1 = /^((HTML|SVG)\w*)?Element$/;
+const testHasAttribute = (val) => {
+  try {
+    return typeof val.hasAttribute === "function" && val.hasAttribute("is");
+  } catch {
+    return false;
+  }
+};
+const testNode$1 = (val) => {
+  const constructorName = val.constructor.name;
+  const { nodeType, tagName } = val;
+  const isCustomElement = typeof tagName === "string" && tagName.includes("-") || testHasAttribute(val);
+  return nodeType === ELEMENT_NODE$2 && (ELEMENT_REGEXP$1.test(constructorName) || isCustomElement) || nodeType === TEXT_NODE$3 && constructorName === "Text" || nodeType === COMMENT_NODE$2 && constructorName === "Comment" || nodeType === FRAGMENT_NODE$1 && constructorName === "DocumentFragment";
+};
+const test$3 = (val) => {
+  var _val$constructor;
+  return (val === null || val === void 0 ? void 0 : (_val$constructor = val.constructor) === null || _val$constructor === void 0 ? void 0 : _val$constructor.name) && testNode$1(val);
+};
+DOMElement.test = test$3;
+function nodeIsText$1(node) {
+  return node.nodeType === TEXT_NODE$3;
+}
+function nodeIsComment$1(node) {
+  return node.nodeType === COMMENT_NODE$2;
+}
+function nodeIsFragment$1(node) {
+  return node.nodeType === FRAGMENT_NODE$1;
+}
+const serialize$3 = (node, config2, indentation, depth, refs, printer2) => {
+  if (nodeIsText$1(node)) {
+    return (0, _markup$2.printText)(node.data, config2);
+  }
+  if (nodeIsComment$1(node)) {
+    return (0, _markup$2.printComment)(node.data, config2);
+  }
+  const type2 = nodeIsFragment$1(node) ? "DocumentFragment" : node.tagName.toLowerCase();
+  if (++depth > config2.maxDepth) {
+    return (0, _markup$2.printElementAsLeaf)(type2, config2);
+  }
+  return (0, _markup$2.printElement)(
+    type2,
+    (0, _markup$2.printProps)(
+      nodeIsFragment$1(node) ? [] : Array.from(node.attributes).map((attr) => attr.name).sort(),
+      nodeIsFragment$1(node) ? {} : Array.from(node.attributes).reduce((props, attribute) => {
+        props[attribute.name] = attribute.value;
+        return props;
+      }, {}),
+      config2,
+      indentation + config2.indent,
+      depth,
+      refs,
+      printer2
+    ),
+    (0, _markup$2.printChildren)(
+      Array.prototype.slice.call(node.childNodes || node.children),
+      config2,
+      indentation + config2.indent,
+      depth,
+      refs,
+      printer2
+    ),
+    config2,
+    indentation
+  );
+};
+DOMElement.serialize = serialize$3;
+const plugin$3 = {
+  serialize: serialize$3,
+  test: test$3
+};
+var _default$2m = plugin$3;
+DOMElement.default = _default$2m;
+var Immutable = {};
+Object.defineProperty(Immutable, "__esModule", {
+  value: true
+});
+Immutable.test = Immutable.serialize = Immutable.default = void 0;
+var _collections$1 = collections;
+const IS_ITERABLE_SENTINEL = "@@__IMMUTABLE_ITERABLE__@@";
+const IS_LIST_SENTINEL = "@@__IMMUTABLE_LIST__@@";
+const IS_KEYED_SENTINEL = "@@__IMMUTABLE_KEYED__@@";
+const IS_MAP_SENTINEL = "@@__IMMUTABLE_MAP__@@";
+const IS_ORDERED_SENTINEL = "@@__IMMUTABLE_ORDERED__@@";
+const IS_RECORD_SENTINEL = "@@__IMMUTABLE_RECORD__@@";
+const IS_SEQ_SENTINEL = "@@__IMMUTABLE_SEQ__@@";
+const IS_SET_SENTINEL = "@@__IMMUTABLE_SET__@@";
+const IS_STACK_SENTINEL = "@@__IMMUTABLE_STACK__@@";
+const getImmutableName = (name) => "Immutable." + name;
+const printAsLeaf = (name) => "[" + name + "]";
+const SPACE = " ";
+const LAZY = "\u2026";
+const printImmutableEntries = (val, config2, indentation, depth, refs, printer2, type2) => ++depth > config2.maxDepth ? printAsLeaf(getImmutableName(type2)) : getImmutableName(type2) + SPACE + "{" + (0, _collections$1.printIteratorEntries)(
+  val.entries(),
+  config2,
+  indentation,
+  depth,
+  refs,
+  printer2
+) + "}";
+function getRecordEntries(val) {
+  let i = 0;
+  return {
+    next() {
+      if (i < val._keys.length) {
+        const key = val._keys[i++];
+        return {
+          done: false,
+          value: [key, val.get(key)]
+        };
+      }
+      return {
+        done: true,
+        value: void 0
+      };
+    }
+  };
+}
+const printImmutableRecord = (val, config2, indentation, depth, refs, printer2) => {
+  const name = getImmutableName(val._name || "Record");
+  return ++depth > config2.maxDepth ? printAsLeaf(name) : name + SPACE + "{" + (0, _collections$1.printIteratorEntries)(
+    getRecordEntries(val),
+    config2,
+    indentation,
+    depth,
+    refs,
+    printer2
+  ) + "}";
+};
+const printImmutableSeq = (val, config2, indentation, depth, refs, printer2) => {
+  const name = getImmutableName("Seq");
+  if (++depth > config2.maxDepth) {
+    return printAsLeaf(name);
+  }
+  if (val[IS_KEYED_SENTINEL]) {
+    return name + SPACE + "{" + (val._iter || val._object ? (0, _collections$1.printIteratorEntries)(
+      val.entries(),
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer2
+    ) : LAZY) + "}";
+  }
+  return name + SPACE + "[" + (val._iter || val._array || val._collection || val._iterable ? (0, _collections$1.printIteratorValues)(
+    val.values(),
+    config2,
+    indentation,
+    depth,
+    refs,
+    printer2
+  ) : LAZY) + "]";
+};
+const printImmutableValues = (val, config2, indentation, depth, refs, printer2, type2) => ++depth > config2.maxDepth ? printAsLeaf(getImmutableName(type2)) : getImmutableName(type2) + SPACE + "[" + (0, _collections$1.printIteratorValues)(
+  val.values(),
+  config2,
+  indentation,
+  depth,
+  refs,
+  printer2
+) + "]";
+const serialize$2 = (val, config2, indentation, depth, refs, printer2) => {
+  if (val[IS_MAP_SENTINEL]) {
+    return printImmutableEntries(
+      val,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer2,
+      val[IS_ORDERED_SENTINEL] ? "OrderedMap" : "Map"
+    );
+  }
+  if (val[IS_LIST_SENTINEL]) {
+    return printImmutableValues(
+      val,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer2,
+      "List"
+    );
+  }
+  if (val[IS_SET_SENTINEL]) {
+    return printImmutableValues(
+      val,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer2,
+      val[IS_ORDERED_SENTINEL] ? "OrderedSet" : "Set"
+    );
+  }
+  if (val[IS_STACK_SENTINEL]) {
+    return printImmutableValues(
+      val,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer2,
+      "Stack"
+    );
+  }
+  if (val[IS_SEQ_SENTINEL]) {
+    return printImmutableSeq(val, config2, indentation, depth, refs, printer2);
+  }
+  return printImmutableRecord(val, config2, indentation, depth, refs, printer2);
+};
+Immutable.serialize = serialize$2;
+const test$2 = (val) => val && (val[IS_ITERABLE_SENTINEL] === true || val[IS_RECORD_SENTINEL] === true);
+Immutable.test = test$2;
+const plugin$2 = {
+  serialize: serialize$2,
+  test: test$2
+};
+var _default$2l = plugin$2;
+Immutable.default = _default$2l;
+var ReactElement = {};
+var reactIs = { exports: {} };
+var reactIs_production_min = {};
+/** @license React v17.0.2
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var cn=60103,dn=60106,Zt=60107,er=60108,tr=60114,rr=60109,nr=60110,ar=60112,or=60113,ru=60120,lr=60115,ir=60116,Bd=60121,jd=60122,Nd=60117,Dd=60129,kd=60131;if(typeof Symbol=="function"&&Symbol.for){var k=Symbol.for;cn=k("react.element"),dn=k("react.portal"),Zt=k("react.fragment"),er=k("react.strict_mode"),tr=k("react.profiler"),rr=k("react.provider"),nr=k("react.context"),ar=k("react.forward_ref"),or=k("react.suspense"),ru=k("react.suspense_list"),lr=k("react.memo"),ir=k("react.lazy"),Bd=k("react.block"),jd=k("react.server.block"),Nd=k("react.fundamental"),Dd=k("react.debug_trace_mode"),kd=k("react.legacy_hidden")}function ie(e){if(typeof e=="object"&&e!==null){var t=e.$$typeof;switch(t){case cn:switch(e=e.type,e){case Zt:case tr:case er:case or:case ru:return e;default:switch(e=e&&e.$$typeof,e){case nr:case ar:case ir:case lr:case rr:return e;default:return t}}case dn:return t}}}var pm=rr,vm=cn,ym=ar,mm=Zt,bm=ir,hm=lr,gm=dn,Em=tr,_m=er,Rm=or;A.ContextConsumer=nr;A.ContextProvider=pm;A.Element=vm;A.ForwardRef=ym;A.Fragment=mm;A.Lazy=bm;A.Memo=hm;A.Portal=gm;A.Profiler=Em;A.StrictMode=_m;A.Suspense=Rm;A.isAsyncMode=function(){return!1};A.isConcurrentMode=function(){return!1};A.isContextConsumer=function(e){return ie(e)===nr};A.isContextProvider=function(e){return ie(e)===rr};A.isElement=function(e){return typeof e=="object"&&e!==null&&e.$$typeof===cn};A.isForwardRef=function(e){return ie(e)===ar};A.isFragment=function(e){return ie(e)===Zt};A.isLazy=function(e){return ie(e)===ir};A.isMemo=function(e){return ie(e)===lr};A.isPortal=function(e){return ie(e)===dn};A.isProfiler=function(e){return ie(e)===tr};A.isStrictMode=function(e){return ie(e)===er};A.isSuspense=function(e){return ie(e)===or};A.isValidElementType=function(e){return typeof e=="string"||typeof e=="function"||e===Zt||e===tr||e===Dd||e===er||e===or||e===ru||e===kd||typeof e=="object"&&e!==null&&(e.$$typeof===ir||e.$$typeof===lr||e.$$typeof===rr||e.$$typeof===nr||e.$$typeof===ar||e.$$typeof===Nd||e.$$typeof===Bd||e[0]===jd)};A.typeOf=ie;(function(e){e.exports=A})(Id);Object.defineProperty(ke,"__esModule",{value:!0});ke.test=ke.serialize=ke.default=void 0;var ze=Pm(Id.exports),Er=F;function Ld(e){if(typeof WeakMap!="function")return null;var t=new WeakMap,r=new WeakMap;return(Ld=function(n){return n?r:t})(e)}function Pm(e,t){if(!t&&e&&e.__esModule)return e;if(e===null||typeof e!="object"&&typeof e!="function")return{default:e};var r=Ld(t);if(r&&r.has(e))return r.get(e);var n={},a=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in e)if(o!=="default"&&Object.prototype.hasOwnProperty.call(e,o)){var l=a?Object.getOwnPropertyDescriptor(e,o):null;l&&(l.get||l.set)?Object.defineProperty(n,o,l):n[o]=e[o]}return n.default=e,r&&r.set(e,n),n}const Fd=(e,t=[])=>(Array.isArray(e)?e.forEach(r=>{Fd(r,t)}):e!=null&&e!==!1&&t.push(e),t),is=e=>{const t=e.type;if(typeof t=="string")return t;if(typeof t=="function")return t.displayName||t.name||"Unknown";if(ze.isFragment(e))return"React.Fragment";if(ze.isSuspense(e))return"React.Suspense";if(typeof t=="object"&&t!==null){if(ze.isContextProvider(e))return"Context.Provider";if(ze.isContextConsumer(e))return"Context.Consumer";if(ze.isForwardRef(e)){if(t.displayName)return t.displayName;const r=t.render.displayName||t.render.name||"";return r!==""?"ForwardRef("+r+")":"ForwardRef"}if(ze.isMemo(e)){const r=t.displayName||t.type.displayName||t.type.name||"";return r!==""?"Memo("+r+")":"Memo"}}return"UNDEFINED"},wm=e=>{const{props:t}=e;return Object.keys(t).filter(r=>r!=="children"&&t[r]!==void 0).sort()},Ud=(e,t,r,n,a,o)=>++n>t.maxDepth?(0,Er.printElementAsLeaf)(is(e),t):(0,Er.printElement)(is(e),(0,Er.printProps)(wm(e),e.props,t,r+t.indent,n,a,o),(0,Er.printChildren)(Fd(e.props.children),t,r+t.indent,n,a,o),t,r);ke.serialize=Ud;const Vd=e=>e!=null&&ze.isElement(e);ke.test=Vd;const Cm={serialize:Ud,test:Vd};var Om=Cm;ke.default=Om;var Le={};Object.defineProperty(Le,"__esModule",{value:!0});Le.test=Le.serialize=Le.default=void 0;var _r=F,Fr=function(){return typeof globalThis<"u"?globalThis:typeof Fr<"u"?Fr:typeof self<"u"?self:typeof window<"u"?window:Function("return this")()}(),El=Fr["jest-symbol-do-not-touch"]||Fr.Symbol;const Sm=typeof El=="function"&&El.for?El.for("react.test.json"):245830487,$m=e=>{const{props:t}=e;return t?Object.keys(t).filter(r=>t[r]!==void 0).sort():[]},Hd=(e,t,r,n,a,o)=>++n>t.maxDepth?(0,_r.printElementAsLeaf)(e.type,t):(0,_r.printElement)(e.type,e.props?(0,_r.printProps)($m(e),e.props,t,r+t.indent,n,a,o):"",e.children?(0,_r.printChildren)(e.children,t,r+t.indent,n,a,o):"",t,r);Le.serialize=Hd;const Wd=e=>e&&e.$$typeof===Sm;Le.test=Wd;const Tm={serialize:Hd,test:Wd};var qm=Tm;Le.default=qm;Object.defineProperty(ge,"__esModule",{value:!0});var zd=ge.default=tf=ge.DEFAULT_OPTIONS=void 0,Kd=ge.format=of,nu=ge.plugins=void 0,Am=Ue(eu.exports),Bt=Ee,xm=Ue(Ie),Mm=Ue(Be),Im=Ue(je),Bm=Ue(Ne),jm=Ue(De),Nm=Ue(ke),Dm=Ue(Le);function Ue(e){return e&&e.__esModule?e:{default:e}}const Gd=Object.prototype.toString,km=Date.prototype.toISOString,Lm=Error.prototype.toString,us=RegExp.prototype.toString,_l=e=>typeof e.constructor=="function"&&e.constructor.name||"Object",Fm=e=>typeof window<"u"&&e===window,Um=/^Symbol\((.*)\)(.*)$/,Vm=/\n/gi;class Yd extends Error{constructor(t,r){super(t),this.stack=r,this.name=this.constructor.name}}function Hm(e){return e==="[object Array]"||e==="[object ArrayBuffer]"||e==="[object DataView]"||e==="[object Float32Array]"||e==="[object Float64Array]"||e==="[object Int8Array]"||e==="[object Int16Array]"||e==="[object Int32Array]"||e==="[object Uint8Array]"||e==="[object Uint8ClampedArray]"||e==="[object Uint16Array]"||e==="[object Uint32Array]"}function Wm(e){return Object.is(e,-0)?"-0":String(e)}function zm(e){return String(`${e}n`)}function ss(e,t){return t?"[Function "+(e.name||"anonymous")+"]":"[Function]"}function cs(e){return String(e).replace(Um,"Symbol($1)")}function ds(e){return"["+Lm.call(e)+"]"}function Jd(e,t,r,n){if(e===!0||e===!1)return""+e;if(e===void 0)return"undefined";if(e===null)return"null";const a=typeof e;if(a==="number")return Wm(e);if(a==="bigint")return zm(e);if(a==="string")return n?'"'+e.replace(/"|\\/g,"\\$&")+'"':'"'+e+'"';if(a==="function")return ss(e,t);if(a==="symbol")return cs(e);const o=Gd.call(e);return o==="[object WeakMap]"?"WeakMap {}":o==="[object WeakSet]"?"WeakSet {}":o==="[object Function]"||o==="[object GeneratorFunction]"?ss(e,t):o==="[object Symbol]"?cs(e):o==="[object Date]"?isNaN(+e)?"Date { NaN }":km.call(e):o==="[object Error]"?ds(e):o==="[object RegExp]"?r?us.call(e).replace(/[\\^$*+?.()|[\]{}]/g,"\\$&"):us.call(e):e instanceof Error?ds(e):null}function Xd(e,t,r,n,a,o){if(a.indexOf(e)!==-1)return"[Circular]";a=a.slice(),a.push(e);const l=++n>t.maxDepth,u=t.min;if(t.callToJSON&&!l&&e.toJSON&&typeof e.toJSON=="function"&&!o)return Se(e.toJSON(),t,r,n,a,!0);const i=Gd.call(e);return i==="[object Arguments]"?l?"[Arguments]":(u?"":"Arguments ")+"["+(0,Bt.printListItems)(e,t,r,n,a,Se)+"]":Hm(i)?l?"["+e.constructor.name+"]":(u||!t.printBasicPrototype&&e.constructor.name==="Array"?"":e.constructor.name+" ")+"["+(0,Bt.printListItems)(e,t,r,n,a,Se)+"]":i==="[object Map]"?l?"[Map]":"Map {"+(0,Bt.printIteratorEntries)(e.entries(),t,r,n,a,Se," => ")+"}":i==="[object Set]"?l?"[Set]":"Set {"+(0,Bt.printIteratorValues)(e.values(),t,r,n,a,Se)+"}":l||Fm(e)?"["+_l(e)+"]":(u||!t.printBasicPrototype&&_l(e)==="Object"?"":_l(e)+" ")+"{"+(0,Bt.printObjectProperties)(e,t,r,n,a,Se)+"}"}function Km(e){return e.serialize!=null}function Qd(e,t,r,n,a,o){let l;try{l=Km(e)?e.serialize(t,r,n,a,o,Se):e.print(t,u=>Se(u,r,n,a,o),u=>{const i=n+r.indent;return i+u.replace(Vm,`
-`+i)},{edgeSpacing:r.spacingOuter,min:r.min,spacing:r.spacingInner},r.colors)}catch(u){throw new Yd(u.message,u.stack)}if(typeof l!="string")throw new Error(`pretty-format: Plugin must return type "string" but instead returned "${typeof l}".`);return l}function Zd(e,t){for(let r=0;r<e.length;r++)try{if(e[r].test(t))return e[r]}catch(n){throw new Yd(n.message,n.stack)}return null}function Se(e,t,r,n,a,o){const l=Zd(t.plugins,e);if(l!==null)return Qd(l,e,t,r,n,a);const u=Jd(e,t.printFunctionName,t.escapeRegex,t.escapeString);return u!==null?u:Xd(e,t,r,n,a,o)}const au={comment:"gray",content:"reset",prop:"yellow",tag:"cyan",value:"green"},ef=Object.keys(au),ne={callToJSON:!0,compareKeys:void 0,escapeRegex:!1,escapeString:!0,highlight:!1,indent:2,maxDepth:1/0,min:!1,plugins:[],printBasicPrototype:!0,printFunctionName:!0,theme:au};var tf=ge.DEFAULT_OPTIONS=ne;function Gm(e){if(Object.keys(e).forEach(t=>{if(!ne.hasOwnProperty(t))throw new Error(`pretty-format: Unknown option "${t}".`)}),e.min&&e.indent!==void 0&&e.indent!==0)throw new Error('pretty-format: Options "min" and "indent" cannot be used together.');if(e.theme!==void 0){if(e.theme===null)throw new Error('pretty-format: Option "theme" must not be null.');if(typeof e.theme!="object")throw new Error(`pretty-format: Option "theme" must be of type "object" but instead received "${typeof e.theme}".`)}}const Ym=e=>ef.reduce((t,r)=>{const n=e.theme&&e.theme[r]!==void 0?e.theme[r]:au[r],a=n&&Am.default[n];if(a&&typeof a.close=="string"&&typeof a.open=="string")t[r]=a;else throw new Error(`pretty-format: Option "theme" has a key "${r}" whose value "${n}" is undefined in ansi-styles.`);return t},Object.create(null)),Jm=()=>ef.reduce((e,t)=>(e[t]={close:"",open:""},e),Object.create(null)),rf=e=>e&&e.printFunctionName!==void 0?e.printFunctionName:ne.printFunctionName,nf=e=>e&&e.escapeRegex!==void 0?e.escapeRegex:ne.escapeRegex,af=e=>e&&e.escapeString!==void 0?e.escapeString:ne.escapeString,fs=e=>{var t;return{callToJSON:e&&e.callToJSON!==void 0?e.callToJSON:ne.callToJSON,colors:e&&e.highlight?Ym(e):Jm(),compareKeys:e&&typeof e.compareKeys=="function"?e.compareKeys:ne.compareKeys,escapeRegex:nf(e),escapeString:af(e),indent:e&&e.min?"":Xm(e&&e.indent!==void 0?e.indent:ne.indent),maxDepth:e&&e.maxDepth!==void 0?e.maxDepth:ne.maxDepth,min:e&&e.min!==void 0?e.min:ne.min,plugins:e&&e.plugins!==void 0?e.plugins:ne.plugins,printBasicPrototype:(t=e==null?void 0:e.printBasicPrototype)!==null&&t!==void 0?t:!0,printFunctionName:rf(e),spacingInner:e&&e.min?" ":`
-`,spacingOuter:e&&e.min?"":`
-`}};function Xm(e){return new Array(e+1).join(" ")}function of(e,t){if(t&&(Gm(t),t.plugins)){const n=Zd(t.plugins,e);if(n!==null)return Qd(n,e,fs(t),"",0,[])}const r=Jd(e,rf(t),nf(t),af(t));return r!==null?r:Xd(e,fs(t),"",0,[])}const Qm={AsymmetricMatcher:xm.default,ConvertAnsi:Mm.default,DOMCollection:Im.default,DOMElement:Bm.default,Immutable:jm.default,ReactElement:Nm.default,ReactTestComponent:Dm.default};nu=ge.plugins=Qm;var Zm=of;zd=ge.default=Zm;const eb=gy({__proto__:null,get DEFAULT_OPTIONS(){return tf},format:Kd,get plugins(){return nu},get default(){return zd}},[ge]);var tb=Object.prototype.toString;function ps(e){return typeof e=="function"||tb.call(e)==="[object Function]"}function rb(e){var t=Number(e);return isNaN(t)?0:t===0||!isFinite(t)?t:(t>0?1:-1)*Math.floor(Math.abs(t))}var nb=Math.pow(2,53)-1;function ab(e){var t=rb(e);return Math.min(Math.max(t,0),nb)}function ae(e,t){var r=Array,n=Object(e);if(e==null)throw new TypeError("Array.from requires an array-like object - not null or undefined");if(typeof t<"u"&&!ps(t))throw new TypeError("Array.from: when provided, the second argument must be a function");for(var a=ab(n.length),o=ps(r)?Object(new r(a)):new Array(a),l=0,u;l<a;)u=n[l],t?o[l]=t(u,l):o[l]=u,l+=1;return o.length=a,o}function Kt(e){return Kt=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(t){return typeof t}:function(t){return t&&typeof Symbol=="function"&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},Kt(e)}function ob(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function vs(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,lf(n.key),n)}}function lb(e,t,r){return t&&vs(e.prototype,t),r&&vs(e,r),Object.defineProperty(e,"prototype",{writable:!1}),e}function ib(e,t,r){return t=lf(t),t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function lf(e){var t=ub(e,"string");return Kt(t)==="symbol"?t:String(t)}function ub(e,t){if(Kt(e)!=="object"||e===null)return e;var r=e[Symbol.toPrimitive];if(r!==void 0){var n=r.call(e,t||"default");if(Kt(n)!=="object")return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return(t==="string"?String:Number)(e)}var sb=function(){function e(){var t=arguments.length>0&&arguments[0]!==void 0?arguments[0]:[];ob(this,e),ib(this,"items",void 0),this.items=t}return lb(e,[{key:"add",value:function(r){return this.has(r)===!1&&this.items.push(r),this}},{key:"clear",value:function(){this.items=[]}},{key:"delete",value:function(r){var n=this.items.length;return this.items=this.items.filter(function(a){return a!==r}),n!==this.items.length}},{key:"forEach",value:function(r){var n=this;this.items.forEach(function(a){r(a,a,n)})}},{key:"has",value:function(r){return this.items.indexOf(r)!==-1}},{key:"size",get:function(){return this.items.length}}]),e}();const cb=typeof Set>"u"?Set:sb;function U(e){var t;return(t=e.localName)!==null&&t!==void 0?t:e.tagName.toLowerCase()}var db={article:"article",aside:"complementary",button:"button",datalist:"listbox",dd:"definition",details:"group",dialog:"dialog",dt:"term",fieldset:"group",figure:"figure",form:"form",footer:"contentinfo",h1:"heading",h2:"heading",h3:"heading",h4:"heading",h5:"heading",h6:"heading",header:"banner",hr:"separator",html:"document",legend:"legend",li:"listitem",math:"math",main:"main",menu:"list",nav:"navigation",ol:"list",optgroup:"group",option:"option",output:"status",progress:"progressbar",section:"region",summary:"button",table:"table",tbody:"rowgroup",textarea:"textbox",tfoot:"rowgroup",td:"cell",th:"columnheader",thead:"rowgroup",tr:"row",ul:"list"},fb={caption:new Set(["aria-label","aria-labelledby"]),code:new Set(["aria-label","aria-labelledby"]),deletion:new Set(["aria-label","aria-labelledby"]),emphasis:new Set(["aria-label","aria-labelledby"]),generic:new Set(["aria-label","aria-labelledby","aria-roledescription"]),insertion:new Set(["aria-label","aria-labelledby"]),paragraph:new Set(["aria-label","aria-labelledby"]),presentation:new Set(["aria-label","aria-labelledby"]),strong:new Set(["aria-label","aria-labelledby"]),subscript:new Set(["aria-label","aria-labelledby"]),superscript:new Set(["aria-label","aria-labelledby"])};function pb(e,t){return["aria-atomic","aria-busy","aria-controls","aria-current","aria-describedby","aria-details","aria-dropeffect","aria-flowto","aria-grabbed","aria-hidden","aria-keyshortcuts","aria-label","aria-labelledby","aria-live","aria-owns","aria-relevant","aria-roledescription"].some(function(r){var n;return e.hasAttribute(r)&&!((n=fb[t])!==null&&n!==void 0&&n.has(r))})}function uf(e,t){return pb(e,t)}function vb(e){var t=mb(e);if(t===null||t==="presentation"){var r=yb(e);if(t!=="presentation"||uf(e,r||""))return r}return t}function yb(e){var t=db[U(e)];if(t!==void 0)return t;switch(U(e)){case"a":case"area":case"link":if(e.hasAttribute("href"))return"link";break;case"img":return e.getAttribute("alt")===""&&!uf(e,"img")?"presentation":"img";case"input":{var r=e,n=r.type;switch(n){case"button":case"image":case"reset":case"submit":return"button";case"checkbox":case"radio":return n;case"range":return"slider";case"email":case"tel":case"text":case"url":return e.hasAttribute("list")?"combobox":"textbox";case"search":return e.hasAttribute("list")?"combobox":"searchbox";case"number":return"spinbutton";default:return null}}case"select":return e.hasAttribute("multiple")||e.size>1?"listbox":"combobox"}return null}function mb(e){var t=e.getAttribute("role");if(t!==null){var r=t.trim().split(" ")[0];if(r.length>0)return r}return null}function j(e){return e!==null&&e.nodeType===e.ELEMENT_NODE}function sf(e){return j(e)&&U(e)==="caption"}function Tr(e){return j(e)&&U(e)==="input"}function bb(e){return j(e)&&U(e)==="optgroup"}function hb(e){return j(e)&&U(e)==="select"}function gb(e){return j(e)&&U(e)==="table"}function Eb(e){return j(e)&&U(e)==="textarea"}function _b(e){var t=e.ownerDocument===null?e:e.ownerDocument,r=t.defaultView;if(r===null)throw new TypeError("no window available");return r}function Rb(e){return j(e)&&U(e)==="fieldset"}function Pb(e){return j(e)&&U(e)==="legend"}function wb(e){return j(e)&&U(e)==="slot"}function Cb(e){return j(e)&&e.ownerSVGElement!==void 0}function Ob(e){return j(e)&&U(e)==="svg"}function Sb(e){return Cb(e)&&U(e)==="title"}function Ur(e,t){if(j(e)&&e.hasAttribute(t)){var r=e.getAttribute(t).split(" "),n=e.getRootNode?e.getRootNode():e.ownerDocument;return r.map(function(a){return n.getElementById(a)}).filter(function(a){return a!==null})}return[]}function be(e,t){return j(e)?t.indexOf(vb(e))!==-1:!1}function $b(e){return e.trim().replace(/\s\s+/g," ")}function Tb(e,t){if(!j(e))return!1;if(e.hasAttribute("hidden")||e.getAttribute("aria-hidden")==="true")return!0;var r=t(e);return r.getPropertyValue("display")==="none"||r.getPropertyValue("visibility")==="hidden"}function qb(e){return be(e,["button","combobox","listbox","textbox"])||cf(e,"range")}function cf(e,t){if(!j(e))return!1;switch(t){case"range":return be(e,["meter","progressbar","scrollbar","slider","spinbutton"]);default:throw new TypeError("No knowledge about abstract role '".concat(t,"'. This is likely a bug :("))}}function ys(e,t){var r=ae(e.querySelectorAll(t));return Ur(e,"aria-owns").forEach(function(n){r.push.apply(r,ae(n.querySelectorAll(t)))}),r}function Ab(e){return hb(e)?e.selectedOptions||ys(e,"[selected]"):ys(e,'[aria-selected="true"]')}function xb(e){return be(e,["none","presentation"])}function Mb(e){return sf(e)}function Ib(e){return be(e,["button","cell","checkbox","columnheader","gridcell","heading","label","legend","link","menuitem","menuitemcheckbox","menuitemradio","option","radio","row","rowheader","switch","tab","tooltip","treeitem"])}function Bb(e){return!1}function jb(e){return Tr(e)||Eb(e)?e.value:e.textContent||""}function ms(e){var t=e.getPropertyValue("content");return/^["'].*["']$/.test(t)?t.slice(1,-1):""}function df(e){var t=U(e);return t==="button"||t==="input"&&e.getAttribute("type")!=="hidden"||t==="meter"||t==="output"||t==="progress"||t==="select"||t==="textarea"}function ff(e){if(df(e))return e;var t=null;return e.childNodes.forEach(function(r){if(t===null&&j(r)){var n=ff(r);n!==null&&(t=n)}}),t}function Nb(e){if(e.control!==void 0)return e.control;var t=e.getAttribute("for");return t!==null?e.ownerDocument.getElementById(t):ff(e)}function Db(e){var t=e.labels;if(t===null)return t;if(t!==void 0)return ae(t);if(!df(e))return null;var r=e.ownerDocument;return ae(r.querySelectorAll("label")).filter(function(n){return Nb(n)===e})}function kb(e){var t=e.assignedNodes();return t.length===0?ae(e.childNodes):t}function pf(e){var t=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},r=new cb,n=_b(e),a=t.compute,o=a===void 0?"name":a,l=t.computedStyleSupportsPseudoElements,u=l===void 0?t.getComputedStyle!==void 0:l,i=t.getComputedStyle,s=i===void 0?n.getComputedStyle.bind(n):i,d=t.hidden,f=d===void 0?!1:d;function p(v,b){var P="";if(j(v)&&u){var w=s(v,"::before"),O=ms(w);P="".concat(O," ").concat(P)}var y=wb(v)?kb(v):ae(v.childNodes).concat(Ur(v,"aria-owns"));if(y.forEach(function(I){var c=S(I,{isEmbeddedInLabel:b.isEmbeddedInLabel,isReferenced:!1,recursion:!0}),te=j(I)?s(I).getPropertyValue("display"):"inline",se=te!=="inline"?" ":"";P+="".concat(se).concat(c).concat(se)}),j(v)&&u){var h=s(v,"::after"),E=ms(h);P="".concat(P," ").concat(E)}return P.trim()}function m(v,b){var P=v.getAttributeNode(b);return P!==null&&!r.has(P)&&P.value.trim()!==""?(r.add(P),P.value):null}function C(v){return j(v)?m(v,"title"):null}function R(v){if(!j(v))return null;if(Rb(v)){r.add(v);for(var b=ae(v.childNodes),P=0;P<b.length;P+=1){var w=b[P];if(Pb(w))return S(w,{isEmbeddedInLabel:!1,isReferenced:!1,recursion:!1})}}else if(gb(v)){r.add(v);for(var O=ae(v.childNodes),y=0;y<O.length;y+=1){var h=O[y];if(sf(h))return S(h,{isEmbeddedInLabel:!1,isReferenced:!1,recursion:!1})}}else if(Ob(v)){r.add(v);for(var E=ae(v.childNodes),I=0;I<E.length;I+=1){var c=E[I];if(Sb(c))return c.textContent}return null}else if(U(v)==="img"||U(v)==="area"){var te=m(v,"alt");if(te!==null)return te}else if(bb(v)){var se=m(v,"label");if(se!==null)return se}if(Tr(v)&&(v.type==="button"||v.type==="submit"||v.type==="reset")){var H=m(v,"value");if(H!==null)return H;if(v.type==="submit")return"Submit";if(v.type==="reset")return"Reset"}var ce=Db(v);if(ce!==null&&ce.length!==0)return r.add(v),ae(ce).map(function(ml){return S(ml,{isEmbeddedInLabel:!0,isReferenced:!1,recursion:!0})}).filter(function(ml){return ml.length>0}).join(" ");if(Tr(v)&&v.type==="image"){var lt=m(v,"alt");if(lt!==null)return lt;var It=m(v,"title");return It!==null?It:"Submit Query"}if(be(v,["button"])){var rs=p(v,{isEmbeddedInLabel:!1,isReferenced:!1});if(rs!=="")return rs}return null}function S(v,b){if(r.has(v))return"";if(!f&&Tb(v,s)&&!b.isReferenced)return r.add(v),"";var P=Ur(v,"aria-labelledby");if(o==="name"&&!b.isReferenced&&P.length>0)return P.map(function(c){return S(c,{isEmbeddedInLabel:b.isEmbeddedInLabel,isReferenced:!0,recursion:!1})}).join(" ");var w=b.recursion&&qb(v)&&o==="name";if(!w){var O=(j(v)&&v.getAttribute("aria-label")||"").trim();if(O!==""&&o==="name")return r.add(v),O;if(!xb(v)){var y=R(v);if(y!==null)return r.add(v),y}}if(be(v,["menu"]))return r.add(v),"";if(w||b.isEmbeddedInLabel||b.isReferenced){if(be(v,["combobox","listbox"])){r.add(v);var h=Ab(v);return h.length===0?Tr(v)?v.value:"":ae(h).map(function(c){return S(c,{isEmbeddedInLabel:b.isEmbeddedInLabel,isReferenced:!1,recursion:!0})}).join(" ")}if(cf(v,"range"))return r.add(v),v.hasAttribute("aria-valuetext")?v.getAttribute("aria-valuetext"):v.hasAttribute("aria-valuenow")?v.getAttribute("aria-valuenow"):v.getAttribute("value")||"";if(be(v,["textbox"]))return r.add(v),jb(v)}if(Ib(v)||j(v)&&b.isReferenced||Mb(v)||Bb()){var E=p(v,{isEmbeddedInLabel:b.isEmbeddedInLabel,isReferenced:!1});if(E!=="")return r.add(v),E}if(v.nodeType===v.TEXT_NODE)return r.add(v),v.textContent||"";if(b.recursion)return r.add(v),p(v,{isEmbeddedInLabel:b.isEmbeddedInLabel,isReferenced:!1});var I=C(v);return I!==null?(r.add(v),I):(r.add(v),"")}return $b(S(e,{isEmbeddedInLabel:!1,isReferenced:o==="description",recursion:!1}))}function Gt(e){return Gt=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(t){return typeof t}:function(t){return t&&typeof Symbol=="function"&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},Gt(e)}function bs(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter(function(a){return Object.getOwnPropertyDescriptor(e,a).enumerable})),r.push.apply(r,n)}return r}function hs(e){for(var t=1;t<arguments.length;t++){var r=arguments[t]!=null?arguments[t]:{};t%2?bs(Object(r),!0).forEach(function(n){Lb(e,n,r[n])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):bs(Object(r)).forEach(function(n){Object.defineProperty(e,n,Object.getOwnPropertyDescriptor(r,n))})}return e}function Lb(e,t,r){return t=Fb(t),t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function Fb(e){var t=Ub(e,"string");return Gt(t)==="symbol"?t:String(t)}function Ub(e,t){if(Gt(e)!=="object"||e===null)return e;var r=e[Symbol.toPrimitive];if(r!==void 0){var n=r.call(e,t||"default");if(Gt(n)!=="object")return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return(t==="string"?String:Number)(e)}function vf(e){var t=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},r=Ur(e,"aria-describedby").map(function(a){return pf(a,hs(hs({},t),{},{compute:"description"}))}).join(" ");if(r===""){var n=e.getAttribute("title");r=n===null?"":n}return r}function Vb(e){return be(e,["caption","code","deletion","emphasis","generic","insertion","paragraph","presentation","strong","subscript","superscript"])}function ou(e){var t=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{};return Vb(e)?"":pf(e,t)}var oe={},fn={},Ze={},pn={};Object.defineProperty(pn,"__esModule",{value:!0});pn.default=void 0;function Hb(){var e=this,t=0,r={"@@iterator":function(){return r},next:function(){if(t<e.length){var a=e[t];return t=t+1,{done:!1,value:a}}else return{done:!0}}};return r}var Wb=Hb;pn.default=Wb;Object.defineProperty(Ze,"__esModule",{value:!0});Ze.default=Gb;var zb=Kb(pn);function Kb(e){return e&&e.__esModule?e:{default:e}}function si(e){return si=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(t){return typeof t}:function(t){return t&&typeof Symbol=="function"&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},si(e)}function Gb(e,t){return typeof Symbol=="function"&&si(Symbol.iterator)==="symbol"&&Object.defineProperty(e,Symbol.iterator,{value:zb.default.bind(t)}),e}Object.defineProperty(fn,"__esModule",{value:!0});fn.default=void 0;var Yb=Jb(Ze);function Jb(e){return e&&e.__esModule?e:{default:e}}function Rl(e,t){return Zb(e)||Qb(e,t)||yf(e,t)||Xb()}function Xb(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function Qb(e,t){var r=e==null?null:typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(r!=null){var n=[],a=!0,o=!1,l,u;try{for(r=r.call(e);!(a=(l=r.next()).done)&&(n.push(l.value),!(t&&n.length===t));a=!0);}catch(i){o=!0,u=i}finally{try{!a&&r.return!=null&&r.return()}finally{if(o)throw u}}return n}}function Zb(e){if(Array.isArray(e))return e}function eh(e,t){var r=typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=yf(e))||t&&e&&typeof e.length=="number"){r&&(e=r);var n=0,a=function(){};return{s:a,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(s){throw s},f:a}}throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}var o=!0,l=!1,u;return{s:function(){r=r.call(e)},n:function(){var s=r.next();return o=s.done,s},e:function(s){l=!0,u=s},f:function(){try{!o&&r.return!=null&&r.return()}finally{if(l)throw u}}}}function yf(e,t){if(!!e){if(typeof e=="string")return gs(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);if(r==="Object"&&e.constructor&&(r=e.constructor.name),r==="Map"||r==="Set")return Array.from(e);if(r==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return gs(e,t)}}function gs(e,t){(t==null||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}var st=[["aria-activedescendant",{type:"id"}],["aria-atomic",{type:"boolean"}],["aria-autocomplete",{type:"token",values:["inline","list","both","none"]}],["aria-busy",{type:"boolean"}],["aria-checked",{type:"tristate"}],["aria-colcount",{type:"integer"}],["aria-colindex",{type:"integer"}],["aria-colspan",{type:"integer"}],["aria-controls",{type:"idlist"}],["aria-current",{type:"token",values:["page","step","location","date","time",!0,!1]}],["aria-describedby",{type:"idlist"}],["aria-details",{type:"id"}],["aria-disabled",{type:"boolean"}],["aria-dropeffect",{type:"tokenlist",values:["copy","execute","link","move","none","popup"]}],["aria-errormessage",{type:"id"}],["aria-expanded",{type:"boolean",allowundefined:!0}],["aria-flowto",{type:"idlist"}],["aria-grabbed",{type:"boolean",allowundefined:!0}],["aria-haspopup",{type:"token",values:[!1,!0,"menu","listbox","tree","grid","dialog"]}],["aria-hidden",{type:"boolean",allowundefined:!0}],["aria-invalid",{type:"token",values:["grammar",!1,"spelling",!0]}],["aria-keyshortcuts",{type:"string"}],["aria-label",{type:"string"}],["aria-labelledby",{type:"idlist"}],["aria-level",{type:"integer"}],["aria-live",{type:"token",values:["assertive","off","polite"]}],["aria-modal",{type:"boolean"}],["aria-multiline",{type:"boolean"}],["aria-multiselectable",{type:"boolean"}],["aria-orientation",{type:"token",values:["vertical","undefined","horizontal"]}],["aria-owns",{type:"idlist"}],["aria-placeholder",{type:"string"}],["aria-posinset",{type:"integer"}],["aria-pressed",{type:"tristate"}],["aria-readonly",{type:"boolean"}],["aria-relevant",{type:"tokenlist",values:["additions","all","removals","text"]}],["aria-required",{type:"boolean"}],["aria-roledescription",{type:"string"}],["aria-rowcount",{type:"integer"}],["aria-rowindex",{type:"integer"}],["aria-rowspan",{type:"integer"}],["aria-selected",{type:"boolean",allowundefined:!0}],["aria-setsize",{type:"integer"}],["aria-sort",{type:"token",values:["ascending","descending","none","other"]}],["aria-valuemax",{type:"number"}],["aria-valuemin",{type:"number"}],["aria-valuenow",{type:"number"}],["aria-valuetext",{type:"string"}]],ci={entries:function(){return st},forEach:function(t){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:null,n=eh(st),a;try{for(n.s();!(a=n.n()).done;){var o=Rl(a.value,2),l=o[0],u=o[1];t.call(r,u,l,st)}}catch(i){n.e(i)}finally{n.f()}},get:function(t){var r=st.find(function(n){return n[0]===t});return r&&r[1]},has:function(t){return!!ci.get(t)},keys:function(){return st.map(function(t){var r=Rl(t,1),n=r[0];return n})},values:function(){return st.map(function(t){var r=Rl(t,2),n=r[1];return n})}},th=(0,Yb.default)(ci,ci.entries());fn.default=th;var vn={};Object.defineProperty(vn,"__esModule",{value:!0});vn.default=void 0;var rh=nh(Ze);function nh(e){return e&&e.__esModule?e:{default:e}}function Pl(e,t){return lh(e)||oh(e,t)||mf(e,t)||ah()}function ah(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function oh(e,t){var r=e==null?null:typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(r!=null){var n=[],a=!0,o=!1,l,u;try{for(r=r.call(e);!(a=(l=r.next()).done)&&(n.push(l.value),!(t&&n.length===t));a=!0);}catch(i){o=!0,u=i}finally{try{!a&&r.return!=null&&r.return()}finally{if(o)throw u}}return n}}function lh(e){if(Array.isArray(e))return e}function ih(e,t){var r=typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=mf(e))||t&&e&&typeof e.length=="number"){r&&(e=r);var n=0,a=function(){};return{s:a,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(s){throw s},f:a}}throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}var o=!0,l=!1,u;return{s:function(){r=r.call(e)},n:function(){var s=r.next();return o=s.done,s},e:function(s){l=!0,u=s},f:function(){try{!o&&r.return!=null&&r.return()}finally{if(l)throw u}}}}function mf(e,t){if(!!e){if(typeof e=="string")return Es(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);if(r==="Object"&&e.constructor&&(r=e.constructor.name),r==="Map"||r==="Set")return Array.from(e);if(r==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return Es(e,t)}}function Es(e,t){(t==null||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}var ct=[["a",{reserved:!1}],["abbr",{reserved:!1}],["acronym",{reserved:!1}],["address",{reserved:!1}],["applet",{reserved:!1}],["area",{reserved:!1}],["article",{reserved:!1}],["aside",{reserved:!1}],["audio",{reserved:!1}],["b",{reserved:!1}],["base",{reserved:!0}],["bdi",{reserved:!1}],["bdo",{reserved:!1}],["big",{reserved:!1}],["blink",{reserved:!1}],["blockquote",{reserved:!1}],["body",{reserved:!1}],["br",{reserved:!1}],["button",{reserved:!1}],["canvas",{reserved:!1}],["caption",{reserved:!1}],["center",{reserved:!1}],["cite",{reserved:!1}],["code",{reserved:!1}],["col",{reserved:!0}],["colgroup",{reserved:!0}],["content",{reserved:!1}],["data",{reserved:!1}],["datalist",{reserved:!1}],["dd",{reserved:!1}],["del",{reserved:!1}],["details",{reserved:!1}],["dfn",{reserved:!1}],["dialog",{reserved:!1}],["dir",{reserved:!1}],["div",{reserved:!1}],["dl",{reserved:!1}],["dt",{reserved:!1}],["em",{reserved:!1}],["embed",{reserved:!1}],["fieldset",{reserved:!1}],["figcaption",{reserved:!1}],["figure",{reserved:!1}],["font",{reserved:!1}],["footer",{reserved:!1}],["form",{reserved:!1}],["frame",{reserved:!1}],["frameset",{reserved:!1}],["h1",{reserved:!1}],["h2",{reserved:!1}],["h3",{reserved:!1}],["h4",{reserved:!1}],["h5",{reserved:!1}],["h6",{reserved:!1}],["head",{reserved:!0}],["header",{reserved:!1}],["hgroup",{reserved:!1}],["hr",{reserved:!1}],["html",{reserved:!0}],["i",{reserved:!1}],["iframe",{reserved:!1}],["img",{reserved:!1}],["input",{reserved:!1}],["ins",{reserved:!1}],["kbd",{reserved:!1}],["keygen",{reserved:!1}],["label",{reserved:!1}],["legend",{reserved:!1}],["li",{reserved:!1}],["link",{reserved:!0}],["main",{reserved:!1}],["map",{reserved:!1}],["mark",{reserved:!1}],["marquee",{reserved:!1}],["menu",{reserved:!1}],["menuitem",{reserved:!1}],["meta",{reserved:!0}],["meter",{reserved:!1}],["nav",{reserved:!1}],["noembed",{reserved:!0}],["noscript",{reserved:!0}],["object",{reserved:!1}],["ol",{reserved:!1}],["optgroup",{reserved:!1}],["option",{reserved:!1}],["output",{reserved:!1}],["p",{reserved:!1}],["param",{reserved:!0}],["picture",{reserved:!0}],["pre",{reserved:!1}],["progress",{reserved:!1}],["q",{reserved:!1}],["rp",{reserved:!1}],["rt",{reserved:!1}],["rtc",{reserved:!1}],["ruby",{reserved:!1}],["s",{reserved:!1}],["samp",{reserved:!1}],["script",{reserved:!0}],["section",{reserved:!1}],["select",{reserved:!1}],["small",{reserved:!1}],["source",{reserved:!0}],["spacer",{reserved:!1}],["span",{reserved:!1}],["strike",{reserved:!1}],["strong",{reserved:!1}],["style",{reserved:!0}],["sub",{reserved:!1}],["summary",{reserved:!1}],["sup",{reserved:!1}],["table",{reserved:!1}],["tbody",{reserved:!1}],["td",{reserved:!1}],["textarea",{reserved:!1}],["tfoot",{reserved:!1}],["th",{reserved:!1}],["thead",{reserved:!1}],["time",{reserved:!1}],["title",{reserved:!0}],["tr",{reserved:!1}],["track",{reserved:!0}],["tt",{reserved:!1}],["u",{reserved:!1}],["ul",{reserved:!1}],["var",{reserved:!1}],["video",{reserved:!1}],["wbr",{reserved:!1}],["xmp",{reserved:!1}]],di={entries:function(){return ct},forEach:function(t){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:null,n=ih(ct),a;try{for(n.s();!(a=n.n()).done;){var o=Pl(a.value,2),l=o[0],u=o[1];t.call(r,u,l,ct)}}catch(i){n.e(i)}finally{n.f()}},get:function(t){var r=ct.find(function(n){return n[0]===t});return r&&r[1]},has:function(t){return!!di.get(t)},keys:function(){return ct.map(function(t){var r=Pl(t,1),n=r[0];return n})},values:function(){return ct.map(function(t){var r=Pl(t,2),n=r[1];return n})}},uh=(0,rh.default)(di,di.entries());vn.default=uh;var St={},yn={},mn={};Object.defineProperty(mn,"__esModule",{value:!0});mn.default=void 0;var sh={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"menuitem"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget"]]},ch=sh;mn.default=ch;var bn={};Object.defineProperty(bn,"__esModule",{value:!0});bn.default=void 0;var dh={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-activedescendant":null,"aria-disabled":null},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget"]]},fh=dh;bn.default=fh;var hn={};Object.defineProperty(hn,"__esModule",{value:!0});hn.default=void 0;var ph={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null},relatedConcepts:[{concept:{name:"input"},module:"XForms"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget"]]},vh=ph;hn.default=vh;var gn={};Object.defineProperty(gn,"__esModule",{value:!0});gn.default=void 0;var yh={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},mh=yh;gn.default=mh;var En={};Object.defineProperty(En,"__esModule",{value:!0});En.default=void 0;var bh={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-valuemax":null,"aria-valuemin":null,"aria-valuenow":null},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},hh=bh;En.default=hh;var _n={};Object.defineProperty(_n,"__esModule",{value:!0});_n.default=void 0;var gh={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:[],prohibitedProps:[],props:{"aria-atomic":null,"aria-busy":null,"aria-controls":null,"aria-current":null,"aria-describedby":null,"aria-details":null,"aria-dropeffect":null,"aria-flowto":null,"aria-grabbed":null,"aria-hidden":null,"aria-keyshortcuts":null,"aria-label":null,"aria-labelledby":null,"aria-live":null,"aria-owns":null,"aria-relevant":null,"aria-roledescription":null},relatedConcepts:[{concept:{name:"rel"},module:"HTML"},{concept:{name:"role"},module:"XHTML"},{concept:{name:"type"},module:"Dublin Core"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[]},Eh=gh;_n.default=Eh;var Rn={};Object.defineProperty(Rn,"__esModule",{value:!0});Rn.default=void 0;var _h={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:[],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"frontmatter"},module:"DTB"},{concept:{name:"level"},module:"DTB"},{concept:{name:"level"},module:"SMIL"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},Rh=_h;Rn.default=Rh;var Pn={};Object.defineProperty(Pn,"__esModule",{value:!0});Pn.default=void 0;var Ph={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},wh=Ph;Pn.default=wh;var wn={};Object.defineProperty(wn,"__esModule",{value:!0});wn.default=void 0;var Ch={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-orientation":null},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","composite"],["roletype","structure","section","group"]]},Oh=Ch;wn.default=Oh;var Cn={};Object.defineProperty(Cn,"__esModule",{value:!0});Cn.default=void 0;var Sh={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:[],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype"]]},$h=Sh;Cn.default=$h;var On={};Object.defineProperty(On,"__esModule",{value:!0});On.default=void 0;var Th={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:[],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype"]]},qh=Th;On.default=qh;var Sn={};Object.defineProperty(Sn,"__esModule",{value:!0});Sn.default=void 0;var Ah={abstract:!0,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-modal":null},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype"]]},xh=Ah;Sn.default=xh;Object.defineProperty(yn,"__esModule",{value:!0});yn.default=void 0;var Mh=Z(mn),Ih=Z(bn),Bh=Z(hn),jh=Z(gn),Nh=Z(En),Dh=Z(_n),kh=Z(Rn),Lh=Z(Pn),Fh=Z(wn),Uh=Z(Cn),Vh=Z(On),Hh=Z(Sn);function Z(e){return e&&e.__esModule?e:{default:e}}var Wh=[["command",Mh.default],["composite",Ih.default],["input",Bh.default],["landmark",jh.default],["range",Nh.default],["roletype",Dh.default],["section",kh.default],["sectionhead",Lh.default],["select",Fh.default],["structure",Uh.default],["widget",Vh.default],["window",Hh.default]],zh=Wh;yn.default=zh;var $n={},Tn={};Object.defineProperty(Tn,"__esModule",{value:!0});Tn.default=void 0;var Kh={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-atomic":"true","aria-live":"assertive"},relatedConcepts:[{concept:{name:"alert"},module:"XForms"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},Gh=Kh;Tn.default=Gh;var qn={};Object.defineProperty(qn,"__esModule",{value:!0});qn.default=void 0;var Yh={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"alert"},module:"XForms"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","alert"],["roletype","window","dialog"]]},Jh=Yh;qn.default=Jh;var An={};Object.defineProperty(An,"__esModule",{value:!0});An.default=void 0;var Xh={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-activedescendant":null,"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"Device Independence Delivery Unit"}}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},Qh=Xh;An.default=Qh;var xn={};Object.defineProperty(xn,"__esModule",{value:!0});xn.default=void 0;var Zh={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-posinset":null,"aria-setsize":null},relatedConcepts:[{concept:{name:"article"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","document"]]},eg=Zh;xn.default=eg;var Mn={};Object.defineProperty(Mn,"__esModule",{value:!0});Mn.default=void 0;var tg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{constraints:["direct descendant of document"],name:"header"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},rg=tg;Mn.default=rg;var In={};Object.defineProperty(In,"__esModule",{value:!0});In.default=void 0;var ng={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},ag=ng;In.default=ag;var Bn={};Object.defineProperty(Bn,"__esModule",{value:!0});Bn.default=void 0;var og={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-disabled":null,"aria-expanded":null,"aria-haspopup":null,"aria-pressed":null},relatedConcepts:[{concept:{attributes:[{constraints:["set"],name:"aria-pressed"},{name:"type",value:"checkbox"}],name:"input"},module:"HTML"},{concept:{attributes:[{name:"aria-expanded",value:"false"}],name:"summary"},module:"HTML"},{concept:{attributes:[{name:"aria-expanded",value:"true"}],constraints:["direct descendant of details element with the open attribute defined"],name:"summary"},module:"HTML"},{concept:{attributes:[{name:"type",value:"button"}],name:"input"},module:"HTML"},{concept:{attributes:[{name:"type",value:"image"}],name:"input"},module:"HTML"},{concept:{attributes:[{name:"type",value:"reset"}],name:"input"},module:"HTML"},{concept:{attributes:[{name:"type",value:"submit"}],name:"input"},module:"HTML"},{concept:{name:"button"},module:"HTML"},{concept:{name:"trigger"},module:"XForms"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","command"]]},lg=og;Bn.default=lg;var jn={};Object.defineProperty(jn,"__esModule",{value:!0});jn.default=void 0;var ig={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:["figure","grid","table"],requiredContextRole:["figure","grid","table"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},ug=ig;jn.default=ug;var Nn={};Object.defineProperty(Nn,"__esModule",{value:!0});Nn.default=void 0;var sg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-colindex":null,"aria-colspan":null,"aria-rowindex":null,"aria-rowspan":null},relatedConcepts:[{concept:{constraints:["descendant of table"],name:"td"},module:"HTML"}],requireContextRole:["row"],requiredContextRole:["row"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},cg=sg;Nn.default=cg;var Dn={};Object.defineProperty(Dn,"__esModule",{value:!0});Dn.default=void 0;var dg={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-checked":null,"aria-errormessage":null,"aria-expanded":null,"aria-invalid":null,"aria-readonly":null,"aria-required":null},relatedConcepts:[{concept:{attributes:[{name:"type",value:"checkbox"}],name:"input"},module:"HTML"},{concept:{name:"option"},module:"ARIA"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-checked":null},superClass:[["roletype","widget","input"]]},fg=dg;Dn.default=fg;var kn={};Object.defineProperty(kn,"__esModule",{value:!0});kn.default=void 0;var pg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},vg=pg;kn.default=vg;var Ln={};Object.defineProperty(Ln,"__esModule",{value:!0});Ln.default=void 0;var yg={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-sort":null},relatedConcepts:[{attributes:[{name:"scope",value:"col"}],concept:{name:"th"},module:"HTML"}],requireContextRole:["row"],requiredContextRole:["row"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","cell"],["roletype","structure","section","cell","gridcell"],["roletype","widget","gridcell"],["roletype","structure","sectionhead"]]},mg=yg;Ln.default=mg;var Fn={};Object.defineProperty(Fn,"__esModule",{value:!0});Fn.default=void 0;var bg={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-activedescendant":null,"aria-autocomplete":null,"aria-errormessage":null,"aria-invalid":null,"aria-readonly":null,"aria-required":null,"aria-expanded":"false","aria-haspopup":"listbox"},relatedConcepts:[{concept:{attributes:[{constraints:["set"],name:"list"},{name:"type",value:"email"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"list"},{name:"type",value:"search"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"list"},{name:"type",value:"tel"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"list"},{name:"type",value:"text"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"list"},{name:"type",value:"url"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"list"},{name:"type",value:"url"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["undefined"],name:"multiple"},{constraints:["undefined"],name:"size"}],name:"select"},module:"HTML"},{concept:{attributes:[{constraints:["undefined"],name:"multiple"},{name:"size",value:1}],name:"select"},module:"HTML"},{concept:{name:"select"},module:"XForms"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-controls":null,"aria-expanded":"false"},superClass:[["roletype","widget","input"]]},hg=bg;Fn.default=hg;var Un={};Object.defineProperty(Un,"__esModule",{value:!0});Un.default=void 0;var gg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"aside"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},Eg=gg;Un.default=Eg;var Vn={};Object.defineProperty(Vn,"__esModule",{value:!0});Vn.default=void 0;var _g={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{constraints:["direct descendant of document"],name:"footer"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},Rg=_g;Vn.default=Rg;var Hn={};Object.defineProperty(Hn,"__esModule",{value:!0});Hn.default=void 0;var Pg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"dd"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},wg=Pg;Hn.default=wg;var Wn={};Object.defineProperty(Wn,"__esModule",{value:!0});Wn.default=void 0;var Cg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},Og=Cg;Wn.default=Og;var zn={};Object.defineProperty(zn,"__esModule",{value:!0});zn.default=void 0;var Sg={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"dialog"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","window"]]},$g=Sg;zn.default=$g;var Kn={};Object.defineProperty(Kn,"__esModule",{value:!0});Kn.default=void 0;var Tg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{module:"DAISY Guide"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","list"]]},qg=Tg;Kn.default=qg;var Gn={};Object.defineProperty(Gn,"__esModule",{value:!0});Gn.default=void 0;var Ag={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"Device Independence Delivery Unit"}},{concept:{name:"body"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},xg=Ag;Gn.default=xg;var Yn={};Object.defineProperty(Yn,"__esModule",{value:!0});Yn.default=void 0;var Mg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},Ig=Mg;Yn.default=Ig;var Jn={};Object.defineProperty(Jn,"__esModule",{value:!0});Jn.default=void 0;var Bg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["article"]],requiredProps:{},superClass:[["roletype","structure","section","list"]]},jg=Bg;Jn.default=jg;var Xn={};Object.defineProperty(Xn,"__esModule",{value:!0});Xn.default=void 0;var Ng={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"figure"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},Dg=Ng;Xn.default=Dg;var Qn={};Object.defineProperty(Qn,"__esModule",{value:!0});Qn.default=void 0;var kg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{attributes:[{constraints:["set"],name:"aria-label"}],name:"form"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"aria-labelledby"}],name:"form"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"name"}],name:"form"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},Lg=kg;Qn.default=Lg;var Zn={};Object.defineProperty(Zn,"__esModule",{value:!0});Zn.default=void 0;var Fg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[{concept:{name:"span"},module:"HTML"},{concept:{name:"div"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},Ug=Fg;Zn.default=Ug;var ea={};Object.defineProperty(ea,"__esModule",{value:!0});ea.default=void 0;var Vg={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-multiselectable":null,"aria-readonly":null},relatedConcepts:[{concept:{attributes:[{name:"role",value:"grid"}],name:"table"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["row"],["row","rowgroup"]],requiredProps:{},superClass:[["roletype","widget","composite"],["roletype","structure","section","table"]]},Hg=Vg;ea.default=Hg;var ta={};Object.defineProperty(ta,"__esModule",{value:!0});ta.default=void 0;var Wg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null,"aria-readonly":null,"aria-required":null,"aria-selected":null},relatedConcepts:[{concept:{attributes:[{name:"role",value:"gridcell"}],name:"td"},module:"HTML"}],requireContextRole:["row"],requiredContextRole:["row"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","cell"],["roletype","widget"]]},zg=Wg;ta.default=zg;var ra={};Object.defineProperty(ra,"__esModule",{value:!0});ra.default=void 0;var Kg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-activedescendant":null,"aria-disabled":null},relatedConcepts:[{concept:{name:"details"},module:"HTML"},{concept:{name:"fieldset"},module:"HTML"},{concept:{name:"optgroup"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},Gg=Kg;ra.default=Gg;var na={};Object.defineProperty(na,"__esModule",{value:!0});na.default=void 0;var Yg={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-level":"2"},relatedConcepts:[{concept:{name:"h1"},module:"HTML"},{concept:{name:"h2"},module:"HTML"},{concept:{name:"h3"},module:"HTML"},{concept:{name:"h4"},module:"HTML"},{concept:{name:"h5"},module:"HTML"},{concept:{name:"h6"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-level":"2"},superClass:[["roletype","structure","sectionhead"]]},Jg=Yg;na.default=Jg;var aa={};Object.defineProperty(aa,"__esModule",{value:!0});aa.default=void 0;var Xg={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{attributes:[{constraints:["set"],name:"alt"}],name:"img"},module:"HTML"},{concept:{attributes:[{constraints:["undefined"],name:"alt"}],name:"img"},module:"HTML"},{concept:{name:"imggroup"},module:"DTB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},Qg=Xg;aa.default=Qg;var oa={};Object.defineProperty(oa,"__esModule",{value:!0});oa.default=void 0;var Zg={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},eE=Zg;oa.default=eE;var la={};Object.defineProperty(la,"__esModule",{value:!0});la.default=void 0;var tE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-disabled":null,"aria-expanded":null,"aria-haspopup":null},relatedConcepts:[{concept:{attributes:[{name:"href"}],name:"a"},module:"HTML"},{concept:{attributes:[{name:"href"}],name:"area"},module:"HTML"},{concept:{attributes:[{name:"href"}],name:"link"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","command"]]},rE=tE;la.default=rE;var ia={};Object.defineProperty(ia,"__esModule",{value:!0});ia.default=void 0;var nE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"menu"},module:"HTML"},{concept:{name:"ol"},module:"HTML"},{concept:{name:"ul"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["listitem"]],requiredProps:{},superClass:[["roletype","structure","section"]]},aE=nE;ia.default=aE;var ua={};Object.defineProperty(ua,"__esModule",{value:!0});ua.default=void 0;var oE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-expanded":null,"aria-invalid":null,"aria-multiselectable":null,"aria-readonly":null,"aria-required":null,"aria-orientation":"vertical"},relatedConcepts:[{concept:{attributes:[{constraints:[">1"],name:"size"},{name:"multiple"}],name:"select"},module:"HTML"},{concept:{attributes:[{constraints:[">1"],name:"size"}],name:"select"},module:"HTML"},{concept:{attributes:[{name:"multiple"}],name:"select"},module:"HTML"},{concept:{name:"datalist"},module:"HTML"},{concept:{name:"list"},module:"ARIA"},{concept:{name:"select"},module:"XForms"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["option","group"],["option"]],requiredProps:{},superClass:[["roletype","widget","composite","select"],["roletype","structure","section","group","select"]]},lE=oE;ua.default=lE;var sa={};Object.defineProperty(sa,"__esModule",{value:!0});sa.default=void 0;var iE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-level":null,"aria-posinset":null,"aria-setsize":null},relatedConcepts:[{concept:{constraints:["direct descendant of ol, ul or menu"],name:"li"},module:"HTML"},{concept:{name:"item"},module:"XForms"}],requireContextRole:["directory","list"],requiredContextRole:["directory","list"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},uE=iE;sa.default=uE;var ca={};Object.defineProperty(ca,"__esModule",{value:!0});ca.default=void 0;var sE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-live":"polite"},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},cE=sE;ca.default=cE;var da={};Object.defineProperty(da,"__esModule",{value:!0});da.default=void 0;var dE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"main"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},fE=dE;da.default=fE;var fa={};Object.defineProperty(fa,"__esModule",{value:!0});fa.default=void 0;var pE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},vE=pE;fa.default=vE;var pa={};Object.defineProperty(pa,"__esModule",{value:!0});pa.default=void 0;var yE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"math"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},mE=yE;pa.default=mE;var va={};Object.defineProperty(va,"__esModule",{value:!0});va.default=void 0;var bE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-orientation":"vertical"},relatedConcepts:[{concept:{name:"MENU"},module:"JAPI"},{concept:{name:"list"},module:"ARIA"},{concept:{name:"select"},module:"XForms"},{concept:{name:"sidebar"},module:"DTB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["menuitem","group"],["menuitemradio","group"],["menuitemcheckbox","group"],["menuitem"],["menuitemcheckbox"],["menuitemradio"]],requiredProps:{},superClass:[["roletype","widget","composite","select"],["roletype","structure","section","group","select"]]},hE=bE;va.default=hE;var ya={};Object.defineProperty(ya,"__esModule",{value:!0});ya.default=void 0;var gE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-orientation":"horizontal"},relatedConcepts:[{concept:{name:"toolbar"},module:"ARIA"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["menuitem","group"],["menuitemradio","group"],["menuitemcheckbox","group"],["menuitem"],["menuitemcheckbox"],["menuitemradio"]],requiredProps:{},superClass:[["roletype","widget","composite","select","menu"],["roletype","structure","section","group","select","menu"]]},EE=gE;ya.default=EE;var ma={};Object.defineProperty(ma,"__esModule",{value:!0});ma.default=void 0;var _E={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-disabled":null,"aria-expanded":null,"aria-haspopup":null,"aria-posinset":null,"aria-setsize":null},relatedConcepts:[{concept:{name:"MENU_ITEM"},module:"JAPI"},{concept:{name:"listitem"},module:"ARIA"},{concept:{name:"menuitem"},module:"HTML"},{concept:{name:"option"},module:"ARIA"}],requireContextRole:["group","menu","menubar"],requiredContextRole:["group","menu","menubar"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","command"]]},RE=_E;ma.default=RE;var ba={};Object.defineProperty(ba,"__esModule",{value:!0});ba.default=void 0;var PE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"menuitem"},module:"ARIA"}],requireContextRole:["group","menu","menubar"],requiredContextRole:["group","menu","menubar"],requiredOwnedElements:[],requiredProps:{"aria-checked":null},superClass:[["roletype","widget","input","checkbox"],["roletype","widget","command","menuitem"]]},wE=PE;ba.default=wE;var ha={};Object.defineProperty(ha,"__esModule",{value:!0});ha.default=void 0;var CE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"menuitem"},module:"ARIA"}],requireContextRole:["group","menu","menubar"],requiredContextRole:["group","menu","menubar"],requiredOwnedElements:[],requiredProps:{"aria-checked":null},superClass:[["roletype","widget","input","checkbox","menuitemcheckbox"],["roletype","widget","command","menuitem","menuitemcheckbox"],["roletype","widget","input","radio"]]},OE=CE;ha.default=OE;var ga={};Object.defineProperty(ga,"__esModule",{value:!0});ga.default=void 0;var SE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{"aria-valuetext":null,"aria-valuemax":"100","aria-valuemin":"0"},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-valuenow":null},superClass:[["roletype","structure","range"]]},$E=SE;ga.default=$E;var Ea={};Object.defineProperty(Ea,"__esModule",{value:!0});Ea.default=void 0;var TE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"nav"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},qE=TE;Ea.default=qE;var _a={};Object.defineProperty(_a,"__esModule",{value:!0});_a.default=void 0;var AE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:[],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[]},xE=AE;_a.default=xE;var Ra={};Object.defineProperty(Ra,"__esModule",{value:!0});Ra.default=void 0;var ME={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},IE=ME;Ra.default=IE;var Pa={};Object.defineProperty(Pa,"__esModule",{value:!0});Pa.default=void 0;var BE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-checked":null,"aria-posinset":null,"aria-setsize":null,"aria-selected":"false"},relatedConcepts:[{concept:{name:"item"},module:"XForms"},{concept:{name:"listitem"},module:"ARIA"},{concept:{name:"option"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-selected":"false"},superClass:[["roletype","widget","input"]]},jE=BE;Pa.default=jE;var wa={};Object.defineProperty(wa,"__esModule",{value:!0});wa.default=void 0;var NE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},DE=NE;wa.default=DE;var Ca={};Object.defineProperty(Ca,"__esModule",{value:!0});Ca.default=void 0;var kE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},LE=kE;Ca.default=LE;var Oa={};Object.defineProperty(Oa,"__esModule",{value:!0});Oa.default=void 0;var FE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{"aria-valuetext":null},relatedConcepts:[{concept:{name:"progress"},module:"HTML"},{concept:{name:"status"},module:"ARIA"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","range"],["roletype","widget"]]},UE=FE;Oa.default=UE;var Sa={};Object.defineProperty(Sa,"__esModule",{value:!0});Sa.default=void 0;var VE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-checked":null,"aria-posinset":null,"aria-setsize":null},relatedConcepts:[{concept:{attributes:[{name:"type",value:"radio"}],name:"input"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-checked":null},superClass:[["roletype","widget","input"]]},HE=VE;Sa.default=HE;var $a={};Object.defineProperty($a,"__esModule",{value:!0});$a.default=void 0;var WE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-invalid":null,"aria-readonly":null,"aria-required":null},relatedConcepts:[{concept:{name:"list"},module:"ARIA"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["radio"]],requiredProps:{},superClass:[["roletype","widget","composite","select"],["roletype","structure","section","group","select"]]},zE=WE;$a.default=zE;var Ta={};Object.defineProperty(Ta,"__esModule",{value:!0});Ta.default=void 0;var KE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{attributes:[{constraints:["set"],name:"aria-label"}],name:"section"},module:"HTML"},{concept:{attributes:[{constraints:["set"],name:"aria-labelledby"}],name:"section"},module:"HTML"},{concept:{name:"Device Independence Glossart perceivable unit"}},{concept:{name:"frame"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},GE=KE;Ta.default=GE;var qa={};Object.defineProperty(qa,"__esModule",{value:!0});qa.default=void 0;var YE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-colindex":null,"aria-expanded":null,"aria-level":null,"aria-posinset":null,"aria-rowindex":null,"aria-selected":null,"aria-setsize":null},relatedConcepts:[{concept:{name:"tr"},module:"HTML"}],requireContextRole:["grid","rowgroup","table","treegrid"],requiredContextRole:["grid","rowgroup","table","treegrid"],requiredOwnedElements:[["cell"],["columnheader"],["gridcell"],["rowheader"]],requiredProps:{},superClass:[["roletype","structure","section","group"],["roletype","widget"]]},JE=YE;qa.default=JE;var Aa={};Object.defineProperty(Aa,"__esModule",{value:!0});Aa.default=void 0;var XE={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"tbody"},module:"HTML"},{concept:{name:"tfoot"},module:"HTML"},{concept:{name:"thead"},module:"HTML"}],requireContextRole:["grid","table","treegrid"],requiredContextRole:["grid","table","treegrid"],requiredOwnedElements:[["row"]],requiredProps:{},superClass:[["roletype","structure"]]},QE=XE;Aa.default=QE;var xa={};Object.defineProperty(xa,"__esModule",{value:!0});xa.default=void 0;var ZE={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-sort":null},relatedConcepts:[{concept:{attributes:[{name:"scope",value:"row"}],name:"th"},module:"HTML"},{concept:{attributes:[{name:"scope",value:"rowgroup"}],name:"th"},module:"HTML"}],requireContextRole:["row","rowgroup"],requiredContextRole:["row","rowgroup"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","cell"],["roletype","structure","section","cell","gridcell"],["roletype","widget","gridcell"],["roletype","structure","sectionhead"]]},e_=ZE;xa.default=e_;var Ma={};Object.defineProperty(Ma,"__esModule",{value:!0});Ma.default=void 0;var t_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-valuetext":null,"aria-orientation":"vertical","aria-valuemax":"100","aria-valuemin":"0"},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-controls":null,"aria-valuenow":null},superClass:[["roletype","structure","range"],["roletype","widget"]]},r_=t_;Ma.default=r_;var Ia={};Object.defineProperty(Ia,"__esModule",{value:!0});Ia.default=void 0;var n_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},a_=n_;Ia.default=a_;var Ba={};Object.defineProperty(Ba,"__esModule",{value:!0});Ba.default=void 0;var o_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{attributes:[{constraints:["undefined"],name:"list"},{name:"type",value:"search"}],name:"input"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","input","textbox"]]},l_=o_;Ba.default=l_;var ja={};Object.defineProperty(ja,"__esModule",{value:!0});ja.default=void 0;var i_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-orientation":"horizontal","aria-valuemax":"100","aria-valuemin":"0","aria-valuenow":null,"aria-valuetext":null},relatedConcepts:[{concept:{name:"hr"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure"]]},u_=i_;ja.default=u_;var Na={};Object.defineProperty(Na,"__esModule",{value:!0});Na.default=void 0;var s_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-haspopup":null,"aria-invalid":null,"aria-readonly":null,"aria-valuetext":null,"aria-orientation":"horizontal","aria-valuemax":"100","aria-valuemin":"0"},relatedConcepts:[{concept:{attributes:[{name:"type",value:"range"}],name:"input"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-valuenow":null},superClass:[["roletype","widget","input"],["roletype","structure","range"]]},c_=s_;Na.default=c_;var Da={};Object.defineProperty(Da,"__esModule",{value:!0});Da.default=void 0;var d_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-invalid":null,"aria-readonly":null,"aria-required":null,"aria-valuetext":null,"aria-valuenow":"0"},relatedConcepts:[{concept:{attributes:[{name:"type",value:"number"}],name:"input"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","composite"],["roletype","widget","input"],["roletype","structure","range"]]},f_=d_;Da.default=f_;var ka={};Object.defineProperty(ka,"__esModule",{value:!0});ka.default=void 0;var p_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-atomic":"true","aria-live":"polite"},relatedConcepts:[{concept:{name:"output"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},v_=p_;ka.default=v_;var La={};Object.defineProperty(La,"__esModule",{value:!0});La.default=void 0;var y_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},m_=y_;La.default=m_;var Fa={};Object.defineProperty(Fa,"__esModule",{value:!0});Fa.default=void 0;var b_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},h_=b_;Fa.default=h_;var Ua={};Object.defineProperty(Ua,"__esModule",{value:!0});Ua.default=void 0;var g_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["prohibited"],prohibitedProps:["aria-label","aria-labelledby"],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},E_=g_;Ua.default=E_;var Va={};Object.defineProperty(Va,"__esModule",{value:!0});Va.default=void 0;var __={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"button"},module:"ARIA"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{"aria-checked":null},superClass:[["roletype","widget","input","checkbox"]]},R_=__;Va.default=R_;var Ha={};Object.defineProperty(Ha,"__esModule",{value:!0});Ha.default=void 0;var P_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!0,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-disabled":null,"aria-expanded":null,"aria-haspopup":null,"aria-posinset":null,"aria-setsize":null,"aria-selected":"false"},relatedConcepts:[],requireContextRole:["tablist"],requiredContextRole:["tablist"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","sectionhead"],["roletype","widget"]]},w_=P_;Ha.default=w_;var Wa={};Object.defineProperty(Wa,"__esModule",{value:!0});Wa.default=void 0;var C_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-colcount":null,"aria-rowcount":null},relatedConcepts:[{concept:{name:"table"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["row"],["row","rowgroup"]],requiredProps:{},superClass:[["roletype","structure","section"]]},O_=C_;Wa.default=O_;var za={};Object.defineProperty(za,"__esModule",{value:!0});za.default=void 0;var S_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-level":null,"aria-multiselectable":null,"aria-orientation":"horizontal"},relatedConcepts:[{module:"DAISY",concept:{name:"guide"}}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["tab"]],requiredProps:{},superClass:[["roletype","widget","composite"]]},$_=S_;za.default=$_;var Ka={};Object.defineProperty(Ka,"__esModule",{value:!0});Ka.default=void 0;var T_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},q_=T_;Ka.default=q_;var Ga={};Object.defineProperty(Ga,"__esModule",{value:!0});Ga.default=void 0;var A_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"dfn"},module:"HTML"},{concept:{name:"dt"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},x_=A_;Ga.default=x_;var Ya={};Object.defineProperty(Ya,"__esModule",{value:!0});Ya.default=void 0;var M_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-activedescendant":null,"aria-autocomplete":null,"aria-errormessage":null,"aria-haspopup":null,"aria-invalid":null,"aria-multiline":null,"aria-placeholder":null,"aria-readonly":null,"aria-required":null},relatedConcepts:[{concept:{attributes:[{constraints:["undefined"],name:"type"},{constraints:["undefined"],name:"list"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["undefined"],name:"list"},{name:"type",value:"email"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["undefined"],name:"list"},{name:"type",value:"tel"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["undefined"],name:"list"},{name:"type",value:"text"}],name:"input"},module:"HTML"},{concept:{attributes:[{constraints:["undefined"],name:"list"},{name:"type",value:"url"}],name:"input"},module:"HTML"},{concept:{name:"input"},module:"XForms"},{concept:{name:"textarea"},module:"HTML"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","input"]]},I_=M_;Ya.default=I_;var Ja={};Object.defineProperty(Ja,"__esModule",{value:!0});Ja.default=void 0;var B_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},j_=B_;Ja.default=j_;var Xa={};Object.defineProperty(Xa,"__esModule",{value:!0});Xa.default=void 0;var N_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","status"]]},D_=N_;Xa.default=D_;var Qa={};Object.defineProperty(Qa,"__esModule",{value:!0});Qa.default=void 0;var k_={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-orientation":"horizontal"},relatedConcepts:[{concept:{name:"menubar"},module:"ARIA"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","group"]]},L_=k_;Qa.default=L_;var Za={};Object.defineProperty(Za,"__esModule",{value:!0});Za.default=void 0;var F_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},U_=F_;Za.default=U_;var eo={};Object.defineProperty(eo,"__esModule",{value:!0});eo.default=void 0;var V_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-invalid":null,"aria-multiselectable":null,"aria-required":null,"aria-orientation":"vertical"},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["treeitem","group"],["treeitem"]],requiredProps:{},superClass:[["roletype","widget","composite","select"],["roletype","structure","section","group","select"]]},H_=V_;eo.default=H_;var to={};Object.defineProperty(to,"__esModule",{value:!0});to.default=void 0;var W_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["row"],["row","rowgroup"]],requiredProps:{},superClass:[["roletype","widget","composite","grid"],["roletype","structure","section","table","grid"],["roletype","widget","composite","select","tree"],["roletype","structure","section","group","select","tree"]]},z_=W_;to.default=z_;var ro={};Object.defineProperty(ro,"__esModule",{value:!0});ro.default=void 0;var K_={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-expanded":null,"aria-haspopup":null},relatedConcepts:[],requireContextRole:["group","tree"],requiredContextRole:["group","tree"],requiredOwnedElements:[],requiredProps:{"aria-selected":null},superClass:[["roletype","structure","section","listitem"],["roletype","widget","input","option"]]},G_=K_;ro.default=G_;Object.defineProperty($n,"__esModule",{value:!0});$n.default=void 0;var Y_=g(Tn),J_=g(qn),X_=g(An),Q_=g(xn),Z_=g(Mn),eR=g(In),tR=g(Bn),rR=g(jn),nR=g(Nn),aR=g(Dn),oR=g(kn),lR=g(Ln),iR=g(Fn),uR=g(Un),sR=g(Vn),cR=g(Hn),dR=g(Wn),fR=g(zn),pR=g(Kn),vR=g(Gn),yR=g(Yn),mR=g(Jn),bR=g(Xn),hR=g(Qn),gR=g(Zn),ER=g(ea),_R=g(ta),RR=g(ra),PR=g(na),wR=g(aa),CR=g(oa),OR=g(la),SR=g(ia),$R=g(ua),TR=g(sa),qR=g(ca),AR=g(da),xR=g(fa),MR=g(pa),IR=g(va),BR=g(ya),jR=g(ma),NR=g(ba),DR=g(ha),kR=g(ga),LR=g(Ea),FR=g(_a),UR=g(Ra),VR=g(Pa),HR=g(wa),WR=g(Ca),zR=g(Oa),KR=g(Sa),GR=g($a),YR=g(Ta),JR=g(qa),XR=g(Aa),QR=g(xa),ZR=g(Ma),eP=g(Ia),tP=g(Ba),rP=g(ja),nP=g(Na),aP=g(Da),oP=g(ka),lP=g(La),iP=g(Fa),uP=g(Ua),sP=g(Va),cP=g(Ha),dP=g(Wa),fP=g(za),pP=g(Ka),vP=g(Ga),yP=g(Ya),mP=g(Ja),bP=g(Xa),hP=g(Qa),gP=g(Za),EP=g(eo),_P=g(to),RP=g(ro);function g(e){return e&&e.__esModule?e:{default:e}}var PP=[["alert",Y_.default],["alertdialog",J_.default],["application",X_.default],["article",Q_.default],["banner",Z_.default],["blockquote",eR.default],["button",tR.default],["caption",rR.default],["cell",nR.default],["checkbox",aR.default],["code",oR.default],["columnheader",lR.default],["combobox",iR.default],["complementary",uR.default],["contentinfo",sR.default],["definition",cR.default],["deletion",dR.default],["dialog",fR.default],["directory",pR.default],["document",vR.default],["emphasis",yR.default],["feed",mR.default],["figure",bR.default],["form",hR.default],["generic",gR.default],["grid",ER.default],["gridcell",_R.default],["group",RR.default],["heading",PR.default],["img",wR.default],["insertion",CR.default],["link",OR.default],["list",SR.default],["listbox",$R.default],["listitem",TR.default],["log",qR.default],["main",AR.default],["marquee",xR.default],["math",MR.default],["menu",IR.default],["menubar",BR.default],["menuitem",jR.default],["menuitemcheckbox",NR.default],["menuitemradio",DR.default],["meter",kR.default],["navigation",LR.default],["none",FR.default],["note",UR.default],["option",VR.default],["paragraph",HR.default],["presentation",WR.default],["progressbar",zR.default],["radio",KR.default],["radiogroup",GR.default],["region",YR.default],["row",JR.default],["rowgroup",XR.default],["rowheader",QR.default],["scrollbar",ZR.default],["search",eP.default],["searchbox",tP.default],["separator",rP.default],["slider",nP.default],["spinbutton",aP.default],["status",oP.default],["strong",lP.default],["subscript",iP.default],["superscript",uP.default],["switch",sP.default],["tab",cP.default],["table",dP.default],["tablist",fP.default],["tabpanel",pP.default],["term",vP.default],["textbox",yP.default],["time",mP.default],["timer",bP.default],["toolbar",hP.default],["tooltip",gP.default],["tree",EP.default],["treegrid",_P.default],["treeitem",RP.default]],wP=PP;$n.default=wP;var no={},ao={};Object.defineProperty(ao,"__esModule",{value:!0});ao.default=void 0;var CP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"abstract [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},OP=CP;ao.default=OP;var oo={};Object.defineProperty(oo,"__esModule",{value:!0});oo.default=void 0;var SP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"acknowledgments [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},$P=SP;oo.default=$P;var lo={};Object.defineProperty(lo,"__esModule",{value:!0});lo.default=void 0;var TP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"afterword [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},qP=TP;lo.default=qP;var io={};Object.defineProperty(io,"__esModule",{value:!0});io.default=void 0;var AP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"appendix [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},xP=AP;io.default=xP;var uo={};Object.defineProperty(uo,"__esModule",{value:!0});uo.default=void 0;var MP={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","content"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"referrer [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","command","link"]]},IP=MP;uo.default=IP;var so={};Object.defineProperty(so,"__esModule",{value:!0});so.default=void 0;var BP={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"EPUB biblioentry [EPUB-SSV]"},module:"EPUB"}],requireContextRole:["doc-bibliography"],requiredContextRole:["doc-bibliography"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","listitem"]]},jP=BP;so.default=jP;var co={};Object.defineProperty(co,"__esModule",{value:!0});co.default=void 0;var NP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"bibliography [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["doc-biblioentry"]],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},DP=NP;co.default=DP;var fo={};Object.defineProperty(fo,"__esModule",{value:!0});fo.default=void 0;var kP={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"biblioref [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","command","link"]]},LP=kP;fo.default=LP;var po={};Object.defineProperty(po,"__esModule",{value:!0});po.default=void 0;var FP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"chapter [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},UP=FP;po.default=UP;var vo={};Object.defineProperty(vo,"__esModule",{value:!0});vo.default=void 0;var VP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"colophon [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},HP=VP;vo.default=HP;var yo={};Object.defineProperty(yo,"__esModule",{value:!0});yo.default=void 0;var WP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"conclusion [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},zP=WP;yo.default=zP;var mo={};Object.defineProperty(mo,"__esModule",{value:!0});mo.default=void 0;var KP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"cover [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","img"]]},GP=KP;mo.default=GP;var bo={};Object.defineProperty(bo,"__esModule",{value:!0});bo.default=void 0;var YP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"credit [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},JP=YP;bo.default=JP;var ho={};Object.defineProperty(ho,"__esModule",{value:!0});ho.default=void 0;var XP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"credits [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},QP=XP;ho.default=QP;var go={};Object.defineProperty(go,"__esModule",{value:!0});go.default=void 0;var ZP={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"dedication [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},ew=ZP;go.default=ew;var Eo={};Object.defineProperty(Eo,"__esModule",{value:!0});Eo.default=void 0;var tw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"rearnote [EPUB-SSV]"},module:"EPUB"}],requireContextRole:["doc-endnotes"],requiredContextRole:["doc-endnotes"],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","listitem"]]},rw=tw;Eo.default=rw;var _o={};Object.defineProperty(_o,"__esModule",{value:!0});_o.default=void 0;var nw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"rearnotes [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["doc-endnote"]],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},aw=nw;_o.default=aw;var Ro={};Object.defineProperty(Ro,"__esModule",{value:!0});Ro.default=void 0;var ow={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"epigraph [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},lw=ow;Ro.default=lw;var Po={};Object.defineProperty(Po,"__esModule",{value:!0});Po.default=void 0;var iw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"epilogue [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},uw=iw;Po.default=uw;var wo={};Object.defineProperty(wo,"__esModule",{value:!0});wo.default=void 0;var sw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"errata [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},cw=sw;wo.default=cw;var Co={};Object.defineProperty(Co,"__esModule",{value:!0});Co.default=void 0;var dw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},fw=dw;Co.default=fw;var Oo={};Object.defineProperty(Oo,"__esModule",{value:!0});Oo.default=void 0;var pw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"footnote [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},vw=pw;Oo.default=vw;var So={};Object.defineProperty(So,"__esModule",{value:!0});So.default=void 0;var yw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"foreword [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},mw=yw;So.default=mw;var $o={};Object.defineProperty($o,"__esModule",{value:!0});$o.default=void 0;var bw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"glossary [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[["definition"],["term"]],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},hw=bw;$o.default=hw;var To={};Object.defineProperty(To,"__esModule",{value:!0});To.default=void 0;var gw={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"glossref [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","command","link"]]},Ew=gw;To.default=Ew;var qo={};Object.defineProperty(qo,"__esModule",{value:!0});qo.default=void 0;var _w={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"index [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark","navigation"]]},Rw=_w;qo.default=Rw;var Ao={};Object.defineProperty(Ao,"__esModule",{value:!0});Ao.default=void 0;var Pw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"introduction [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},ww=Pw;Ao.default=ww;var xo={};Object.defineProperty(xo,"__esModule",{value:!0});xo.default=void 0;var Cw={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"noteref [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","widget","command","link"]]},Ow=Cw;xo.default=Ow;var Mo={};Object.defineProperty(Mo,"__esModule",{value:!0});Mo.default=void 0;var Sw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"notice [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","note"]]},$w=Sw;Mo.default=$w;var Io={};Object.defineProperty(Io,"__esModule",{value:!0});Io.default=void 0;var Tw={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"pagebreak [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","separator"]]},qw=Tw;Io.default=qw;var Bo={};Object.defineProperty(Bo,"__esModule",{value:!0});Bo.default=void 0;var Aw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"page-list [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark","navigation"]]},xw=Aw;Bo.default=xw;var jo={};Object.defineProperty(jo,"__esModule",{value:!0});jo.default=void 0;var Mw={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"part [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},Iw=Mw;jo.default=Iw;var No={};Object.defineProperty(No,"__esModule",{value:!0});No.default=void 0;var Bw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"preface [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},jw=Bw;No.default=jw;var Do={};Object.defineProperty(Do,"__esModule",{value:!0});Do.default=void 0;var Nw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"prologue [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark"]]},Dw=Nw;Do.default=Dw;var ko={};Object.defineProperty(ko,"__esModule",{value:!0});ko.default=void 0;var kw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{},relatedConcepts:[{concept:{name:"pullquote [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["none"]]},Lw=kw;ko.default=Lw;var Lo={};Object.defineProperty(Lo,"__esModule",{value:!0});Lo.default=void 0;var Fw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"qna [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section"]]},Uw=Fw;Lo.default=Uw;var Fo={};Object.defineProperty(Fo,"__esModule",{value:!0});Fo.default=void 0;var Vw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"subtitle [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","sectionhead"]]},Hw=Vw;Fo.default=Hw;var Uo={};Object.defineProperty(Uo,"__esModule",{value:!0});Uo.default=void 0;var Ww={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"help [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","note"]]},zw=Ww;Uo.default=zw;var Vo={};Object.defineProperty(Vo,"__esModule",{value:!0});Vo.default=void 0;var Kw={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{concept:{name:"toc [EPUB-SSV]"},module:"EPUB"}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","landmark","navigation"]]},Gw=Kw;Vo.default=Gw;Object.defineProperty(no,"__esModule",{value:!0});no.default=void 0;var Yw=$(ao),Jw=$(oo),Xw=$(lo),Qw=$(io),Zw=$(uo),eC=$(so),tC=$(co),rC=$(fo),nC=$(po),aC=$(vo),oC=$(yo),lC=$(mo),iC=$(bo),uC=$(ho),sC=$(go),cC=$(Eo),dC=$(_o),fC=$(Ro),pC=$(Po),vC=$(wo),yC=$(Co),mC=$(Oo),bC=$(So),hC=$($o),gC=$(To),EC=$(qo),_C=$(Ao),RC=$(xo),PC=$(Mo),wC=$(Io),CC=$(Bo),OC=$(jo),SC=$(No),$C=$(Do),TC=$(ko),qC=$(Lo),AC=$(Fo),xC=$(Uo),MC=$(Vo);function $(e){return e&&e.__esModule?e:{default:e}}var IC=[["doc-abstract",Yw.default],["doc-acknowledgments",Jw.default],["doc-afterword",Xw.default],["doc-appendix",Qw.default],["doc-backlink",Zw.default],["doc-biblioentry",eC.default],["doc-bibliography",tC.default],["doc-biblioref",rC.default],["doc-chapter",nC.default],["doc-colophon",aC.default],["doc-conclusion",oC.default],["doc-cover",lC.default],["doc-credit",iC.default],["doc-credits",uC.default],["doc-dedication",sC.default],["doc-endnote",cC.default],["doc-endnotes",dC.default],["doc-epigraph",fC.default],["doc-epilogue",pC.default],["doc-errata",vC.default],["doc-example",yC.default],["doc-footnote",mC.default],["doc-foreword",bC.default],["doc-glossary",hC.default],["doc-glossref",gC.default],["doc-index",EC.default],["doc-introduction",_C.default],["doc-noteref",RC.default],["doc-notice",PC.default],["doc-pagebreak",wC.default],["doc-pagelist",CC.default],["doc-part",OC.default],["doc-preface",SC.default],["doc-prologue",$C.default],["doc-pullquote",TC.default],["doc-qna",qC.default],["doc-subtitle",AC.default],["doc-tip",xC.default],["doc-toc",MC.default]],BC=IC;no.default=BC;var Ho={},Wo={};Object.defineProperty(Wo,"__esModule",{value:!0});Wo.default=void 0;var jC={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!1,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{module:"GRAPHICS",concept:{name:"graphics-object"}},{module:"ARIA",concept:{name:"img"}},{module:"ARIA",concept:{name:"article"}}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","document"]]},NC=jC;Wo.default=NC;var zo={};Object.defineProperty(zo,"__esModule",{value:!0});zo.default=void 0;var DC={abstract:!1,accessibleNameRequired:!1,baseConcepts:[],childrenPresentational:!1,nameFrom:["author","contents"],prohibitedProps:[],props:{"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[{module:"GRAPHICS",concept:{name:"graphics-document"}},{module:"ARIA",concept:{name:"group"}},{module:"ARIA",concept:{name:"img"}},{module:"GRAPHICS",concept:{name:"graphics-symbol"}}],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","group"]]},kC=DC;zo.default=kC;var Ko={};Object.defineProperty(Ko,"__esModule",{value:!0});Ko.default=void 0;var LC={abstract:!1,accessibleNameRequired:!0,baseConcepts:[],childrenPresentational:!0,nameFrom:["author"],prohibitedProps:[],props:{"aria-disabled":null,"aria-errormessage":null,"aria-expanded":null,"aria-haspopup":null,"aria-invalid":null},relatedConcepts:[],requireContextRole:[],requiredContextRole:[],requiredOwnedElements:[],requiredProps:{},superClass:[["roletype","structure","section","img"]]},FC=LC;Ko.default=FC;Object.defineProperty(Ho,"__esModule",{value:!0});Ho.default=void 0;var UC=lu(Wo),VC=lu(zo),HC=lu(Ko);function lu(e){return e&&e.__esModule?e:{default:e}}var WC=[["graphics-document",UC.default],["graphics-object",VC.default],["graphics-symbol",HC.default]],zC=WC;Ho.default=zC;Object.defineProperty(St,"__esModule",{value:!0});St.default=void 0;var KC=ur(yn),GC=ur($n),YC=ur(no),JC=ur(Ho),XC=ur(Ze);function ur(e){return e&&e.__esModule?e:{default:e}}function QC(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function fi(e,t){var r=typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=bf(e))||t&&e&&typeof e.length=="number"){r&&(e=r);var n=0,a=function(){};return{s:a,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(s){throw s},f:a}}throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}var o=!0,l=!1,u;return{s:function(){r=r.call(e)},n:function(){var s=r.next();return o=s.done,s},e:function(s){l=!0,u=s},f:function(){try{!o&&r.return!=null&&r.return()}finally{if(l)throw u}}}}function Ft(e,t){return tO(e)||eO(e,t)||bf(e,t)||ZC()}function ZC(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function bf(e,t){if(!!e){if(typeof e=="string")return _s(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);if(r==="Object"&&e.constructor&&(r=e.constructor.name),r==="Map"||r==="Set")return Array.from(e);if(r==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return _s(e,t)}}function _s(e,t){(t==null||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function eO(e,t){var r=e==null?null:typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(r!=null){var n=[],a=!0,o=!1,l,u;try{for(r=r.call(e);!(a=(l=r.next()).done)&&(n.push(l.value),!(t&&n.length===t));a=!0);}catch(i){o=!0,u=i}finally{try{!a&&r.return!=null&&r.return()}finally{if(o)throw u}}return n}}function tO(e){if(Array.isArray(e))return e}var $e=[].concat(KC.default,GC.default,YC.default,JC.default);$e.forEach(function(e){var t=Ft(e,2),r=t[1],n=fi(r.superClass),a;try{for(n.s();!(a=n.n()).done;){var o=a.value,l=fi(o),u;try{var i=function(){var d=u.value,f=$e.find(function(S){var v=Ft(S,1),b=v[0];return b===d});if(f)for(var p=f[1],m=0,C=Object.keys(p.props);m<C.length;m++){var R=C[m];Object.prototype.hasOwnProperty.call(r.props,R)||Object.assign(r.props,QC({},R,p.props[R]))}};for(l.s();!(u=l.n()).done;)i()}catch(s){l.e(s)}finally{l.f()}}}catch(s){n.e(s)}finally{n.f()}});var pi={entries:function(){return $e},forEach:function(t){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:null,n=fi($e),a;try{for(n.s();!(a=n.n()).done;){var o=Ft(a.value,2),l=o[0],u=o[1];t.call(r,u,l,$e)}}catch(i){n.e(i)}finally{n.f()}},get:function(t){var r=$e.find(function(n){return n[0]===t});return r&&r[1]},has:function(t){return!!pi.get(t)},keys:function(){return $e.map(function(t){var r=Ft(t,1),n=r[0];return n})},values:function(){return $e.map(function(t){var r=Ft(t,2),n=r[1];return n})}},rO=(0,XC.default)(pi,pi.entries());St.default=rO;var Go={},Rs=Object.prototype.toString,hf=function(t){var r=Rs.call(t),n=r==="[object Arguments]";return n||(n=r!=="[object Array]"&&t!==null&&typeof t=="object"&&typeof t.length=="number"&&t.length>=0&&Rs.call(t.callee)==="[object Function]"),n},wl,Ps;function nO(){if(Ps)return wl;Ps=1;var e;if(!Object.keys){var t=Object.prototype.hasOwnProperty,r=Object.prototype.toString,n=hf,a=Object.prototype.propertyIsEnumerable,o=!a.call({toString:null},"toString"),l=a.call(function(){},"prototype"),u=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"],i=function(p){var m=p.constructor;return m&&m.prototype===p},s={$applicationCache:!0,$console:!0,$external:!0,$frame:!0,$frameElement:!0,$frames:!0,$innerHeight:!0,$innerWidth:!0,$onmozfullscreenchange:!0,$onmozfullscreenerror:!0,$outerHeight:!0,$outerWidth:!0,$pageXOffset:!0,$pageYOffset:!0,$parent:!0,$scrollLeft:!0,$scrollTop:!0,$scrollX:!0,$scrollY:!0,$self:!0,$webkitIndexedDB:!0,$webkitStorageInfo:!0,$window:!0},d=function(){if(typeof window>"u")return!1;for(var p in window)try{if(!s["$"+p]&&t.call(window,p)&&window[p]!==null&&typeof window[p]=="object")try{i(window[p])}catch{return!0}}catch{return!0}return!1}(),f=function(p){if(typeof window>"u"||!d)return i(p);try{return i(p)}catch{return!1}};e=function(m){var C=m!==null&&typeof m=="object",R=r.call(m)==="[object Function]",S=n(m),v=C&&r.call(m)==="[object String]",b=[];if(!C&&!R&&!S)throw new TypeError("Object.keys called on a non-object");var P=l&&R;if(v&&m.length>0&&!t.call(m,0))for(var w=0;w<m.length;++w)b.push(String(w));if(S&&m.length>0)for(var O=0;O<m.length;++O)b.push(String(O));else for(var y in m)!(P&&y==="prototype")&&t.call(m,y)&&b.push(String(y));if(o)for(var h=f(m),E=0;E<u.length;++E)!(h&&u[E]==="constructor")&&t.call(m,u[E])&&b.push(u[E]);return b}}return wl=e,wl}var aO=Array.prototype.slice,oO=hf,ws=Object.keys,qr=ws?function(t){return ws(t)}:nO(),Cs=Object.keys;qr.shim=function(){if(Object.keys){var t=function(){var r=Object.keys(arguments);return r&&r.length===arguments.length}(1,2);t||(Object.keys=function(n){return oO(n)?Cs(aO.call(n)):Cs(n)})}else Object.keys=qr;return Object.keys||qr};var iu=qr,Yo=function(){if(typeof Symbol!="function"||typeof Object.getOwnPropertySymbols!="function")return!1;if(typeof Symbol.iterator=="symbol")return!0;var t={},r=Symbol("test"),n=Object(r);if(typeof r=="string"||Object.prototype.toString.call(r)!=="[object Symbol]"||Object.prototype.toString.call(n)!=="[object Symbol]")return!1;var a=42;t[r]=a;for(r in t)return!1;if(typeof Object.keys=="function"&&Object.keys(t).length!==0||typeof Object.getOwnPropertyNames=="function"&&Object.getOwnPropertyNames(t).length!==0)return!1;var o=Object.getOwnPropertySymbols(t);if(o.length!==1||o[0]!==r||!Object.prototype.propertyIsEnumerable.call(t,r))return!1;if(typeof Object.getOwnPropertyDescriptor=="function"){var l=Object.getOwnPropertyDescriptor(t,r);if(l.value!==a||l.enumerable!==!0)return!1}return!0},Os=typeof Symbol<"u"&&Symbol,lO=Yo,uu=function(){return typeof Os!="function"||typeof Symbol!="function"||typeof Os("foo")!="symbol"||typeof Symbol("bar")!="symbol"?!1:lO()},iO="Function.prototype.bind called on incompatible ",Cl=Array.prototype.slice,uO=Object.prototype.toString,sO="[object Function]",cO=function(t){var r=this;if(typeof r!="function"||uO.call(r)!==sO)throw new TypeError(iO+r);for(var n=Cl.call(arguments,1),a,o=function(){if(this instanceof a){var d=r.apply(this,n.concat(Cl.call(arguments)));return Object(d)===d?d:this}else return r.apply(t,n.concat(Cl.call(arguments)))},l=Math.max(0,r.length-n.length),u=[],i=0;i<l;i++)u.push("$"+i);if(a=Function("binder","return function ("+u.join(",")+"){ return binder.apply(this,arguments); }")(o),r.prototype){var s=function(){};s.prototype=r.prototype,a.prototype=new s,s.prototype=null}return a},dO=cO,su=Function.prototype.bind||dO,fO=su,gf=fO.call(Function.call,Object.prototype.hasOwnProperty),T,_t=SyntaxError,Ef=Function,mt=TypeError,Ol=function(e){try{return Ef('"use strict"; return ('+e+").constructor;")()}catch{}},Ge=Object.getOwnPropertyDescriptor;if(Ge)try{Ge({},"")}catch{Ge=null}var Sl=function(){throw new mt},pO=Ge?function(){try{return arguments.callee,Sl}catch{try{return Ge(arguments,"callee").get}catch{return Sl}}}():Sl,dt=uu(),Te=Object.getPrototypeOf||function(e){return e.__proto__},pt={},vO=typeof Uint8Array>"u"?T:Te(Uint8Array),bt={"%AggregateError%":typeof AggregateError>"u"?T:AggregateError,"%Array%":Array,"%ArrayBuffer%":typeof ArrayBuffer>"u"?T:ArrayBuffer,"%ArrayIteratorPrototype%":dt?Te([][Symbol.iterator]()):T,"%AsyncFromSyncIteratorPrototype%":T,"%AsyncFunction%":pt,"%AsyncGenerator%":pt,"%AsyncGeneratorFunction%":pt,"%AsyncIteratorPrototype%":pt,"%Atomics%":typeof Atomics>"u"?T:Atomics,"%BigInt%":typeof BigInt>"u"?T:BigInt,"%Boolean%":Boolean,"%DataView%":typeof DataView>"u"?T:DataView,"%Date%":Date,"%decodeURI%":decodeURI,"%decodeURIComponent%":decodeURIComponent,"%encodeURI%":encodeURI,"%encodeURIComponent%":encodeURIComponent,"%Error%":Error,"%eval%":eval,"%EvalError%":EvalError,"%Float32Array%":typeof Float32Array>"u"?T:Float32Array,"%Float64Array%":typeof Float64Array>"u"?T:Float64Array,"%FinalizationRegistry%":typeof FinalizationRegistry>"u"?T:FinalizationRegistry,"%Function%":Ef,"%GeneratorFunction%":pt,"%Int8Array%":typeof Int8Array>"u"?T:Int8Array,"%Int16Array%":typeof Int16Array>"u"?T:Int16Array,"%Int32Array%":typeof Int32Array>"u"?T:Int32Array,"%isFinite%":isFinite,"%isNaN%":isNaN,"%IteratorPrototype%":dt?Te(Te([][Symbol.iterator]())):T,"%JSON%":typeof JSON=="object"?JSON:T,"%Map%":typeof Map>"u"?T:Map,"%MapIteratorPrototype%":typeof Map>"u"||!dt?T:Te(new Map()[Symbol.iterator]()),"%Math%":Math,"%Number%":Number,"%Object%":Object,"%parseFloat%":parseFloat,"%parseInt%":parseInt,"%Promise%":typeof Promise>"u"?T:Promise,"%Proxy%":typeof Proxy>"u"?T:Proxy,"%RangeError%":RangeError,"%ReferenceError%":ReferenceError,"%Reflect%":typeof Reflect>"u"?T:Reflect,"%RegExp%":RegExp,"%Set%":typeof Set>"u"?T:Set,"%SetIteratorPrototype%":typeof Set>"u"||!dt?T:Te(new Set()[Symbol.iterator]()),"%SharedArrayBuffer%":typeof SharedArrayBuffer>"u"?T:SharedArrayBuffer,"%String%":String,"%StringIteratorPrototype%":dt?Te(""[Symbol.iterator]()):T,"%Symbol%":dt?Symbol:T,"%SyntaxError%":_t,"%ThrowTypeError%":pO,"%TypedArray%":vO,"%TypeError%":mt,"%Uint8Array%":typeof Uint8Array>"u"?T:Uint8Array,"%Uint8ClampedArray%":typeof Uint8ClampedArray>"u"?T:Uint8ClampedArray,"%Uint16Array%":typeof Uint16Array>"u"?T:Uint16Array,"%Uint32Array%":typeof Uint32Array>"u"?T:Uint32Array,"%URIError%":URIError,"%WeakMap%":typeof WeakMap>"u"?T:WeakMap,"%WeakRef%":typeof WeakRef>"u"?T:WeakRef,"%WeakSet%":typeof WeakSet>"u"?T:WeakSet},yO=function e(t){var r;if(t==="%AsyncFunction%")r=Ol("async function () {}");else if(t==="%GeneratorFunction%")r=Ol("function* () {}");else if(t==="%AsyncGeneratorFunction%")r=Ol("async function* () {}");else if(t==="%AsyncGenerator%"){var n=e("%AsyncGeneratorFunction%");n&&(r=n.prototype)}else if(t==="%AsyncIteratorPrototype%"){var a=e("%AsyncGenerator%");a&&(r=Te(a.prototype))}return bt[t]=r,r},Ss={"%ArrayBufferPrototype%":["ArrayBuffer","prototype"],"%ArrayPrototype%":["Array","prototype"],"%ArrayProto_entries%":["Array","prototype","entries"],"%ArrayProto_forEach%":["Array","prototype","forEach"],"%ArrayProto_keys%":["Array","prototype","keys"],"%ArrayProto_values%":["Array","prototype","values"],"%AsyncFunctionPrototype%":["AsyncFunction","prototype"],"%AsyncGenerator%":["AsyncGeneratorFunction","prototype"],"%AsyncGeneratorPrototype%":["AsyncGeneratorFunction","prototype","prototype"],"%BooleanPrototype%":["Boolean","prototype"],"%DataViewPrototype%":["DataView","prototype"],"%DatePrototype%":["Date","prototype"],"%ErrorPrototype%":["Error","prototype"],"%EvalErrorPrototype%":["EvalError","prototype"],"%Float32ArrayPrototype%":["Float32Array","prototype"],"%Float64ArrayPrototype%":["Float64Array","prototype"],"%FunctionPrototype%":["Function","prototype"],"%Generator%":["GeneratorFunction","prototype"],"%GeneratorPrototype%":["GeneratorFunction","prototype","prototype"],"%Int8ArrayPrototype%":["Int8Array","prototype"],"%Int16ArrayPrototype%":["Int16Array","prototype"],"%Int32ArrayPrototype%":["Int32Array","prototype"],"%JSONParse%":["JSON","parse"],"%JSONStringify%":["JSON","stringify"],"%MapPrototype%":["Map","prototype"],"%NumberPrototype%":["Number","prototype"],"%ObjectPrototype%":["Object","prototype"],"%ObjProto_toString%":["Object","prototype","toString"],"%ObjProto_valueOf%":["Object","prototype","valueOf"],"%PromisePrototype%":["Promise","prototype"],"%PromiseProto_then%":["Promise","prototype","then"],"%Promise_all%":["Promise","all"],"%Promise_reject%":["Promise","reject"],"%Promise_resolve%":["Promise","resolve"],"%RangeErrorPrototype%":["RangeError","prototype"],"%ReferenceErrorPrototype%":["ReferenceError","prototype"],"%RegExpPrototype%":["RegExp","prototype"],"%SetPrototype%":["Set","prototype"],"%SharedArrayBufferPrototype%":["SharedArrayBuffer","prototype"],"%StringPrototype%":["String","prototype"],"%SymbolPrototype%":["Symbol","prototype"],"%SyntaxErrorPrototype%":["SyntaxError","prototype"],"%TypedArrayPrototype%":["TypedArray","prototype"],"%TypeErrorPrototype%":["TypeError","prototype"],"%Uint8ArrayPrototype%":["Uint8Array","prototype"],"%Uint8ClampedArrayPrototype%":["Uint8ClampedArray","prototype"],"%Uint16ArrayPrototype%":["Uint16Array","prototype"],"%Uint32ArrayPrototype%":["Uint32Array","prototype"],"%URIErrorPrototype%":["URIError","prototype"],"%WeakMapPrototype%":["WeakMap","prototype"],"%WeakSetPrototype%":["WeakSet","prototype"]},sr=su,Vr=gf,mO=sr.call(Function.call,Array.prototype.concat),bO=sr.call(Function.apply,Array.prototype.splice),$s=sr.call(Function.call,String.prototype.replace),Hr=sr.call(Function.call,String.prototype.slice),hO=sr.call(Function.call,RegExp.prototype.exec),gO=/[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g,EO=/\\(\\)?/g,_O=function(t){var r=Hr(t,0,1),n=Hr(t,-1);if(r==="%"&&n!=="%")throw new _t("invalid intrinsic syntax, expected closing `%`");if(n==="%"&&r!=="%")throw new _t("invalid intrinsic syntax, expected opening `%`");var a=[];return $s(t,gO,function(o,l,u,i){a[a.length]=u?$s(i,EO,"$1"):l||o}),a},RO=function(t,r){var n=t,a;if(Vr(Ss,n)&&(a=Ss[n],n="%"+a[0]+"%"),Vr(bt,n)){var o=bt[n];if(o===pt&&(o=yO(n)),typeof o>"u"&&!r)throw new mt("intrinsic "+t+" exists, but is not available. Please file an issue!");return{alias:a,name:n,value:o}}throw new _t("intrinsic "+t+" does not exist!")},ve=function(t,r){if(typeof t!="string"||t.length===0)throw new mt("intrinsic name must be a non-empty string");if(arguments.length>1&&typeof r!="boolean")throw new mt('"allowMissing" argument must be a boolean');if(hO(/^%?[^%]*%?$/,t)===null)throw new _t("`%` may not be present anywhere but at the beginning and end of the intrinsic name");var n=_O(t),a=n.length>0?n[0]:"",o=RO("%"+a+"%",r),l=o.name,u=o.value,i=!1,s=o.alias;s&&(a=s[0],bO(n,mO([0,1],s)));for(var d=1,f=!0;d<n.length;d+=1){var p=n[d],m=Hr(p,0,1),C=Hr(p,-1);if((m==='"'||m==="'"||m==="`"||C==='"'||C==="'"||C==="`")&&m!==C)throw new _t("property names with quotes must have matching quotes");if((p==="constructor"||!f)&&(i=!0),a+="."+p,l="%"+a+"%",Vr(bt,l))u=bt[l];else if(u!=null){if(!(p in u)){if(!r)throw new mt("base intrinsic for "+t+" exists, but the property is not available.");return}if(Ge&&d+1>=n.length){var R=Ge(u,p);f=!!R,f&&"get"in R&&!("originalValue"in R.get)?u=R.get:u=u[p]}else f=Vr(u,p),u=u[p];f&&!i&&(bt[l]=u)}}return u},PO=ve,vi=PO("%Object.defineProperty%",!0),yi=function(){if(vi)try{return vi({},"a",{value:1}),!0}catch{return!1}return!1};yi.hasArrayLengthDefineBug=function(){if(!yi())return null;try{return vi([],"length",{value:1}).length!==1}catch{return!0}};var wO=yi,CO=iu,OO=typeof Symbol=="function"&&typeof Symbol("foo")=="symbol",SO=Object.prototype.toString,$O=Array.prototype.concat,_f=Object.defineProperty,TO=function(e){return typeof e=="function"&&SO.call(e)==="[object Function]"},qO=wO(),Rf=_f&&qO,AO=function(e,t,r,n){t in e&&(!TO(n)||!n())||(Rf?_f(e,t,{configurable:!0,enumerable:!1,value:r,writable:!0}):e[t]=r)},Pf=function(e,t){var r=arguments.length>2?arguments[2]:{},n=CO(t);OO&&(n=$O.call(n,Object.getOwnPropertySymbols(t)));for(var a=0;a<n.length;a+=1)AO(e,n[a],t[n[a]],r[n[a]])};Pf.supportsDescriptors=!!Rf;var et=Pf,$t={exports:{}};(function(e){var t=su,r=ve,n=r("%Function.prototype.apply%"),a=r("%Function.prototype.call%"),o=r("%Reflect.apply%",!0)||t.call(a,n),l=r("%Object.getOwnPropertyDescriptor%",!0),u=r("%Object.defineProperty%",!0),i=r("%Math.max%");if(u)try{u({},"a",{value:1})}catch{u=null}e.exports=function(f){var p=o(t,a,arguments);if(l&&u){var m=l(p,"length");m.configurable&&u(p,"length",{value:1+i(0,f.length-(arguments.length-1))})}return p};var s=function(){return o(t,n,arguments)};u?u(e.exports,"apply",{value:s}):e.exports.apply=s})($t);var wf=ve,Cf=$t.exports,xO=Cf(wf("String.prototype.indexOf")),ee=function(t,r){var n=wf(t,!!r);return typeof n=="function"&&xO(t,".prototype.")>-1?Cf(n):n},MO=iu,Of=Yo(),Sf=ee,Ts=Object,IO=Sf("Array.prototype.push"),qs=Sf("Object.prototype.propertyIsEnumerable"),BO=Of?Object.getOwnPropertySymbols:null,$f=function(t,r){if(t==null)throw new TypeError("target must be an object");var n=Ts(t);if(arguments.length===1)return n;for(var a=1;a<arguments.length;++a){var o=Ts(arguments[a]),l=MO(o),u=Of&&(Object.getOwnPropertySymbols||BO);if(u)for(var i=u(o),s=0;s<i.length;++s){var d=i[s];qs(o,d)&&IO(l,d)}for(var f=0;f<l.length;++f){var p=l[f];if(qs(o,p)){var m=o[p];n[p]=m}}}return n},$l=$f,jO=function(){if(!Object.assign)return!1;for(var e="abcdefghijklmnopqrst",t=e.split(""),r={},n=0;n<t.length;++n)r[t[n]]=t[n];var a=Object.assign({},r),o="";for(var l in a)o+=l;return e!==o},NO=function(){if(!Object.assign||!Object.preventExtensions)return!1;var e=Object.preventExtensions({1:2});try{Object.assign(e,"xy")}catch{return e[1]==="y"}return!1},Tf=function(){return!Object.assign||jO()||NO()?$l:Object.assign},DO=et,kO=Tf,LO=function(){var t=kO();return DO(Object,{assign:t},{assign:function(){return Object.assign!==t}}),t},FO=et,UO=$t.exports,VO=$f,qf=Tf,HO=LO,WO=UO.apply(qf()),Af=function(t,r){return WO(Object,arguments)};FO(Af,{getPolyfill:qf,implementation:VO,shim:HO});var zO=Af,cu={exports:{}},Yt=function(){return typeof function(){}.name=="string"},Ut=Object.getOwnPropertyDescriptor;if(Ut)try{Ut([],"length")}catch{Ut=null}Yt.functionsHaveConfigurableNames=function(){if(!Yt()||!Ut)return!1;var t=Ut(function(){},"name");return!!t&&!!t.configurable};var KO=Function.prototype.bind;Yt.boundFunctionsHaveNames=function(){return Yt()&&typeof KO=="function"&&function(){}.bind().name!==""};var GO=Yt;(function(e){var t=GO.functionsHaveConfigurableNames(),r=Object,n=TypeError;e.exports=function(){if(this!=null&&this!==r(this))throw new n("RegExp.prototype.flags getter called on non-object");var o="";return this.hasIndices&&(o+="d"),this.global&&(o+="g"),this.ignoreCase&&(o+="i"),this.multiline&&(o+="m"),this.dotAll&&(o+="s"),this.unicode&&(o+="u"),this.sticky&&(o+="y"),o},t&&Object.defineProperty&&Object.defineProperty(e.exports,"name",{value:"get flags"})})(cu);var YO=cu.exports,JO=et.supportsDescriptors,XO=Object.getOwnPropertyDescriptor,xf=function(){if(JO&&/a/mig.flags==="gim"){var t=XO(RegExp.prototype,"flags");if(t&&typeof t.get=="function"&&typeof RegExp.prototype.dotAll=="boolean"&&typeof RegExp.prototype.hasIndices=="boolean"){var r="",n={};if(Object.defineProperty(n,"hasIndices",{get:function(){r+="d"}}),Object.defineProperty(n,"sticky",{get:function(){r+="y"}}),r==="dy")return t.get}}return YO},QO=et.supportsDescriptors,ZO=xf,e0=Object.getOwnPropertyDescriptor,t0=Object.defineProperty,r0=TypeError,As=Object.getPrototypeOf,n0=/a/,a0=function(){if(!QO||!As)throw new r0("RegExp.prototype.flags requires a true ES5 environment that supports property descriptors");var t=ZO(),r=As(n0),n=e0(r,"flags");return(!n||n.get!==t)&&t0(r,"flags",{configurable:!0,enumerable:!1,get:t}),t},o0=et,l0=$t.exports,i0=cu.exports,Mf=xf,u0=a0,If=l0(Mf());o0(If,{getPolyfill:Mf,implementation:i0,shim:u0});var s0=If,Ar={exports:{}},c0=Yo,Ve=function(){return c0()&&!!Symbol.toStringTag},d0=Ve(),f0=ee,mi=f0("Object.prototype.toString"),Jo=function(t){return d0&&t&&typeof t=="object"&&Symbol.toStringTag in t?!1:mi(t)==="[object Arguments]"},Bf=function(t){return Jo(t)?!0:t!==null&&typeof t=="object"&&typeof t.length=="number"&&t.length>=0&&mi(t)!=="[object Array]"&&mi(t.callee)==="[object Function]"},p0=function(){return Jo(arguments)}();Jo.isLegacyArguments=Bf;var jf=p0?Jo:Bf;const v0={},y0=Object.freeze(Object.defineProperty({__proto__:null,default:v0},Symbol.toStringTag,{value:"Module"})),m0=yd(y0);var du=typeof Map=="function"&&Map.prototype,Tl=Object.getOwnPropertyDescriptor&&du?Object.getOwnPropertyDescriptor(Map.prototype,"size"):null,Wr=du&&Tl&&typeof Tl.get=="function"?Tl.get:null,b0=du&&Map.prototype.forEach,fu=typeof Set=="function"&&Set.prototype,ql=Object.getOwnPropertyDescriptor&&fu?Object.getOwnPropertyDescriptor(Set.prototype,"size"):null,zr=fu&&ql&&typeof ql.get=="function"?ql.get:null,h0=fu&&Set.prototype.forEach,g0=typeof WeakMap=="function"&&WeakMap.prototype,Vt=g0?WeakMap.prototype.has:null,E0=typeof WeakSet=="function"&&WeakSet.prototype,Ht=E0?WeakSet.prototype.has:null,_0=typeof WeakRef=="function"&&WeakRef.prototype,xs=_0?WeakRef.prototype.deref:null,R0=Boolean.prototype.valueOf,P0=Object.prototype.toString,w0=Function.prototype.toString,C0=String.prototype.match,pu=String.prototype.slice,Me=String.prototype.replace,O0=String.prototype.toUpperCase,Ms=String.prototype.toLowerCase,Nf=RegExp.prototype.test,Is=Array.prototype.concat,fe=Array.prototype.join,S0=Array.prototype.slice,Bs=Math.floor,bi=typeof BigInt=="function"?BigInt.prototype.valueOf:null,Al=Object.getOwnPropertySymbols,hi=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?Symbol.prototype.toString:null,Rt=typeof Symbol=="function"&&typeof Symbol.iterator=="object",V=typeof Symbol=="function"&&Symbol.toStringTag&&(typeof Symbol.toStringTag===Rt?"object":"symbol")?Symbol.toStringTag:null,Df=Object.prototype.propertyIsEnumerable,js=(typeof Reflect=="function"?Reflect.getPrototypeOf:Object.getPrototypeOf)||([].__proto__===Array.prototype?function(e){return e.__proto__}:null);function Ns(e,t){if(e===1/0||e===-1/0||e!==e||e&&e>-1e3&&e<1e3||Nf.call(/e/,t))return t;var r=/[0-9](?=(?:[0-9]{3})+(?![0-9]))/g;if(typeof e=="number"){var n=e<0?-Bs(-e):Bs(e);if(n!==e){var a=String(n),o=pu.call(t,a.length+1);return Me.call(a,r,"$&_")+"."+Me.call(Me.call(o,/([0-9]{3})/g,"$&_"),/_$/,"")}}return Me.call(t,r,"$&_")}var gi=m0,Ds=gi.custom,ks=Lf(Ds)?Ds:null,$0=function e(t,r,n,a){var o=r||{};if(qe(o,"quoteStyle")&&o.quoteStyle!=="single"&&o.quoteStyle!=="double")throw new TypeError('option "quoteStyle" must be "single" or "double"');if(qe(o,"maxStringLength")&&(typeof o.maxStringLength=="number"?o.maxStringLength<0&&o.maxStringLength!==1/0:o.maxStringLength!==null))throw new TypeError('option "maxStringLength", if provided, must be a positive integer, Infinity, or `null`');var l=qe(o,"customInspect")?o.customInspect:!0;if(typeof l!="boolean"&&l!=="symbol")throw new TypeError("option \"customInspect\", if provided, must be `true`, `false`, or `'symbol'`");if(qe(o,"indent")&&o.indent!==null&&o.indent!=="	"&&!(parseInt(o.indent,10)===o.indent&&o.indent>0))throw new TypeError('option "indent" must be "\\t", an integer > 0, or `null`');if(qe(o,"numericSeparator")&&typeof o.numericSeparator!="boolean")throw new TypeError('option "numericSeparator", if provided, must be `true` or `false`');var u=o.numericSeparator;if(typeof t>"u")return"undefined";if(t===null)return"null";if(typeof t=="boolean")return t?"true":"false";if(typeof t=="string")return Uf(t,o);if(typeof t=="number"){if(t===0)return 1/0/t>0?"0":"-0";var i=String(t);return u?Ns(t,i):i}if(typeof t=="bigint"){var s=String(t)+"n";return u?Ns(t,s):s}var d=typeof o.depth>"u"?5:o.depth;if(typeof n>"u"&&(n=0),n>=d&&d>0&&typeof t=="object")return Ei(t)?"[Array]":"[Object]";var f=z0(o,n);if(typeof a>"u")a=[];else if(Ff(a,t)>=0)return"[Circular]";function p(H,ce,lt){if(ce&&(a=S0.call(a),a.push(ce)),lt){var It={depth:o.depth};return qe(o,"quoteStyle")&&(It.quoteStyle=o.quoteStyle),e(H,It,n+1,a)}return e(H,o,n+1,a)}if(typeof t=="function"&&!Ls(t)){var m=N0(t),C=Rr(t,p);return"[Function"+(m?": "+m:" (anonymous)")+"]"+(C.length>0?" { "+fe.call(C,", ")+" }":"")}if(Lf(t)){var R=Rt?Me.call(String(t),/^(Symbol\(.*\))_[^)]*$/,"$1"):hi.call(t);return typeof t=="object"&&!Rt?jt(R):R}if(V0(t)){for(var S="<"+Ms.call(String(t.nodeName)),v=t.attributes||[],b=0;b<v.length;b++)S+=" "+v[b].name+"="+kf(T0(v[b].value),"double",o);return S+=">",t.childNodes&&t.childNodes.length&&(S+="..."),S+="</"+Ms.call(String(t.nodeName))+">",S}if(Ei(t)){if(t.length===0)return"[]";var P=Rr(t,p);return f&&!W0(P)?"["+_i(P,f)+"]":"[ "+fe.call(P,", ")+" ]"}if(A0(t)){var w=Rr(t,p);return!("cause"in Error.prototype)&&"cause"in t&&!Df.call(t,"cause")?"{ ["+String(t)+"] "+fe.call(Is.call("[cause]: "+p(t.cause),w),", ")+" }":w.length===0?"["+String(t)+"]":"{ ["+String(t)+"] "+fe.call(w,", ")+" }"}if(typeof t=="object"&&l){if(ks&&typeof t[ks]=="function"&&gi)return gi(t,{depth:d-n});if(l!=="symbol"&&typeof t.inspect=="function")return t.inspect()}if(D0(t)){var O=[];return b0.call(t,function(H,ce){O.push(p(ce,t,!0)+" => "+p(H,t))}),Fs("Map",Wr.call(t),O,f)}if(F0(t)){var y=[];return h0.call(t,function(H){y.push(p(H,t))}),Fs("Set",zr.call(t),y,f)}if(k0(t))return xl("WeakMap");if(U0(t))return xl("WeakSet");if(L0(t))return xl("WeakRef");if(M0(t))return jt(p(Number(t)));if(B0(t))return jt(p(bi.call(t)));if(I0(t))return jt(R0.call(t));if(x0(t))return jt(p(String(t)));if(!q0(t)&&!Ls(t)){var h=Rr(t,p),E=js?js(t)===Object.prototype:t instanceof Object||t.constructor===Object,I=t instanceof Object?"":"null prototype",c=!E&&V&&Object(t)===t&&V in t?pu.call(He(t),8,-1):I?"Object":"",te=E||typeof t.constructor!="function"?"":t.constructor.name?t.constructor.name+" ":"",se=te+(c||I?"["+fe.call(Is.call([],c||[],I||[]),": ")+"] ":"");return h.length===0?se+"{}":f?se+"{"+_i(h,f)+"}":se+"{ "+fe.call(h,", ")+" }"}return String(t)};function kf(e,t,r){var n=(r.quoteStyle||t)==="double"?'"':"'";return n+e+n}function T0(e){return Me.call(String(e),/"/g,"&quot;")}function Ei(e){return He(e)==="[object Array]"&&(!V||!(typeof e=="object"&&V in e))}function q0(e){return He(e)==="[object Date]"&&(!V||!(typeof e=="object"&&V in e))}function Ls(e){return He(e)==="[object RegExp]"&&(!V||!(typeof e=="object"&&V in e))}function A0(e){return He(e)==="[object Error]"&&(!V||!(typeof e=="object"&&V in e))}function x0(e){return He(e)==="[object String]"&&(!V||!(typeof e=="object"&&V in e))}function M0(e){return He(e)==="[object Number]"&&(!V||!(typeof e=="object"&&V in e))}function I0(e){return He(e)==="[object Boolean]"&&(!V||!(typeof e=="object"&&V in e))}function Lf(e){if(Rt)return e&&typeof e=="object"&&e instanceof Symbol;if(typeof e=="symbol")return!0;if(!e||typeof e!="object"||!hi)return!1;try{return hi.call(e),!0}catch{}return!1}function B0(e){if(!e||typeof e!="object"||!bi)return!1;try{return bi.call(e),!0}catch{}return!1}var j0=Object.prototype.hasOwnProperty||function(e){return e in this};function qe(e,t){return j0.call(e,t)}function He(e){return P0.call(e)}function N0(e){if(e.name)return e.name;var t=C0.call(w0.call(e),/^function\s*([\w$]+)/);return t?t[1]:null}function Ff(e,t){if(e.indexOf)return e.indexOf(t);for(var r=0,n=e.length;r<n;r++)if(e[r]===t)return r;return-1}function D0(e){if(!Wr||!e||typeof e!="object")return!1;try{Wr.call(e);try{zr.call(e)}catch{return!0}return e instanceof Map}catch{}return!1}function k0(e){if(!Vt||!e||typeof e!="object")return!1;try{Vt.call(e,Vt);try{Ht.call(e,Ht)}catch{return!0}return e instanceof WeakMap}catch{}return!1}function L0(e){if(!xs||!e||typeof e!="object")return!1;try{return xs.call(e),!0}catch{}return!1}function F0(e){if(!zr||!e||typeof e!="object")return!1;try{zr.call(e);try{Wr.call(e)}catch{return!0}return e instanceof Set}catch{}return!1}function U0(e){if(!Ht||!e||typeof e!="object")return!1;try{Ht.call(e,Ht);try{Vt.call(e,Vt)}catch{return!0}return e instanceof WeakSet}catch{}return!1}function V0(e){return!e||typeof e!="object"?!1:typeof HTMLElement<"u"&&e instanceof HTMLElement?!0:typeof e.nodeName=="string"&&typeof e.getAttribute=="function"}function Uf(e,t){if(e.length>t.maxStringLength){var r=e.length-t.maxStringLength,n="... "+r+" more character"+(r>1?"s":"");return Uf(pu.call(e,0,t.maxStringLength),t)+n}var a=Me.call(Me.call(e,/(['\\])/g,"\\$1"),/[\x00-\x1f]/g,H0);return kf(a,"single",t)}function H0(e){var t=e.charCodeAt(0),r={8:"b",9:"t",10:"n",12:"f",13:"r"}[t];return r?"\\"+r:"\\x"+(t<16?"0":"")+O0.call(t.toString(16))}function jt(e){return"Object("+e+")"}function xl(e){return e+" { ? }"}function Fs(e,t,r,n){var a=n?_i(r,n):fe.call(r,", ");return e+" ("+t+") {"+a+"}"}function W0(e){for(var t=0;t<e.length;t++)if(Ff(e[t],`
-`)>=0)return!1;return!0}function z0(e,t){var r;if(e.indent==="	")r="	";else if(typeof e.indent=="number"&&e.indent>0)r=fe.call(Array(e.indent+1)," ");else return null;return{base:r,prev:fe.call(Array(t+1),r)}}function _i(e,t){if(e.length===0)return"";var r=`
-`+t.prev+t.base;return r+fe.call(e,","+r)+`
-`+t.prev}function Rr(e,t){var r=Ei(e),n=[];if(r){n.length=e.length;for(var a=0;a<e.length;a++)n[a]=qe(e,a)?t(e[a],e):""}var o=typeof Al=="function"?Al(e):[],l;if(Rt){l={};for(var u=0;u<o.length;u++)l["$"+o[u]]=o[u]}for(var i in e)!qe(e,i)||r&&String(Number(i))===i&&i<e.length||Rt&&l["$"+i]instanceof Symbol||(Nf.call(/[^\w$]/,i)?n.push(t(i,e)+": "+t(e[i],e)):n.push(i+": "+t(e[i],e)));if(typeof Al=="function")for(var s=0;s<o.length;s++)Df.call(e,o[s])&&n.push("["+t(o[s])+"]: "+t(e[o[s]],e));return n}var vu=ve,Tt=ee,K0=$0,G0=vu("%TypeError%"),Pr=vu("%WeakMap%",!0),wr=vu("%Map%",!0),Y0=Tt("WeakMap.prototype.get",!0),J0=Tt("WeakMap.prototype.set",!0),X0=Tt("WeakMap.prototype.has",!0),Q0=Tt("Map.prototype.get",!0),Z0=Tt("Map.prototype.set",!0),eS=Tt("Map.prototype.has",!0),yu=function(e,t){for(var r=e,n;(n=r.next)!==null;r=n)if(n.key===t)return r.next=n.next,n.next=e.next,e.next=n,n},tS=function(e,t){var r=yu(e,t);return r&&r.value},rS=function(e,t,r){var n=yu(e,t);n?n.value=r:e.next={key:t,next:e.next,value:r}},nS=function(e,t){return!!yu(e,t)},Vf=function(){var t,r,n,a={assert:function(o){if(!a.has(o))throw new G0("Side channel does not contain "+K0(o))},get:function(o){if(Pr&&o&&(typeof o=="object"||typeof o=="function")){if(t)return Y0(t,o)}else if(wr){if(r)return Q0(r,o)}else if(n)return tS(n,o)},has:function(o){if(Pr&&o&&(typeof o=="object"||typeof o=="function")){if(t)return X0(t,o)}else if(wr){if(r)return eS(r,o)}else if(n)return nS(n,o);return!1},set:function(o,l){Pr&&o&&(typeof o=="object"||typeof o=="function")?(t||(t=new Pr),J0(t,o,l)):wr?(r||(r=new wr),Z0(r,o,l)):(n||(n={key:{},next:null}),rS(n,o,l))}};return a},aS=ve,oS=gf,Nt=Vf(),ye=aS("%TypeError%"),mu={assert:function(e,t){if(!e||typeof e!="object"&&typeof e!="function")throw new ye("`O` is not an object");if(typeof t!="string")throw new ye("`slot` must be a string");if(Nt.assert(e),!mu.has(e,t))throw new ye("`slot` is not present on `O`")},get:function(e,t){if(!e||typeof e!="object"&&typeof e!="function")throw new ye("`O` is not an object");if(typeof t!="string")throw new ye("`slot` must be a string");var r=Nt.get(e);return r&&r["$"+t]},has:function(e,t){if(!e||typeof e!="object"&&typeof e!="function")throw new ye("`O` is not an object");if(typeof t!="string")throw new ye("`slot` must be a string");var r=Nt.get(e);return!!r&&oS(r,"$"+t)},set:function(e,t,r){if(!e||typeof e!="object"&&typeof e!="function")throw new ye("`O` is not an object");if(typeof t!="string")throw new ye("`slot` must be a string");var n=Nt.get(e);n||(n={},Nt.set(e,n)),n["$"+t]=r}};Object.freeze&&Object.freeze(mu);var lS=mu,Dt=lS,iS=SyntaxError,Us=typeof StopIteration=="object"?StopIteration:null,uS=function(t){if(!Us)throw new iS("this environment lacks StopIteration");Dt.set(t,"[[Done]]",!1);var r={next:function(){var a=Dt.get(this,"[[Iterator]]"),o=Dt.get(a,"[[Done]]");try{return{done:o,value:o?void 0:a.next()}}catch(l){if(Dt.set(a,"[[Done]]",!0),l!==Us)throw l;return{done:!0,value:void 0}}}};return Dt.set(r,"[[Iterator]]",t),r},Ml,Vs;function sS(){if(Vs)return Ml;Vs=1;var e={}.toString;return Ml=Array.isArray||function(t){return e.call(t)=="[object Array]"},Ml}var cS=String.prototype.valueOf,dS=function(t){try{return cS.call(t),!0}catch{return!1}},fS=Object.prototype.toString,pS="[object String]",vS=Ve(),Hf=function(t){return typeof t=="string"?!0:typeof t!="object"?!1:vS?dS(t):fS.call(t)===pS},bu=typeof Map=="function"&&Map.prototype?Map:null,yS=typeof Set=="function"&&Set.prototype?Set:null,Kr;bu||(Kr=function(t){return!1});var Wf=bu?Map.prototype.has:null,Hs=yS?Set.prototype.has:null;!Kr&&!Wf&&(Kr=function(t){return!1});var zf=Kr||function(t){if(!t||typeof t!="object")return!1;try{if(Wf.call(t),Hs)try{Hs.call(t)}catch{return!0}return t instanceof bu}catch{}return!1},mS=typeof Map=="function"&&Map.prototype?Map:null,hu=typeof Set=="function"&&Set.prototype?Set:null,Gr;hu||(Gr=function(t){return!1});var Ws=mS?Map.prototype.has:null,Kf=hu?Set.prototype.has:null;!Gr&&!Kf&&(Gr=function(t){return!1});var Gf=Gr||function(t){if(!t||typeof t!="object")return!1;try{if(Kf.call(t),Ws)try{Ws.call(t)}catch{return!0}return t instanceof hu}catch{}return!1},zs=jf,Ks=uS;if(uu()||Yo()){var Il=Symbol.iterator;Ar.exports=function(t){if(t!=null&&typeof t[Il]<"u")return t[Il]();if(zs(t))return Array.prototype[Il].call(t)}}else{var bS=sS(),hS=Hf,Gs=ve,gS=Gs("%Map%",!0),ES=Gs("%Set%",!0),re=ee,Ys=re("Array.prototype.push"),Js=re("String.prototype.charCodeAt"),_S=re("String.prototype.slice"),RS=function(t,r){var n=t.length;if(r+1>=n)return r+1;var a=Js(t,r);if(a<55296||a>56319)return r+1;var o=Js(t,r+1);return o<56320||o>57343?r+1:r+2},Bl=function(t){var r=0;return{next:function(){var a=r>=t.length,o;return a||(o=t[r],r+=1),{done:a,value:o}}}},Xs=function(t,r){if(bS(t)||zs(t))return Bl(t);if(hS(t)){var n=0;return{next:function(){var o=RS(t,n),l=_S(t,n,o);return n=o,{done:o>t.length,value:l}}}}if(r&&typeof t["_es6-shim iterator_"]<"u")return t["_es6-shim iterator_"]()};if(!gS&&!ES)Ar.exports=function(t){if(t!=null)return Xs(t,!0)};else{var PS=zf,wS=Gf,Qs=re("Map.prototype.forEach",!0),Zs=re("Set.prototype.forEach",!0);if(typeof process>"u"||!process.versions||!process.versions.node)var ec=re("Map.prototype.iterator",!0),tc=re("Set.prototype.iterator",!0);var rc=re("Map.prototype.@@iterator",!0)||re("Map.prototype._es6-shim iterator_",!0),nc=re("Set.prototype.@@iterator",!0)||re("Set.prototype._es6-shim iterator_",!0),CS=function(t){if(PS(t)){if(ec)return Ks(ec(t));if(rc)return rc(t);if(Qs){var r=[];return Qs(t,function(a,o){Ys(r,[o,a])}),Bl(r)}}if(wS(t)){if(tc)return Ks(tc(t));if(nc)return nc(t);if(Zs){var n=[];return Zs(t,function(a){Ys(n,a)}),Bl(n)}}};Ar.exports=function(t){return CS(t)||Xs(t)}}}var ac=function(e){return e!==e},Yf=function(t,r){return t===0&&r===0?1/t===1/r:!!(t===r||ac(t)&&ac(r))},OS=Yf,Jf=function(){return typeof Object.is=="function"?Object.is:OS},SS=Jf,$S=et,TS=function(){var t=SS();return $S(Object,{is:t},{is:function(){return Object.is!==t}}),t},qS=et,AS=$t.exports,xS=Yf,Xf=Jf,MS=TS,Qf=AS(Xf(),Object);qS(Qf,{getPolyfill:Xf,implementation:xS,shim:MS});var IS=Qf,BS={}.toString,jS=Array.isArray||function(e){return BS.call(e)=="[object Array]"},Zf=Function.prototype.toString,yt=typeof Reflect=="object"&&Reflect!==null&&Reflect.apply,Ri,xr;if(typeof yt=="function"&&typeof Object.defineProperty=="function")try{Ri=Object.defineProperty({},"length",{get:function(){throw xr}}),xr={},yt(function(){throw 42},null,Ri)}catch(e){e!==xr&&(yt=null)}else yt=null;var NS=/^\s*class\b/,Pi=function(t){try{var r=Zf.call(t);return NS.test(r)}catch{return!1}},jl=function(t){try{return Pi(t)?!1:(Zf.call(t),!0)}catch{return!1}},Mr=Object.prototype.toString,DS="[object Object]",kS="[object Function]",LS="[object GeneratorFunction]",FS="[object HTMLAllCollection]",US="[object HTML document.all class]",VS="[object HTMLCollection]",HS=typeof Symbol=="function"&&!!Symbol.toStringTag,WS=!(0 in[,]),wi=function(){return!1};if(typeof document=="object"){var zS=document.all;Mr.call(zS)===Mr.call(document.all)&&(wi=function(t){if((WS||!t)&&(typeof t>"u"||typeof t=="object"))try{var r=Mr.call(t);return(r===FS||r===US||r===VS||r===DS)&&t("")==null}catch{}return!1})}var KS=yt?function(t){if(wi(t))return!0;if(!t||typeof t!="function"&&typeof t!="object")return!1;try{yt(t,null,Ri)}catch(r){if(r!==xr)return!1}return!Pi(t)&&jl(t)}:function(t){if(wi(t))return!0;if(!t||typeof t!="function"&&typeof t!="object")return!1;if(HS)return jl(t);if(Pi(t))return!1;var r=Mr.call(t);return r!==kS&&r!==LS&&!/^\[object HTML/.test(r)?!1:jl(t)},GS=KS,YS=Object.prototype.toString,ep=Object.prototype.hasOwnProperty,JS=function(t,r,n){for(var a=0,o=t.length;a<o;a++)ep.call(t,a)&&(n==null?r(t[a],a,t):r.call(n,t[a],a,t))},XS=function(t,r,n){for(var a=0,o=t.length;a<o;a++)n==null?r(t.charAt(a),a,t):r.call(n,t.charAt(a),a,t)},QS=function(t,r,n){for(var a in t)ep.call(t,a)&&(n==null?r(t[a],a,t):r.call(n,t[a],a,t))},ZS=function(t,r,n){if(!GS(r))throw new TypeError("iterator must be a function");var a;arguments.length>=3&&(a=n),YS.call(t)==="[object Array]"?JS(t,r,a):typeof t=="string"?XS(t,r,a):QS(t,r,a)},tp=ZS,Nl=["BigInt64Array","BigUint64Array","Float32Array","Float64Array","Int16Array","Int32Array","Int8Array","Uint16Array","Uint32Array","Uint8Array","Uint8ClampedArray"],e$=typeof globalThis>"u"?Zi:globalThis,rp=function(){for(var t=[],r=0;r<Nl.length;r++)typeof e$[Nl[r]]=="function"&&(t[t.length]=Nl[r]);return t},t$=ve,Ir=t$("%Object.getOwnPropertyDescriptor%",!0);if(Ir)try{Ir([],"length")}catch{Ir=null}var np=Ir,ap=tp,r$=rp,gu=ee,n$=gu("Object.prototype.toString"),op=Ve(),Br=np,a$=typeof globalThis>"u"?Zi:globalThis,lp=r$(),o$=gu("Array.prototype.indexOf",!0)||function(t,r){for(var n=0;n<t.length;n+=1)if(t[n]===r)return n;return-1},l$=gu("String.prototype.slice"),ip={},Dl=Object.getPrototypeOf;op&&Br&&Dl&&ap(lp,function(e){var t=new a$[e];if(Symbol.toStringTag in t){var r=Dl(t),n=Br(r,Symbol.toStringTag);if(!n){var a=Dl(r);n=Br(a,Symbol.toStringTag)}ip[e]=n.get}});var i$=function(t){var r=!1;return ap(ip,function(n,a){if(!r)try{r=n.call(t)===a}catch{}}),r},up=function(t){if(!t||typeof t!="object")return!1;if(!op||!(Symbol.toStringTag in t)){var r=l$(n$(t),8,-1);return o$(lp,r)>-1}return Br?i$(t):!1},u$=$t.exports,s$=ee,sp=ve,c$=up,oc=sp("ArrayBuffer",!0),lc=sp("Float32Array",!0),jr=s$("ArrayBuffer.prototype.byteLength",!0),ic=oc&&!jr&&new oc().slice,uc=ic&&u$(ic),d$=jr||uc?function(t){if(!t||typeof t!="object")return!1;try{return jr?jr(t):uc(t,0),!0}catch{return!1}}:lc?function(t){try{return new lc(t).buffer===t&&!c$(t)}catch{return!1}}:function(t){return!1},f$=Date.prototype.getDay,p$=function(t){try{return f$.call(t),!0}catch{return!1}},v$=Object.prototype.toString,y$="[object Date]",m$=Ve(),b$=function(t){return typeof t!="object"||t===null?!1:m$?p$(t):v$.call(t)===y$},Ci=ee,cp=Ve(),dp,fp,Oi,Si;if(cp){dp=Ci("Object.prototype.hasOwnProperty"),fp=Ci("RegExp.prototype.exec"),Oi={};var kl=function(){throw Oi};Si={toString:kl,valueOf:kl},typeof Symbol.toPrimitive=="symbol"&&(Si[Symbol.toPrimitive]=kl)}var h$=Ci("Object.prototype.toString"),g$=Object.getOwnPropertyDescriptor,E$="[object RegExp]",_$=cp?function(t){if(!t||typeof t!="object")return!1;var r=g$(t,"lastIndex"),n=r&&dp(r,"value");if(!n)return!1;try{fp(t,Si)}catch(a){return a===Oi}}:function(t){return!t||typeof t!="object"&&typeof t!="function"?!1:h$(t)===E$},R$=ee,sc=R$("SharedArrayBuffer.prototype.byteLength",!0),P$=sc?function(t){if(!t||typeof t!="object")return!1;try{return sc(t),!0}catch{return!1}}:function(t){return!1},w$=Number.prototype.toString,C$=function(t){try{return w$.call(t),!0}catch{return!1}},O$=Object.prototype.toString,S$="[object Number]",$$=Ve(),T$=function(t){return typeof t=="number"?!0:typeof t!="object"?!1:$$?C$(t):O$.call(t)===S$},pp=ee,q$=pp("Boolean.prototype.toString"),A$=pp("Object.prototype.toString"),x$=function(t){try{return q$(t),!0}catch{return!1}},M$="[object Boolean]",I$=Ve(),B$=function(t){return typeof t=="boolean"?!0:t===null||typeof t!="object"?!1:I$&&Symbol.toStringTag in t?x$(t):A$(t)===M$},$i={exports:{}},j$=Object.prototype.toString,N$=uu();if(N$){var D$=Symbol.prototype.toString,k$=/^Symbol\(.*\)$/,L$=function(t){return typeof t.valueOf()!="symbol"?!1:k$.test(D$.call(t))};$i.exports=function(t){if(typeof t=="symbol")return!0;if(j$.call(t)!=="[object Symbol]")return!1;try{return L$(t)}catch{return!1}}}else $i.exports=function(t){return!1};var Ti={exports:{}},cc=typeof BigInt<"u"&&BigInt,F$=function(){return typeof cc=="function"&&typeof BigInt=="function"&&typeof cc(42)=="bigint"&&typeof BigInt(42)=="bigint"},U$=F$();if(U$){var V$=BigInt.prototype.valueOf,H$=function(t){try{return V$.call(t),!0}catch{}return!1};Ti.exports=function(t){return t===null||typeof t>"u"||typeof t=="boolean"||typeof t=="string"||typeof t=="number"||typeof t=="symbol"||typeof t=="function"?!1:typeof t=="bigint"?!0:H$(t)}}else Ti.exports=function(t){return!1};var W$=Hf,z$=T$,K$=B$,G$=$i.exports,Y$=Ti.exports,J$=function(t){if(t==null||typeof t!="object"&&typeof t!="function")return null;if(W$(t))return"String";if(z$(t))return"Number";if(K$(t))return"Boolean";if(G$(t))return"Symbol";if(Y$(t))return"BigInt"},Yr=typeof WeakMap=="function"&&WeakMap.prototype?WeakMap:null,dc=typeof WeakSet=="function"&&WeakSet.prototype?WeakSet:null,Jr;Yr||(Jr=function(t){return!1});var qi=Yr?Yr.prototype.has:null,Ll=dc?dc.prototype.has:null;!Jr&&!qi&&(Jr=function(t){return!1});var X$=Jr||function(t){if(!t||typeof t!="object")return!1;try{if(qi.call(t,qi),Ll)try{Ll.call(t,Ll)}catch{return!0}return t instanceof Yr}catch{}return!1},Ai={exports:{}},Q$=ve,vp=ee,Z$=Q$("%WeakSet%",!0),Fl=vp("WeakSet.prototype.has",!0);if(Fl){var Ul=vp("WeakMap.prototype.has",!0);Ai.exports=function(t){if(!t||typeof t!="object")return!1;try{if(Fl(t,Fl),Ul)try{Ul(t,Ul)}catch{return!0}return t instanceof Z$}catch{}return!1}}else Ai.exports=function(t){return!1};var eT=zf,tT=Gf,rT=X$,nT=Ai.exports,aT=function(t){if(t&&typeof t=="object"){if(eT(t))return"Map";if(tT(t))return"Set";if(rT(t))return"WeakMap";if(nT(t))return"WeakSet"}return!1},yp=tp,oT=rp,mp=ee,Vl=np,lT=mp("Object.prototype.toString"),bp=Ve(),fc=typeof globalThis>"u"?Zi:globalThis,iT=oT(),uT=mp("String.prototype.slice"),hp={},Hl=Object.getPrototypeOf;bp&&Vl&&Hl&&yp(iT,function(e){if(typeof fc[e]=="function"){var t=new fc[e];if(Symbol.toStringTag in t){var r=Hl(t),n=Vl(r,Symbol.toStringTag);if(!n){var a=Hl(r);n=Vl(a,Symbol.toStringTag)}hp[e]=n.get}}});var sT=function(t){var r=!1;return yp(hp,function(n,a){if(!r)try{var o=n.call(t);o===a&&(r=o)}catch{}}),r},cT=up,dT=function(t){return cT(t)?!bp||!(Symbol.toStringTag in t)?uT(lT(t),8,-1):sT(t):!1},gp=zO,ue=ee,pc=s0,fT=ve,Pt=Ar.exports,pT=Vf,vc=IS,yc=jf,mc=jS,bc=d$,hc=b$,gc=_$,Ec=P$,_c=iu,Rc=J$,Pc=aT,wc=dT,Cc=ue("ArrayBuffer.prototype.byteLength",!0)||function(t){return t.byteLength},Oc=ue("SharedArrayBuffer.prototype.byteLength",!0),Sc=ue("Date.prototype.getTime"),Wl=Object.getPrototypeOf,$c=ue("Object.prototype.toString"),Xr=fT("%Set%",!0),xi=ue("Map.prototype.has",!0),Qr=ue("Map.prototype.get",!0),Tc=ue("Map.prototype.size",!0),Zr=ue("Set.prototype.add",!0),Ep=ue("Set.prototype.delete",!0),en=ue("Set.prototype.has",!0),Nr=ue("Set.prototype.size",!0);function qc(e,t,r,n){for(var a=Pt(e),o;(o=a.next())&&!o.done;)if(le(t,o.value,r,n))return Ep(e,o.value),!0;return!1}function _p(e){if(typeof e>"u")return null;if(typeof e!="object")return typeof e=="symbol"?!1:typeof e=="string"||typeof e=="number"?+e==+e:!0}function vT(e,t,r,n,a,o){var l=_p(r);if(l!=null)return l;var u=Qr(t,l),i=gp({},a,{strict:!1});return typeof u>"u"&&!xi(t,l)||!le(n,u,i,o)?!1:!xi(e,l)&&le(n,u,i,o)}function yT(e,t,r){var n=_p(r);return n!=null?n:en(t,n)&&!en(e,n)}function Ac(e,t,r,n,a,o){for(var l=Pt(e),u,i;(u=l.next())&&!u.done;)if(i=u.value,le(r,i,a,o)&&le(n,Qr(t,i),a,o))return Ep(e,i),!0;return!1}function le(e,t,r,n){var a=r||{};if(a.strict?vc(e,t):e===t)return!0;var o=Rc(e),l=Rc(t);if(o!==l)return!1;if(!e||!t||typeof e!="object"&&typeof t!="object")return a.strict?vc(e,t):e==t;var u=n.has(e),i=n.has(t),s;if(u&&i){if(n.get(e)===n.get(t))return!0}else s={};return u||n.set(e,s),i||n.set(t,s),hT(e,t,a,n)}function xc(e){return!e||typeof e!="object"||typeof e.length!="number"||typeof e.copy!="function"||typeof e.slice!="function"||e.length>0&&typeof e[0]!="number"?!1:!!(e.constructor&&e.constructor.isBuffer&&e.constructor.isBuffer(e))}function mT(e,t,r,n){if(Nr(e)!==Nr(t))return!1;for(var a=Pt(e),o=Pt(t),l,u,i;(l=a.next())&&!l.done;)if(l.value&&typeof l.value=="object")i||(i=new Xr),Zr(i,l.value);else if(!en(t,l.value)){if(r.strict||!yT(e,t,l.value))return!1;i||(i=new Xr),Zr(i,l.value)}if(i){for(;(u=o.next())&&!u.done;)if(u.value&&typeof u.value=="object"){if(!qc(i,u.value,r.strict,n))return!1}else if(!r.strict&&!en(e,u.value)&&!qc(i,u.value,r.strict,n))return!1;return Nr(i)===0}return!0}function bT(e,t,r,n){if(Tc(e)!==Tc(t))return!1;for(var a=Pt(e),o=Pt(t),l,u,i,s,d,f;(l=a.next())&&!l.done;)if(s=l.value[0],d=l.value[1],s&&typeof s=="object")i||(i=new Xr),Zr(i,s);else if(f=Qr(t,s),typeof f>"u"&&!xi(t,s)||!le(d,f,r,n)){if(r.strict||!vT(e,t,s,d,r,n))return!1;i||(i=new Xr),Zr(i,s)}if(i){for(;(u=o.next())&&!u.done;)if(s=u.value[0],f=u.value[1],s&&typeof s=="object"){if(!Ac(i,e,s,f,r,n))return!1}else if(!r.strict&&(!e.has(s)||!le(Qr(e,s),f,r,n))&&!Ac(i,e,s,f,gp({},r,{strict:!1}),n))return!1;return Nr(i)===0}return!0}function hT(e,t,r,n){var a,o;if(typeof e!=typeof t||e==null||t==null||$c(e)!==$c(t)||yc(e)!==yc(t))return!1;var l=mc(e),u=mc(t);if(l!==u)return!1;var i=e instanceof Error,s=t instanceof Error;if(i!==s||(i||s)&&(e.name!==t.name||e.message!==t.message))return!1;var d=gc(e),f=gc(t);if(d!==f||(d||f)&&(e.source!==t.source||pc(e)!==pc(t)))return!1;var p=hc(e),m=hc(t);if(p!==m||(p||m)&&Sc(e)!==Sc(t)||r.strict&&Wl&&Wl(e)!==Wl(t))return!1;var C=wc(e),R=wc(t);if((C||R)&&C!==R)return!1;var S=xc(e),v=xc(t);if(S!==v)return!1;if(S||v){if(e.length!==t.length)return!1;for(a=0;a<e.length;a++)if(e[a]!==t[a])return!1;return!0}var b=bc(e),P=bc(t);if(b!==P)return!1;if(b||P)return Cc(e)!==Cc(t)?!1:typeof Uint8Array=="function"&&le(new Uint8Array(e),new Uint8Array(t),r,n);var w=Ec(e),O=Ec(t);if(w!==O)return!1;if(w||O)return Oc(e)!==Oc(t)?!1:typeof Uint8Array=="function"&&le(new Uint8Array(e),new Uint8Array(t),r,n);if(typeof e!=typeof t)return!1;var y=_c(e),h=_c(t);if(y.length!==h.length)return!1;for(y.sort(),h.sort(),a=y.length-1;a>=0;a--)if(y[a]!=h[a])return!1;for(a=y.length-1;a>=0;a--)if(o=y[a],!le(e[o],t[o],r,n))return!1;var E=Pc(e),I=Pc(t);return E!==I?!1:E==="Set"||I==="Set"?mT(e,t,r,n):E==="Map"?bT(e,t,r,n):!0}var gT=function(t,r,n){return le(t,r,n,pT())};Object.defineProperty(Go,"__esModule",{value:!0});Go.default=void 0;var ET=Eu(gT),_T=Eu(Ze),Rp=Eu(St);function Eu(e){return e&&e.__esModule?e:{default:e}}function zl(e,t){return wT(e)||PT(e,t)||Pp(e,t)||RT()}function RT(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function PT(e,t){var r=e==null?null:typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(r!=null){var n=[],a=!0,o=!1,l,u;try{for(r=r.call(e);!(a=(l=r.next()).done)&&(n.push(l.value),!(t&&n.length===t));a=!0);}catch(i){o=!0,u=i}finally{try{!a&&r.return!=null&&r.return()}finally{if(o)throw u}}return n}}function wT(e){if(Array.isArray(e))return e}function CT(e,t){var r=typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=Pp(e))||t&&e&&typeof e.length=="number"){r&&(e=r);var n=0,a=function(){};return{s:a,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(s){throw s},f:a}}throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}var o=!0,l=!1,u;return{s:function(){r=r.call(e)},n:function(){var s=r.next();return o=s.done,s},e:function(s){l=!0,u=s},f:function(){try{!o&&r.return!=null&&r.return()}finally{if(l)throw u}}}}function Pp(e,t){if(!!e){if(typeof e=="string")return Mc(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);if(r==="Object"&&e.constructor&&(r=e.constructor.name),r==="Map"||r==="Set")return Array.from(e);if(r==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return Mc(e,t)}}function Mc(e,t){(t==null||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}var Ae=[],Ic=Rp.default.keys();for(var Kl=0;Kl<Ic.length;Kl++){var Gl=Ic[Kl],Yl=Rp.default.get(Gl);if(Yl)for(var Bc=[].concat(Yl.baseConcepts,Yl.relatedConcepts),Jl=0;Jl<Bc.length;Jl++){var jc=Bc[Jl];if(jc.module==="HTML"){var Xl=jc.concept;Xl&&function(){var e=JSON.stringify(Xl),t=Ae.find(function(o){return JSON.stringify(o[0])===e}),r=void 0;t?r=t[1]:r=[];for(var n=!0,a=0;a<r.length;a++)if(r[a]===Gl){n=!1;break}n&&r.push(Gl),Ae.push([Xl,r])}()}}}var Mi={entries:function(){return Ae},forEach:function(t){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:null,n=CT(Ae),a;try{for(n.s();!(a=n.n()).done;){var o=zl(a.value,2),l=o[0],u=o[1];t.call(r,u,l,Ae)}}catch(i){n.e(i)}finally{n.f()}},get:function(t){var r=Ae.find(function(n){return(0,ET.default)(t,n[0])});return r&&r[1]},has:function(t){return!!Mi.get(t)},keys:function(){return Ae.map(function(t){var r=zl(t,1),n=r[0];return n})},values:function(){return Ae.map(function(t){var r=zl(t,2),n=r[1];return n})}},OT=(0,_T.default)(Mi,Mi.entries());Go.default=OT;var Xo={};Object.defineProperty(Xo,"__esModule",{value:!0});Xo.default=void 0;var ST=Cp(Ze),wp=Cp(St);function Cp(e){return e&&e.__esModule?e:{default:e}}function Ql(e,t){return qT(e)||TT(e,t)||Op(e,t)||$T()}function $T(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function TT(e,t){var r=e==null?null:typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(r!=null){var n=[],a=!0,o=!1,l,u;try{for(r=r.call(e);!(a=(l=r.next()).done)&&(n.push(l.value),!(t&&n.length===t));a=!0);}catch(i){o=!0,u=i}finally{try{!a&&r.return!=null&&r.return()}finally{if(o)throw u}}return n}}function qT(e){if(Array.isArray(e))return e}function AT(e,t){var r=typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=Op(e))||t&&e&&typeof e.length=="number"){r&&(e=r);var n=0,a=function(){};return{s:a,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(s){throw s},f:a}}throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}var o=!0,l=!1,u;return{s:function(){r=r.call(e)},n:function(){var s=r.next();return o=s.done,s},e:function(s){l=!0,u=s},f:function(){try{!o&&r.return!=null&&r.return()}finally{if(l)throw u}}}}function Op(e,t){if(!!e){if(typeof e=="string")return Nc(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);if(r==="Object"&&e.constructor&&(r=e.constructor.name),r==="Map"||r==="Set")return Array.from(e);if(r==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return Nc(e,t)}}function Nc(e,t){(t==null||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}var xe=[],Sp=wp.default.keys(),xT=function(t){var r=Sp[t],n=wp.default.get(r);if(n)for(var a=[].concat(n.baseConcepts,n.relatedConcepts),o=0;o<a.length;o++){var l=a[o];if(l.module==="HTML"){var u=l.concept;if(u){var i=xe.find(function(d){return d[0]===r}),s=void 0;i?s=i[1]:s=[],s.push(u),xe.push([r,s])}}}};for(var Zl=0;Zl<Sp.length;Zl++)xT(Zl);var Ii={entries:function(){return xe},forEach:function(t){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:null,n=AT(xe),a;try{for(n.s();!(a=n.n()).done;){var o=Ql(a.value,2),l=o[0],u=o[1];t.call(r,u,l,xe)}}catch(i){n.e(i)}finally{n.f()}},get:function(t){var r=xe.find(function(n){return n[0]===t});return r&&r[1]},has:function(t){return!!Ii.get(t)},keys:function(){return xe.map(function(t){var r=Ql(t,1),n=r[0];return n})},values:function(){return xe.map(function(t){var r=Ql(t,2),n=r[1];return n})}},MT=(0,ST.default)(Ii,Ii.entries());Xo.default=MT;Object.defineProperty(oe,"__esModule",{value:!0});var vt=oe.roles=Tp=oe.roleElements=$p=oe.elementRoles=oe.dom=oe.aria=void 0,IT=cr(fn),BT=cr(vn),jT=cr(St),NT=cr(Go),DT=cr(Xo);function cr(e){return e&&e.__esModule?e:{default:e}}var kT=IT.default;oe.aria=kT;var LT=BT.default;oe.dom=LT;var FT=jT.default;vt=oe.roles=FT;var UT=NT.default,$p=oe.elementRoles=UT,VT=DT.default,Tp=oe.roleElements=VT,qp={exports:{}};(function(e){var t=function(){var r=String.fromCharCode,n="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",a="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$",o={};function l(i,s){if(!o[i]){o[i]={};for(var d=0;d<i.length;d++)o[i][i.charAt(d)]=d}return o[i][s]}var u={compressToBase64:function(i){if(i==null)return"";var s=u._compress(i,6,function(d){return n.charAt(d)});switch(s.length%4){default:case 0:return s;case 1:return s+"===";case 2:return s+"==";case 3:return s+"="}},decompressFromBase64:function(i){return i==null?"":i==""?null:u._decompress(i.length,32,function(s){return l(n,i.charAt(s))})},compressToUTF16:function(i){return i==null?"":u._compress(i,15,function(s){return r(s+32)})+" "},decompressFromUTF16:function(i){return i==null?"":i==""?null:u._decompress(i.length,16384,function(s){return i.charCodeAt(s)-32})},compressToUint8Array:function(i){for(var s=u.compress(i),d=new Uint8Array(s.length*2),f=0,p=s.length;f<p;f++){var m=s.charCodeAt(f);d[f*2]=m>>>8,d[f*2+1]=m%256}return d},decompressFromUint8Array:function(i){if(i==null)return u.decompress(i);for(var s=new Array(i.length/2),d=0,f=s.length;d<f;d++)s[d]=i[d*2]*256+i[d*2+1];var p=[];return s.forEach(function(m){p.push(r(m))}),u.decompress(p.join(""))},compressToEncodedURIComponent:function(i){return i==null?"":u._compress(i,6,function(s){return a.charAt(s)})},decompressFromEncodedURIComponent:function(i){return i==null?"":i==""?null:(i=i.replace(/ /g,"+"),u._decompress(i.length,32,function(s){return l(a,i.charAt(s))}))},compress:function(i){return u._compress(i,16,function(s){return r(s)})},_compress:function(i,s,d){if(i==null)return"";var f,p,m={},C={},R="",S="",v="",b=2,P=3,w=2,O=[],y=0,h=0,E;for(E=0;E<i.length;E+=1)if(R=i.charAt(E),Object.prototype.hasOwnProperty.call(m,R)||(m[R]=P++,C[R]=!0),S=v+R,Object.prototype.hasOwnProperty.call(m,S))v=S;else{if(Object.prototype.hasOwnProperty.call(C,v)){if(v.charCodeAt(0)<256){for(f=0;f<w;f++)y=y<<1,h==s-1?(h=0,O.push(d(y)),y=0):h++;for(p=v.charCodeAt(0),f=0;f<8;f++)y=y<<1|p&1,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=p>>1}else{for(p=1,f=0;f<w;f++)y=y<<1|p,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=0;for(p=v.charCodeAt(0),f=0;f<16;f++)y=y<<1|p&1,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=p>>1}b--,b==0&&(b=Math.pow(2,w),w++),delete C[v]}else for(p=m[v],f=0;f<w;f++)y=y<<1|p&1,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=p>>1;b--,b==0&&(b=Math.pow(2,w),w++),m[S]=P++,v=String(R)}if(v!==""){if(Object.prototype.hasOwnProperty.call(C,v)){if(v.charCodeAt(0)<256){for(f=0;f<w;f++)y=y<<1,h==s-1?(h=0,O.push(d(y)),y=0):h++;for(p=v.charCodeAt(0),f=0;f<8;f++)y=y<<1|p&1,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=p>>1}else{for(p=1,f=0;f<w;f++)y=y<<1|p,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=0;for(p=v.charCodeAt(0),f=0;f<16;f++)y=y<<1|p&1,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=p>>1}b--,b==0&&(b=Math.pow(2,w),w++),delete C[v]}else for(p=m[v],f=0;f<w;f++)y=y<<1|p&1,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=p>>1;b--,b==0&&(b=Math.pow(2,w),w++)}for(p=2,f=0;f<w;f++)y=y<<1|p&1,h==s-1?(h=0,O.push(d(y)),y=0):h++,p=p>>1;for(;;)if(y=y<<1,h==s-1){O.push(d(y));break}else h++;return O.join("")},decompress:function(i){return i==null?"":i==""?null:u._decompress(i.length,32768,function(s){return i.charCodeAt(s)})},_decompress:function(i,s,d){var f=[],p=4,m=4,C=3,R="",S=[],v,b,P,w,O,y,h,E={val:d(0),position:s,index:1};for(v=0;v<3;v+=1)f[v]=v;for(P=0,O=Math.pow(2,2),y=1;y!=O;)w=E.val&E.position,E.position>>=1,E.position==0&&(E.position=s,E.val=d(E.index++)),P|=(w>0?1:0)*y,y<<=1;switch(P){case 0:for(P=0,O=Math.pow(2,8),y=1;y!=O;)w=E.val&E.position,E.position>>=1,E.position==0&&(E.position=s,E.val=d(E.index++)),P|=(w>0?1:0)*y,y<<=1;h=r(P);break;case 1:for(P=0,O=Math.pow(2,16),y=1;y!=O;)w=E.val&E.position,E.position>>=1,E.position==0&&(E.position=s,E.val=d(E.index++)),P|=(w>0?1:0)*y,y<<=1;h=r(P);break;case 2:return""}for(f[3]=h,b=h,S.push(h);;){if(E.index>i)return"";for(P=0,O=Math.pow(2,C),y=1;y!=O;)w=E.val&E.position,E.position>>=1,E.position==0&&(E.position=s,E.val=d(E.index++)),P|=(w>0?1:0)*y,y<<=1;switch(h=P){case 0:for(P=0,O=Math.pow(2,8),y=1;y!=O;)w=E.val&E.position,E.position>>=1,E.position==0&&(E.position=s,E.val=d(E.index++)),P|=(w>0?1:0)*y,y<<=1;f[m++]=r(P),h=m-1,p--;break;case 1:for(P=0,O=Math.pow(2,16),y=1;y!=O;)w=E.val&E.position,E.position>>=1,E.position==0&&(E.position=s,E.val=d(E.index++)),P|=(w>0?1:0)*y,y<<=1;f[m++]=r(P),h=m-1,p--;break;case 2:return S.join("")}if(p==0&&(p=Math.pow(2,C),C++),f[h])R=f[h];else if(h===m)R=b+b.charAt(0);else return null;S.push(R),f[m++]=b+R.charAt(0),p--,b=R,p==0&&(p=Math.pow(2,C),C++)}}};return u}();e!=null&&(e.exports=t)})(qp);const HT=qp.exports;function Ap(e){return e.replace(/</g,"&lt;").replace(/>/g,"&gt;")}const WT=(e,t,r,n,a,o,l)=>{const u=n+r.indent,i=r.colors;return e.map(s=>{const d=t[s];let f=l(d,r,u,a,o);return typeof d!="string"&&(f.indexOf(`
-`)!==-1&&(f=r.spacingOuter+u+f+r.spacingOuter+n),f="{"+f+"}"),r.spacingInner+n+i.prop.open+s+i.prop.close+"="+i.value.open+f+i.value.close}).join("")},zT=3,KT=(e,t,r,n,a,o)=>e.map(l=>{const u=typeof l=="string"?xp(l,t):o(l,t,r,n,a);return u===""&&typeof l=="object"&&l!==null&&l.nodeType!==zT?"":t.spacingOuter+r+u}).join(""),xp=(e,t)=>{const r=t.colors.content;return r.open+Ap(e)+r.close},GT=(e,t)=>{const r=t.colors.comment;return r.open+"<!--"+Ap(e)+"-->"+r.close},YT=(e,t,r,n,a)=>{const o=n.colors.tag;return o.open+"<"+e+(t&&o.close+t+n.spacingOuter+a+o.open)+(r?">"+o.close+r+n.spacingOuter+a+o.open+"</"+e:(t&&!n.min?"":" ")+"/")+">"+o.close},JT=(e,t)=>{const r=t.colors.tag;return r.open+"<"+e+r.close+" \u2026"+r.open+" />"+r.close},XT=1,Mp=3,Ip=8,Bp=11,QT=/^((HTML|SVG)\w*)?Element$/,ZT=e=>{const t=e.constructor.name,{nodeType:r,tagName:n}=e,a=typeof n=="string"&&n.includes("-")||typeof e.hasAttribute=="function"&&e.hasAttribute("is");return r===XT&&(QT.test(t)||a)||r===Mp&&t==="Text"||r===Ip&&t==="Comment"||r===Bp&&t==="DocumentFragment"};function eq(e){return e.nodeType===Mp}function tq(e){return e.nodeType===Ip}function ei(e){return e.nodeType===Bp}function rq(e){return{test:t=>{var r;return(t==null||(r=t.constructor)==null?void 0:r.name)&&ZT(t)},serialize:(t,r,n,a,o,l)=>{if(eq(t))return xp(t.data,r);if(tq(t))return GT(t.data,r);const u=ei(t)?"DocumentFragment":t.tagName.toLowerCase();return++a>r.maxDepth?JT(u,r):YT(u,WT(ei(t)?[]:Array.from(t.attributes).map(i=>i.name).sort(),ei(t)?{}:Array.from(t.attributes).reduce((i,s)=>(i[s.name]=s.value,i),{}),r,n+r.indent,a,o,l),KT(Array.prototype.slice.call(t.childNodes||t.children).filter(e),r,n+r.indent,a,o,l),r,n)}}}let jp=null,_u=null,Ru=null;try{const e=module&&module.require;_u=e.call(module,"fs").readFileSync,Ru=e.call(module,"@babel/code-frame").codeFrameColumns,jp=e.call(module,"chalk")}catch{}function nq(e){const t=e.indexOf("(")+1,r=e.indexOf(")"),n=e.slice(t,r),a=n.split(":"),[o,l,u]=[a[0],parseInt(a[1],10),parseInt(a[2],10)];let i="";try{i=_u(o,"utf-8")}catch{return""}const s=Ru(i,{start:{line:l,column:u}},{highlightCode:!0,linesBelow:0});return jp.dim(n)+`
-`+s+`
-`}function aq(){if(!_u||!Ru)return"";const t=new Error().stack.split(`
-`).slice(1).find(r=>!r.includes("node_modules/"));return nq(t)}const Np=3;function ti(){return typeof jest<"u"&&jest!==null?setTimeout._isMockFunction===!0||Object.prototype.hasOwnProperty.call(setTimeout,"clock"):!1}function Pu(){if(typeof window>"u")throw new Error("Could not find default container");return window.document}function Dp(e){if(e.defaultView)return e.defaultView;if(e.ownerDocument&&e.ownerDocument.defaultView)return e.ownerDocument.defaultView;if(e.window)return e.window;throw e.ownerDocument&&e.ownerDocument.defaultView===null?new Error("It looks like the window object is not available for the provided node."):e.then instanceof Function?new Error("It looks like you passed a Promise object instead of a DOM node. Did you do something like `fireEvent.click(screen.findBy...` when you meant to use a `getBy` query `fireEvent.click(screen.getBy...`, or await the findBy query `fireEvent.click(await screen.findBy...`?"):Array.isArray(e)?new Error("It looks like you passed an Array instead of a DOM node. Did you do something like `fireEvent.click(screen.getAllBy...` when you meant to use a `getBy` query `fireEvent.click(screen.getBy...`?"):typeof e.debug=="function"&&typeof e.logTestingPlaygroundURL=="function"?new Error("It looks like you passed a `screen` object. Did you do something like `fireEvent.click(screen, ...` when you meant to use a query, e.g. `fireEvent.click(screen.getBy..., `?"):new Error("The given node is not an Element, the node type is: "+typeof e+".")}function _e(e){if(!e||typeof e.querySelector!="function"||typeof e.querySelectorAll!="function")throw new TypeError("Expected container to be an Element, a Document or a DocumentFragment but got "+t(e)+".");function t(r){return typeof r=="object"?r===null?"null":r.constructor.name:typeof r}}const oq=()=>{let e;try{var t,r;e=JSON.parse((t=process)==null||(r=t.env)==null?void 0:r.COLORS)}catch{}return typeof e=="boolean"?e:typeof process<"u"&&process.versions!==void 0&&process.versions.node!==void 0},{DOMCollection:lq}=nu,iq=1,uq=8;function sq(e){return e.nodeType!==uq&&(e.nodeType!==iq||!e.matches(q().defaultIgnore))}function Jt(e,t,r){if(r===void 0&&(r={}),e||(e=Pu().body),typeof t!="number"&&(t=typeof process<"u"&&{}.DEBUG_PRINT_LIMIT||7e3),t===0)return"";e.documentElement&&(e=e.documentElement);let n=typeof e;if(n==="object"?n=e.constructor.name:e={},!("outerHTML"in e))throw new TypeError("Expected an element or document but got "+n);const{filterNode:a=sq,...o}=r,l=Kd(e,{plugins:[rq(a),lq],printFunctionName:!1,highlight:oq(),...o});return t!==void 0&&e.outerHTML.length>t?l.slice(0,t)+"...":l}const Bi=function(){const e=aq();console.log(e?Jt(...arguments)+`
-
-`+e:Jt(...arguments))};let Ye={testIdAttribute:"data-testid",asyncUtilTimeout:1e3,asyncWrapper:e=>e(),unstable_advanceTimersWrapper:e=>e(),eventWrapper:e=>e(),defaultHidden:!1,defaultIgnore:"script, style",showOriginalStackTrace:!1,throwSuggestions:!1,getElementError(e,t){const r=Jt(t),n=new Error([e,"Ignored nodes: comments, "+Ye.defaultIgnore+`
-`+r].filter(Boolean).join(`
-
-`));return n.name="TestingLibraryElementError",n},_disableExpensiveErrorDiagnostics:!1,computedStyleSupportsPseudoElements:!1};function cq(e){try{return Ye._disableExpensiveErrorDiagnostics=!0,e()}finally{Ye._disableExpensiveErrorDiagnostics=!1}}function dq(e){typeof e=="function"&&(e=e(Ye)),Ye={...Ye,...e}}function q(){return Ye}const fq=["button","meter","output","progress","select","textarea","input"];function kp(e){return fq.includes(e.nodeName.toLowerCase())?"":e.nodeType===Np?e.textContent:Array.from(e.childNodes).map(t=>kp(t)).join("")}function ji(e){let t;return e.tagName.toLowerCase()==="label"?t=kp(e):t=e.value||e.textContent,t}function Lp(e){if(e.labels!==void 0){var t;return(t=e.labels)!=null?t:[]}if(!pq(e))return[];const r=e.ownerDocument.querySelectorAll("label");return Array.from(r).filter(n=>n.control===e)}function pq(e){return/BUTTON|METER|OUTPUT|PROGRESS|SELECT|TEXTAREA/.test(e.tagName)||e.tagName==="INPUT"&&e.getAttribute("type")!=="hidden"}function Fp(e,t,r){let{selector:n="*"}=r===void 0?{}:r;const a=t.getAttribute("aria-labelledby"),o=a?a.split(" "):[];return o.length?o.map(l=>{const u=e.querySelector('[id="'+l+'"]');return u?{content:ji(u),formControl:null}:{content:"",formControl:null}}):Array.from(Lp(t)).map(l=>{const u=ji(l),i="button, input, meter, output, progress, select, textarea",s=Array.from(l.querySelectorAll(i)).filter(d=>d.matches(n))[0];return{content:u,formControl:s}})}function Up(e){if(e==null)throw new Error("It looks like "+e+" was passed instead of a matcher. Did you do something like getByText("+e+")?")}function tt(e,t,r,n){if(typeof e!="string")return!1;Up(r);const a=n(e);return typeof r=="string"||typeof r=="number"?a.toLowerCase().includes(r.toString().toLowerCase()):typeof r=="function"?r(a,t):Vp(r,a)}function he(e,t,r,n){if(typeof e!="string")return!1;Up(r);const a=n(e);return r instanceof Function?r(a,t):r instanceof RegExp?Vp(r,a):a===String(r)}function wu(e){let{trim:t=!0,collapseWhitespace:r=!0}=e===void 0?{}:e;return n=>{let a=n;return a=t?a.trim():a,a=r?a.replace(/\s+/g," "):a,a}}function We(e){let{trim:t,collapseWhitespace:r,normalizer:n}=e;if(!n)return wu({trim:t,collapseWhitespace:r});if(typeof t<"u"||typeof r<"u")throw new Error('trim and collapseWhitespace are not supported with a normalizer. If you want to use the default trim and collapseWhitespace logic in your normalizer, use "getDefaultNormalizer({trim, collapseWhitespace})" and compose that into your normalizer');return n}function Vp(e,t){const r=e.test(t);return e.global&&e.lastIndex!==0&&(console.warn("To match all elements we had to reset the lastIndex of the RegExp because the global flag is enabled. We encourage to remove the global flag from the RegExp."),e.lastIndex=0),r}function dr(e){return e.matches("input[type=submit], input[type=button], input[type=reset]")?e.value:Array.from(e.childNodes).filter(t=>t.nodeType===Np&&Boolean(t.textContent)).map(t=>t.textContent).join("")}const vq=yq($p);function Hp(e){return e.hidden===!0||e.getAttribute("aria-hidden")==="true"||e.ownerDocument.defaultView.getComputedStyle(e).display==="none"}function Qo(e,t){t===void 0&&(t={});const{isSubtreeInaccessible:r=Hp}=t;if(e.ownerDocument.defaultView.getComputedStyle(e).visibility==="hidden")return!0;let a=e;for(;a;){if(r(a))return!0;a=a.parentElement}return!1}function Cu(e){for(const{match:t,roles:r}of vq)if(t(e))return[...r];return[]}function yq(e){function t(l){let{name:u,attributes:i}=l;return""+u+i.map(s=>{let{name:d,value:f,constraints:p=[]}=s;return p.indexOf("undefined")!==-1?":not(["+d+"])":f?"["+d+'="'+f+'"]':"["+d+"]"}).join("")}function r(l){let{attributes:u=[]}=l;return u.length}function n(l,u){let{specificity:i}=l,{specificity:s}=u;return s-i}function a(l){let{attributes:u=[]}=l;const i=u.findIndex(d=>d.value&&d.name==="type"&&d.value==="text");i>=0&&(u=[...u.slice(0,i),...u.slice(i+1)]);const s=t({...l,attributes:u});return d=>i>=0&&d.type!=="text"?!1:d.matches(s)}let o=[];for(const[l,u]of e.entries())o=[...o,{match:a(l),roles:Array.from(u),specificity:r(l)}];return o.sort(n)}function Wp(e,t){let{hidden:r=!1}=t===void 0?{}:t;function n(a){return[a,...Array.from(a.children).reduce((o,l)=>[...o,...n(l)],[])]}return n(e).filter(a=>r===!1?Qo(a)===!1:!0).reduce((a,o)=>{let l=[];return o.hasAttribute("role")?l=o.getAttribute("role").split(" ").slice(0,1):l=Cu(o),l.reduce((u,i)=>Array.isArray(u[i])?{...u,[i]:[...u[i],o]}:{...u,[i]:[o]},a)},{})}function zp(e,t){let{hidden:r,includeDescription:n}=t;const a=Wp(e,{hidden:r});return Object.entries(a).filter(o=>{let[l]=o;return l!=="generic"}).map(o=>{let[l,u]=o;const i="-".repeat(50),s=u.map(d=>{const f='Name "'+ou(d,{computedStyleSupportsPseudoElements:q().computedStyleSupportsPseudoElements})+`":
-`,p=Jt(d.cloneNode(!1));if(n){const m='Description "'+vf(d,{computedStyleSupportsPseudoElements:q().computedStyleSupportsPseudoElements})+`":
-`;return""+f+m+p}return""+f+p}).join(`
-
-`);return l+`:
-
-`+s+`
-
-`+i}).join(`
-`)}const mq=function(e,t){let{hidden:r=!1}=t===void 0?{}:t;return console.log(zp(e,{hidden:r}))};function bq(e){return e.tagName==="OPTION"?e.selected:fr(e,"aria-selected")}function hq(e){if(!("indeterminate"in e&&e.indeterminate))return"checked"in e?e.checked:fr(e,"aria-checked")}function gq(e){return fr(e,"aria-pressed")}function Eq(e){var t,r;return(t=(r=fr(e,"aria-current"))!=null?r:e.getAttribute("aria-current"))!=null?t:!1}function _q(e){return fr(e,"aria-expanded")}function fr(e,t){const r=e.getAttribute(t);if(r==="true")return!0;if(r==="false")return!1}function Rq(e){const t={H1:1,H2:2,H3:3,H4:4,H5:5,H6:6};return e.getAttribute("aria-level")&&Number(e.getAttribute("aria-level"))||t[e.tagName]}const Dc=wu();function Pq(e){return e.replace(/[.*+\-?^${}()|[\]\\]/g,"\\$&")}function kc(e){return new RegExp(Pq(e.toLowerCase()),"i")}function Ce(e,t,r,n){let{variant:a,name:o}=n,l="";const u={},i=[["Role","TestId"].includes(e)?r:kc(r)];o&&(u.name=kc(o)),e==="Role"&&Qo(t)&&(u.hidden=!0,l=`Element is inaccessible. This means that the element and all its children are invisible to screen readers.
-    If you are using the aria-hidden prop, make sure this is the right choice for your case.
-    `),Object.keys(u).length>0&&i.push(u);const s=a+"By"+e;return{queryName:e,queryMethod:s,queryArgs:i,variant:a,warning:l,toString(){l&&console.warn(l);let[d,f]=i;return d=typeof d=="string"?"'"+d+"'":d,f=f?", { "+Object.entries(f).map(p=>{let[m,C]=p;return m+": "+C}).join(", ")+" }":"",s+"("+d+f+")"}}}function Oe(e,t,r){return r&&(!t||t.toLowerCase()===e.toLowerCase())}function tn(e,t,r){var n,a;if(t===void 0&&(t="get"),e.matches(q().defaultIgnore))return;const o=(n=e.getAttribute("role"))!=null?n:(a=Cu(e))==null?void 0:a[0];if(o!=="generic"&&Oe("Role",r,o))return Ce("Role",e,o,{variant:t,name:ou(e,{computedStyleSupportsPseudoElements:q().computedStyleSupportsPseudoElements})});const l=Fp(document,e).map(p=>p.content).join(" ");if(Oe("LabelText",r,l))return Ce("LabelText",e,l,{variant:t});const u=e.getAttribute("placeholder");if(Oe("PlaceholderText",r,u))return Ce("PlaceholderText",e,u,{variant:t});const i=Dc(dr(e));if(Oe("Text",r,i))return Ce("Text",e,i,{variant:t});if(Oe("DisplayValue",r,e.value))return Ce("DisplayValue",e,Dc(e.value),{variant:t});const s=e.getAttribute("alt");if(Oe("AltText",r,s))return Ce("AltText",e,s,{variant:t});const d=e.getAttribute("title");if(Oe("Title",r,d))return Ce("Title",e,d,{variant:t});const f=e.getAttribute(q().testIdAttribute);if(Oe("TestId",r,f))return Ce("TestId",e,f,{variant:t})}function Cr(e,t){e.stack=t.stack.replace(t.message,e.message)}function wq(e,t){let{container:r=Pu(),timeout:n=q().asyncUtilTimeout,showOriginalStackTrace:a=q().showOriginalStackTrace,stackTraceError:o,interval:l=50,onTimeout:u=s=>(s.message=q().getElementError(s.message,r).message,s),mutationObserverOptions:i={subtree:!0,childList:!0,attributes:!0,characterData:!0}}=t;if(typeof e!="function")throw new TypeError("Received `callback` arg must be a function");return new Promise(async(s,d)=>{let f,p,m,C=!1,R="idle";const S=setTimeout(O,n),v=ti();if(v){const{unstable_advanceTimersWrapper:y}=q();for(w();!C;){if(!ti()){const h=new Error("Changed from using fake timers to real timers while using waitFor. This is not allowed and will result in very strange behavior. Please ensure you're awaiting all async things your test is doing before changing to real timers. For more info, please go to https://github.com/testing-library/dom-testing-library/issues/830");a||Cr(h,o),d(h);return}if(y(()=>{jest.advanceTimersByTime(l)}),w(),C)break;await y(async()=>{await new Promise(h=>{setTimeout(h,0),jest.advanceTimersByTime(0)})})}}else{try{_e(r)}catch(h){d(h);return}p=setInterval(P,l);const{MutationObserver:y}=Dp(r);m=new y(P),m.observe(r,i),w()}function b(y,h){C=!0,clearTimeout(S),v||(clearInterval(p),m.disconnect()),y?d(y):s(h)}function P(){if(ti()){const y=new Error("Changed from using real timers to fake timers while using waitFor. This is not allowed and will result in very strange behavior. Please ensure you're awaiting all async things your test is doing before changing to fake timers. For more info, please go to https://github.com/testing-library/dom-testing-library/issues/830");return a||Cr(y,o),d(y)}else return w()}function w(){if(R!=="pending")try{const y=cq(e);typeof(y==null?void 0:y.then)=="function"?(R="pending",y.then(h=>{R="resolved",b(null,h)},h=>{R="rejected",f=h})):b(null,y)}catch(y){f=y}}function O(){let y;f?(y=f,!a&&y.name==="TestingLibraryElementError"&&Cr(y,o)):(y=new Error("Timed out in waitFor."),a||Cr(y,o)),b(u(y),null)}})}function Ou(e,t){const r=new Error("STACK_TRACE_MESSAGE");return q().asyncWrapper(()=>wq(e,{stackTraceError:r,...t}))}function Zo(e,t){return q().getElementError(e,t)}function el(e,t){return Zo(e+"\n\n(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).",t)}function rt(e,t,r,n){let{exact:a=!0,collapseWhitespace:o,trim:l,normalizer:u}=n===void 0?{}:n;const i=a?he:tt,s=We({collapseWhitespace:o,trim:l,normalizer:u});return Array.from(t.querySelectorAll("["+e+"]")).filter(d=>i(d.getAttribute(e),d,r,s))}function Kp(e,t,r,n){const a=rt(e,t,r,n);if(a.length>1)throw el("Found multiple elements by ["+e+"="+r+"]",t);return a[0]||null}function wt(e,t){return function(r){for(var n=arguments.length,a=new Array(n>1?n-1:0),o=1;o<n;o++)a[o-1]=arguments[o];const l=e(r,...a);if(l.length>1){const u=l.map(i=>Zo(null,i).message).join(`
-
-`);throw el(t(r,...a)+`
-
-Here are the matching elements:
-
-`+u,r)}return l[0]||null}}function Gp(e,t){return q().getElementError(`A better query is available, try this:
-`+e.toString()+`
-`,t)}function Su(e,t){return function(r){for(var n=arguments.length,a=new Array(n>1?n-1:0),o=1;o<n;o++)a[o-1]=arguments[o];const l=e(r,...a);if(!l.length)throw q().getElementError(t(r,...a),r);return l}}function Ct(e){return(t,r,n,a)=>Ou(()=>e(t,r,n),{container:t,...a})}const Fe=(e,t,r)=>function(n){for(var a=arguments.length,o=new Array(a>1?a-1:0),l=1;l<a;l++)o[l-1]=arguments[l];const u=e(n,...o),[{suggest:i=q().throwSuggestions}={}]=o.slice(-1);if(u&&i){const s=tn(u,r);if(s&&!t.endsWith(s.queryName))throw Gp(s.toString(),n)}return u},Y=(e,t,r)=>function(n){for(var a=arguments.length,o=new Array(a>1?a-1:0),l=1;l<a;l++)o[l-1]=arguments[l];const u=e(n,...o),[{suggest:i=q().throwSuggestions}={}]=o.slice(-1);if(u.length&&i){const s=[...new Set(u.map(d=>{var f;return(f=tn(d,r))==null?void 0:f.toString()}))];if(s.length===1&&!t.endsWith(tn(u[0],r).queryName))throw Gp(s[0],n)}return u};function Re(e,t,r){const n=Fe(wt(e,t),e.name,"query"),a=Su(e,r),o=wt(a,t),l=Fe(o,e.name,"get"),u=Y(a,e.name.replace("query","get"),"getAll"),i=Ct(Y(a,e.name,"findAll")),s=Ct(Fe(o,e.name,"find"));return[n,u,l,i,s]}var Cq=Object.freeze({__proto__:null,getElementError:Zo,wrapAllByQueryWithSuggestion:Y,wrapSingleQueryWithSuggestion:Fe,getMultipleElementsFoundError:el,queryAllByAttribute:rt,queryByAttribute:Kp,makeSingleQuery:wt,makeGetAllQuery:Su,makeFindQuery:Ct,buildQueries:Re});function Oq(e){return Array.from(e.querySelectorAll("label,input")).map(t=>({node:t,textToMatch:ji(t)})).filter(t=>{let{textToMatch:r}=t;return r!==null})}const Sq=function(e,t,r){let{exact:n=!0,trim:a,collapseWhitespace:o,normalizer:l}=r===void 0?{}:r;const u=n?he:tt,i=We({collapseWhitespace:o,trim:a,normalizer:l});return Oq(e).filter(d=>{let{node:f,textToMatch:p}=d;return u(p,f,t,i)}).map(d=>{let{node:f}=d;return f})},Xt=function(e,t,r){let{selector:n="*",exact:a=!0,collapseWhitespace:o,trim:l,normalizer:u}=r===void 0?{}:r;_e(e);const i=a?he:tt,s=We({collapseWhitespace:o,trim:l,normalizer:u}),d=Array.from(e.querySelectorAll("*")).filter(f=>Lp(f).length||f.hasAttribute("aria-labelledby")).reduce((f,p)=>{const m=Fp(e,p,{selector:n});m.filter(R=>Boolean(R.formControl)).forEach(R=>{i(R.content,R.formControl,t,s)&&R.formControl&&f.push(R.formControl)});const C=m.filter(R=>Boolean(R.content)).map(R=>R.content);return i(C.join(" "),p,t,s)&&f.push(p),C.length>1&&C.forEach((R,S)=>{i(R,p,t,s)&&f.push(p);const v=[...C];v.splice(S,1),v.length>1&&i(v.join(" "),p,t,s)&&f.push(p)}),f},[]).concat(rt("aria-label",e,t,{exact:a,normalizer:s}));return Array.from(new Set(d)).filter(f=>f.matches(n))},Qe=function(e,t){for(var r=arguments.length,n=new Array(r>2?r-2:0),a=2;a<r;a++)n[a-2]=arguments[a];const o=Xt(e,t,...n);if(!o.length){const l=Sq(e,t,...n);if(l.length){const u=l.map(i=>$q(e,i)).filter(i=>!!i);throw u.length?q().getElementError(u.map(i=>"Found a label with the text of: "+t+", however the element associated with this label (<"+i+" />) is non-labellable [https://html.spec.whatwg.org/multipage/forms.html#category-label]. If you really need to label a <"+i+" />, you can use aria-label or aria-labelledby instead.").join(`
-
-`),e):q().getElementError("Found a label with the text of: "+t+`, however no form control was found associated to that label. Make sure you're using the "for" attribute or "aria-labelledby" attribute correctly.`,e)}else throw q().getElementError("Unable to find a label with the text of: "+t,e)}return o};function $q(e,t){const r=t.getAttribute("for");if(!r)return null;const n=e.querySelector('[id="'+r+'"]');return n?n.tagName.toLowerCase():null}const Yp=(e,t)=>"Found multiple elements with the text of: "+t,Jp=Fe(wt(Xt,Yp),Xt.name,"query"),Xp=wt(Qe,Yp),Qp=Ct(Y(Qe,Qe.name,"findAll")),Zp=Ct(Fe(Xp,Qe.name,"find")),ev=Y(Qe,Qe.name,"getAll"),tv=Fe(Xp,Qe.name,"get"),rv=Y(Xt,Xt.name,"queryAll"),Ni=function(){for(var e=arguments.length,t=new Array(e),r=0;r<e;r++)t[r]=arguments[r];return _e(t[0]),rt("placeholder",...t)},Tq=(e,t)=>"Found multiple elements with the placeholder text of: "+t,qq=(e,t)=>"Unable to find an element with the placeholder text of: "+t,nv=Y(Ni,Ni.name,"queryAll"),[av,ov,lv,iv,uv]=Re(Ni,Tq,qq),Di=function(e,t,r){let{selector:n="*",exact:a=!0,collapseWhitespace:o,trim:l,ignore:u=q().defaultIgnore,normalizer:i}=r===void 0?{}:r;_e(e);const s=a?he:tt,d=We({collapseWhitespace:o,trim:l,normalizer:i});let f=[];return typeof e.matches=="function"&&e.matches(n)&&(f=[e]),[...f,...Array.from(e.querySelectorAll(n))].filter(p=>!u||!p.matches(u)).filter(p=>s(dr(p),p,t,d))},Aq=(e,t)=>"Found multiple elements with the text: "+t,xq=function(e,t,r){r===void 0&&(r={});const{collapseWhitespace:n,trim:a,normalizer:o,selector:l}=r,i=We({collapseWhitespace:n,trim:a,normalizer:o})(t.toString()),s=i!==t.toString(),d=(l!=null?l:"*")!=="*";return"Unable to find an element with the text: "+(s?i+" (normalized from '"+t+"')":t)+(d?", which matches selector '"+l+"'":"")+". This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible."},sv=Y(Di,Di.name,"queryAll"),[cv,dv,fv,pv,vv]=Re(Di,Aq,xq),ki=function(e,t,r){let{exact:n=!0,collapseWhitespace:a,trim:o,normalizer:l}=r===void 0?{}:r;_e(e);const u=n?he:tt,i=We({collapseWhitespace:a,trim:o,normalizer:l});return Array.from(e.querySelectorAll("input,textarea,select")).filter(s=>s.tagName==="SELECT"?Array.from(s.options).filter(f=>f.selected).some(f=>u(dr(f),f,t,i)):u(s.value,s,t,i))},Mq=(e,t)=>"Found multiple elements with the display value: "+t+".",Iq=(e,t)=>"Unable to find an element with the display value: "+t+".",yv=Y(ki,ki.name,"queryAll"),[mv,bv,hv,gv,Ev]=Re(ki,Mq,Iq),Bq=/^(img|input|area|.+-.+)$/i,Li=function(e,t,r){return r===void 0&&(r={}),_e(e),rt("alt",e,t,r).filter(n=>Bq.test(n.tagName))},jq=(e,t)=>"Found multiple elements with the alt text: "+t,Nq=(e,t)=>"Unable to find an element with the alt text: "+t,_v=Y(Li,Li.name,"queryAll"),[Rv,Pv,wv,Cv,Ov]=Re(Li,jq,Nq),Dq=e=>{var t;return e.tagName.toLowerCase()==="title"&&((t=e.parentElement)==null?void 0:t.tagName.toLowerCase())==="svg"},Fi=function(e,t,r){let{exact:n=!0,collapseWhitespace:a,trim:o,normalizer:l}=r===void 0?{}:r;_e(e);const u=n?he:tt,i=We({collapseWhitespace:a,trim:o,normalizer:l});return Array.from(e.querySelectorAll("[title], svg > title")).filter(s=>u(s.getAttribute("title"),s,t,i)||Dq(s)&&u(dr(s),s,t,i))},kq=(e,t)=>"Found multiple elements with the title: "+t+".",Lq=(e,t)=>"Unable to find an element with the title: "+t+".",Sv=Y(Fi,Fi.name,"queryAll"),[$v,Tv,qv,Av,xv]=Re(Fi,kq,Lq);function Ui(e,t,r){let{exact:n=!0,collapseWhitespace:a,hidden:o=q().defaultHidden,name:l,description:u,trim:i,normalizer:s,queryFallbacks:d=!1,selected:f,checked:p,pressed:m,current:C,level:R,expanded:S}=r===void 0?{}:r;_e(e);const v=n?he:tt,b=We({collapseWhitespace:a,trim:i,normalizer:s});if(f!==void 0){var P;if(((P=vt.get(t))==null?void 0:P.props["aria-selected"])===void 0)throw new Error('"aria-selected" is not supported on role "'+t+'".')}if(p!==void 0){var w;if(((w=vt.get(t))==null?void 0:w.props["aria-checked"])===void 0)throw new Error('"aria-checked" is not supported on role "'+t+'".')}if(m!==void 0){var O;if(((O=vt.get(t))==null?void 0:O.props["aria-pressed"])===void 0)throw new Error('"aria-pressed" is not supported on role "'+t+'".')}if(C!==void 0){var y;if(((y=vt.get(t))==null?void 0:y.props["aria-current"])===void 0)throw new Error('"aria-current" is not supported on role "'+t+'".')}if(R!==void 0&&t!=="heading")throw new Error('Role "'+t+'" cannot have "level" property.');if(S!==void 0){var h;if(((h=vt.get(t))==null?void 0:h.props["aria-expanded"])===void 0)throw new Error('"aria-expanded" is not supported on role "'+t+'".')}const E=new WeakMap;function I(c){return E.has(c)||E.set(c,Hp(c)),E.get(c)}return Array.from(e.querySelectorAll(Fq(t,n,s?b:void 0))).filter(c=>{if(c.hasAttribute("role")){const H=c.getAttribute("role");if(d)return H.split(" ").filter(Boolean).some(lt=>v(lt,c,t,b));if(s)return v(H,c,t,b);const[ce]=H.split(" ");return v(ce,c,t,b)}return Cu(c).some(H=>v(H,c,t,b))}).filter(c=>f!==void 0?f===bq(c):p!==void 0?p===hq(c):m!==void 0?m===gq(c):C!==void 0?C===Eq(c):S!==void 0?S===_q(c):R!==void 0?R===Rq(c):!0).filter(c=>l===void 0?!0:he(ou(c,{computedStyleSupportsPseudoElements:q().computedStyleSupportsPseudoElements}),c,l,te=>te)).filter(c=>u===void 0?!0:he(vf(c,{computedStyleSupportsPseudoElements:q().computedStyleSupportsPseudoElements}),c,u,te=>te)).filter(c=>o===!1?Qo(c,{isSubtreeInaccessible:I})===!1:!0)}function Fq(e,t,r){var n;if(typeof e!="string")return"*";const a=t&&!r?'*[role~="'+e+'"]':"*[role]",o=(n=Tp.get(e))!=null?n:new Set,l=new Set(Array.from(o).map(u=>{let{name:i}=u;return i}));return[a].concat(Array.from(l)).join(",")}const Mv=e=>{let t="";return e===void 0?t="":typeof e=="string"?t=' and name "'+e+'"':t=" and name `"+e+"`",t},Uq=function(e,t,r){let{name:n}=r===void 0?{}:r;return'Found multiple elements with the role "'+t+'"'+Mv(n)},Vq=function(e,t,r){let{hidden:n=q().defaultHidden,name:a,description:o}=r===void 0?{}:r;if(q()._disableExpensiveErrorDiagnostics)return'Unable to find role="'+t+'"'+Mv(a);let l="";Array.from(e.children).forEach(d=>{l+=zp(d,{hidden:n,includeDescription:o!==void 0})});let u;l.length===0?n===!1?u="There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole":u="There are no available roles.":u=(`
-Here are the `+(n===!1?"accessible":"available")+` roles:
-
-  `+l.replace(/\n/g,`
-  `).replace(/\n\s\s\n/g,`
-
-`)+`
-`).trim();let i="";a===void 0?i="":typeof a=="string"?i=' and name "'+a+'"':i=" and name `"+a+"`";let s="";return o===void 0?s="":typeof o=="string"?s=' and description "'+o+'"':s=" and description `"+o+"`",(`
-Unable to find an `+(n===!1?"accessible ":"")+'element with the role "'+t+'"'+i+s+`
-
-`+u).trim()},Iv=Y(Ui,Ui.name,"queryAll"),[Bv,jv,Nv,Dv,kv]=Re(Ui,Uq,Vq),$u=()=>q().testIdAttribute,Vi=function(){for(var e=arguments.length,t=new Array(e),r=0;r<e;r++)t[r]=arguments[r];return _e(t[0]),rt($u(),...t)},Hq=(e,t)=>"Found multiple elements by: ["+$u()+'="'+t+'"]',Wq=(e,t)=>"Unable to find an element by: ["+$u()+'="'+t+'"]',Lv=Y(Vi,Vi.name,"queryAll"),[Fv,Uv,Vv,Hv,Wv]=Re(Vi,Hq,Wq);var rn=Object.freeze({__proto__:null,queryAllByLabelText:rv,queryByLabelText:Jp,getAllByLabelText:ev,getByLabelText:tv,findAllByLabelText:Qp,findByLabelText:Zp,queryByPlaceholderText:av,queryAllByPlaceholderText:nv,getByPlaceholderText:lv,getAllByPlaceholderText:ov,findAllByPlaceholderText:iv,findByPlaceholderText:uv,queryByText:cv,queryAllByText:sv,getByText:fv,getAllByText:dv,findAllByText:pv,findByText:vv,queryByDisplayValue:mv,queryAllByDisplayValue:yv,getByDisplayValue:hv,getAllByDisplayValue:bv,findAllByDisplayValue:gv,findByDisplayValue:Ev,queryByAltText:Rv,queryAllByAltText:_v,getByAltText:wv,getAllByAltText:Pv,findAllByAltText:Cv,findByAltText:Ov,queryByTitle:$v,queryAllByTitle:Sv,getByTitle:qv,getAllByTitle:Tv,findAllByTitle:Av,findByTitle:xv,queryByRole:Bv,queryAllByRole:Iv,getAllByRole:jv,getByRole:Nv,findAllByRole:Dv,findByRole:kv,queryByTestId:Fv,queryAllByTestId:Lv,getByTestId:Vv,getAllByTestId:Uv,findAllByTestId:Hv,findByTestId:Wv});function Hi(e,t,r){return t===void 0&&(t=rn),r===void 0&&(r={}),Object.keys(t).reduce((n,a)=>{const o=t[a];return n[a]=o.bind(null,e),n},r)}const zv=e=>!e||Array.isArray(e)&&!e.length;function Lc(e){if(zv(e))throw new Error("The element(s) given to waitForElementToBeRemoved are already removed. waitForElementToBeRemoved requires that the element(s) exist(s) before waiting for removal.")}async function zq(e,t){const r=new Error("Timed out in waitForElementToBeRemoved.");if(typeof e!="function"){Lc(e);const a=(Array.isArray(e)?e:[e]).map(o=>{let l=o.parentElement;if(l===null)return()=>null;for(;l.parentElement;)l=l.parentElement;return()=>l.contains(o)?o:null});e=()=>a.map(o=>o()).filter(Boolean)}return Lc(e()),Ou(()=>{let n;try{n=e()}catch(a){if(a.name==="TestingLibraryElementError")return;throw a}if(!zv(n))throw r},t)}const Fc={copy:{EventType:"ClipboardEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},cut:{EventType:"ClipboardEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},paste:{EventType:"ClipboardEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},compositionEnd:{EventType:"CompositionEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},compositionStart:{EventType:"CompositionEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},compositionUpdate:{EventType:"CompositionEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},keyDown:{EventType:"KeyboardEvent",defaultInit:{bubbles:!0,cancelable:!0,charCode:0,composed:!0}},keyPress:{EventType:"KeyboardEvent",defaultInit:{bubbles:!0,cancelable:!0,charCode:0,composed:!0}},keyUp:{EventType:"KeyboardEvent",defaultInit:{bubbles:!0,cancelable:!0,charCode:0,composed:!0}},focus:{EventType:"FocusEvent",defaultInit:{bubbles:!1,cancelable:!1,composed:!0}},blur:{EventType:"FocusEvent",defaultInit:{bubbles:!1,cancelable:!1,composed:!0}},focusIn:{EventType:"FocusEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},focusOut:{EventType:"FocusEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},change:{EventType:"Event",defaultInit:{bubbles:!0,cancelable:!1}},input:{EventType:"InputEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},invalid:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!0}},submit:{EventType:"Event",defaultInit:{bubbles:!0,cancelable:!0}},reset:{EventType:"Event",defaultInit:{bubbles:!0,cancelable:!0}},click:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,button:0,composed:!0}},contextMenu:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},dblClick:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},drag:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},dragEnd:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},dragEnter:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},dragExit:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},dragLeave:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},dragOver:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},dragStart:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},drop:{EventType:"DragEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},mouseDown:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},mouseEnter:{EventType:"MouseEvent",defaultInit:{bubbles:!1,cancelable:!1,composed:!0}},mouseLeave:{EventType:"MouseEvent",defaultInit:{bubbles:!1,cancelable:!1,composed:!0}},mouseMove:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},mouseOut:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},mouseOver:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},mouseUp:{EventType:"MouseEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},select:{EventType:"Event",defaultInit:{bubbles:!0,cancelable:!1}},touchCancel:{EventType:"TouchEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},touchEnd:{EventType:"TouchEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},touchMove:{EventType:"TouchEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},touchStart:{EventType:"TouchEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},resize:{EventType:"UIEvent",defaultInit:{bubbles:!1,cancelable:!1}},scroll:{EventType:"UIEvent",defaultInit:{bubbles:!1,cancelable:!1}},wheel:{EventType:"WheelEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},abort:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},canPlay:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},canPlayThrough:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},durationChange:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},emptied:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},encrypted:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},ended:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},loadedData:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},loadedMetadata:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},loadStart:{EventType:"ProgressEvent",defaultInit:{bubbles:!1,cancelable:!1}},pause:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},play:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},playing:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},progress:{EventType:"ProgressEvent",defaultInit:{bubbles:!1,cancelable:!1}},rateChange:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},seeked:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},seeking:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},stalled:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},suspend:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},timeUpdate:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},volumeChange:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},waiting:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},load:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},error:{EventType:"Event",defaultInit:{bubbles:!1,cancelable:!1}},animationStart:{EventType:"AnimationEvent",defaultInit:{bubbles:!0,cancelable:!1}},animationEnd:{EventType:"AnimationEvent",defaultInit:{bubbles:!0,cancelable:!1}},animationIteration:{EventType:"AnimationEvent",defaultInit:{bubbles:!0,cancelable:!1}},transitionCancel:{EventType:"TransitionEvent",defaultInit:{bubbles:!0,cancelable:!1}},transitionEnd:{EventType:"TransitionEvent",defaultInit:{bubbles:!0,cancelable:!0}},transitionRun:{EventType:"TransitionEvent",defaultInit:{bubbles:!0,cancelable:!1}},transitionStart:{EventType:"TransitionEvent",defaultInit:{bubbles:!0,cancelable:!1}},pointerOver:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},pointerEnter:{EventType:"PointerEvent",defaultInit:{bubbles:!1,cancelable:!1}},pointerDown:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},pointerMove:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},pointerUp:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},pointerCancel:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},pointerOut:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!0,composed:!0}},pointerLeave:{EventType:"PointerEvent",defaultInit:{bubbles:!1,cancelable:!1}},gotPointerCapture:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},lostPointerCapture:{EventType:"PointerEvent",defaultInit:{bubbles:!0,cancelable:!1,composed:!0}},popState:{EventType:"PopStateEvent",defaultInit:{bubbles:!0,cancelable:!1}}},Uc={doubleClick:"dblClick"};function Qt(e,t){return q().eventWrapper(()=>{if(!t)throw new Error("Unable to fire an event - please provide an event object.");if(!e)throw new Error('Unable to fire a "'+t.type+'" event - please provide a DOM element.');return e.dispatchEvent(t)})}function Dr(e,t,r,n){let{EventType:a="Event",defaultInit:o={}}=n===void 0?{}:n;if(!t)throw new Error('Unable to fire a "'+e+'" event - please provide a DOM element.');const l={...o,...r},{target:{value:u,files:i,...s}={}}=l;u!==void 0&&Kq(t,u),i!==void 0&&Object.defineProperty(t,"files",{configurable:!0,enumerable:!0,writable:!0,value:i}),Object.assign(t,s);const d=Dp(t),f=d[a]||d.Event;let p;if(typeof f=="function")p=new f(e,l);else{p=d.document.createEvent(a);const{bubbles:C,cancelable:R,detail:S,...v}=l;p.initEvent(e,C,R,S),Object.keys(v).forEach(b=>{p[b]=v[b]})}return["dataTransfer","clipboardData"].forEach(C=>{const R=l[C];typeof R=="object"&&(typeof d.DataTransfer=="function"?Object.defineProperty(p,C,{value:Object.getOwnPropertyNames(R).reduce((S,v)=>(Object.defineProperty(S,v,{value:R[v]}),S),new d.DataTransfer)}):Object.defineProperty(p,C,{value:R}))}),p}Object.keys(Fc).forEach(e=>{const{EventType:t,defaultInit:r}=Fc[e],n=e.toLowerCase();Dr[e]=(a,o)=>Dr(n,a,o,{EventType:t,defaultInit:r}),Qt[e]=(a,o)=>Qt(a,Dr[e](a,o))});function Kq(e,t){const{set:r}=Object.getOwnPropertyDescriptor(e,"value")||{},n=Object.getPrototypeOf(e),{set:a}=Object.getOwnPropertyDescriptor(n,"value")||{};if(a&&r!==a)a.call(e,t);else if(r)r.call(e,t);else throw new Error("The given element does not have a value setter")}Object.keys(Uc).forEach(e=>{const t=Uc[e];Qt[e]=function(){return Qt[t](...arguments)}});function Gq(e){return e.replace(/[ \t]*[\n][ \t]*/g,`
-`)}function Yq(e){return HT.compressToEncodedURIComponent(Gq(e))}function Jq(e){return"https://testing-playground.com/#markup="+Yq(e)}const Xq=(e,t,r)=>Array.isArray(e)?e.forEach(n=>Bi(n,t,r)):Bi(e,t,r),Qq=function(e){if(e===void 0&&(e=Pu().body),!e||!("innerHTML"in e)){console.log("The element you're providing isn't a valid DOM element.");return}if(!e.innerHTML){console.log("The provided element doesn't have any children.");return}const t=Jq(e.innerHTML);return console.log(`Open this URL in your browser
-
-`+t),t},Vc={debug:Xq,logTestingPlaygroundURL:Qq},Zq=typeof document<"u"&&document.body?Hi(document.body,rn,Vc):Object.keys(rn).reduce((e,t)=>(e[t]=()=>{throw new TypeError("For queries bound to document.body a global document has to be available... Learn more: https://testing-library.com/s/screen-global-error")},e),Vc),Kv=Object.freeze(Object.defineProperty({__proto__:null,prettyFormat:eb,buildQueries:Re,configure:dq,createEvent:Dr,findAllByAltText:Cv,findAllByDisplayValue:gv,findAllByLabelText:Qp,findAllByPlaceholderText:iv,findAllByRole:Dv,findAllByTestId:Hv,findAllByText:pv,findAllByTitle:Av,findByAltText:Ov,findByDisplayValue:Ev,findByLabelText:Zp,findByPlaceholderText:uv,findByRole:kv,findByTestId:Wv,findByText:vv,findByTitle:xv,fireEvent:Qt,getAllByAltText:Pv,getAllByDisplayValue:bv,getAllByLabelText:ev,getAllByPlaceholderText:ov,getAllByRole:jv,getAllByTestId:Uv,getAllByText:dv,getAllByTitle:Tv,getByAltText:wv,getByDisplayValue:hv,getByLabelText:tv,getByPlaceholderText:lv,getByRole:Nv,getByTestId:Vv,getByText:fv,getByTitle:qv,getConfig:q,getDefaultNormalizer:wu,getElementError:Zo,getMultipleElementsFoundError:el,getNodeText:dr,getQueriesForElement:Hi,getRoles:Wp,getSuggestedQuery:tn,isInaccessible:Qo,logDOM:Bi,logRoles:mq,makeFindQuery:Ct,makeGetAllQuery:Su,makeSingleQuery:wt,prettyDOM:Jt,queries:rn,queryAllByAltText:_v,queryAllByAttribute:rt,queryAllByDisplayValue:yv,queryAllByLabelText:rv,queryAllByPlaceholderText:nv,queryAllByRole:Iv,queryAllByTestId:Lv,queryAllByText:sv,queryAllByTitle:Sv,queryByAltText:Rv,queryByAttribute:Kp,queryByDisplayValue:mv,queryByLabelText:Jp,queryByPlaceholderText:av,queryByRole:Bv,queryByTestId:Fv,queryByText:cv,queryByTitle:$v,queryHelpers:Cq,screen:Zq,waitFor:Ou,waitForElementToBeRemoved:zq,within:Hi,wrapAllByQueryWithSuggestion:Y,wrapSingleQueryWithSuggestion:Fe},Symbol.toStringTag,{value:"Module"}));var Gv={},nt={};const J=yd(Kv);var N={},Tu={};Object.defineProperty(Tu,"__esModule",{value:!0});Tu.getMouseEventOptions=eA;function Hc(e){return e==="mousedown"||e==="mouseup"||e==="click"||e==="dblclick"}const Wc={none:0,primary:1,secondary:2,auxiliary:4},zc={primary:0,auxiliary:1,secondary:2};function Kc(e,t){var r;const[n,a]=t==="button"?[zc,Wc]:[Wc,zc],o=(r=Object.entries(n).find(([,l])=>l===e))==null?void 0:r[0];return o&&Object.prototype.hasOwnProperty.call(a,o)?a[o]:0}function Gc(e,t,r){return Hc(e)?typeof t[r]=="number"?t[r]:r==="button"&&typeof t.buttons=="number"?Kc(t.buttons,"buttons"):r==="buttons"&&typeof t.button=="number"?Kc(t.button,"button"):r!="button"&&Hc(e)?1:0:0}function eA(e,t,r=0){var n;return t=(n=t)!=null?n:{},{...t,detail:e==="mousedown"||e==="mouseup"||e==="click"?1+r:r,buttons:Gc(e,t,"buttons"),button:Gc(e,t,"button")}}var qu={},Pe={};Object.defineProperty(Pe,"__esModule",{value:!0});Pe.isElementType=tA;function tA(e,t,r){return e.namespaceURI&&e.namespaceURI!=="http://www.w3.org/1999/xhtml"||(t=Array.isArray(t)?t:[t],!t.includes(e.tagName.toLowerCase()))?!1:r?Object.entries(r).every(([n,a])=>e[n]===a):!0}Object.defineProperty(qu,"__esModule",{value:!0});qu.isClickableInput=nA;var Yc=Pe;const rA=["button","color","file","image","reset","submit","checkbox","radio"];function nA(e){return(0,Yc.isElementType)(e,"button")||(0,Yc.isElementType)(e,"input")&&rA.includes(e.type)}var Au={};Object.defineProperty(Au,"__esModule",{value:!0});Au.buildTimeValue=aA;function aA(e){const t=e.replace(/\D/g,"");if(t.length<2)return e;const r=parseInt(t[0],10),n=parseInt(t[1],10);if(r>=3||r===2&&n>=4){let a;return r>=3?a=1:a=2,Jc(t,a)}return e.length===2?e:Jc(t,2)}function Jc(e,t){const r=e.slice(0,t),n=Math.min(parseInt(r,10),23),a=e.slice(t),o=parseInt(a,10),l=Math.min(o,59);return`${n.toString().padStart(2,"0")}:${l.toString().padStart(2,"0")}`}var xu={},at={};Object.defineProperty(at,"__esModule",{value:!0});at.getSelectionRange=Jv;at.hasSelectionSupport=Mu;at.setSelectionRange=oA;var ht=Pe,Wi;(function(e){e.text="text",e.search="search",e.url="url",e.tel="tel",e.password="password"})(Wi||(Wi={}));const Yv=Symbol("inputSelection");function Mu(e){return(0,ht.isElementType)(e,"textarea")||(0,ht.isElementType)(e,"input")&&Boolean(Wi[e.type])}function Jv(e){if(Mu(e))return{selectionStart:e.selectionStart,selectionEnd:e.selectionEnd};if((0,ht.isElementType)(e,"input")){var t;return(t=e[Yv])!=null?t:{selectionStart:null,selectionEnd:null}}const r=e.ownerDocument.getSelection();if(r!=null&&r.rangeCount&&e.contains(r.focusNode)){const n=r.getRangeAt(0);return{selectionStart:n.startOffset,selectionEnd:n.endOffset}}else return{selectionStart:null,selectionEnd:null}}function oA(e,t,r){const{selectionStart:n,selectionEnd:a}=Jv(e);if(n===t&&a===r||(Mu(e)&&e.setSelectionRange(t,r),(0,ht.isElementType)(e,"input")&&(e[Yv]={selectionStart:t,selectionEnd:r}),(0,ht.isElementType)(e,"input")||(0,ht.isElementType)(e,"textarea")))return;const o=e.ownerDocument.createRange();o.selectNodeContents(e),e.firstChild&&(o.setStart(e.firstChild,t),o.setEnd(e.firstChild,r));const l=e.ownerDocument.getSelection();l&&(l.removeAllRanges(),l.addRange(o))}var qt={},pr={};Object.defineProperty(pr,"__esModule",{value:!0});pr.isContentEditable=lA;function lA(e){return e.hasAttribute("contenteditable")&&(e.getAttribute("contenteditable")=="true"||e.getAttribute("contenteditable")=="")}Object.defineProperty(qt,"__esModule",{value:!0});qt.getValue=uA;var iA=pr;function uA(e){return e?(0,iA.isContentEditable)(e)?e.textContent:e.value:null}var tl={};Object.defineProperty(tl,"__esModule",{value:!0});tl.isValidDateValue=sA;function sA(e,t){const r=e.cloneNode();return r.value=t,r.value===t}var rl={};Object.defineProperty(rl,"__esModule",{value:!0});rl.isValidInputTimeValue=cA;function cA(e,t){const r=e.cloneNode();return r.value=t,r.value===t}Object.defineProperty(xu,"__esModule",{value:!0});xu.calculateNewValue=vA;var dA=at,fA=qt,pA=tl,Xc=rl;function vA(e,t,r=(()=>{var o;return(o=(0,fA.getValue)(t))!=null?o:""})(),n=(0,dA.getSelectionRange)(t),a){const o=n.selectionStart===null?r.length:n.selectionStart,l=n.selectionEnd===null?r.length:n.selectionEnd,u=Math.max(0,o===l&&a==="backward"?o-1:o),i=r.substring(0,u),s=Math.min(r.length,o===l&&a==="forward"?l+1:l),d=r.substring(s,r.length);let f=`${i}${e}${d}`;const p=u+e.length;return t.type==="date"&&!(0,pA.isValidDateValue)(t,f)&&(f=r),t.type==="time"&&!(0,Xc.isValidInputTimeValue)(t,f)&&((0,Xc.isValidInputTimeValue)(t,e)?f=e:f=r),{newValue:f,newSelectionStart:p}}var nl={};Object.defineProperty(nl,"__esModule",{value:!0});nl.isCursorAtEnd=mA;nl.isCursorAtStart=bA;var Xv=at,yA=qt;function mA(e){var t;const{selectionStart:r,selectionEnd:n}=(0,Xv.getSelectionRange)(e);return r===n&&(r!=null?r:0)===((t=(0,yA.getValue)(e))!=null?t:"").length}function bA(e){const{selectionStart:t,selectionEnd:r}=(0,Xv.getSelectionRange)(e);return t===r&&(t!=null?t:0)===0}var Iu={};Object.defineProperty(Iu,"__esModule",{value:!0});Iu.hasUnreliableEmptyValue=gA;var hA=Pe,zi;(function(e){e.number="number"})(zi||(zi={}));function gA(e){return(0,hA.isElementType)(e,"input")&&Boolean(zi[e.type])}var ot={};Object.defineProperty(ot,"__esModule",{value:!0});ot.editableInputTypes=void 0;ot.isEditable=_A;ot.isEditableInput=Zv;var Qv=Pe,EA=pr;function _A(e){return Zv(e)||(0,Qv.isElementType)(e,"textarea",{readOnly:!1})||(0,EA.isContentEditable)(e)}let nn;ot.editableInputTypes=nn;(function(e){e.text="text",e.date="date",e["datetime-local"]="datetime-local",e.email="email",e.month="month",e.number="number",e.password="password",e.search="search",e.tel="tel",e.time="time",e.url="url",e.week="week"})(nn||(ot.editableInputTypes=nn={}));function Zv(e){return(0,Qv.isElementType)(e,"input",{readOnly:!1})&&Boolean(nn[e.type])}var Bu={};Object.defineProperty(Bu,"__esModule",{value:!0});Bu.getSpaceUntilMaxLength=PA;var Qc=Pe,RA=qt,Ki;(function(e){e.email="email",e.password="password",e.search="search",e.telephone="telephone",e.text="text",e.url="url"})(Ki||(Ki={}));function PA(e){const t=(0,RA.getValue)(e);if(t===null)return;const r=wA(e);return r?r-t.length:void 0}function wA(e){var t;if(!CA(e))return;const r=(t=e.getAttribute("maxlength"))!=null?t:"";return/^\d+$/.test(r)&&Number(r)>=0?Number(r):void 0}function CA(e){return(0,Qc.isElementType)(e,"textarea")||(0,Qc.isElementType)(e,"input")&&Boolean(Ki[e.type])}var ju={},vr={};Object.defineProperty(vr,"__esModule",{value:!0});vr.isDisabled=OA;function OA(e){return Boolean(e&&e.disabled)}Object.defineProperty(ju,"__esModule",{value:!0});ju.getActiveElement=ey;var SA=vr;function ey(e){const t=e.activeElement;return t!=null&&t.shadowRoot?ey(t.shadowRoot):(0,SA.isDisabled)(t)?e.ownerDocument?e.ownerDocument.body:e.body:t}var Nu={},al={};Object.defineProperty(al,"__esModule",{value:!0});al.isLabelWithInternallyDisabledControl=qA;var $A=vr,TA=Pe;function qA(e){if(!(0,TA.isElementType)(e,"label"))return!1;const t=e.control;return Boolean(t&&e.contains(t)&&(0,$A.isDisabled)(t))}var yr={};Object.defineProperty(yr,"__esModule",{value:!0});yr.FOCUSABLE_SELECTOR=void 0;const AA=["input:not([type=hidden]):not([disabled])","button:not([disabled])","select:not([disabled])","textarea:not([disabled])",'[contenteditable=""]','[contenteditable="true"]',"a[href]","[tabindex]:not([disabled])"].join(", ");yr.FOCUSABLE_SELECTOR=AA;Object.defineProperty(Nu,"__esModule",{value:!0});Nu.isFocusable=IA;var xA=al,MA=yr;function IA(e){return!(0,xA.isLabelWithInternallyDisabledControl)(e)&&e.matches(MA.FOCUSABLE_SELECTOR)}var Du={};Object.defineProperty(Du,"__esModule",{value:!0});Du.eventWrapper=jA;var BA=J;function jA(e){let t;return(0,BA.getConfig)().eventWrapper(()=>{t=e()}),t}var ku={},we={};Object.defineProperty(we,"__esModule",{value:!0});we.TEXT_NODE=void 0;we.checkContainerType=FA;we.getDocument=kA;we.getWindowFromNode=LA;we.jestFakeTimersAreEnabled=DA;const NA=3;we.TEXT_NODE=NA;function DA(){return typeof jest<"u"&&jest!==null?setTimeout._isMockFunction===!0||Object.prototype.hasOwnProperty.call(setTimeout,"clock"):!1}function kA(){if(typeof window>"u")throw new Error("Could not find default container");return window.document}function LA(e){if(e.defaultView)return e.defaultView;if(e.ownerDocument&&e.ownerDocument.defaultView)return e.ownerDocument.defaultView;if(e.window)return e.window;throw e.ownerDocument&&e.ownerDocument.defaultView===null?new Error("It looks like the window object is not available for the provided node."):e.then instanceof Function?new Error("It looks like you passed a Promise object instead of a DOM node. Did you do something like `fireEvent.click(screen.findBy...` when you meant to use a `getBy` query `fireEvent.click(screen.getBy...`, or await the findBy query `fireEvent.click(await screen.findBy...`?"):Array.isArray(e)?new Error("It looks like you passed an Array instead of a DOM node. Did you do something like `fireEvent.click(screen.getAllBy...` when you meant to use a `getBy` query `fireEvent.click(screen.getBy...`?"):typeof e.debug=="function"&&typeof e.logTestingPlaygroundURL=="function"?new Error("It looks like you passed a `screen` object. Did you do something like `fireEvent.click(screen, ...` when you meant to use a query, e.g. `fireEvent.click(screen.getBy..., `?"):new Error(`The given node is not an Element, the node type is: ${typeof e}.`)}function FA(e){if(!e||typeof e.querySelector!="function"||typeof e.querySelectorAll!="function")throw new TypeError(`Expected container to be an Element, a Document or a DocumentFragment but got ${t(e)}.`);function t(r){return typeof r=="object"?r===null?"null":r.constructor.name:typeof r}}Object.defineProperty(ku,"__esModule",{value:!0});ku.isVisible=VA;var UA=we;function VA(e){const t=(0,UA.getWindowFromNode)(e);for(let n=e;(r=n)!=null&&r.ownerDocument;n=n.parentElement){var r;if(t.getComputedStyle(n).display==="none")return!1}return!0}var Lu={};Object.defineProperty(Lu,"__esModule",{value:!0});Lu.isDocument=HA;function HA(e){return e.nodeType===e.DOCUMENT_NODE}var Fu={};Object.defineProperty(Fu,"__esModule",{value:!0});Fu.wait=WA;function WA(e){return new Promise(t=>setTimeout(()=>t(),e))}var Uu={};Object.defineProperty(Uu,"__esModule",{value:!0});Uu.hasPointerEvents=KA;var zA=we;function KA(e){const t=(0,zA.getWindowFromNode)(e);for(let n=e;(r=n)!=null&&r.ownerDocument;n=n.parentElement){var r;const a=t.getComputedStyle(n).pointerEvents;if(a&&!["inherit","unset"].includes(a))return a!=="none"}return!0}var ol={};Object.defineProperty(ol,"__esModule",{value:!0});ol.hasFormSubmit=void 0;const GA=e=>!!(e&&(e.querySelector('input[type="submit"]')||e.querySelector('button[type="submit"]')));ol.hasFormSubmit=GA;(function(e){Object.defineProperty(e,"__esModule",{value:!0});var t=Tu;Object.keys(t).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===t[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return t[c]}})});var r=qu;Object.keys(r).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===r[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return r[c]}})});var n=Au;Object.keys(n).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===n[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return n[c]}})});var a=xu;Object.keys(a).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===a[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return a[c]}})});var o=nl;Object.keys(o).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===o[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return o[c]}})});var l=qt;Object.keys(l).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===l[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return l[c]}})});var u=Iu;Object.keys(u).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===u[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return u[c]}})});var i=pr;Object.keys(i).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===i[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return i[c]}})});var s=ot;Object.keys(s).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===s[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return s[c]}})});var d=tl;Object.keys(d).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===d[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return d[c]}})});var f=rl;Object.keys(f).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===f[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return f[c]}})});var p=Bu;Object.keys(p).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===p[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return p[c]}})});var m=at;Object.keys(m).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===m[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return m[c]}})});var C=ju;Object.keys(C).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===C[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return C[c]}})});var R=Nu;Object.keys(R).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===R[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return R[c]}})});var S=yr;Object.keys(S).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===S[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return S[c]}})});var v=Du;Object.keys(v).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===v[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return v[c]}})});var b=Pe;Object.keys(b).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===b[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return b[c]}})});var P=al;Object.keys(P).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===P[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return P[c]}})});var w=ku;Object.keys(w).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===w[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return w[c]}})});var O=vr;Object.keys(O).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===O[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return O[c]}})});var y=Lu;Object.keys(y).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===y[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return y[c]}})});var h=Fu;Object.keys(h).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===h[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return h[c]}})});var E=Uu;Object.keys(E).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===E[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return E[c]}})});var I=ol;Object.keys(I).forEach(function(c){c==="default"||c==="__esModule"||c in e&&e[c]===I[c]||Object.defineProperty(e,c,{enumerable:!0,get:function(){return I[c]}})})})(N);var At={};Object.defineProperty(At,"__esModule",{value:!0});At.hover=YA;At.unhover=JA;var Q=J,K=N;function ty(e){const t=[e];let r=e;for(;(r=r.parentElement)!=null;)t.push(r);return t}function YA(e,t,{skipPointerEventsCheck:r=!1}={}){if(!r&&!(0,K.hasPointerEvents)(e))throw new Error('unable to hover element as it has or inherits pointer-events set to "none".');if((0,K.isLabelWithInternallyDisabledControl)(e))return;const n=ty(e).reverse();Q.fireEvent.pointerOver(e,t);for(const a of n)Q.fireEvent.pointerEnter(a,t);if(!(0,K.isDisabled)(e)){Q.fireEvent.mouseOver(e,(0,K.getMouseEventOptions)("mouseover",t));for(const a of n)Q.fireEvent.mouseEnter(a,(0,K.getMouseEventOptions)("mouseenter",t))}Q.fireEvent.pointerMove(e,t),(0,K.isDisabled)(e)||Q.fireEvent.mouseMove(e,(0,K.getMouseEventOptions)("mousemove",t))}function JA(e,t,{skipPointerEventsCheck:r=!1}={}){if(!r&&!(0,K.hasPointerEvents)(e))throw new Error('unable to unhover element as it has or inherits pointer-events set to "none".');if((0,K.isLabelWithInternallyDisabledControl)(e))return;const n=ty(e);Q.fireEvent.pointerMove(e,t),(0,K.isDisabled)(e)||Q.fireEvent.mouseMove(e,(0,K.getMouseEventOptions)("mousemove",t)),Q.fireEvent.pointerOut(e,t);for(const a of n)Q.fireEvent.pointerLeave(a,t);if(!(0,K.isDisabled)(e)){Q.fireEvent.mouseOut(e,(0,K.getMouseEventOptions)("mouseout",t));for(const a of n)Q.fireEvent.mouseLeave(a,(0,K.getMouseEventOptions)("mouseleave",t))}}var mr={};Object.defineProperty(mr,"__esModule",{value:!0});mr.blur=XA;var ri=N;function XA(e){!(0,ri.isFocusable)(e)||!((0,ri.getActiveElement)(e.ownerDocument)===e)||(0,ri.eventWrapper)(()=>e.blur())}var xt={};Object.defineProperty(xt,"__esModule",{value:!0});xt.focus=QA;var ni=N;function QA(e){!(0,ni.isFocusable)(e)||(0,ni.getActiveElement)(e.ownerDocument)===e||(0,ni.eventWrapper)(()=>e.focus())}Object.defineProperty(nt,"__esModule",{value:!0});nt.click=Gi;nt.dblClick=a1;var W=J,D=N,ry=At,ZA=mr,an=xt;function e1(e){const t=e.ownerDocument.activeElement;return t&&t!==e.ownerDocument.body&&t!==e?t:null}function t1(e,t,{clickCount:r}){(0,D.isLabelWithInternallyDisabledControl)(e)||(W.fireEvent.pointerDown(e,t),W.fireEvent.mouseDown(e,(0,D.getMouseEventOptions)("mousedown",t,r)),W.fireEvent.pointerUp(e,t),W.fireEvent.mouseUp(e,(0,D.getMouseEventOptions)("mouseup",t,r)),Vu(e,(0,D.getMouseEventOptions)("click",t,r)),e.control&&(0,an.focus)(e.control))}function r1(e,t,{clickCount:r}){W.fireEvent.pointerDown(e,t),e.disabled||W.fireEvent.mouseDown(e,(0,D.getMouseEventOptions)("mousedown",t,r)),(0,an.focus)(e),W.fireEvent.pointerUp(e,t),e.disabled||(W.fireEvent.mouseUp(e,(0,D.getMouseEventOptions)("mouseup",t,r)),Vu(e,(0,D.getMouseEventOptions)("click",t,r)))}function Zc(e,t,{clickCount:r}){const n=e1(e);if(W.fireEvent.pointerDown(e,t),!(0,D.isDisabled)(e)&&W.fireEvent.mouseDown(e,(0,D.getMouseEventOptions)("mousedown",t,r))){const o=n1(e,D.isFocusable);n&&!o?(0,ZA.blur)(n):o&&(0,an.focus)(o)}if(W.fireEvent.pointerUp(e,t),!(0,D.isDisabled)(e)){W.fireEvent.mouseUp(e,(0,D.getMouseEventOptions)("mouseup",t,r)),Vu(e,(0,D.getMouseEventOptions)("click",t,r));const a=e.closest("label");a!=null&&a.control&&(0,an.focus)(a.control)}}function n1(e,t){let r=e;do{if(t(r))return r;r=r.parentElement}while(r&&r!==e.ownerDocument.body)}function Gi(e,t,{skipHover:r=!1,clickCount:n=0,skipPointerEventsCheck:a=!1}={}){if(!a&&!(0,D.hasPointerEvents)(e))throw new Error('unable to click element as it has or inherits pointer-events set to "none".');r||(0,ry.hover)(e,t,{skipPointerEventsCheck:!0}),(0,D.isElementType)(e,"label")?t1(e,t,{clickCount:n}):(0,D.isElementType)(e,"input")?e.type==="checkbox"||e.type==="radio"?r1(e,t,{clickCount:n}):Zc(e,t,{clickCount:n}):Zc(e,t,{clickCount:n})}function Vu(e,t){t.button===2?W.fireEvent.contextMenu(e,t):W.fireEvent.click(e,t)}function a1(e,t,{skipPointerEventsCheck:r=!1}={}){if(!r&&!(0,D.hasPointerEvents)(e))throw new Error('unable to double-click element as it has or inherits pointer-events set to "none".');(0,ry.hover)(e,t,{skipPointerEventsCheck:r}),Gi(e,t,{skipHover:!0,clickCount:0,skipPointerEventsCheck:r}),Gi(e,t,{skipHover:!0,clickCount:1,skipPointerEventsCheck:r}),W.fireEvent.dblClick(e,(0,D.getMouseEventOptions)("dblclick",t,2))}var ll={},Hu={},Wu={},il={},zu={};Object.defineProperty(zu,"__esModule",{value:!0});zu.getNextKeyDef=o1;var on;(function(e){e["{"]="}",e["["]="]"})(on||(on={}));var Yi;(function(e){e.alt="alt",e.ctrl="ctrl",e.meta="meta",e.shift="shift"})(Yi||(Yi={}));var Ji;(function(e){e.ctrl="Control",e.del="Delete",e.esc="Escape",e.space=" "})(Ji||(Ji={}));function o1(e,t){var r;const{type:n,descriptor:a,consumedLength:o,releasePrevious:l,releaseSelf:u,repeat:i}=l1(e);return{keyDef:(r=t.keyboardMap.find(d=>{if(n==="["){var f;return((f=d.code)==null?void 0:f.toLowerCase())===a.toLowerCase()}else if(n==="{"){var p;const m=c1(a);return((p=d.key)==null?void 0:p.toLowerCase())===m.toLowerCase()}return d.key===a}))!=null?r:{key:"Unknown",code:"Unknown",[n==="["?"code":"key"]:a},consumedLength:o,releasePrevious:l,releaseSelf:u,repeat:i}}function l1(e){let t=0;const r=e[t]in on?e[t]:"";t+=r.length;const n=r?e.match(new RegExp(`^\\${r}+`))[0].length:0,o=n===2||r==="{"&&n>3?"":r;return{type:o,...o===""?i1(e,t):u1(e,t,o)}}function i1(e,t){const r=e[t];return ny(r,e,t),t+=r.length,{consumedLength:t,descriptor:r,releasePrevious:!1,releaseSelf:!0,repeat:1}}function u1(e,t,r){var n,a,o;const l=e[t]==="/"?"/":"";t+=l.length;const u=(n=e.slice(t).match(/^\w+/))==null?void 0:n[0];ny(u,e,t),t+=u.length;const i=(a=(o=e.slice(t).match(/^>\d+/))==null?void 0:o[0])!=null?a:"";t+=i.length;const s=e[t]==="/"||!i&&e[t]===">"?e[t]:"";t+=s.length;const d=on[r],f=e[t]===d?d:"";if(!f)throw new Error(oy([!i&&"repeat modifier",!s&&"release modifier",`"${d}"`].filter(Boolean).join(" or "),e[t],e));return t+=f.length,{consumedLength:t,descriptor:u,releasePrevious:!!l,repeat:i?Math.max(Number(i.substr(1)),1):1,releaseSelf:s1(r,u,s,i)}}function ny(e,t,r){if(!e)throw new Error(oy("key descriptor",t[r],t))}function ay(e,t){return e[t]}function s1(e,t,r,n){return r?r==="/":!(n||e==="{"&&ay(Yi,t.toLowerCase()))}function c1(e){var t;return(t=ay(Ji,e))!=null?t:e}function oy(e,t,r){return`Expected ${e} but found "${t!=null?t:""}" in "${r}"
+ */
+var b = 60103, c = 60106, d = 60107, e = 60108, f = 60114, g$3 = 60109, h = 60110, k$1 = 60112, l = 60113, m = 60120, n = 60115, p = 60116, q = 60121, r = 60122, u = 60117, v = 60129, w = 60131;
+if ("function" === typeof Symbol && Symbol.for) {
+  var x = Symbol.for;
+  b = x("react.element");
+  c = x("react.portal");
+  d = x("react.fragment");
+  e = x("react.strict_mode");
+  f = x("react.profiler");
+  g$3 = x("react.provider");
+  h = x("react.context");
+  k$1 = x("react.forward_ref");
+  l = x("react.suspense");
+  m = x("react.suspense_list");
+  n = x("react.memo");
+  p = x("react.lazy");
+  q = x("react.block");
+  r = x("react.server.block");
+  u = x("react.fundamental");
+  v = x("react.debug_trace_mode");
+  w = x("react.legacy_hidden");
+}
+function y(a) {
+  if ("object" === typeof a && null !== a) {
+    var t = a.$$typeof;
+    switch (t) {
+      case b:
+        switch (a = a.type, a) {
+          case d:
+          case f:
+          case e:
+          case l:
+          case m:
+            return a;
+          default:
+            switch (a = a && a.$$typeof, a) {
+              case h:
+              case k$1:
+              case p:
+              case n:
+              case g$3:
+                return a;
+              default:
+                return t;
+            }
+        }
+      case c:
+        return t;
+    }
+  }
+}
+var z = g$3, A = b, B = k$1, C = d, D = p, E = n, F = c, G = f, H = e, I = l;
+reactIs_production_min.ContextConsumer = h;
+reactIs_production_min.ContextProvider = z;
+reactIs_production_min.Element = A;
+reactIs_production_min.ForwardRef = B;
+reactIs_production_min.Fragment = C;
+reactIs_production_min.Lazy = D;
+reactIs_production_min.Memo = E;
+reactIs_production_min.Portal = F;
+reactIs_production_min.Profiler = G;
+reactIs_production_min.StrictMode = H;
+reactIs_production_min.Suspense = I;
+reactIs_production_min.isAsyncMode = function() {
+  return false;
+};
+reactIs_production_min.isConcurrentMode = function() {
+  return false;
+};
+reactIs_production_min.isContextConsumer = function(a) {
+  return y(a) === h;
+};
+reactIs_production_min.isContextProvider = function(a) {
+  return y(a) === g$3;
+};
+reactIs_production_min.isElement = function(a) {
+  return "object" === typeof a && null !== a && a.$$typeof === b;
+};
+reactIs_production_min.isForwardRef = function(a) {
+  return y(a) === k$1;
+};
+reactIs_production_min.isFragment = function(a) {
+  return y(a) === d;
+};
+reactIs_production_min.isLazy = function(a) {
+  return y(a) === p;
+};
+reactIs_production_min.isMemo = function(a) {
+  return y(a) === n;
+};
+reactIs_production_min.isPortal = function(a) {
+  return y(a) === c;
+};
+reactIs_production_min.isProfiler = function(a) {
+  return y(a) === f;
+};
+reactIs_production_min.isStrictMode = function(a) {
+  return y(a) === e;
+};
+reactIs_production_min.isSuspense = function(a) {
+  return y(a) === l;
+};
+reactIs_production_min.isValidElementType = function(a) {
+  return "string" === typeof a || "function" === typeof a || a === d || a === f || a === v || a === e || a === l || a === m || a === w || "object" === typeof a && null !== a && (a.$$typeof === p || a.$$typeof === n || a.$$typeof === g$3 || a.$$typeof === h || a.$$typeof === k$1 || a.$$typeof === u || a.$$typeof === q || a[0] === r) ? true : false;
+};
+reactIs_production_min.typeOf = y;
+(function(module2) {
+  {
+    module2.exports = reactIs_production_min;
+  }
+})(reactIs);
+Object.defineProperty(ReactElement, "__esModule", {
+  value: true
+});
+ReactElement.test = ReactElement.serialize = ReactElement.default = void 0;
+var ReactIs = _interopRequireWildcard$2(reactIs.exports);
+var _markup$1 = markup;
+function _getRequireWildcardCache$2(nodeInterop) {
+  if (typeof WeakMap !== "function")
+    return null;
+  var cacheBabelInterop = /* @__PURE__ */ new WeakMap();
+  var cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+  return (_getRequireWildcardCache$2 = function(nodeInterop2) {
+    return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard$2(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return { default: obj };
+  }
+  var cache = _getRequireWildcardCache$2(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+const getChildren = (arg, children = []) => {
+  if (Array.isArray(arg)) {
+    arg.forEach((item) => {
+      getChildren(item, children);
+    });
+  } else if (arg != null && arg !== false) {
+    children.push(arg);
+  }
+  return children;
+};
+const getType = (element) => {
+  const type2 = element.type;
+  if (typeof type2 === "string") {
+    return type2;
+  }
+  if (typeof type2 === "function") {
+    return type2.displayName || type2.name || "Unknown";
+  }
+  if (ReactIs.isFragment(element)) {
+    return "React.Fragment";
+  }
+  if (ReactIs.isSuspense(element)) {
+    return "React.Suspense";
+  }
+  if (typeof type2 === "object" && type2 !== null) {
+    if (ReactIs.isContextProvider(element)) {
+      return "Context.Provider";
+    }
+    if (ReactIs.isContextConsumer(element)) {
+      return "Context.Consumer";
+    }
+    if (ReactIs.isForwardRef(element)) {
+      if (type2.displayName) {
+        return type2.displayName;
+      }
+      const functionName = type2.render.displayName || type2.render.name || "";
+      return functionName !== "" ? "ForwardRef(" + functionName + ")" : "ForwardRef";
+    }
+    if (ReactIs.isMemo(element)) {
+      const functionName = type2.displayName || type2.type.displayName || type2.type.name || "";
+      return functionName !== "" ? "Memo(" + functionName + ")" : "Memo";
+    }
+  }
+  return "UNDEFINED";
+};
+const getPropKeys$1 = (element) => {
+  const { props } = element;
+  return Object.keys(props).filter((key) => key !== "children" && props[key] !== void 0).sort();
+};
+const serialize$1 = (element, config2, indentation, depth, refs, printer2) => ++depth > config2.maxDepth ? (0, _markup$1.printElementAsLeaf)(getType(element), config2) : (0, _markup$1.printElement)(
+  getType(element),
+  (0, _markup$1.printProps)(
+    getPropKeys$1(element),
+    element.props,
+    config2,
+    indentation + config2.indent,
+    depth,
+    refs,
+    printer2
+  ),
+  (0, _markup$1.printChildren)(
+    getChildren(element.props.children),
+    config2,
+    indentation + config2.indent,
+    depth,
+    refs,
+    printer2
+  ),
+  config2,
+  indentation
+);
+ReactElement.serialize = serialize$1;
+const test$1 = (val) => val != null && ReactIs.isElement(val);
+ReactElement.test = test$1;
+const plugin$1 = {
+  serialize: serialize$1,
+  test: test$1
+};
+var _default$2k = plugin$1;
+ReactElement.default = _default$2k;
+var ReactTestComponent = {};
+Object.defineProperty(ReactTestComponent, "__esModule", {
+  value: true
+});
+ReactTestComponent.test = ReactTestComponent.serialize = ReactTestComponent.default = void 0;
+var _markup = markup;
+var global = function() {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  } else if (typeof global !== "undefined") {
+    return global;
+  } else if (typeof self !== "undefined") {
+    return self;
+  } else if (typeof window !== "undefined") {
+    return window;
+  } else {
+    return Function("return this")();
+  }
+}();
+var Symbol$1 = global["jest-symbol-do-not-touch"] || global.Symbol;
+const testSymbol = typeof Symbol$1 === "function" && Symbol$1.for ? Symbol$1.for("react.test.json") : 245830487;
+const getPropKeys = (object) => {
+  const { props } = object;
+  return props ? Object.keys(props).filter((key) => props[key] !== void 0).sort() : [];
+};
+const serialize = (object, config2, indentation, depth, refs, printer2) => ++depth > config2.maxDepth ? (0, _markup.printElementAsLeaf)(object.type, config2) : (0, _markup.printElement)(
+  object.type,
+  object.props ? (0, _markup.printProps)(
+    getPropKeys(object),
+    object.props,
+    config2,
+    indentation + config2.indent,
+    depth,
+    refs,
+    printer2
+  ) : "",
+  object.children ? (0, _markup.printChildren)(
+    object.children,
+    config2,
+    indentation + config2.indent,
+    depth,
+    refs,
+    printer2
+  ) : "",
+  config2,
+  indentation
+);
+ReactTestComponent.serialize = serialize;
+const test = (val) => val && val.$$typeof === testSymbol;
+ReactTestComponent.test = test;
+const plugin = {
+  serialize,
+  test
+};
+var _default$2j = plugin;
+ReactTestComponent.default = _default$2j;
+Object.defineProperty(build$1, "__esModule", {
+  value: true
+});
+var default_1 = build$1.default = DEFAULT_OPTIONS_1 = build$1.DEFAULT_OPTIONS = void 0;
+var format_1 = build$1.format = format;
+var plugins_1 = build$1.plugins = void 0;
+var _ansiStyles = _interopRequireDefault$b(ansiStyles.exports);
+var _collections = collections;
+var _AsymmetricMatcher = _interopRequireDefault$b(
+  AsymmetricMatcher
+);
+var _ConvertAnsi = _interopRequireDefault$b(ConvertAnsi);
+var _DOMCollection = _interopRequireDefault$b(DOMCollection$1);
+var _DOMElement = _interopRequireDefault$b(DOMElement);
+var _Immutable = _interopRequireDefault$b(Immutable);
+var _ReactElement = _interopRequireDefault$b(ReactElement);
+var _ReactTestComponent = _interopRequireDefault$b(
+  ReactTestComponent
+);
+function _interopRequireDefault$b(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+const toString$1 = Object.prototype.toString;
+const toISOString = Date.prototype.toISOString;
+const errorToString = Error.prototype.toString;
+const regExpToString = RegExp.prototype.toString;
+const getConstructorName = (val) => typeof val.constructor === "function" && val.constructor.name || "Object";
+const isWindow = (val) => typeof window !== "undefined" && val === window;
+const SYMBOL_REGEXP = /^Symbol\((.*)\)(.*)$/;
+const NEWLINE_REGEXP = /\n/gi;
+class PrettyFormatPluginError extends Error {
+  constructor(message, stack) {
+    super(message);
+    this.stack = stack;
+    this.name = this.constructor.name;
+  }
+}
+function isToStringedArrayType(toStringed) {
+  return toStringed === "[object Array]" || toStringed === "[object ArrayBuffer]" || toStringed === "[object DataView]" || toStringed === "[object Float32Array]" || toStringed === "[object Float64Array]" || toStringed === "[object Int8Array]" || toStringed === "[object Int16Array]" || toStringed === "[object Int32Array]" || toStringed === "[object Uint8Array]" || toStringed === "[object Uint8ClampedArray]" || toStringed === "[object Uint16Array]" || toStringed === "[object Uint32Array]";
+}
+function printNumber(val) {
+  return Object.is(val, -0) ? "-0" : String(val);
+}
+function printBigInt(val) {
+  return String(`${val}n`);
+}
+function printFunction(val, printFunctionName) {
+  if (!printFunctionName) {
+    return "[Function]";
+  }
+  return "[Function " + (val.name || "anonymous") + "]";
+}
+function printSymbol(val) {
+  return String(val).replace(SYMBOL_REGEXP, "Symbol($1)");
+}
+function printError(val) {
+  return "[" + errorToString.call(val) + "]";
+}
+function printBasicValue(val, printFunctionName, escapeRegex, escapeString) {
+  if (val === true || val === false) {
+    return "" + val;
+  }
+  if (val === void 0) {
+    return "undefined";
+  }
+  if (val === null) {
+    return "null";
+  }
+  const typeOf = typeof val;
+  if (typeOf === "number") {
+    return printNumber(val);
+  }
+  if (typeOf === "bigint") {
+    return printBigInt(val);
+  }
+  if (typeOf === "string") {
+    if (escapeString) {
+      return '"' + val.replace(/"|\\/g, "\\$&") + '"';
+    }
+    return '"' + val + '"';
+  }
+  if (typeOf === "function") {
+    return printFunction(val, printFunctionName);
+  }
+  if (typeOf === "symbol") {
+    return printSymbol(val);
+  }
+  const toStringed = toString$1.call(val);
+  if (toStringed === "[object WeakMap]") {
+    return "WeakMap {}";
+  }
+  if (toStringed === "[object WeakSet]") {
+    return "WeakSet {}";
+  }
+  if (toStringed === "[object Function]" || toStringed === "[object GeneratorFunction]") {
+    return printFunction(val, printFunctionName);
+  }
+  if (toStringed === "[object Symbol]") {
+    return printSymbol(val);
+  }
+  if (toStringed === "[object Date]") {
+    return isNaN(+val) ? "Date { NaN }" : toISOString.call(val);
+  }
+  if (toStringed === "[object Error]") {
+    return printError(val);
+  }
+  if (toStringed === "[object RegExp]") {
+    if (escapeRegex) {
+      return regExpToString.call(val).replace(/[\\^$*+?.()|[\]{}]/g, "\\$&");
+    }
+    return regExpToString.call(val);
+  }
+  if (val instanceof Error) {
+    return printError(val);
+  }
+  return null;
+}
+function printComplexValue(val, config2, indentation, depth, refs, hasCalledToJSON) {
+  if (refs.indexOf(val) !== -1) {
+    return "[Circular]";
+  }
+  refs = refs.slice();
+  refs.push(val);
+  const hitMaxDepth = ++depth > config2.maxDepth;
+  const min = config2.min;
+  if (config2.callToJSON && !hitMaxDepth && val.toJSON && typeof val.toJSON === "function" && !hasCalledToJSON) {
+    return printer(val.toJSON(), config2, indentation, depth, refs, true);
+  }
+  const toStringed = toString$1.call(val);
+  if (toStringed === "[object Arguments]") {
+    return hitMaxDepth ? "[Arguments]" : (min ? "" : "Arguments ") + "[" + (0, _collections.printListItems)(
+      val,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer
+    ) + "]";
+  }
+  if (isToStringedArrayType(toStringed)) {
+    return hitMaxDepth ? "[" + val.constructor.name + "]" : (min ? "" : !config2.printBasicPrototype && val.constructor.name === "Array" ? "" : val.constructor.name + " ") + "[" + (0, _collections.printListItems)(
+      val,
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer
+    ) + "]";
+  }
+  if (toStringed === "[object Map]") {
+    return hitMaxDepth ? "[Map]" : "Map {" + (0, _collections.printIteratorEntries)(
+      val.entries(),
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer,
+      " => "
+    ) + "}";
+  }
+  if (toStringed === "[object Set]") {
+    return hitMaxDepth ? "[Set]" : "Set {" + (0, _collections.printIteratorValues)(
+      val.values(),
+      config2,
+      indentation,
+      depth,
+      refs,
+      printer
+    ) + "}";
+  }
+  return hitMaxDepth || isWindow(val) ? "[" + getConstructorName(val) + "]" : (min ? "" : !config2.printBasicPrototype && getConstructorName(val) === "Object" ? "" : getConstructorName(val) + " ") + "{" + (0, _collections.printObjectProperties)(
+    val,
+    config2,
+    indentation,
+    depth,
+    refs,
+    printer
+  ) + "}";
+}
+function isNewPlugin(plugin2) {
+  return plugin2.serialize != null;
+}
+function printPlugin(plugin2, val, config2, indentation, depth, refs) {
+  let printed;
+  try {
+    printed = isNewPlugin(plugin2) ? plugin2.serialize(val, config2, indentation, depth, refs, printer) : plugin2.print(
+      val,
+      (valChild) => printer(valChild, config2, indentation, depth, refs),
+      (str) => {
+        const indentationNext = indentation + config2.indent;
+        return indentationNext + str.replace(NEWLINE_REGEXP, "\n" + indentationNext);
+      },
+      {
+        edgeSpacing: config2.spacingOuter,
+        min: config2.min,
+        spacing: config2.spacingInner
+      },
+      config2.colors
+    );
+  } catch (error) {
+    throw new PrettyFormatPluginError(error.message, error.stack);
+  }
+  if (typeof printed !== "string") {
+    throw new Error(
+      `pretty-format: Plugin must return type "string" but instead returned "${typeof printed}".`
+    );
+  }
+  return printed;
+}
+function findPlugin(plugins2, val) {
+  for (let p2 = 0; p2 < plugins2.length; p2++) {
+    try {
+      if (plugins2[p2].test(val)) {
+        return plugins2[p2];
+      }
+    } catch (error) {
+      throw new PrettyFormatPluginError(error.message, error.stack);
+    }
+  }
+  return null;
+}
+function printer(val, config2, indentation, depth, refs, hasCalledToJSON) {
+  const plugin2 = findPlugin(config2.plugins, val);
+  if (plugin2 !== null) {
+    return printPlugin(plugin2, val, config2, indentation, depth, refs);
+  }
+  const basicResult = printBasicValue(
+    val,
+    config2.printFunctionName,
+    config2.escapeRegex,
+    config2.escapeString
+  );
+  if (basicResult !== null) {
+    return basicResult;
+  }
+  return printComplexValue(
+    val,
+    config2,
+    indentation,
+    depth,
+    refs,
+    hasCalledToJSON
+  );
+}
+const DEFAULT_THEME = {
+  comment: "gray",
+  content: "reset",
+  prop: "yellow",
+  tag: "cyan",
+  value: "green"
+};
+const DEFAULT_THEME_KEYS = Object.keys(DEFAULT_THEME);
+const DEFAULT_OPTIONS = {
+  callToJSON: true,
+  compareKeys: void 0,
+  escapeRegex: false,
+  escapeString: true,
+  highlight: false,
+  indent: 2,
+  maxDepth: Infinity,
+  min: false,
+  plugins: [],
+  printBasicPrototype: true,
+  printFunctionName: true,
+  theme: DEFAULT_THEME
+};
+var DEFAULT_OPTIONS_1 = build$1.DEFAULT_OPTIONS = DEFAULT_OPTIONS;
+function validateOptions(options) {
+  Object.keys(options).forEach((key) => {
+    if (!DEFAULT_OPTIONS.hasOwnProperty(key)) {
+      throw new Error(`pretty-format: Unknown option "${key}".`);
+    }
+  });
+  if (options.min && options.indent !== void 0 && options.indent !== 0) {
+    throw new Error(
+      'pretty-format: Options "min" and "indent" cannot be used together.'
+    );
+  }
+  if (options.theme !== void 0) {
+    if (options.theme === null) {
+      throw new Error('pretty-format: Option "theme" must not be null.');
+    }
+    if (typeof options.theme !== "object") {
+      throw new Error(
+        `pretty-format: Option "theme" must be of type "object" but instead received "${typeof options.theme}".`
+      );
+    }
+  }
+}
+const getColorsHighlight = (options) => DEFAULT_THEME_KEYS.reduce((colors, key) => {
+  const value = options.theme && options.theme[key] !== void 0 ? options.theme[key] : DEFAULT_THEME[key];
+  const color = value && _ansiStyles.default[value];
+  if (color && typeof color.close === "string" && typeof color.open === "string") {
+    colors[key] = color;
+  } else {
+    throw new Error(
+      `pretty-format: Option "theme" has a key "${key}" whose value "${value}" is undefined in ansi-styles.`
+    );
+  }
+  return colors;
+}, /* @__PURE__ */ Object.create(null));
+const getColorsEmpty = () => DEFAULT_THEME_KEYS.reduce((colors, key) => {
+  colors[key] = {
+    close: "",
+    open: ""
+  };
+  return colors;
+}, /* @__PURE__ */ Object.create(null));
+const getPrintFunctionName = (options) => options && options.printFunctionName !== void 0 ? options.printFunctionName : DEFAULT_OPTIONS.printFunctionName;
+const getEscapeRegex = (options) => options && options.escapeRegex !== void 0 ? options.escapeRegex : DEFAULT_OPTIONS.escapeRegex;
+const getEscapeString = (options) => options && options.escapeString !== void 0 ? options.escapeString : DEFAULT_OPTIONS.escapeString;
+const getConfig$1 = (options) => {
+  var _options$printBasicPr;
+  return {
+    callToJSON: options && options.callToJSON !== void 0 ? options.callToJSON : DEFAULT_OPTIONS.callToJSON,
+    colors: options && options.highlight ? getColorsHighlight(options) : getColorsEmpty(),
+    compareKeys: options && typeof options.compareKeys === "function" ? options.compareKeys : DEFAULT_OPTIONS.compareKeys,
+    escapeRegex: getEscapeRegex(options),
+    escapeString: getEscapeString(options),
+    indent: options && options.min ? "" : createIndent(
+      options && options.indent !== void 0 ? options.indent : DEFAULT_OPTIONS.indent
+    ),
+    maxDepth: options && options.maxDepth !== void 0 ? options.maxDepth : DEFAULT_OPTIONS.maxDepth,
+    min: options && options.min !== void 0 ? options.min : DEFAULT_OPTIONS.min,
+    plugins: options && options.plugins !== void 0 ? options.plugins : DEFAULT_OPTIONS.plugins,
+    printBasicPrototype: (_options$printBasicPr = options === null || options === void 0 ? void 0 : options.printBasicPrototype) !== null && _options$printBasicPr !== void 0 ? _options$printBasicPr : true,
+    printFunctionName: getPrintFunctionName(options),
+    spacingInner: options && options.min ? " " : "\n",
+    spacingOuter: options && options.min ? "" : "\n"
+  };
+};
+function createIndent(indent) {
+  return new Array(indent + 1).join(" ");
+}
+function format(val, options) {
+  if (options) {
+    validateOptions(options);
+    if (options.plugins) {
+      const plugin2 = findPlugin(options.plugins, val);
+      if (plugin2 !== null) {
+        return printPlugin(plugin2, val, getConfig$1(options), "", 0, []);
+      }
+    }
+  }
+  const basicResult = printBasicValue(
+    val,
+    getPrintFunctionName(options),
+    getEscapeRegex(options),
+    getEscapeString(options)
+  );
+  if (basicResult !== null) {
+    return basicResult;
+  }
+  return printComplexValue(val, getConfig$1(options), "", 0, []);
+}
+const plugins$2 = {
+  AsymmetricMatcher: _AsymmetricMatcher.default,
+  ConvertAnsi: _ConvertAnsi.default,
+  DOMCollection: _DOMCollection.default,
+  DOMElement: _DOMElement.default,
+  Immutable: _Immutable.default,
+  ReactElement: _ReactElement.default,
+  ReactTestComponent: _ReactTestComponent.default
+};
+plugins_1 = build$1.plugins = plugins$2;
+var _default$2i = format;
+default_1 = build$1.default = _default$2i;
+const index = /* @__PURE__ */ _mergeNamespaces({
+  __proto__: null,
+  get DEFAULT_OPTIONS() {
+    return DEFAULT_OPTIONS_1;
+  },
+  format: format_1,
+  get plugins() {
+    return plugins_1;
+  },
+  get default() {
+    return default_1;
+  }
+}, [build$1]);
+var toStr$a = Object.prototype.toString;
+function isCallable$2(fn) {
+  return typeof fn === "function" || toStr$a.call(fn) === "[object Function]";
+}
+function toInteger(value) {
+  var number = Number(value);
+  if (isNaN(number)) {
+    return 0;
+  }
+  if (number === 0 || !isFinite(number)) {
+    return number;
+  }
+  return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+}
+var maxSafeInteger = Math.pow(2, 53) - 1;
+function toLength(value) {
+  var len = toInteger(value);
+  return Math.min(Math.max(len, 0), maxSafeInteger);
+}
+function arrayFrom(arrayLike, mapFn) {
+  var C2 = Array;
+  var items = Object(arrayLike);
+  if (arrayLike == null) {
+    throw new TypeError("Array.from requires an array-like object - not null or undefined");
+  }
+  if (typeof mapFn !== "undefined") {
+    if (!isCallable$2(mapFn)) {
+      throw new TypeError("Array.from: when provided, the second argument must be a function");
+    }
+  }
+  var len = toLength(items.length);
+  var A2 = isCallable$2(C2) ? Object(new C2(len)) : new Array(len);
+  var k = 0;
+  var kValue;
+  while (k < len) {
+    kValue = items[k];
+    if (mapFn) {
+      A2[k] = mapFn(kValue, k);
+    } else {
+      A2[k] = kValue;
+    }
+    k += 1;
+  }
+  A2.length = len;
+  return A2;
+}
+function _typeof$2(obj) {
+  "@babel/helpers - typeof";
+  return _typeof$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+    return typeof obj2;
+  } : function(obj2) {
+    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof$2(obj);
+}
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor)
+      descriptor.writable = true;
+    Object.defineProperty(target, _toPropertyKey$1(descriptor.key), descriptor);
+  }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps)
+    _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps)
+    _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", { writable: false });
+  return Constructor;
+}
+function _defineProperty$2(obj, key, value) {
+  key = _toPropertyKey$1(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _toPropertyKey$1(arg) {
+  var key = _toPrimitive$1(arg, "string");
+  return _typeof$2(key) === "symbol" ? key : String(key);
+}
+function _toPrimitive$1(input, hint) {
+  if (_typeof$2(input) !== "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (_typeof$2(res) !== "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+var SetLike = /* @__PURE__ */ function() {
+  function SetLike2() {
+    var items = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
+    _classCallCheck(this, SetLike2);
+    _defineProperty$2(this, "items", void 0);
+    this.items = items;
+  }
+  _createClass(SetLike2, [{
+    key: "add",
+    value: function add(value) {
+      if (this.has(value) === false) {
+        this.items.push(value);
+      }
+      return this;
+    }
+  }, {
+    key: "clear",
+    value: function clear2() {
+      this.items = [];
+    }
+  }, {
+    key: "delete",
+    value: function _delete(value) {
+      var previousLength = this.items.length;
+      this.items = this.items.filter(function(item) {
+        return item !== value;
+      });
+      return previousLength !== this.items.length;
+    }
+  }, {
+    key: "forEach",
+    value: function forEach8(callbackfn) {
+      var _this = this;
+      this.items.forEach(function(item) {
+        callbackfn(item, item, _this);
+      });
+    }
+  }, {
+    key: "has",
+    value: function has7(value) {
+      return this.items.indexOf(value) !== -1;
+    }
+  }, {
+    key: "size",
+    get: function get6() {
+      return this.items.length;
+    }
+  }]);
+  return SetLike2;
+}();
+const SetLike$1 = typeof Set === "undefined" ? Set : SetLike;
+function getLocalName(element) {
+  var _element$localName;
+  return (_element$localName = element.localName) !== null && _element$localName !== void 0 ? _element$localName : element.tagName.toLowerCase();
+}
+var localNameToRoleMappings = {
+  article: "article",
+  aside: "complementary",
+  button: "button",
+  datalist: "listbox",
+  dd: "definition",
+  details: "group",
+  dialog: "dialog",
+  dt: "term",
+  fieldset: "group",
+  figure: "figure",
+  form: "form",
+  footer: "contentinfo",
+  h1: "heading",
+  h2: "heading",
+  h3: "heading",
+  h4: "heading",
+  h5: "heading",
+  h6: "heading",
+  header: "banner",
+  hr: "separator",
+  html: "document",
+  legend: "legend",
+  li: "listitem",
+  math: "math",
+  main: "main",
+  menu: "list",
+  nav: "navigation",
+  ol: "list",
+  optgroup: "group",
+  option: "option",
+  output: "status",
+  progress: "progressbar",
+  section: "region",
+  summary: "button",
+  table: "table",
+  tbody: "rowgroup",
+  textarea: "textbox",
+  tfoot: "rowgroup",
+  td: "cell",
+  th: "columnheader",
+  thead: "rowgroup",
+  tr: "row",
+  ul: "list"
+};
+var prohibitedAttributes = {
+  caption: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  code: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  deletion: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  emphasis: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  generic: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby", "aria-roledescription"]),
+  insertion: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  paragraph: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  presentation: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  strong: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  subscript: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"]),
+  superscript: /* @__PURE__ */ new Set(["aria-label", "aria-labelledby"])
+};
+function hasGlobalAriaAttributes(element, role) {
+  return [
+    "aria-atomic",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-details",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ].some(function(attributeName) {
+    var _prohibitedAttributes;
+    return element.hasAttribute(attributeName) && !((_prohibitedAttributes = prohibitedAttributes[role]) !== null && _prohibitedAttributes !== void 0 && _prohibitedAttributes.has(attributeName));
+  });
+}
+function ignorePresentationalRole(element, implicitRole) {
+  return hasGlobalAriaAttributes(element, implicitRole);
+}
+function getRole(element) {
+  var explicitRole = getExplicitRole(element);
+  if (explicitRole === null || explicitRole === "presentation") {
+    var implicitRole = getImplicitRole(element);
+    if (explicitRole !== "presentation" || ignorePresentationalRole(element, implicitRole || "")) {
+      return implicitRole;
+    }
+  }
+  return explicitRole;
+}
+function getImplicitRole(element) {
+  var mappedByTag = localNameToRoleMappings[getLocalName(element)];
+  if (mappedByTag !== void 0) {
+    return mappedByTag;
+  }
+  switch (getLocalName(element)) {
+    case "a":
+    case "area":
+    case "link":
+      if (element.hasAttribute("href")) {
+        return "link";
+      }
+      break;
+    case "img":
+      if (element.getAttribute("alt") === "" && !ignorePresentationalRole(element, "img")) {
+        return "presentation";
+      }
+      return "img";
+    case "input": {
+      var _ref = element, type2 = _ref.type;
+      switch (type2) {
+        case "button":
+        case "image":
+        case "reset":
+        case "submit":
+          return "button";
+        case "checkbox":
+        case "radio":
+          return type2;
+        case "range":
+          return "slider";
+        case "email":
+        case "tel":
+        case "text":
+        case "url":
+          if (element.hasAttribute("list")) {
+            return "combobox";
+          }
+          return "textbox";
+        case "search":
+          if (element.hasAttribute("list")) {
+            return "combobox";
+          }
+          return "searchbox";
+        case "number":
+          return "spinbutton";
+        default:
+          return null;
+      }
+    }
+    case "select":
+      if (element.hasAttribute("multiple") || element.size > 1) {
+        return "listbox";
+      }
+      return "combobox";
+  }
+  return null;
+}
+function getExplicitRole(element) {
+  var role = element.getAttribute("role");
+  if (role !== null) {
+    var explicitRole = role.trim().split(" ")[0];
+    if (explicitRole.length > 0) {
+      return explicitRole;
+    }
+  }
+  return null;
+}
+function isElement$1(node) {
+  return node !== null && node.nodeType === node.ELEMENT_NODE;
+}
+function isHTMLTableCaptionElement(node) {
+  return isElement$1(node) && getLocalName(node) === "caption";
+}
+function isHTMLInputElement(node) {
+  return isElement$1(node) && getLocalName(node) === "input";
+}
+function isHTMLOptGroupElement(node) {
+  return isElement$1(node) && getLocalName(node) === "optgroup";
+}
+function isHTMLSelectElement(node) {
+  return isElement$1(node) && getLocalName(node) === "select";
+}
+function isHTMLTableElement(node) {
+  return isElement$1(node) && getLocalName(node) === "table";
+}
+function isHTMLTextAreaElement(node) {
+  return isElement$1(node) && getLocalName(node) === "textarea";
+}
+function safeWindow(node) {
+  var _ref = node.ownerDocument === null ? node : node.ownerDocument, defaultView = _ref.defaultView;
+  if (defaultView === null) {
+    throw new TypeError("no window available");
+  }
+  return defaultView;
+}
+function isHTMLFieldSetElement(node) {
+  return isElement$1(node) && getLocalName(node) === "fieldset";
+}
+function isHTMLLegendElement(node) {
+  return isElement$1(node) && getLocalName(node) === "legend";
+}
+function isHTMLSlotElement(node) {
+  return isElement$1(node) && getLocalName(node) === "slot";
+}
+function isSVGElement(node) {
+  return isElement$1(node) && node.ownerSVGElement !== void 0;
+}
+function isSVGSVGElement(node) {
+  return isElement$1(node) && getLocalName(node) === "svg";
+}
+function isSVGTitleElement(node) {
+  return isSVGElement(node) && getLocalName(node) === "title";
+}
+function queryIdRefs(node, attributeName) {
+  if (isElement$1(node) && node.hasAttribute(attributeName)) {
+    var ids = node.getAttribute(attributeName).split(" ");
+    var root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+    return ids.map(function(id) {
+      return root.getElementById(id);
+    }).filter(
+      function(element) {
+        return element !== null;
+      }
+    );
+  }
+  return [];
+}
+function hasAnyConcreteRoles(node, roles2) {
+  if (isElement$1(node)) {
+    return roles2.indexOf(getRole(node)) !== -1;
+  }
+  return false;
+}
+function asFlatString(s) {
+  return s.trim().replace(/\s\s+/g, " ");
+}
+function isHidden(node, getComputedStyleImplementation) {
+  if (!isElement$1(node)) {
+    return false;
+  }
+  if (node.hasAttribute("hidden") || node.getAttribute("aria-hidden") === "true") {
+    return true;
+  }
+  var style = getComputedStyleImplementation(node);
+  return style.getPropertyValue("display") === "none" || style.getPropertyValue("visibility") === "hidden";
+}
+function isControl(node) {
+  return hasAnyConcreteRoles(node, ["button", "combobox", "listbox", "textbox"]) || hasAbstractRole(node, "range");
+}
+function hasAbstractRole(node, role) {
+  if (!isElement$1(node)) {
+    return false;
+  }
+  switch (role) {
+    case "range":
+      return hasAnyConcreteRoles(node, ["meter", "progressbar", "scrollbar", "slider", "spinbutton"]);
+    default:
+      throw new TypeError("No knowledge about abstract role '".concat(role, "'. This is likely a bug :("));
+  }
+}
+function querySelectorAllSubtree(element, selectors) {
+  var elements = arrayFrom(element.querySelectorAll(selectors));
+  queryIdRefs(element, "aria-owns").forEach(function(root) {
+    elements.push.apply(elements, arrayFrom(root.querySelectorAll(selectors)));
+  });
+  return elements;
+}
+function querySelectedOptions(listbox) {
+  if (isHTMLSelectElement(listbox)) {
+    return listbox.selectedOptions || querySelectorAllSubtree(listbox, "[selected]");
+  }
+  return querySelectorAllSubtree(listbox, '[aria-selected="true"]');
+}
+function isMarkedPresentational(node) {
+  return hasAnyConcreteRoles(node, ["none", "presentation"]);
+}
+function isNativeHostLanguageTextAlternativeElement(node) {
+  return isHTMLTableCaptionElement(node);
+}
+function allowsNameFromContent(node) {
+  return hasAnyConcreteRoles(node, ["button", "cell", "checkbox", "columnheader", "gridcell", "heading", "label", "legend", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "row", "rowheader", "switch", "tab", "tooltip", "treeitem"]);
+}
+function isDescendantOfNativeHostLanguageTextAlternativeElement(node) {
+  return false;
+}
+function getValueOfTextbox(element) {
+  if (isHTMLInputElement(element) || isHTMLTextAreaElement(element)) {
+    return element.value;
+  }
+  return element.textContent || "";
+}
+function getTextualContent(declaration) {
+  var content = declaration.getPropertyValue("content");
+  if (/^["'].*["']$/.test(content)) {
+    return content.slice(1, -1);
+  }
+  return "";
+}
+function isLabelableElement(element) {
+  var localName = getLocalName(element);
+  return localName === "button" || localName === "input" && element.getAttribute("type") !== "hidden" || localName === "meter" || localName === "output" || localName === "progress" || localName === "select" || localName === "textarea";
+}
+function findLabelableElement(element) {
+  if (isLabelableElement(element)) {
+    return element;
+  }
+  var labelableElement = null;
+  element.childNodes.forEach(function(childNode) {
+    if (labelableElement === null && isElement$1(childNode)) {
+      var descendantLabelableElement = findLabelableElement(childNode);
+      if (descendantLabelableElement !== null) {
+        labelableElement = descendantLabelableElement;
+      }
+    }
+  });
+  return labelableElement;
+}
+function getControlOfLabel(label) {
+  if (label.control !== void 0) {
+    return label.control;
+  }
+  var htmlFor = label.getAttribute("for");
+  if (htmlFor !== null) {
+    return label.ownerDocument.getElementById(htmlFor);
+  }
+  return findLabelableElement(label);
+}
+function getLabels$1(element) {
+  var labelsProperty = element.labels;
+  if (labelsProperty === null) {
+    return labelsProperty;
+  }
+  if (labelsProperty !== void 0) {
+    return arrayFrom(labelsProperty);
+  }
+  if (!isLabelableElement(element)) {
+    return null;
+  }
+  var document2 = element.ownerDocument;
+  return arrayFrom(document2.querySelectorAll("label")).filter(function(label) {
+    return getControlOfLabel(label) === element;
+  });
+}
+function getSlotContents(slot) {
+  var assignedNodes = slot.assignedNodes();
+  if (assignedNodes.length === 0) {
+    return arrayFrom(slot.childNodes);
+  }
+  return assignedNodes;
+}
+function computeTextAlternative(root) {
+  var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+  var consultedNodes = new SetLike$1();
+  var window2 = safeWindow(root);
+  var _options$compute = options.compute, compute = _options$compute === void 0 ? "name" : _options$compute, _options$computedStyl = options.computedStyleSupportsPseudoElements, computedStyleSupportsPseudoElements = _options$computedStyl === void 0 ? options.getComputedStyle !== void 0 : _options$computedStyl, _options$getComputedS = options.getComputedStyle, getComputedStyle = _options$getComputedS === void 0 ? window2.getComputedStyle.bind(window2) : _options$getComputedS, _options$hidden = options.hidden, hidden = _options$hidden === void 0 ? false : _options$hidden;
+  function computeMiscTextAlternative(node, context) {
+    var accumulatedText = "";
+    if (isElement$1(node) && computedStyleSupportsPseudoElements) {
+      var pseudoBefore = getComputedStyle(node, "::before");
+      var beforeContent = getTextualContent(pseudoBefore);
+      accumulatedText = "".concat(beforeContent, " ").concat(accumulatedText);
+    }
+    var childNodes = isHTMLSlotElement(node) ? getSlotContents(node) : arrayFrom(node.childNodes).concat(queryIdRefs(node, "aria-owns"));
+    childNodes.forEach(function(child) {
+      var result = computeTextAlternative2(child, {
+        isEmbeddedInLabel: context.isEmbeddedInLabel,
+        isReferenced: false,
+        recursion: true
+      });
+      var display = isElement$1(child) ? getComputedStyle(child).getPropertyValue("display") : "inline";
+      var separator = display !== "inline" ? " " : "";
+      accumulatedText += "".concat(separator).concat(result).concat(separator);
+    });
+    if (isElement$1(node) && computedStyleSupportsPseudoElements) {
+      var pseudoAfter = getComputedStyle(node, "::after");
+      var afterContent = getTextualContent(pseudoAfter);
+      accumulatedText = "".concat(accumulatedText, " ").concat(afterContent);
+    }
+    return accumulatedText.trim();
+  }
+  function useAttribute(element, attributeName) {
+    var attribute = element.getAttributeNode(attributeName);
+    if (attribute !== null && !consultedNodes.has(attribute) && attribute.value.trim() !== "") {
+      consultedNodes.add(attribute);
+      return attribute.value;
+    }
+    return null;
+  }
+  function computeTooltipAttributeValue(node) {
+    if (!isElement$1(node)) {
+      return null;
+    }
+    return useAttribute(node, "title");
+  }
+  function computeElementTextAlternative(node) {
+    if (!isElement$1(node)) {
+      return null;
+    }
+    if (isHTMLFieldSetElement(node)) {
+      consultedNodes.add(node);
+      var children = arrayFrom(node.childNodes);
+      for (var i = 0; i < children.length; i += 1) {
+        var child = children[i];
+        if (isHTMLLegendElement(child)) {
+          return computeTextAlternative2(child, {
+            isEmbeddedInLabel: false,
+            isReferenced: false,
+            recursion: false
+          });
+        }
+      }
+    } else if (isHTMLTableElement(node)) {
+      consultedNodes.add(node);
+      var _children = arrayFrom(node.childNodes);
+      for (var _i = 0; _i < _children.length; _i += 1) {
+        var _child = _children[_i];
+        if (isHTMLTableCaptionElement(_child)) {
+          return computeTextAlternative2(_child, {
+            isEmbeddedInLabel: false,
+            isReferenced: false,
+            recursion: false
+          });
+        }
+      }
+    } else if (isSVGSVGElement(node)) {
+      consultedNodes.add(node);
+      var _children2 = arrayFrom(node.childNodes);
+      for (var _i2 = 0; _i2 < _children2.length; _i2 += 1) {
+        var _child2 = _children2[_i2];
+        if (isSVGTitleElement(_child2)) {
+          return _child2.textContent;
+        }
+      }
+      return null;
+    } else if (getLocalName(node) === "img" || getLocalName(node) === "area") {
+      var nameFromAlt = useAttribute(node, "alt");
+      if (nameFromAlt !== null) {
+        return nameFromAlt;
+      }
+    } else if (isHTMLOptGroupElement(node)) {
+      var nameFromLabel = useAttribute(node, "label");
+      if (nameFromLabel !== null) {
+        return nameFromLabel;
+      }
+    }
+    if (isHTMLInputElement(node) && (node.type === "button" || node.type === "submit" || node.type === "reset")) {
+      var nameFromValue = useAttribute(node, "value");
+      if (nameFromValue !== null) {
+        return nameFromValue;
+      }
+      if (node.type === "submit") {
+        return "Submit";
+      }
+      if (node.type === "reset") {
+        return "Reset";
+      }
+    }
+    var labels = getLabels$1(node);
+    if (labels !== null && labels.length !== 0) {
+      consultedNodes.add(node);
+      return arrayFrom(labels).map(function(element) {
+        return computeTextAlternative2(element, {
+          isEmbeddedInLabel: true,
+          isReferenced: false,
+          recursion: true
+        });
+      }).filter(function(label) {
+        return label.length > 0;
+      }).join(" ");
+    }
+    if (isHTMLInputElement(node) && node.type === "image") {
+      var _nameFromAlt = useAttribute(node, "alt");
+      if (_nameFromAlt !== null) {
+        return _nameFromAlt;
+      }
+      var nameFromTitle = useAttribute(node, "title");
+      if (nameFromTitle !== null) {
+        return nameFromTitle;
+      }
+      return "Submit Query";
+    }
+    if (hasAnyConcreteRoles(node, ["button"])) {
+      var nameFromSubTree = computeMiscTextAlternative(node, {
+        isEmbeddedInLabel: false,
+        isReferenced: false
+      });
+      if (nameFromSubTree !== "") {
+        return nameFromSubTree;
+      }
+    }
+    return null;
+  }
+  function computeTextAlternative2(current, context) {
+    if (consultedNodes.has(current)) {
+      return "";
+    }
+    if (!hidden && isHidden(current, getComputedStyle) && !context.isReferenced) {
+      consultedNodes.add(current);
+      return "";
+    }
+    var labelElements = queryIdRefs(current, "aria-labelledby");
+    if (compute === "name" && !context.isReferenced && labelElements.length > 0) {
+      return labelElements.map(function(element) {
+        return computeTextAlternative2(element, {
+          isEmbeddedInLabel: context.isEmbeddedInLabel,
+          isReferenced: true,
+          recursion: false
+        });
+      }).join(" ");
+    }
+    var skipToStep2E = context.recursion && isControl(current) && compute === "name";
+    if (!skipToStep2E) {
+      var ariaLabel = (isElement$1(current) && current.getAttribute("aria-label") || "").trim();
+      if (ariaLabel !== "" && compute === "name") {
+        consultedNodes.add(current);
+        return ariaLabel;
+      }
+      if (!isMarkedPresentational(current)) {
+        var elementTextAlternative = computeElementTextAlternative(current);
+        if (elementTextAlternative !== null) {
+          consultedNodes.add(current);
+          return elementTextAlternative;
+        }
+      }
+    }
+    if (hasAnyConcreteRoles(current, ["menu"])) {
+      consultedNodes.add(current);
+      return "";
+    }
+    if (skipToStep2E || context.isEmbeddedInLabel || context.isReferenced) {
+      if (hasAnyConcreteRoles(current, ["combobox", "listbox"])) {
+        consultedNodes.add(current);
+        var selectedOptions = querySelectedOptions(current);
+        if (selectedOptions.length === 0) {
+          return isHTMLInputElement(current) ? current.value : "";
+        }
+        return arrayFrom(selectedOptions).map(function(selectedOption) {
+          return computeTextAlternative2(selectedOption, {
+            isEmbeddedInLabel: context.isEmbeddedInLabel,
+            isReferenced: false,
+            recursion: true
+          });
+        }).join(" ");
+      }
+      if (hasAbstractRole(current, "range")) {
+        consultedNodes.add(current);
+        if (current.hasAttribute("aria-valuetext")) {
+          return current.getAttribute("aria-valuetext");
+        }
+        if (current.hasAttribute("aria-valuenow")) {
+          return current.getAttribute("aria-valuenow");
+        }
+        return current.getAttribute("value") || "";
+      }
+      if (hasAnyConcreteRoles(current, ["textbox"])) {
+        consultedNodes.add(current);
+        return getValueOfTextbox(current);
+      }
+    }
+    if (allowsNameFromContent(current) || isElement$1(current) && context.isReferenced || isNativeHostLanguageTextAlternativeElement(current) || isDescendantOfNativeHostLanguageTextAlternativeElement()) {
+      var accumulatedText2F = computeMiscTextAlternative(current, {
+        isEmbeddedInLabel: context.isEmbeddedInLabel,
+        isReferenced: false
+      });
+      if (accumulatedText2F !== "") {
+        consultedNodes.add(current);
+        return accumulatedText2F;
+      }
+    }
+    if (current.nodeType === current.TEXT_NODE) {
+      consultedNodes.add(current);
+      return current.textContent || "";
+    }
+    if (context.recursion) {
+      consultedNodes.add(current);
+      return computeMiscTextAlternative(current, {
+        isEmbeddedInLabel: context.isEmbeddedInLabel,
+        isReferenced: false
+      });
+    }
+    var tooltipAttributeValue = computeTooltipAttributeValue(current);
+    if (tooltipAttributeValue !== null) {
+      consultedNodes.add(current);
+      return tooltipAttributeValue;
+    }
+    consultedNodes.add(current);
+    return "";
+  }
+  return asFlatString(computeTextAlternative2(root, {
+    isEmbeddedInLabel: false,
+    isReferenced: compute === "description",
+    recursion: false
+  }));
+}
+function _typeof$1(obj) {
+  "@babel/helpers - typeof";
+  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+    return typeof obj2;
+  } : function(obj2) {
+    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof$1(obj);
+}
+function ownKeys(object, enumerableOnly) {
+  var keys8 = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys8.push.apply(keys8, symbols);
+  }
+  return keys8;
+}
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2 ? ownKeys(Object(source), true).forEach(function(key) {
+      _defineProperty$1(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
+function _defineProperty$1(obj, key, value) {
+  key = _toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return _typeof$1(key) === "symbol" ? key : String(key);
+}
+function _toPrimitive(input, hint) {
+  if (_typeof$1(input) !== "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (_typeof$1(res) !== "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function computeAccessibleDescription(root) {
+  var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+  var description = queryIdRefs(root, "aria-describedby").map(function(element) {
+    return computeTextAlternative(element, _objectSpread(_objectSpread({}, options), {}, {
+      compute: "description"
+    }));
+  }).join(" ");
+  if (description === "") {
+    var title = root.getAttribute("title");
+    description = title === null ? "" : title;
+  }
+  return description;
+}
+function prohibitsNaming(node) {
+  return hasAnyConcreteRoles(node, ["caption", "code", "deletion", "emphasis", "generic", "insertion", "paragraph", "presentation", "strong", "subscript", "superscript"]);
+}
+function computeAccessibleName(root) {
+  var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+  if (prohibitsNaming(root)) {
+    return "";
+  }
+  return computeTextAlternative(root, options);
+}
+var lib = {};
+var ariaPropsMap$1 = {};
+var iterationDecorator$1 = {};
+var iteratorProxy$1 = {};
+Object.defineProperty(iteratorProxy$1, "__esModule", {
+  value: true
+});
+iteratorProxy$1.default = void 0;
+function iteratorProxy() {
+  var values6 = this;
+  var index2 = 0;
+  var iter = {
+    "@@iterator": function iterator() {
+      return iter;
+    },
+    next: function next() {
+      if (index2 < values6.length) {
+        var value = values6[index2];
+        index2 = index2 + 1;
+        return {
+          done: false,
+          value
+        };
+      } else {
+        return {
+          done: true
+        };
+      }
+    }
+  };
+  return iter;
+}
+var _default$2h = iteratorProxy;
+iteratorProxy$1.default = _default$2h;
+Object.defineProperty(iterationDecorator$1, "__esModule", {
+  value: true
+});
+iterationDecorator$1.default = iterationDecorator;
+var _iteratorProxy = _interopRequireDefault$a(iteratorProxy$1);
+function _interopRequireDefault$a(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+    return typeof obj2;
+  } : function(obj2) {
+    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof(obj);
+}
+function iterationDecorator(collection, entries6) {
+  if (typeof Symbol === "function" && _typeof(Symbol.iterator) === "symbol") {
+    Object.defineProperty(collection, Symbol.iterator, {
+      value: _iteratorProxy.default.bind(entries6)
+    });
+  }
+  return collection;
+}
+Object.defineProperty(ariaPropsMap$1, "__esModule", {
+  value: true
+});
+ariaPropsMap$1.default = void 0;
+var _iterationDecorator$4 = _interopRequireDefault$9(iterationDecorator$1);
+function _interopRequireDefault$9(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _slicedToArray$4(arr, i) {
+  return _arrayWithHoles$4(arr) || _iterableToArrayLimit$4(arr, i) || _unsupportedIterableToArray$4(arr, i) || _nonIterableRest$4();
+}
+function _nonIterableRest$4() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _iterableToArrayLimit$4(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+  if (_i == null)
+    return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _s, _e;
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+      if (i && _arr.length === i)
+        break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null)
+        _i["return"]();
+    } finally {
+      if (_d)
+        throw _e;
+    }
+  }
+  return _arr;
+}
+function _arrayWithHoles$4(arr) {
+  if (Array.isArray(arr))
+    return arr;
+}
+function _createForOfIteratorHelper$4(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+  if (!it) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray$4(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it)
+        o = it;
+      var i = 0;
+      var F2 = function F3() {
+      };
+      return { s: F2, n: function n2() {
+        if (i >= o.length)
+          return { done: true };
+        return { done: false, value: o[i++] };
+      }, e: function e2(_e2) {
+        throw _e2;
+      }, f: F2 };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var normalCompletion = true, didErr = false, err;
+  return { s: function s() {
+    it = it.call(o);
+  }, n: function n2() {
+    var step = it.next();
+    normalCompletion = step.done;
+    return step;
+  }, e: function e2(_e3) {
+    didErr = true;
+    err = _e3;
+  }, f: function f2() {
+    try {
+      if (!normalCompletion && it.return != null)
+        it.return();
+    } finally {
+      if (didErr)
+        throw err;
+    }
+  } };
+}
+function _unsupportedIterableToArray$4(o, minLen) {
+  if (!o)
+    return;
+  if (typeof o === "string")
+    return _arrayLikeToArray$4(o, minLen);
+  var n2 = Object.prototype.toString.call(o).slice(8, -1);
+  if (n2 === "Object" && o.constructor)
+    n2 = o.constructor.name;
+  if (n2 === "Map" || n2 === "Set")
+    return Array.from(o);
+  if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
+    return _arrayLikeToArray$4(o, minLen);
+}
+function _arrayLikeToArray$4(arr, len) {
+  if (len == null || len > arr.length)
+    len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+var properties = [["aria-activedescendant", {
+  "type": "id"
+}], ["aria-atomic", {
+  "type": "boolean"
+}], ["aria-autocomplete", {
+  "type": "token",
+  "values": ["inline", "list", "both", "none"]
+}], ["aria-busy", {
+  "type": "boolean"
+}], ["aria-checked", {
+  "type": "tristate"
+}], ["aria-colcount", {
+  type: "integer"
+}], ["aria-colindex", {
+  type: "integer"
+}], ["aria-colspan", {
+  type: "integer"
+}], ["aria-controls", {
+  "type": "idlist"
+}], ["aria-current", {
+  type: "token",
+  values: ["page", "step", "location", "date", "time", true, false]
+}], ["aria-describedby", {
+  "type": "idlist"
+}], ["aria-details", {
+  "type": "id"
+}], ["aria-disabled", {
+  "type": "boolean"
+}], ["aria-dropeffect", {
+  "type": "tokenlist",
+  "values": ["copy", "execute", "link", "move", "none", "popup"]
+}], ["aria-errormessage", {
+  "type": "id"
+}], ["aria-expanded", {
+  "type": "boolean",
+  "allowundefined": true
+}], ["aria-flowto", {
+  "type": "idlist"
+}], ["aria-grabbed", {
+  "type": "boolean",
+  "allowundefined": true
+}], ["aria-haspopup", {
+  "type": "token",
+  "values": [false, true, "menu", "listbox", "tree", "grid", "dialog"]
+}], ["aria-hidden", {
+  "type": "boolean",
+  "allowundefined": true
+}], ["aria-invalid", {
+  "type": "token",
+  "values": ["grammar", false, "spelling", true]
+}], ["aria-keyshortcuts", {
+  type: "string"
+}], ["aria-label", {
+  "type": "string"
+}], ["aria-labelledby", {
+  "type": "idlist"
+}], ["aria-level", {
+  "type": "integer"
+}], ["aria-live", {
+  "type": "token",
+  "values": ["assertive", "off", "polite"]
+}], ["aria-modal", {
+  type: "boolean"
+}], ["aria-multiline", {
+  "type": "boolean"
+}], ["aria-multiselectable", {
+  "type": "boolean"
+}], ["aria-orientation", {
+  "type": "token",
+  "values": ["vertical", "undefined", "horizontal"]
+}], ["aria-owns", {
+  "type": "idlist"
+}], ["aria-placeholder", {
+  type: "string"
+}], ["aria-posinset", {
+  "type": "integer"
+}], ["aria-pressed", {
+  "type": "tristate"
+}], ["aria-readonly", {
+  "type": "boolean"
+}], ["aria-relevant", {
+  "type": "tokenlist",
+  "values": ["additions", "all", "removals", "text"]
+}], ["aria-required", {
+  "type": "boolean"
+}], ["aria-roledescription", {
+  type: "string"
+}], ["aria-rowcount", {
+  type: "integer"
+}], ["aria-rowindex", {
+  type: "integer"
+}], ["aria-rowspan", {
+  type: "integer"
+}], ["aria-selected", {
+  "type": "boolean",
+  "allowundefined": true
+}], ["aria-setsize", {
+  "type": "integer"
+}], ["aria-sort", {
+  "type": "token",
+  "values": ["ascending", "descending", "none", "other"]
+}], ["aria-valuemax", {
+  "type": "number"
+}], ["aria-valuemin", {
+  "type": "number"
+}], ["aria-valuenow", {
+  "type": "number"
+}], ["aria-valuetext", {
+  "type": "string"
+}]];
+var ariaPropsMap = {
+  entries: function entries() {
+    return properties;
+  },
+  forEach: function forEach(fn) {
+    var thisArg = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+    var _iterator = _createForOfIteratorHelper$4(properties), _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var _step$value = _slicedToArray$4(_step.value, 2), key = _step$value[0], values6 = _step$value[1];
+        fn.call(thisArg, values6, key, properties);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  },
+  get: function get(key) {
+    var item = properties.find(function(tuple) {
+      return tuple[0] === key ? true : false;
+    });
+    return item && item[1];
+  },
+  has: function has(key) {
+    return !!ariaPropsMap.get(key);
+  },
+  keys: function keys() {
+    return properties.map(function(_ref) {
+      var _ref2 = _slicedToArray$4(_ref, 1), key = _ref2[0];
+      return key;
+    });
+  },
+  values: function values() {
+    return properties.map(function(_ref3) {
+      var _ref4 = _slicedToArray$4(_ref3, 2), values6 = _ref4[1];
+      return values6;
+    });
+  }
+};
+var _default$2g = (0, _iterationDecorator$4.default)(ariaPropsMap, ariaPropsMap.entries());
+ariaPropsMap$1.default = _default$2g;
+var domMap$1 = {};
+Object.defineProperty(domMap$1, "__esModule", {
+  value: true
+});
+domMap$1.default = void 0;
+var _iterationDecorator$3 = _interopRequireDefault$8(iterationDecorator$1);
+function _interopRequireDefault$8(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _slicedToArray$3(arr, i) {
+  return _arrayWithHoles$3(arr) || _iterableToArrayLimit$3(arr, i) || _unsupportedIterableToArray$3(arr, i) || _nonIterableRest$3();
+}
+function _nonIterableRest$3() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _iterableToArrayLimit$3(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+  if (_i == null)
+    return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _s, _e;
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+      if (i && _arr.length === i)
+        break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null)
+        _i["return"]();
+    } finally {
+      if (_d)
+        throw _e;
+    }
+  }
+  return _arr;
+}
+function _arrayWithHoles$3(arr) {
+  if (Array.isArray(arr))
+    return arr;
+}
+function _createForOfIteratorHelper$3(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+  if (!it) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray$3(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it)
+        o = it;
+      var i = 0;
+      var F2 = function F3() {
+      };
+      return { s: F2, n: function n2() {
+        if (i >= o.length)
+          return { done: true };
+        return { done: false, value: o[i++] };
+      }, e: function e2(_e2) {
+        throw _e2;
+      }, f: F2 };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var normalCompletion = true, didErr = false, err;
+  return { s: function s() {
+    it = it.call(o);
+  }, n: function n2() {
+    var step = it.next();
+    normalCompletion = step.done;
+    return step;
+  }, e: function e2(_e3) {
+    didErr = true;
+    err = _e3;
+  }, f: function f2() {
+    try {
+      if (!normalCompletion && it.return != null)
+        it.return();
+    } finally {
+      if (didErr)
+        throw err;
+    }
+  } };
+}
+function _unsupportedIterableToArray$3(o, minLen) {
+  if (!o)
+    return;
+  if (typeof o === "string")
+    return _arrayLikeToArray$3(o, minLen);
+  var n2 = Object.prototype.toString.call(o).slice(8, -1);
+  if (n2 === "Object" && o.constructor)
+    n2 = o.constructor.name;
+  if (n2 === "Map" || n2 === "Set")
+    return Array.from(o);
+  if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
+    return _arrayLikeToArray$3(o, minLen);
+}
+function _arrayLikeToArray$3(arr, len) {
+  if (len == null || len > arr.length)
+    len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+var dom$1 = [["a", {
+  reserved: false
+}], ["abbr", {
+  reserved: false
+}], ["acronym", {
+  reserved: false
+}], ["address", {
+  reserved: false
+}], ["applet", {
+  reserved: false
+}], ["area", {
+  reserved: false
+}], ["article", {
+  reserved: false
+}], ["aside", {
+  reserved: false
+}], ["audio", {
+  reserved: false
+}], ["b", {
+  reserved: false
+}], ["base", {
+  reserved: true
+}], ["bdi", {
+  reserved: false
+}], ["bdo", {
+  reserved: false
+}], ["big", {
+  reserved: false
+}], ["blink", {
+  reserved: false
+}], ["blockquote", {
+  reserved: false
+}], ["body", {
+  reserved: false
+}], ["br", {
+  reserved: false
+}], ["button", {
+  reserved: false
+}], ["canvas", {
+  reserved: false
+}], ["caption", {
+  reserved: false
+}], ["center", {
+  reserved: false
+}], ["cite", {
+  reserved: false
+}], ["code", {
+  reserved: false
+}], ["col", {
+  reserved: true
+}], ["colgroup", {
+  reserved: true
+}], ["content", {
+  reserved: false
+}], ["data", {
+  reserved: false
+}], ["datalist", {
+  reserved: false
+}], ["dd", {
+  reserved: false
+}], ["del", {
+  reserved: false
+}], ["details", {
+  reserved: false
+}], ["dfn", {
+  reserved: false
+}], ["dialog", {
+  reserved: false
+}], ["dir", {
+  reserved: false
+}], ["div", {
+  reserved: false
+}], ["dl", {
+  reserved: false
+}], ["dt", {
+  reserved: false
+}], ["em", {
+  reserved: false
+}], ["embed", {
+  reserved: false
+}], ["fieldset", {
+  reserved: false
+}], ["figcaption", {
+  reserved: false
+}], ["figure", {
+  reserved: false
+}], ["font", {
+  reserved: false
+}], ["footer", {
+  reserved: false
+}], ["form", {
+  reserved: false
+}], ["frame", {
+  reserved: false
+}], ["frameset", {
+  reserved: false
+}], ["h1", {
+  reserved: false
+}], ["h2", {
+  reserved: false
+}], ["h3", {
+  reserved: false
+}], ["h4", {
+  reserved: false
+}], ["h5", {
+  reserved: false
+}], ["h6", {
+  reserved: false
+}], ["head", {
+  reserved: true
+}], ["header", {
+  reserved: false
+}], ["hgroup", {
+  reserved: false
+}], ["hr", {
+  reserved: false
+}], ["html", {
+  reserved: true
+}], ["i", {
+  reserved: false
+}], ["iframe", {
+  reserved: false
+}], ["img", {
+  reserved: false
+}], ["input", {
+  reserved: false
+}], ["ins", {
+  reserved: false
+}], ["kbd", {
+  reserved: false
+}], ["keygen", {
+  reserved: false
+}], ["label", {
+  reserved: false
+}], ["legend", {
+  reserved: false
+}], ["li", {
+  reserved: false
+}], ["link", {
+  reserved: true
+}], ["main", {
+  reserved: false
+}], ["map", {
+  reserved: false
+}], ["mark", {
+  reserved: false
+}], ["marquee", {
+  reserved: false
+}], ["menu", {
+  reserved: false
+}], ["menuitem", {
+  reserved: false
+}], ["meta", {
+  reserved: true
+}], ["meter", {
+  reserved: false
+}], ["nav", {
+  reserved: false
+}], ["noembed", {
+  reserved: true
+}], ["noscript", {
+  reserved: true
+}], ["object", {
+  reserved: false
+}], ["ol", {
+  reserved: false
+}], ["optgroup", {
+  reserved: false
+}], ["option", {
+  reserved: false
+}], ["output", {
+  reserved: false
+}], ["p", {
+  reserved: false
+}], ["param", {
+  reserved: true
+}], ["picture", {
+  reserved: true
+}], ["pre", {
+  reserved: false
+}], ["progress", {
+  reserved: false
+}], ["q", {
+  reserved: false
+}], ["rp", {
+  reserved: false
+}], ["rt", {
+  reserved: false
+}], ["rtc", {
+  reserved: false
+}], ["ruby", {
+  reserved: false
+}], ["s", {
+  reserved: false
+}], ["samp", {
+  reserved: false
+}], ["script", {
+  reserved: true
+}], ["section", {
+  reserved: false
+}], ["select", {
+  reserved: false
+}], ["small", {
+  reserved: false
+}], ["source", {
+  reserved: true
+}], ["spacer", {
+  reserved: false
+}], ["span", {
+  reserved: false
+}], ["strike", {
+  reserved: false
+}], ["strong", {
+  reserved: false
+}], ["style", {
+  reserved: true
+}], ["sub", {
+  reserved: false
+}], ["summary", {
+  reserved: false
+}], ["sup", {
+  reserved: false
+}], ["table", {
+  reserved: false
+}], ["tbody", {
+  reserved: false
+}], ["td", {
+  reserved: false
+}], ["textarea", {
+  reserved: false
+}], ["tfoot", {
+  reserved: false
+}], ["th", {
+  reserved: false
+}], ["thead", {
+  reserved: false
+}], ["time", {
+  reserved: false
+}], ["title", {
+  reserved: true
+}], ["tr", {
+  reserved: false
+}], ["track", {
+  reserved: true
+}], ["tt", {
+  reserved: false
+}], ["u", {
+  reserved: false
+}], ["ul", {
+  reserved: false
+}], ["var", {
+  reserved: false
+}], ["video", {
+  reserved: false
+}], ["wbr", {
+  reserved: false
+}], ["xmp", {
+  reserved: false
+}]];
+var domMap = {
+  entries: function entries2() {
+    return dom$1;
+  },
+  forEach: function forEach2(fn) {
+    var thisArg = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+    var _iterator = _createForOfIteratorHelper$3(dom$1), _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var _step$value = _slicedToArray$3(_step.value, 2), key = _step$value[0], values6 = _step$value[1];
+        fn.call(thisArg, values6, key, dom$1);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  },
+  get: function get2(key) {
+    var item = dom$1.find(function(tuple) {
+      return tuple[0] === key ? true : false;
+    });
+    return item && item[1];
+  },
+  has: function has2(key) {
+    return !!domMap.get(key);
+  },
+  keys: function keys2() {
+    return dom$1.map(function(_ref) {
+      var _ref2 = _slicedToArray$3(_ref, 1), key = _ref2[0];
+      return key;
+    });
+  },
+  values: function values2() {
+    return dom$1.map(function(_ref3) {
+      var _ref4 = _slicedToArray$3(_ref3, 2), values6 = _ref4[1];
+      return values6;
+    });
+  }
+};
+var _default$2f = (0, _iterationDecorator$3.default)(domMap, domMap.entries());
+domMap$1.default = _default$2f;
+var rolesMap$1 = {};
+var ariaAbstractRoles$1 = {};
+var commandRole$1 = {};
+Object.defineProperty(commandRole$1, "__esModule", {
+  value: true
+});
+commandRole$1.default = void 0;
+var commandRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "menuitem"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget"]]
+};
+var _default$2e = commandRole;
+commandRole$1.default = _default$2e;
+var compositeRole$1 = {};
+Object.defineProperty(compositeRole$1, "__esModule", {
+  value: true
+});
+compositeRole$1.default = void 0;
+var compositeRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-activedescendant": null,
+    "aria-disabled": null
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget"]]
+};
+var _default$2d = compositeRole;
+compositeRole$1.default = _default$2d;
+var inputRole$1 = {};
+Object.defineProperty(inputRole$1, "__esModule", {
+  value: true
+});
+inputRole$1.default = void 0;
+var inputRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "input"
+    },
+    module: "XForms"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget"]]
+};
+var _default$2c = inputRole;
+inputRole$1.default = _default$2c;
+var landmarkRole$1 = {};
+Object.defineProperty(landmarkRole$1, "__esModule", {
+  value: true
+});
+landmarkRole$1.default = void 0;
+var landmarkRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$2b = landmarkRole;
+landmarkRole$1.default = _default$2b;
+var rangeRole$1 = {};
+Object.defineProperty(rangeRole$1, "__esModule", {
+  value: true
+});
+rangeRole$1.default = void 0;
+var rangeRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-valuemax": null,
+    "aria-valuemin": null,
+    "aria-valuenow": null
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$2a = rangeRole;
+rangeRole$1.default = _default$2a;
+var roletypeRole$1 = {};
+Object.defineProperty(roletypeRole$1, "__esModule", {
+  value: true
+});
+roletypeRole$1.default = void 0;
+var roletypeRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: [],
+  prohibitedProps: [],
+  props: {
+    "aria-atomic": null,
+    "aria-busy": null,
+    "aria-controls": null,
+    "aria-current": null,
+    "aria-describedby": null,
+    "aria-details": null,
+    "aria-dropeffect": null,
+    "aria-flowto": null,
+    "aria-grabbed": null,
+    "aria-hidden": null,
+    "aria-keyshortcuts": null,
+    "aria-label": null,
+    "aria-labelledby": null,
+    "aria-live": null,
+    "aria-owns": null,
+    "aria-relevant": null,
+    "aria-roledescription": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "rel"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "role"
+    },
+    module: "XHTML"
+  }, {
+    concept: {
+      name: "type"
+    },
+    module: "Dublin Core"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: []
+};
+var _default$29 = roletypeRole;
+roletypeRole$1.default = _default$29;
+var sectionRole$1 = {};
+Object.defineProperty(sectionRole$1, "__esModule", {
+  value: true
+});
+sectionRole$1.default = void 0;
+var sectionRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: [],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "frontmatter"
+    },
+    module: "DTB"
+  }, {
+    concept: {
+      name: "level"
+    },
+    module: "DTB"
+  }, {
+    concept: {
+      name: "level"
+    },
+    module: "SMIL"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$28 = sectionRole;
+sectionRole$1.default = _default$28;
+var sectionheadRole$1 = {};
+Object.defineProperty(sectionheadRole$1, "__esModule", {
+  value: true
+});
+sectionheadRole$1.default = void 0;
+var sectionheadRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$27 = sectionheadRole;
+sectionheadRole$1.default = _default$27;
+var selectRole$1 = {};
+Object.defineProperty(selectRole$1, "__esModule", {
+  value: true
+});
+selectRole$1.default = void 0;
+var selectRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-orientation": null
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite"], ["roletype", "structure", "section", "group"]]
+};
+var _default$26 = selectRole;
+selectRole$1.default = _default$26;
+var structureRole$1 = {};
+Object.defineProperty(structureRole$1, "__esModule", {
+  value: true
+});
+structureRole$1.default = void 0;
+var structureRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: [],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype"]]
+};
+var _default$25 = structureRole;
+structureRole$1.default = _default$25;
+var widgetRole$1 = {};
+Object.defineProperty(widgetRole$1, "__esModule", {
+  value: true
+});
+widgetRole$1.default = void 0;
+var widgetRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: [],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype"]]
+};
+var _default$24 = widgetRole;
+widgetRole$1.default = _default$24;
+var windowRole$1 = {};
+Object.defineProperty(windowRole$1, "__esModule", {
+  value: true
+});
+windowRole$1.default = void 0;
+var windowRole = {
+  abstract: true,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-modal": null
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype"]]
+};
+var _default$23 = windowRole;
+windowRole$1.default = _default$23;
+Object.defineProperty(ariaAbstractRoles$1, "__esModule", {
+  value: true
+});
+ariaAbstractRoles$1.default = void 0;
+var _commandRole = _interopRequireDefault$7(commandRole$1);
+var _compositeRole = _interopRequireDefault$7(compositeRole$1);
+var _inputRole = _interopRequireDefault$7(inputRole$1);
+var _landmarkRole = _interopRequireDefault$7(landmarkRole$1);
+var _rangeRole = _interopRequireDefault$7(rangeRole$1);
+var _roletypeRole = _interopRequireDefault$7(roletypeRole$1);
+var _sectionRole = _interopRequireDefault$7(sectionRole$1);
+var _sectionheadRole = _interopRequireDefault$7(sectionheadRole$1);
+var _selectRole = _interopRequireDefault$7(selectRole$1);
+var _structureRole = _interopRequireDefault$7(structureRole$1);
+var _widgetRole = _interopRequireDefault$7(widgetRole$1);
+var _windowRole = _interopRequireDefault$7(windowRole$1);
+function _interopRequireDefault$7(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+var ariaAbstractRoles = [["command", _commandRole.default], ["composite", _compositeRole.default], ["input", _inputRole.default], ["landmark", _landmarkRole.default], ["range", _rangeRole.default], ["roletype", _roletypeRole.default], ["section", _sectionRole.default], ["sectionhead", _sectionheadRole.default], ["select", _selectRole.default], ["structure", _structureRole.default], ["widget", _widgetRole.default], ["window", _windowRole.default]];
+var _default$22 = ariaAbstractRoles;
+ariaAbstractRoles$1.default = _default$22;
+var ariaLiteralRoles$1 = {};
+var alertRole$1 = {};
+Object.defineProperty(alertRole$1, "__esModule", {
+  value: true
+});
+alertRole$1.default = void 0;
+var alertRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-atomic": "true",
+    "aria-live": "assertive"
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "alert"
+    },
+    module: "XForms"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$21 = alertRole;
+alertRole$1.default = _default$21;
+var alertdialogRole$1 = {};
+Object.defineProperty(alertdialogRole$1, "__esModule", {
+  value: true
+});
+alertdialogRole$1.default = void 0;
+var alertdialogRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "alert"
+    },
+    module: "XForms"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "alert"], ["roletype", "window", "dialog"]]
+};
+var _default$20 = alertdialogRole;
+alertdialogRole$1.default = _default$20;
+var applicationRole$1 = {};
+Object.defineProperty(applicationRole$1, "__esModule", {
+  value: true
+});
+applicationRole$1.default = void 0;
+var applicationRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-activedescendant": null,
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "Device Independence Delivery Unit"
+    }
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$1$ = applicationRole;
+applicationRole$1.default = _default$1$;
+var articleRole$1 = {};
+Object.defineProperty(articleRole$1, "__esModule", {
+  value: true
+});
+articleRole$1.default = void 0;
+var articleRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-posinset": null,
+    "aria-setsize": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "article"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "document"]]
+};
+var _default$1_ = articleRole;
+articleRole$1.default = _default$1_;
+var bannerRole$1 = {};
+Object.defineProperty(bannerRole$1, "__esModule", {
+  value: true
+});
+bannerRole$1.default = void 0;
+var bannerRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      constraints: ["direct descendant of document"],
+      name: "header"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$1Z = bannerRole;
+bannerRole$1.default = _default$1Z;
+var blockquoteRole$1 = {};
+Object.defineProperty(blockquoteRole$1, "__esModule", {
+  value: true
+});
+blockquoteRole$1.default = void 0;
+var blockquoteRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1Y = blockquoteRole;
+blockquoteRole$1.default = _default$1Y;
+var buttonRole$1 = {};
+Object.defineProperty(buttonRole$1, "__esModule", {
+  value: true
+});
+buttonRole$1.default = void 0;
+var buttonRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-pressed": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "aria-pressed"
+      }, {
+        name: "type",
+        value: "checkbox"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "aria-expanded",
+        value: "false"
+      }],
+      name: "summary"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "aria-expanded",
+        value: "true"
+      }],
+      constraints: ["direct descendant of details element with the open attribute defined"],
+      name: "summary"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "button"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "image"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "reset"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "submit"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "button"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "trigger"
+    },
+    module: "XForms"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "command"]]
+};
+var _default$1X = buttonRole;
+buttonRole$1.default = _default$1X;
+var captionRole$1 = {};
+Object.defineProperty(captionRole$1, "__esModule", {
+  value: true
+});
+captionRole$1.default = void 0;
+var captionRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: ["figure", "grid", "table"],
+  requiredContextRole: ["figure", "grid", "table"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1W = captionRole;
+captionRole$1.default = _default$1W;
+var cellRole$1 = {};
+Object.defineProperty(cellRole$1, "__esModule", {
+  value: true
+});
+cellRole$1.default = void 0;
+var cellRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-colindex": null,
+    "aria-colspan": null,
+    "aria-rowindex": null,
+    "aria-rowspan": null
+  },
+  relatedConcepts: [{
+    concept: {
+      constraints: ["descendant of table"],
+      name: "td"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: ["row"],
+  requiredContextRole: ["row"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1V = cellRole;
+cellRole$1.default = _default$1V;
+var checkboxRole$1 = {};
+Object.defineProperty(checkboxRole$1, "__esModule", {
+  value: true
+});
+checkboxRole$1.default = void 0;
+var checkboxRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-checked": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-invalid": null,
+    "aria-readonly": null,
+    "aria-required": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "checkbox"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "option"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-checked": null
+  },
+  superClass: [["roletype", "widget", "input"]]
+};
+var _default$1U = checkboxRole;
+checkboxRole$1.default = _default$1U;
+var codeRole$1 = {};
+Object.defineProperty(codeRole$1, "__esModule", {
+  value: true
+});
+codeRole$1.default = void 0;
+var codeRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1T = codeRole;
+codeRole$1.default = _default$1T;
+var columnheaderRole$1 = {};
+Object.defineProperty(columnheaderRole$1, "__esModule", {
+  value: true
+});
+columnheaderRole$1.default = void 0;
+var columnheaderRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-sort": null
+  },
+  relatedConcepts: [{
+    attributes: [{
+      name: "scope",
+      value: "col"
+    }],
+    concept: {
+      name: "th"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: ["row"],
+  requiredContextRole: ["row"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "cell"], ["roletype", "structure", "section", "cell", "gridcell"], ["roletype", "widget", "gridcell"], ["roletype", "structure", "sectionhead"]]
+};
+var _default$1S = columnheaderRole;
+columnheaderRole$1.default = _default$1S;
+var comboboxRole$1 = {};
+Object.defineProperty(comboboxRole$1, "__esModule", {
+  value: true
+});
+comboboxRole$1.default = void 0;
+var comboboxRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-activedescendant": null,
+    "aria-autocomplete": null,
+    "aria-errormessage": null,
+    "aria-invalid": null,
+    "aria-readonly": null,
+    "aria-required": null,
+    "aria-expanded": "false",
+    "aria-haspopup": "listbox"
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "email"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "search"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "tel"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "text"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "url"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "url"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "multiple"
+      }, {
+        constraints: ["undefined"],
+        name: "size"
+      }],
+      name: "select"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "multiple"
+      }, {
+        name: "size",
+        value: 1
+      }],
+      name: "select"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "select"
+    },
+    module: "XForms"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-controls": null,
+    "aria-expanded": "false"
+  },
+  superClass: [["roletype", "widget", "input"]]
+};
+var _default$1R = comboboxRole;
+comboboxRole$1.default = _default$1R;
+var complementaryRole$1 = {};
+Object.defineProperty(complementaryRole$1, "__esModule", {
+  value: true
+});
+complementaryRole$1.default = void 0;
+var complementaryRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "aside"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$1Q = complementaryRole;
+complementaryRole$1.default = _default$1Q;
+var contentinfoRole$1 = {};
+Object.defineProperty(contentinfoRole$1, "__esModule", {
+  value: true
+});
+contentinfoRole$1.default = void 0;
+var contentinfoRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      constraints: ["direct descendant of document"],
+      name: "footer"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$1P = contentinfoRole;
+contentinfoRole$1.default = _default$1P;
+var definitionRole$1 = {};
+Object.defineProperty(definitionRole$1, "__esModule", {
+  value: true
+});
+definitionRole$1.default = void 0;
+var definitionRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "dd"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1O = definitionRole;
+definitionRole$1.default = _default$1O;
+var deletionRole$1 = {};
+Object.defineProperty(deletionRole$1, "__esModule", {
+  value: true
+});
+deletionRole$1.default = void 0;
+var deletionRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1N = deletionRole;
+deletionRole$1.default = _default$1N;
+var dialogRole$1 = {};
+Object.defineProperty(dialogRole$1, "__esModule", {
+  value: true
+});
+dialogRole$1.default = void 0;
+var dialogRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "dialog"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "window"]]
+};
+var _default$1M = dialogRole;
+dialogRole$1.default = _default$1M;
+var directoryRole$1 = {};
+Object.defineProperty(directoryRole$1, "__esModule", {
+  value: true
+});
+directoryRole$1.default = void 0;
+var directoryRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    module: "DAISY Guide"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "list"]]
+};
+var _default$1L = directoryRole;
+directoryRole$1.default = _default$1L;
+var documentRole$1 = {};
+Object.defineProperty(documentRole$1, "__esModule", {
+  value: true
+});
+documentRole$1.default = void 0;
+var documentRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "Device Independence Delivery Unit"
+    }
+  }, {
+    concept: {
+      name: "body"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$1K = documentRole;
+documentRole$1.default = _default$1K;
+var emphasisRole$1 = {};
+Object.defineProperty(emphasisRole$1, "__esModule", {
+  value: true
+});
+emphasisRole$1.default = void 0;
+var emphasisRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1J = emphasisRole;
+emphasisRole$1.default = _default$1J;
+var feedRole$1 = {};
+Object.defineProperty(feedRole$1, "__esModule", {
+  value: true
+});
+feedRole$1.default = void 0;
+var feedRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["article"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "list"]]
+};
+var _default$1I = feedRole;
+feedRole$1.default = _default$1I;
+var figureRole$1 = {};
+Object.defineProperty(figureRole$1, "__esModule", {
+  value: true
+});
+figureRole$1.default = void 0;
+var figureRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "figure"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1H = figureRole;
+figureRole$1.default = _default$1H;
+var formRole$1 = {};
+Object.defineProperty(formRole$1, "__esModule", {
+  value: true
+});
+formRole$1.default = void 0;
+var formRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "aria-label"
+      }],
+      name: "form"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "aria-labelledby"
+      }],
+      name: "form"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "name"
+      }],
+      name: "form"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$1G = formRole;
+formRole$1.default = _default$1G;
+var genericRole$1 = {};
+Object.defineProperty(genericRole$1, "__esModule", {
+  value: true
+});
+genericRole$1.default = void 0;
+var genericRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "span"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "div"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$1F = genericRole;
+genericRole$1.default = _default$1F;
+var gridRole$1 = {};
+Object.defineProperty(gridRole$1, "__esModule", {
+  value: true
+});
+gridRole$1.default = void 0;
+var gridRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-multiselectable": null,
+    "aria-readonly": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "role",
+        value: "grid"
+      }],
+      name: "table"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["row"], ["row", "rowgroup"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite"], ["roletype", "structure", "section", "table"]]
+};
+var _default$1E = gridRole;
+gridRole$1.default = _default$1E;
+var gridcellRole$1 = {};
+Object.defineProperty(gridcellRole$1, "__esModule", {
+  value: true
+});
+gridcellRole$1.default = void 0;
+var gridcellRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null,
+    "aria-readonly": null,
+    "aria-required": null,
+    "aria-selected": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "role",
+        value: "gridcell"
+      }],
+      name: "td"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: ["row"],
+  requiredContextRole: ["row"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "cell"], ["roletype", "widget"]]
+};
+var _default$1D = gridcellRole;
+gridcellRole$1.default = _default$1D;
+var groupRole$1 = {};
+Object.defineProperty(groupRole$1, "__esModule", {
+  value: true
+});
+groupRole$1.default = void 0;
+var groupRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-activedescendant": null,
+    "aria-disabled": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "details"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "fieldset"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "optgroup"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1C = groupRole;
+groupRole$1.default = _default$1C;
+var headingRole$1 = {};
+Object.defineProperty(headingRole$1, "__esModule", {
+  value: true
+});
+headingRole$1.default = void 0;
+var headingRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-level": "2"
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "h1"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "h2"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "h3"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "h4"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "h5"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "h6"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-level": "2"
+  },
+  superClass: [["roletype", "structure", "sectionhead"]]
+};
+var _default$1B = headingRole;
+headingRole$1.default = _default$1B;
+var imgRole$1 = {};
+Object.defineProperty(imgRole$1, "__esModule", {
+  value: true
+});
+imgRole$1.default = void 0;
+var imgRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "alt"
+      }],
+      name: "img"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "alt"
+      }],
+      name: "img"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "imggroup"
+    },
+    module: "DTB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1A = imgRole;
+imgRole$1.default = _default$1A;
+var insertionRole$1 = {};
+Object.defineProperty(insertionRole$1, "__esModule", {
+  value: true
+});
+insertionRole$1.default = void 0;
+var insertionRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1z = insertionRole;
+insertionRole$1.default = _default$1z;
+var linkRole$1 = {};
+Object.defineProperty(linkRole$1, "__esModule", {
+  value: true
+});
+linkRole$1.default = void 0;
+var linkRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-expanded": null,
+    "aria-haspopup": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "href"
+      }],
+      name: "a"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "href"
+      }],
+      name: "area"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "href"
+      }],
+      name: "link"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "command"]]
+};
+var _default$1y = linkRole;
+linkRole$1.default = _default$1y;
+var listRole$1 = {};
+Object.defineProperty(listRole$1, "__esModule", {
+  value: true
+});
+listRole$1.default = void 0;
+var listRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "menu"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "ol"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "ul"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["listitem"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1x = listRole;
+listRole$1.default = _default$1x;
+var listboxRole$1 = {};
+Object.defineProperty(listboxRole$1, "__esModule", {
+  value: true
+});
+listboxRole$1.default = void 0;
+var listboxRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-invalid": null,
+    "aria-multiselectable": null,
+    "aria-readonly": null,
+    "aria-required": null,
+    "aria-orientation": "vertical"
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: [">1"],
+        name: "size"
+      }, {
+        name: "multiple"
+      }],
+      name: "select"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: [">1"],
+        name: "size"
+      }],
+      name: "select"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "multiple"
+      }],
+      name: "select"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "datalist"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "list"
+    },
+    module: "ARIA"
+  }, {
+    concept: {
+      name: "select"
+    },
+    module: "XForms"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["option", "group"], ["option"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite", "select"], ["roletype", "structure", "section", "group", "select"]]
+};
+var _default$1w = listboxRole;
+listboxRole$1.default = _default$1w;
+var listitemRole$1 = {};
+Object.defineProperty(listitemRole$1, "__esModule", {
+  value: true
+});
+listitemRole$1.default = void 0;
+var listitemRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-level": null,
+    "aria-posinset": null,
+    "aria-setsize": null
+  },
+  relatedConcepts: [{
+    concept: {
+      constraints: ["direct descendant of ol, ul or menu"],
+      name: "li"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "item"
+    },
+    module: "XForms"
+  }],
+  requireContextRole: ["directory", "list"],
+  requiredContextRole: ["directory", "list"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1v = listitemRole;
+listitemRole$1.default = _default$1v;
+var logRole$1 = {};
+Object.defineProperty(logRole$1, "__esModule", {
+  value: true
+});
+logRole$1.default = void 0;
+var logRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-live": "polite"
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1u = logRole;
+logRole$1.default = _default$1u;
+var mainRole$1 = {};
+Object.defineProperty(mainRole$1, "__esModule", {
+  value: true
+});
+mainRole$1.default = void 0;
+var mainRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "main"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$1t = mainRole;
+mainRole$1.default = _default$1t;
+var marqueeRole$1 = {};
+Object.defineProperty(marqueeRole$1, "__esModule", {
+  value: true
+});
+marqueeRole$1.default = void 0;
+var marqueeRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1s = marqueeRole;
+marqueeRole$1.default = _default$1s;
+var mathRole$1 = {};
+Object.defineProperty(mathRole$1, "__esModule", {
+  value: true
+});
+mathRole$1.default = void 0;
+var mathRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "math"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1r = mathRole;
+mathRole$1.default = _default$1r;
+var menuRole$1 = {};
+Object.defineProperty(menuRole$1, "__esModule", {
+  value: true
+});
+menuRole$1.default = void 0;
+var menuRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-orientation": "vertical"
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "MENU"
+    },
+    module: "JAPI"
+  }, {
+    concept: {
+      name: "list"
+    },
+    module: "ARIA"
+  }, {
+    concept: {
+      name: "select"
+    },
+    module: "XForms"
+  }, {
+    concept: {
+      name: "sidebar"
+    },
+    module: "DTB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["menuitem", "group"], ["menuitemradio", "group"], ["menuitemcheckbox", "group"], ["menuitem"], ["menuitemcheckbox"], ["menuitemradio"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite", "select"], ["roletype", "structure", "section", "group", "select"]]
+};
+var _default$1q = menuRole;
+menuRole$1.default = _default$1q;
+var menubarRole$1 = {};
+Object.defineProperty(menubarRole$1, "__esModule", {
+  value: true
+});
+menubarRole$1.default = void 0;
+var menubarRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-orientation": "horizontal"
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "toolbar"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["menuitem", "group"], ["menuitemradio", "group"], ["menuitemcheckbox", "group"], ["menuitem"], ["menuitemcheckbox"], ["menuitemradio"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite", "select", "menu"], ["roletype", "structure", "section", "group", "select", "menu"]]
+};
+var _default$1p = menubarRole;
+menubarRole$1.default = _default$1p;
+var menuitemRole$1 = {};
+Object.defineProperty(menuitemRole$1, "__esModule", {
+  value: true
+});
+menuitemRole$1.default = void 0;
+var menuitemRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-posinset": null,
+    "aria-setsize": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "MENU_ITEM"
+    },
+    module: "JAPI"
+  }, {
+    concept: {
+      name: "listitem"
+    },
+    module: "ARIA"
+  }, {
+    concept: {
+      name: "menuitem"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "option"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: ["group", "menu", "menubar"],
+  requiredContextRole: ["group", "menu", "menubar"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "command"]]
+};
+var _default$1o = menuitemRole;
+menuitemRole$1.default = _default$1o;
+var menuitemcheckboxRole$1 = {};
+Object.defineProperty(menuitemcheckboxRole$1, "__esModule", {
+  value: true
+});
+menuitemcheckboxRole$1.default = void 0;
+var menuitemcheckboxRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "menuitem"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: ["group", "menu", "menubar"],
+  requiredContextRole: ["group", "menu", "menubar"],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-checked": null
+  },
+  superClass: [["roletype", "widget", "input", "checkbox"], ["roletype", "widget", "command", "menuitem"]]
+};
+var _default$1n = menuitemcheckboxRole;
+menuitemcheckboxRole$1.default = _default$1n;
+var menuitemradioRole$1 = {};
+Object.defineProperty(menuitemradioRole$1, "__esModule", {
+  value: true
+});
+menuitemradioRole$1.default = void 0;
+var menuitemradioRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "menuitem"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: ["group", "menu", "menubar"],
+  requiredContextRole: ["group", "menu", "menubar"],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-checked": null
+  },
+  superClass: [["roletype", "widget", "input", "checkbox", "menuitemcheckbox"], ["roletype", "widget", "command", "menuitem", "menuitemcheckbox"], ["roletype", "widget", "input", "radio"]]
+};
+var _default$1m = menuitemradioRole;
+menuitemradioRole$1.default = _default$1m;
+var meterRole$1 = {};
+Object.defineProperty(meterRole$1, "__esModule", {
+  value: true
+});
+meterRole$1.default = void 0;
+var meterRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-valuetext": null,
+    "aria-valuemax": "100",
+    "aria-valuemin": "0"
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-valuenow": null
+  },
+  superClass: [["roletype", "structure", "range"]]
+};
+var _default$1l = meterRole;
+meterRole$1.default = _default$1l;
+var navigationRole$1 = {};
+Object.defineProperty(navigationRole$1, "__esModule", {
+  value: true
+});
+navigationRole$1.default = void 0;
+var navigationRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "nav"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$1k = navigationRole;
+navigationRole$1.default = _default$1k;
+var noneRole$1 = {};
+Object.defineProperty(noneRole$1, "__esModule", {
+  value: true
+});
+noneRole$1.default = void 0;
+var noneRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: [],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: []
+};
+var _default$1j = noneRole;
+noneRole$1.default = _default$1j;
+var noteRole$1 = {};
+Object.defineProperty(noteRole$1, "__esModule", {
+  value: true
+});
+noteRole$1.default = void 0;
+var noteRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1i = noteRole;
+noteRole$1.default = _default$1i;
+var optionRole$1 = {};
+Object.defineProperty(optionRole$1, "__esModule", {
+  value: true
+});
+optionRole$1.default = void 0;
+var optionRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-checked": null,
+    "aria-posinset": null,
+    "aria-setsize": null,
+    "aria-selected": "false"
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "item"
+    },
+    module: "XForms"
+  }, {
+    concept: {
+      name: "listitem"
+    },
+    module: "ARIA"
+  }, {
+    concept: {
+      name: "option"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-selected": "false"
+  },
+  superClass: [["roletype", "widget", "input"]]
+};
+var _default$1h = optionRole;
+optionRole$1.default = _default$1h;
+var paragraphRole$1 = {};
+Object.defineProperty(paragraphRole$1, "__esModule", {
+  value: true
+});
+paragraphRole$1.default = void 0;
+var paragraphRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$1g = paragraphRole;
+paragraphRole$1.default = _default$1g;
+var presentationRole$1 = {};
+Object.defineProperty(presentationRole$1, "__esModule", {
+  value: true
+});
+presentationRole$1.default = void 0;
+var presentationRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$1f = presentationRole;
+presentationRole$1.default = _default$1f;
+var progressbarRole$1 = {};
+Object.defineProperty(progressbarRole$1, "__esModule", {
+  value: true
+});
+progressbarRole$1.default = void 0;
+var progressbarRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-valuetext": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "progress"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "status"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "range"], ["roletype", "widget"]]
+};
+var _default$1e = progressbarRole;
+progressbarRole$1.default = _default$1e;
+var radioRole$1 = {};
+Object.defineProperty(radioRole$1, "__esModule", {
+  value: true
+});
+radioRole$1.default = void 0;
+var radioRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-checked": null,
+    "aria-posinset": null,
+    "aria-setsize": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "radio"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-checked": null
+  },
+  superClass: [["roletype", "widget", "input"]]
+};
+var _default$1d = radioRole;
+radioRole$1.default = _default$1d;
+var radiogroupRole$1 = {};
+Object.defineProperty(radiogroupRole$1, "__esModule", {
+  value: true
+});
+radiogroupRole$1.default = void 0;
+var radiogroupRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-invalid": null,
+    "aria-readonly": null,
+    "aria-required": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "list"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["radio"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite", "select"], ["roletype", "structure", "section", "group", "select"]]
+};
+var _default$1c = radiogroupRole;
+radiogroupRole$1.default = _default$1c;
+var regionRole$1 = {};
+Object.defineProperty(regionRole$1, "__esModule", {
+  value: true
+});
+regionRole$1.default = void 0;
+var regionRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "aria-label"
+      }],
+      name: "section"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["set"],
+        name: "aria-labelledby"
+      }],
+      name: "section"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "Device Independence Glossart perceivable unit"
+    }
+  }, {
+    concept: {
+      name: "frame"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$1b = regionRole;
+regionRole$1.default = _default$1b;
+var rowRole$1 = {};
+Object.defineProperty(rowRole$1, "__esModule", {
+  value: true
+});
+rowRole$1.default = void 0;
+var rowRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-colindex": null,
+    "aria-expanded": null,
+    "aria-level": null,
+    "aria-posinset": null,
+    "aria-rowindex": null,
+    "aria-selected": null,
+    "aria-setsize": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "tr"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: ["grid", "rowgroup", "table", "treegrid"],
+  requiredContextRole: ["grid", "rowgroup", "table", "treegrid"],
+  requiredOwnedElements: [["cell"], ["columnheader"], ["gridcell"], ["rowheader"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "group"], ["roletype", "widget"]]
+};
+var _default$1a = rowRole;
+rowRole$1.default = _default$1a;
+var rowgroupRole$1 = {};
+Object.defineProperty(rowgroupRole$1, "__esModule", {
+  value: true
+});
+rowgroupRole$1.default = void 0;
+var rowgroupRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "tbody"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "tfoot"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "thead"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: ["grid", "table", "treegrid"],
+  requiredContextRole: ["grid", "table", "treegrid"],
+  requiredOwnedElements: [["row"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$19 = rowgroupRole;
+rowgroupRole$1.default = _default$19;
+var rowheaderRole$1 = {};
+Object.defineProperty(rowheaderRole$1, "__esModule", {
+  value: true
+});
+rowheaderRole$1.default = void 0;
+var rowheaderRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-sort": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "scope",
+        value: "row"
+      }],
+      name: "th"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        name: "scope",
+        value: "rowgroup"
+      }],
+      name: "th"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: ["row", "rowgroup"],
+  requiredContextRole: ["row", "rowgroup"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "cell"], ["roletype", "structure", "section", "cell", "gridcell"], ["roletype", "widget", "gridcell"], ["roletype", "structure", "sectionhead"]]
+};
+var _default$18 = rowheaderRole;
+rowheaderRole$1.default = _default$18;
+var scrollbarRole$1 = {};
+Object.defineProperty(scrollbarRole$1, "__esModule", {
+  value: true
+});
+scrollbarRole$1.default = void 0;
+var scrollbarRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-valuetext": null,
+    "aria-orientation": "vertical",
+    "aria-valuemax": "100",
+    "aria-valuemin": "0"
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-controls": null,
+    "aria-valuenow": null
+  },
+  superClass: [["roletype", "structure", "range"], ["roletype", "widget"]]
+};
+var _default$17 = scrollbarRole;
+scrollbarRole$1.default = _default$17;
+var searchRole$1 = {};
+Object.defineProperty(searchRole$1, "__esModule", {
+  value: true
+});
+searchRole$1.default = void 0;
+var searchRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$16 = searchRole;
+searchRole$1.default = _default$16;
+var searchboxRole$1 = {};
+Object.defineProperty(searchboxRole$1, "__esModule", {
+  value: true
+});
+searchboxRole$1.default = void 0;
+var searchboxRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "search"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "input", "textbox"]]
+};
+var _default$15 = searchboxRole;
+searchboxRole$1.default = _default$15;
+var separatorRole$1 = {};
+Object.defineProperty(separatorRole$1, "__esModule", {
+  value: true
+});
+separatorRole$1.default = void 0;
+var separatorRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-orientation": "horizontal",
+    "aria-valuemax": "100",
+    "aria-valuemin": "0",
+    "aria-valuenow": null,
+    "aria-valuetext": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "hr"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure"]]
+};
+var _default$14 = separatorRole;
+separatorRole$1.default = _default$14;
+var sliderRole$1 = {};
+Object.defineProperty(sliderRole$1, "__esModule", {
+  value: true
+});
+sliderRole$1.default = void 0;
+var sliderRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-haspopup": null,
+    "aria-invalid": null,
+    "aria-readonly": null,
+    "aria-valuetext": null,
+    "aria-orientation": "horizontal",
+    "aria-valuemax": "100",
+    "aria-valuemin": "0"
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "range"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-valuenow": null
+  },
+  superClass: [["roletype", "widget", "input"], ["roletype", "structure", "range"]]
+};
+var _default$13 = sliderRole;
+sliderRole$1.default = _default$13;
+var spinbuttonRole$1 = {};
+Object.defineProperty(spinbuttonRole$1, "__esModule", {
+  value: true
+});
+spinbuttonRole$1.default = void 0;
+var spinbuttonRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-invalid": null,
+    "aria-readonly": null,
+    "aria-required": null,
+    "aria-valuetext": null,
+    "aria-valuenow": "0"
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        name: "type",
+        value: "number"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite"], ["roletype", "widget", "input"], ["roletype", "structure", "range"]]
+};
+var _default$12 = spinbuttonRole;
+spinbuttonRole$1.default = _default$12;
+var statusRole$1 = {};
+Object.defineProperty(statusRole$1, "__esModule", {
+  value: true
+});
+statusRole$1.default = void 0;
+var statusRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-atomic": "true",
+    "aria-live": "polite"
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "output"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$11 = statusRole;
+statusRole$1.default = _default$11;
+var strongRole$1 = {};
+Object.defineProperty(strongRole$1, "__esModule", {
+  value: true
+});
+strongRole$1.default = void 0;
+var strongRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$10 = strongRole;
+strongRole$1.default = _default$10;
+var subscriptRole$1 = {};
+Object.defineProperty(subscriptRole$1, "__esModule", {
+  value: true
+});
+subscriptRole$1.default = void 0;
+var subscriptRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$$ = subscriptRole;
+subscriptRole$1.default = _default$$;
+var superscriptRole$1 = {};
+Object.defineProperty(superscriptRole$1, "__esModule", {
+  value: true
+});
+superscriptRole$1.default = void 0;
+var superscriptRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["prohibited"],
+  prohibitedProps: ["aria-label", "aria-labelledby"],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$_ = superscriptRole;
+superscriptRole$1.default = _default$_;
+var switchRole$1 = {};
+Object.defineProperty(switchRole$1, "__esModule", {
+  value: true
+});
+switchRole$1.default = void 0;
+var switchRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "button"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-checked": null
+  },
+  superClass: [["roletype", "widget", "input", "checkbox"]]
+};
+var _default$Z = switchRole;
+switchRole$1.default = _default$Z;
+var tabRole$1 = {};
+Object.defineProperty(tabRole$1, "__esModule", {
+  value: true
+});
+tabRole$1.default = void 0;
+var tabRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-posinset": null,
+    "aria-setsize": null,
+    "aria-selected": "false"
+  },
+  relatedConcepts: [],
+  requireContextRole: ["tablist"],
+  requiredContextRole: ["tablist"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "sectionhead"], ["roletype", "widget"]]
+};
+var _default$Y = tabRole;
+tabRole$1.default = _default$Y;
+var tableRole$1 = {};
+Object.defineProperty(tableRole$1, "__esModule", {
+  value: true
+});
+tableRole$1.default = void 0;
+var tableRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-colcount": null,
+    "aria-rowcount": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "table"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["row"], ["row", "rowgroup"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$X = tableRole;
+tableRole$1.default = _default$X;
+var tablistRole$1 = {};
+Object.defineProperty(tablistRole$1, "__esModule", {
+  value: true
+});
+tablistRole$1.default = void 0;
+var tablistRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-level": null,
+    "aria-multiselectable": null,
+    "aria-orientation": "horizontal"
+  },
+  relatedConcepts: [{
+    module: "DAISY",
+    concept: {
+      name: "guide"
+    }
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["tab"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite"]]
+};
+var _default$W = tablistRole;
+tablistRole$1.default = _default$W;
+var tabpanelRole$1 = {};
+Object.defineProperty(tabpanelRole$1, "__esModule", {
+  value: true
+});
+tabpanelRole$1.default = void 0;
+var tabpanelRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$V = tabpanelRole;
+tabpanelRole$1.default = _default$V;
+var termRole$1 = {};
+Object.defineProperty(termRole$1, "__esModule", {
+  value: true
+});
+termRole$1.default = void 0;
+var termRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "dfn"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "dt"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$U = termRole;
+termRole$1.default = _default$U;
+var textboxRole$1 = {};
+Object.defineProperty(textboxRole$1, "__esModule", {
+  value: true
+});
+textboxRole$1.default = void 0;
+var textboxRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-activedescendant": null,
+    "aria-autocomplete": null,
+    "aria-errormessage": null,
+    "aria-haspopup": null,
+    "aria-invalid": null,
+    "aria-multiline": null,
+    "aria-placeholder": null,
+    "aria-readonly": null,
+    "aria-required": null
+  },
+  relatedConcepts: [{
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "type"
+      }, {
+        constraints: ["undefined"],
+        name: "list"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "email"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "tel"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "text"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      attributes: [{
+        constraints: ["undefined"],
+        name: "list"
+      }, {
+        name: "type",
+        value: "url"
+      }],
+      name: "input"
+    },
+    module: "HTML"
+  }, {
+    concept: {
+      name: "input"
+    },
+    module: "XForms"
+  }, {
+    concept: {
+      name: "textarea"
+    },
+    module: "HTML"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "input"]]
+};
+var _default$T = textboxRole;
+textboxRole$1.default = _default$T;
+var timeRole$1 = {};
+Object.defineProperty(timeRole$1, "__esModule", {
+  value: true
+});
+timeRole$1.default = void 0;
+var timeRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$S = timeRole;
+timeRole$1.default = _default$S;
+var timerRole$1 = {};
+Object.defineProperty(timerRole$1, "__esModule", {
+  value: true
+});
+timerRole$1.default = void 0;
+var timerRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "status"]]
+};
+var _default$R = timerRole;
+timerRole$1.default = _default$R;
+var toolbarRole$1 = {};
+Object.defineProperty(toolbarRole$1, "__esModule", {
+  value: true
+});
+toolbarRole$1.default = void 0;
+var toolbarRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-orientation": "horizontal"
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "menubar"
+    },
+    module: "ARIA"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "group"]]
+};
+var _default$Q = toolbarRole;
+toolbarRole$1.default = _default$Q;
+var tooltipRole$1 = {};
+Object.defineProperty(tooltipRole$1, "__esModule", {
+  value: true
+});
+tooltipRole$1.default = void 0;
+var tooltipRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$P = tooltipRole;
+tooltipRole$1.default = _default$P;
+var treeRole$1 = {};
+Object.defineProperty(treeRole$1, "__esModule", {
+  value: true
+});
+treeRole$1.default = void 0;
+var treeRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-invalid": null,
+    "aria-multiselectable": null,
+    "aria-required": null,
+    "aria-orientation": "vertical"
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["treeitem", "group"], ["treeitem"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite", "select"], ["roletype", "structure", "section", "group", "select"]]
+};
+var _default$O = treeRole;
+treeRole$1.default = _default$O;
+var treegridRole$1 = {};
+Object.defineProperty(treegridRole$1, "__esModule", {
+  value: true
+});
+treegridRole$1.default = void 0;
+var treegridRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["row"], ["row", "rowgroup"]],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "composite", "grid"], ["roletype", "structure", "section", "table", "grid"], ["roletype", "widget", "composite", "select", "tree"], ["roletype", "structure", "section", "group", "select", "tree"]]
+};
+var _default$N = treegridRole;
+treegridRole$1.default = _default$N;
+var treeitemRole$1 = {};
+Object.defineProperty(treeitemRole$1, "__esModule", {
+  value: true
+});
+treeitemRole$1.default = void 0;
+var treeitemRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-expanded": null,
+    "aria-haspopup": null
+  },
+  relatedConcepts: [],
+  requireContextRole: ["group", "tree"],
+  requiredContextRole: ["group", "tree"],
+  requiredOwnedElements: [],
+  requiredProps: {
+    "aria-selected": null
+  },
+  superClass: [["roletype", "structure", "section", "listitem"], ["roletype", "widget", "input", "option"]]
+};
+var _default$M = treeitemRole;
+treeitemRole$1.default = _default$M;
+Object.defineProperty(ariaLiteralRoles$1, "__esModule", {
+  value: true
+});
+ariaLiteralRoles$1.default = void 0;
+var _alertRole = _interopRequireDefault$6(alertRole$1);
+var _alertdialogRole = _interopRequireDefault$6(alertdialogRole$1);
+var _applicationRole = _interopRequireDefault$6(applicationRole$1);
+var _articleRole = _interopRequireDefault$6(articleRole$1);
+var _bannerRole = _interopRequireDefault$6(bannerRole$1);
+var _blockquoteRole = _interopRequireDefault$6(blockquoteRole$1);
+var _buttonRole = _interopRequireDefault$6(buttonRole$1);
+var _captionRole = _interopRequireDefault$6(captionRole$1);
+var _cellRole = _interopRequireDefault$6(cellRole$1);
+var _checkboxRole = _interopRequireDefault$6(checkboxRole$1);
+var _codeRole = _interopRequireDefault$6(codeRole$1);
+var _columnheaderRole = _interopRequireDefault$6(columnheaderRole$1);
+var _comboboxRole = _interopRequireDefault$6(comboboxRole$1);
+var _complementaryRole = _interopRequireDefault$6(complementaryRole$1);
+var _contentinfoRole = _interopRequireDefault$6(contentinfoRole$1);
+var _definitionRole = _interopRequireDefault$6(definitionRole$1);
+var _deletionRole = _interopRequireDefault$6(deletionRole$1);
+var _dialogRole = _interopRequireDefault$6(dialogRole$1);
+var _directoryRole = _interopRequireDefault$6(directoryRole$1);
+var _documentRole = _interopRequireDefault$6(documentRole$1);
+var _emphasisRole = _interopRequireDefault$6(emphasisRole$1);
+var _feedRole = _interopRequireDefault$6(feedRole$1);
+var _figureRole = _interopRequireDefault$6(figureRole$1);
+var _formRole = _interopRequireDefault$6(formRole$1);
+var _genericRole = _interopRequireDefault$6(genericRole$1);
+var _gridRole = _interopRequireDefault$6(gridRole$1);
+var _gridcellRole = _interopRequireDefault$6(gridcellRole$1);
+var _groupRole = _interopRequireDefault$6(groupRole$1);
+var _headingRole = _interopRequireDefault$6(headingRole$1);
+var _imgRole = _interopRequireDefault$6(imgRole$1);
+var _insertionRole = _interopRequireDefault$6(insertionRole$1);
+var _linkRole = _interopRequireDefault$6(linkRole$1);
+var _listRole = _interopRequireDefault$6(listRole$1);
+var _listboxRole = _interopRequireDefault$6(listboxRole$1);
+var _listitemRole = _interopRequireDefault$6(listitemRole$1);
+var _logRole = _interopRequireDefault$6(logRole$1);
+var _mainRole = _interopRequireDefault$6(mainRole$1);
+var _marqueeRole = _interopRequireDefault$6(marqueeRole$1);
+var _mathRole = _interopRequireDefault$6(mathRole$1);
+var _menuRole = _interopRequireDefault$6(menuRole$1);
+var _menubarRole = _interopRequireDefault$6(menubarRole$1);
+var _menuitemRole = _interopRequireDefault$6(menuitemRole$1);
+var _menuitemcheckboxRole = _interopRequireDefault$6(menuitemcheckboxRole$1);
+var _menuitemradioRole = _interopRequireDefault$6(menuitemradioRole$1);
+var _meterRole = _interopRequireDefault$6(meterRole$1);
+var _navigationRole = _interopRequireDefault$6(navigationRole$1);
+var _noneRole = _interopRequireDefault$6(noneRole$1);
+var _noteRole = _interopRequireDefault$6(noteRole$1);
+var _optionRole = _interopRequireDefault$6(optionRole$1);
+var _paragraphRole = _interopRequireDefault$6(paragraphRole$1);
+var _presentationRole = _interopRequireDefault$6(presentationRole$1);
+var _progressbarRole = _interopRequireDefault$6(progressbarRole$1);
+var _radioRole = _interopRequireDefault$6(radioRole$1);
+var _radiogroupRole = _interopRequireDefault$6(radiogroupRole$1);
+var _regionRole = _interopRequireDefault$6(regionRole$1);
+var _rowRole = _interopRequireDefault$6(rowRole$1);
+var _rowgroupRole = _interopRequireDefault$6(rowgroupRole$1);
+var _rowheaderRole = _interopRequireDefault$6(rowheaderRole$1);
+var _scrollbarRole = _interopRequireDefault$6(scrollbarRole$1);
+var _searchRole = _interopRequireDefault$6(searchRole$1);
+var _searchboxRole = _interopRequireDefault$6(searchboxRole$1);
+var _separatorRole = _interopRequireDefault$6(separatorRole$1);
+var _sliderRole = _interopRequireDefault$6(sliderRole$1);
+var _spinbuttonRole = _interopRequireDefault$6(spinbuttonRole$1);
+var _statusRole = _interopRequireDefault$6(statusRole$1);
+var _strongRole = _interopRequireDefault$6(strongRole$1);
+var _subscriptRole = _interopRequireDefault$6(subscriptRole$1);
+var _superscriptRole = _interopRequireDefault$6(superscriptRole$1);
+var _switchRole = _interopRequireDefault$6(switchRole$1);
+var _tabRole = _interopRequireDefault$6(tabRole$1);
+var _tableRole = _interopRequireDefault$6(tableRole$1);
+var _tablistRole = _interopRequireDefault$6(tablistRole$1);
+var _tabpanelRole = _interopRequireDefault$6(tabpanelRole$1);
+var _termRole = _interopRequireDefault$6(termRole$1);
+var _textboxRole = _interopRequireDefault$6(textboxRole$1);
+var _timeRole = _interopRequireDefault$6(timeRole$1);
+var _timerRole = _interopRequireDefault$6(timerRole$1);
+var _toolbarRole = _interopRequireDefault$6(toolbarRole$1);
+var _tooltipRole = _interopRequireDefault$6(tooltipRole$1);
+var _treeRole = _interopRequireDefault$6(treeRole$1);
+var _treegridRole = _interopRequireDefault$6(treegridRole$1);
+var _treeitemRole = _interopRequireDefault$6(treeitemRole$1);
+function _interopRequireDefault$6(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+var ariaLiteralRoles = [["alert", _alertRole.default], ["alertdialog", _alertdialogRole.default], ["application", _applicationRole.default], ["article", _articleRole.default], ["banner", _bannerRole.default], ["blockquote", _blockquoteRole.default], ["button", _buttonRole.default], ["caption", _captionRole.default], ["cell", _cellRole.default], ["checkbox", _checkboxRole.default], ["code", _codeRole.default], ["columnheader", _columnheaderRole.default], ["combobox", _comboboxRole.default], ["complementary", _complementaryRole.default], ["contentinfo", _contentinfoRole.default], ["definition", _definitionRole.default], ["deletion", _deletionRole.default], ["dialog", _dialogRole.default], ["directory", _directoryRole.default], ["document", _documentRole.default], ["emphasis", _emphasisRole.default], ["feed", _feedRole.default], ["figure", _figureRole.default], ["form", _formRole.default], ["generic", _genericRole.default], ["grid", _gridRole.default], ["gridcell", _gridcellRole.default], ["group", _groupRole.default], ["heading", _headingRole.default], ["img", _imgRole.default], ["insertion", _insertionRole.default], ["link", _linkRole.default], ["list", _listRole.default], ["listbox", _listboxRole.default], ["listitem", _listitemRole.default], ["log", _logRole.default], ["main", _mainRole.default], ["marquee", _marqueeRole.default], ["math", _mathRole.default], ["menu", _menuRole.default], ["menubar", _menubarRole.default], ["menuitem", _menuitemRole.default], ["menuitemcheckbox", _menuitemcheckboxRole.default], ["menuitemradio", _menuitemradioRole.default], ["meter", _meterRole.default], ["navigation", _navigationRole.default], ["none", _noneRole.default], ["note", _noteRole.default], ["option", _optionRole.default], ["paragraph", _paragraphRole.default], ["presentation", _presentationRole.default], ["progressbar", _progressbarRole.default], ["radio", _radioRole.default], ["radiogroup", _radiogroupRole.default], ["region", _regionRole.default], ["row", _rowRole.default], ["rowgroup", _rowgroupRole.default], ["rowheader", _rowheaderRole.default], ["scrollbar", _scrollbarRole.default], ["search", _searchRole.default], ["searchbox", _searchboxRole.default], ["separator", _separatorRole.default], ["slider", _sliderRole.default], ["spinbutton", _spinbuttonRole.default], ["status", _statusRole.default], ["strong", _strongRole.default], ["subscript", _subscriptRole.default], ["superscript", _superscriptRole.default], ["switch", _switchRole.default], ["tab", _tabRole.default], ["table", _tableRole.default], ["tablist", _tablistRole.default], ["tabpanel", _tabpanelRole.default], ["term", _termRole.default], ["textbox", _textboxRole.default], ["time", _timeRole.default], ["timer", _timerRole.default], ["toolbar", _toolbarRole.default], ["tooltip", _tooltipRole.default], ["tree", _treeRole.default], ["treegrid", _treegridRole.default], ["treeitem", _treeitemRole.default]];
+var _default$L = ariaLiteralRoles;
+ariaLiteralRoles$1.default = _default$L;
+var ariaDpubRoles$1 = {};
+var docAbstractRole$1 = {};
+Object.defineProperty(docAbstractRole$1, "__esModule", {
+  value: true
+});
+docAbstractRole$1.default = void 0;
+var docAbstractRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "abstract [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$K = docAbstractRole;
+docAbstractRole$1.default = _default$K;
+var docAcknowledgmentsRole$1 = {};
+Object.defineProperty(docAcknowledgmentsRole$1, "__esModule", {
+  value: true
+});
+docAcknowledgmentsRole$1.default = void 0;
+var docAcknowledgmentsRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "acknowledgments [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$J = docAcknowledgmentsRole;
+docAcknowledgmentsRole$1.default = _default$J;
+var docAfterwordRole$1 = {};
+Object.defineProperty(docAfterwordRole$1, "__esModule", {
+  value: true
+});
+docAfterwordRole$1.default = void 0;
+var docAfterwordRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "afterword [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$I = docAfterwordRole;
+docAfterwordRole$1.default = _default$I;
+var docAppendixRole$1 = {};
+Object.defineProperty(docAppendixRole$1, "__esModule", {
+  value: true
+});
+docAppendixRole$1.default = void 0;
+var docAppendixRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "appendix [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$H = docAppendixRole;
+docAppendixRole$1.default = _default$H;
+var docBacklinkRole$1 = {};
+Object.defineProperty(docBacklinkRole$1, "__esModule", {
+  value: true
+});
+docBacklinkRole$1.default = void 0;
+var docBacklinkRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "content"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "referrer [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "command", "link"]]
+};
+var _default$G = docBacklinkRole;
+docBacklinkRole$1.default = _default$G;
+var docBiblioentryRole$1 = {};
+Object.defineProperty(docBiblioentryRole$1, "__esModule", {
+  value: true
+});
+docBiblioentryRole$1.default = void 0;
+var docBiblioentryRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "EPUB biblioentry [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: ["doc-bibliography"],
+  requiredContextRole: ["doc-bibliography"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "listitem"]]
+};
+var _default$F = docBiblioentryRole;
+docBiblioentryRole$1.default = _default$F;
+var docBibliographyRole$1 = {};
+Object.defineProperty(docBibliographyRole$1, "__esModule", {
+  value: true
+});
+docBibliographyRole$1.default = void 0;
+var docBibliographyRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "bibliography [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["doc-biblioentry"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$E = docBibliographyRole;
+docBibliographyRole$1.default = _default$E;
+var docBibliorefRole$1 = {};
+Object.defineProperty(docBibliorefRole$1, "__esModule", {
+  value: true
+});
+docBibliorefRole$1.default = void 0;
+var docBibliorefRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "biblioref [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "command", "link"]]
+};
+var _default$D = docBibliorefRole;
+docBibliorefRole$1.default = _default$D;
+var docChapterRole$1 = {};
+Object.defineProperty(docChapterRole$1, "__esModule", {
+  value: true
+});
+docChapterRole$1.default = void 0;
+var docChapterRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "chapter [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$C = docChapterRole;
+docChapterRole$1.default = _default$C;
+var docColophonRole$1 = {};
+Object.defineProperty(docColophonRole$1, "__esModule", {
+  value: true
+});
+docColophonRole$1.default = void 0;
+var docColophonRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "colophon [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$B = docColophonRole;
+docColophonRole$1.default = _default$B;
+var docConclusionRole$1 = {};
+Object.defineProperty(docConclusionRole$1, "__esModule", {
+  value: true
+});
+docConclusionRole$1.default = void 0;
+var docConclusionRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "conclusion [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$A = docConclusionRole;
+docConclusionRole$1.default = _default$A;
+var docCoverRole$1 = {};
+Object.defineProperty(docCoverRole$1, "__esModule", {
+  value: true
+});
+docCoverRole$1.default = void 0;
+var docCoverRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "cover [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "img"]]
+};
+var _default$z = docCoverRole;
+docCoverRole$1.default = _default$z;
+var docCreditRole$1 = {};
+Object.defineProperty(docCreditRole$1, "__esModule", {
+  value: true
+});
+docCreditRole$1.default = void 0;
+var docCreditRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "credit [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$y = docCreditRole;
+docCreditRole$1.default = _default$y;
+var docCreditsRole$1 = {};
+Object.defineProperty(docCreditsRole$1, "__esModule", {
+  value: true
+});
+docCreditsRole$1.default = void 0;
+var docCreditsRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "credits [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$x = docCreditsRole;
+docCreditsRole$1.default = _default$x;
+var docDedicationRole$1 = {};
+Object.defineProperty(docDedicationRole$1, "__esModule", {
+  value: true
+});
+docDedicationRole$1.default = void 0;
+var docDedicationRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "dedication [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$w = docDedicationRole;
+docDedicationRole$1.default = _default$w;
+var docEndnoteRole$1 = {};
+Object.defineProperty(docEndnoteRole$1, "__esModule", {
+  value: true
+});
+docEndnoteRole$1.default = void 0;
+var docEndnoteRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "rearnote [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: ["doc-endnotes"],
+  requiredContextRole: ["doc-endnotes"],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "listitem"]]
+};
+var _default$v = docEndnoteRole;
+docEndnoteRole$1.default = _default$v;
+var docEndnotesRole$1 = {};
+Object.defineProperty(docEndnotesRole$1, "__esModule", {
+  value: true
+});
+docEndnotesRole$1.default = void 0;
+var docEndnotesRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "rearnotes [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["doc-endnote"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$u = docEndnotesRole;
+docEndnotesRole$1.default = _default$u;
+var docEpigraphRole$1 = {};
+Object.defineProperty(docEpigraphRole$1, "__esModule", {
+  value: true
+});
+docEpigraphRole$1.default = void 0;
+var docEpigraphRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "epigraph [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$t = docEpigraphRole;
+docEpigraphRole$1.default = _default$t;
+var docEpilogueRole$1 = {};
+Object.defineProperty(docEpilogueRole$1, "__esModule", {
+  value: true
+});
+docEpilogueRole$1.default = void 0;
+var docEpilogueRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "epilogue [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$s = docEpilogueRole;
+docEpilogueRole$1.default = _default$s;
+var docErrataRole$1 = {};
+Object.defineProperty(docErrataRole$1, "__esModule", {
+  value: true
+});
+docErrataRole$1.default = void 0;
+var docErrataRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "errata [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$r = docErrataRole;
+docErrataRole$1.default = _default$r;
+var docExampleRole$1 = {};
+Object.defineProperty(docExampleRole$1, "__esModule", {
+  value: true
+});
+docExampleRole$1.default = void 0;
+var docExampleRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$q = docExampleRole;
+docExampleRole$1.default = _default$q;
+var docFootnoteRole$1 = {};
+Object.defineProperty(docFootnoteRole$1, "__esModule", {
+  value: true
+});
+docFootnoteRole$1.default = void 0;
+var docFootnoteRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "footnote [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$p = docFootnoteRole;
+docFootnoteRole$1.default = _default$p;
+var docForewordRole$1 = {};
+Object.defineProperty(docForewordRole$1, "__esModule", {
+  value: true
+});
+docForewordRole$1.default = void 0;
+var docForewordRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "foreword [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$o = docForewordRole;
+docForewordRole$1.default = _default$o;
+var docGlossaryRole$1 = {};
+Object.defineProperty(docGlossaryRole$1, "__esModule", {
+  value: true
+});
+docGlossaryRole$1.default = void 0;
+var docGlossaryRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "glossary [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [["definition"], ["term"]],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$n = docGlossaryRole;
+docGlossaryRole$1.default = _default$n;
+var docGlossrefRole$1 = {};
+Object.defineProperty(docGlossrefRole$1, "__esModule", {
+  value: true
+});
+docGlossrefRole$1.default = void 0;
+var docGlossrefRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "glossref [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "command", "link"]]
+};
+var _default$m = docGlossrefRole;
+docGlossrefRole$1.default = _default$m;
+var docIndexRole$1 = {};
+Object.defineProperty(docIndexRole$1, "__esModule", {
+  value: true
+});
+docIndexRole$1.default = void 0;
+var docIndexRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "index [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark", "navigation"]]
+};
+var _default$l = docIndexRole;
+docIndexRole$1.default = _default$l;
+var docIntroductionRole$1 = {};
+Object.defineProperty(docIntroductionRole$1, "__esModule", {
+  value: true
+});
+docIntroductionRole$1.default = void 0;
+var docIntroductionRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "introduction [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$k = docIntroductionRole;
+docIntroductionRole$1.default = _default$k;
+var docNoterefRole$1 = {};
+Object.defineProperty(docNoterefRole$1, "__esModule", {
+  value: true
+});
+docNoterefRole$1.default = void 0;
+var docNoterefRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "noteref [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "widget", "command", "link"]]
+};
+var _default$j = docNoterefRole;
+docNoterefRole$1.default = _default$j;
+var docNoticeRole$1 = {};
+Object.defineProperty(docNoticeRole$1, "__esModule", {
+  value: true
+});
+docNoticeRole$1.default = void 0;
+var docNoticeRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "notice [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "note"]]
+};
+var _default$i = docNoticeRole;
+docNoticeRole$1.default = _default$i;
+var docPagebreakRole$1 = {};
+Object.defineProperty(docPagebreakRole$1, "__esModule", {
+  value: true
+});
+docPagebreakRole$1.default = void 0;
+var docPagebreakRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "pagebreak [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "separator"]]
+};
+var _default$h = docPagebreakRole;
+docPagebreakRole$1.default = _default$h;
+var docPagelistRole$1 = {};
+Object.defineProperty(docPagelistRole$1, "__esModule", {
+  value: true
+});
+docPagelistRole$1.default = void 0;
+var docPagelistRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "page-list [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark", "navigation"]]
+};
+var _default$g = docPagelistRole;
+docPagelistRole$1.default = _default$g;
+var docPartRole$1 = {};
+Object.defineProperty(docPartRole$1, "__esModule", {
+  value: true
+});
+docPartRole$1.default = void 0;
+var docPartRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "part [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$f = docPartRole;
+docPartRole$1.default = _default$f;
+var docPrefaceRole$1 = {};
+Object.defineProperty(docPrefaceRole$1, "__esModule", {
+  value: true
+});
+docPrefaceRole$1.default = void 0;
+var docPrefaceRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "preface [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$e = docPrefaceRole;
+docPrefaceRole$1.default = _default$e;
+var docPrologueRole$1 = {};
+Object.defineProperty(docPrologueRole$1, "__esModule", {
+  value: true
+});
+docPrologueRole$1.default = void 0;
+var docPrologueRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "prologue [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark"]]
+};
+var _default$d = docPrologueRole;
+docPrologueRole$1.default = _default$d;
+var docPullquoteRole$1 = {};
+Object.defineProperty(docPullquoteRole$1, "__esModule", {
+  value: true
+});
+docPullquoteRole$1.default = void 0;
+var docPullquoteRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {},
+  relatedConcepts: [{
+    concept: {
+      name: "pullquote [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["none"]]
+};
+var _default$c = docPullquoteRole;
+docPullquoteRole$1.default = _default$c;
+var docQnaRole$1 = {};
+Object.defineProperty(docQnaRole$1, "__esModule", {
+  value: true
+});
+docQnaRole$1.default = void 0;
+var docQnaRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "qna [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section"]]
+};
+var _default$b = docQnaRole;
+docQnaRole$1.default = _default$b;
+var docSubtitleRole$1 = {};
+Object.defineProperty(docSubtitleRole$1, "__esModule", {
+  value: true
+});
+docSubtitleRole$1.default = void 0;
+var docSubtitleRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "subtitle [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "sectionhead"]]
+};
+var _default$a = docSubtitleRole;
+docSubtitleRole$1.default = _default$a;
+var docTipRole$1 = {};
+Object.defineProperty(docTipRole$1, "__esModule", {
+  value: true
+});
+docTipRole$1.default = void 0;
+var docTipRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "help [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "note"]]
+};
+var _default$9 = docTipRole;
+docTipRole$1.default = _default$9;
+var docTocRole$1 = {};
+Object.defineProperty(docTocRole$1, "__esModule", {
+  value: true
+});
+docTocRole$1.default = void 0;
+var docTocRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    concept: {
+      name: "toc [EPUB-SSV]"
+    },
+    module: "EPUB"
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "landmark", "navigation"]]
+};
+var _default$8 = docTocRole;
+docTocRole$1.default = _default$8;
+Object.defineProperty(ariaDpubRoles$1, "__esModule", {
+  value: true
+});
+ariaDpubRoles$1.default = void 0;
+var _docAbstractRole = _interopRequireDefault$5(docAbstractRole$1);
+var _docAcknowledgmentsRole = _interopRequireDefault$5(docAcknowledgmentsRole$1);
+var _docAfterwordRole = _interopRequireDefault$5(docAfterwordRole$1);
+var _docAppendixRole = _interopRequireDefault$5(docAppendixRole$1);
+var _docBacklinkRole = _interopRequireDefault$5(docBacklinkRole$1);
+var _docBiblioentryRole = _interopRequireDefault$5(docBiblioentryRole$1);
+var _docBibliographyRole = _interopRequireDefault$5(docBibliographyRole$1);
+var _docBibliorefRole = _interopRequireDefault$5(docBibliorefRole$1);
+var _docChapterRole = _interopRequireDefault$5(docChapterRole$1);
+var _docColophonRole = _interopRequireDefault$5(docColophonRole$1);
+var _docConclusionRole = _interopRequireDefault$5(docConclusionRole$1);
+var _docCoverRole = _interopRequireDefault$5(docCoverRole$1);
+var _docCreditRole = _interopRequireDefault$5(docCreditRole$1);
+var _docCreditsRole = _interopRequireDefault$5(docCreditsRole$1);
+var _docDedicationRole = _interopRequireDefault$5(docDedicationRole$1);
+var _docEndnoteRole = _interopRequireDefault$5(docEndnoteRole$1);
+var _docEndnotesRole = _interopRequireDefault$5(docEndnotesRole$1);
+var _docEpigraphRole = _interopRequireDefault$5(docEpigraphRole$1);
+var _docEpilogueRole = _interopRequireDefault$5(docEpilogueRole$1);
+var _docErrataRole = _interopRequireDefault$5(docErrataRole$1);
+var _docExampleRole = _interopRequireDefault$5(docExampleRole$1);
+var _docFootnoteRole = _interopRequireDefault$5(docFootnoteRole$1);
+var _docForewordRole = _interopRequireDefault$5(docForewordRole$1);
+var _docGlossaryRole = _interopRequireDefault$5(docGlossaryRole$1);
+var _docGlossrefRole = _interopRequireDefault$5(docGlossrefRole$1);
+var _docIndexRole = _interopRequireDefault$5(docIndexRole$1);
+var _docIntroductionRole = _interopRequireDefault$5(docIntroductionRole$1);
+var _docNoterefRole = _interopRequireDefault$5(docNoterefRole$1);
+var _docNoticeRole = _interopRequireDefault$5(docNoticeRole$1);
+var _docPagebreakRole = _interopRequireDefault$5(docPagebreakRole$1);
+var _docPagelistRole = _interopRequireDefault$5(docPagelistRole$1);
+var _docPartRole = _interopRequireDefault$5(docPartRole$1);
+var _docPrefaceRole = _interopRequireDefault$5(docPrefaceRole$1);
+var _docPrologueRole = _interopRequireDefault$5(docPrologueRole$1);
+var _docPullquoteRole = _interopRequireDefault$5(docPullquoteRole$1);
+var _docQnaRole = _interopRequireDefault$5(docQnaRole$1);
+var _docSubtitleRole = _interopRequireDefault$5(docSubtitleRole$1);
+var _docTipRole = _interopRequireDefault$5(docTipRole$1);
+var _docTocRole = _interopRequireDefault$5(docTocRole$1);
+function _interopRequireDefault$5(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+var ariaDpubRoles = [["doc-abstract", _docAbstractRole.default], ["doc-acknowledgments", _docAcknowledgmentsRole.default], ["doc-afterword", _docAfterwordRole.default], ["doc-appendix", _docAppendixRole.default], ["doc-backlink", _docBacklinkRole.default], ["doc-biblioentry", _docBiblioentryRole.default], ["doc-bibliography", _docBibliographyRole.default], ["doc-biblioref", _docBibliorefRole.default], ["doc-chapter", _docChapterRole.default], ["doc-colophon", _docColophonRole.default], ["doc-conclusion", _docConclusionRole.default], ["doc-cover", _docCoverRole.default], ["doc-credit", _docCreditRole.default], ["doc-credits", _docCreditsRole.default], ["doc-dedication", _docDedicationRole.default], ["doc-endnote", _docEndnoteRole.default], ["doc-endnotes", _docEndnotesRole.default], ["doc-epigraph", _docEpigraphRole.default], ["doc-epilogue", _docEpilogueRole.default], ["doc-errata", _docErrataRole.default], ["doc-example", _docExampleRole.default], ["doc-footnote", _docFootnoteRole.default], ["doc-foreword", _docForewordRole.default], ["doc-glossary", _docGlossaryRole.default], ["doc-glossref", _docGlossrefRole.default], ["doc-index", _docIndexRole.default], ["doc-introduction", _docIntroductionRole.default], ["doc-noteref", _docNoterefRole.default], ["doc-notice", _docNoticeRole.default], ["doc-pagebreak", _docPagebreakRole.default], ["doc-pagelist", _docPagelistRole.default], ["doc-part", _docPartRole.default], ["doc-preface", _docPrefaceRole.default], ["doc-prologue", _docPrologueRole.default], ["doc-pullquote", _docPullquoteRole.default], ["doc-qna", _docQnaRole.default], ["doc-subtitle", _docSubtitleRole.default], ["doc-tip", _docTipRole.default], ["doc-toc", _docTocRole.default]];
+var _default$7 = ariaDpubRoles;
+ariaDpubRoles$1.default = _default$7;
+var ariaGraphicsRoles$1 = {};
+var graphicsDocumentRole$1 = {};
+Object.defineProperty(graphicsDocumentRole$1, "__esModule", {
+  value: true
+});
+graphicsDocumentRole$1.default = void 0;
+var graphicsDocumentRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    module: "GRAPHICS",
+    concept: {
+      name: "graphics-object"
+    }
+  }, {
+    module: "ARIA",
+    concept: {
+      name: "img"
+    }
+  }, {
+    module: "ARIA",
+    concept: {
+      name: "article"
+    }
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "document"]]
+};
+var _default$6 = graphicsDocumentRole;
+graphicsDocumentRole$1.default = _default$6;
+var graphicsObjectRole$1 = {};
+Object.defineProperty(graphicsObjectRole$1, "__esModule", {
+  value: true
+});
+graphicsObjectRole$1.default = void 0;
+var graphicsObjectRole = {
+  abstract: false,
+  accessibleNameRequired: false,
+  baseConcepts: [],
+  childrenPresentational: false,
+  nameFrom: ["author", "contents"],
+  prohibitedProps: [],
+  props: {
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [{
+    module: "GRAPHICS",
+    concept: {
+      name: "graphics-document"
+    }
+  }, {
+    module: "ARIA",
+    concept: {
+      name: "group"
+    }
+  }, {
+    module: "ARIA",
+    concept: {
+      name: "img"
+    }
+  }, {
+    module: "GRAPHICS",
+    concept: {
+      name: "graphics-symbol"
+    }
+  }],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "group"]]
+};
+var _default$5 = graphicsObjectRole;
+graphicsObjectRole$1.default = _default$5;
+var graphicsSymbolRole$1 = {};
+Object.defineProperty(graphicsSymbolRole$1, "__esModule", {
+  value: true
+});
+graphicsSymbolRole$1.default = void 0;
+var graphicsSymbolRole = {
+  abstract: false,
+  accessibleNameRequired: true,
+  baseConcepts: [],
+  childrenPresentational: true,
+  nameFrom: ["author"],
+  prohibitedProps: [],
+  props: {
+    "aria-disabled": null,
+    "aria-errormessage": null,
+    "aria-expanded": null,
+    "aria-haspopup": null,
+    "aria-invalid": null
+  },
+  relatedConcepts: [],
+  requireContextRole: [],
+  requiredContextRole: [],
+  requiredOwnedElements: [],
+  requiredProps: {},
+  superClass: [["roletype", "structure", "section", "img"]]
+};
+var _default$4 = graphicsSymbolRole;
+graphicsSymbolRole$1.default = _default$4;
+Object.defineProperty(ariaGraphicsRoles$1, "__esModule", {
+  value: true
+});
+ariaGraphicsRoles$1.default = void 0;
+var _graphicsDocumentRole = _interopRequireDefault$4(graphicsDocumentRole$1);
+var _graphicsObjectRole = _interopRequireDefault$4(graphicsObjectRole$1);
+var _graphicsSymbolRole = _interopRequireDefault$4(graphicsSymbolRole$1);
+function _interopRequireDefault$4(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+var ariaGraphicsRoles = [["graphics-document", _graphicsDocumentRole.default], ["graphics-object", _graphicsObjectRole.default], ["graphics-symbol", _graphicsSymbolRole.default]];
+var _default$3 = ariaGraphicsRoles;
+ariaGraphicsRoles$1.default = _default$3;
+Object.defineProperty(rolesMap$1, "__esModule", {
+  value: true
+});
+rolesMap$1.default = void 0;
+var _ariaAbstractRoles = _interopRequireDefault$3(ariaAbstractRoles$1);
+var _ariaLiteralRoles = _interopRequireDefault$3(ariaLiteralRoles$1);
+var _ariaDpubRoles = _interopRequireDefault$3(ariaDpubRoles$1);
+var _ariaGraphicsRoles = _interopRequireDefault$3(ariaGraphicsRoles$1);
+var _iterationDecorator$2 = _interopRequireDefault$3(iterationDecorator$1);
+function _interopRequireDefault$3(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _createForOfIteratorHelper$2(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+  if (!it) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it)
+        o = it;
+      var i = 0;
+      var F2 = function F3() {
+      };
+      return { s: F2, n: function n2() {
+        if (i >= o.length)
+          return { done: true };
+        return { done: false, value: o[i++] };
+      }, e: function e2(_e2) {
+        throw _e2;
+      }, f: F2 };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var normalCompletion = true, didErr = false, err;
+  return { s: function s() {
+    it = it.call(o);
+  }, n: function n2() {
+    var step = it.next();
+    normalCompletion = step.done;
+    return step;
+  }, e: function e2(_e3) {
+    didErr = true;
+    err = _e3;
+  }, f: function f2() {
+    try {
+      if (!normalCompletion && it.return != null)
+        it.return();
+    } finally {
+      if (didErr)
+        throw err;
+    }
+  } };
+}
+function _slicedToArray$2(arr, i) {
+  return _arrayWithHoles$2(arr) || _iterableToArrayLimit$2(arr, i) || _unsupportedIterableToArray$2(arr, i) || _nonIterableRest$2();
+}
+function _nonIterableRest$2() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray$2(o, minLen) {
+  if (!o)
+    return;
+  if (typeof o === "string")
+    return _arrayLikeToArray$2(o, minLen);
+  var n2 = Object.prototype.toString.call(o).slice(8, -1);
+  if (n2 === "Object" && o.constructor)
+    n2 = o.constructor.name;
+  if (n2 === "Map" || n2 === "Set")
+    return Array.from(o);
+  if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
+    return _arrayLikeToArray$2(o, minLen);
+}
+function _arrayLikeToArray$2(arr, len) {
+  if (len == null || len > arr.length)
+    len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+function _iterableToArrayLimit$2(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+  if (_i == null)
+    return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _s, _e;
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+      if (i && _arr.length === i)
+        break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null)
+        _i["return"]();
+    } finally {
+      if (_d)
+        throw _e;
+    }
+  }
+  return _arr;
+}
+function _arrayWithHoles$2(arr) {
+  if (Array.isArray(arr))
+    return arr;
+}
+var roles$1 = [].concat(_ariaAbstractRoles.default, _ariaLiteralRoles.default, _ariaDpubRoles.default, _ariaGraphicsRoles.default);
+roles$1.forEach(function(_ref) {
+  var _ref2 = _slicedToArray$2(_ref, 2), roleDefinition = _ref2[1];
+  var _iterator = _createForOfIteratorHelper$2(roleDefinition.superClass), _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+      var superClassIter = _step.value;
+      var _iterator2 = _createForOfIteratorHelper$2(superClassIter), _step2;
+      try {
+        var _loop3 = function _loop4() {
+          var superClassName = _step2.value;
+          var superClassRoleTuple = roles$1.find(function(_ref3) {
+            var _ref4 = _slicedToArray$2(_ref3, 1), name = _ref4[0];
+            return name === superClassName;
+          });
+          if (superClassRoleTuple) {
+            var superClassDefinition = superClassRoleTuple[1];
+            for (var _i2 = 0, _Object$keys = Object.keys(superClassDefinition.props); _i2 < _Object$keys.length; _i2++) {
+              var prop = _Object$keys[_i2];
+              if (!Object.prototype.hasOwnProperty.call(roleDefinition.props, prop)) {
+                Object.assign(roleDefinition.props, _defineProperty({}, prop, superClassDefinition.props[prop]));
+              }
+            }
+          }
+        };
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+          _loop3();
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+});
+var rolesMap = {
+  entries: function entries3() {
+    return roles$1;
+  },
+  forEach: function forEach3(fn) {
+    var thisArg = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+    var _iterator3 = _createForOfIteratorHelper$2(roles$1), _step3;
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done; ) {
+        var _step3$value = _slicedToArray$2(_step3.value, 2), key = _step3$value[0], values6 = _step3$value[1];
+        fn.call(thisArg, values6, key, roles$1);
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+  },
+  get: function get3(key) {
+    var item = roles$1.find(function(tuple) {
+      return tuple[0] === key ? true : false;
+    });
+    return item && item[1];
+  },
+  has: function has3(key) {
+    return !!rolesMap.get(key);
+  },
+  keys: function keys3() {
+    return roles$1.map(function(_ref5) {
+      var _ref6 = _slicedToArray$2(_ref5, 1), key = _ref6[0];
+      return key;
+    });
+  },
+  values: function values3() {
+    return roles$1.map(function(_ref7) {
+      var _ref8 = _slicedToArray$2(_ref7, 2), values6 = _ref8[1];
+      return values6;
+    });
+  }
+};
+var _default$2 = (0, _iterationDecorator$2.default)(rolesMap, rolesMap.entries());
+rolesMap$1.default = _default$2;
+var elementRoleMap$1 = {};
+var toStr$9 = Object.prototype.toString;
+var isArguments$3 = function isArguments(value) {
+  var str = toStr$9.call(value);
+  var isArgs2 = str === "[object Arguments]";
+  if (!isArgs2) {
+    isArgs2 = str !== "[object Array]" && value !== null && typeof value === "object" && typeof value.length === "number" && value.length >= 0 && toStr$9.call(value.callee) === "[object Function]";
+  }
+  return isArgs2;
+};
+var implementation$b;
+var hasRequiredImplementation;
+function requireImplementation() {
+  if (hasRequiredImplementation)
+    return implementation$b;
+  hasRequiredImplementation = 1;
+  var keysShim2;
+  if (!Object.keys) {
+    var has7 = Object.prototype.hasOwnProperty;
+    var toStr2 = Object.prototype.toString;
+    var isArgs2 = isArguments$3;
+    var isEnumerable2 = Object.prototype.propertyIsEnumerable;
+    var hasDontEnumBug = !isEnumerable2.call({ toString: null }, "toString");
+    var hasProtoEnumBug = isEnumerable2.call(function() {
+    }, "prototype");
+    var dontEnums = [
+      "toString",
+      "toLocaleString",
+      "valueOf",
+      "hasOwnProperty",
+      "isPrototypeOf",
+      "propertyIsEnumerable",
+      "constructor"
+    ];
+    var equalsConstructorPrototype = function(o) {
+      var ctor = o.constructor;
+      return ctor && ctor.prototype === o;
+    };
+    var excludedKeys = {
+      $applicationCache: true,
+      $console: true,
+      $external: true,
+      $frame: true,
+      $frameElement: true,
+      $frames: true,
+      $innerHeight: true,
+      $innerWidth: true,
+      $onmozfullscreenchange: true,
+      $onmozfullscreenerror: true,
+      $outerHeight: true,
+      $outerWidth: true,
+      $pageXOffset: true,
+      $pageYOffset: true,
+      $parent: true,
+      $scrollLeft: true,
+      $scrollTop: true,
+      $scrollX: true,
+      $scrollY: true,
+      $self: true,
+      $webkitIndexedDB: true,
+      $webkitStorageInfo: true,
+      $window: true
+    };
+    var hasAutomationEqualityBug = function() {
+      if (typeof window === "undefined") {
+        return false;
+      }
+      for (var k in window) {
+        try {
+          if (!excludedKeys["$" + k] && has7.call(window, k) && window[k] !== null && typeof window[k] === "object") {
+            try {
+              equalsConstructorPrototype(window[k]);
+            } catch (e2) {
+              return true;
+            }
+          }
+        } catch (e2) {
+          return true;
+        }
+      }
+      return false;
+    }();
+    var equalsConstructorPrototypeIfNotBuggy = function(o) {
+      if (typeof window === "undefined" || !hasAutomationEqualityBug) {
+        return equalsConstructorPrototype(o);
+      }
+      try {
+        return equalsConstructorPrototype(o);
+      } catch (e2) {
+        return false;
+      }
+    };
+    keysShim2 = function keys8(object) {
+      var isObject = object !== null && typeof object === "object";
+      var isFunction2 = toStr2.call(object) === "[object Function]";
+      var isArguments5 = isArgs2(object);
+      var isString3 = isObject && toStr2.call(object) === "[object String]";
+      var theKeys = [];
+      if (!isObject && !isFunction2 && !isArguments5) {
+        throw new TypeError("Object.keys called on a non-object");
+      }
+      var skipProto = hasProtoEnumBug && isFunction2;
+      if (isString3 && object.length > 0 && !has7.call(object, 0)) {
+        for (var i = 0; i < object.length; ++i) {
+          theKeys.push(String(i));
+        }
+      }
+      if (isArguments5 && object.length > 0) {
+        for (var j = 0; j < object.length; ++j) {
+          theKeys.push(String(j));
+        }
+      } else {
+        for (var name in object) {
+          if (!(skipProto && name === "prototype") && has7.call(object, name)) {
+            theKeys.push(String(name));
+          }
+        }
+      }
+      if (hasDontEnumBug) {
+        var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
+        for (var k = 0; k < dontEnums.length; ++k) {
+          if (!(skipConstructor && dontEnums[k] === "constructor") && has7.call(object, dontEnums[k])) {
+            theKeys.push(dontEnums[k]);
+          }
+        }
+      }
+      return theKeys;
+    };
+  }
+  implementation$b = keysShim2;
+  return implementation$b;
+}
+var slice$1 = Array.prototype.slice;
+var isArgs = isArguments$3;
+var origKeys = Object.keys;
+var keysShim = origKeys ? function keys4(o) {
+  return origKeys(o);
+} : requireImplementation();
+var originalKeys = Object.keys;
+keysShim.shim = function shimObjectKeys() {
+  if (Object.keys) {
+    var keysWorksWithArguments = function() {
+      var args = Object.keys(arguments);
+      return args && args.length === arguments.length;
+    }(1, 2);
+    if (!keysWorksWithArguments) {
+      Object.keys = function keys8(object) {
+        if (isArgs(object)) {
+          return originalKeys(slice$1.call(object));
+        }
+        return originalKeys(object);
+      };
+    }
+  } else {
+    Object.keys = keysShim;
+  }
+  return Object.keys || keysShim;
+};
+var objectKeys$2 = keysShim;
+var shams$1 = function hasSymbols() {
+  if (typeof Symbol !== "function" || typeof Object.getOwnPropertySymbols !== "function") {
+    return false;
+  }
+  if (typeof Symbol.iterator === "symbol") {
+    return true;
+  }
+  var obj = {};
+  var sym = Symbol("test");
+  var symObj = Object(sym);
+  if (typeof sym === "string") {
+    return false;
+  }
+  if (Object.prototype.toString.call(sym) !== "[object Symbol]") {
+    return false;
+  }
+  if (Object.prototype.toString.call(symObj) !== "[object Symbol]") {
+    return false;
+  }
+  var symVal = 42;
+  obj[sym] = symVal;
+  for (sym in obj) {
+    return false;
+  }
+  if (typeof Object.keys === "function" && Object.keys(obj).length !== 0) {
+    return false;
+  }
+  if (typeof Object.getOwnPropertyNames === "function" && Object.getOwnPropertyNames(obj).length !== 0) {
+    return false;
+  }
+  var syms = Object.getOwnPropertySymbols(obj);
+  if (syms.length !== 1 || syms[0] !== sym) {
+    return false;
+  }
+  if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) {
+    return false;
+  }
+  if (typeof Object.getOwnPropertyDescriptor === "function") {
+    var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
+    if (descriptor.value !== symVal || descriptor.enumerable !== true) {
+      return false;
+    }
+  }
+  return true;
+};
+var origSymbol = typeof Symbol !== "undefined" && Symbol;
+var hasSymbolSham = shams$1;
+var hasSymbols$5 = function hasNativeSymbols() {
+  if (typeof origSymbol !== "function") {
+    return false;
+  }
+  if (typeof Symbol !== "function") {
+    return false;
+  }
+  if (typeof origSymbol("foo") !== "symbol") {
+    return false;
+  }
+  if (typeof Symbol("bar") !== "symbol") {
+    return false;
+  }
+  return hasSymbolSham();
+};
+var ERROR_MESSAGE = "Function.prototype.bind called on incompatible ";
+var slice = Array.prototype.slice;
+var toStr$8 = Object.prototype.toString;
+var funcType = "[object Function]";
+var implementation$a = function bind(that) {
+  var target = this;
+  if (typeof target !== "function" || toStr$8.call(target) !== funcType) {
+    throw new TypeError(ERROR_MESSAGE + target);
+  }
+  var args = slice.call(arguments, 1);
+  var bound2;
+  var binder = function() {
+    if (this instanceof bound2) {
+      var result = target.apply(
+        this,
+        args.concat(slice.call(arguments))
+      );
+      if (Object(result) === result) {
+        return result;
+      }
+      return this;
+    } else {
+      return target.apply(
+        that,
+        args.concat(slice.call(arguments))
+      );
+    }
+  };
+  var boundLength = Math.max(0, target.length - args.length);
+  var boundArgs = [];
+  for (var i = 0; i < boundLength; i++) {
+    boundArgs.push("$" + i);
+  }
+  bound2 = Function("binder", "return function (" + boundArgs.join(",") + "){ return binder.apply(this,arguments); }")(binder);
+  if (target.prototype) {
+    var Empty = function Empty2() {
+    };
+    Empty.prototype = target.prototype;
+    bound2.prototype = new Empty();
+    Empty.prototype = null;
+  }
+  return bound2;
+};
+var implementation$9 = implementation$a;
+var functionBind = Function.prototype.bind || implementation$9;
+var bind$1 = functionBind;
+var src = bind$1.call(Function.call, Object.prototype.hasOwnProperty);
+var undefined$1;
+var $SyntaxError$1 = SyntaxError;
+var $Function = Function;
+var $TypeError$2 = TypeError;
+var getEvalledConstructor = function(expressionSyntax) {
+  try {
+    return $Function('"use strict"; return (' + expressionSyntax + ").constructor;")();
+  } catch (e2) {
+  }
+};
+var $gOPD$2 = Object.getOwnPropertyDescriptor;
+if ($gOPD$2) {
+  try {
+    $gOPD$2({}, "");
+  } catch (e2) {
+    $gOPD$2 = null;
+  }
+}
+var throwTypeError = function() {
+  throw new $TypeError$2();
+};
+var ThrowTypeError = $gOPD$2 ? function() {
+  try {
+    arguments.callee;
+    return throwTypeError;
+  } catch (calleeThrows) {
+    try {
+      return $gOPD$2(arguments, "callee").get;
+    } catch (gOPDthrows) {
+      return throwTypeError;
+    }
+  }
+}() : throwTypeError;
+var hasSymbols$4 = hasSymbols$5();
+var getProto$1 = Object.getPrototypeOf || function(x) {
+  return x.__proto__;
+};
+var needsEval = {};
+var TypedArray = typeof Uint8Array === "undefined" ? undefined$1 : getProto$1(Uint8Array);
+var INTRINSICS = {
+  "%AggregateError%": typeof AggregateError === "undefined" ? undefined$1 : AggregateError,
+  "%Array%": Array,
+  "%ArrayBuffer%": typeof ArrayBuffer === "undefined" ? undefined$1 : ArrayBuffer,
+  "%ArrayIteratorPrototype%": hasSymbols$4 ? getProto$1([][Symbol.iterator]()) : undefined$1,
+  "%AsyncFromSyncIteratorPrototype%": undefined$1,
+  "%AsyncFunction%": needsEval,
+  "%AsyncGenerator%": needsEval,
+  "%AsyncGeneratorFunction%": needsEval,
+  "%AsyncIteratorPrototype%": needsEval,
+  "%Atomics%": typeof Atomics === "undefined" ? undefined$1 : Atomics,
+  "%BigInt%": typeof BigInt === "undefined" ? undefined$1 : BigInt,
+  "%Boolean%": Boolean,
+  "%DataView%": typeof DataView === "undefined" ? undefined$1 : DataView,
+  "%Date%": Date,
+  "%decodeURI%": decodeURI,
+  "%decodeURIComponent%": decodeURIComponent,
+  "%encodeURI%": encodeURI,
+  "%encodeURIComponent%": encodeURIComponent,
+  "%Error%": Error,
+  "%eval%": eval,
+  "%EvalError%": EvalError,
+  "%Float32Array%": typeof Float32Array === "undefined" ? undefined$1 : Float32Array,
+  "%Float64Array%": typeof Float64Array === "undefined" ? undefined$1 : Float64Array,
+  "%FinalizationRegistry%": typeof FinalizationRegistry === "undefined" ? undefined$1 : FinalizationRegistry,
+  "%Function%": $Function,
+  "%GeneratorFunction%": needsEval,
+  "%Int8Array%": typeof Int8Array === "undefined" ? undefined$1 : Int8Array,
+  "%Int16Array%": typeof Int16Array === "undefined" ? undefined$1 : Int16Array,
+  "%Int32Array%": typeof Int32Array === "undefined" ? undefined$1 : Int32Array,
+  "%isFinite%": isFinite,
+  "%isNaN%": isNaN,
+  "%IteratorPrototype%": hasSymbols$4 ? getProto$1(getProto$1([][Symbol.iterator]())) : undefined$1,
+  "%JSON%": typeof JSON === "object" ? JSON : undefined$1,
+  "%Map%": typeof Map === "undefined" ? undefined$1 : Map,
+  "%MapIteratorPrototype%": typeof Map === "undefined" || !hasSymbols$4 ? undefined$1 : getProto$1((/* @__PURE__ */ new Map())[Symbol.iterator]()),
+  "%Math%": Math,
+  "%Number%": Number,
+  "%Object%": Object,
+  "%parseFloat%": parseFloat,
+  "%parseInt%": parseInt,
+  "%Promise%": typeof Promise === "undefined" ? undefined$1 : Promise,
+  "%Proxy%": typeof Proxy === "undefined" ? undefined$1 : Proxy,
+  "%RangeError%": RangeError,
+  "%ReferenceError%": ReferenceError,
+  "%Reflect%": typeof Reflect === "undefined" ? undefined$1 : Reflect,
+  "%RegExp%": RegExp,
+  "%Set%": typeof Set === "undefined" ? undefined$1 : Set,
+  "%SetIteratorPrototype%": typeof Set === "undefined" || !hasSymbols$4 ? undefined$1 : getProto$1((/* @__PURE__ */ new Set())[Symbol.iterator]()),
+  "%SharedArrayBuffer%": typeof SharedArrayBuffer === "undefined" ? undefined$1 : SharedArrayBuffer,
+  "%String%": String,
+  "%StringIteratorPrototype%": hasSymbols$4 ? getProto$1(""[Symbol.iterator]()) : undefined$1,
+  "%Symbol%": hasSymbols$4 ? Symbol : undefined$1,
+  "%SyntaxError%": $SyntaxError$1,
+  "%ThrowTypeError%": ThrowTypeError,
+  "%TypedArray%": TypedArray,
+  "%TypeError%": $TypeError$2,
+  "%Uint8Array%": typeof Uint8Array === "undefined" ? undefined$1 : Uint8Array,
+  "%Uint8ClampedArray%": typeof Uint8ClampedArray === "undefined" ? undefined$1 : Uint8ClampedArray,
+  "%Uint16Array%": typeof Uint16Array === "undefined" ? undefined$1 : Uint16Array,
+  "%Uint32Array%": typeof Uint32Array === "undefined" ? undefined$1 : Uint32Array,
+  "%URIError%": URIError,
+  "%WeakMap%": typeof WeakMap === "undefined" ? undefined$1 : WeakMap,
+  "%WeakRef%": typeof WeakRef === "undefined" ? undefined$1 : WeakRef,
+  "%WeakSet%": typeof WeakSet === "undefined" ? undefined$1 : WeakSet
+};
+var doEval = function doEval2(name) {
+  var value;
+  if (name === "%AsyncFunction%") {
+    value = getEvalledConstructor("async function () {}");
+  } else if (name === "%GeneratorFunction%") {
+    value = getEvalledConstructor("function* () {}");
+  } else if (name === "%AsyncGeneratorFunction%") {
+    value = getEvalledConstructor("async function* () {}");
+  } else if (name === "%AsyncGenerator%") {
+    var fn = doEval2("%AsyncGeneratorFunction%");
+    if (fn) {
+      value = fn.prototype;
+    }
+  } else if (name === "%AsyncIteratorPrototype%") {
+    var gen = doEval2("%AsyncGenerator%");
+    if (gen) {
+      value = getProto$1(gen.prototype);
+    }
+  }
+  INTRINSICS[name] = value;
+  return value;
+};
+var LEGACY_ALIASES = {
+  "%ArrayBufferPrototype%": ["ArrayBuffer", "prototype"],
+  "%ArrayPrototype%": ["Array", "prototype"],
+  "%ArrayProto_entries%": ["Array", "prototype", "entries"],
+  "%ArrayProto_forEach%": ["Array", "prototype", "forEach"],
+  "%ArrayProto_keys%": ["Array", "prototype", "keys"],
+  "%ArrayProto_values%": ["Array", "prototype", "values"],
+  "%AsyncFunctionPrototype%": ["AsyncFunction", "prototype"],
+  "%AsyncGenerator%": ["AsyncGeneratorFunction", "prototype"],
+  "%AsyncGeneratorPrototype%": ["AsyncGeneratorFunction", "prototype", "prototype"],
+  "%BooleanPrototype%": ["Boolean", "prototype"],
+  "%DataViewPrototype%": ["DataView", "prototype"],
+  "%DatePrototype%": ["Date", "prototype"],
+  "%ErrorPrototype%": ["Error", "prototype"],
+  "%EvalErrorPrototype%": ["EvalError", "prototype"],
+  "%Float32ArrayPrototype%": ["Float32Array", "prototype"],
+  "%Float64ArrayPrototype%": ["Float64Array", "prototype"],
+  "%FunctionPrototype%": ["Function", "prototype"],
+  "%Generator%": ["GeneratorFunction", "prototype"],
+  "%GeneratorPrototype%": ["GeneratorFunction", "prototype", "prototype"],
+  "%Int8ArrayPrototype%": ["Int8Array", "prototype"],
+  "%Int16ArrayPrototype%": ["Int16Array", "prototype"],
+  "%Int32ArrayPrototype%": ["Int32Array", "prototype"],
+  "%JSONParse%": ["JSON", "parse"],
+  "%JSONStringify%": ["JSON", "stringify"],
+  "%MapPrototype%": ["Map", "prototype"],
+  "%NumberPrototype%": ["Number", "prototype"],
+  "%ObjectPrototype%": ["Object", "prototype"],
+  "%ObjProto_toString%": ["Object", "prototype", "toString"],
+  "%ObjProto_valueOf%": ["Object", "prototype", "valueOf"],
+  "%PromisePrototype%": ["Promise", "prototype"],
+  "%PromiseProto_then%": ["Promise", "prototype", "then"],
+  "%Promise_all%": ["Promise", "all"],
+  "%Promise_reject%": ["Promise", "reject"],
+  "%Promise_resolve%": ["Promise", "resolve"],
+  "%RangeErrorPrototype%": ["RangeError", "prototype"],
+  "%ReferenceErrorPrototype%": ["ReferenceError", "prototype"],
+  "%RegExpPrototype%": ["RegExp", "prototype"],
+  "%SetPrototype%": ["Set", "prototype"],
+  "%SharedArrayBufferPrototype%": ["SharedArrayBuffer", "prototype"],
+  "%StringPrototype%": ["String", "prototype"],
+  "%SymbolPrototype%": ["Symbol", "prototype"],
+  "%SyntaxErrorPrototype%": ["SyntaxError", "prototype"],
+  "%TypedArrayPrototype%": ["TypedArray", "prototype"],
+  "%TypeErrorPrototype%": ["TypeError", "prototype"],
+  "%Uint8ArrayPrototype%": ["Uint8Array", "prototype"],
+  "%Uint8ClampedArrayPrototype%": ["Uint8ClampedArray", "prototype"],
+  "%Uint16ArrayPrototype%": ["Uint16Array", "prototype"],
+  "%Uint32ArrayPrototype%": ["Uint32Array", "prototype"],
+  "%URIErrorPrototype%": ["URIError", "prototype"],
+  "%WeakMapPrototype%": ["WeakMap", "prototype"],
+  "%WeakSetPrototype%": ["WeakSet", "prototype"]
+};
+var bind2 = functionBind;
+var hasOwn$1 = src;
+var $concat$1 = bind2.call(Function.call, Array.prototype.concat);
+var $spliceApply = bind2.call(Function.apply, Array.prototype.splice);
+var $replace$1 = bind2.call(Function.call, String.prototype.replace);
+var $strSlice = bind2.call(Function.call, String.prototype.slice);
+var $exec$1 = bind2.call(Function.call, RegExp.prototype.exec);
+var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
+var reEscapeChar = /\\(\\)?/g;
+var stringToPath = function stringToPath2(string) {
+  var first = $strSlice(string, 0, 1);
+  var last = $strSlice(string, -1);
+  if (first === "%" && last !== "%") {
+    throw new $SyntaxError$1("invalid intrinsic syntax, expected closing `%`");
+  } else if (last === "%" && first !== "%") {
+    throw new $SyntaxError$1("invalid intrinsic syntax, expected opening `%`");
+  }
+  var result = [];
+  $replace$1(string, rePropName, function(match, number, quote2, subString) {
+    result[result.length] = quote2 ? $replace$1(subString, reEscapeChar, "$1") : number || match;
+  });
+  return result;
+};
+var getBaseIntrinsic = function getBaseIntrinsic2(name, allowMissing) {
+  var intrinsicName = name;
+  var alias;
+  if (hasOwn$1(LEGACY_ALIASES, intrinsicName)) {
+    alias = LEGACY_ALIASES[intrinsicName];
+    intrinsicName = "%" + alias[0] + "%";
+  }
+  if (hasOwn$1(INTRINSICS, intrinsicName)) {
+    var value = INTRINSICS[intrinsicName];
+    if (value === needsEval) {
+      value = doEval(intrinsicName);
+    }
+    if (typeof value === "undefined" && !allowMissing) {
+      throw new $TypeError$2("intrinsic " + name + " exists, but is not available. Please file an issue!");
+    }
+    return {
+      alias,
+      name: intrinsicName,
+      value
+    };
+  }
+  throw new $SyntaxError$1("intrinsic " + name + " does not exist!");
+};
+var getIntrinsic = function GetIntrinsic(name, allowMissing) {
+  if (typeof name !== "string" || name.length === 0) {
+    throw new $TypeError$2("intrinsic name must be a non-empty string");
+  }
+  if (arguments.length > 1 && typeof allowMissing !== "boolean") {
+    throw new $TypeError$2('"allowMissing" argument must be a boolean');
+  }
+  if ($exec$1(/^%?[^%]*%?$/, name) === null) {
+    throw new $SyntaxError$1("`%` may not be present anywhere but at the beginning and end of the intrinsic name");
+  }
+  var parts = stringToPath(name);
+  var intrinsicBaseName = parts.length > 0 ? parts[0] : "";
+  var intrinsic = getBaseIntrinsic("%" + intrinsicBaseName + "%", allowMissing);
+  var intrinsicRealName = intrinsic.name;
+  var value = intrinsic.value;
+  var skipFurtherCaching = false;
+  var alias = intrinsic.alias;
+  if (alias) {
+    intrinsicBaseName = alias[0];
+    $spliceApply(parts, $concat$1([0, 1], alias));
+  }
+  for (var i = 1, isOwn = true; i < parts.length; i += 1) {
+    var part = parts[i];
+    var first = $strSlice(part, 0, 1);
+    var last = $strSlice(part, -1);
+    if ((first === '"' || first === "'" || first === "`" || (last === '"' || last === "'" || last === "`")) && first !== last) {
+      throw new $SyntaxError$1("property names with quotes must have matching quotes");
+    }
+    if (part === "constructor" || !isOwn) {
+      skipFurtherCaching = true;
+    }
+    intrinsicBaseName += "." + part;
+    intrinsicRealName = "%" + intrinsicBaseName + "%";
+    if (hasOwn$1(INTRINSICS, intrinsicRealName)) {
+      value = INTRINSICS[intrinsicRealName];
+    } else if (value != null) {
+      if (!(part in value)) {
+        if (!allowMissing) {
+          throw new $TypeError$2("base intrinsic for " + name + " exists, but the property is not available.");
+        }
+        return void 0;
+      }
+      if ($gOPD$2 && i + 1 >= parts.length) {
+        var desc = $gOPD$2(value, part);
+        isOwn = !!desc;
+        if (isOwn && "get" in desc && !("originalValue" in desc.get)) {
+          value = desc.get;
+        } else {
+          value = value[part];
+        }
+      } else {
+        isOwn = hasOwn$1(value, part);
+        value = value[part];
+      }
+      if (isOwn && !skipFurtherCaching) {
+        INTRINSICS[intrinsicRealName] = value;
+      }
+    }
+  }
+  return value;
+};
+var GetIntrinsic$8 = getIntrinsic;
+var $defineProperty = GetIntrinsic$8("%Object.defineProperty%", true);
+var hasPropertyDescriptors$1 = function hasPropertyDescriptors() {
+  if ($defineProperty) {
+    try {
+      $defineProperty({}, "a", { value: 1 });
+      return true;
+    } catch (e2) {
+      return false;
+    }
+  }
+  return false;
+};
+hasPropertyDescriptors$1.hasArrayLengthDefineBug = function hasArrayLengthDefineBug() {
+  if (!hasPropertyDescriptors$1()) {
+    return null;
+  }
+  try {
+    return $defineProperty([], "length", { value: 1 }).length !== 1;
+  } catch (e2) {
+    return true;
+  }
+};
+var hasPropertyDescriptors_1 = hasPropertyDescriptors$1;
+var keys$2 = objectKeys$2;
+var hasSymbols$3 = typeof Symbol === "function" && typeof Symbol("foo") === "symbol";
+var toStr$7 = Object.prototype.toString;
+var concat = Array.prototype.concat;
+var origDefineProperty = Object.defineProperty;
+var isFunction = function(fn) {
+  return typeof fn === "function" && toStr$7.call(fn) === "[object Function]";
+};
+var hasPropertyDescriptors2 = hasPropertyDescriptors_1();
+var supportsDescriptors$2 = origDefineProperty && hasPropertyDescriptors2;
+var defineProperty$1 = function(object, name, value, predicate) {
+  if (name in object && (!isFunction(predicate) || !predicate())) {
+    return;
+  }
+  if (supportsDescriptors$2) {
+    origDefineProperty(object, name, {
+      configurable: true,
+      enumerable: false,
+      value,
+      writable: true
+    });
+  } else {
+    object[name] = value;
+  }
+};
+var defineProperties$1 = function(object, map) {
+  var predicates = arguments.length > 2 ? arguments[2] : {};
+  var props = keys$2(map);
+  if (hasSymbols$3) {
+    props = concat.call(props, Object.getOwnPropertySymbols(map));
+  }
+  for (var i = 0; i < props.length; i += 1) {
+    defineProperty$1(object, props[i], map[props[i]], predicates[props[i]]);
+  }
+};
+defineProperties$1.supportsDescriptors = !!supportsDescriptors$2;
+var defineProperties_1 = defineProperties$1;
+var callBind$5 = { exports: {} };
+(function(module2) {
+  var bind3 = functionBind;
+  var GetIntrinsic3 = getIntrinsic;
+  var $apply = GetIntrinsic3("%Function.prototype.apply%");
+  var $call = GetIntrinsic3("%Function.prototype.call%");
+  var $reflectApply = GetIntrinsic3("%Reflect.apply%", true) || bind3.call($call, $apply);
+  var $gOPD2 = GetIntrinsic3("%Object.getOwnPropertyDescriptor%", true);
+  var $defineProperty2 = GetIntrinsic3("%Object.defineProperty%", true);
+  var $max = GetIntrinsic3("%Math.max%");
+  if ($defineProperty2) {
+    try {
+      $defineProperty2({}, "a", { value: 1 });
+    } catch (e2) {
+      $defineProperty2 = null;
+    }
+  }
+  module2.exports = function callBind2(originalFunction) {
+    var func = $reflectApply(bind3, $call, arguments);
+    if ($gOPD2 && $defineProperty2) {
+      var desc = $gOPD2(func, "length");
+      if (desc.configurable) {
+        $defineProperty2(
+          func,
+          "length",
+          { value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) }
+        );
+      }
+    }
+    return func;
+  };
+  var applyBind = function applyBind2() {
+    return $reflectApply(bind3, $apply, arguments);
+  };
+  if ($defineProperty2) {
+    $defineProperty2(module2.exports, "apply", { value: applyBind });
+  } else {
+    module2.exports.apply = applyBind;
+  }
+})(callBind$5);
+var GetIntrinsic$7 = getIntrinsic;
+var callBind$4 = callBind$5.exports;
+var $indexOf$1 = callBind$4(GetIntrinsic$7("String.prototype.indexOf"));
+var callBound$c = function callBoundIntrinsic(name, allowMissing) {
+  var intrinsic = GetIntrinsic$7(name, !!allowMissing);
+  if (typeof intrinsic === "function" && $indexOf$1(name, ".prototype.") > -1) {
+    return callBind$4(intrinsic);
+  }
+  return intrinsic;
+};
+var objectKeys$1 = objectKeys$2;
+var hasSymbols$2 = shams$1();
+var callBound$b = callBound$c;
+var toObject = Object;
+var $push = callBound$b("Array.prototype.push");
+var $propIsEnumerable = callBound$b("Object.prototype.propertyIsEnumerable");
+var originalGetSymbols = hasSymbols$2 ? Object.getOwnPropertySymbols : null;
+var implementation$8 = function assign(target, source1) {
+  if (target == null) {
+    throw new TypeError("target must be an object");
+  }
+  var to = toObject(target);
+  if (arguments.length === 1) {
+    return to;
+  }
+  for (var s = 1; s < arguments.length; ++s) {
+    var from = toObject(arguments[s]);
+    var keys8 = objectKeys$1(from);
+    var getSymbols = hasSymbols$2 && (Object.getOwnPropertySymbols || originalGetSymbols);
+    if (getSymbols) {
+      var syms = getSymbols(from);
+      for (var j = 0; j < syms.length; ++j) {
+        var key = syms[j];
+        if ($propIsEnumerable(from, key)) {
+          $push(keys8, key);
+        }
+      }
+    }
+    for (var i = 0; i < keys8.length; ++i) {
+      var nextKey = keys8[i];
+      if ($propIsEnumerable(from, nextKey)) {
+        var propValue = from[nextKey];
+        to[nextKey] = propValue;
+      }
+    }
+  }
+  return to;
+};
+var implementation$7 = implementation$8;
+var lacksProperEnumerationOrder = function() {
+  if (!Object.assign) {
+    return false;
+  }
+  var str = "abcdefghijklmnopqrst";
+  var letters = str.split("");
+  var map = {};
+  for (var i = 0; i < letters.length; ++i) {
+    map[letters[i]] = letters[i];
+  }
+  var obj = Object.assign({}, map);
+  var actual = "";
+  for (var k in obj) {
+    actual += k;
+  }
+  return str !== actual;
+};
+var assignHasPendingExceptions = function() {
+  if (!Object.assign || !Object.preventExtensions) {
+    return false;
+  }
+  var thrower = Object.preventExtensions({ 1: 2 });
+  try {
+    Object.assign(thrower, "xy");
+  } catch (e2) {
+    return thrower[1] === "y";
+  }
+  return false;
+};
+var polyfill$4 = function getPolyfill() {
+  if (!Object.assign) {
+    return implementation$7;
+  }
+  if (lacksProperEnumerationOrder()) {
+    return implementation$7;
+  }
+  if (assignHasPendingExceptions()) {
+    return implementation$7;
+  }
+  return Object.assign;
+};
+var define$3 = defineProperties_1;
+var getPolyfill$5 = polyfill$4;
+var shim$5 = function shimAssign() {
+  var polyfill2 = getPolyfill$5();
+  define$3(
+    Object,
+    { assign: polyfill2 },
+    { assign: function() {
+      return Object.assign !== polyfill2;
+    } }
+  );
+  return polyfill2;
+};
+var defineProperties = defineProperties_1;
+var callBind$3 = callBind$5.exports;
+var implementation$6 = implementation$8;
+var getPolyfill$4 = polyfill$4;
+var shim$4 = shim$5;
+var polyfill$3 = callBind$3.apply(getPolyfill$4());
+var bound = function assign2(target, source1) {
+  return polyfill$3(Object, arguments);
+};
+defineProperties(bound, {
+  getPolyfill: getPolyfill$4,
+  implementation: implementation$6,
+  shim: shim$4
+});
+var object_assign = bound;
+var implementation$5 = { exports: {} };
+var functionsHaveNames = function functionsHaveNames2() {
+  return typeof function f2() {
+  }.name === "string";
+};
+var gOPD$4 = Object.getOwnPropertyDescriptor;
+if (gOPD$4) {
+  try {
+    gOPD$4([], "length");
+  } catch (e2) {
+    gOPD$4 = null;
+  }
+}
+functionsHaveNames.functionsHaveConfigurableNames = function functionsHaveConfigurableNames() {
+  if (!functionsHaveNames() || !gOPD$4) {
+    return false;
+  }
+  var desc = gOPD$4(function() {
+  }, "name");
+  return !!desc && !!desc.configurable;
+};
+var $bind = Function.prototype.bind;
+functionsHaveNames.boundFunctionsHaveNames = function boundFunctionsHaveNames() {
+  return functionsHaveNames() && typeof $bind === "function" && function f2() {
+  }.bind().name !== "";
+};
+var functionsHaveNames_1 = functionsHaveNames;
+(function(module2) {
+  var functionsHaveConfigurableNames2 = functionsHaveNames_1.functionsHaveConfigurableNames();
+  var $Object = Object;
+  var $TypeError2 = TypeError;
+  module2.exports = function flags2() {
+    if (this != null && this !== $Object(this)) {
+      throw new $TypeError2("RegExp.prototype.flags getter called on non-object");
+    }
+    var result = "";
+    if (this.hasIndices) {
+      result += "d";
+    }
+    if (this.global) {
+      result += "g";
+    }
+    if (this.ignoreCase) {
+      result += "i";
+    }
+    if (this.multiline) {
+      result += "m";
+    }
+    if (this.dotAll) {
+      result += "s";
+    }
+    if (this.unicode) {
+      result += "u";
+    }
+    if (this.sticky) {
+      result += "y";
+    }
+    return result;
+  };
+  if (functionsHaveConfigurableNames2 && Object.defineProperty) {
+    Object.defineProperty(module2.exports, "name", { value: "get flags" });
+  }
+})(implementation$5);
+var implementation$4 = implementation$5.exports;
+var supportsDescriptors$1 = defineProperties_1.supportsDescriptors;
+var $gOPD$1 = Object.getOwnPropertyDescriptor;
+var polyfill$2 = function getPolyfill2() {
+  if (supportsDescriptors$1 && /a/mig.flags === "gim") {
+    var descriptor = $gOPD$1(RegExp.prototype, "flags");
+    if (descriptor && typeof descriptor.get === "function" && typeof RegExp.prototype.dotAll === "boolean" && typeof RegExp.prototype.hasIndices === "boolean") {
+      var calls = "";
+      var o = {};
+      Object.defineProperty(o, "hasIndices", {
+        get: function() {
+          calls += "d";
+        }
+      });
+      Object.defineProperty(o, "sticky", {
+        get: function() {
+          calls += "y";
+        }
+      });
+      if (calls === "dy") {
+        return descriptor.get;
+      }
+    }
+  }
+  return implementation$4;
+};
+var supportsDescriptors = defineProperties_1.supportsDescriptors;
+var getPolyfill$3 = polyfill$2;
+var gOPD$3 = Object.getOwnPropertyDescriptor;
+var defineProperty = Object.defineProperty;
+var TypeErr = TypeError;
+var getProto = Object.getPrototypeOf;
+var regex = /a/;
+var shim$3 = function shimFlags() {
+  if (!supportsDescriptors || !getProto) {
+    throw new TypeErr("RegExp.prototype.flags requires a true ES5 environment that supports property descriptors");
+  }
+  var polyfill2 = getPolyfill$3();
+  var proto = getProto(regex);
+  var descriptor = gOPD$3(proto, "flags");
+  if (!descriptor || descriptor.get !== polyfill2) {
+    defineProperty(proto, "flags", {
+      configurable: true,
+      enumerable: false,
+      get: polyfill2
+    });
+  }
+  return polyfill2;
+};
+var define$2 = defineProperties_1;
+var callBind$2 = callBind$5.exports;
+var implementation$3 = implementation$5.exports;
+var getPolyfill$2 = polyfill$2;
+var shim$2 = shim$3;
+var flagsBound = callBind$2(getPolyfill$2());
+define$2(flagsBound, {
+  getPolyfill: getPolyfill$2,
+  implementation: implementation$3,
+  shim: shim$2
+});
+var regexp_prototype_flags = flagsBound;
+var esGetIterator = { exports: {} };
+var hasSymbols$1 = shams$1;
+var shams = function hasToStringTagShams() {
+  return hasSymbols$1() && !!Symbol.toStringTag;
+};
+var hasToStringTag$8 = shams();
+var callBound$a = callBound$c;
+var $toString$4 = callBound$a("Object.prototype.toString");
+var isStandardArguments = function isArguments2(value) {
+  if (hasToStringTag$8 && value && typeof value === "object" && Symbol.toStringTag in value) {
+    return false;
+  }
+  return $toString$4(value) === "[object Arguments]";
+};
+var isLegacyArguments = function isArguments3(value) {
+  if (isStandardArguments(value)) {
+    return true;
+  }
+  return value !== null && typeof value === "object" && typeof value.length === "number" && value.length >= 0 && $toString$4(value) !== "[object Array]" && $toString$4(value.callee) === "[object Function]";
+};
+var supportsStandardArguments = function() {
+  return isStandardArguments(arguments);
+}();
+isStandardArguments.isLegacyArguments = isLegacyArguments;
+var isArguments$2 = supportsStandardArguments ? isStandardArguments : isLegacyArguments;
+const __viteBrowserExternal = {};
+const __viteBrowserExternal$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: __viteBrowserExternal
+}, Symbol.toStringTag, { value: "Module" }));
+const require$$0$1 = /* @__PURE__ */ getAugmentedNamespace(__viteBrowserExternal$1);
+var hasMap = typeof Map === "function" && Map.prototype;
+var mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, "size") : null;
+var mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === "function" ? mapSizeDescriptor.get : null;
+var mapForEach = hasMap && Map.prototype.forEach;
+var hasSet = typeof Set === "function" && Set.prototype;
+var setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, "size") : null;
+var setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === "function" ? setSizeDescriptor.get : null;
+var setForEach = hasSet && Set.prototype.forEach;
+var hasWeakMap = typeof WeakMap === "function" && WeakMap.prototype;
+var weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;
+var hasWeakSet = typeof WeakSet === "function" && WeakSet.prototype;
+var weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;
+var hasWeakRef = typeof WeakRef === "function" && WeakRef.prototype;
+var weakRefDeref = hasWeakRef ? WeakRef.prototype.deref : null;
+var booleanValueOf = Boolean.prototype.valueOf;
+var objectToString = Object.prototype.toString;
+var functionToString = Function.prototype.toString;
+var $match = String.prototype.match;
+var $slice$2 = String.prototype.slice;
+var $replace = String.prototype.replace;
+var $toUpperCase = String.prototype.toUpperCase;
+var $toLowerCase = String.prototype.toLowerCase;
+var $test = RegExp.prototype.test;
+var $concat = Array.prototype.concat;
+var $join = Array.prototype.join;
+var $arrSlice = Array.prototype.slice;
+var $floor = Math.floor;
+var bigIntValueOf$1 = typeof BigInt === "function" ? BigInt.prototype.valueOf : null;
+var gOPS = Object.getOwnPropertySymbols;
+var symToString = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? Symbol.prototype.toString : null;
+var hasShammedSymbols = typeof Symbol === "function" && typeof Symbol.iterator === "object";
+var toStringTag = typeof Symbol === "function" && Symbol.toStringTag && (typeof Symbol.toStringTag === hasShammedSymbols ? "object" : "symbol") ? Symbol.toStringTag : null;
+var isEnumerable = Object.prototype.propertyIsEnumerable;
+var gPO$1 = (typeof Reflect === "function" ? Reflect.getPrototypeOf : Object.getPrototypeOf) || ([].__proto__ === Array.prototype ? function(O) {
+  return O.__proto__;
+} : null);
+function addNumericSeparator(num, str) {
+  if (num === Infinity || num === -Infinity || num !== num || num && num > -1e3 && num < 1e3 || $test.call(/e/, str)) {
+    return str;
+  }
+  var sepRegex = /[0-9](?=(?:[0-9]{3})+(?![0-9]))/g;
+  if (typeof num === "number") {
+    var int = num < 0 ? -$floor(-num) : $floor(num);
+    if (int !== num) {
+      var intStr = String(int);
+      var dec = $slice$2.call(str, intStr.length + 1);
+      return $replace.call(intStr, sepRegex, "$&_") + "." + $replace.call($replace.call(dec, /([0-9]{3})/g, "$&_"), /_$/, "");
+    }
+  }
+  return $replace.call(str, sepRegex, "$&_");
+}
+var utilInspect = require$$0$1;
+var inspectCustom = utilInspect.custom;
+var inspectSymbol = isSymbol$2(inspectCustom) ? inspectCustom : null;
+var objectInspect = function inspect_(obj, options, depth, seen) {
+  var opts = options || {};
+  if (has$2(opts, "quoteStyle") && (opts.quoteStyle !== "single" && opts.quoteStyle !== "double")) {
+    throw new TypeError('option "quoteStyle" must be "single" or "double"');
+  }
+  if (has$2(opts, "maxStringLength") && (typeof opts.maxStringLength === "number" ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity : opts.maxStringLength !== null)) {
+    throw new TypeError('option "maxStringLength", if provided, must be a positive integer, Infinity, or `null`');
+  }
+  var customInspect = has$2(opts, "customInspect") ? opts.customInspect : true;
+  if (typeof customInspect !== "boolean" && customInspect !== "symbol") {
+    throw new TypeError("option \"customInspect\", if provided, must be `true`, `false`, or `'symbol'`");
+  }
+  if (has$2(opts, "indent") && opts.indent !== null && opts.indent !== "	" && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)) {
+    throw new TypeError('option "indent" must be "\\t", an integer > 0, or `null`');
+  }
+  if (has$2(opts, "numericSeparator") && typeof opts.numericSeparator !== "boolean") {
+    throw new TypeError('option "numericSeparator", if provided, must be `true` or `false`');
+  }
+  var numericSeparator = opts.numericSeparator;
+  if (typeof obj === "undefined") {
+    return "undefined";
+  }
+  if (obj === null) {
+    return "null";
+  }
+  if (typeof obj === "boolean") {
+    return obj ? "true" : "false";
+  }
+  if (typeof obj === "string") {
+    return inspectString(obj, opts);
+  }
+  if (typeof obj === "number") {
+    if (obj === 0) {
+      return Infinity / obj > 0 ? "0" : "-0";
+    }
+    var str = String(obj);
+    return numericSeparator ? addNumericSeparator(obj, str) : str;
+  }
+  if (typeof obj === "bigint") {
+    var bigIntStr = String(obj) + "n";
+    return numericSeparator ? addNumericSeparator(obj, bigIntStr) : bigIntStr;
+  }
+  var maxDepth = typeof opts.depth === "undefined" ? 5 : opts.depth;
+  if (typeof depth === "undefined") {
+    depth = 0;
+  }
+  if (depth >= maxDepth && maxDepth > 0 && typeof obj === "object") {
+    return isArray$2(obj) ? "[Array]" : "[Object]";
+  }
+  var indent = getIndent(opts, depth);
+  if (typeof seen === "undefined") {
+    seen = [];
+  } else if (indexOf(seen, obj) >= 0) {
+    return "[Circular]";
+  }
+  function inspect2(value, from, noIndent) {
+    if (from) {
+      seen = $arrSlice.call(seen);
+      seen.push(from);
+    }
+    if (noIndent) {
+      var newOpts = {
+        depth: opts.depth
+      };
+      if (has$2(opts, "quoteStyle")) {
+        newOpts.quoteStyle = opts.quoteStyle;
+      }
+      return inspect_(value, newOpts, depth + 1, seen);
+    }
+    return inspect_(value, opts, depth + 1, seen);
+  }
+  if (typeof obj === "function" && !isRegExp(obj)) {
+    var name = nameOf(obj);
+    var keys8 = arrObjKeys(obj, inspect2);
+    return "[Function" + (name ? ": " + name : " (anonymous)") + "]" + (keys8.length > 0 ? " { " + $join.call(keys8, ", ") + " }" : "");
+  }
+  if (isSymbol$2(obj)) {
+    var symString = hasShammedSymbols ? $replace.call(String(obj), /^(Symbol\(.*\))_[^)]*$/, "$1") : symToString.call(obj);
+    return typeof obj === "object" && !hasShammedSymbols ? markBoxed(symString) : symString;
+  }
+  if (isElement(obj)) {
+    var s = "<" + $toLowerCase.call(String(obj.nodeName));
+    var attrs = obj.attributes || [];
+    for (var i = 0; i < attrs.length; i++) {
+      s += " " + attrs[i].name + "=" + wrapQuotes(quote(attrs[i].value), "double", opts);
+    }
+    s += ">";
+    if (obj.childNodes && obj.childNodes.length) {
+      s += "...";
+    }
+    s += "</" + $toLowerCase.call(String(obj.nodeName)) + ">";
+    return s;
+  }
+  if (isArray$2(obj)) {
+    if (obj.length === 0) {
+      return "[]";
+    }
+    var xs = arrObjKeys(obj, inspect2);
+    if (indent && !singleLineValues(xs)) {
+      return "[" + indentedJoin(xs, indent) + "]";
+    }
+    return "[ " + $join.call(xs, ", ") + " ]";
+  }
+  if (isError(obj)) {
+    var parts = arrObjKeys(obj, inspect2);
+    if (!("cause" in Error.prototype) && "cause" in obj && !isEnumerable.call(obj, "cause")) {
+      return "{ [" + String(obj) + "] " + $join.call($concat.call("[cause]: " + inspect2(obj.cause), parts), ", ") + " }";
+    }
+    if (parts.length === 0) {
+      return "[" + String(obj) + "]";
+    }
+    return "{ [" + String(obj) + "] " + $join.call(parts, ", ") + " }";
+  }
+  if (typeof obj === "object" && customInspect) {
+    if (inspectSymbol && typeof obj[inspectSymbol] === "function" && utilInspect) {
+      return utilInspect(obj, { depth: maxDepth - depth });
+    } else if (customInspect !== "symbol" && typeof obj.inspect === "function") {
+      return obj.inspect();
+    }
+  }
+  if (isMap$3(obj)) {
+    var mapParts = [];
+    mapForEach.call(obj, function(value, key) {
+      mapParts.push(inspect2(key, obj, true) + " => " + inspect2(value, obj));
+    });
+    return collectionOf("Map", mapSize.call(obj), mapParts, indent);
+  }
+  if (isSet$3(obj)) {
+    var setParts = [];
+    setForEach.call(obj, function(value) {
+      setParts.push(inspect2(value, obj));
+    });
+    return collectionOf("Set", setSize.call(obj), setParts, indent);
+  }
+  if (isWeakMap$1(obj)) {
+    return weakCollectionOf("WeakMap");
+  }
+  if (isWeakSet$1(obj)) {
+    return weakCollectionOf("WeakSet");
+  }
+  if (isWeakRef(obj)) {
+    return weakCollectionOf("WeakRef");
+  }
+  if (isNumber$1(obj)) {
+    return markBoxed(inspect2(Number(obj)));
+  }
+  if (isBigInt$1(obj)) {
+    return markBoxed(inspect2(bigIntValueOf$1.call(obj)));
+  }
+  if (isBoolean$1(obj)) {
+    return markBoxed(booleanValueOf.call(obj));
+  }
+  if (isString$3(obj)) {
+    return markBoxed(inspect2(String(obj)));
+  }
+  if (!isDate$1(obj) && !isRegExp(obj)) {
+    var ys = arrObjKeys(obj, inspect2);
+    var isPlainObject = gPO$1 ? gPO$1(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;
+    var protoTag = obj instanceof Object ? "" : "null prototype";
+    var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? $slice$2.call(toStr$6(obj), 8, -1) : protoTag ? "Object" : "";
+    var constructorTag = isPlainObject || typeof obj.constructor !== "function" ? "" : obj.constructor.name ? obj.constructor.name + " " : "";
+    var tag = constructorTag + (stringTag || protoTag ? "[" + $join.call($concat.call([], stringTag || [], protoTag || []), ": ") + "] " : "");
+    if (ys.length === 0) {
+      return tag + "{}";
+    }
+    if (indent) {
+      return tag + "{" + indentedJoin(ys, indent) + "}";
+    }
+    return tag + "{ " + $join.call(ys, ", ") + " }";
+  }
+  return String(obj);
+};
+function wrapQuotes(s, defaultStyle, opts) {
+  var quoteChar = (opts.quoteStyle || defaultStyle) === "double" ? '"' : "'";
+  return quoteChar + s + quoteChar;
+}
+function quote(s) {
+  return $replace.call(String(s), /"/g, "&quot;");
+}
+function isArray$2(obj) {
+  return toStr$6(obj) === "[object Array]" && (!toStringTag || !(typeof obj === "object" && toStringTag in obj));
+}
+function isDate$1(obj) {
+  return toStr$6(obj) === "[object Date]" && (!toStringTag || !(typeof obj === "object" && toStringTag in obj));
+}
+function isRegExp(obj) {
+  return toStr$6(obj) === "[object RegExp]" && (!toStringTag || !(typeof obj === "object" && toStringTag in obj));
+}
+function isError(obj) {
+  return toStr$6(obj) === "[object Error]" && (!toStringTag || !(typeof obj === "object" && toStringTag in obj));
+}
+function isString$3(obj) {
+  return toStr$6(obj) === "[object String]" && (!toStringTag || !(typeof obj === "object" && toStringTag in obj));
+}
+function isNumber$1(obj) {
+  return toStr$6(obj) === "[object Number]" && (!toStringTag || !(typeof obj === "object" && toStringTag in obj));
+}
+function isBoolean$1(obj) {
+  return toStr$6(obj) === "[object Boolean]" && (!toStringTag || !(typeof obj === "object" && toStringTag in obj));
+}
+function isSymbol$2(obj) {
+  if (hasShammedSymbols) {
+    return obj && typeof obj === "object" && obj instanceof Symbol;
+  }
+  if (typeof obj === "symbol") {
+    return true;
+  }
+  if (!obj || typeof obj !== "object" || !symToString) {
+    return false;
+  }
+  try {
+    symToString.call(obj);
+    return true;
+  } catch (e2) {
+  }
+  return false;
+}
+function isBigInt$1(obj) {
+  if (!obj || typeof obj !== "object" || !bigIntValueOf$1) {
+    return false;
+  }
+  try {
+    bigIntValueOf$1.call(obj);
+    return true;
+  } catch (e2) {
+  }
+  return false;
+}
+var hasOwn = Object.prototype.hasOwnProperty || function(key) {
+  return key in this;
+};
+function has$2(obj, key) {
+  return hasOwn.call(obj, key);
+}
+function toStr$6(obj) {
+  return objectToString.call(obj);
+}
+function nameOf(f2) {
+  if (f2.name) {
+    return f2.name;
+  }
+  var m2 = $match.call(functionToString.call(f2), /^function\s*([\w$]+)/);
+  if (m2) {
+    return m2[1];
+  }
+  return null;
+}
+function indexOf(xs, x) {
+  if (xs.indexOf) {
+    return xs.indexOf(x);
+  }
+  for (var i = 0, l2 = xs.length; i < l2; i++) {
+    if (xs[i] === x) {
+      return i;
+    }
+  }
+  return -1;
+}
+function isMap$3(x) {
+  if (!mapSize || !x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    mapSize.call(x);
+    try {
+      setSize.call(x);
+    } catch (s) {
+      return true;
+    }
+    return x instanceof Map;
+  } catch (e2) {
+  }
+  return false;
+}
+function isWeakMap$1(x) {
+  if (!weakMapHas || !x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    weakMapHas.call(x, weakMapHas);
+    try {
+      weakSetHas.call(x, weakSetHas);
+    } catch (s) {
+      return true;
+    }
+    return x instanceof WeakMap;
+  } catch (e2) {
+  }
+  return false;
+}
+function isWeakRef(x) {
+  if (!weakRefDeref || !x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    weakRefDeref.call(x);
+    return true;
+  } catch (e2) {
+  }
+  return false;
+}
+function isSet$3(x) {
+  if (!setSize || !x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    setSize.call(x);
+    try {
+      mapSize.call(x);
+    } catch (m2) {
+      return true;
+    }
+    return x instanceof Set;
+  } catch (e2) {
+  }
+  return false;
+}
+function isWeakSet$1(x) {
+  if (!weakSetHas || !x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    weakSetHas.call(x, weakSetHas);
+    try {
+      weakMapHas.call(x, weakMapHas);
+    } catch (s) {
+      return true;
+    }
+    return x instanceof WeakSet;
+  } catch (e2) {
+  }
+  return false;
+}
+function isElement(x) {
+  if (!x || typeof x !== "object") {
+    return false;
+  }
+  if (typeof HTMLElement !== "undefined" && x instanceof HTMLElement) {
+    return true;
+  }
+  return typeof x.nodeName === "string" && typeof x.getAttribute === "function";
+}
+function inspectString(str, opts) {
+  if (str.length > opts.maxStringLength) {
+    var remaining = str.length - opts.maxStringLength;
+    var trailer = "... " + remaining + " more character" + (remaining > 1 ? "s" : "");
+    return inspectString($slice$2.call(str, 0, opts.maxStringLength), opts) + trailer;
+  }
+  var s = $replace.call($replace.call(str, /(['\\])/g, "\\$1"), /[\x00-\x1f]/g, lowbyte);
+  return wrapQuotes(s, "single", opts);
+}
+function lowbyte(c2) {
+  var n2 = c2.charCodeAt(0);
+  var x = {
+    8: "b",
+    9: "t",
+    10: "n",
+    12: "f",
+    13: "r"
+  }[n2];
+  if (x) {
+    return "\\" + x;
+  }
+  return "\\x" + (n2 < 16 ? "0" : "") + $toUpperCase.call(n2.toString(16));
+}
+function markBoxed(str) {
+  return "Object(" + str + ")";
+}
+function weakCollectionOf(type2) {
+  return type2 + " { ? }";
+}
+function collectionOf(type2, size, entries6, indent) {
+  var joinedEntries = indent ? indentedJoin(entries6, indent) : $join.call(entries6, ", ");
+  return type2 + " (" + size + ") {" + joinedEntries + "}";
+}
+function singleLineValues(xs) {
+  for (var i = 0; i < xs.length; i++) {
+    if (indexOf(xs[i], "\n") >= 0) {
+      return false;
+    }
+  }
+  return true;
+}
+function getIndent(opts, depth) {
+  var baseIndent;
+  if (opts.indent === "	") {
+    baseIndent = "	";
+  } else if (typeof opts.indent === "number" && opts.indent > 0) {
+    baseIndent = $join.call(Array(opts.indent + 1), " ");
+  } else {
+    return null;
+  }
+  return {
+    base: baseIndent,
+    prev: $join.call(Array(depth + 1), baseIndent)
+  };
+}
+function indentedJoin(xs, indent) {
+  if (xs.length === 0) {
+    return "";
+  }
+  var lineJoiner = "\n" + indent.prev + indent.base;
+  return lineJoiner + $join.call(xs, "," + lineJoiner) + "\n" + indent.prev;
+}
+function arrObjKeys(obj, inspect2) {
+  var isArr = isArray$2(obj);
+  var xs = [];
+  if (isArr) {
+    xs.length = obj.length;
+    for (var i = 0; i < obj.length; i++) {
+      xs[i] = has$2(obj, i) ? inspect2(obj[i], obj) : "";
+    }
+  }
+  var syms = typeof gOPS === "function" ? gOPS(obj) : [];
+  var symMap;
+  if (hasShammedSymbols) {
+    symMap = {};
+    for (var k = 0; k < syms.length; k++) {
+      symMap["$" + syms[k]] = syms[k];
+    }
+  }
+  for (var key in obj) {
+    if (!has$2(obj, key)) {
+      continue;
+    }
+    if (isArr && String(Number(key)) === key && key < obj.length) {
+      continue;
+    }
+    if (hasShammedSymbols && symMap["$" + key] instanceof Symbol) {
+      continue;
+    } else if ($test.call(/[^\w$]/, key)) {
+      xs.push(inspect2(key, obj) + ": " + inspect2(obj[key], obj));
+    } else {
+      xs.push(key + ": " + inspect2(obj[key], obj));
+    }
+  }
+  if (typeof gOPS === "function") {
+    for (var j = 0; j < syms.length; j++) {
+      if (isEnumerable.call(obj, syms[j])) {
+        xs.push("[" + inspect2(syms[j]) + "]: " + inspect2(obj[syms[j]], obj));
+      }
+    }
+  }
+  return xs;
+}
+var GetIntrinsic$6 = getIntrinsic;
+var callBound$9 = callBound$c;
+var inspect = objectInspect;
+var $TypeError$1 = GetIntrinsic$6("%TypeError%");
+var $WeakMap$1 = GetIntrinsic$6("%WeakMap%", true);
+var $Map$3 = GetIntrinsic$6("%Map%", true);
+var $weakMapGet = callBound$9("WeakMap.prototype.get", true);
+var $weakMapSet = callBound$9("WeakMap.prototype.set", true);
+var $weakMapHas = callBound$9("WeakMap.prototype.has", true);
+var $mapGet$1 = callBound$9("Map.prototype.get", true);
+var $mapSet = callBound$9("Map.prototype.set", true);
+var $mapHas$5 = callBound$9("Map.prototype.has", true);
+var listGetNode = function(list, key) {
+  for (var prev = list, curr; (curr = prev.next) !== null; prev = curr) {
+    if (curr.key === key) {
+      prev.next = curr.next;
+      curr.next = list.next;
+      list.next = curr;
+      return curr;
+    }
+  }
+};
+var listGet = function(objects, key) {
+  var node = listGetNode(objects, key);
+  return node && node.value;
+};
+var listSet = function(objects, key, value) {
+  var node = listGetNode(objects, key);
+  if (node) {
+    node.value = value;
+  } else {
+    objects.next = {
+      key,
+      next: objects.next,
+      value
+    };
+  }
+};
+var listHas = function(objects, key) {
+  return !!listGetNode(objects, key);
+};
+var sideChannel = function getSideChannel() {
+  var $wm;
+  var $m;
+  var $o;
+  var channel2 = {
+    assert: function(key) {
+      if (!channel2.has(key)) {
+        throw new $TypeError$1("Side channel does not contain " + inspect(key));
+      }
+    },
+    get: function(key) {
+      if ($WeakMap$1 && key && (typeof key === "object" || typeof key === "function")) {
+        if ($wm) {
+          return $weakMapGet($wm, key);
+        }
+      } else if ($Map$3) {
+        if ($m) {
+          return $mapGet$1($m, key);
+        }
+      } else {
+        if ($o) {
+          return listGet($o, key);
+        }
+      }
+    },
+    has: function(key) {
+      if ($WeakMap$1 && key && (typeof key === "object" || typeof key === "function")) {
+        if ($wm) {
+          return $weakMapHas($wm, key);
+        }
+      } else if ($Map$3) {
+        if ($m) {
+          return $mapHas$5($m, key);
+        }
+      } else {
+        if ($o) {
+          return listHas($o, key);
+        }
+      }
+      return false;
+    },
+    set: function(key, value) {
+      if ($WeakMap$1 && key && (typeof key === "object" || typeof key === "function")) {
+        if (!$wm) {
+          $wm = new $WeakMap$1();
+        }
+        $weakMapSet($wm, key, value);
+      } else if ($Map$3) {
+        if (!$m) {
+          $m = new $Map$3();
+        }
+        $mapSet($m, key, value);
+      } else {
+        if (!$o) {
+          $o = { key: {}, next: null };
+        }
+        listSet($o, key, value);
+      }
+    }
+  };
+  return channel2;
+};
+var GetIntrinsic$5 = getIntrinsic;
+var has$1 = src;
+var channel = sideChannel();
+var $TypeError = GetIntrinsic$5("%TypeError%");
+var SLOT$1 = {
+  assert: function(O, slot) {
+    if (!O || typeof O !== "object" && typeof O !== "function") {
+      throw new $TypeError("`O` is not an object");
+    }
+    if (typeof slot !== "string") {
+      throw new $TypeError("`slot` must be a string");
+    }
+    channel.assert(O);
+    if (!SLOT$1.has(O, slot)) {
+      throw new $TypeError("`slot` is not present on `O`");
+    }
+  },
+  get: function(O, slot) {
+    if (!O || typeof O !== "object" && typeof O !== "function") {
+      throw new $TypeError("`O` is not an object");
+    }
+    if (typeof slot !== "string") {
+      throw new $TypeError("`slot` must be a string");
+    }
+    var slots = channel.get(O);
+    return slots && slots["$" + slot];
+  },
+  has: function(O, slot) {
+    if (!O || typeof O !== "object" && typeof O !== "function") {
+      throw new $TypeError("`O` is not an object");
+    }
+    if (typeof slot !== "string") {
+      throw new $TypeError("`slot` must be a string");
+    }
+    var slots = channel.get(O);
+    return !!slots && has$1(slots, "$" + slot);
+  },
+  set: function(O, slot, V) {
+    if (!O || typeof O !== "object" && typeof O !== "function") {
+      throw new $TypeError("`O` is not an object");
+    }
+    if (typeof slot !== "string") {
+      throw new $TypeError("`slot` must be a string");
+    }
+    var slots = channel.get(O);
+    if (!slots) {
+      slots = {};
+      channel.set(O, slots);
+    }
+    slots["$" + slot] = V;
+  }
+};
+if (Object.freeze) {
+  Object.freeze(SLOT$1);
+}
+var internalSlot = SLOT$1;
+var SLOT = internalSlot;
+var $SyntaxError = SyntaxError;
+var $StopIteration = typeof StopIteration === "object" ? StopIteration : null;
+var stopIterationIterator = function getStopIterationIterator(origIterator) {
+  if (!$StopIteration) {
+    throw new $SyntaxError("this environment lacks StopIteration");
+  }
+  SLOT.set(origIterator, "[[Done]]", false);
+  var siIterator = {
+    next: function next() {
+      var iterator = SLOT.get(this, "[[Iterator]]");
+      var done = SLOT.get(iterator, "[[Done]]");
+      try {
+        return {
+          done,
+          value: done ? void 0 : iterator.next()
+        };
+      } catch (e2) {
+        SLOT.set(iterator, "[[Done]]", true);
+        if (e2 !== $StopIteration) {
+          throw e2;
+        }
+        return {
+          done: true,
+          value: void 0
+        };
+      }
+    }
+  };
+  SLOT.set(siIterator, "[[Iterator]]", origIterator);
+  return siIterator;
+};
+var isarray$1;
+var hasRequiredIsarray;
+function requireIsarray() {
+  if (hasRequiredIsarray)
+    return isarray$1;
+  hasRequiredIsarray = 1;
+  var toString2 = {}.toString;
+  isarray$1 = Array.isArray || function(arr) {
+    return toString2.call(arr) == "[object Array]";
+  };
+  return isarray$1;
+}
+var strValue = String.prototype.valueOf;
+var tryStringObject = function tryStringObject2(value) {
+  try {
+    strValue.call(value);
+    return true;
+  } catch (e2) {
+    return false;
+  }
+};
+var toStr$5 = Object.prototype.toString;
+var strClass = "[object String]";
+var hasToStringTag$7 = shams();
+var isString$2 = function isString(value) {
+  if (typeof value === "string") {
+    return true;
+  }
+  if (typeof value !== "object") {
+    return false;
+  }
+  return hasToStringTag$7 ? tryStringObject(value) : toStr$5.call(value) === strClass;
+};
+var $Map$2 = typeof Map === "function" && Map.prototype ? Map : null;
+var $Set$3 = typeof Set === "function" && Set.prototype ? Set : null;
+var exported$2;
+if (!$Map$2) {
+  exported$2 = function isMap3(x) {
+    return false;
+  };
+}
+var $mapHas$4 = $Map$2 ? Map.prototype.has : null;
+var $setHas$4 = $Set$3 ? Set.prototype.has : null;
+if (!exported$2 && !$mapHas$4) {
+  exported$2 = function isMap3(x) {
+    return false;
+  };
+}
+var isMap$2 = exported$2 || function isMap(x) {
+  if (!x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    $mapHas$4.call(x);
+    if ($setHas$4) {
+      try {
+        $setHas$4.call(x);
+      } catch (e2) {
+        return true;
+      }
+    }
+    return x instanceof $Map$2;
+  } catch (e2) {
+  }
+  return false;
+};
+var $Map$1 = typeof Map === "function" && Map.prototype ? Map : null;
+var $Set$2 = typeof Set === "function" && Set.prototype ? Set : null;
+var exported$1;
+if (!$Set$2) {
+  exported$1 = function isSet3(x) {
+    return false;
+  };
+}
+var $mapHas$3 = $Map$1 ? Map.prototype.has : null;
+var $setHas$3 = $Set$2 ? Set.prototype.has : null;
+if (!exported$1 && !$setHas$3) {
+  exported$1 = function isSet3(x) {
+    return false;
+  };
+}
+var isSet$2 = exported$1 || function isSet(x) {
+  if (!x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    $setHas$3.call(x);
+    if ($mapHas$3) {
+      try {
+        $mapHas$3.call(x);
+      } catch (e2) {
+        return true;
+      }
+    }
+    return x instanceof $Set$2;
+  } catch (e2) {
+  }
+  return false;
+};
+var isArguments$1 = isArguments$2;
+var getStopIterationIterator2 = stopIterationIterator;
+if (hasSymbols$5() || shams$1()) {
+  var $iterator = Symbol.iterator;
+  esGetIterator.exports = function getIterator2(iterable) {
+    if (iterable != null && typeof iterable[$iterator] !== "undefined") {
+      return iterable[$iterator]();
+    }
+    if (isArguments$1(iterable)) {
+      return Array.prototype[$iterator].call(iterable);
+    }
+  };
+} else {
+  var isArray$1 = requireIsarray();
+  var isString$1 = isString$2;
+  var GetIntrinsic$4 = getIntrinsic;
+  var $Map = GetIntrinsic$4("%Map%", true);
+  var $Set$1 = GetIntrinsic$4("%Set%", true);
+  var callBound$8 = callBound$c;
+  var $arrayPush = callBound$8("Array.prototype.push");
+  var $charCodeAt = callBound$8("String.prototype.charCodeAt");
+  var $stringSlice = callBound$8("String.prototype.slice");
+  var advanceStringIndex = function advanceStringIndex2(S, index2) {
+    var length = S.length;
+    if (index2 + 1 >= length) {
+      return index2 + 1;
+    }
+    var first = $charCodeAt(S, index2);
+    if (first < 55296 || first > 56319) {
+      return index2 + 1;
+    }
+    var second = $charCodeAt(S, index2 + 1);
+    if (second < 56320 || second > 57343) {
+      return index2 + 1;
+    }
+    return index2 + 2;
+  };
+  var getArrayIterator = function getArrayIterator2(arraylike) {
+    var i = 0;
+    return {
+      next: function next() {
+        var done = i >= arraylike.length;
+        var value;
+        if (!done) {
+          value = arraylike[i];
+          i += 1;
+        }
+        return {
+          done,
+          value
+        };
+      }
+    };
+  };
+  var getNonCollectionIterator = function getNonCollectionIterator2(iterable, noPrimordialCollections) {
+    if (isArray$1(iterable) || isArguments$1(iterable)) {
+      return getArrayIterator(iterable);
+    }
+    if (isString$1(iterable)) {
+      var i = 0;
+      return {
+        next: function next() {
+          var nextIndex = advanceStringIndex(iterable, i);
+          var value = $stringSlice(iterable, i, nextIndex);
+          i = nextIndex;
+          return {
+            done: nextIndex > iterable.length,
+            value
+          };
+        }
+      };
+    }
+    if (noPrimordialCollections && typeof iterable["_es6-shim iterator_"] !== "undefined") {
+      return iterable["_es6-shim iterator_"]();
+    }
+  };
+  if (!$Map && !$Set$1) {
+    esGetIterator.exports = function getIterator2(iterable) {
+      if (iterable != null) {
+        return getNonCollectionIterator(iterable, true);
+      }
+    };
+  } else {
+    var isMap$1 = isMap$2;
+    var isSet$1 = isSet$2;
+    var $mapForEach = callBound$8("Map.prototype.forEach", true);
+    var $setForEach = callBound$8("Set.prototype.forEach", true);
+    if (typeof process === "undefined" || !process.versions || !process.versions.node) {
+      var $mapIterator = callBound$8("Map.prototype.iterator", true);
+      var $setIterator = callBound$8("Set.prototype.iterator", true);
+    }
+    var $mapAtAtIterator = callBound$8("Map.prototype.@@iterator", true) || callBound$8("Map.prototype._es6-shim iterator_", true);
+    var $setAtAtIterator = callBound$8("Set.prototype.@@iterator", true) || callBound$8("Set.prototype._es6-shim iterator_", true);
+    var getCollectionIterator = function getCollectionIterator2(iterable) {
+      if (isMap$1(iterable)) {
+        if ($mapIterator) {
+          return getStopIterationIterator2($mapIterator(iterable));
+        }
+        if ($mapAtAtIterator) {
+          return $mapAtAtIterator(iterable);
+        }
+        if ($mapForEach) {
+          var entries6 = [];
+          $mapForEach(iterable, function(v2, k) {
+            $arrayPush(entries6, [k, v2]);
+          });
+          return getArrayIterator(entries6);
+        }
+      }
+      if (isSet$1(iterable)) {
+        if ($setIterator) {
+          return getStopIterationIterator2($setIterator(iterable));
+        }
+        if ($setAtAtIterator) {
+          return $setAtAtIterator(iterable);
+        }
+        if ($setForEach) {
+          var values6 = [];
+          $setForEach(iterable, function(v2) {
+            $arrayPush(values6, v2);
+          });
+          return getArrayIterator(values6);
+        }
+      }
+    };
+    esGetIterator.exports = function getIterator2(iterable) {
+      return getCollectionIterator(iterable) || getNonCollectionIterator(iterable);
+    };
+  }
+}
+var numberIsNaN = function(value) {
+  return value !== value;
+};
+var implementation$2 = function is(a, b2) {
+  if (a === 0 && b2 === 0) {
+    return 1 / a === 1 / b2;
+  }
+  if (a === b2) {
+    return true;
+  }
+  if (numberIsNaN(a) && numberIsNaN(b2)) {
+    return true;
+  }
+  return false;
+};
+var implementation$1 = implementation$2;
+var polyfill$1 = function getPolyfill3() {
+  return typeof Object.is === "function" ? Object.is : implementation$1;
+};
+var getPolyfill$1 = polyfill$1;
+var define$1 = defineProperties_1;
+var shim$1 = function shimObjectIs() {
+  var polyfill2 = getPolyfill$1();
+  define$1(Object, { is: polyfill2 }, {
+    is: function testObjectIs() {
+      return Object.is !== polyfill2;
+    }
+  });
+  return polyfill2;
+};
+var define = defineProperties_1;
+var callBind$1 = callBind$5.exports;
+var implementation = implementation$2;
+var getPolyfill4 = polyfill$1;
+var shim = shim$1;
+var polyfill = callBind$1(getPolyfill4(), Object);
+define(polyfill, {
+  getPolyfill: getPolyfill4,
+  implementation,
+  shim
+});
+var objectIs = polyfill;
+var toString = {}.toString;
+var isarray = Array.isArray || function(arr) {
+  return toString.call(arr) == "[object Array]";
+};
+var fnToStr = Function.prototype.toString;
+var reflectApply = typeof Reflect === "object" && Reflect !== null && Reflect.apply;
+var badArrayLike;
+var isCallableMarker;
+if (typeof reflectApply === "function" && typeof Object.defineProperty === "function") {
+  try {
+    badArrayLike = Object.defineProperty({}, "length", {
+      get: function() {
+        throw isCallableMarker;
+      }
+    });
+    isCallableMarker = {};
+    reflectApply(function() {
+      throw 42;
+    }, null, badArrayLike);
+  } catch (_) {
+    if (_ !== isCallableMarker) {
+      reflectApply = null;
+    }
+  }
+} else {
+  reflectApply = null;
+}
+var constructorRegex = /^\s*class\b/;
+var isES6ClassFn = function isES6ClassFunction(value) {
+  try {
+    var fnStr = fnToStr.call(value);
+    return constructorRegex.test(fnStr);
+  } catch (e2) {
+    return false;
+  }
+};
+var tryFunctionObject = function tryFunctionToStr(value) {
+  try {
+    if (isES6ClassFn(value)) {
+      return false;
+    }
+    fnToStr.call(value);
+    return true;
+  } catch (e2) {
+    return false;
+  }
+};
+var toStr$4 = Object.prototype.toString;
+var objectClass = "[object Object]";
+var fnClass = "[object Function]";
+var genClass = "[object GeneratorFunction]";
+var ddaClass = "[object HTMLAllCollection]";
+var ddaClass2 = "[object HTML document.all class]";
+var ddaClass3 = "[object HTMLCollection]";
+var hasToStringTag$6 = typeof Symbol === "function" && !!Symbol.toStringTag;
+var isIE68 = !(0 in [,]);
+var isDDA = function isDocumentDotAll() {
+  return false;
+};
+if (typeof document === "object") {
+  var all = document.all;
+  if (toStr$4.call(all) === toStr$4.call(document.all)) {
+    isDDA = function isDocumentDotAll2(value) {
+      if ((isIE68 || !value) && (typeof value === "undefined" || typeof value === "object")) {
+        try {
+          var str = toStr$4.call(value);
+          return (str === ddaClass || str === ddaClass2 || str === ddaClass3 || str === objectClass) && value("") == null;
+        } catch (e2) {
+        }
+      }
+      return false;
+    };
+  }
+}
+var isCallable$1 = reflectApply ? function isCallable(value) {
+  if (isDDA(value)) {
+    return true;
+  }
+  if (!value) {
+    return false;
+  }
+  if (typeof value !== "function" && typeof value !== "object") {
+    return false;
+  }
+  try {
+    reflectApply(value, null, badArrayLike);
+  } catch (e2) {
+    if (e2 !== isCallableMarker) {
+      return false;
+    }
+  }
+  return !isES6ClassFn(value) && tryFunctionObject(value);
+} : function isCallable2(value) {
+  if (isDDA(value)) {
+    return true;
+  }
+  if (!value) {
+    return false;
+  }
+  if (typeof value !== "function" && typeof value !== "object") {
+    return false;
+  }
+  if (hasToStringTag$6) {
+    return tryFunctionObject(value);
+  }
+  if (isES6ClassFn(value)) {
+    return false;
+  }
+  var strClass2 = toStr$4.call(value);
+  if (strClass2 !== fnClass && strClass2 !== genClass && !/^\[object HTML/.test(strClass2)) {
+    return false;
+  }
+  return tryFunctionObject(value);
+};
+var isCallable3 = isCallable$1;
+var toStr$3 = Object.prototype.toString;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var forEachArray = function forEachArray2(array, iterator, receiver) {
+  for (var i = 0, len = array.length; i < len; i++) {
+    if (hasOwnProperty.call(array, i)) {
+      if (receiver == null) {
+        iterator(array[i], i, array);
+      } else {
+        iterator.call(receiver, array[i], i, array);
+      }
+    }
+  }
+};
+var forEachString = function forEachString2(string, iterator, receiver) {
+  for (var i = 0, len = string.length; i < len; i++) {
+    if (receiver == null) {
+      iterator(string.charAt(i), i, string);
+    } else {
+      iterator.call(receiver, string.charAt(i), i, string);
+    }
+  }
+};
+var forEachObject = function forEachObject2(object, iterator, receiver) {
+  for (var k in object) {
+    if (hasOwnProperty.call(object, k)) {
+      if (receiver == null) {
+        iterator(object[k], k, object);
+      } else {
+        iterator.call(receiver, object[k], k, object);
+      }
+    }
+  }
+};
+var forEach$2 = function forEach4(list, iterator, thisArg) {
+  if (!isCallable3(iterator)) {
+    throw new TypeError("iterator must be a function");
+  }
+  var receiver;
+  if (arguments.length >= 3) {
+    receiver = thisArg;
+  }
+  if (toStr$3.call(list) === "[object Array]") {
+    forEachArray(list, iterator, receiver);
+  } else if (typeof list === "string") {
+    forEachString(list, iterator, receiver);
+  } else {
+    forEachObject(list, iterator, receiver);
+  }
+};
+var forEach_1 = forEach$2;
+var possibleNames = [
+  "BigInt64Array",
+  "BigUint64Array",
+  "Float32Array",
+  "Float64Array",
+  "Int16Array",
+  "Int32Array",
+  "Int8Array",
+  "Uint16Array",
+  "Uint32Array",
+  "Uint8Array",
+  "Uint8ClampedArray"
+];
+var g$2 = typeof globalThis === "undefined" ? commonjsGlobal : globalThis;
+var availableTypedArrays$2 = function availableTypedArrays() {
+  var out = [];
+  for (var i = 0; i < possibleNames.length; i++) {
+    if (typeof g$2[possibleNames[i]] === "function") {
+      out[out.length] = possibleNames[i];
+    }
+  }
+  return out;
+};
+var GetIntrinsic$3 = getIntrinsic;
+var $gOPD = GetIntrinsic$3("%Object.getOwnPropertyDescriptor%", true);
+if ($gOPD) {
+  try {
+    $gOPD([], "length");
+  } catch (e2) {
+    $gOPD = null;
+  }
+}
+var gopd = $gOPD;
+var forEach$1 = forEach_1;
+var availableTypedArrays$1 = availableTypedArrays$2;
+var callBound$7 = callBound$c;
+var $toString$3 = callBound$7("Object.prototype.toString");
+var hasToStringTag$5 = shams();
+var gOPD$2 = gopd;
+var g$1 = typeof globalThis === "undefined" ? commonjsGlobal : globalThis;
+var typedArrays$1 = availableTypedArrays$1();
+var $indexOf = callBound$7("Array.prototype.indexOf", true) || function indexOf2(array, value) {
+  for (var i = 0; i < array.length; i += 1) {
+    if (array[i] === value) {
+      return i;
+    }
+  }
+  return -1;
+};
+var $slice$1 = callBound$7("String.prototype.slice");
+var toStrTags$1 = {};
+var getPrototypeOf$1 = Object.getPrototypeOf;
+if (hasToStringTag$5 && gOPD$2 && getPrototypeOf$1) {
+  forEach$1(typedArrays$1, function(typedArray) {
+    var arr = new g$1[typedArray]();
+    if (Symbol.toStringTag in arr) {
+      var proto = getPrototypeOf$1(arr);
+      var descriptor = gOPD$2(proto, Symbol.toStringTag);
+      if (!descriptor) {
+        var superProto = getPrototypeOf$1(proto);
+        descriptor = gOPD$2(superProto, Symbol.toStringTag);
+      }
+      toStrTags$1[typedArray] = descriptor.get;
+    }
+  });
+}
+var tryTypedArrays$1 = function tryAllTypedArrays(value) {
+  var anyTrue = false;
+  forEach$1(toStrTags$1, function(getter, typedArray) {
+    if (!anyTrue) {
+      try {
+        anyTrue = getter.call(value) === typedArray;
+      } catch (e2) {
+      }
+    }
+  });
+  return anyTrue;
+};
+var isTypedArray$2 = function isTypedArray(value) {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+  if (!hasToStringTag$5 || !(Symbol.toStringTag in value)) {
+    var tag = $slice$1($toString$3(value), 8, -1);
+    return $indexOf(typedArrays$1, tag) > -1;
+  }
+  if (!gOPD$2) {
+    return false;
+  }
+  return tryTypedArrays$1(value);
+};
+var callBind = callBind$5.exports;
+var callBound$6 = callBound$c;
+var GetIntrinsic$2 = getIntrinsic;
+var isTypedArray$1 = isTypedArray$2;
+var $ArrayBuffer = GetIntrinsic$2("ArrayBuffer", true);
+var $Float32Array = GetIntrinsic$2("Float32Array", true);
+var $byteLength$1 = callBound$6("ArrayBuffer.prototype.byteLength", true);
+var abSlice = $ArrayBuffer && !$byteLength$1 && new $ArrayBuffer().slice;
+var $abSlice = abSlice && callBind(abSlice);
+var isArrayBuffer$1 = $byteLength$1 || $abSlice ? function isArrayBuffer(obj) {
+  if (!obj || typeof obj !== "object") {
+    return false;
+  }
+  try {
+    if ($byteLength$1) {
+      $byteLength$1(obj);
+    } else {
+      $abSlice(obj, 0);
+    }
+    return true;
+  } catch (e2) {
+    return false;
+  }
+} : $Float32Array ? function IsArrayBuffer(obj) {
+  try {
+    return new $Float32Array(obj).buffer === obj && !isTypedArray$1(obj);
+  } catch (e2) {
+    return false;
+  }
+} : function isArrayBuffer2(obj) {
+  return false;
+};
+var getDay = Date.prototype.getDay;
+var tryDateObject = function tryDateGetDayCall(value) {
+  try {
+    getDay.call(value);
+    return true;
+  } catch (e2) {
+    return false;
+  }
+};
+var toStr$2 = Object.prototype.toString;
+var dateClass = "[object Date]";
+var hasToStringTag$4 = shams();
+var isDateObject = function isDateObject2(value) {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+  return hasToStringTag$4 ? tryDateObject(value) : toStr$2.call(value) === dateClass;
+};
+var callBound$5 = callBound$c;
+var hasToStringTag$3 = shams();
+var has4;
+var $exec;
+var isRegexMarker;
+var badStringifier;
+if (hasToStringTag$3) {
+  has4 = callBound$5("Object.prototype.hasOwnProperty");
+  $exec = callBound$5("RegExp.prototype.exec");
+  isRegexMarker = {};
+  var throwRegexMarker = function() {
+    throw isRegexMarker;
+  };
+  badStringifier = {
+    toString: throwRegexMarker,
+    valueOf: throwRegexMarker
+  };
+  if (typeof Symbol.toPrimitive === "symbol") {
+    badStringifier[Symbol.toPrimitive] = throwRegexMarker;
+  }
+}
+var $toString$2 = callBound$5("Object.prototype.toString");
+var gOPD$1 = Object.getOwnPropertyDescriptor;
+var regexClass = "[object RegExp]";
+var isRegex$1 = hasToStringTag$3 ? function isRegex(value) {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+  var descriptor = gOPD$1(value, "lastIndex");
+  var hasLastIndexDataProperty = descriptor && has4(descriptor, "value");
+  if (!hasLastIndexDataProperty) {
+    return false;
+  }
+  try {
+    $exec(value, badStringifier);
+  } catch (e2) {
+    return e2 === isRegexMarker;
+  }
+} : function isRegex2(value) {
+  if (!value || typeof value !== "object" && typeof value !== "function") {
+    return false;
+  }
+  return $toString$2(value) === regexClass;
+};
+var callBound$4 = callBound$c;
+var $byteLength = callBound$4("SharedArrayBuffer.prototype.byteLength", true);
+var isSharedArrayBuffer$1 = $byteLength ? function isSharedArrayBuffer(obj) {
+  if (!obj || typeof obj !== "object") {
+    return false;
+  }
+  try {
+    $byteLength(obj);
+    return true;
+  } catch (e2) {
+    return false;
+  }
+} : function isSharedArrayBuffer2(obj) {
+  return false;
+};
+var numToStr = Number.prototype.toString;
+var tryNumberObject = function tryNumberObject2(value) {
+  try {
+    numToStr.call(value);
+    return true;
+  } catch (e2) {
+    return false;
+  }
+};
+var toStr$1 = Object.prototype.toString;
+var numClass = "[object Number]";
+var hasToStringTag$2 = shams();
+var isNumberObject = function isNumberObject2(value) {
+  if (typeof value === "number") {
+    return true;
+  }
+  if (typeof value !== "object") {
+    return false;
+  }
+  return hasToStringTag$2 ? tryNumberObject(value) : toStr$1.call(value) === numClass;
+};
+var callBound$3 = callBound$c;
+var $boolToStr = callBound$3("Boolean.prototype.toString");
+var $toString$1 = callBound$3("Object.prototype.toString");
+var tryBooleanObject = function booleanBrandCheck(value) {
+  try {
+    $boolToStr(value);
+    return true;
+  } catch (e2) {
+    return false;
+  }
+};
+var boolClass = "[object Boolean]";
+var hasToStringTag$1 = shams();
+var isBooleanObject = function isBoolean(value) {
+  if (typeof value === "boolean") {
+    return true;
+  }
+  if (value === null || typeof value !== "object") {
+    return false;
+  }
+  return hasToStringTag$1 && Symbol.toStringTag in value ? tryBooleanObject(value) : $toString$1(value) === boolClass;
+};
+var isSymbol$1 = { exports: {} };
+var toStr = Object.prototype.toString;
+var hasSymbols2 = hasSymbols$5();
+if (hasSymbols2) {
+  var symToStr = Symbol.prototype.toString;
+  var symStringRegex = /^Symbol\(.*\)$/;
+  var isSymbolObject = function isRealSymbolObject(value) {
+    if (typeof value.valueOf() !== "symbol") {
+      return false;
+    }
+    return symStringRegex.test(symToStr.call(value));
+  };
+  isSymbol$1.exports = function isSymbol2(value) {
+    if (typeof value === "symbol") {
+      return true;
+    }
+    if (toStr.call(value) !== "[object Symbol]") {
+      return false;
+    }
+    try {
+      return isSymbolObject(value);
+    } catch (e2) {
+      return false;
+    }
+  };
+} else {
+  isSymbol$1.exports = function isSymbol2(value) {
+    return false;
+  };
+}
+var isBigint = { exports: {} };
+var $BigInt = typeof BigInt !== "undefined" && BigInt;
+var hasBigints = function hasNativeBigInts() {
+  return typeof $BigInt === "function" && typeof BigInt === "function" && typeof $BigInt(42) === "bigint" && typeof BigInt(42) === "bigint";
+};
+var hasBigInts = hasBigints();
+if (hasBigInts) {
+  var bigIntValueOf = BigInt.prototype.valueOf;
+  var tryBigInt = function tryBigIntObject(value) {
+    try {
+      bigIntValueOf.call(value);
+      return true;
+    } catch (e2) {
+    }
+    return false;
+  };
+  isBigint.exports = function isBigInt2(value) {
+    if (value === null || typeof value === "undefined" || typeof value === "boolean" || typeof value === "string" || typeof value === "number" || typeof value === "symbol" || typeof value === "function") {
+      return false;
+    }
+    if (typeof value === "bigint") {
+      return true;
+    }
+    return tryBigInt(value);
+  };
+} else {
+  isBigint.exports = function isBigInt2(value) {
+    return false;
+  };
+}
+var isString2 = isString$2;
+var isNumber = isNumberObject;
+var isBoolean2 = isBooleanObject;
+var isSymbol = isSymbol$1.exports;
+var isBigInt = isBigint.exports;
+var whichBoxedPrimitive$1 = function whichBoxedPrimitive(value) {
+  if (value == null || typeof value !== "object" && typeof value !== "function") {
+    return null;
+  }
+  if (isString2(value)) {
+    return "String";
+  }
+  if (isNumber(value)) {
+    return "Number";
+  }
+  if (isBoolean2(value)) {
+    return "Boolean";
+  }
+  if (isSymbol(value)) {
+    return "Symbol";
+  }
+  if (isBigInt(value)) {
+    return "BigInt";
+  }
+};
+var $WeakMap = typeof WeakMap === "function" && WeakMap.prototype ? WeakMap : null;
+var $WeakSet$1 = typeof WeakSet === "function" && WeakSet.prototype ? WeakSet : null;
+var exported;
+if (!$WeakMap) {
+  exported = function isWeakMap3(x) {
+    return false;
+  };
+}
+var $mapHas$2 = $WeakMap ? $WeakMap.prototype.has : null;
+var $setHas$2 = $WeakSet$1 ? $WeakSet$1.prototype.has : null;
+if (!exported && !$mapHas$2) {
+  exported = function isWeakMap3(x) {
+    return false;
+  };
+}
+var isWeakmap = exported || function isWeakMap(x) {
+  if (!x || typeof x !== "object") {
+    return false;
+  }
+  try {
+    $mapHas$2.call(x, $mapHas$2);
+    if ($setHas$2) {
+      try {
+        $setHas$2.call(x, $setHas$2);
+      } catch (e2) {
+        return true;
+      }
+    }
+    return x instanceof $WeakMap;
+  } catch (e2) {
+  }
+  return false;
+};
+var isWeakset = { exports: {} };
+var GetIntrinsic$1 = getIntrinsic;
+var callBound$2 = callBound$c;
+var $WeakSet = GetIntrinsic$1("%WeakSet%", true);
+var $setHas$1 = callBound$2("WeakSet.prototype.has", true);
+if ($setHas$1) {
+  var $mapHas$1 = callBound$2("WeakMap.prototype.has", true);
+  isWeakset.exports = function isWeakSet2(x) {
+    if (!x || typeof x !== "object") {
+      return false;
+    }
+    try {
+      $setHas$1(x, $setHas$1);
+      if ($mapHas$1) {
+        try {
+          $mapHas$1(x, $mapHas$1);
+        } catch (e2) {
+          return true;
+        }
+      }
+      return x instanceof $WeakSet;
+    } catch (e2) {
+    }
+    return false;
+  };
+} else {
+  isWeakset.exports = function isWeakSet2(x) {
+    return false;
+  };
+}
+var isMap2 = isMap$2;
+var isSet2 = isSet$2;
+var isWeakMap2 = isWeakmap;
+var isWeakSet = isWeakset.exports;
+var whichCollection$1 = function whichCollection(value) {
+  if (value && typeof value === "object") {
+    if (isMap2(value)) {
+      return "Map";
+    }
+    if (isSet2(value)) {
+      return "Set";
+    }
+    if (isWeakMap2(value)) {
+      return "WeakMap";
+    }
+    if (isWeakSet(value)) {
+      return "WeakSet";
+    }
+  }
+  return false;
+};
+var forEach5 = forEach_1;
+var availableTypedArrays2 = availableTypedArrays$2;
+var callBound$1 = callBound$c;
+var gOPD = gopd;
+var $toString = callBound$1("Object.prototype.toString");
+var hasToStringTag = shams();
+var g = typeof globalThis === "undefined" ? commonjsGlobal : globalThis;
+var typedArrays = availableTypedArrays2();
+var $slice = callBound$1("String.prototype.slice");
+var toStrTags = {};
+var getPrototypeOf = Object.getPrototypeOf;
+if (hasToStringTag && gOPD && getPrototypeOf) {
+  forEach5(typedArrays, function(typedArray) {
+    if (typeof g[typedArray] === "function") {
+      var arr = new g[typedArray]();
+      if (Symbol.toStringTag in arr) {
+        var proto = getPrototypeOf(arr);
+        var descriptor = gOPD(proto, Symbol.toStringTag);
+        if (!descriptor) {
+          var superProto = getPrototypeOf(proto);
+          descriptor = gOPD(superProto, Symbol.toStringTag);
+        }
+        toStrTags[typedArray] = descriptor.get;
+      }
+    }
+  });
+}
+var tryTypedArrays = function tryAllTypedArrays2(value) {
+  var foundName = false;
+  forEach5(toStrTags, function(getter, typedArray) {
+    if (!foundName) {
+      try {
+        var name = getter.call(value);
+        if (name === typedArray) {
+          foundName = name;
+        }
+      } catch (e2) {
+      }
+    }
+  });
+  return foundName;
+};
+var isTypedArray2 = isTypedArray$2;
+var whichTypedArray$1 = function whichTypedArray(value) {
+  if (!isTypedArray2(value)) {
+    return false;
+  }
+  if (!hasToStringTag || !(Symbol.toStringTag in value)) {
+    return $slice($toString(value), 8, -1);
+  }
+  return tryTypedArrays(value);
+};
+var assign3 = object_assign;
+var callBound = callBound$c;
+var flags = regexp_prototype_flags;
+var GetIntrinsic2 = getIntrinsic;
+var getIterator = esGetIterator.exports;
+var getSideChannel2 = sideChannel;
+var is2 = objectIs;
+var isArguments4 = isArguments$2;
+var isArray = isarray;
+var isArrayBuffer3 = isArrayBuffer$1;
+var isDate = isDateObject;
+var isRegex3 = isRegex$1;
+var isSharedArrayBuffer3 = isSharedArrayBuffer$1;
+var objectKeys = objectKeys$2;
+var whichBoxedPrimitive2 = whichBoxedPrimitive$1;
+var whichCollection2 = whichCollection$1;
+var whichTypedArray2 = whichTypedArray$1;
+var byteLength = callBound("ArrayBuffer.prototype.byteLength", true) || function byteLength2(ab) {
+  return ab.byteLength;
+};
+var sabByteLength = callBound("SharedArrayBuffer.prototype.byteLength", true);
+var $getTime = callBound("Date.prototype.getTime");
+var gPO = Object.getPrototypeOf;
+var $objToString = callBound("Object.prototype.toString");
+var $Set = GetIntrinsic2("%Set%", true);
+var $mapHas = callBound("Map.prototype.has", true);
+var $mapGet = callBound("Map.prototype.get", true);
+var $mapSize = callBound("Map.prototype.size", true);
+var $setAdd = callBound("Set.prototype.add", true);
+var $setDelete = callBound("Set.prototype.delete", true);
+var $setHas = callBound("Set.prototype.has", true);
+var $setSize = callBound("Set.prototype.size", true);
+function setHasEqualElement(set, val1, opts, channel2) {
+  var i = getIterator(set);
+  var result;
+  while ((result = i.next()) && !result.done) {
+    if (internalDeepEqual(val1, result.value, opts, channel2)) {
+      $setDelete(set, result.value);
+      return true;
+    }
+  }
+  return false;
+}
+function findLooseMatchingPrimitives(prim) {
+  if (typeof prim === "undefined") {
+    return null;
+  }
+  if (typeof prim === "object") {
+    return void 0;
+  }
+  if (typeof prim === "symbol") {
+    return false;
+  }
+  if (typeof prim === "string" || typeof prim === "number") {
+    return +prim === +prim;
+  }
+  return true;
+}
+function mapMightHaveLoosePrim(a, b2, prim, item, opts, channel2) {
+  var altValue = findLooseMatchingPrimitives(prim);
+  if (altValue != null) {
+    return altValue;
+  }
+  var curB = $mapGet(b2, altValue);
+  var looseOpts = assign3({}, opts, { strict: false });
+  if (typeof curB === "undefined" && !$mapHas(b2, altValue) || !internalDeepEqual(item, curB, looseOpts, channel2)) {
+    return false;
+  }
+  return !$mapHas(a, altValue) && internalDeepEqual(item, curB, looseOpts, channel2);
+}
+function setMightHaveLoosePrim(a, b2, prim) {
+  var altValue = findLooseMatchingPrimitives(prim);
+  if (altValue != null) {
+    return altValue;
+  }
+  return $setHas(b2, altValue) && !$setHas(a, altValue);
+}
+function mapHasEqualEntry(set, map, key1, item1, opts, channel2) {
+  var i = getIterator(set);
+  var result;
+  var key2;
+  while ((result = i.next()) && !result.done) {
+    key2 = result.value;
+    if (internalDeepEqual(key1, key2, opts, channel2) && internalDeepEqual(item1, $mapGet(map, key2), opts, channel2)) {
+      $setDelete(set, key2);
+      return true;
+    }
+  }
+  return false;
+}
+function internalDeepEqual(actual, expected, options, channel2) {
+  var opts = options || {};
+  if (opts.strict ? is2(actual, expected) : actual === expected) {
+    return true;
+  }
+  var actualBoxed = whichBoxedPrimitive2(actual);
+  var expectedBoxed = whichBoxedPrimitive2(expected);
+  if (actualBoxed !== expectedBoxed) {
+    return false;
+  }
+  if (!actual || !expected || typeof actual !== "object" && typeof expected !== "object") {
+    return opts.strict ? is2(actual, expected) : actual == expected;
+  }
+  var hasActual = channel2.has(actual);
+  var hasExpected = channel2.has(expected);
+  var sentinel;
+  if (hasActual && hasExpected) {
+    if (channel2.get(actual) === channel2.get(expected)) {
+      return true;
+    }
+  } else {
+    sentinel = {};
+  }
+  if (!hasActual) {
+    channel2.set(actual, sentinel);
+  }
+  if (!hasExpected) {
+    channel2.set(expected, sentinel);
+  }
+  return objEquiv(actual, expected, opts, channel2);
+}
+function isBuffer(x) {
+  if (!x || typeof x !== "object" || typeof x.length !== "number") {
+    return false;
+  }
+  if (typeof x.copy !== "function" || typeof x.slice !== "function") {
+    return false;
+  }
+  if (x.length > 0 && typeof x[0] !== "number") {
+    return false;
+  }
+  return !!(x.constructor && x.constructor.isBuffer && x.constructor.isBuffer(x));
+}
+function setEquiv(a, b2, opts, channel2) {
+  if ($setSize(a) !== $setSize(b2)) {
+    return false;
+  }
+  var iA = getIterator(a);
+  var iB = getIterator(b2);
+  var resultA;
+  var resultB;
+  var set;
+  while ((resultA = iA.next()) && !resultA.done) {
+    if (resultA.value && typeof resultA.value === "object") {
+      if (!set) {
+        set = new $Set();
+      }
+      $setAdd(set, resultA.value);
+    } else if (!$setHas(b2, resultA.value)) {
+      if (opts.strict) {
+        return false;
+      }
+      if (!setMightHaveLoosePrim(a, b2, resultA.value)) {
+        return false;
+      }
+      if (!set) {
+        set = new $Set();
+      }
+      $setAdd(set, resultA.value);
+    }
+  }
+  if (set) {
+    while ((resultB = iB.next()) && !resultB.done) {
+      if (resultB.value && typeof resultB.value === "object") {
+        if (!setHasEqualElement(set, resultB.value, opts.strict, channel2)) {
+          return false;
+        }
+      } else if (!opts.strict && !$setHas(a, resultB.value) && !setHasEqualElement(set, resultB.value, opts.strict, channel2)) {
+        return false;
+      }
+    }
+    return $setSize(set) === 0;
+  }
+  return true;
+}
+function mapEquiv(a, b2, opts, channel2) {
+  if ($mapSize(a) !== $mapSize(b2)) {
+    return false;
+  }
+  var iA = getIterator(a);
+  var iB = getIterator(b2);
+  var resultA;
+  var resultB;
+  var set;
+  var key;
+  var item1;
+  var item2;
+  while ((resultA = iA.next()) && !resultA.done) {
+    key = resultA.value[0];
+    item1 = resultA.value[1];
+    if (key && typeof key === "object") {
+      if (!set) {
+        set = new $Set();
+      }
+      $setAdd(set, key);
+    } else {
+      item2 = $mapGet(b2, key);
+      if (typeof item2 === "undefined" && !$mapHas(b2, key) || !internalDeepEqual(item1, item2, opts, channel2)) {
+        if (opts.strict) {
+          return false;
+        }
+        if (!mapMightHaveLoosePrim(a, b2, key, item1, opts, channel2)) {
+          return false;
+        }
+        if (!set) {
+          set = new $Set();
+        }
+        $setAdd(set, key);
+      }
+    }
+  }
+  if (set) {
+    while ((resultB = iB.next()) && !resultB.done) {
+      key = resultB.value[0];
+      item2 = resultB.value[1];
+      if (key && typeof key === "object") {
+        if (!mapHasEqualEntry(set, a, key, item2, opts, channel2)) {
+          return false;
+        }
+      } else if (!opts.strict && (!a.has(key) || !internalDeepEqual($mapGet(a, key), item2, opts, channel2)) && !mapHasEqualEntry(set, a, key, item2, assign3({}, opts, { strict: false }), channel2)) {
+        return false;
+      }
+    }
+    return $setSize(set) === 0;
+  }
+  return true;
+}
+function objEquiv(a, b2, opts, channel2) {
+  var i, key;
+  if (typeof a !== typeof b2) {
+    return false;
+  }
+  if (a == null || b2 == null) {
+    return false;
+  }
+  if ($objToString(a) !== $objToString(b2)) {
+    return false;
+  }
+  if (isArguments4(a) !== isArguments4(b2)) {
+    return false;
+  }
+  var aIsArray = isArray(a);
+  var bIsArray = isArray(b2);
+  if (aIsArray !== bIsArray) {
+    return false;
+  }
+  var aIsError = a instanceof Error;
+  var bIsError = b2 instanceof Error;
+  if (aIsError !== bIsError) {
+    return false;
+  }
+  if (aIsError || bIsError) {
+    if (a.name !== b2.name || a.message !== b2.message) {
+      return false;
+    }
+  }
+  var aIsRegex = isRegex3(a);
+  var bIsRegex = isRegex3(b2);
+  if (aIsRegex !== bIsRegex) {
+    return false;
+  }
+  if ((aIsRegex || bIsRegex) && (a.source !== b2.source || flags(a) !== flags(b2))) {
+    return false;
+  }
+  var aIsDate = isDate(a);
+  var bIsDate = isDate(b2);
+  if (aIsDate !== bIsDate) {
+    return false;
+  }
+  if (aIsDate || bIsDate) {
+    if ($getTime(a) !== $getTime(b2)) {
+      return false;
+    }
+  }
+  if (opts.strict && gPO && gPO(a) !== gPO(b2)) {
+    return false;
+  }
+  var aWhich = whichTypedArray2(a);
+  var bWhich = whichTypedArray2(b2);
+  if ((aWhich || bWhich) && aWhich !== bWhich) {
+    return false;
+  }
+  var aIsBuffer = isBuffer(a);
+  var bIsBuffer = isBuffer(b2);
+  if (aIsBuffer !== bIsBuffer) {
+    return false;
+  }
+  if (aIsBuffer || bIsBuffer) {
+    if (a.length !== b2.length) {
+      return false;
+    }
+    for (i = 0; i < a.length; i++) {
+      if (a[i] !== b2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+  var aIsArrayBuffer = isArrayBuffer3(a);
+  var bIsArrayBuffer = isArrayBuffer3(b2);
+  if (aIsArrayBuffer !== bIsArrayBuffer) {
+    return false;
+  }
+  if (aIsArrayBuffer || bIsArrayBuffer) {
+    if (byteLength(a) !== byteLength(b2)) {
+      return false;
+    }
+    return typeof Uint8Array === "function" && internalDeepEqual(new Uint8Array(a), new Uint8Array(b2), opts, channel2);
+  }
+  var aIsSAB = isSharedArrayBuffer3(a);
+  var bIsSAB = isSharedArrayBuffer3(b2);
+  if (aIsSAB !== bIsSAB) {
+    return false;
+  }
+  if (aIsSAB || bIsSAB) {
+    if (sabByteLength(a) !== sabByteLength(b2)) {
+      return false;
+    }
+    return typeof Uint8Array === "function" && internalDeepEqual(new Uint8Array(a), new Uint8Array(b2), opts, channel2);
+  }
+  if (typeof a !== typeof b2) {
+    return false;
+  }
+  var ka = objectKeys(a);
+  var kb = objectKeys(b2);
+  if (ka.length !== kb.length) {
+    return false;
+  }
+  ka.sort();
+  kb.sort();
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] != kb[i]) {
+      return false;
+    }
+  }
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+    if (!internalDeepEqual(a[key], b2[key], opts, channel2)) {
+      return false;
+    }
+  }
+  var aCollection = whichCollection2(a);
+  var bCollection = whichCollection2(b2);
+  if (aCollection !== bCollection) {
+    return false;
+  }
+  if (aCollection === "Set" || bCollection === "Set") {
+    return setEquiv(a, b2, opts, channel2);
+  }
+  if (aCollection === "Map") {
+    return mapEquiv(a, b2, opts, channel2);
+  }
+  return true;
+}
+var deepEqual = function deepEqual2(a, b2, opts) {
+  return internalDeepEqual(a, b2, opts, getSideChannel2());
+};
+Object.defineProperty(elementRoleMap$1, "__esModule", {
+  value: true
+});
+elementRoleMap$1.default = void 0;
+var _deepEqual = _interopRequireDefault$2(deepEqual);
+var _iterationDecorator$1 = _interopRequireDefault$2(iterationDecorator$1);
+var _rolesMap$2 = _interopRequireDefault$2(rolesMap$1);
+function _interopRequireDefault$2(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _slicedToArray$1(arr, i) {
+  return _arrayWithHoles$1(arr) || _iterableToArrayLimit$1(arr, i) || _unsupportedIterableToArray$1(arr, i) || _nonIterableRest$1();
+}
+function _nonIterableRest$1() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _iterableToArrayLimit$1(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+  if (_i == null)
+    return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _s, _e;
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+      if (i && _arr.length === i)
+        break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null)
+        _i["return"]();
+    } finally {
+      if (_d)
+        throw _e;
+    }
+  }
+  return _arr;
+}
+function _arrayWithHoles$1(arr) {
+  if (Array.isArray(arr))
+    return arr;
+}
+function _createForOfIteratorHelper$1(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+  if (!it) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray$1(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it)
+        o = it;
+      var i = 0;
+      var F2 = function F3() {
+      };
+      return { s: F2, n: function n2() {
+        if (i >= o.length)
+          return { done: true };
+        return { done: false, value: o[i++] };
+      }, e: function e2(_e2) {
+        throw _e2;
+      }, f: F2 };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var normalCompletion = true, didErr = false, err;
+  return { s: function s() {
+    it = it.call(o);
+  }, n: function n2() {
+    var step = it.next();
+    normalCompletion = step.done;
+    return step;
+  }, e: function e2(_e3) {
+    didErr = true;
+    err = _e3;
+  }, f: function f2() {
+    try {
+      if (!normalCompletion && it.return != null)
+        it.return();
+    } finally {
+      if (didErr)
+        throw err;
+    }
+  } };
+}
+function _unsupportedIterableToArray$1(o, minLen) {
+  if (!o)
+    return;
+  if (typeof o === "string")
+    return _arrayLikeToArray$1(o, minLen);
+  var n2 = Object.prototype.toString.call(o).slice(8, -1);
+  if (n2 === "Object" && o.constructor)
+    n2 = o.constructor.name;
+  if (n2 === "Map" || n2 === "Set")
+    return Array.from(o);
+  if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
+    return _arrayLikeToArray$1(o, minLen);
+}
+function _arrayLikeToArray$1(arr, len) {
+  if (len == null || len > arr.length)
+    len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+var elementRoles$1 = [];
+var keys$1 = _rolesMap$2.default.keys();
+for (var i$1 = 0; i$1 < keys$1.length; i$1++) {
+  var key = keys$1[i$1];
+  var role = _rolesMap$2.default.get(key);
+  if (role) {
+    var concepts = [].concat(role.baseConcepts, role.relatedConcepts);
+    for (var k = 0; k < concepts.length; k++) {
+      var relation = concepts[k];
+      if (relation.module === "HTML") {
+        var concept = relation.concept;
+        if (concept) {
+          (function() {
+            var conceptStr = JSON.stringify(concept);
+            var elementRoleRelation = elementRoles$1.find(function(relation2) {
+              return JSON.stringify(relation2[0]) === conceptStr;
+            });
+            var roles2 = void 0;
+            if (elementRoleRelation) {
+              roles2 = elementRoleRelation[1];
+            } else {
+              roles2 = [];
+            }
+            var isUnique = true;
+            for (var _i = 0; _i < roles2.length; _i++) {
+              if (roles2[_i] === key) {
+                isUnique = false;
+                break;
+              }
+            }
+            if (isUnique) {
+              roles2.push(key);
+            }
+            elementRoles$1.push([concept, roles2]);
+          })();
+        }
+      }
+    }
+  }
+}
+var elementRoleMap = {
+  entries: function entries4() {
+    return elementRoles$1;
+  },
+  forEach: function forEach6(fn) {
+    var thisArg = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+    var _iterator = _createForOfIteratorHelper$1(elementRoles$1), _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var _step$value = _slicedToArray$1(_step.value, 2), _key = _step$value[0], values6 = _step$value[1];
+        fn.call(thisArg, values6, _key, elementRoles$1);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  },
+  get: function get4(key) {
+    var item = elementRoles$1.find(function(tuple) {
+      return (0, _deepEqual.default)(key, tuple[0]);
+    });
+    return item && item[1];
+  },
+  has: function has5(key) {
+    return !!elementRoleMap.get(key);
+  },
+  keys: function keys5() {
+    return elementRoles$1.map(function(_ref) {
+      var _ref2 = _slicedToArray$1(_ref, 1), key = _ref2[0];
+      return key;
+    });
+  },
+  values: function values4() {
+    return elementRoles$1.map(function(_ref3) {
+      var _ref4 = _slicedToArray$1(_ref3, 2), values6 = _ref4[1];
+      return values6;
+    });
+  }
+};
+var _default$1 = (0, _iterationDecorator$1.default)(elementRoleMap, elementRoleMap.entries());
+elementRoleMap$1.default = _default$1;
+var roleElementMap$1 = {};
+Object.defineProperty(roleElementMap$1, "__esModule", {
+  value: true
+});
+roleElementMap$1.default = void 0;
+var _iterationDecorator = _interopRequireDefault$1(iterationDecorator$1);
+var _rolesMap$1 = _interopRequireDefault$1(rolesMap$1);
+function _interopRequireDefault$1(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+  if (_i == null)
+    return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _s, _e;
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+      if (i && _arr.length === i)
+        break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null)
+        _i["return"]();
+    } finally {
+      if (_d)
+        throw _e;
+    }
+  }
+  return _arr;
+}
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr))
+    return arr;
+}
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+  if (!it) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it)
+        o = it;
+      var i = 0;
+      var F2 = function F3() {
+      };
+      return { s: F2, n: function n2() {
+        if (i >= o.length)
+          return { done: true };
+        return { done: false, value: o[i++] };
+      }, e: function e2(_e2) {
+        throw _e2;
+      }, f: F2 };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var normalCompletion = true, didErr = false, err;
+  return { s: function s() {
+    it = it.call(o);
+  }, n: function n2() {
+    var step = it.next();
+    normalCompletion = step.done;
+    return step;
+  }, e: function e2(_e3) {
+    didErr = true;
+    err = _e3;
+  }, f: function f2() {
+    try {
+      if (!normalCompletion && it.return != null)
+        it.return();
+    } finally {
+      if (didErr)
+        throw err;
+    }
+  } };
+}
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o)
+    return;
+  if (typeof o === "string")
+    return _arrayLikeToArray(o, minLen);
+  var n2 = Object.prototype.toString.call(o).slice(8, -1);
+  if (n2 === "Object" && o.constructor)
+    n2 = o.constructor.name;
+  if (n2 === "Map" || n2 === "Set")
+    return Array.from(o);
+  if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
+    return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length)
+    len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+var roleElement = [];
+var keys6 = _rolesMap$1.default.keys();
+var _loop = function _loop2(i) {
+  var key = keys6[i];
+  var role = _rolesMap$1.default.get(key);
+  if (role) {
+    var concepts = [].concat(role.baseConcepts, role.relatedConcepts);
+    for (var k = 0; k < concepts.length; k++) {
+      var relation = concepts[k];
+      if (relation.module === "HTML") {
+        var concept = relation.concept;
+        if (concept) {
+          var roleElementRelation = roleElement.find(function(item) {
+            return item[0] === key;
+          });
+          var relationConcepts = void 0;
+          if (roleElementRelation) {
+            relationConcepts = roleElementRelation[1];
+          } else {
+            relationConcepts = [];
+          }
+          relationConcepts.push(concept);
+          roleElement.push([key, relationConcepts]);
+        }
+      }
+    }
+  }
+};
+for (var i = 0; i < keys6.length; i++) {
+  _loop(i);
+}
+var roleElementMap = {
+  entries: function entries5() {
+    return roleElement;
+  },
+  forEach: function forEach7(fn) {
+    var thisArg = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+    var _iterator = _createForOfIteratorHelper(roleElement), _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var _step$value = _slicedToArray(_step.value, 2), key = _step$value[0], values6 = _step$value[1];
+        fn.call(thisArg, values6, key, roleElement);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  },
+  get: function get5(key) {
+    var item = roleElement.find(function(tuple) {
+      return tuple[0] === key ? true : false;
+    });
+    return item && item[1];
+  },
+  has: function has6(key) {
+    return !!roleElementMap.get(key);
+  },
+  keys: function keys7() {
+    return roleElement.map(function(_ref) {
+      var _ref2 = _slicedToArray(_ref, 1), key = _ref2[0];
+      return key;
+    });
+  },
+  values: function values5() {
+    return roleElement.map(function(_ref3) {
+      var _ref4 = _slicedToArray(_ref3, 2), values6 = _ref4[1];
+      return values6;
+    });
+  }
+};
+var _default = (0, _iterationDecorator.default)(roleElementMap, roleElementMap.entries());
+roleElementMap$1.default = _default;
+Object.defineProperty(lib, "__esModule", {
+  value: true
+});
+var roles_1 = lib.roles = roleElements_1 = lib.roleElements = elementRoles_1 = lib.elementRoles = lib.dom = lib.aria = void 0;
+var _ariaPropsMap = _interopRequireDefault(ariaPropsMap$1);
+var _domMap = _interopRequireDefault(domMap$1);
+var _rolesMap = _interopRequireDefault(rolesMap$1);
+var _elementRoleMap = _interopRequireDefault(elementRoleMap$1);
+var _roleElementMap = _interopRequireDefault(roleElementMap$1);
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+var aria = _ariaPropsMap.default;
+lib.aria = aria;
+var dom = _domMap.default;
+lib.dom = dom;
+var roles = _rolesMap.default;
+roles_1 = lib.roles = roles;
+var elementRoles = _elementRoleMap.default;
+var elementRoles_1 = lib.elementRoles = elementRoles;
+var roleElements = _roleElementMap.default;
+var roleElements_1 = lib.roleElements = roleElements;
+var lzString$1 = { exports: {} };
+(function(module2) {
+  var LZString = function() {
+    var f2 = String.fromCharCode;
+    var keyStrBase64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    var keyStrUriSafe = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$";
+    var baseReverseDic = {};
+    function getBaseValue(alphabet, character2) {
+      if (!baseReverseDic[alphabet]) {
+        baseReverseDic[alphabet] = {};
+        for (var i = 0; i < alphabet.length; i++) {
+          baseReverseDic[alphabet][alphabet.charAt(i)] = i;
+        }
+      }
+      return baseReverseDic[alphabet][character2];
+    }
+    var LZString2 = {
+      compressToBase64: function(input) {
+        if (input == null)
+          return "";
+        var res = LZString2._compress(input, 6, function(a) {
+          return keyStrBase64.charAt(a);
+        });
+        switch (res.length % 4) {
+          default:
+          case 0:
+            return res;
+          case 1:
+            return res + "===";
+          case 2:
+            return res + "==";
+          case 3:
+            return res + "=";
+        }
+      },
+      decompressFromBase64: function(input) {
+        if (input == null)
+          return "";
+        if (input == "")
+          return null;
+        return LZString2._decompress(input.length, 32, function(index2) {
+          return getBaseValue(keyStrBase64, input.charAt(index2));
+        });
+      },
+      compressToUTF16: function(input) {
+        if (input == null)
+          return "";
+        return LZString2._compress(input, 15, function(a) {
+          return f2(a + 32);
+        }) + " ";
+      },
+      decompressFromUTF16: function(compressed) {
+        if (compressed == null)
+          return "";
+        if (compressed == "")
+          return null;
+        return LZString2._decompress(compressed.length, 16384, function(index2) {
+          return compressed.charCodeAt(index2) - 32;
+        });
+      },
+      compressToUint8Array: function(uncompressed) {
+        var compressed = LZString2.compress(uncompressed);
+        var buf = new Uint8Array(compressed.length * 2);
+        for (var i = 0, TotalLen = compressed.length; i < TotalLen; i++) {
+          var current_value = compressed.charCodeAt(i);
+          buf[i * 2] = current_value >>> 8;
+          buf[i * 2 + 1] = current_value % 256;
+        }
+        return buf;
+      },
+      decompressFromUint8Array: function(compressed) {
+        if (compressed === null || compressed === void 0) {
+          return LZString2.decompress(compressed);
+        } else {
+          var buf = new Array(compressed.length / 2);
+          for (var i = 0, TotalLen = buf.length; i < TotalLen; i++) {
+            buf[i] = compressed[i * 2] * 256 + compressed[i * 2 + 1];
+          }
+          var result = [];
+          buf.forEach(function(c2) {
+            result.push(f2(c2));
+          });
+          return LZString2.decompress(result.join(""));
+        }
+      },
+      compressToEncodedURIComponent: function(input) {
+        if (input == null)
+          return "";
+        return LZString2._compress(input, 6, function(a) {
+          return keyStrUriSafe.charAt(a);
+        });
+      },
+      decompressFromEncodedURIComponent: function(input) {
+        if (input == null)
+          return "";
+        if (input == "")
+          return null;
+        input = input.replace(/ /g, "+");
+        return LZString2._decompress(input.length, 32, function(index2) {
+          return getBaseValue(keyStrUriSafe, input.charAt(index2));
+        });
+      },
+      compress: function(uncompressed) {
+        return LZString2._compress(uncompressed, 16, function(a) {
+          return f2(a);
+        });
+      },
+      _compress: function(uncompressed, bitsPerChar, getCharFromInt) {
+        if (uncompressed == null)
+          return "";
+        var i, value, context_dictionary = {}, context_dictionaryToCreate = {}, context_c = "", context_wc = "", context_w = "", context_enlargeIn = 2, context_dictSize = 3, context_numBits = 2, context_data = [], context_data_val = 0, context_data_position = 0, ii;
+        for (ii = 0; ii < uncompressed.length; ii += 1) {
+          context_c = uncompressed.charAt(ii);
+          if (!Object.prototype.hasOwnProperty.call(context_dictionary, context_c)) {
+            context_dictionary[context_c] = context_dictSize++;
+            context_dictionaryToCreate[context_c] = true;
+          }
+          context_wc = context_w + context_c;
+          if (Object.prototype.hasOwnProperty.call(context_dictionary, context_wc)) {
+            context_w = context_wc;
+          } else {
+            if (Object.prototype.hasOwnProperty.call(context_dictionaryToCreate, context_w)) {
+              if (context_w.charCodeAt(0) < 256) {
+                for (i = 0; i < context_numBits; i++) {
+                  context_data_val = context_data_val << 1;
+                  if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                  } else {
+                    context_data_position++;
+                  }
+                }
+                value = context_w.charCodeAt(0);
+                for (i = 0; i < 8; i++) {
+                  context_data_val = context_data_val << 1 | value & 1;
+                  if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                  } else {
+                    context_data_position++;
+                  }
+                  value = value >> 1;
+                }
+              } else {
+                value = 1;
+                for (i = 0; i < context_numBits; i++) {
+                  context_data_val = context_data_val << 1 | value;
+                  if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                  } else {
+                    context_data_position++;
+                  }
+                  value = 0;
+                }
+                value = context_w.charCodeAt(0);
+                for (i = 0; i < 16; i++) {
+                  context_data_val = context_data_val << 1 | value & 1;
+                  if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                  } else {
+                    context_data_position++;
+                  }
+                  value = value >> 1;
+                }
+              }
+              context_enlargeIn--;
+              if (context_enlargeIn == 0) {
+                context_enlargeIn = Math.pow(2, context_numBits);
+                context_numBits++;
+              }
+              delete context_dictionaryToCreate[context_w];
+            } else {
+              value = context_dictionary[context_w];
+              for (i = 0; i < context_numBits; i++) {
+                context_data_val = context_data_val << 1 | value & 1;
+                if (context_data_position == bitsPerChar - 1) {
+                  context_data_position = 0;
+                  context_data.push(getCharFromInt(context_data_val));
+                  context_data_val = 0;
+                } else {
+                  context_data_position++;
+                }
+                value = value >> 1;
+              }
+            }
+            context_enlargeIn--;
+            if (context_enlargeIn == 0) {
+              context_enlargeIn = Math.pow(2, context_numBits);
+              context_numBits++;
+            }
+            context_dictionary[context_wc] = context_dictSize++;
+            context_w = String(context_c);
+          }
+        }
+        if (context_w !== "") {
+          if (Object.prototype.hasOwnProperty.call(context_dictionaryToCreate, context_w)) {
+            if (context_w.charCodeAt(0) < 256) {
+              for (i = 0; i < context_numBits; i++) {
+                context_data_val = context_data_val << 1;
+                if (context_data_position == bitsPerChar - 1) {
+                  context_data_position = 0;
+                  context_data.push(getCharFromInt(context_data_val));
+                  context_data_val = 0;
+                } else {
+                  context_data_position++;
+                }
+              }
+              value = context_w.charCodeAt(0);
+              for (i = 0; i < 8; i++) {
+                context_data_val = context_data_val << 1 | value & 1;
+                if (context_data_position == bitsPerChar - 1) {
+                  context_data_position = 0;
+                  context_data.push(getCharFromInt(context_data_val));
+                  context_data_val = 0;
+                } else {
+                  context_data_position++;
+                }
+                value = value >> 1;
+              }
+            } else {
+              value = 1;
+              for (i = 0; i < context_numBits; i++) {
+                context_data_val = context_data_val << 1 | value;
+                if (context_data_position == bitsPerChar - 1) {
+                  context_data_position = 0;
+                  context_data.push(getCharFromInt(context_data_val));
+                  context_data_val = 0;
+                } else {
+                  context_data_position++;
+                }
+                value = 0;
+              }
+              value = context_w.charCodeAt(0);
+              for (i = 0; i < 16; i++) {
+                context_data_val = context_data_val << 1 | value & 1;
+                if (context_data_position == bitsPerChar - 1) {
+                  context_data_position = 0;
+                  context_data.push(getCharFromInt(context_data_val));
+                  context_data_val = 0;
+                } else {
+                  context_data_position++;
+                }
+                value = value >> 1;
+              }
+            }
+            context_enlargeIn--;
+            if (context_enlargeIn == 0) {
+              context_enlargeIn = Math.pow(2, context_numBits);
+              context_numBits++;
+            }
+            delete context_dictionaryToCreate[context_w];
+          } else {
+            value = context_dictionary[context_w];
+            for (i = 0; i < context_numBits; i++) {
+              context_data_val = context_data_val << 1 | value & 1;
+              if (context_data_position == bitsPerChar - 1) {
+                context_data_position = 0;
+                context_data.push(getCharFromInt(context_data_val));
+                context_data_val = 0;
+              } else {
+                context_data_position++;
+              }
+              value = value >> 1;
+            }
+          }
+          context_enlargeIn--;
+          if (context_enlargeIn == 0) {
+            context_enlargeIn = Math.pow(2, context_numBits);
+            context_numBits++;
+          }
+        }
+        value = 2;
+        for (i = 0; i < context_numBits; i++) {
+          context_data_val = context_data_val << 1 | value & 1;
+          if (context_data_position == bitsPerChar - 1) {
+            context_data_position = 0;
+            context_data.push(getCharFromInt(context_data_val));
+            context_data_val = 0;
+          } else {
+            context_data_position++;
+          }
+          value = value >> 1;
+        }
+        while (true) {
+          context_data_val = context_data_val << 1;
+          if (context_data_position == bitsPerChar - 1) {
+            context_data.push(getCharFromInt(context_data_val));
+            break;
+          } else
+            context_data_position++;
+        }
+        return context_data.join("");
+      },
+      decompress: function(compressed) {
+        if (compressed == null)
+          return "";
+        if (compressed == "")
+          return null;
+        return LZString2._decompress(compressed.length, 32768, function(index2) {
+          return compressed.charCodeAt(index2);
+        });
+      },
+      _decompress: function(length, resetValue, getNextValue) {
+        var dictionary = [], enlargeIn = 4, dictSize = 4, numBits = 3, entry = "", result = [], i, w2, bits, resb, maxpower, power, c2, data = { val: getNextValue(0), position: resetValue, index: 1 };
+        for (i = 0; i < 3; i += 1) {
+          dictionary[i] = i;
+        }
+        bits = 0;
+        maxpower = Math.pow(2, 2);
+        power = 1;
+        while (power != maxpower) {
+          resb = data.val & data.position;
+          data.position >>= 1;
+          if (data.position == 0) {
+            data.position = resetValue;
+            data.val = getNextValue(data.index++);
+          }
+          bits |= (resb > 0 ? 1 : 0) * power;
+          power <<= 1;
+        }
+        switch (bits) {
+          case 0:
+            bits = 0;
+            maxpower = Math.pow(2, 8);
+            power = 1;
+            while (power != maxpower) {
+              resb = data.val & data.position;
+              data.position >>= 1;
+              if (data.position == 0) {
+                data.position = resetValue;
+                data.val = getNextValue(data.index++);
+              }
+              bits |= (resb > 0 ? 1 : 0) * power;
+              power <<= 1;
+            }
+            c2 = f2(bits);
+            break;
+          case 1:
+            bits = 0;
+            maxpower = Math.pow(2, 16);
+            power = 1;
+            while (power != maxpower) {
+              resb = data.val & data.position;
+              data.position >>= 1;
+              if (data.position == 0) {
+                data.position = resetValue;
+                data.val = getNextValue(data.index++);
+              }
+              bits |= (resb > 0 ? 1 : 0) * power;
+              power <<= 1;
+            }
+            c2 = f2(bits);
+            break;
+          case 2:
+            return "";
+        }
+        dictionary[3] = c2;
+        w2 = c2;
+        result.push(c2);
+        while (true) {
+          if (data.index > length) {
+            return "";
+          }
+          bits = 0;
+          maxpower = Math.pow(2, numBits);
+          power = 1;
+          while (power != maxpower) {
+            resb = data.val & data.position;
+            data.position >>= 1;
+            if (data.position == 0) {
+              data.position = resetValue;
+              data.val = getNextValue(data.index++);
+            }
+            bits |= (resb > 0 ? 1 : 0) * power;
+            power <<= 1;
+          }
+          switch (c2 = bits) {
+            case 0:
+              bits = 0;
+              maxpower = Math.pow(2, 8);
+              power = 1;
+              while (power != maxpower) {
+                resb = data.val & data.position;
+                data.position >>= 1;
+                if (data.position == 0) {
+                  data.position = resetValue;
+                  data.val = getNextValue(data.index++);
+                }
+                bits |= (resb > 0 ? 1 : 0) * power;
+                power <<= 1;
+              }
+              dictionary[dictSize++] = f2(bits);
+              c2 = dictSize - 1;
+              enlargeIn--;
+              break;
+            case 1:
+              bits = 0;
+              maxpower = Math.pow(2, 16);
+              power = 1;
+              while (power != maxpower) {
+                resb = data.val & data.position;
+                data.position >>= 1;
+                if (data.position == 0) {
+                  data.position = resetValue;
+                  data.val = getNextValue(data.index++);
+                }
+                bits |= (resb > 0 ? 1 : 0) * power;
+                power <<= 1;
+              }
+              dictionary[dictSize++] = f2(bits);
+              c2 = dictSize - 1;
+              enlargeIn--;
+              break;
+            case 2:
+              return result.join("");
+          }
+          if (enlargeIn == 0) {
+            enlargeIn = Math.pow(2, numBits);
+            numBits++;
+          }
+          if (dictionary[c2]) {
+            entry = dictionary[c2];
+          } else {
+            if (c2 === dictSize) {
+              entry = w2 + w2.charAt(0);
+            } else {
+              return null;
+            }
+          }
+          result.push(entry);
+          dictionary[dictSize++] = w2 + entry.charAt(0);
+          enlargeIn--;
+          w2 = entry;
+          if (enlargeIn == 0) {
+            enlargeIn = Math.pow(2, numBits);
+            numBits++;
+          }
+        }
+      }
+    };
+    return LZString2;
+  }();
+  if (module2 != null) {
+    module2.exports = LZString;
+  }
+})(lzString$1);
+const lzString = lzString$1.exports;
+function escapeHTML(str) {
+  return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+const printProps = (keys8, props, config2, indentation, depth, refs, printer2) => {
+  const indentationNext = indentation + config2.indent;
+  const colors = config2.colors;
+  return keys8.map((key) => {
+    const value = props[key];
+    let printed = printer2(value, config2, indentationNext, depth, refs);
+    if (typeof value !== "string") {
+      if (printed.indexOf("\n") !== -1) {
+        printed = config2.spacingOuter + indentationNext + printed + config2.spacingOuter + indentation;
+      }
+      printed = "{" + printed + "}";
+    }
+    return config2.spacingInner + indentation + colors.prop.open + key + colors.prop.close + "=" + colors.value.open + printed + colors.value.close;
+  }).join("");
+};
+const NodeTypeTextNode = 3;
+const printChildren = (children, config2, indentation, depth, refs, printer2) => children.map((child) => {
+  const printedChild = typeof child === "string" ? printText(child, config2) : printer2(child, config2, indentation, depth, refs);
+  if (printedChild === "" && typeof child === "object" && child !== null && child.nodeType !== NodeTypeTextNode) {
+    return "";
+  }
+  return config2.spacingOuter + indentation + printedChild;
+}).join("");
+const printText = (text, config2) => {
+  const contentColor = config2.colors.content;
+  return contentColor.open + escapeHTML(text) + contentColor.close;
+};
+const printComment = (comment, config2) => {
+  const commentColor = config2.colors.comment;
+  return commentColor.open + "<!--" + escapeHTML(comment) + "-->" + commentColor.close;
+};
+const printElement = (type2, printedProps, printedChildren, config2, indentation) => {
+  const tagColor = config2.colors.tag;
+  return tagColor.open + "<" + type2 + (printedProps && tagColor.close + printedProps + config2.spacingOuter + indentation + tagColor.open) + (printedChildren ? ">" + tagColor.close + printedChildren + config2.spacingOuter + indentation + tagColor.open + "</" + type2 : (printedProps && !config2.min ? "" : " ") + "/") + ">" + tagColor.close;
+};
+const printElementAsLeaf = (type2, config2) => {
+  const tagColor = config2.colors.tag;
+  return tagColor.open + "<" + type2 + tagColor.close + " \u2026" + tagColor.open + " />" + tagColor.close;
+};
+const ELEMENT_NODE$1 = 1;
+const TEXT_NODE$1 = 3;
+const COMMENT_NODE$1 = 8;
+const FRAGMENT_NODE = 11;
+const ELEMENT_REGEXP = /^((HTML|SVG)\w*)?Element$/;
+const testNode = (val) => {
+  const constructorName = val.constructor.name;
+  const {
+    nodeType,
+    tagName
+  } = val;
+  const isCustomElement = typeof tagName === "string" && tagName.includes("-") || typeof val.hasAttribute === "function" && val.hasAttribute("is");
+  return nodeType === ELEMENT_NODE$1 && (ELEMENT_REGEXP.test(constructorName) || isCustomElement) || nodeType === TEXT_NODE$1 && constructorName === "Text" || nodeType === COMMENT_NODE$1 && constructorName === "Comment" || nodeType === FRAGMENT_NODE && constructorName === "DocumentFragment";
+};
+function nodeIsText(node) {
+  return node.nodeType === TEXT_NODE$1;
+}
+function nodeIsComment(node) {
+  return node.nodeType === COMMENT_NODE$1;
+}
+function nodeIsFragment(node) {
+  return node.nodeType === FRAGMENT_NODE;
+}
+function createDOMElementFilter(filterNode) {
+  return {
+    test: (val) => {
+      var _val$constructor2;
+      return (val == null ? void 0 : (_val$constructor2 = val.constructor) == null ? void 0 : _val$constructor2.name) && testNode(val);
+    },
+    serialize: (node, config2, indentation, depth, refs, printer2) => {
+      if (nodeIsText(node)) {
+        return printText(node.data, config2);
+      }
+      if (nodeIsComment(node)) {
+        return printComment(node.data, config2);
+      }
+      const type2 = nodeIsFragment(node) ? "DocumentFragment" : node.tagName.toLowerCase();
+      if (++depth > config2.maxDepth) {
+        return printElementAsLeaf(type2, config2);
+      }
+      return printElement(type2, printProps(nodeIsFragment(node) ? [] : Array.from(node.attributes).map((attr) => attr.name).sort(), nodeIsFragment(node) ? {} : Array.from(node.attributes).reduce((props, attribute) => {
+        props[attribute.name] = attribute.value;
+        return props;
+      }, {}), config2, indentation + config2.indent, depth, refs, printer2), printChildren(Array.prototype.slice.call(node.childNodes || node.children).filter(filterNode), config2, indentation + config2.indent, depth, refs, printer2), config2, indentation);
+    }
+  };
+}
+let chalk = null;
+let readFileSync = null;
+let codeFrameColumns = null;
+try {
+  const nodeRequire = module && module.require;
+  readFileSync = nodeRequire.call(module, "fs").readFileSync;
+  codeFrameColumns = nodeRequire.call(module, "@babel/code-frame").codeFrameColumns;
+  chalk = nodeRequire.call(module, "chalk");
+} catch {
+}
+function getCodeFrame(frame) {
+  const locationStart = frame.indexOf("(") + 1;
+  const locationEnd = frame.indexOf(")");
+  const frameLocation = frame.slice(locationStart, locationEnd);
+  const frameLocationElements = frameLocation.split(":");
+  const [filename, line, column] = [frameLocationElements[0], parseInt(frameLocationElements[1], 10), parseInt(frameLocationElements[2], 10)];
+  let rawFileContents = "";
+  try {
+    rawFileContents = readFileSync(filename, "utf-8");
+  } catch {
+    return "";
+  }
+  const codeFrame = codeFrameColumns(rawFileContents, {
+    start: {
+      line,
+      column
+    }
+  }, {
+    highlightCode: true,
+    linesBelow: 0
+  });
+  return chalk.dim(frameLocation) + "\n" + codeFrame + "\n";
+}
+function getUserCodeFrame() {
+  if (!readFileSync || !codeFrameColumns) {
+    return "";
+  }
+  const err = new Error();
+  const firstClientCodeFrame = err.stack.split("\n").slice(1).find((frame) => !frame.includes("node_modules/"));
+  return getCodeFrame(firstClientCodeFrame);
+}
+const TEXT_NODE$2 = 3;
+function jestFakeTimersAreEnabled$1() {
+  if (typeof jest !== "undefined" && jest !== null) {
+    return setTimeout._isMockFunction === true || Object.prototype.hasOwnProperty.call(setTimeout, "clock");
+  }
+  return false;
+}
+function getDocument$1() {
+  if (typeof window === "undefined") {
+    throw new Error("Could not find default container");
+  }
+  return window.document;
+}
+function getWindowFromNode$1(node) {
+  if (node.defaultView) {
+    return node.defaultView;
+  } else if (node.ownerDocument && node.ownerDocument.defaultView) {
+    return node.ownerDocument.defaultView;
+  } else if (node.window) {
+    return node.window;
+  } else if (node.ownerDocument && node.ownerDocument.defaultView === null) {
+    throw new Error("It looks like the window object is not available for the provided node.");
+  } else if (node.then instanceof Function) {
+    throw new Error("It looks like you passed a Promise object instead of a DOM node. Did you do something like `fireEvent.click(screen.findBy...` when you meant to use a `getBy` query `fireEvent.click(screen.getBy...`, or await the findBy query `fireEvent.click(await screen.findBy...`?");
+  } else if (Array.isArray(node)) {
+    throw new Error("It looks like you passed an Array instead of a DOM node. Did you do something like `fireEvent.click(screen.getAllBy...` when you meant to use a `getBy` query `fireEvent.click(screen.getBy...`?");
+  } else if (typeof node.debug === "function" && typeof node.logTestingPlaygroundURL === "function") {
+    throw new Error("It looks like you passed a `screen` object. Did you do something like `fireEvent.click(screen, ...` when you meant to use a query, e.g. `fireEvent.click(screen.getBy..., `?");
+  } else {
+    throw new Error("The given node is not an Element, the node type is: " + typeof node + ".");
+  }
+}
+function checkContainerType$1(container) {
+  if (!container || !(typeof container.querySelector === "function") || !(typeof container.querySelectorAll === "function")) {
+    throw new TypeError("Expected container to be an Element, a Document or a DocumentFragment but got " + getTypeName(container) + ".");
+  }
+  function getTypeName(object) {
+    if (typeof object === "object") {
+      return object === null ? "null" : object.constructor.name;
+    }
+    return typeof object;
+  }
+}
+const shouldHighlight = () => {
+  let colors;
+  try {
+    var _process, _process$env;
+    colors = JSON.parse((_process = process) == null ? void 0 : (_process$env = _process.env) == null ? void 0 : _process$env.COLORS);
+  } catch (e2) {
+  }
+  if (typeof colors === "boolean") {
+    return colors;
+  } else {
+    return typeof process !== "undefined" && process.versions !== void 0 && process.versions.node !== void 0;
+  }
+};
+const {
+  DOMCollection
+} = plugins_1;
+const ELEMENT_NODE = 1;
+const COMMENT_NODE = 8;
+function filterCommentsAndDefaultIgnoreTagsTags(value) {
+  return value.nodeType !== COMMENT_NODE && (value.nodeType !== ELEMENT_NODE || !value.matches(getConfig().defaultIgnore));
+}
+function prettyDOM(dom2, maxLength2, options) {
+  if (options === void 0) {
+    options = {};
+  }
+  if (!dom2) {
+    dom2 = getDocument$1().body;
+  }
+  if (typeof maxLength2 !== "number") {
+    maxLength2 = typeof process !== "undefined" && {}.DEBUG_PRINT_LIMIT || 7e3;
+  }
+  if (maxLength2 === 0) {
+    return "";
+  }
+  if (dom2.documentElement) {
+    dom2 = dom2.documentElement;
+  }
+  let domTypeName = typeof dom2;
+  if (domTypeName === "object") {
+    domTypeName = dom2.constructor.name;
+  } else {
+    dom2 = {};
+  }
+  if (!("outerHTML" in dom2)) {
+    throw new TypeError("Expected an element or document but got " + domTypeName);
+  }
+  const {
+    filterNode = filterCommentsAndDefaultIgnoreTagsTags,
+    ...prettyFormatOptions
+  } = options;
+  const debugContent = format_1(dom2, {
+    plugins: [createDOMElementFilter(filterNode), DOMCollection],
+    printFunctionName: false,
+    highlight: shouldHighlight(),
+    ...prettyFormatOptions
+  });
+  return maxLength2 !== void 0 && dom2.outerHTML.length > maxLength2 ? debugContent.slice(0, maxLength2) + "..." : debugContent;
+}
+const logDOM = function() {
+  const userCodeFrame = getUserCodeFrame();
+  if (userCodeFrame) {
+    console.log(prettyDOM(...arguments) + "\n\n" + userCodeFrame);
+  } else {
+    console.log(prettyDOM(...arguments));
+  }
+};
+let config = {
+  testIdAttribute: "data-testid",
+  asyncUtilTimeout: 1e3,
+  asyncWrapper: (cb) => cb(),
+  unstable_advanceTimersWrapper: (cb) => cb(),
+  eventWrapper: (cb) => cb(),
+  defaultHidden: false,
+  defaultIgnore: "script, style",
+  showOriginalStackTrace: false,
+  throwSuggestions: false,
+  getElementError(message, container) {
+    const prettifiedDOM = prettyDOM(container);
+    const error = new Error([message, "Ignored nodes: comments, " + config.defaultIgnore + "\n" + prettifiedDOM].filter(Boolean).join("\n\n"));
+    error.name = "TestingLibraryElementError";
+    return error;
+  },
+  _disableExpensiveErrorDiagnostics: false,
+  computedStyleSupportsPseudoElements: false
+};
+function runWithExpensiveErrorDiagnosticsDisabled(callback) {
+  try {
+    config._disableExpensiveErrorDiagnostics = true;
+    return callback();
+  } finally {
+    config._disableExpensiveErrorDiagnostics = false;
+  }
+}
+function configure(newConfig) {
+  if (typeof newConfig === "function") {
+    newConfig = newConfig(config);
+  }
+  config = {
+    ...config,
+    ...newConfig
+  };
+}
+function getConfig() {
+  return config;
+}
+const labelledNodeNames = ["button", "meter", "output", "progress", "select", "textarea", "input"];
+function getTextContent(node) {
+  if (labelledNodeNames.includes(node.nodeName.toLowerCase())) {
+    return "";
+  }
+  if (node.nodeType === TEXT_NODE$2)
+    return node.textContent;
+  return Array.from(node.childNodes).map((childNode) => getTextContent(childNode)).join("");
+}
+function getLabelContent(element) {
+  let textContent;
+  if (element.tagName.toLowerCase() === "label") {
+    textContent = getTextContent(element);
+  } else {
+    textContent = element.value || element.textContent;
+  }
+  return textContent;
+}
+function getRealLabels(element) {
+  if (element.labels !== void 0) {
+    var _labels;
+    return (_labels = element.labels) != null ? _labels : [];
+  }
+  if (!isLabelable(element))
+    return [];
+  const labels = element.ownerDocument.querySelectorAll("label");
+  return Array.from(labels).filter((label) => label.control === element);
+}
+function isLabelable(element) {
+  return /BUTTON|METER|OUTPUT|PROGRESS|SELECT|TEXTAREA/.test(element.tagName) || element.tagName === "INPUT" && element.getAttribute("type") !== "hidden";
+}
+function getLabels(container, element, _temp) {
+  let {
+    selector: selector2 = "*"
+  } = _temp === void 0 ? {} : _temp;
+  const ariaLabelledBy = element.getAttribute("aria-labelledby");
+  const labelsId = ariaLabelledBy ? ariaLabelledBy.split(" ") : [];
+  return labelsId.length ? labelsId.map((labelId) => {
+    const labellingElement = container.querySelector('[id="' + labelId + '"]');
+    return labellingElement ? {
+      content: getLabelContent(labellingElement),
+      formControl: null
+    } : {
+      content: "",
+      formControl: null
+    };
+  }) : Array.from(getRealLabels(element)).map((label) => {
+    const textToMatch = getLabelContent(label);
+    const formControlSelector = "button, input, meter, output, progress, select, textarea";
+    const labelledFormControl = Array.from(label.querySelectorAll(formControlSelector)).filter((formControlElement) => formControlElement.matches(selector2))[0];
+    return {
+      content: textToMatch,
+      formControl: labelledFormControl
+    };
+  });
+}
+function assertNotNullOrUndefined(matcher) {
+  if (matcher === null || matcher === void 0) {
+    throw new Error(
+      "It looks like " + matcher + " was passed instead of a matcher. Did you do something like getByText(" + matcher + ")?"
+    );
+  }
+}
+function fuzzyMatches(textToMatch, node, matcher, normalizer) {
+  if (typeof textToMatch !== "string") {
+    return false;
+  }
+  assertNotNullOrUndefined(matcher);
+  const normalizedText = normalizer(textToMatch);
+  if (typeof matcher === "string" || typeof matcher === "number") {
+    return normalizedText.toLowerCase().includes(matcher.toString().toLowerCase());
+  } else if (typeof matcher === "function") {
+    return matcher(normalizedText, node);
+  } else {
+    return matchRegExp(matcher, normalizedText);
+  }
+}
+function matches(textToMatch, node, matcher, normalizer) {
+  if (typeof textToMatch !== "string") {
+    return false;
+  }
+  assertNotNullOrUndefined(matcher);
+  const normalizedText = normalizer(textToMatch);
+  if (matcher instanceof Function) {
+    return matcher(normalizedText, node);
+  } else if (matcher instanceof RegExp) {
+    return matchRegExp(matcher, normalizedText);
+  } else {
+    return normalizedText === String(matcher);
+  }
+}
+function getDefaultNormalizer(_temp) {
+  let {
+    trim = true,
+    collapseWhitespace = true
+  } = _temp === void 0 ? {} : _temp;
+  return (text) => {
+    let normalizedText = text;
+    normalizedText = trim ? normalizedText.trim() : normalizedText;
+    normalizedText = collapseWhitespace ? normalizedText.replace(/\s+/g, " ") : normalizedText;
+    return normalizedText;
+  };
+}
+function makeNormalizer(_ref) {
+  let {
+    trim,
+    collapseWhitespace,
+    normalizer
+  } = _ref;
+  if (!normalizer) {
+    return getDefaultNormalizer({
+      trim,
+      collapseWhitespace
+    });
+  }
+  if (typeof trim !== "undefined" || typeof collapseWhitespace !== "undefined") {
+    throw new Error('trim and collapseWhitespace are not supported with a normalizer. If you want to use the default trim and collapseWhitespace logic in your normalizer, use "getDefaultNormalizer({trim, collapseWhitespace})" and compose that into your normalizer');
+  }
+  return normalizer;
+}
+function matchRegExp(matcher, text) {
+  const match = matcher.test(text);
+  if (matcher.global && matcher.lastIndex !== 0) {
+    console.warn("To match all elements we had to reset the lastIndex of the RegExp because the global flag is enabled. We encourage to remove the global flag from the RegExp.");
+    matcher.lastIndex = 0;
+  }
+  return match;
+}
+function getNodeText(node) {
+  if (node.matches("input[type=submit], input[type=button], input[type=reset]")) {
+    return node.value;
+  }
+  return Array.from(node.childNodes).filter((child) => child.nodeType === TEXT_NODE$2 && Boolean(child.textContent)).map((c2) => c2.textContent).join("");
+}
+const elementRoleList = buildElementRoleList(elementRoles_1);
+function isSubtreeInaccessible(element) {
+  if (element.hidden === true) {
+    return true;
+  }
+  if (element.getAttribute("aria-hidden") === "true") {
+    return true;
+  }
+  const window2 = element.ownerDocument.defaultView;
+  if (window2.getComputedStyle(element).display === "none") {
+    return true;
+  }
+  return false;
+}
+function isInaccessible(element, options) {
+  if (options === void 0) {
+    options = {};
+  }
+  const {
+    isSubtreeInaccessible: isSubtreeInaccessibleImpl = isSubtreeInaccessible
+  } = options;
+  const window2 = element.ownerDocument.defaultView;
+  if (window2.getComputedStyle(element).visibility === "hidden") {
+    return true;
+  }
+  let currentElement = element;
+  while (currentElement) {
+    if (isSubtreeInaccessibleImpl(currentElement)) {
+      return true;
+    }
+    currentElement = currentElement.parentElement;
+  }
+  return false;
+}
+function getImplicitAriaRoles(currentNode) {
+  for (const {
+    match,
+    roles: roles2
+  } of elementRoleList) {
+    if (match(currentNode)) {
+      return [...roles2];
+    }
+  }
+  return [];
+}
+function buildElementRoleList(elementRolesMap) {
+  function makeElementSelector(_ref) {
+    let {
+      name,
+      attributes
+    } = _ref;
+    return "" + name + attributes.map((_ref2) => {
+      let {
+        name: attributeName,
+        value,
+        constraints = []
+      } = _ref2;
+      const shouldNotExist = constraints.indexOf("undefined") !== -1;
+      if (shouldNotExist) {
+        return ":not([" + attributeName + "])";
+      } else if (value) {
+        return "[" + attributeName + '="' + value + '"]';
+      } else {
+        return "[" + attributeName + "]";
+      }
+    }).join("");
+  }
+  function getSelectorSpecificity(_ref3) {
+    let {
+      attributes = []
+    } = _ref3;
+    return attributes.length;
+  }
+  function bySelectorSpecificity(_ref4, _ref5) {
+    let {
+      specificity: leftSpecificity
+    } = _ref4;
+    let {
+      specificity: rightSpecificity
+    } = _ref5;
+    return rightSpecificity - leftSpecificity;
+  }
+  function match(element) {
+    let {
+      attributes = []
+    } = element;
+    const typeTextIndex = attributes.findIndex((attribute) => attribute.value && attribute.name === "type" && attribute.value === "text");
+    if (typeTextIndex >= 0) {
+      attributes = [...attributes.slice(0, typeTextIndex), ...attributes.slice(typeTextIndex + 1)];
+    }
+    const selector2 = makeElementSelector({
+      ...element,
+      attributes
+    });
+    return (node) => {
+      if (typeTextIndex >= 0 && node.type !== "text") {
+        return false;
+      }
+      return node.matches(selector2);
+    };
+  }
+  let result = [];
+  for (const [element, roles2] of elementRolesMap.entries()) {
+    result = [...result, {
+      match: match(element),
+      roles: Array.from(roles2),
+      specificity: getSelectorSpecificity(element)
+    }];
+  }
+  return result.sort(bySelectorSpecificity);
+}
+function getRoles(container, _temp) {
+  let {
+    hidden = false
+  } = _temp === void 0 ? {} : _temp;
+  function flattenDOM(node) {
+    return [node, ...Array.from(node.children).reduce((acc, child) => [...acc, ...flattenDOM(child)], [])];
+  }
+  return flattenDOM(container).filter((element) => {
+    return hidden === false ? isInaccessible(element) === false : true;
+  }).reduce((acc, node) => {
+    let roles2 = [];
+    if (node.hasAttribute("role")) {
+      roles2 = node.getAttribute("role").split(" ").slice(0, 1);
+    } else {
+      roles2 = getImplicitAriaRoles(node);
+    }
+    return roles2.reduce((rolesAcc, role) => Array.isArray(rolesAcc[role]) ? {
+      ...rolesAcc,
+      [role]: [...rolesAcc[role], node]
+    } : {
+      ...rolesAcc,
+      [role]: [node]
+    }, acc);
+  }, {});
+}
+function prettyRoles(dom2, _ref6) {
+  let {
+    hidden,
+    includeDescription
+  } = _ref6;
+  const roles2 = getRoles(dom2, {
+    hidden
+  });
+  return Object.entries(roles2).filter((_ref7) => {
+    let [role] = _ref7;
+    return role !== "generic";
+  }).map((_ref8) => {
+    let [role, elements] = _ref8;
+    const delimiterBar = "-".repeat(50);
+    const elementsString = elements.map((el) => {
+      const nameString = 'Name "' + computeAccessibleName(el, {
+        computedStyleSupportsPseudoElements: getConfig().computedStyleSupportsPseudoElements
+      }) + '":\n';
+      const domString = prettyDOM(el.cloneNode(false));
+      if (includeDescription) {
+        const descriptionString = 'Description "' + computeAccessibleDescription(el, {
+          computedStyleSupportsPseudoElements: getConfig().computedStyleSupportsPseudoElements
+        }) + '":\n';
+        return "" + nameString + descriptionString + domString;
+      }
+      return "" + nameString + domString;
+    }).join("\n\n");
+    return role + ":\n\n" + elementsString + "\n\n" + delimiterBar;
+  }).join("\n");
+}
+const logRoles = function(dom2, _temp2) {
+  let {
+    hidden = false
+  } = _temp2 === void 0 ? {} : _temp2;
+  return console.log(prettyRoles(dom2, {
+    hidden
+  }));
+};
+function computeAriaSelected(element) {
+  if (element.tagName === "OPTION") {
+    return element.selected;
+  }
+  return checkBooleanAttribute(element, "aria-selected");
+}
+function computeAriaChecked(element) {
+  if ("indeterminate" in element && element.indeterminate) {
+    return void 0;
+  }
+  if ("checked" in element) {
+    return element.checked;
+  }
+  return checkBooleanAttribute(element, "aria-checked");
+}
+function computeAriaPressed(element) {
+  return checkBooleanAttribute(element, "aria-pressed");
+}
+function computeAriaCurrent(element) {
+  var _ref9, _checkBooleanAttribut;
+  return (_ref9 = (_checkBooleanAttribut = checkBooleanAttribute(element, "aria-current")) != null ? _checkBooleanAttribut : element.getAttribute("aria-current")) != null ? _ref9 : false;
+}
+function computeAriaExpanded(element) {
+  return checkBooleanAttribute(element, "aria-expanded");
+}
+function checkBooleanAttribute(element, attribute) {
+  const attributeValue = element.getAttribute(attribute);
+  if (attributeValue === "true") {
+    return true;
+  }
+  if (attributeValue === "false") {
+    return false;
+  }
+  return void 0;
+}
+function computeHeadingLevel(element) {
+  const implicitHeadingLevels = {
+    H1: 1,
+    H2: 2,
+    H3: 3,
+    H4: 4,
+    H5: 5,
+    H6: 6
+  };
+  const ariaLevelAttribute = element.getAttribute("aria-level") && Number(element.getAttribute("aria-level"));
+  return ariaLevelAttribute || implicitHeadingLevels[element.tagName];
+}
+const normalize = getDefaultNormalizer();
+function escapeRegExp(string) {
+  return string.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&");
+}
+function getRegExpMatcher(string) {
+  return new RegExp(escapeRegExp(string.toLowerCase()), "i");
+}
+function makeSuggestion(queryName, element, content, _ref) {
+  let {
+    variant,
+    name
+  } = _ref;
+  let warning = "";
+  const queryOptions = {};
+  const queryArgs = [["Role", "TestId"].includes(queryName) ? content : getRegExpMatcher(content)];
+  if (name) {
+    queryOptions.name = getRegExpMatcher(name);
+  }
+  if (queryName === "Role" && isInaccessible(element)) {
+    queryOptions.hidden = true;
+    warning = "Element is inaccessible. This means that the element and all its children are invisible to screen readers.\n    If you are using the aria-hidden prop, make sure this is the right choice for your case.\n    ";
+  }
+  if (Object.keys(queryOptions).length > 0) {
+    queryArgs.push(queryOptions);
+  }
+  const queryMethod = variant + "By" + queryName;
+  return {
+    queryName,
+    queryMethod,
+    queryArgs,
+    variant,
+    warning,
+    toString() {
+      if (warning) {
+        console.warn(warning);
+      }
+      let [text, options] = queryArgs;
+      text = typeof text === "string" ? "'" + text + "'" : text;
+      options = options ? ", { " + Object.entries(options).map((_ref2) => {
+        let [k, v2] = _ref2;
+        return k + ": " + v2;
+      }).join(", ") + " }" : "";
+      return queryMethod + "(" + text + options + ")";
+    }
+  };
+}
+function canSuggest(currentMethod, requestedMethod, data) {
+  return data && (!requestedMethod || requestedMethod.toLowerCase() === currentMethod.toLowerCase());
+}
+function getSuggestedQuery(element, variant, method) {
+  var _element$getAttribute, _getImplicitAriaRoles;
+  if (variant === void 0) {
+    variant = "get";
+  }
+  if (element.matches(getConfig().defaultIgnore)) {
+    return void 0;
+  }
+  const role = (_element$getAttribute = element.getAttribute("role")) != null ? _element$getAttribute : (_getImplicitAriaRoles = getImplicitAriaRoles(element)) == null ? void 0 : _getImplicitAriaRoles[0];
+  if (role !== "generic" && canSuggest("Role", method, role)) {
+    return makeSuggestion("Role", element, role, {
+      variant,
+      name: computeAccessibleName(element, {
+        computedStyleSupportsPseudoElements: getConfig().computedStyleSupportsPseudoElements
+      })
+    });
+  }
+  const labelText = getLabels(document, element).map((label) => label.content).join(" ");
+  if (canSuggest("LabelText", method, labelText)) {
+    return makeSuggestion("LabelText", element, labelText, {
+      variant
+    });
+  }
+  const placeholderText = element.getAttribute("placeholder");
+  if (canSuggest("PlaceholderText", method, placeholderText)) {
+    return makeSuggestion("PlaceholderText", element, placeholderText, {
+      variant
+    });
+  }
+  const textContent = normalize(getNodeText(element));
+  if (canSuggest("Text", method, textContent)) {
+    return makeSuggestion("Text", element, textContent, {
+      variant
+    });
+  }
+  if (canSuggest("DisplayValue", method, element.value)) {
+    return makeSuggestion("DisplayValue", element, normalize(element.value), {
+      variant
+    });
+  }
+  const alt = element.getAttribute("alt");
+  if (canSuggest("AltText", method, alt)) {
+    return makeSuggestion("AltText", element, alt, {
+      variant
+    });
+  }
+  const title = element.getAttribute("title");
+  if (canSuggest("Title", method, title)) {
+    return makeSuggestion("Title", element, title, {
+      variant
+    });
+  }
+  const testId = element.getAttribute(getConfig().testIdAttribute);
+  if (canSuggest("TestId", method, testId)) {
+    return makeSuggestion("TestId", element, testId, {
+      variant
+    });
+  }
+  return void 0;
+}
+function copyStackTrace(target, source) {
+  target.stack = source.stack.replace(source.message, target.message);
+}
+function waitFor(callback, _ref) {
+  let {
+    container = getDocument$1(),
+    timeout = getConfig().asyncUtilTimeout,
+    showOriginalStackTrace = getConfig().showOriginalStackTrace,
+    stackTraceError,
+    interval = 50,
+    onTimeout = (error) => {
+      error.message = getConfig().getElementError(error.message, container).message;
+      return error;
+    },
+    mutationObserverOptions = {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      characterData: true
+    }
+  } = _ref;
+  if (typeof callback !== "function") {
+    throw new TypeError("Received `callback` arg must be a function");
+  }
+  return new Promise(async (resolve, reject) => {
+    let lastError, intervalId, observer;
+    let finished = false;
+    let promiseStatus = "idle";
+    const overallTimeoutTimer = setTimeout(handleTimeout, timeout);
+    const usingJestFakeTimers = jestFakeTimersAreEnabled$1();
+    if (usingJestFakeTimers) {
+      const {
+        unstable_advanceTimersWrapper: advanceTimersWrapper
+      } = getConfig();
+      checkCallback();
+      while (!finished) {
+        if (!jestFakeTimersAreEnabled$1()) {
+          const error = new Error("Changed from using fake timers to real timers while using waitFor. This is not allowed and will result in very strange behavior. Please ensure you're awaiting all async things your test is doing before changing to real timers. For more info, please go to https://github.com/testing-library/dom-testing-library/issues/830");
+          if (!showOriginalStackTrace)
+            copyStackTrace(error, stackTraceError);
+          reject(error);
+          return;
+        }
+        advanceTimersWrapper(() => {
+          jest.advanceTimersByTime(interval);
+        });
+        checkCallback();
+        if (finished) {
+          break;
+        }
+        await advanceTimersWrapper(async () => {
+          await new Promise((r2) => {
+            setTimeout(r2, 0);
+            jest.advanceTimersByTime(0);
+          });
+        });
+      }
+    } else {
+      try {
+        checkContainerType$1(container);
+      } catch (e2) {
+        reject(e2);
+        return;
+      }
+      intervalId = setInterval(checkRealTimersCallback, interval);
+      const {
+        MutationObserver
+      } = getWindowFromNode$1(container);
+      observer = new MutationObserver(checkRealTimersCallback);
+      observer.observe(container, mutationObserverOptions);
+      checkCallback();
+    }
+    function onDone(error, result) {
+      finished = true;
+      clearTimeout(overallTimeoutTimer);
+      if (!usingJestFakeTimers) {
+        clearInterval(intervalId);
+        observer.disconnect();
+      }
+      if (error) {
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    }
+    function checkRealTimersCallback() {
+      if (jestFakeTimersAreEnabled$1()) {
+        const error = new Error("Changed from using real timers to fake timers while using waitFor. This is not allowed and will result in very strange behavior. Please ensure you're awaiting all async things your test is doing before changing to fake timers. For more info, please go to https://github.com/testing-library/dom-testing-library/issues/830");
+        if (!showOriginalStackTrace)
+          copyStackTrace(error, stackTraceError);
+        return reject(error);
+      } else {
+        return checkCallback();
+      }
+    }
+    function checkCallback() {
+      if (promiseStatus === "pending")
+        return;
+      try {
+        const result = runWithExpensiveErrorDiagnosticsDisabled(callback);
+        if (typeof (result == null ? void 0 : result.then) === "function") {
+          promiseStatus = "pending";
+          result.then((resolvedValue) => {
+            promiseStatus = "resolved";
+            onDone(null, resolvedValue);
+          }, (rejectedValue) => {
+            promiseStatus = "rejected";
+            lastError = rejectedValue;
+          });
+        } else {
+          onDone(null, result);
+        }
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    function handleTimeout() {
+      let error;
+      if (lastError) {
+        error = lastError;
+        if (!showOriginalStackTrace && error.name === "TestingLibraryElementError") {
+          copyStackTrace(error, stackTraceError);
+        }
+      } else {
+        error = new Error("Timed out in waitFor.");
+        if (!showOriginalStackTrace) {
+          copyStackTrace(error, stackTraceError);
+        }
+      }
+      onDone(onTimeout(error), null);
+    }
+  });
+}
+function waitForWrapper(callback, options) {
+  const stackTraceError = new Error("STACK_TRACE_MESSAGE");
+  return getConfig().asyncWrapper(() => waitFor(callback, {
+    stackTraceError,
+    ...options
+  }));
+}
+function getElementError(message, container) {
+  return getConfig().getElementError(message, container);
+}
+function getMultipleElementsFoundError(message, container) {
+  return getElementError(message + "\n\n(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).", container);
+}
+function queryAllByAttribute(attribute, container, text, _temp) {
+  let {
+    exact = true,
+    collapseWhitespace,
+    trim,
+    normalizer
+  } = _temp === void 0 ? {} : _temp;
+  const matcher = exact ? matches : fuzzyMatches;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  return Array.from(container.querySelectorAll("[" + attribute + "]")).filter((node) => matcher(node.getAttribute(attribute), node, text, matchNormalizer));
+}
+function queryByAttribute(attribute, container, text, options) {
+  const els = queryAllByAttribute(attribute, container, text, options);
+  if (els.length > 1) {
+    throw getMultipleElementsFoundError("Found multiple elements by [" + attribute + "=" + text + "]", container);
+  }
+  return els[0] || null;
+}
+function makeSingleQuery(allQuery, getMultipleError2) {
+  return function(container) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+    const els = allQuery(container, ...args);
+    if (els.length > 1) {
+      const elementStrings = els.map((element) => getElementError(null, element).message).join("\n\n");
+      throw getMultipleElementsFoundError(getMultipleError2(container, ...args) + "\n\nHere are the matching elements:\n\n" + elementStrings, container);
+    }
+    return els[0] || null;
+  };
+}
+function getSuggestionError(suggestion, container) {
+  return getConfig().getElementError("A better query is available, try this:\n" + suggestion.toString() + "\n", container);
+}
+function makeGetAllQuery(allQuery, getMissingError2) {
+  return function(container) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    const els = allQuery(container, ...args);
+    if (!els.length) {
+      throw getConfig().getElementError(getMissingError2(container, ...args), container);
+    }
+    return els;
+  };
+}
+function makeFindQuery(getter) {
+  return (container, text, options, waitForOptions) => {
+    return waitForWrapper(() => {
+      return getter(container, text, options);
+    }, {
+      container,
+      ...waitForOptions
+    });
+  };
+}
+const wrapSingleQueryWithSuggestion = (query, queryAllByName, variant) => function(container) {
+  for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+    args[_key3 - 1] = arguments[_key3];
+  }
+  const element = query(container, ...args);
+  const [{
+    suggest = getConfig().throwSuggestions
+  } = {}] = args.slice(-1);
+  if (element && suggest) {
+    const suggestion = getSuggestedQuery(element, variant);
+    if (suggestion && !queryAllByName.endsWith(suggestion.queryName)) {
+      throw getSuggestionError(suggestion.toString(), container);
+    }
+  }
+  return element;
+};
+const wrapAllByQueryWithSuggestion = (query, queryAllByName, variant) => function(container) {
+  for (var _len4 = arguments.length, args = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+    args[_key4 - 1] = arguments[_key4];
+  }
+  const els = query(container, ...args);
+  const [{
+    suggest = getConfig().throwSuggestions
+  } = {}] = args.slice(-1);
+  if (els.length && suggest) {
+    const uniqueSuggestionMessages = [...new Set(els.map((element) => {
+      var _getSuggestedQuery;
+      return (_getSuggestedQuery = getSuggestedQuery(element, variant)) == null ? void 0 : _getSuggestedQuery.toString();
+    }))];
+    if (uniqueSuggestionMessages.length === 1 && !queryAllByName.endsWith(
+      getSuggestedQuery(els[0], variant).queryName
+    )) {
+      throw getSuggestionError(uniqueSuggestionMessages[0], container);
+    }
+  }
+  return els;
+};
+function buildQueries(queryAllBy, getMultipleError2, getMissingError2) {
+  const queryBy = wrapSingleQueryWithSuggestion(makeSingleQuery(queryAllBy, getMultipleError2), queryAllBy.name, "query");
+  const getAllBy = makeGetAllQuery(queryAllBy, getMissingError2);
+  const getBy = makeSingleQuery(getAllBy, getMultipleError2);
+  const getByWithSuggestions = wrapSingleQueryWithSuggestion(getBy, queryAllBy.name, "get");
+  const getAllWithSuggestions = wrapAllByQueryWithSuggestion(getAllBy, queryAllBy.name.replace("query", "get"), "getAll");
+  const findAllBy = makeFindQuery(wrapAllByQueryWithSuggestion(getAllBy, queryAllBy.name, "findAll"));
+  const findBy = makeFindQuery(wrapSingleQueryWithSuggestion(getBy, queryAllBy.name, "find"));
+  return [queryBy, getAllWithSuggestions, getByWithSuggestions, findAllBy, findBy];
+}
+var queryHelpers = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  getElementError,
+  wrapAllByQueryWithSuggestion,
+  wrapSingleQueryWithSuggestion,
+  getMultipleElementsFoundError,
+  queryAllByAttribute,
+  queryByAttribute,
+  makeSingleQuery,
+  makeGetAllQuery,
+  makeFindQuery,
+  buildQueries
+});
+function queryAllLabels(container) {
+  return Array.from(container.querySelectorAll("label,input")).map((node) => {
+    return {
+      node,
+      textToMatch: getLabelContent(node)
+    };
+  }).filter((_ref) => {
+    let {
+      textToMatch
+    } = _ref;
+    return textToMatch !== null;
+  });
+}
+const queryAllLabelsByText = function(container, text, _temp) {
+  let {
+    exact = true,
+    trim,
+    collapseWhitespace,
+    normalizer
+  } = _temp === void 0 ? {} : _temp;
+  const matcher = exact ? matches : fuzzyMatches;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  const textToMatchByLabels = queryAllLabels(container);
+  return textToMatchByLabels.filter((_ref2) => {
+    let {
+      node,
+      textToMatch
+    } = _ref2;
+    return matcher(textToMatch, node, text, matchNormalizer);
+  }).map((_ref3) => {
+    let {
+      node
+    } = _ref3;
+    return node;
+  });
+};
+const queryAllByLabelText = function(container, text, _temp2) {
+  let {
+    selector: selector2 = "*",
+    exact = true,
+    collapseWhitespace,
+    trim,
+    normalizer
+  } = _temp2 === void 0 ? {} : _temp2;
+  checkContainerType$1(container);
+  const matcher = exact ? matches : fuzzyMatches;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  const matchingLabelledElements = Array.from(container.querySelectorAll("*")).filter((element) => {
+    return getRealLabels(element).length || element.hasAttribute("aria-labelledby");
+  }).reduce((labelledElements, labelledElement) => {
+    const labelList = getLabels(container, labelledElement, {
+      selector: selector2
+    });
+    labelList.filter((label) => Boolean(label.formControl)).forEach((label) => {
+      if (matcher(label.content, label.formControl, text, matchNormalizer) && label.formControl)
+        labelledElements.push(label.formControl);
+    });
+    const labelsValue = labelList.filter((label) => Boolean(label.content)).map((label) => label.content);
+    if (matcher(labelsValue.join(" "), labelledElement, text, matchNormalizer))
+      labelledElements.push(labelledElement);
+    if (labelsValue.length > 1) {
+      labelsValue.forEach((labelValue, index2) => {
+        if (matcher(labelValue, labelledElement, text, matchNormalizer))
+          labelledElements.push(labelledElement);
+        const labelsFiltered = [...labelsValue];
+        labelsFiltered.splice(index2, 1);
+        if (labelsFiltered.length > 1) {
+          if (matcher(labelsFiltered.join(" "), labelledElement, text, matchNormalizer))
+            labelledElements.push(labelledElement);
+        }
+      });
+    }
+    return labelledElements;
+  }, []).concat(queryAllByAttribute("aria-label", container, text, {
+    exact,
+    normalizer: matchNormalizer
+  }));
+  return Array.from(new Set(matchingLabelledElements)).filter((element) => element.matches(selector2));
+};
+const getAllByLabelText = function(container, text) {
+  for (var _len = arguments.length, rest = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    rest[_key - 2] = arguments[_key];
+  }
+  const els = queryAllByLabelText(container, text, ...rest);
+  if (!els.length) {
+    const labels = queryAllLabelsByText(container, text, ...rest);
+    if (labels.length) {
+      const tagNames = labels.map((label) => getTagNameOfElementAssociatedWithLabelViaFor(container, label)).filter((tagName) => !!tagName);
+      if (tagNames.length) {
+        throw getConfig().getElementError(tagNames.map((tagName) => "Found a label with the text of: " + text + ", however the element associated with this label (<" + tagName + " />) is non-labellable [https://html.spec.whatwg.org/multipage/forms.html#category-label]. If you really need to label a <" + tagName + " />, you can use aria-label or aria-labelledby instead.").join("\n\n"), container);
+      } else {
+        throw getConfig().getElementError("Found a label with the text of: " + text + `, however no form control was found associated to that label. Make sure you're using the "for" attribute or "aria-labelledby" attribute correctly.`, container);
+      }
+    } else {
+      throw getConfig().getElementError("Unable to find a label with the text of: " + text, container);
+    }
+  }
+  return els;
+};
+function getTagNameOfElementAssociatedWithLabelViaFor(container, label) {
+  const htmlFor = label.getAttribute("for");
+  if (!htmlFor) {
+    return null;
+  }
+  const element = container.querySelector('[id="' + htmlFor + '"]');
+  return element ? element.tagName.toLowerCase() : null;
+}
+const getMultipleError$7 = (c2, text) => "Found multiple elements with the text of: " + text;
+const queryByLabelText = wrapSingleQueryWithSuggestion(makeSingleQuery(queryAllByLabelText, getMultipleError$7), queryAllByLabelText.name, "query");
+const getByLabelText = makeSingleQuery(getAllByLabelText, getMultipleError$7);
+const findAllByLabelText = makeFindQuery(wrapAllByQueryWithSuggestion(getAllByLabelText, getAllByLabelText.name, "findAll"));
+const findByLabelText = makeFindQuery(wrapSingleQueryWithSuggestion(getByLabelText, getAllByLabelText.name, "find"));
+const getAllByLabelTextWithSuggestions = wrapAllByQueryWithSuggestion(getAllByLabelText, getAllByLabelText.name, "getAll");
+const getByLabelTextWithSuggestions = wrapSingleQueryWithSuggestion(getByLabelText, getAllByLabelText.name, "get");
+const queryAllByLabelTextWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByLabelText, queryAllByLabelText.name, "queryAll");
+const queryAllByPlaceholderText = function() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+  checkContainerType$1(args[0]);
+  return queryAllByAttribute("placeholder", ...args);
+};
+const getMultipleError$6 = (c2, text) => "Found multiple elements with the placeholder text of: " + text;
+const getMissingError$6 = (c2, text) => "Unable to find an element with the placeholder text of: " + text;
+const queryAllByPlaceholderTextWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByPlaceholderText, queryAllByPlaceholderText.name, "queryAll");
+const [queryByPlaceholderText, getAllByPlaceholderText, getByPlaceholderText, findAllByPlaceholderText, findByPlaceholderText] = buildQueries(queryAllByPlaceholderText, getMultipleError$6, getMissingError$6);
+const queryAllByText = function(container, text, _temp) {
+  let {
+    selector: selector2 = "*",
+    exact = true,
+    collapseWhitespace,
+    trim,
+    ignore = getConfig().defaultIgnore,
+    normalizer
+  } = _temp === void 0 ? {} : _temp;
+  checkContainerType$1(container);
+  const matcher = exact ? matches : fuzzyMatches;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  let baseArray = [];
+  if (typeof container.matches === "function" && container.matches(selector2)) {
+    baseArray = [container];
+  }
+  return [...baseArray, ...Array.from(container.querySelectorAll(selector2))].filter((node) => !ignore || !node.matches(ignore)).filter((node) => matcher(getNodeText(node), node, text, matchNormalizer));
+};
+const getMultipleError$5 = (c2, text) => "Found multiple elements with the text: " + text;
+const getMissingError$5 = function(c2, text, options) {
+  if (options === void 0) {
+    options = {};
+  }
+  const {
+    collapseWhitespace,
+    trim,
+    normalizer,
+    selector: selector2
+  } = options;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  const normalizedText = matchNormalizer(text.toString());
+  const isNormalizedDifferent = normalizedText !== text.toString();
+  const isCustomSelector = (selector2 != null ? selector2 : "*") !== "*";
+  return "Unable to find an element with the text: " + (isNormalizedDifferent ? normalizedText + " (normalized from '" + text + "')" : text) + (isCustomSelector ? ", which matches selector '" + selector2 + "'" : "") + ". This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.";
+};
+const queryAllByTextWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByText, queryAllByText.name, "queryAll");
+const [queryByText, getAllByText, getByText, findAllByText, findByText] = buildQueries(queryAllByText, getMultipleError$5, getMissingError$5);
+const queryAllByDisplayValue = function(container, value, _temp) {
+  let {
+    exact = true,
+    collapseWhitespace,
+    trim,
+    normalizer
+  } = _temp === void 0 ? {} : _temp;
+  checkContainerType$1(container);
+  const matcher = exact ? matches : fuzzyMatches;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  return Array.from(container.querySelectorAll("input,textarea,select")).filter((node) => {
+    if (node.tagName === "SELECT") {
+      const selectedOptions = Array.from(node.options).filter((option) => option.selected);
+      return selectedOptions.some((optionNode) => matcher(getNodeText(optionNode), optionNode, value, matchNormalizer));
+    } else {
+      return matcher(node.value, node, value, matchNormalizer);
+    }
+  });
+};
+const getMultipleError$4 = (c2, value) => "Found multiple elements with the display value: " + value + ".";
+const getMissingError$4 = (c2, value) => "Unable to find an element with the display value: " + value + ".";
+const queryAllByDisplayValueWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByDisplayValue, queryAllByDisplayValue.name, "queryAll");
+const [queryByDisplayValue, getAllByDisplayValue, getByDisplayValue, findAllByDisplayValue, findByDisplayValue] = buildQueries(queryAllByDisplayValue, getMultipleError$4, getMissingError$4);
+const VALID_TAG_REGEXP = /^(img|input|area|.+-.+)$/i;
+const queryAllByAltText = function(container, alt, options) {
+  if (options === void 0) {
+    options = {};
+  }
+  checkContainerType$1(container);
+  return queryAllByAttribute("alt", container, alt, options).filter((node) => VALID_TAG_REGEXP.test(node.tagName));
+};
+const getMultipleError$3 = (c2, alt) => "Found multiple elements with the alt text: " + alt;
+const getMissingError$3 = (c2, alt) => "Unable to find an element with the alt text: " + alt;
+const queryAllByAltTextWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByAltText, queryAllByAltText.name, "queryAll");
+const [queryByAltText, getAllByAltText, getByAltText, findAllByAltText, findByAltText] = buildQueries(queryAllByAltText, getMultipleError$3, getMissingError$3);
+const isSvgTitle = (node) => {
+  var _node$parentElement;
+  return node.tagName.toLowerCase() === "title" && ((_node$parentElement = node.parentElement) == null ? void 0 : _node$parentElement.tagName.toLowerCase()) === "svg";
+};
+const queryAllByTitle = function(container, text, _temp) {
+  let {
+    exact = true,
+    collapseWhitespace,
+    trim,
+    normalizer
+  } = _temp === void 0 ? {} : _temp;
+  checkContainerType$1(container);
+  const matcher = exact ? matches : fuzzyMatches;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  return Array.from(container.querySelectorAll("[title], svg > title")).filter((node) => matcher(node.getAttribute("title"), node, text, matchNormalizer) || isSvgTitle(node) && matcher(getNodeText(node), node, text, matchNormalizer));
+};
+const getMultipleError$2 = (c2, title) => "Found multiple elements with the title: " + title + ".";
+const getMissingError$2 = (c2, title) => "Unable to find an element with the title: " + title + ".";
+const queryAllByTitleWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByTitle, queryAllByTitle.name, "queryAll");
+const [queryByTitle, getAllByTitle, getByTitle, findAllByTitle, findByTitle] = buildQueries(queryAllByTitle, getMultipleError$2, getMissingError$2);
+function queryAllByRole(container, role, _temp) {
+  let {
+    exact = true,
+    collapseWhitespace,
+    hidden = getConfig().defaultHidden,
+    name,
+    description,
+    trim,
+    normalizer,
+    queryFallbacks = false,
+    selected,
+    checked,
+    pressed,
+    current,
+    level,
+    expanded
+  } = _temp === void 0 ? {} : _temp;
+  checkContainerType$1(container);
+  const matcher = exact ? matches : fuzzyMatches;
+  const matchNormalizer = makeNormalizer({
+    collapseWhitespace,
+    trim,
+    normalizer
+  });
+  if (selected !== void 0) {
+    var _allRoles$get;
+    if (((_allRoles$get = roles_1.get(role)) == null ? void 0 : _allRoles$get.props["aria-selected"]) === void 0) {
+      throw new Error('"aria-selected" is not supported on role "' + role + '".');
+    }
+  }
+  if (checked !== void 0) {
+    var _allRoles$get2;
+    if (((_allRoles$get2 = roles_1.get(role)) == null ? void 0 : _allRoles$get2.props["aria-checked"]) === void 0) {
+      throw new Error('"aria-checked" is not supported on role "' + role + '".');
+    }
+  }
+  if (pressed !== void 0) {
+    var _allRoles$get3;
+    if (((_allRoles$get3 = roles_1.get(role)) == null ? void 0 : _allRoles$get3.props["aria-pressed"]) === void 0) {
+      throw new Error('"aria-pressed" is not supported on role "' + role + '".');
+    }
+  }
+  if (current !== void 0) {
+    var _allRoles$get4;
+    if (((_allRoles$get4 = roles_1.get(role)) == null ? void 0 : _allRoles$get4.props["aria-current"]) === void 0) {
+      throw new Error('"aria-current" is not supported on role "' + role + '".');
+    }
+  }
+  if (level !== void 0) {
+    if (role !== "heading") {
+      throw new Error('Role "' + role + '" cannot have "level" property.');
+    }
+  }
+  if (expanded !== void 0) {
+    var _allRoles$get5;
+    if (((_allRoles$get5 = roles_1.get(role)) == null ? void 0 : _allRoles$get5.props["aria-expanded"]) === void 0) {
+      throw new Error('"aria-expanded" is not supported on role "' + role + '".');
+    }
+  }
+  const subtreeIsInaccessibleCache = /* @__PURE__ */ new WeakMap();
+  function cachedIsSubtreeInaccessible(element) {
+    if (!subtreeIsInaccessibleCache.has(element)) {
+      subtreeIsInaccessibleCache.set(element, isSubtreeInaccessible(element));
+    }
+    return subtreeIsInaccessibleCache.get(element);
+  }
+  return Array.from(container.querySelectorAll(
+    makeRoleSelector(role, exact, normalizer ? matchNormalizer : void 0)
+  )).filter((node) => {
+    const isRoleSpecifiedExplicitly = node.hasAttribute("role");
+    if (isRoleSpecifiedExplicitly) {
+      const roleValue = node.getAttribute("role");
+      if (queryFallbacks) {
+        return roleValue.split(" ").filter(Boolean).some((text) => matcher(text, node, role, matchNormalizer));
+      }
+      if (normalizer) {
+        return matcher(roleValue, node, role, matchNormalizer);
+      }
+      const [firstWord] = roleValue.split(" ");
+      return matcher(firstWord, node, role, matchNormalizer);
+    }
+    const implicitRoles = getImplicitAriaRoles(node);
+    return implicitRoles.some((implicitRole) => matcher(implicitRole, node, role, matchNormalizer));
+  }).filter((element) => {
+    if (selected !== void 0) {
+      return selected === computeAriaSelected(element);
+    }
+    if (checked !== void 0) {
+      return checked === computeAriaChecked(element);
+    }
+    if (pressed !== void 0) {
+      return pressed === computeAriaPressed(element);
+    }
+    if (current !== void 0) {
+      return current === computeAriaCurrent(element);
+    }
+    if (expanded !== void 0) {
+      return expanded === computeAriaExpanded(element);
+    }
+    if (level !== void 0) {
+      return level === computeHeadingLevel(element);
+    }
+    return true;
+  }).filter((element) => {
+    if (name === void 0) {
+      return true;
+    }
+    return matches(computeAccessibleName(element, {
+      computedStyleSupportsPseudoElements: getConfig().computedStyleSupportsPseudoElements
+    }), element, name, (text) => text);
+  }).filter((element) => {
+    if (description === void 0) {
+      return true;
+    }
+    return matches(computeAccessibleDescription(element, {
+      computedStyleSupportsPseudoElements: getConfig().computedStyleSupportsPseudoElements
+    }), element, description, (text) => text);
+  }).filter((element) => {
+    return hidden === false ? isInaccessible(element, {
+      isSubtreeInaccessible: cachedIsSubtreeInaccessible
+    }) === false : true;
+  });
+}
+function makeRoleSelector(role, exact, customNormalizer) {
+  var _roleElements$get;
+  if (typeof role !== "string") {
+    return "*";
+  }
+  const explicitRoleSelector = exact && !customNormalizer ? '*[role~="' + role + '"]' : "*[role]";
+  const roleRelations = (_roleElements$get = roleElements_1.get(role)) != null ? _roleElements$get : /* @__PURE__ */ new Set();
+  const implicitRoleSelectors = new Set(Array.from(roleRelations).map((_ref) => {
+    let {
+      name
+    } = _ref;
+    return name;
+  }));
+  return [explicitRoleSelector].concat(Array.from(implicitRoleSelectors)).join(",");
+}
+const getNameHint = (name) => {
+  let nameHint = "";
+  if (name === void 0) {
+    nameHint = "";
+  } else if (typeof name === "string") {
+    nameHint = ' and name "' + name + '"';
+  } else {
+    nameHint = " and name `" + name + "`";
+  }
+  return nameHint;
+};
+const getMultipleError$1 = function(c2, role, _temp2) {
+  let {
+    name
+  } = _temp2 === void 0 ? {} : _temp2;
+  return 'Found multiple elements with the role "' + role + '"' + getNameHint(name);
+};
+const getMissingError$1 = function(container, role, _temp3) {
+  let {
+    hidden = getConfig().defaultHidden,
+    name,
+    description
+  } = _temp3 === void 0 ? {} : _temp3;
+  if (getConfig()._disableExpensiveErrorDiagnostics) {
+    return 'Unable to find role="' + role + '"' + getNameHint(name);
+  }
+  let roles2 = "";
+  Array.from(container.children).forEach((childElement) => {
+    roles2 += prettyRoles(childElement, {
+      hidden,
+      includeDescription: description !== void 0
+    });
+  });
+  let roleMessage;
+  if (roles2.length === 0) {
+    if (hidden === false) {
+      roleMessage = "There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole";
+    } else {
+      roleMessage = "There are no available roles.";
+    }
+  } else {
+    roleMessage = ("\nHere are the " + (hidden === false ? "accessible" : "available") + " roles:\n\n  " + roles2.replace(/\n/g, "\n  ").replace(/\n\s\s\n/g, "\n\n") + "\n").trim();
+  }
+  let nameHint = "";
+  if (name === void 0) {
+    nameHint = "";
+  } else if (typeof name === "string") {
+    nameHint = ' and name "' + name + '"';
+  } else {
+    nameHint = " and name `" + name + "`";
+  }
+  let descriptionHint = "";
+  if (description === void 0) {
+    descriptionHint = "";
+  } else if (typeof description === "string") {
+    descriptionHint = ' and description "' + description + '"';
+  } else {
+    descriptionHint = " and description `" + description + "`";
+  }
+  return ("\nUnable to find an " + (hidden === false ? "accessible " : "") + 'element with the role "' + role + '"' + nameHint + descriptionHint + "\n\n" + roleMessage).trim();
+};
+const queryAllByRoleWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByRole, queryAllByRole.name, "queryAll");
+const [queryByRole, getAllByRole, getByRole, findAllByRole, findByRole] = buildQueries(queryAllByRole, getMultipleError$1, getMissingError$1);
+const getTestIdAttribute = () => getConfig().testIdAttribute;
+const queryAllByTestId = function() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+  checkContainerType$1(args[0]);
+  return queryAllByAttribute(getTestIdAttribute(), ...args);
+};
+const getMultipleError = (c2, id) => "Found multiple elements by: [" + getTestIdAttribute() + '="' + id + '"]';
+const getMissingError = (c2, id) => "Unable to find an element by: [" + getTestIdAttribute() + '="' + id + '"]';
+const queryAllByTestIdWithSuggestions = wrapAllByQueryWithSuggestion(queryAllByTestId, queryAllByTestId.name, "queryAll");
+const [queryByTestId, getAllByTestId, getByTestId, findAllByTestId, findByTestId] = buildQueries(queryAllByTestId, getMultipleError, getMissingError);
+var queries = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  queryAllByLabelText: queryAllByLabelTextWithSuggestions,
+  queryByLabelText,
+  getAllByLabelText: getAllByLabelTextWithSuggestions,
+  getByLabelText: getByLabelTextWithSuggestions,
+  findAllByLabelText,
+  findByLabelText,
+  queryByPlaceholderText,
+  queryAllByPlaceholderText: queryAllByPlaceholderTextWithSuggestions,
+  getByPlaceholderText,
+  getAllByPlaceholderText,
+  findAllByPlaceholderText,
+  findByPlaceholderText,
+  queryByText,
+  queryAllByText: queryAllByTextWithSuggestions,
+  getByText,
+  getAllByText,
+  findAllByText,
+  findByText,
+  queryByDisplayValue,
+  queryAllByDisplayValue: queryAllByDisplayValueWithSuggestions,
+  getByDisplayValue,
+  getAllByDisplayValue,
+  findAllByDisplayValue,
+  findByDisplayValue,
+  queryByAltText,
+  queryAllByAltText: queryAllByAltTextWithSuggestions,
+  getByAltText,
+  getAllByAltText,
+  findAllByAltText,
+  findByAltText,
+  queryByTitle,
+  queryAllByTitle: queryAllByTitleWithSuggestions,
+  getByTitle,
+  getAllByTitle,
+  findAllByTitle,
+  findByTitle,
+  queryByRole,
+  queryAllByRole: queryAllByRoleWithSuggestions,
+  getAllByRole,
+  getByRole,
+  findAllByRole,
+  findByRole,
+  queryByTestId,
+  queryAllByTestId: queryAllByTestIdWithSuggestions,
+  getByTestId,
+  getAllByTestId,
+  findAllByTestId,
+  findByTestId
+});
+function getQueriesForElement(element, queries$1, initialValue2) {
+  if (queries$1 === void 0) {
+    queries$1 = queries;
+  }
+  if (initialValue2 === void 0) {
+    initialValue2 = {};
+  }
+  return Object.keys(queries$1).reduce((helpers2, key) => {
+    const fn = queries$1[key];
+    helpers2[key] = fn.bind(null, element);
+    return helpers2;
+  }, initialValue2);
+}
+const isRemoved = (result) => !result || Array.isArray(result) && !result.length;
+function initialCheck(elements) {
+  if (isRemoved(elements)) {
+    throw new Error("The element(s) given to waitForElementToBeRemoved are already removed. waitForElementToBeRemoved requires that the element(s) exist(s) before waiting for removal.");
+  }
+}
+async function waitForElementToBeRemoved(callback, options) {
+  const timeoutError = new Error("Timed out in waitForElementToBeRemoved.");
+  if (typeof callback !== "function") {
+    initialCheck(callback);
+    const elements = Array.isArray(callback) ? callback : [callback];
+    const getRemainingElements = elements.map((element) => {
+      let parent = element.parentElement;
+      if (parent === null)
+        return () => null;
+      while (parent.parentElement)
+        parent = parent.parentElement;
+      return () => parent.contains(element) ? element : null;
+    });
+    callback = () => getRemainingElements.map((c2) => c2()).filter(Boolean);
+  }
+  initialCheck(callback());
+  return waitForWrapper(() => {
+    let result;
+    try {
+      result = callback();
+    } catch (error) {
+      if (error.name === "TestingLibraryElementError") {
+        return void 0;
+      }
+      throw error;
+    }
+    if (!isRemoved(result)) {
+      throw timeoutError;
+    }
+    return void 0;
+  }, options);
+}
+const eventMap = {
+  copy: {
+    EventType: "ClipboardEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  cut: {
+    EventType: "ClipboardEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  paste: {
+    EventType: "ClipboardEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  compositionEnd: {
+    EventType: "CompositionEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  compositionStart: {
+    EventType: "CompositionEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  compositionUpdate: {
+    EventType: "CompositionEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  keyDown: {
+    EventType: "KeyboardEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      charCode: 0,
+      composed: true
+    }
+  },
+  keyPress: {
+    EventType: "KeyboardEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      charCode: 0,
+      composed: true
+    }
+  },
+  keyUp: {
+    EventType: "KeyboardEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      charCode: 0,
+      composed: true
+    }
+  },
+  focus: {
+    EventType: "FocusEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false,
+      composed: true
+    }
+  },
+  blur: {
+    EventType: "FocusEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false,
+      composed: true
+    }
+  },
+  focusIn: {
+    EventType: "FocusEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  focusOut: {
+    EventType: "FocusEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  change: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  input: {
+    EventType: "InputEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  invalid: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: true
+    }
+  },
+  submit: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true
+    }
+  },
+  reset: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true
+    }
+  },
+  click: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      button: 0,
+      composed: true
+    }
+  },
+  contextMenu: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  dblClick: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  drag: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  dragEnd: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  dragEnter: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  dragExit: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  dragLeave: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  dragOver: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  dragStart: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  drop: {
+    EventType: "DragEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  mouseDown: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  mouseEnter: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false,
+      composed: true
+    }
+  },
+  mouseLeave: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false,
+      composed: true
+    }
+  },
+  mouseMove: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  mouseOut: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  mouseOver: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  mouseUp: {
+    EventType: "MouseEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  select: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  touchCancel: {
+    EventType: "TouchEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  touchEnd: {
+    EventType: "TouchEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  touchMove: {
+    EventType: "TouchEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  touchStart: {
+    EventType: "TouchEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  resize: {
+    EventType: "UIEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  scroll: {
+    EventType: "UIEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  wheel: {
+    EventType: "WheelEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  abort: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  canPlay: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  canPlayThrough: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  durationChange: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  emptied: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  encrypted: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  ended: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  loadedData: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  loadedMetadata: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  loadStart: {
+    EventType: "ProgressEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  pause: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  play: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  playing: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  progress: {
+    EventType: "ProgressEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  rateChange: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  seeked: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  seeking: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  stalled: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  suspend: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  timeUpdate: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  volumeChange: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  waiting: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  load: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  error: {
+    EventType: "Event",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  animationStart: {
+    EventType: "AnimationEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  animationEnd: {
+    EventType: "AnimationEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  animationIteration: {
+    EventType: "AnimationEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  transitionCancel: {
+    EventType: "TransitionEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  transitionEnd: {
+    EventType: "TransitionEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true
+    }
+  },
+  transitionRun: {
+    EventType: "TransitionEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  transitionStart: {
+    EventType: "TransitionEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  },
+  pointerOver: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  pointerEnter: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  pointerDown: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  pointerMove: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  pointerUp: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  pointerCancel: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  pointerOut: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: true,
+      composed: true
+    }
+  },
+  pointerLeave: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: false,
+      cancelable: false
+    }
+  },
+  gotPointerCapture: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  lostPointerCapture: {
+    EventType: "PointerEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    }
+  },
+  popState: {
+    EventType: "PopStateEvent",
+    defaultInit: {
+      bubbles: true,
+      cancelable: false
+    }
+  }
+};
+const eventAliasMap = {
+  doubleClick: "dblClick"
+};
+function fireEvent(element, event) {
+  return getConfig().eventWrapper(() => {
+    if (!event) {
+      throw new Error("Unable to fire an event - please provide an event object.");
+    }
+    if (!element) {
+      throw new Error('Unable to fire a "' + event.type + '" event - please provide a DOM element.');
+    }
+    return element.dispatchEvent(event);
+  });
+}
+function createEvent(eventName, node, init, _temp) {
+  let {
+    EventType = "Event",
+    defaultInit = {}
+  } = _temp === void 0 ? {} : _temp;
+  if (!node) {
+    throw new Error('Unable to fire a "' + eventName + '" event - please provide a DOM element.');
+  }
+  const eventInit = {
+    ...defaultInit,
+    ...init
+  };
+  const {
+    target: {
+      value,
+      files,
+      ...targetProperties
+    } = {}
+  } = eventInit;
+  if (value !== void 0) {
+    setNativeValue(node, value);
+  }
+  if (files !== void 0) {
+    Object.defineProperty(node, "files", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: files
+    });
+  }
+  Object.assign(node, targetProperties);
+  const window2 = getWindowFromNode$1(node);
+  const EventConstructor = window2[EventType] || window2.Event;
+  let event;
+  if (typeof EventConstructor === "function") {
+    event = new EventConstructor(eventName, eventInit);
+  } else {
+    event = window2.document.createEvent(EventType);
+    const {
+      bubbles,
+      cancelable,
+      detail,
+      ...otherInit
+    } = eventInit;
+    event.initEvent(eventName, bubbles, cancelable, detail);
+    Object.keys(otherInit).forEach((eventKey) => {
+      event[eventKey] = otherInit[eventKey];
+    });
+  }
+  const dataTransferProperties = ["dataTransfer", "clipboardData"];
+  dataTransferProperties.forEach((dataTransferKey) => {
+    const dataTransferValue = eventInit[dataTransferKey];
+    if (typeof dataTransferValue === "object") {
+      if (typeof window2.DataTransfer === "function") {
+        Object.defineProperty(event, dataTransferKey, {
+          value: Object.getOwnPropertyNames(dataTransferValue).reduce((acc, propName) => {
+            Object.defineProperty(acc, propName, {
+              value: dataTransferValue[propName]
+            });
+            return acc;
+          }, new window2.DataTransfer())
+        });
+      } else {
+        Object.defineProperty(event, dataTransferKey, {
+          value: dataTransferValue
+        });
+      }
+    }
+  });
+  return event;
+}
+Object.keys(eventMap).forEach((key) => {
+  const {
+    EventType,
+    defaultInit
+  } = eventMap[key];
+  const eventName = key.toLowerCase();
+  createEvent[key] = (node, init) => createEvent(eventName, node, init, {
+    EventType,
+    defaultInit
+  });
+  fireEvent[key] = (node, init) => fireEvent(node, createEvent[key](node, init));
+});
+function setNativeValue(element, value) {
+  const {
+    set: valueSetter
+  } = Object.getOwnPropertyDescriptor(element, "value") || {};
+  const prototype = Object.getPrototypeOf(element);
+  const {
+    set: prototypeValueSetter
+  } = Object.getOwnPropertyDescriptor(prototype, "value") || {};
+  if (prototypeValueSetter && valueSetter !== prototypeValueSetter) {
+    prototypeValueSetter.call(element, value);
+  } else {
+    if (valueSetter) {
+      valueSetter.call(element, value);
+    } else {
+      throw new Error("The given element does not have a value setter");
+    }
+  }
+}
+Object.keys(eventAliasMap).forEach((aliasKey) => {
+  const key = eventAliasMap[aliasKey];
+  fireEvent[aliasKey] = function() {
+    return fireEvent[key](...arguments);
+  };
+});
+function unindent(string) {
+  return string.replace(/[ \t]*[\n][ \t]*/g, "\n");
+}
+function encode(value) {
+  return lzString.compressToEncodedURIComponent(unindent(value));
+}
+function getPlaygroundUrl(markup2) {
+  return "https://testing-playground.com/#markup=" + encode(markup2);
+}
+const debug = (element, maxLength2, options) => Array.isArray(element) ? element.forEach((el) => logDOM(el, maxLength2, options)) : logDOM(element, maxLength2, options);
+const logTestingPlaygroundURL = function(element) {
+  if (element === void 0) {
+    element = getDocument$1().body;
+  }
+  if (!element || !("innerHTML" in element)) {
+    console.log("The element you're providing isn't a valid DOM element.");
+    return;
+  }
+  if (!element.innerHTML) {
+    console.log("The provided element doesn't have any children.");
+    return;
+  }
+  const playgroundUrl = getPlaygroundUrl(element.innerHTML);
+  console.log("Open this URL in your browser\n\n" + playgroundUrl);
+  return playgroundUrl;
+};
+const initialValue = {
+  debug,
+  logTestingPlaygroundURL
+};
+const screen = typeof document !== "undefined" && document.body ? getQueriesForElement(document.body, queries, initialValue) : Object.keys(queries).reduce((helpers2, key) => {
+  helpers2[key] = () => {
+    throw new TypeError("For queries bound to document.body a global document has to be available... Learn more: https://testing-library.com/s/screen-global-error");
+  };
+  return helpers2;
+}, initialValue);
+const domTestingLibrary = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  prettyFormat: index,
+  buildQueries,
+  configure,
+  createEvent,
+  findAllByAltText,
+  findAllByDisplayValue,
+  findAllByLabelText,
+  findAllByPlaceholderText,
+  findAllByRole,
+  findAllByTestId,
+  findAllByText,
+  findAllByTitle,
+  findByAltText,
+  findByDisplayValue,
+  findByLabelText,
+  findByPlaceholderText,
+  findByRole,
+  findByTestId,
+  findByText,
+  findByTitle,
+  fireEvent,
+  getAllByAltText,
+  getAllByDisplayValue,
+  getAllByLabelText: getAllByLabelTextWithSuggestions,
+  getAllByPlaceholderText,
+  getAllByRole,
+  getAllByTestId,
+  getAllByText,
+  getAllByTitle,
+  getByAltText,
+  getByDisplayValue,
+  getByLabelText: getByLabelTextWithSuggestions,
+  getByPlaceholderText,
+  getByRole,
+  getByTestId,
+  getByText,
+  getByTitle,
+  getConfig,
+  getDefaultNormalizer,
+  getElementError,
+  getMultipleElementsFoundError,
+  getNodeText,
+  getQueriesForElement,
+  getRoles,
+  getSuggestedQuery,
+  isInaccessible,
+  logDOM,
+  logRoles,
+  makeFindQuery,
+  makeGetAllQuery,
+  makeSingleQuery,
+  prettyDOM,
+  queries,
+  queryAllByAltText: queryAllByAltTextWithSuggestions,
+  queryAllByAttribute,
+  queryAllByDisplayValue: queryAllByDisplayValueWithSuggestions,
+  queryAllByLabelText: queryAllByLabelTextWithSuggestions,
+  queryAllByPlaceholderText: queryAllByPlaceholderTextWithSuggestions,
+  queryAllByRole: queryAllByRoleWithSuggestions,
+  queryAllByTestId: queryAllByTestIdWithSuggestions,
+  queryAllByText: queryAllByTextWithSuggestions,
+  queryAllByTitle: queryAllByTitleWithSuggestions,
+  queryByAltText,
+  queryByAttribute,
+  queryByDisplayValue,
+  queryByLabelText,
+  queryByPlaceholderText,
+  queryByRole,
+  queryByTestId,
+  queryByText,
+  queryByTitle,
+  queryHelpers,
+  screen,
+  waitFor: waitForWrapper,
+  waitForElementToBeRemoved,
+  within: getQueriesForElement,
+  wrapAllByQueryWithSuggestion,
+  wrapSingleQueryWithSuggestion
+}, Symbol.toStringTag, { value: "Module" }));
+var dist = {};
+var click$1 = {};
+const require$$0 = /* @__PURE__ */ getAugmentedNamespace(domTestingLibrary);
+var utils = {};
+var getMouseEventOptions$1 = {};
+Object.defineProperty(getMouseEventOptions$1, "__esModule", {
+  value: true
+});
+getMouseEventOptions$1.getMouseEventOptions = getMouseEventOptions;
+function isMousePressEvent(event) {
+  return event === "mousedown" || event === "mouseup" || event === "click" || event === "dblclick";
+}
+const BUTTONS_NAMES = {
+  none: 0,
+  primary: 1,
+  secondary: 2,
+  auxiliary: 4
+};
+const BUTTON_NAMES = {
+  primary: 0,
+  auxiliary: 1,
+  secondary: 2
+};
+function translateButtonNumber(value, from) {
+  var _Object$entries$find;
+  const [mapIn, mapOut] = from === "button" ? [BUTTON_NAMES, BUTTONS_NAMES] : [BUTTONS_NAMES, BUTTON_NAMES];
+  const name = (_Object$entries$find = Object.entries(mapIn).find(([, i]) => i === value)) == null ? void 0 : _Object$entries$find[0];
+  return name && Object.prototype.hasOwnProperty.call(mapOut, name) ? mapOut[name] : 0;
+}
+function convertMouseButtons(event, init, property) {
+  if (!isMousePressEvent(event)) {
+    return 0;
+  }
+  if (typeof init[property] === "number") {
+    return init[property];
+  } else if (property === "button" && typeof init.buttons === "number") {
+    return translateButtonNumber(init.buttons, "buttons");
+  } else if (property === "buttons" && typeof init.button === "number") {
+    return translateButtonNumber(init.button, "button");
+  }
+  return property != "button" && isMousePressEvent(event) ? 1 : 0;
+}
+function getMouseEventOptions(event, init, clickCount = 0) {
+  var _init;
+  init = (_init = init) != null ? _init : {};
+  return {
+    ...init,
+    detail: event === "mousedown" || event === "mouseup" || event === "click" ? 1 + clickCount : clickCount,
+    buttons: convertMouseButtons(event, init, "buttons"),
+    button: convertMouseButtons(event, init, "button")
+  };
+}
+var isClickableInput$1 = {};
+var isElementType$1 = {};
+Object.defineProperty(isElementType$1, "__esModule", {
+  value: true
+});
+isElementType$1.isElementType = isElementType;
+function isElementType(element, tag, props) {
+  if (element.namespaceURI && element.namespaceURI !== "http://www.w3.org/1999/xhtml") {
+    return false;
+  }
+  tag = Array.isArray(tag) ? tag : [tag];
+  if (!tag.includes(element.tagName.toLowerCase())) {
+    return false;
+  }
+  if (props) {
+    return Object.entries(props).every(([k, v2]) => element[k] === v2);
+  }
+  return true;
+}
+Object.defineProperty(isClickableInput$1, "__esModule", {
+  value: true
+});
+isClickableInput$1.isClickableInput = isClickableInput;
+var _isElementType$5 = isElementType$1;
+const CLICKABLE_INPUT_TYPES = ["button", "color", "file", "image", "reset", "submit", "checkbox", "radio"];
+function isClickableInput(element) {
+  return (0, _isElementType$5.isElementType)(element, "button") || (0, _isElementType$5.isElementType)(element, "input") && CLICKABLE_INPUT_TYPES.includes(element.type);
+}
+var buildTimeValue$1 = {};
+Object.defineProperty(buildTimeValue$1, "__esModule", {
+  value: true
+});
+buildTimeValue$1.buildTimeValue = buildTimeValue;
+function buildTimeValue(value) {
+  const onlyDigitsValue = value.replace(/\D/g, "");
+  if (onlyDigitsValue.length < 2) {
+    return value;
+  }
+  const firstDigit = parseInt(onlyDigitsValue[0], 10);
+  const secondDigit = parseInt(onlyDigitsValue[1], 10);
+  if (firstDigit >= 3 || firstDigit === 2 && secondDigit >= 4) {
+    let index2;
+    if (firstDigit >= 3) {
+      index2 = 1;
+    } else {
+      index2 = 2;
+    }
+    return build(onlyDigitsValue, index2);
+  }
+  if (value.length === 2) {
+    return value;
+  }
+  return build(onlyDigitsValue, 2);
+}
+function build(onlyDigitsValue, index2) {
+  const hours = onlyDigitsValue.slice(0, index2);
+  const validHours = Math.min(parseInt(hours, 10), 23);
+  const minuteCharacters = onlyDigitsValue.slice(index2);
+  const parsedMinutes = parseInt(minuteCharacters, 10);
+  const validMinutes = Math.min(parsedMinutes, 59);
+  return `${validHours.toString().padStart(2, "0")}:${validMinutes.toString().padStart(2, "0")}`;
+}
+var calculateNewValue$1 = {};
+var selectionRange = {};
+Object.defineProperty(selectionRange, "__esModule", {
+  value: true
+});
+selectionRange.getSelectionRange = getSelectionRange;
+selectionRange.hasSelectionSupport = hasSelectionSupport;
+selectionRange.setSelectionRange = setSelectionRange;
+var _isElementType$4 = isElementType$1;
+var selectionSupportType;
+(function(selectionSupportType2) {
+  selectionSupportType2["text"] = "text";
+  selectionSupportType2["search"] = "search";
+  selectionSupportType2["url"] = "url";
+  selectionSupportType2["tel"] = "tel";
+  selectionSupportType2["password"] = "password";
+})(selectionSupportType || (selectionSupportType = {}));
+const InputSelection = Symbol("inputSelection");
+function hasSelectionSupport(element) {
+  return (0, _isElementType$4.isElementType)(element, "textarea") || (0, _isElementType$4.isElementType)(element, "input") && Boolean(selectionSupportType[element.type]);
+}
+function getSelectionRange(element) {
+  if (hasSelectionSupport(element)) {
+    return {
+      selectionStart: element.selectionStart,
+      selectionEnd: element.selectionEnd
+    };
+  }
+  if ((0, _isElementType$4.isElementType)(element, "input")) {
+    var _InputSelection;
+    return (_InputSelection = element[InputSelection]) != null ? _InputSelection : {
+      selectionStart: null,
+      selectionEnd: null
+    };
+  }
+  const selection = element.ownerDocument.getSelection();
+  if (selection != null && selection.rangeCount && element.contains(selection.focusNode)) {
+    const range = selection.getRangeAt(0);
+    return {
+      selectionStart: range.startOffset,
+      selectionEnd: range.endOffset
+    };
+  } else {
+    return {
+      selectionStart: null,
+      selectionEnd: null
+    };
+  }
+}
+function setSelectionRange(element, newSelectionStart, newSelectionEnd) {
+  const {
+    selectionStart,
+    selectionEnd
+  } = getSelectionRange(element);
+  if (selectionStart === newSelectionStart && selectionEnd === newSelectionEnd) {
+    return;
+  }
+  if (hasSelectionSupport(element)) {
+    element.setSelectionRange(newSelectionStart, newSelectionEnd);
+  }
+  if ((0, _isElementType$4.isElementType)(element, "input")) {
+    element[InputSelection] = {
+      selectionStart: newSelectionStart,
+      selectionEnd: newSelectionEnd
+    };
+  }
+  if ((0, _isElementType$4.isElementType)(element, "input") || (0, _isElementType$4.isElementType)(element, "textarea")) {
+    return;
+  }
+  const range = element.ownerDocument.createRange();
+  range.selectNodeContents(element);
+  if (element.firstChild) {
+    range.setStart(element.firstChild, newSelectionStart);
+    range.setEnd(element.firstChild, newSelectionEnd);
+  }
+  const selection = element.ownerDocument.getSelection();
+  if (selection) {
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+}
+var getValue$1 = {};
+var isContentEditable$1 = {};
+Object.defineProperty(isContentEditable$1, "__esModule", {
+  value: true
+});
+isContentEditable$1.isContentEditable = isContentEditable;
+function isContentEditable(element) {
+  return element.hasAttribute("contenteditable") && (element.getAttribute("contenteditable") == "true" || element.getAttribute("contenteditable") == "");
+}
+Object.defineProperty(getValue$1, "__esModule", {
+  value: true
+});
+getValue$1.getValue = getValue;
+var _isContentEditable$1 = isContentEditable$1;
+function getValue(element) {
+  if (!element) {
+    return null;
+  }
+  if ((0, _isContentEditable$1.isContentEditable)(element)) {
+    return element.textContent;
+  }
+  return element.value;
+}
+var isValidDateValue$1 = {};
+Object.defineProperty(isValidDateValue$1, "__esModule", {
+  value: true
+});
+isValidDateValue$1.isValidDateValue = isValidDateValue;
+function isValidDateValue(element, value) {
+  const clone = element.cloneNode();
+  clone.value = value;
+  return clone.value === value;
+}
+var isValidInputTimeValue$1 = {};
+Object.defineProperty(isValidInputTimeValue$1, "__esModule", {
+  value: true
+});
+isValidInputTimeValue$1.isValidInputTimeValue = isValidInputTimeValue;
+function isValidInputTimeValue(element, timeValue) {
+  const clone = element.cloneNode();
+  clone.value = timeValue;
+  return clone.value === timeValue;
+}
+Object.defineProperty(calculateNewValue$1, "__esModule", {
+  value: true
+});
+calculateNewValue$1.calculateNewValue = calculateNewValue;
+var _selectionRange$1 = selectionRange;
+var _getValue2$1 = getValue$1;
+var _isValidDateValue = isValidDateValue$1;
+var _isValidInputTimeValue = isValidInputTimeValue$1;
+function calculateNewValue(newEntry, element, value = (() => {
+  var _getValue3;
+  return (_getValue3 = (0, _getValue2$1.getValue)(element)) != null ? _getValue3 : "";
+})(), selectionRange2 = (0, _selectionRange$1.getSelectionRange)(element), deleteContent) {
+  const selectionStart = selectionRange2.selectionStart === null ? value.length : selectionRange2.selectionStart;
+  const selectionEnd = selectionRange2.selectionEnd === null ? value.length : selectionRange2.selectionEnd;
+  const prologEnd = Math.max(0, selectionStart === selectionEnd && deleteContent === "backward" ? selectionStart - 1 : selectionStart);
+  const prolog = value.substring(0, prologEnd);
+  const epilogStart = Math.min(value.length, selectionStart === selectionEnd && deleteContent === "forward" ? selectionEnd + 1 : selectionEnd);
+  const epilog = value.substring(epilogStart, value.length);
+  let newValue = `${prolog}${newEntry}${epilog}`;
+  const newSelectionStart = prologEnd + newEntry.length;
+  if (element.type === "date" && !(0, _isValidDateValue.isValidDateValue)(element, newValue)) {
+    newValue = value;
+  }
+  if (element.type === "time" && !(0, _isValidInputTimeValue.isValidInputTimeValue)(element, newValue)) {
+    if ((0, _isValidInputTimeValue.isValidInputTimeValue)(element, newEntry)) {
+      newValue = newEntry;
+    } else {
+      newValue = value;
+    }
+  }
+  return {
+    newValue,
+    newSelectionStart
+  };
+}
+var cursorPosition = {};
+Object.defineProperty(cursorPosition, "__esModule", {
+  value: true
+});
+cursorPosition.isCursorAtEnd = isCursorAtEnd;
+cursorPosition.isCursorAtStart = isCursorAtStart;
+var _selectionRange = selectionRange;
+var _getValue2 = getValue$1;
+function isCursorAtEnd(element) {
+  var _getValue3;
+  const {
+    selectionStart,
+    selectionEnd
+  } = (0, _selectionRange.getSelectionRange)(element);
+  return selectionStart === selectionEnd && (selectionStart != null ? selectionStart : 0) === ((_getValue3 = (0, _getValue2.getValue)(element)) != null ? _getValue3 : "").length;
+}
+function isCursorAtStart(element) {
+  const {
+    selectionStart,
+    selectionEnd
+  } = (0, _selectionRange.getSelectionRange)(element);
+  return selectionStart === selectionEnd && (selectionStart != null ? selectionStart : 0) === 0;
+}
+var hasUnreliableEmptyValue$1 = {};
+Object.defineProperty(hasUnreliableEmptyValue$1, "__esModule", {
+  value: true
+});
+hasUnreliableEmptyValue$1.hasUnreliableEmptyValue = hasUnreliableEmptyValue;
+var _isElementType$3 = isElementType$1;
+var unreliableValueInputTypes;
+(function(unreliableValueInputTypes2) {
+  unreliableValueInputTypes2["number"] = "number";
+})(unreliableValueInputTypes || (unreliableValueInputTypes = {}));
+function hasUnreliableEmptyValue(element) {
+  return (0, _isElementType$3.isElementType)(element, "input") && Boolean(unreliableValueInputTypes[element.type]);
+}
+var isEditable$1 = {};
+Object.defineProperty(isEditable$1, "__esModule", {
+  value: true
+});
+isEditable$1.editableInputTypes = void 0;
+isEditable$1.isEditable = isEditable;
+isEditable$1.isEditableInput = isEditableInput;
+var _isElementType$2 = isElementType$1;
+var _isContentEditable = isContentEditable$1;
+function isEditable(element) {
+  return isEditableInput(element) || (0, _isElementType$2.isElementType)(element, "textarea", {
+    readOnly: false
+  }) || (0, _isContentEditable.isContentEditable)(element);
+}
+let editableInputTypes;
+isEditable$1.editableInputTypes = editableInputTypes;
+(function(editableInputTypes2) {
+  editableInputTypes2["text"] = "text";
+  editableInputTypes2["date"] = "date";
+  editableInputTypes2["datetime-local"] = "datetime-local";
+  editableInputTypes2["email"] = "email";
+  editableInputTypes2["month"] = "month";
+  editableInputTypes2["number"] = "number";
+  editableInputTypes2["password"] = "password";
+  editableInputTypes2["search"] = "search";
+  editableInputTypes2["tel"] = "tel";
+  editableInputTypes2["time"] = "time";
+  editableInputTypes2["url"] = "url";
+  editableInputTypes2["week"] = "week";
+})(editableInputTypes || (isEditable$1.editableInputTypes = editableInputTypes = {}));
+function isEditableInput(element) {
+  return (0, _isElementType$2.isElementType)(element, "input", {
+    readOnly: false
+  }) && Boolean(editableInputTypes[element.type]);
+}
+var maxLength = {};
+Object.defineProperty(maxLength, "__esModule", {
+  value: true
+});
+maxLength.getSpaceUntilMaxLength = getSpaceUntilMaxLength;
+var _isElementType$1 = isElementType$1;
+var _getValue = getValue$1;
+var maxLengthSupportedTypes;
+(function(maxLengthSupportedTypes2) {
+  maxLengthSupportedTypes2["email"] = "email";
+  maxLengthSupportedTypes2["password"] = "password";
+  maxLengthSupportedTypes2["search"] = "search";
+  maxLengthSupportedTypes2["telephone"] = "telephone";
+  maxLengthSupportedTypes2["text"] = "text";
+  maxLengthSupportedTypes2["url"] = "url";
+})(maxLengthSupportedTypes || (maxLengthSupportedTypes = {}));
+function getSpaceUntilMaxLength(element) {
+  const value = (0, _getValue.getValue)(element);
+  if (value === null) {
+    return void 0;
+  }
+  const maxLength2 = getSanitizedMaxLength(element);
+  return maxLength2 ? maxLength2 - value.length : void 0;
+}
+function getSanitizedMaxLength(element) {
+  var _element$getAttribute;
+  if (!supportsMaxLength(element)) {
+    return void 0;
+  }
+  const attr = (_element$getAttribute = element.getAttribute("maxlength")) != null ? _element$getAttribute : "";
+  return /^\d+$/.test(attr) && Number(attr) >= 0 ? Number(attr) : void 0;
+}
+function supportsMaxLength(element) {
+  return (0, _isElementType$1.isElementType)(element, "textarea") || (0, _isElementType$1.isElementType)(element, "input") && Boolean(maxLengthSupportedTypes[element.type]);
+}
+var getActiveElement$1 = {};
+var isDisabled$1 = {};
+Object.defineProperty(isDisabled$1, "__esModule", {
+  value: true
+});
+isDisabled$1.isDisabled = isDisabled;
+function isDisabled(element) {
+  return Boolean(element && element.disabled);
+}
+Object.defineProperty(getActiveElement$1, "__esModule", {
+  value: true
+});
+getActiveElement$1.getActiveElement = getActiveElement;
+var _isDisabled$1 = isDisabled$1;
+function getActiveElement(document2) {
+  const activeElement = document2.activeElement;
+  if (activeElement != null && activeElement.shadowRoot) {
+    return getActiveElement(activeElement.shadowRoot);
+  } else {
+    if ((0, _isDisabled$1.isDisabled)(activeElement)) {
+      return document2.ownerDocument ? document2.ownerDocument.body : document2.body;
+    }
+    return activeElement;
+  }
+}
+var isFocusable$1 = {};
+var isLabelWithInternallyDisabledControl$1 = {};
+Object.defineProperty(isLabelWithInternallyDisabledControl$1, "__esModule", {
+  value: true
+});
+isLabelWithInternallyDisabledControl$1.isLabelWithInternallyDisabledControl = isLabelWithInternallyDisabledControl;
+var _isDisabled = isDisabled$1;
+var _isElementType = isElementType$1;
+function isLabelWithInternallyDisabledControl(element) {
+  if (!(0, _isElementType.isElementType)(element, "label")) {
+    return false;
+  }
+  const control2 = element.control;
+  return Boolean(control2 && element.contains(control2) && (0, _isDisabled.isDisabled)(control2));
+}
+var selector = {};
+Object.defineProperty(selector, "__esModule", {
+  value: true
+});
+selector.FOCUSABLE_SELECTOR = void 0;
+const FOCUSABLE_SELECTOR = ["input:not([type=hidden]):not([disabled])", "button:not([disabled])", "select:not([disabled])", "textarea:not([disabled])", '[contenteditable=""]', '[contenteditable="true"]', "a[href]", "[tabindex]:not([disabled])"].join(", ");
+selector.FOCUSABLE_SELECTOR = FOCUSABLE_SELECTOR;
+Object.defineProperty(isFocusable$1, "__esModule", {
+  value: true
+});
+isFocusable$1.isFocusable = isFocusable;
+var _isLabelWithInternallyDisabledControl = isLabelWithInternallyDisabledControl$1;
+var _selector = selector;
+function isFocusable(element) {
+  return !(0, _isLabelWithInternallyDisabledControl.isLabelWithInternallyDisabledControl)(element) && element.matches(_selector.FOCUSABLE_SELECTOR);
+}
+var eventWrapper$1 = {};
+Object.defineProperty(eventWrapper$1, "__esModule", {
+  value: true
+});
+eventWrapper$1.eventWrapper = eventWrapper;
+var _dom$c = require$$0;
+function eventWrapper(cb) {
+  let result;
+  (0, _dom$c.getConfig)().eventWrapper(() => {
+    result = cb();
+  });
+  return result;
+}
+var isVisible$1 = {};
+var helpers = {};
+Object.defineProperty(helpers, "__esModule", {
+  value: true
+});
+helpers.TEXT_NODE = void 0;
+helpers.checkContainerType = checkContainerType;
+helpers.getDocument = getDocument;
+helpers.getWindowFromNode = getWindowFromNode;
+helpers.jestFakeTimersAreEnabled = jestFakeTimersAreEnabled;
+const TEXT_NODE = 3;
+helpers.TEXT_NODE = TEXT_NODE;
+function jestFakeTimersAreEnabled() {
+  if (typeof jest !== "undefined" && jest !== null) {
+    return setTimeout._isMockFunction === true || Object.prototype.hasOwnProperty.call(setTimeout, "clock");
+  }
+  return false;
+}
+function getDocument() {
+  if (typeof window === "undefined") {
+    throw new Error("Could not find default container");
+  }
+  return window.document;
+}
+function getWindowFromNode(node) {
+  if (node.defaultView) {
+    return node.defaultView;
+  } else if (node.ownerDocument && node.ownerDocument.defaultView) {
+    return node.ownerDocument.defaultView;
+  } else if (node.window) {
+    return node.window;
+  } else if (node.ownerDocument && node.ownerDocument.defaultView === null) {
+    throw new Error(`It looks like the window object is not available for the provided node.`);
+  } else if (node.then instanceof Function) {
+    throw new Error(`It looks like you passed a Promise object instead of a DOM node. Did you do something like \`fireEvent.click(screen.findBy...\` when you meant to use a \`getBy\` query \`fireEvent.click(screen.getBy...\`, or await the findBy query \`fireEvent.click(await screen.findBy...\`?`);
+  } else if (Array.isArray(node)) {
+    throw new Error(`It looks like you passed an Array instead of a DOM node. Did you do something like \`fireEvent.click(screen.getAllBy...\` when you meant to use a \`getBy\` query \`fireEvent.click(screen.getBy...\`?`);
+  } else if (typeof node.debug === "function" && typeof node.logTestingPlaygroundURL === "function") {
+    throw new Error(`It looks like you passed a \`screen\` object. Did you do something like \`fireEvent.click(screen, ...\` when you meant to use a query, e.g. \`fireEvent.click(screen.getBy..., \`?`);
+  } else {
+    throw new Error(`The given node is not an Element, the node type is: ${typeof node}.`);
+  }
+}
+function checkContainerType(container) {
+  if (!container || !(typeof container.querySelector === "function") || !(typeof container.querySelectorAll === "function")) {
+    throw new TypeError(`Expected container to be an Element, a Document or a DocumentFragment but got ${getTypeName(container)}.`);
+  }
+  function getTypeName(object) {
+    if (typeof object === "object") {
+      return object === null ? "null" : object.constructor.name;
+    }
+    return typeof object;
+  }
+}
+Object.defineProperty(isVisible$1, "__esModule", {
+  value: true
+});
+isVisible$1.isVisible = isVisible;
+var _helpers$1 = helpers;
+function isVisible(element) {
+  const window2 = (0, _helpers$1.getWindowFromNode)(element);
+  for (let el = element; (_el = el) != null && _el.ownerDocument; el = el.parentElement) {
+    var _el;
+    const display = window2.getComputedStyle(el).display;
+    if (display === "none") {
+      return false;
+    }
+  }
+  return true;
+}
+var isDocument$1 = {};
+Object.defineProperty(isDocument$1, "__esModule", {
+  value: true
+});
+isDocument$1.isDocument = isDocument;
+function isDocument(el) {
+  return el.nodeType === el.DOCUMENT_NODE;
+}
+var wait$1 = {};
+Object.defineProperty(wait$1, "__esModule", {
+  value: true
+});
+wait$1.wait = wait;
+function wait(time) {
+  return new Promise((resolve) => setTimeout(() => resolve(), time));
+}
+var hasPointerEvents$1 = {};
+Object.defineProperty(hasPointerEvents$1, "__esModule", {
+  value: true
+});
+hasPointerEvents$1.hasPointerEvents = hasPointerEvents;
+var _helpers = helpers;
+function hasPointerEvents(element) {
+  const window2 = (0, _helpers.getWindowFromNode)(element);
+  for (let el = element; (_el = el) != null && _el.ownerDocument; el = el.parentElement) {
+    var _el;
+    const pointerEvents = window2.getComputedStyle(el).pointerEvents;
+    if (pointerEvents && !["inherit", "unset"].includes(pointerEvents)) {
+      return pointerEvents !== "none";
+    }
+  }
+  return true;
+}
+var hasFormSubmit$1 = {};
+Object.defineProperty(hasFormSubmit$1, "__esModule", {
+  value: true
+});
+hasFormSubmit$1.hasFormSubmit = void 0;
+const hasFormSubmit = (form) => !!(form && (form.querySelector('input[type="submit"]') || form.querySelector('button[type="submit"]')));
+hasFormSubmit$1.hasFormSubmit = hasFormSubmit;
+(function(exports) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  var _getMouseEventOptions = getMouseEventOptions$1;
+  Object.keys(_getMouseEventOptions).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _getMouseEventOptions[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _getMouseEventOptions[key];
+      }
+    });
+  });
+  var _isClickableInput = isClickableInput$1;
+  Object.keys(_isClickableInput).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isClickableInput[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isClickableInput[key];
+      }
+    });
+  });
+  var _buildTimeValue = buildTimeValue$1;
+  Object.keys(_buildTimeValue).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _buildTimeValue[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _buildTimeValue[key];
+      }
+    });
+  });
+  var _calculateNewValue = calculateNewValue$1;
+  Object.keys(_calculateNewValue).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _calculateNewValue[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _calculateNewValue[key];
+      }
+    });
+  });
+  var _cursorPosition = cursorPosition;
+  Object.keys(_cursorPosition).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _cursorPosition[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _cursorPosition[key];
+      }
+    });
+  });
+  var _getValue3 = getValue$1;
+  Object.keys(_getValue3).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _getValue3[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _getValue3[key];
+      }
+    });
+  });
+  var _hasUnreliableEmptyValue = hasUnreliableEmptyValue$1;
+  Object.keys(_hasUnreliableEmptyValue).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _hasUnreliableEmptyValue[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _hasUnreliableEmptyValue[key];
+      }
+    });
+  });
+  var _isContentEditable2 = isContentEditable$1;
+  Object.keys(_isContentEditable2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isContentEditable2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isContentEditable2[key];
+      }
+    });
+  });
+  var _isEditable = isEditable$1;
+  Object.keys(_isEditable).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isEditable[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isEditable[key];
+      }
+    });
+  });
+  var _isValidDateValue2 = isValidDateValue$1;
+  Object.keys(_isValidDateValue2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isValidDateValue2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isValidDateValue2[key];
+      }
+    });
+  });
+  var _isValidInputTimeValue2 = isValidInputTimeValue$1;
+  Object.keys(_isValidInputTimeValue2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isValidInputTimeValue2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isValidInputTimeValue2[key];
+      }
+    });
+  });
+  var _maxLength = maxLength;
+  Object.keys(_maxLength).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _maxLength[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _maxLength[key];
+      }
+    });
+  });
+  var _selectionRange2 = selectionRange;
+  Object.keys(_selectionRange2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _selectionRange2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _selectionRange2[key];
+      }
+    });
+  });
+  var _getActiveElement = getActiveElement$1;
+  Object.keys(_getActiveElement).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _getActiveElement[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _getActiveElement[key];
+      }
+    });
+  });
+  var _isFocusable = isFocusable$1;
+  Object.keys(_isFocusable).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isFocusable[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isFocusable[key];
+      }
+    });
+  });
+  var _selector2 = selector;
+  Object.keys(_selector2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _selector2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _selector2[key];
+      }
+    });
+  });
+  var _eventWrapper = eventWrapper$1;
+  Object.keys(_eventWrapper).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _eventWrapper[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _eventWrapper[key];
+      }
+    });
+  });
+  var _isElementType2 = isElementType$1;
+  Object.keys(_isElementType2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isElementType2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isElementType2[key];
+      }
+    });
+  });
+  var _isLabelWithInternallyDisabledControl2 = isLabelWithInternallyDisabledControl$1;
+  Object.keys(_isLabelWithInternallyDisabledControl2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isLabelWithInternallyDisabledControl2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isLabelWithInternallyDisabledControl2[key];
+      }
+    });
+  });
+  var _isVisible = isVisible$1;
+  Object.keys(_isVisible).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isVisible[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isVisible[key];
+      }
+    });
+  });
+  var _isDisabled2 = isDisabled$1;
+  Object.keys(_isDisabled2).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isDisabled2[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isDisabled2[key];
+      }
+    });
+  });
+  var _isDocument = isDocument$1;
+  Object.keys(_isDocument).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _isDocument[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _isDocument[key];
+      }
+    });
+  });
+  var _wait = wait$1;
+  Object.keys(_wait).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _wait[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _wait[key];
+      }
+    });
+  });
+  var _hasPointerEvents = hasPointerEvents$1;
+  Object.keys(_hasPointerEvents).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _hasPointerEvents[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _hasPointerEvents[key];
+      }
+    });
+  });
+  var _hasFormSubmit = hasFormSubmit$1;
+  Object.keys(_hasFormSubmit).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _hasFormSubmit[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _hasFormSubmit[key];
+      }
+    });
+  });
+})(utils);
+var hover$1 = {};
+Object.defineProperty(hover$1, "__esModule", {
+  value: true
+});
+hover$1.hover = hover;
+hover$1.unhover = unhover;
+var _dom$b = require$$0;
+var _utils$i = utils;
+function getParentElements(element) {
+  const parentElements = [element];
+  let currentElement = element;
+  while ((currentElement = currentElement.parentElement) != null) {
+    parentElements.push(currentElement);
+  }
+  return parentElements;
+}
+function hover(element, init, {
+  skipPointerEventsCheck = false
+} = {}) {
+  if (!skipPointerEventsCheck && !(0, _utils$i.hasPointerEvents)(element)) {
+    throw new Error('unable to hover element as it has or inherits pointer-events set to "none".');
+  }
+  if ((0, _utils$i.isLabelWithInternallyDisabledControl)(element))
+    return;
+  const parentElements = getParentElements(element).reverse();
+  _dom$b.fireEvent.pointerOver(element, init);
+  for (const el of parentElements) {
+    _dom$b.fireEvent.pointerEnter(el, init);
+  }
+  if (!(0, _utils$i.isDisabled)(element)) {
+    _dom$b.fireEvent.mouseOver(element, (0, _utils$i.getMouseEventOptions)("mouseover", init));
+    for (const el of parentElements) {
+      _dom$b.fireEvent.mouseEnter(el, (0, _utils$i.getMouseEventOptions)("mouseenter", init));
+    }
+  }
+  _dom$b.fireEvent.pointerMove(element, init);
+  if (!(0, _utils$i.isDisabled)(element)) {
+    _dom$b.fireEvent.mouseMove(element, (0, _utils$i.getMouseEventOptions)("mousemove", init));
+  }
+}
+function unhover(element, init, {
+  skipPointerEventsCheck = false
+} = {}) {
+  if (!skipPointerEventsCheck && !(0, _utils$i.hasPointerEvents)(element)) {
+    throw new Error('unable to unhover element as it has or inherits pointer-events set to "none".');
+  }
+  if ((0, _utils$i.isLabelWithInternallyDisabledControl)(element))
+    return;
+  const parentElements = getParentElements(element);
+  _dom$b.fireEvent.pointerMove(element, init);
+  if (!(0, _utils$i.isDisabled)(element)) {
+    _dom$b.fireEvent.mouseMove(element, (0, _utils$i.getMouseEventOptions)("mousemove", init));
+  }
+  _dom$b.fireEvent.pointerOut(element, init);
+  for (const el of parentElements) {
+    _dom$b.fireEvent.pointerLeave(el, init);
+  }
+  if (!(0, _utils$i.isDisabled)(element)) {
+    _dom$b.fireEvent.mouseOut(element, (0, _utils$i.getMouseEventOptions)("mouseout", init));
+    for (const el of parentElements) {
+      _dom$b.fireEvent.mouseLeave(el, (0, _utils$i.getMouseEventOptions)("mouseleave", init));
+    }
+  }
+}
+var blur$1 = {};
+Object.defineProperty(blur$1, "__esModule", {
+  value: true
+});
+blur$1.blur = blur;
+var _utils$h = utils;
+function blur(element) {
+  if (!(0, _utils$h.isFocusable)(element))
+    return;
+  const wasActive = (0, _utils$h.getActiveElement)(element.ownerDocument) === element;
+  if (!wasActive)
+    return;
+  (0, _utils$h.eventWrapper)(() => element.blur());
+}
+var focus$1 = {};
+Object.defineProperty(focus$1, "__esModule", {
+  value: true
+});
+focus$1.focus = focus;
+var _utils$g = utils;
+function focus(element) {
+  if (!(0, _utils$g.isFocusable)(element))
+    return;
+  const isAlreadyActive = (0, _utils$g.getActiveElement)(element.ownerDocument) === element;
+  if (isAlreadyActive)
+    return;
+  (0, _utils$g.eventWrapper)(() => element.focus());
+}
+Object.defineProperty(click$1, "__esModule", {
+  value: true
+});
+click$1.click = click;
+click$1.dblClick = dblClick;
+var _dom$a = require$$0;
+var _utils$f = utils;
+var _hover$1 = hover$1;
+var _blur$2 = blur$1;
+var _focus$3 = focus$1;
+function getPreviouslyFocusedElement(element) {
+  const focusedElement = element.ownerDocument.activeElement;
+  const wasAnotherElementFocused = focusedElement && focusedElement !== element.ownerDocument.body && focusedElement !== element;
+  return wasAnotherElementFocused ? focusedElement : null;
+}
+function clickLabel(label, init, {
+  clickCount
+}) {
+  if ((0, _utils$f.isLabelWithInternallyDisabledControl)(label))
+    return;
+  _dom$a.fireEvent.pointerDown(label, init);
+  _dom$a.fireEvent.mouseDown(label, (0, _utils$f.getMouseEventOptions)("mousedown", init, clickCount));
+  _dom$a.fireEvent.pointerUp(label, init);
+  _dom$a.fireEvent.mouseUp(label, (0, _utils$f.getMouseEventOptions)("mouseup", init, clickCount));
+  fireClick(label, (0, _utils$f.getMouseEventOptions)("click", init, clickCount));
+  if (label.control)
+    (0, _focus$3.focus)(label.control);
+}
+function clickBooleanElement(element, init, {
+  clickCount
+}) {
+  _dom$a.fireEvent.pointerDown(element, init);
+  if (!element.disabled) {
+    _dom$a.fireEvent.mouseDown(element, (0, _utils$f.getMouseEventOptions)("mousedown", init, clickCount));
+  }
+  (0, _focus$3.focus)(element);
+  _dom$a.fireEvent.pointerUp(element, init);
+  if (!element.disabled) {
+    _dom$a.fireEvent.mouseUp(element, (0, _utils$f.getMouseEventOptions)("mouseup", init, clickCount));
+    fireClick(element, (0, _utils$f.getMouseEventOptions)("click", init, clickCount));
+  }
+}
+function clickElement(element, init, {
+  clickCount
+}) {
+  const previousElement = getPreviouslyFocusedElement(element);
+  _dom$a.fireEvent.pointerDown(element, init);
+  if (!(0, _utils$f.isDisabled)(element)) {
+    const continueDefaultHandling = _dom$a.fireEvent.mouseDown(element, (0, _utils$f.getMouseEventOptions)("mousedown", init, clickCount));
+    if (continueDefaultHandling) {
+      const closestFocusable = findClosest(element, _utils$f.isFocusable);
+      if (previousElement && !closestFocusable) {
+        (0, _blur$2.blur)(previousElement);
+      } else if (closestFocusable) {
+        (0, _focus$3.focus)(closestFocusable);
+      }
+    }
+  }
+  _dom$a.fireEvent.pointerUp(element, init);
+  if (!(0, _utils$f.isDisabled)(element)) {
+    _dom$a.fireEvent.mouseUp(element, (0, _utils$f.getMouseEventOptions)("mouseup", init, clickCount));
+    fireClick(element, (0, _utils$f.getMouseEventOptions)("click", init, clickCount));
+    const parentLabel = element.closest("label");
+    if (parentLabel != null && parentLabel.control)
+      (0, _focus$3.focus)(parentLabel.control);
+  }
+}
+function findClosest(element, callback) {
+  let el = element;
+  do {
+    if (callback(el)) {
+      return el;
+    }
+    el = el.parentElement;
+  } while (el && el !== element.ownerDocument.body);
+  return void 0;
+}
+function click(element, init, {
+  skipHover = false,
+  clickCount = 0,
+  skipPointerEventsCheck = false
+} = {}) {
+  if (!skipPointerEventsCheck && !(0, _utils$f.hasPointerEvents)(element)) {
+    throw new Error('unable to click element as it has or inherits pointer-events set to "none".');
+  }
+  if (!skipHover)
+    (0, _hover$1.hover)(element, init, {
+      skipPointerEventsCheck: true
+    });
+  if ((0, _utils$f.isElementType)(element, "label")) {
+    clickLabel(element, init, {
+      clickCount
+    });
+  } else if ((0, _utils$f.isElementType)(element, "input")) {
+    if (element.type === "checkbox" || element.type === "radio") {
+      clickBooleanElement(element, init, {
+        clickCount
+      });
+    } else {
+      clickElement(element, init, {
+        clickCount
+      });
+    }
+  } else {
+    clickElement(element, init, {
+      clickCount
+    });
+  }
+}
+function fireClick(element, mouseEventOptions) {
+  if (mouseEventOptions.button === 2) {
+    _dom$a.fireEvent.contextMenu(element, mouseEventOptions);
+  } else {
+    _dom$a.fireEvent.click(element, mouseEventOptions);
+  }
+}
+function dblClick(element, init, {
+  skipPointerEventsCheck = false
+} = {}) {
+  if (!skipPointerEventsCheck && !(0, _utils$f.hasPointerEvents)(element)) {
+    throw new Error('unable to double-click element as it has or inherits pointer-events set to "none".');
+  }
+  (0, _hover$1.hover)(element, init, {
+    skipPointerEventsCheck
+  });
+  click(element, init, {
+    skipHover: true,
+    clickCount: 0,
+    skipPointerEventsCheck
+  });
+  click(element, init, {
+    skipHover: true,
+    clickCount: 1,
+    skipPointerEventsCheck
+  });
+  _dom$a.fireEvent.dblClick(element, (0, _utils$f.getMouseEventOptions)("dblclick", init, 2));
+}
+var type$1 = {};
+var typeImplementation$1 = {};
+var keyboard = {};
+var keyboardImplementation$1 = {};
+var getNextKeyDef$1 = {};
+Object.defineProperty(getNextKeyDef$1, "__esModule", {
+  value: true
+});
+getNextKeyDef$1.getNextKeyDef = getNextKeyDef;
+var bracketDict;
+(function(bracketDict2) {
+  bracketDict2["{"] = "}";
+  bracketDict2["["] = "]";
+})(bracketDict || (bracketDict = {}));
+var legacyModifiers;
+(function(legacyModifiers2) {
+  legacyModifiers2["alt"] = "alt";
+  legacyModifiers2["ctrl"] = "ctrl";
+  legacyModifiers2["meta"] = "meta";
+  legacyModifiers2["shift"] = "shift";
+})(legacyModifiers || (legacyModifiers = {}));
+var legacyKeyMap;
+(function(legacyKeyMap2) {
+  legacyKeyMap2["ctrl"] = "Control";
+  legacyKeyMap2["del"] = "Delete";
+  legacyKeyMap2["esc"] = "Escape";
+  legacyKeyMap2["space"] = " ";
+})(legacyKeyMap || (legacyKeyMap = {}));
+function getNextKeyDef(text, options) {
+  var _options$keyboardMap$;
+  const {
+    type: type2,
+    descriptor,
+    consumedLength,
+    releasePrevious,
+    releaseSelf,
+    repeat
+  } = readNextDescriptor(text);
+  const keyDef = (_options$keyboardMap$ = options.keyboardMap.find((def) => {
+    if (type2 === "[") {
+      var _def$code;
+      return ((_def$code = def.code) == null ? void 0 : _def$code.toLowerCase()) === descriptor.toLowerCase();
+    } else if (type2 === "{") {
+      var _def$key;
+      const key = mapLegacyKey(descriptor);
+      return ((_def$key = def.key) == null ? void 0 : _def$key.toLowerCase()) === key.toLowerCase();
+    }
+    return def.key === descriptor;
+  })) != null ? _options$keyboardMap$ : {
+    key: "Unknown",
+    code: "Unknown",
+    [type2 === "[" ? "code" : "key"]: descriptor
+  };
+  return {
+    keyDef,
+    consumedLength,
+    releasePrevious,
+    releaseSelf,
+    repeat
+  };
+}
+function readNextDescriptor(text) {
+  let pos = 0;
+  const startBracket = text[pos] in bracketDict ? text[pos] : "";
+  pos += startBracket.length;
+  const startBracketRepeated = startBracket ? text.match(new RegExp(`^\\${startBracket}+`))[0].length : 0;
+  const isEscapedChar = startBracketRepeated === 2 || startBracket === "{" && startBracketRepeated > 3;
+  const type2 = isEscapedChar ? "" : startBracket;
+  return {
+    type: type2,
+    ...type2 === "" ? readPrintableChar(text, pos) : readTag(text, pos, type2)
+  };
+}
+function readPrintableChar(text, pos) {
+  const descriptor = text[pos];
+  assertDescriptor(descriptor, text, pos);
+  pos += descriptor.length;
+  return {
+    consumedLength: pos,
+    descriptor,
+    releasePrevious: false,
+    releaseSelf: true,
+    repeat: 1
+  };
+}
+function readTag(text, pos, startBracket) {
+  var _text$slice$match, _text$slice$match$, _text$slice$match2;
+  const releasePreviousModifier = text[pos] === "/" ? "/" : "";
+  pos += releasePreviousModifier.length;
+  const descriptor = (_text$slice$match = text.slice(pos).match(/^\w+/)) == null ? void 0 : _text$slice$match[0];
+  assertDescriptor(descriptor, text, pos);
+  pos += descriptor.length;
+  const repeatModifier = (_text$slice$match$ = (_text$slice$match2 = text.slice(pos).match(/^>\d+/)) == null ? void 0 : _text$slice$match2[0]) != null ? _text$slice$match$ : "";
+  pos += repeatModifier.length;
+  const releaseSelfModifier = text[pos] === "/" || !repeatModifier && text[pos] === ">" ? text[pos] : "";
+  pos += releaseSelfModifier.length;
+  const expectedEndBracket = bracketDict[startBracket];
+  const endBracket = text[pos] === expectedEndBracket ? expectedEndBracket : "";
+  if (!endBracket) {
+    throw new Error(getErrorMessage([!repeatModifier && "repeat modifier", !releaseSelfModifier && "release modifier", `"${expectedEndBracket}"`].filter(Boolean).join(" or "), text[pos], text));
+  }
+  pos += endBracket.length;
+  return {
+    consumedLength: pos,
+    descriptor,
+    releasePrevious: !!releasePreviousModifier,
+    repeat: repeatModifier ? Math.max(Number(repeatModifier.substr(1)), 1) : 1,
+    releaseSelf: hasReleaseSelf(startBracket, descriptor, releaseSelfModifier, repeatModifier)
+  };
+}
+function assertDescriptor(descriptor, text, pos) {
+  if (!descriptor) {
+    throw new Error(getErrorMessage("key descriptor", text[pos], text));
+  }
+}
+function getEnumValue(f2, key) {
+  return f2[key];
+}
+function hasReleaseSelf(startBracket, descriptor, releaseSelfModifier, repeatModifier) {
+  if (releaseSelfModifier) {
+    return releaseSelfModifier === "/";
+  }
+  if (repeatModifier) {
+    return false;
+  }
+  if (startBracket === "{" && getEnumValue(legacyModifiers, descriptor.toLowerCase())) {
+    return false;
+  }
+  return true;
+}
+function mapLegacyKey(descriptor) {
+  var _getEnumValue;
+  return (_getEnumValue = getEnumValue(legacyKeyMap, descriptor)) != null ? _getEnumValue : descriptor;
+}
+function getErrorMessage(expected, found, text) {
+  return `Expected ${expected} but found "${found != null ? found : ""}" in "${text}"
     See https://github.com/testing-library/user-event/blob/main/README.md#keyboardtext-options
-    for more information about how userEvent parses your input.`}var L={},ul={};Object.defineProperty(ul,"__esModule",{value:!0});ul.keydownBehavior=void 0;var ai=N;const d1=[{matches:(e,t)=>(e.key==="ArrowLeft"||e.key==="ArrowRight")&&(0,ai.isElementType)(t,["input","textarea"]),handle:(e,t)=>{var r;const{selectionStart:n,selectionEnd:a}=(0,ai.getSelectionRange)(t),o=e.key==="ArrowLeft"?-1:1,l=(r=n===a?(n!=null?n:0)+o:o<0?n:a)!=null?r:0;(0,ai.setSelectionRange)(t,l,l)}}];ul.keydownBehavior=d1;var sl={},cl={},Ku={};Object.defineProperty(Ku,"__esModule",{value:!0});Ku.carryValue=f1;var ed=N;function f1(e,t,r){const n=(0,ed.getValue)(e);t.carryValue=n!==r&&n===""&&(0,ed.hasUnreliableEmptyValue)(e)?r:void 0}var Gu={};Object.defineProperty(Gu,"__esModule",{value:!0});Gu.fireChangeForInputTimeIfValid=y1;var p1=J,v1=N;function y1(e,t,r){(0,v1.isValidInputTimeValue)(e,r)&&t!==r&&p1.fireEvent.change(e,{target:{value:r}})}var Yu={};Object.defineProperty(Yu,"__esModule",{value:!0});Yu.fireInputEvent=m1;var ly=J,Ke=N;function m1(e,{newValue:t,newSelectionStart:r,eventOverrides:n}){if((0,Ke.isContentEditable)(e))td(e,"textContent",t);else if((0,Ke.isElementType)(e,["input","textarea"]))td(e,"value",t);else throw new Error("Invalid Element");b1(e,r),ly.fireEvent.input(e,{...n}),h1(e,t,r)}function b1(e,t){(0,Ke.setSelectionRange)(e,t,t)}function h1(e,t,r){const n=(0,Ke.getValue)(e);if(!(n===""&&(0,Ke.hasUnreliableEmptyValue)(e))&&n===t){const{selectionStart:o}=(0,Ke.getSelectionRange)(e);o===n.length&&(0,Ke.setSelectionRange)(e,r,r)}}const Or=Symbol("initial input value/textContent"),oi=Symbol("onBlur");function td(e,t,r){const n=Object.getOwnPropertyDescriptor(e,t),a=Object.getOwnPropertyDescriptor(e.constructor.prototype,t);if(n&&a&&Object.defineProperty(e,t,a),e[Or]===void 0&&(e[Or]=String(e[t])),e[t]=r,!e[oi]){var o;(o=e.ownerDocument.defaultView)==null||o.addEventListener("blur",e[oi]=()=>{const l=e[Or];delete e[oi],delete e[Or],String(e[t])!==l&&ly.fireEvent.change(e)},{capture:!0,once:!0})}n&&Object.defineProperty(e,t,n)}(function(e){Object.defineProperty(e,"__esModule",{value:!0});var t=Ku;Object.keys(t).forEach(function(a){a==="default"||a==="__esModule"||a in e&&e[a]===t[a]||Object.defineProperty(e,a,{enumerable:!0,get:function(){return t[a]}})});var r=Gu;Object.keys(r).forEach(function(a){a==="default"||a==="__esModule"||a in e&&e[a]===r[a]||Object.defineProperty(e,a,{enumerable:!0,get:function(){return r[a]}})});var n=Yu;Object.keys(n).forEach(function(a){a==="default"||a==="__esModule"||a in e&&e[a]===n[a]||Object.defineProperty(e,a,{enumerable:!0,get:function(){return n[a]}})})})(cl);Object.defineProperty(sl,"__esModule",{value:!0});sl.keydownBehavior=void 0;var X=N,rd=cl;const g1=[{matches:(e,t)=>(e.key==="Home"||e.key==="End")&&((0,X.isElementType)(t,["input","textarea"])||(0,X.isContentEditable)(t)),handle:(e,t)=>{if(e.key==="Home")(0,X.setSelectionRange)(t,0,0);else{var r,n;const a=(r=(n=(0,X.getValue)(t))==null?void 0:n.length)!=null?r:0;(0,X.setSelectionRange)(t,a,a)}}},{matches:(e,t)=>(e.key==="PageUp"||e.key==="PageDown")&&(0,X.isElementType)(t,["input"]),handle:(e,t)=>{if(e.key==="PageUp")(0,X.setSelectionRange)(t,0,0);else{var r,n;const a=(r=(n=(0,X.getValue)(t))==null?void 0:n.length)!=null?r:0;(0,X.setSelectionRange)(t,a,a)}}},{matches:(e,t)=>e.key==="Delete"&&(0,X.isEditable)(t)&&!(0,X.isCursorAtEnd)(t),handle:(e,t,r,n)=>{const{newValue:a,newSelectionStart:o}=(0,X.calculateNewValue)("",t,n.carryValue,void 0,"forward");(0,rd.fireInputEvent)(t,{newValue:a,newSelectionStart:o,eventOverrides:{inputType:"deleteContentForward"}}),(0,rd.carryValue)(t,n,a)}}];sl.keydownBehavior=g1;var dl={};Object.defineProperty(dl,"__esModule",{value:!0});dl.keypressBehavior=void 0;var E1=J,ft=cl,B=N;const _1=[{matches:(e,t)=>{var r;return((r=e.key)==null?void 0:r.length)===1&&(0,B.isElementType)(t,"input",{type:"time",readOnly:!1})},handle:(e,t,r,n)=>{var a;let o=e.key;const l=((a=n.carryValue)!=null?a:"")+o,u=(0,B.buildTimeValue)(l);(0,B.isValidInputTimeValue)(t,u)&&(o=u);const{newValue:i,newSelectionStart:s}=(0,B.calculateNewValue)(o,t),d=(0,B.getValue)(t);d!==i&&(0,ft.fireInputEvent)(t,{newValue:i,newSelectionStart:s,eventOverrides:{data:e.key,inputType:"insertText"}}),(0,ft.fireChangeForInputTimeIfValid)(t,d,u),n.carryValue=l}},{matches:(e,t)=>{var r;return((r=e.key)==null?void 0:r.length)===1&&(0,B.isElementType)(t,"input",{type:"date",readOnly:!1})},handle:(e,t,r,n)=>{var a;let o=e.key;const l=((a=n.carryValue)!=null?a:"")+o,u=(0,B.isValidDateValue)(t,l);u&&(o=l);const{newValue:i,newSelectionStart:s}=(0,B.calculateNewValue)(o,t);(0,B.getValue)(t)!==i&&(0,ft.fireInputEvent)(t,{newValue:i,newSelectionStart:s,eventOverrides:{data:e.key,inputType:"insertText"}}),u&&E1.fireEvent.change(t,{target:{value:l}}),n.carryValue=l}},{matches:(e,t)=>{var r;return((r=e.key)==null?void 0:r.length)===1&&(0,B.isElementType)(t,"input",{type:"number",readOnly:!1})},handle:(e,t,r,n)=>{var a,o,l,u;if(!/[\d.\-e]/.test(e.key))return;const i=(a=(o=n.carryValue)!=null?o:(0,B.getValue)(t))!=null?a:"",{newValue:s,newSelectionStart:d}=(0,B.calculateNewValue)(e.key,t,i),f=s.split("e",2);if(Number((l=s.match(/-/g))==null?void 0:l.length)>2||Number((u=s.match(/\./g))==null?void 0:u.length)>1||f[1]&&!/^-?\d*$/.test(f[1]))return;(0,ft.fireInputEvent)(t,{newValue:s,newSelectionStart:d,eventOverrides:{data:e.key,inputType:"insertText"}}),(0,B.getValue)(t)===s?n.carryValue=void 0:n.carryValue=s}},{matches:(e,t)=>{var r;return((r=e.key)==null?void 0:r.length)===1&&((0,B.isElementType)(t,["input","textarea"],{readOnly:!1})&&!(0,B.isClickableInput)(t)||(0,B.isContentEditable)(t))&&(0,B.getSpaceUntilMaxLength)(t)!==0},handle:(e,t)=>{const{newValue:r,newSelectionStart:n}=(0,B.calculateNewValue)(e.key,t);(0,ft.fireInputEvent)(t,{newValue:r,newSelectionStart:n,eventOverrides:{data:e.key,inputType:"insertText"}})}},{matches:(e,t)=>e.key==="Enter"&&((0,B.isElementType)(t,"textarea",{readOnly:!1})||(0,B.isContentEditable)(t))&&(0,B.getSpaceUntilMaxLength)(t)!==0,handle:(e,t,r,n)=>{const{newValue:a,newSelectionStart:o}=(0,B.calculateNewValue)(`
-`,t),l=(0,B.isContentEditable)(t)&&!n.modifiers.shift?"insertParagraph":"insertLineBreak";(0,ft.fireInputEvent)(t,{newValue:a,newSelectionStart:o,eventOverrides:{inputType:l}})}}];dl.keypressBehavior=_1;var G={},br={};Object.defineProperty(br,"__esModule",{value:!0});br.getKeyEventProps=R1;br.getMouseEventProps=P1;function R1(e,t){var r,n;return{key:e.key,code:e.code,altKey:t.modifiers.alt,ctrlKey:t.modifiers.ctrl,metaKey:t.modifiers.meta,shiftKey:t.modifiers.shift,keyCode:(r=e.keyCode)!=null?r:((n=e.key)==null?void 0:n.length)===1?e.key.charCodeAt(0):void 0}}function P1(e){return{altKey:e.modifiers.alt,ctrlKey:e.modifiers.ctrl,metaKey:e.modifiers.meta,shiftKey:e.modifiers.shift}}Object.defineProperty(G,"__esModule",{value:!0});G.preKeyupBehavior=G.preKeydownBehavior=G.postKeyupBehavior=G.keyupBehavior=G.keypressBehavior=G.keydownBehavior=void 0;var gt=J,pe=N,fl=br,nd=cl;const iy={Alt:"alt",Control:"ctrl",Shift:"shift",Meta:"meta"},w1=[...Object.entries(iy).map(([e,t])=>({matches:r=>r.key===e,handle:(r,n,a,o)=>{o.modifiers[t]=!0}})),{matches:e=>e.key==="AltGraph",handle:(e,t,r,n)=>{var a;const o=(a=r.keyboardMap.find(l=>l.key==="Control"))!=null?a:{key:"Control",code:"Control"};gt.fireEvent.keyDown(t,(0,fl.getKeyEventProps)(o,n))}}];G.preKeydownBehavior=w1;const C1=[{matches:e=>e.key==="CapsLock",handle:(e,t,r,n)=>{n.modifiers.caps=!n.modifiers.caps}},{matches:(e,t)=>e.key==="Backspace"&&(0,pe.isEditable)(t)&&!(0,pe.isCursorAtStart)(t),handle:(e,t,r,n)=>{const{newValue:a,newSelectionStart:o}=(0,pe.calculateNewValue)("",t,n.carryValue,void 0,"backward");(0,nd.fireInputEvent)(t,{newValue:a,newSelectionStart:o,eventOverrides:{inputType:"deleteContentBackward"}}),(0,nd.carryValue)(t,n,a)}}];G.keydownBehavior=C1;const O1=[{matches:(e,t)=>e.key==="Enter"&&(0,pe.isElementType)(t,"input")&&["checkbox","radio"].includes(t.type),handle:(e,t)=>{const r=t.form;(0,pe.hasFormSubmit)(r)&&gt.fireEvent.submit(r)}},{matches:(e,t)=>e.key==="Enter"&&((0,pe.isClickableInput)(t)||(0,pe.isElementType)(t,"a")&&Boolean(t.href)),handle:(e,t,r,n)=>{gt.fireEvent.click(t,(0,fl.getMouseEventProps)(n))}},{matches:(e,t)=>e.key==="Enter"&&(0,pe.isElementType)(t,"input"),handle:(e,t)=>{const r=t.form;r&&(r.querySelectorAll("input").length===1||(0,pe.hasFormSubmit)(r))&&gt.fireEvent.submit(r)}}];G.keypressBehavior=O1;const S1=[...Object.entries(iy).map(([e,t])=>({matches:r=>r.key===e,handle:(r,n,a,o)=>{o.modifiers[t]=!1}}))];G.preKeyupBehavior=S1;const $1=[{matches:(e,t)=>e.key===" "&&(0,pe.isClickableInput)(t),handle:(e,t,r,n)=>{gt.fireEvent.click(t,(0,fl.getMouseEventProps)(n))}}];G.keyupBehavior=$1;const T1=[{matches:e=>e.key==="AltGraph",handle:(e,t,r,n)=>{var a;const o=(a=r.keyboardMap.find(l=>l.key==="Control"))!=null?a:{key:"Control",code:"Control"};gt.fireEvent.keyUp(t,(0,fl.getKeyEventProps)(o,n))}}];G.postKeyupBehavior=T1;Object.defineProperty(L,"__esModule",{value:!0});L.replaceBehavior=L.preKeyupBehavior=L.preKeydownBehavior=L.postKeyupBehavior=L.keyupBehavior=L.keypressBehavior=L.keydownBehavior=void 0;var ad=N,q1=pl(ul),A1=pl(sl),x1=pl(dl),Mt=pl(G);function uy(e){if(typeof WeakMap!="function")return null;var t=new WeakMap,r=new WeakMap;return(uy=function(n){return n?r:t})(e)}function pl(e,t){if(!t&&e&&e.__esModule)return e;if(e===null||typeof e!="object"&&typeof e!="function")return{default:e};var r=uy(t);if(r&&r.has(e))return r.get(e);var n={},a=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in e)if(o!=="default"&&Object.prototype.hasOwnProperty.call(e,o)){var l=a?Object.getOwnPropertyDescriptor(e,o):null;l&&(l.get||l.set)?Object.defineProperty(n,o,l):n[o]=e[o]}return n.default=e,r&&r.set(e,n),n}const M1=[{matches:(e,t)=>e.key==="selectall"&&(0,ad.isElementType)(t,["input","textarea"]),handle:(e,t,r,n)=>{var a;(0,ad.setSelectionRange)(t,0,((a=n.carryValue)!=null?a:t.value).length)}}];L.replaceBehavior=M1;const I1=[...Mt.preKeydownBehavior];L.preKeydownBehavior=I1;const B1=[...q1.keydownBehavior,...A1.keydownBehavior,...Mt.keydownBehavior];L.keydownBehavior=B1;const j1=[...Mt.keypressBehavior,...x1.keypressBehavior];L.keypressBehavior=j1;const N1=[...Mt.preKeyupBehavior];L.preKeyupBehavior=N1;const D1=[...Mt.keyupBehavior];L.keyupBehavior=D1;const k1=[...Mt.postKeyupBehavior];L.postKeyupBehavior=k1;Object.defineProperty(il,"__esModule",{value:!0});il.keyboardImplementation=dy;il.releaseAllKeys=U1;var Ju=J,sy=N,L1=zu,Je=F1(L),Xu=br;function cy(e){if(typeof WeakMap!="function")return null;var t=new WeakMap,r=new WeakMap;return(cy=function(n){return n?r:t})(e)}function F1(e,t){if(!t&&e&&e.__esModule)return e;if(e===null||typeof e!="object"&&typeof e!="function")return{default:e};var r=cy(t);if(r&&r.has(e))return r.get(e);var n={},a=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in e)if(o!=="default"&&Object.prototype.hasOwnProperty.call(e,o)){var l=a?Object.getOwnPropertyDescriptor(e,o):null;l&&(l.get||l.set)?Object.defineProperty(n,o,l):n[o]=e[o]}return n.default=e,r&&r.set(e,n),n}async function dy(e,t,r){var n;const{document:a}=t,o=()=>fy(a),{keyDef:l,consumedLength:u,releasePrevious:i,releaseSelf:s,repeat:d}=(n=r.repeatKey)!=null?n:(0,L1.getNextKeyDef)(e,t);if(!Xe(Je.replaceBehavior,l,o(),t,r)){const p=r.pressed.find(m=>m.keyDef===l);if(p&&!r.repeatKey&&Xi(l,o,t,r,p.unpreventedDefault),!i){const m=V1(l,o,t,r);m&&W1(l,r)&&H1(l,o,t,r),s&&d<=1&&Xi(l,o,t,r,m)}}if(d>1?r.repeatKey={consumedLength:0,keyDef:l,releasePrevious:i,releaseSelf:s,repeat:d-1}:delete r.repeatKey,e.length>u||d>1)return t.delay>0&&await(0,sy.wait)(t.delay),dy(e.slice(u),t,r)}function fy(e){var t;return(t=(0,sy.getActiveElement)(e))!=null?t:e.body}function U1(e,t){const r=()=>fy(e.document);for(const n of t.pressed)Xi(n.keyDef,r,e,t,n.unpreventedDefault)}function V1(e,t,r,n){const a=t();a!==n.activeElement&&(n.carryValue=void 0,n.carryChar=""),n.activeElement=a,Xe(Je.preKeydownBehavior,e,a,r,n);const o=Ju.fireEvent.keyDown(a,(0,Xu.getKeyEventProps)(e,n));return n.pressed.push({keyDef:e,unpreventedDefault:o}),o&&Xe(Je.keydownBehavior,e,t(),r,n),o}function H1(e,t,r,n){const a=t();Ju.fireEvent.keyPress(a,(0,Xu.getKeyEventProps)(e,n))&&Xe(Je.keypressBehavior,e,t(),r,n)}function Xi(e,t,r,n,a){const o=t();Xe(Je.preKeyupBehavior,e,o,r,n);const l=Ju.fireEvent.keyUp(o,(0,Xu.getKeyEventProps)(e,n));a&&l&&Xe(Je.keyupBehavior,e,t(),r,n),n.pressed=n.pressed.filter(u=>u.keyDef!==e),Xe(Je.postKeyupBehavior,e,o,r,n)}function Xe(e,t,r,n,a){const o=e.find(l=>l.matches(t,r,n,a));return o&&o.handle(t,r,n,a),!!o}function W1(e,t){var r;return(((r=e.key)==null?void 0:r.length)===1||e.key==="Enter")&&!t.modifiers.ctrl&&!t.modifiers.alt}var vl={},hr={};Object.defineProperty(hr,"__esModule",{value:!0});hr.DOM_KEY_LOCATION=void 0;let Qi;hr.DOM_KEY_LOCATION=Qi;(function(e){e[e.STANDARD=0]="STANDARD",e[e.LEFT=1]="LEFT",e[e.RIGHT=2]="RIGHT",e[e.NUMPAD=3]="NUMPAD"})(Qi||(hr.DOM_KEY_LOCATION=Qi={}));Object.defineProperty(vl,"__esModule",{value:!0});vl.defaultKeyMap=void 0;var de=hr;const z1=[..."0123456789".split("").map(e=>({code:`Digit${e}`,key:e})),...")!@#$%^&*(".split("").map((e,t)=>({code:`Digit${t}`,key:e,shiftKey:!0})),..."abcdefghijklmnopqrstuvwxyz".split("").map(e=>({code:`Key${e.toUpperCase()}`,key:e})),..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(e=>({code:`Key${e}`,key:e,shiftKey:!0})),{code:"Space",key:" "},{code:"AltLeft",key:"Alt",location:de.DOM_KEY_LOCATION.LEFT,keyCode:18},{code:"AltRight",key:"Alt",location:de.DOM_KEY_LOCATION.RIGHT,keyCode:18},{code:"ShiftLeft",key:"Shift",location:de.DOM_KEY_LOCATION.LEFT,keyCode:16},{code:"ShiftRight",key:"Shift",location:de.DOM_KEY_LOCATION.RIGHT,keyCode:16},{code:"ControlLeft",key:"Control",location:de.DOM_KEY_LOCATION.LEFT,keyCode:17},{code:"ControlRight",key:"Control",location:de.DOM_KEY_LOCATION.RIGHT,keyCode:17},{code:"MetaLeft",key:"Meta",location:de.DOM_KEY_LOCATION.LEFT,keyCode:93},{code:"MetaRight",key:"Meta",location:de.DOM_KEY_LOCATION.RIGHT,keyCode:93},{code:"OSLeft",key:"OS",location:de.DOM_KEY_LOCATION.LEFT,keyCode:91},{code:"OSRight",key:"OS",location:de.DOM_KEY_LOCATION.RIGHT,keyCode:91},{code:"CapsLock",key:"CapsLock",keyCode:20},{code:"Backspace",key:"Backspace",keyCode:8},{code:"Enter",key:"Enter",keyCode:13},{code:"Escape",key:"Escape",keyCode:27},{code:"ArrowUp",key:"ArrowUp",keyCode:38},{code:"ArrowDown",key:"ArrowDown",keyCode:40},{code:"ArrowLeft",key:"ArrowLeft",keyCode:37},{code:"ArrowRight",key:"ArrowRight",keyCode:39},{code:"Home",key:"Home",keyCode:36},{code:"End",key:"End",keyCode:35},{code:"Delete",key:"Delete",keyCode:46},{code:"PageUp",key:"PageUp",keyCode:33},{code:"PageDown",key:"PageDown",keyCode:34}];vl.defaultKeyMap=z1;var yl={};Object.defineProperty(yl,"__esModule",{value:!0});yl.specialCharMap=void 0;const K1={arrowLeft:"{arrowleft}",arrowRight:"{arrowright}",arrowDown:"{arrowdown}",arrowUp:"{arrowup}",enter:"{enter}",escape:"{esc}",delete:"{del}",backspace:"{backspace}",home:"{home}",end:"{end}",selectAll:"{selectall}",space:"{space}",whitespace:" ",pageUp:"{pageUp}",pageDown:"{pageDown}"};yl.specialCharMap=K1;(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.keyboard=o,e.keyboardImplementationWrapper=l,Object.defineProperty(e,"specialCharMap",{enumerable:!0,get:function(){return a.specialCharMap}});var t=J,r=il,n=vl,a=yl;function o(i,s){var d;const{promise:f,state:p}=l(i,s);return((d=s==null?void 0:s.delay)!=null?d:0)>0?(0,t.getConfig)().asyncWrapper(()=>f.then(()=>p)):(f.catch(console.error),p)}function l(i,s={}){const{keyboardState:d=u(),delay:f=0,document:p=document,autoModify:m=!1,keyboardMap:C=n.defaultKeyMap}=s,R={delay:f,document:p,autoModify:m,keyboardMap:C};return{promise:(0,r.keyboardImplementation)(i,R,d),state:d,releaseAllKeys:()=>(0,r.releaseAllKeys)(R,d)}}function u(){return{activeElement:null,pressed:[],carryChar:"",modifiers:{alt:!1,caps:!1,ctrl:!1,meta:!1,shift:!1}}}})(Wu);Object.defineProperty(Hu,"__esModule",{value:!0});Hu.typeImplementation=J1;var Sr=N,G1=nt,Y1=Wu;async function J1(e,t,{delay:r,skipClick:n=!1,skipAutoClose:a=!1,initialSelectionStart:o=void 0,initialSelectionEnd:l=void 0}){if(e.disabled)return;n||(0,G1.click)(e);const u=()=>(0,Sr.getActiveElement)(e.ownerDocument),i=(0,Sr.getValue)(u()),{selectionStart:s,selectionEnd:d}=(0,Sr.getSelectionRange)(e);i!=null&&(s===null||s===0)&&(d===null||d===0)&&(0,Sr.setSelectionRange)(u(),o!=null?o:i.length,l!=null?l:i.length);const{promise:f,releaseAllKeys:p}=(0,Y1.keyboardImplementationWrapper)(t,{delay:r,document:e.ownerDocument});return r>0&&await f,a||p(),f}Object.defineProperty(ll,"__esModule",{value:!0});ll.type=Q1;var X1=J,od=Hu;function Q1(e,t,{delay:r=0,...n}={}){return r>0?(0,X1.getConfig)().asyncWrapper(()=>(0,od.typeImplementation)(e,t,{delay:r,...n})):void(0,od.typeImplementation)(e,t,{delay:r,...n}).catch(console.error)}var Qu={};Object.defineProperty(Qu,"__esModule",{value:!0});Qu.clear=ex;var ld=N,Z1=ll;function ex(e){var t,r;if(!(0,ld.isElementType)(e,["input","textarea"]))throw new Error("clear currently only supports input and textarea elements.");if((0,ld.isDisabled)(e))return;const n=e.type;n!=="textarea"&&(e.type="text"),(0,Z1.type)(e,"{selectall}{del}",{delay:0,initialSelectionStart:(t=e.selectionStart)!=null?t:void 0,initialSelectionEnd:(r=e.selectionEnd)!=null?r:void 0}),n!=="textarea"&&(e.type=n)}var Zu={};Object.defineProperty(Zu,"__esModule",{value:!0});Zu.tab=ax;var $r=J,Lt=N,tx=xt,rx=mr;function nx(e,t,r,n){if((0,Lt.isDocument)(n)&&(e===0&&t||e===r.length-1&&!t))return n.body;const a=t?e-1:e+1,o=t?r.length-1:0;return r[a]||r[o]}function ax({shift:e=!1,focusTrap:t}={}){var r,n;const a=(r=(n=t)==null?void 0:n.ownerDocument)!=null?r:document,o=(0,Lt.getActiveElement)(a);t||(t=a);const l=t.querySelectorAll(Lt.FOCUSABLE_SELECTOR),u=Array.from(l).filter(v=>v===o||v.getAttribute("tabindex")!=="-1"&&!(0,Lt.isDisabled)(v)&&(0,Lt.isVisible)(v));if(u.length===0)return;const i=u.map((v,b)=>({el:v,idx:b})).sort((v,b)=>{if(o&&o.getAttribute("tabindex")==="-1")return v.idx-b.idx;const P=Number(v.el.getAttribute("tabindex")),w=Number(b.el.getAttribute("tabindex")),O=P-w;return O===0?v.idx-b.idx:O}).map(({el:v})=>v),s={};let d=[];i.forEach(v=>{const b=v;if(b.type==="radio"&&b.name){const P=o;if(P&&P.type===b.type&&P.name===b.name){b===P&&d.push(b);return}if(b.checked){d=d.filter(w=>w.type!==b.type||w.name!==b.name),d.push(b),s[b.name]=b;return}if(typeof s[b.name]<"u")return}d.push(b)});const f=d.findIndex(v=>v===o),p=nx(f,e,d,t),m={key:"Shift",keyCode:16,shiftKey:!0},C={key:"Tab",keyCode:9,shiftKey:e};let R=!0;o&&(e&&$r.fireEvent.keyDown(o,{...m}),R=$r.fireEvent.keyDown(o,{...C}));const S=!R&&o?o:p;R&&(p===a.body?o&&(0,rx.blur)(o):(0,tx.focus)(p)),$r.fireEvent.keyUp(S,{...C}),e&&$r.fireEvent.keyUp(S,{...m,shiftKey:!1})}var es={};Object.defineProperty(es,"__esModule",{value:!0});es.upload=ux;var li=J,ox=nt,lx=mr,ix=xt,ii=N;function ux(e,t,r,{applyAccept:n=!1}={}){var a;const o=(0,ii.isElementType)(e,"label")?e.control:e;if(!o||!(0,ii.isElementType)(o,"input",{type:"file"}))throw new TypeError(`The ${o===e?"given":"associated"} ${o==null?void 0:o.tagName} element does not accept file uploads`);if((0,ii.isDisabled)(e))return;(0,ox.click)(e,r==null?void 0:r.clickInit);const l=(Array.isArray(t)?t:[t]).filter(i=>!n||sx(i,o.accept)).slice(0,o.multiple?void 0:1);if((0,lx.blur)(e),(0,ix.focus)(e),l.length===((a=o.files)==null?void 0:a.length)&&l.every((i,s)=>{var d;return i===((d=o.files)==null?void 0:d.item(s))}))return;const u={...l,length:l.length,item:i=>l[i],[Symbol.iterator](){let i=0;return{next:()=>({done:i>=l.length,value:l[i++]})}}};(0,li.fireEvent)(o,(0,li.createEvent)("input",o,{target:{files:u},bubbles:!0,cancelable:!1,composed:!0})),li.fireEvent.change(o,{target:{files:u},...r==null?void 0:r.changeInit})}function sx(e,t){if(!t)return!0;const r=["audio/*","image/*","video/*"];return t.split(",").some(n=>n.startsWith(".")?e.name.endsWith(n):r.includes(n)?e.type.startsWith(n.substr(0,n.length-1)):e.type===n)}var Ot={};Object.defineProperty(Ot,"__esModule",{value:!0});Ot.selectOptions=Ot.deselectOptions=void 0;var M=J,kt=N,id=nt,ud=xt,sd=At;function py(e,t,r,n,{skipPointerEventsCheck:a=!1}={}){if(!e&&!t.multiple)throw(0,M.getConfig)().getElementError("Unable to deselect an option in a non-multiple select. Use selectOptions to change the selection instead.",t);const o=Array.isArray(r)?r:[r],l=Array.from(t.querySelectorAll('option, [role="option"]')),u=o.map(s=>{if(typeof s!="string"&&l.includes(s))return s;{const d=l.find(f=>f.value===s||f.innerHTML===s);if(d)return d;throw(0,M.getConfig)().getElementError(`Value "${String(s)}" not found in options`,t)}}).filter(s=>!(0,kt.isDisabled)(s));if((0,kt.isDisabled)(t)||!u.length)return;if((0,kt.isElementType)(t,"select"))if(t.multiple)for(const s of u){const d=a?!0:(0,kt.hasPointerEvents)(s);d&&(M.fireEvent.pointerOver(s,n),M.fireEvent.pointerEnter(t,n),M.fireEvent.mouseOver(s),M.fireEvent.mouseEnter(t),M.fireEvent.pointerMove(s,n),M.fireEvent.mouseMove(s,n),M.fireEvent.pointerDown(s,n),M.fireEvent.mouseDown(s,n)),(0,ud.focus)(t),d&&(M.fireEvent.pointerUp(s,n),M.fireEvent.mouseUp(s,n)),i(s),d&&M.fireEvent.click(s,n)}else if(u.length===1){const s=a?!0:(0,kt.hasPointerEvents)(t);s?(0,id.click)(t,n,{skipPointerEventsCheck:a}):(0,ud.focus)(t),i(u[0]),s&&(M.fireEvent.pointerOver(t,n),M.fireEvent.pointerEnter(t,n),M.fireEvent.mouseOver(t),M.fireEvent.mouseEnter(t),M.fireEvent.pointerUp(t,n),M.fireEvent.mouseUp(t,n),M.fireEvent.click(t,n))}else throw(0,M.getConfig)().getElementError("Cannot select multiple options on a non-multiple select",t);else if(t.getAttribute("role")==="listbox")u.forEach(s=>{(0,sd.hover)(s,n,{skipPointerEventsCheck:a}),(0,id.click)(s,n,{skipPointerEventsCheck:a}),(0,sd.unhover)(s,n,{skipPointerEventsCheck:a})});else throw(0,M.getConfig)().getElementError("Cannot select options on elements that are neither select nor listbox elements",t);function i(s){s.selected=e,(0,M.fireEvent)(t,(0,M.createEvent)("input",t,{bubbles:!0,cancelable:!1,composed:!0,...n})),M.fireEvent.change(t,n)}}const cx=py.bind(null,!0);Ot.selectOptions=cx;const dx=py.bind(null,!1);Ot.deselectOptions=dx;var ts={};Object.defineProperty(ts,"__esModule",{value:!0});ts.paste=px;var cd=J,me=N;function fx(e){return(0,me.isElementType)(e,"input")&&Boolean(me.editableInputTypes[e.type])||(0,me.isElementType)(e,"textarea")}function px(e,t,r,{initialSelectionStart:n,initialSelectionEnd:a}={}){if(!fx(e))throw new TypeError(`The given ${e.tagName} element is currently unsupported.
-      A PR extending this implementation would be very much welcome at https://github.com/testing-library/user-event`);if((0,me.isDisabled)(e)||((0,me.eventWrapper)(()=>e.focus()),e.selectionStart===0&&e.selectionEnd===0&&(0,me.setSelectionRange)(e,n!=null?n:e.value.length,a!=null?a:e.value.length),cd.fireEvent.paste(e,r),e.readOnly))return;t=t.substr(0,(0,me.getSpaceUntilMaxLength)(e));const{newValue:o,newSelectionStart:l}=(0,me.calculateNewValue)(t,e);cd.fireEvent.input(e,{inputType:"insertFromPaste",target:{value:o}}),(0,me.setSelectionRange)(e,{newSelectionStart:l,selectionEnd:l},{})}(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0,Object.defineProperty(e,"specialChars",{enumerable:!0,get:function(){return s.specialCharMap}});var t=nt,r=ll,n=Qu,a=Zu,o=At,l=es,u=Ot,i=ts,s=Wu,f={click:t.click,dblClick:t.dblClick,type:r.type,clear:n.clear,tab:a.tab,hover:o.hover,unhover:o.unhover,upload:l.upload,selectOptions:u.selectOptions,deselectOptions:u.deselectOptions,paste:i.paste,keyboard:s.keyboard};e.default=f})(Gv);const vx=yy(Gv);var yx=globalThis&&globalThis.__makeTemplateObject||function(e,t){return Object.defineProperty?Object.defineProperty(e,"raw",{value:t}):e.raw=t,e},ln=globalThis&&globalThis.__assign||function(){return ln=Object.assign||function(e){for(var t,r=1,n=arguments.length;r<n;r++){t=arguments[r];for(var a in t)Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a])}return e},ln.apply(this,arguments)};const mx=__STORYBOOK_MODULE_CLIENT_LOGGER__.once;var _=vd(ln({},Kv),{intercept:function(e,t){return t[0]==="fireEvent"||e.startsWith("findBy")||e.startsWith("waitFor")}});_.screen=Object.entries(_.screen).reduce(function(e,t){var r=t[0],n=t[1];return Object.defineProperty(e,r,{get:function(){return mx.warn(my(dd||(dd=yx(["\n          You are using Testing Library's `screen` object. Use `within(canvasElement)` instead.\n          More info: https://storybook.js.org/docs/react/essentials/interactions\n        "],["\n          You are using Testing Library's \\`screen\\` object. Use \\`within(canvasElement)\\` instead.\n          More info: https://storybook.js.org/docs/react/essentials/interactions\n        "])))),n}})},ln({},_.screen));_.buildQueries;_.configure;_.createEvent;_.findAllByAltText;_.findAllByDisplayValue;_.findAllByLabelText;_.findAllByPlaceholderText;_.findAllByRole;_.findAllByTestId;_.findAllByText;_.findAllByTitle;_.findByAltText;_.findByDisplayValue;_.findByLabelText;_.findByPlaceholderText;_.findByRole;_.findByTestId;_.findByText;_.findByTitle;_.fireEvent;_.getAllByAltText;_.getAllByDisplayValue;_.getAllByLabelText;_.getAllByPlaceholderText;_.getAllByRole;_.getAllByTestId;_.getAllByText;_.getAllByTitle;_.getByAltText;_.getByDisplayValue;_.getByLabelText;_.getByPlaceholderText;_.getByRole;_.getByTestId;_.getByText;_.getByTitle;_.getConfig;_.getDefaultNormalizer;_.getElementError;_.getNodeText;_.getQueriesForElement;_.getRoles;_.getSuggestedQuery;_.isInaccessible;_.logDOM;_.logRoles;_.prettyDOM;_.queries;_.queryAllByAltText;_.queryAllByAttribute;_.queryAllByDisplayValue;_.queryAllByLabelText;_.queryAllByPlaceholderText;_.queryAllByRole;_.queryAllByTestId;_.queryAllByText;_.queryAllByTitle;_.queryByAltText;_.queryByAttribute;_.queryByDisplayValue;_.queryByLabelText;_.queryByPlaceholderText;_.queryByRole;_.queryByTestId;_.queryByText;_.queryByTitle;_.queryHelpers;_.screen;_.waitFor;_.waitForElementToBeRemoved;var bx=_.within;_.prettyFormat;var hx=vd({userEvent:vx},{intercept:!0}).userEvent,dd;const un=()=>{const[e,t]=by.useState();return it("article",{children:[z(hy,{user:e,onLogin:()=>t({name:"Jane Doe"}),onLogout:()=>t(void 0),onCreateAccount:()=>t({name:"Jane Doe"})}),it("section",{children:[z("h2",{children:"Pages in Storybook"}),it("p",{children:["We recommend building UIs with a"," ",z("a",{href:"https://componentdriven.org",target:"_blank",rel:"noopener noreferrer",children:z("strong",{children:"component-driven"})})," ","process starting with atomic components and ending with pages."]}),z("p",{children:"Render pages with mock data. This makes it easy to build and review page states without needing to navigate to them in your app. Here are some handy patterns for managing page data in Storybook:"}),it("ul",{children:[z("li",{children:'Use a higher-level connected component. Storybook helps you compose such data from the "args" of child component stories'}),z("li",{children:"Assemble data in the page component from your services. You can mock these services out using Storybook."})]}),it("p",{children:["Get a guided tutorial on component-driven development at"," ",z("a",{href:"https://storybook.js.org/tutorials/",target:"_blank",rel:"noopener noreferrer",children:"Storybook tutorials"}),". Read more in the"," ",z("a",{href:"https://storybook.js.org/docs",target:"_blank",rel:"noopener noreferrer",children:"docs"}),"."]}),it("div",{className:"tip-wrapper",children:[z("span",{className:"tip",children:"Tip"})," Adjust the width of the canvas with the"," ",z("svg",{width:"10",height:"10",viewBox:"0 0 12 12",xmlns:"http://www.w3.org/2000/svg",children:z("g",{fill:"none",fillRule:"evenodd",children:z("path",{d:"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z",id:"a",fill:"#999"})})}),"Viewports addon in the toolbar"]})]})]})};try{un.displayName="Page",un.__docgenInfo={description:"",displayName:"Page",props:{}}}catch{}const Ox={title:"Example/Page",component:un,parameters:{layout:"fullscreen"}},vy=e=>z(un,{...e}),ui=vy.bind({}),kr=vy.bind({});kr.play=async({canvasElement:e})=>{const r=await bx(e).getByRole("button",{name:/Log in/i});await hx.click(r)};var fd;ui.parameters={...ui.parameters,storySource:{source:"args => <Page {...args} />",...(fd=ui.parameters)==null?void 0:fd.storySource}};var pd;kr.parameters={...kr.parameters,storySource:{source:"args => <Page {...args} />",...(pd=kr.parameters)==null?void 0:pd.storySource}};const Sx=["LoggedOut","LoggedIn"];export{kr as LoggedIn,ui as LoggedOut,Sx as __namedExportsOrder,Ox as default};
+    for more information about how userEvent parses your input.`;
+}
+var plugins$1 = {};
+var arrow = {};
+Object.defineProperty(arrow, "__esModule", {
+  value: true
+});
+arrow.keydownBehavior = void 0;
+var _utils$e = utils;
+const keydownBehavior$3 = [{
+  matches: (keyDef, element) => (keyDef.key === "ArrowLeft" || keyDef.key === "ArrowRight") && (0, _utils$e.isElementType)(element, ["input", "textarea"]),
+  handle: (keyDef, element) => {
+    var _ref;
+    const {
+      selectionStart,
+      selectionEnd
+    } = (0, _utils$e.getSelectionRange)(element);
+    const direction = keyDef.key === "ArrowLeft" ? -1 : 1;
+    const newPos = (_ref = selectionStart === selectionEnd ? (selectionStart != null ? selectionStart : 0) + direction : direction < 0 ? selectionStart : selectionEnd) != null ? _ref : 0;
+    (0, _utils$e.setSelectionRange)(element, newPos, newPos);
+  }
+}];
+arrow.keydownBehavior = keydownBehavior$3;
+var control = {};
+var shared = {};
+var carryValue$1 = {};
+Object.defineProperty(carryValue$1, "__esModule", {
+  value: true
+});
+carryValue$1.carryValue = carryValue;
+var _utils$d = utils;
+function carryValue(element, state, newValue) {
+  const value = (0, _utils$d.getValue)(element);
+  state.carryValue = value !== newValue && value === "" && (0, _utils$d.hasUnreliableEmptyValue)(element) ? newValue : void 0;
+}
+var fireChangeForInputTimeIfValid$1 = {};
+Object.defineProperty(fireChangeForInputTimeIfValid$1, "__esModule", {
+  value: true
+});
+fireChangeForInputTimeIfValid$1.fireChangeForInputTimeIfValid = fireChangeForInputTimeIfValid;
+var _dom$9 = require$$0;
+var _utils$c = utils;
+function fireChangeForInputTimeIfValid(el, prevValue, timeNewEntry) {
+  if ((0, _utils$c.isValidInputTimeValue)(el, timeNewEntry) && prevValue !== timeNewEntry) {
+    _dom$9.fireEvent.change(el, {
+      target: {
+        value: timeNewEntry
+      }
+    });
+  }
+}
+var fireInputEvent$1 = {};
+Object.defineProperty(fireInputEvent$1, "__esModule", {
+  value: true
+});
+fireInputEvent$1.fireInputEvent = fireInputEvent;
+var _dom$8 = require$$0;
+var _utils$b = utils;
+function fireInputEvent(element, {
+  newValue,
+  newSelectionStart,
+  eventOverrides
+}) {
+  if ((0, _utils$b.isContentEditable)(element)) {
+    applyNative(element, "textContent", newValue);
+  } else if ((0, _utils$b.isElementType)(element, ["input", "textarea"])) {
+    applyNative(element, "value", newValue);
+  } else {
+    throw new Error("Invalid Element");
+  }
+  setSelectionRangeAfterInput(element, newSelectionStart);
+  _dom$8.fireEvent.input(element, {
+    ...eventOverrides
+  });
+  setSelectionRangeAfterInputHandler(element, newValue, newSelectionStart);
+}
+function setSelectionRangeAfterInput(element, newSelectionStart) {
+  (0, _utils$b.setSelectionRange)(element, newSelectionStart, newSelectionStart);
+}
+function setSelectionRangeAfterInputHandler(element, newValue, newSelectionStart) {
+  const value = (0, _utils$b.getValue)(element);
+  const isUnreliableValue = value === "" && (0, _utils$b.hasUnreliableEmptyValue)(element);
+  if (!isUnreliableValue && value === newValue) {
+    const {
+      selectionStart
+    } = (0, _utils$b.getSelectionRange)(element);
+    if (selectionStart === value.length) {
+      (0, _utils$b.setSelectionRange)(element, newSelectionStart, newSelectionStart);
+    }
+  }
+}
+const initial = Symbol("initial input value/textContent");
+const onBlur = Symbol("onBlur");
+function applyNative(element, propName, propValue) {
+  const descriptor = Object.getOwnPropertyDescriptor(element, propName);
+  const nativeDescriptor = Object.getOwnPropertyDescriptor(element.constructor.prototype, propName);
+  if (descriptor && nativeDescriptor) {
+    Object.defineProperty(element, propName, nativeDescriptor);
+  }
+  if (element[initial] === void 0) {
+    element[initial] = String(element[propName]);
+  }
+  element[propName] = propValue;
+  if (!element[onBlur]) {
+    var _element$ownerDocumen;
+    (_element$ownerDocumen = element.ownerDocument.defaultView) == null ? void 0 : _element$ownerDocumen.addEventListener("blur", element[onBlur] = () => {
+      const initV = element[initial];
+      delete element[onBlur];
+      delete element[initial];
+      if (String(element[propName]) !== initV) {
+        _dom$8.fireEvent.change(element);
+      }
+    }, {
+      capture: true,
+      once: true
+    });
+  }
+  if (descriptor) {
+    Object.defineProperty(element, propName, descriptor);
+  }
+}
+(function(exports) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  var _carryValue = carryValue$1;
+  Object.keys(_carryValue).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _carryValue[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _carryValue[key];
+      }
+    });
+  });
+  var _fireChangeForInputTimeIfValid = fireChangeForInputTimeIfValid$1;
+  Object.keys(_fireChangeForInputTimeIfValid).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _fireChangeForInputTimeIfValid[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _fireChangeForInputTimeIfValid[key];
+      }
+    });
+  });
+  var _fireInputEvent = fireInputEvent$1;
+  Object.keys(_fireInputEvent).forEach(function(key) {
+    if (key === "default" || key === "__esModule")
+      return;
+    if (key in exports && exports[key] === _fireInputEvent[key])
+      return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function() {
+        return _fireInputEvent[key];
+      }
+    });
+  });
+})(shared);
+Object.defineProperty(control, "__esModule", {
+  value: true
+});
+control.keydownBehavior = void 0;
+var _utils$a = utils;
+var _shared$2 = shared;
+const keydownBehavior$2 = [{
+  matches: (keyDef, element) => (keyDef.key === "Home" || keyDef.key === "End") && ((0, _utils$a.isElementType)(element, ["input", "textarea"]) || (0, _utils$a.isContentEditable)(element)),
+  handle: (keyDef, element) => {
+    if (keyDef.key === "Home") {
+      (0, _utils$a.setSelectionRange)(element, 0, 0);
+    } else {
+      var _getValue$length, _getValue3;
+      const newPos = (_getValue$length = (_getValue3 = (0, _utils$a.getValue)(element)) == null ? void 0 : _getValue3.length) != null ? _getValue$length : 0;
+      (0, _utils$a.setSelectionRange)(element, newPos, newPos);
+    }
+  }
+}, {
+  matches: (keyDef, element) => (keyDef.key === "PageUp" || keyDef.key === "PageDown") && (0, _utils$a.isElementType)(element, ["input"]),
+  handle: (keyDef, element) => {
+    if (keyDef.key === "PageUp") {
+      (0, _utils$a.setSelectionRange)(element, 0, 0);
+    } else {
+      var _getValue$length2, _getValue22;
+      const newPos = (_getValue$length2 = (_getValue22 = (0, _utils$a.getValue)(element)) == null ? void 0 : _getValue22.length) != null ? _getValue$length2 : 0;
+      (0, _utils$a.setSelectionRange)(element, newPos, newPos);
+    }
+  }
+}, {
+  matches: (keyDef, element) => keyDef.key === "Delete" && (0, _utils$a.isEditable)(element) && !(0, _utils$a.isCursorAtEnd)(element),
+  handle: (keDef, element, options, state) => {
+    const {
+      newValue,
+      newSelectionStart
+    } = (0, _utils$a.calculateNewValue)("", element, state.carryValue, void 0, "forward");
+    (0, _shared$2.fireInputEvent)(element, {
+      newValue,
+      newSelectionStart,
+      eventOverrides: {
+        inputType: "deleteContentForward"
+      }
+    });
+    (0, _shared$2.carryValue)(element, state, newValue);
+  }
+}];
+control.keydownBehavior = keydownBehavior$2;
+var character = {};
+Object.defineProperty(character, "__esModule", {
+  value: true
+});
+character.keypressBehavior = void 0;
+var _dom$7 = require$$0;
+var _shared$1 = shared;
+var _utils$9 = utils;
+const keypressBehavior$2 = [{
+  matches: (keyDef, element) => {
+    var _keyDef$key;
+    return ((_keyDef$key = keyDef.key) == null ? void 0 : _keyDef$key.length) === 1 && (0, _utils$9.isElementType)(element, "input", {
+      type: "time",
+      readOnly: false
+    });
+  },
+  handle: (keyDef, element, options, state) => {
+    var _state$carryValue;
+    let newEntry = keyDef.key;
+    const textToBeTyped = ((_state$carryValue = state.carryValue) != null ? _state$carryValue : "") + newEntry;
+    const timeNewEntry = (0, _utils$9.buildTimeValue)(textToBeTyped);
+    if ((0, _utils$9.isValidInputTimeValue)(element, timeNewEntry)) {
+      newEntry = timeNewEntry;
+    }
+    const {
+      newValue,
+      newSelectionStart
+    } = (0, _utils$9.calculateNewValue)(newEntry, element);
+    const prevValue = (0, _utils$9.getValue)(element);
+    if (prevValue !== newValue) {
+      (0, _shared$1.fireInputEvent)(element, {
+        newValue,
+        newSelectionStart,
+        eventOverrides: {
+          data: keyDef.key,
+          inputType: "insertText"
+        }
+      });
+    }
+    (0, _shared$1.fireChangeForInputTimeIfValid)(element, prevValue, timeNewEntry);
+    state.carryValue = textToBeTyped;
+  }
+}, {
+  matches: (keyDef, element) => {
+    var _keyDef$key2;
+    return ((_keyDef$key2 = keyDef.key) == null ? void 0 : _keyDef$key2.length) === 1 && (0, _utils$9.isElementType)(element, "input", {
+      type: "date",
+      readOnly: false
+    });
+  },
+  handle: (keyDef, element, options, state) => {
+    var _state$carryValue2;
+    let newEntry = keyDef.key;
+    const textToBeTyped = ((_state$carryValue2 = state.carryValue) != null ? _state$carryValue2 : "") + newEntry;
+    const isValidToBeTyped = (0, _utils$9.isValidDateValue)(element, textToBeTyped);
+    if (isValidToBeTyped) {
+      newEntry = textToBeTyped;
+    }
+    const {
+      newValue,
+      newSelectionStart
+    } = (0, _utils$9.calculateNewValue)(newEntry, element);
+    const prevValue = (0, _utils$9.getValue)(element);
+    if (prevValue !== newValue) {
+      (0, _shared$1.fireInputEvent)(element, {
+        newValue,
+        newSelectionStart,
+        eventOverrides: {
+          data: keyDef.key,
+          inputType: "insertText"
+        }
+      });
+    }
+    if (isValidToBeTyped) {
+      _dom$7.fireEvent.change(element, {
+        target: {
+          value: textToBeTyped
+        }
+      });
+    }
+    state.carryValue = textToBeTyped;
+  }
+}, {
+  matches: (keyDef, element) => {
+    var _keyDef$key3;
+    return ((_keyDef$key3 = keyDef.key) == null ? void 0 : _keyDef$key3.length) === 1 && (0, _utils$9.isElementType)(element, "input", {
+      type: "number",
+      readOnly: false
+    });
+  },
+  handle: (keyDef, element, options, state) => {
+    var _ref, _state$carryValue3, _newValue$match, _newValue$match2;
+    if (!/[\d.\-e]/.test(keyDef.key)) {
+      return;
+    }
+    const oldValue = (_ref = (_state$carryValue3 = state.carryValue) != null ? _state$carryValue3 : (0, _utils$9.getValue)(element)) != null ? _ref : "";
+    const {
+      newValue,
+      newSelectionStart
+    } = (0, _utils$9.calculateNewValue)(keyDef.key, element, oldValue);
+    const valueParts = newValue.split("e", 2);
+    if (Number((_newValue$match = newValue.match(/-/g)) == null ? void 0 : _newValue$match.length) > 2 || Number((_newValue$match2 = newValue.match(/\./g)) == null ? void 0 : _newValue$match2.length) > 1 || valueParts[1] && !/^-?\d*$/.test(valueParts[1])) {
+      return;
+    }
+    (0, _shared$1.fireInputEvent)(element, {
+      newValue,
+      newSelectionStart,
+      eventOverrides: {
+        data: keyDef.key,
+        inputType: "insertText"
+      }
+    });
+    const appliedValue = (0, _utils$9.getValue)(element);
+    if (appliedValue === newValue) {
+      state.carryValue = void 0;
+    } else {
+      state.carryValue = newValue;
+    }
+  }
+}, {
+  matches: (keyDef, element) => {
+    var _keyDef$key4;
+    return ((_keyDef$key4 = keyDef.key) == null ? void 0 : _keyDef$key4.length) === 1 && ((0, _utils$9.isElementType)(element, ["input", "textarea"], {
+      readOnly: false
+    }) && !(0, _utils$9.isClickableInput)(element) || (0, _utils$9.isContentEditable)(element)) && (0, _utils$9.getSpaceUntilMaxLength)(element) !== 0;
+  },
+  handle: (keyDef, element) => {
+    const {
+      newValue,
+      newSelectionStart
+    } = (0, _utils$9.calculateNewValue)(keyDef.key, element);
+    (0, _shared$1.fireInputEvent)(element, {
+      newValue,
+      newSelectionStart,
+      eventOverrides: {
+        data: keyDef.key,
+        inputType: "insertText"
+      }
+    });
+  }
+}, {
+  matches: (keyDef, element) => keyDef.key === "Enter" && ((0, _utils$9.isElementType)(element, "textarea", {
+    readOnly: false
+  }) || (0, _utils$9.isContentEditable)(element)) && (0, _utils$9.getSpaceUntilMaxLength)(element) !== 0,
+  handle: (keyDef, element, options, state) => {
+    const {
+      newValue,
+      newSelectionStart
+    } = (0, _utils$9.calculateNewValue)("\n", element);
+    const inputType = (0, _utils$9.isContentEditable)(element) && !state.modifiers.shift ? "insertParagraph" : "insertLineBreak";
+    (0, _shared$1.fireInputEvent)(element, {
+      newValue,
+      newSelectionStart,
+      eventOverrides: {
+        inputType
+      }
+    });
+  }
+}];
+character.keypressBehavior = keypressBehavior$2;
+var functional = {};
+var getEventProps = {};
+Object.defineProperty(getEventProps, "__esModule", {
+  value: true
+});
+getEventProps.getKeyEventProps = getKeyEventProps;
+getEventProps.getMouseEventProps = getMouseEventProps;
+function getKeyEventProps(keyDef, state) {
+  var _keyDef$keyCode, _keyDef$key;
+  return {
+    key: keyDef.key,
+    code: keyDef.code,
+    altKey: state.modifiers.alt,
+    ctrlKey: state.modifiers.ctrl,
+    metaKey: state.modifiers.meta,
+    shiftKey: state.modifiers.shift,
+    keyCode: (_keyDef$keyCode = keyDef.keyCode) != null ? _keyDef$keyCode : ((_keyDef$key = keyDef.key) == null ? void 0 : _keyDef$key.length) === 1 ? keyDef.key.charCodeAt(0) : void 0
+  };
+}
+function getMouseEventProps(state) {
+  return {
+    altKey: state.modifiers.alt,
+    ctrlKey: state.modifiers.ctrl,
+    metaKey: state.modifiers.meta,
+    shiftKey: state.modifiers.shift
+  };
+}
+Object.defineProperty(functional, "__esModule", {
+  value: true
+});
+functional.preKeyupBehavior = functional.preKeydownBehavior = functional.postKeyupBehavior = functional.keyupBehavior = functional.keypressBehavior = functional.keydownBehavior = void 0;
+var _dom$6 = require$$0;
+var _utils$8 = utils;
+var _getEventProps$1 = getEventProps;
+var _shared = shared;
+const modifierKeys = {
+  Alt: "alt",
+  Control: "ctrl",
+  Shift: "shift",
+  Meta: "meta"
+};
+const preKeydownBehavior$1 = [
+  ...Object.entries(modifierKeys).map(([key, modKey]) => ({
+    matches: (keyDef) => keyDef.key === key,
+    handle: (keyDef, element, options, state) => {
+      state.modifiers[modKey] = true;
+    }
+  })),
+  {
+    matches: (keyDef) => keyDef.key === "AltGraph",
+    handle: (keyDef, element, options, state) => {
+      var _options$keyboardMap$;
+      const ctrlKeyDef = (_options$keyboardMap$ = options.keyboardMap.find((k) => k.key === "Control")) != null ? _options$keyboardMap$ : {
+        key: "Control",
+        code: "Control"
+      };
+      _dom$6.fireEvent.keyDown(element, (0, _getEventProps$1.getKeyEventProps)(ctrlKeyDef, state));
+    }
+  }
+];
+functional.preKeydownBehavior = preKeydownBehavior$1;
+const keydownBehavior$1 = [{
+  matches: (keyDef) => keyDef.key === "CapsLock",
+  handle: (keyDef, element, options, state) => {
+    state.modifiers.caps = !state.modifiers.caps;
+  }
+}, {
+  matches: (keyDef, element) => keyDef.key === "Backspace" && (0, _utils$8.isEditable)(element) && !(0, _utils$8.isCursorAtStart)(element),
+  handle: (keyDef, element, options, state) => {
+    const {
+      newValue,
+      newSelectionStart
+    } = (0, _utils$8.calculateNewValue)("", element, state.carryValue, void 0, "backward");
+    (0, _shared.fireInputEvent)(element, {
+      newValue,
+      newSelectionStart,
+      eventOverrides: {
+        inputType: "deleteContentBackward"
+      }
+    });
+    (0, _shared.carryValue)(element, state, newValue);
+  }
+}];
+functional.keydownBehavior = keydownBehavior$1;
+const keypressBehavior$1 = [{
+  matches: (keyDef, element) => keyDef.key === "Enter" && (0, _utils$8.isElementType)(element, "input") && ["checkbox", "radio"].includes(element.type),
+  handle: (keyDef, element) => {
+    const form = element.form;
+    if ((0, _utils$8.hasFormSubmit)(form)) {
+      _dom$6.fireEvent.submit(form);
+    }
+  }
+}, {
+  matches: (keyDef, element) => keyDef.key === "Enter" && ((0, _utils$8.isClickableInput)(element) || (0, _utils$8.isElementType)(element, "a") && Boolean(element.href)),
+  handle: (keyDef, element, options, state) => {
+    _dom$6.fireEvent.click(element, (0, _getEventProps$1.getMouseEventProps)(state));
+  }
+}, {
+  matches: (keyDef, element) => keyDef.key === "Enter" && (0, _utils$8.isElementType)(element, "input"),
+  handle: (keyDef, element) => {
+    const form = element.form;
+    if (form && (form.querySelectorAll("input").length === 1 || (0, _utils$8.hasFormSubmit)(form))) {
+      _dom$6.fireEvent.submit(form);
+    }
+  }
+}];
+functional.keypressBehavior = keypressBehavior$1;
+const preKeyupBehavior$1 = [
+  ...Object.entries(modifierKeys).map(([key, modKey]) => ({
+    matches: (keyDef) => keyDef.key === key,
+    handle: (keyDef, element, options, state) => {
+      state.modifiers[modKey] = false;
+    }
+  }))
+];
+functional.preKeyupBehavior = preKeyupBehavior$1;
+const keyupBehavior$1 = [{
+  matches: (keyDef, element) => keyDef.key === " " && (0, _utils$8.isClickableInput)(element),
+  handle: (keyDef, element, options, state) => {
+    _dom$6.fireEvent.click(element, (0, _getEventProps$1.getMouseEventProps)(state));
+  }
+}];
+functional.keyupBehavior = keyupBehavior$1;
+const postKeyupBehavior$1 = [
+  {
+    matches: (keyDef) => keyDef.key === "AltGraph",
+    handle: (keyDef, element, options, state) => {
+      var _options$keyboardMap$2;
+      const ctrlKeyDef = (_options$keyboardMap$2 = options.keyboardMap.find((k) => k.key === "Control")) != null ? _options$keyboardMap$2 : {
+        key: "Control",
+        code: "Control"
+      };
+      _dom$6.fireEvent.keyUp(element, (0, _getEventProps$1.getKeyEventProps)(ctrlKeyDef, state));
+    }
+  }
+];
+functional.postKeyupBehavior = postKeyupBehavior$1;
+Object.defineProperty(plugins$1, "__esModule", {
+  value: true
+});
+plugins$1.replaceBehavior = plugins$1.preKeyupBehavior = plugins$1.preKeydownBehavior = plugins$1.postKeyupBehavior = plugins$1.keyupBehavior = plugins$1.keypressBehavior = plugins$1.keydownBehavior = void 0;
+var _utils$7 = utils;
+var arrowKeys = _interopRequireWildcard$1(arrow);
+var controlKeys = _interopRequireWildcard$1(control);
+var characterKeys = _interopRequireWildcard$1(character);
+var functionalKeys = _interopRequireWildcard$1(functional);
+function _getRequireWildcardCache$1(nodeInterop) {
+  if (typeof WeakMap !== "function")
+    return null;
+  var cacheBabelInterop = /* @__PURE__ */ new WeakMap();
+  var cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+  return (_getRequireWildcardCache$1 = function(nodeInterop2) {
+    return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard$1(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return { default: obj };
+  }
+  var cache = _getRequireWildcardCache$1(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+const replaceBehavior = [{
+  matches: (keyDef, element) => keyDef.key === "selectall" && (0, _utils$7.isElementType)(element, ["input", "textarea"]),
+  handle: (keyDef, element, options, state) => {
+    var _state$carryValue;
+    (0, _utils$7.setSelectionRange)(element, 0, ((_state$carryValue = state.carryValue) != null ? _state$carryValue : element.value).length);
+  }
+}];
+plugins$1.replaceBehavior = replaceBehavior;
+const preKeydownBehavior = [...functionalKeys.preKeydownBehavior];
+plugins$1.preKeydownBehavior = preKeydownBehavior;
+const keydownBehavior = [...arrowKeys.keydownBehavior, ...controlKeys.keydownBehavior, ...functionalKeys.keydownBehavior];
+plugins$1.keydownBehavior = keydownBehavior;
+const keypressBehavior = [...functionalKeys.keypressBehavior, ...characterKeys.keypressBehavior];
+plugins$1.keypressBehavior = keypressBehavior;
+const preKeyupBehavior = [...functionalKeys.preKeyupBehavior];
+plugins$1.preKeyupBehavior = preKeyupBehavior;
+const keyupBehavior = [...functionalKeys.keyupBehavior];
+plugins$1.keyupBehavior = keyupBehavior;
+const postKeyupBehavior = [...functionalKeys.postKeyupBehavior];
+plugins$1.postKeyupBehavior = postKeyupBehavior;
+Object.defineProperty(keyboardImplementation$1, "__esModule", {
+  value: true
+});
+keyboardImplementation$1.keyboardImplementation = keyboardImplementation;
+keyboardImplementation$1.releaseAllKeys = releaseAllKeys;
+var _dom$5 = require$$0;
+var _utils$6 = utils;
+var _getNextKeyDef = getNextKeyDef$1;
+var plugins = _interopRequireWildcard(plugins$1);
+var _getEventProps = getEventProps;
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function")
+    return null;
+  var cacheBabelInterop = /* @__PURE__ */ new WeakMap();
+  var cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+  return (_getRequireWildcardCache = function(nodeInterop2) {
+    return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return { default: obj };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+async function keyboardImplementation(text, options, state) {
+  var _state$repeatKey;
+  const {
+    document: document2
+  } = options;
+  const getCurrentElement = () => getActive(document2);
+  const {
+    keyDef,
+    consumedLength,
+    releasePrevious,
+    releaseSelf,
+    repeat
+  } = (_state$repeatKey = state.repeatKey) != null ? _state$repeatKey : (0, _getNextKeyDef.getNextKeyDef)(text, options);
+  const replace = applyPlugins(plugins.replaceBehavior, keyDef, getCurrentElement(), options, state);
+  if (!replace) {
+    const pressed = state.pressed.find((p2) => p2.keyDef === keyDef);
+    if (pressed && !state.repeatKey) {
+      keyup(keyDef, getCurrentElement, options, state, pressed.unpreventedDefault);
+    }
+    if (!releasePrevious) {
+      const unpreventedDefault = keydown(keyDef, getCurrentElement, options, state);
+      if (unpreventedDefault && hasKeyPress(keyDef, state)) {
+        keypress(keyDef, getCurrentElement, options, state);
+      }
+      if (releaseSelf && repeat <= 1) {
+        keyup(keyDef, getCurrentElement, options, state, unpreventedDefault);
+      }
+    }
+  }
+  if (repeat > 1) {
+    state.repeatKey = {
+      consumedLength: 0,
+      keyDef,
+      releasePrevious,
+      releaseSelf,
+      repeat: repeat - 1
+    };
+  } else {
+    delete state.repeatKey;
+  }
+  if (text.length > consumedLength || repeat > 1) {
+    if (options.delay > 0) {
+      await (0, _utils$6.wait)(options.delay);
+    }
+    return keyboardImplementation(text.slice(consumedLength), options, state);
+  }
+  return void 0;
+}
+function getActive(document2) {
+  var _getActiveElement;
+  return (_getActiveElement = (0, _utils$6.getActiveElement)(document2)) != null ? _getActiveElement : document2.body;
+}
+function releaseAllKeys(options, state) {
+  const getCurrentElement = () => getActive(options.document);
+  for (const k of state.pressed) {
+    keyup(k.keyDef, getCurrentElement, options, state, k.unpreventedDefault);
+  }
+}
+function keydown(keyDef, getCurrentElement, options, state) {
+  const element = getCurrentElement();
+  if (element !== state.activeElement) {
+    state.carryValue = void 0;
+    state.carryChar = "";
+  }
+  state.activeElement = element;
+  applyPlugins(plugins.preKeydownBehavior, keyDef, element, options, state);
+  const unpreventedDefault = _dom$5.fireEvent.keyDown(element, (0, _getEventProps.getKeyEventProps)(keyDef, state));
+  state.pressed.push({
+    keyDef,
+    unpreventedDefault
+  });
+  if (unpreventedDefault) {
+    applyPlugins(plugins.keydownBehavior, keyDef, getCurrentElement(), options, state);
+  }
+  return unpreventedDefault;
+}
+function keypress(keyDef, getCurrentElement, options, state) {
+  const element = getCurrentElement();
+  const unpreventedDefault = _dom$5.fireEvent.keyPress(element, (0, _getEventProps.getKeyEventProps)(keyDef, state));
+  if (unpreventedDefault) {
+    applyPlugins(plugins.keypressBehavior, keyDef, getCurrentElement(), options, state);
+  }
+}
+function keyup(keyDef, getCurrentElement, options, state, unprevented) {
+  const element = getCurrentElement();
+  applyPlugins(plugins.preKeyupBehavior, keyDef, element, options, state);
+  const unpreventedDefault = _dom$5.fireEvent.keyUp(element, (0, _getEventProps.getKeyEventProps)(keyDef, state));
+  if (unprevented && unpreventedDefault) {
+    applyPlugins(plugins.keyupBehavior, keyDef, getCurrentElement(), options, state);
+  }
+  state.pressed = state.pressed.filter((k) => k.keyDef !== keyDef);
+  applyPlugins(plugins.postKeyupBehavior, keyDef, element, options, state);
+}
+function applyPlugins(pluginCollection, keyDef, element, options, state) {
+  const plugin2 = pluginCollection.find((p2) => p2.matches(keyDef, element, options, state));
+  if (plugin2) {
+    plugin2.handle(keyDef, element, options, state);
+  }
+  return !!plugin2;
+}
+function hasKeyPress(keyDef, state) {
+  var _keyDef$key;
+  return (((_keyDef$key = keyDef.key) == null ? void 0 : _keyDef$key.length) === 1 || keyDef.key === "Enter") && !state.modifiers.ctrl && !state.modifiers.alt;
+}
+var keyMap = {};
+var types = {};
+Object.defineProperty(types, "__esModule", {
+  value: true
+});
+types.DOM_KEY_LOCATION = void 0;
+let DOM_KEY_LOCATION;
+types.DOM_KEY_LOCATION = DOM_KEY_LOCATION;
+(function(DOM_KEY_LOCATION2) {
+  DOM_KEY_LOCATION2[DOM_KEY_LOCATION2["STANDARD"] = 0] = "STANDARD";
+  DOM_KEY_LOCATION2[DOM_KEY_LOCATION2["LEFT"] = 1] = "LEFT";
+  DOM_KEY_LOCATION2[DOM_KEY_LOCATION2["RIGHT"] = 2] = "RIGHT";
+  DOM_KEY_LOCATION2[DOM_KEY_LOCATION2["NUMPAD"] = 3] = "NUMPAD";
+})(DOM_KEY_LOCATION || (types.DOM_KEY_LOCATION = DOM_KEY_LOCATION = {}));
+Object.defineProperty(keyMap, "__esModule", {
+  value: true
+});
+keyMap.defaultKeyMap = void 0;
+var _types = types;
+const defaultKeyMap = [
+  ..."0123456789".split("").map((c2) => ({
+    code: `Digit${c2}`,
+    key: c2
+  })),
+  ...")!@#$%^&*(".split("").map((c2, i) => ({
+    code: `Digit${i}`,
+    key: c2,
+    shiftKey: true
+  })),
+  ..."abcdefghijklmnopqrstuvwxyz".split("").map((c2) => ({
+    code: `Key${c2.toUpperCase()}`,
+    key: c2
+  })),
+  ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((c2) => ({
+    code: `Key${c2}`,
+    key: c2,
+    shiftKey: true
+  })),
+  {
+    code: "Space",
+    key: " "
+  },
+  {
+    code: "AltLeft",
+    key: "Alt",
+    location: _types.DOM_KEY_LOCATION.LEFT,
+    keyCode: 18
+  },
+  {
+    code: "AltRight",
+    key: "Alt",
+    location: _types.DOM_KEY_LOCATION.RIGHT,
+    keyCode: 18
+  },
+  {
+    code: "ShiftLeft",
+    key: "Shift",
+    location: _types.DOM_KEY_LOCATION.LEFT,
+    keyCode: 16
+  },
+  {
+    code: "ShiftRight",
+    key: "Shift",
+    location: _types.DOM_KEY_LOCATION.RIGHT,
+    keyCode: 16
+  },
+  {
+    code: "ControlLeft",
+    key: "Control",
+    location: _types.DOM_KEY_LOCATION.LEFT,
+    keyCode: 17
+  },
+  {
+    code: "ControlRight",
+    key: "Control",
+    location: _types.DOM_KEY_LOCATION.RIGHT,
+    keyCode: 17
+  },
+  {
+    code: "MetaLeft",
+    key: "Meta",
+    location: _types.DOM_KEY_LOCATION.LEFT,
+    keyCode: 93
+  },
+  {
+    code: "MetaRight",
+    key: "Meta",
+    location: _types.DOM_KEY_LOCATION.RIGHT,
+    keyCode: 93
+  },
+  {
+    code: "OSLeft",
+    key: "OS",
+    location: _types.DOM_KEY_LOCATION.LEFT,
+    keyCode: 91
+  },
+  {
+    code: "OSRight",
+    key: "OS",
+    location: _types.DOM_KEY_LOCATION.RIGHT,
+    keyCode: 91
+  },
+  {
+    code: "CapsLock",
+    key: "CapsLock",
+    keyCode: 20
+  },
+  {
+    code: "Backspace",
+    key: "Backspace",
+    keyCode: 8
+  },
+  {
+    code: "Enter",
+    key: "Enter",
+    keyCode: 13
+  },
+  {
+    code: "Escape",
+    key: "Escape",
+    keyCode: 27
+  },
+  {
+    code: "ArrowUp",
+    key: "ArrowUp",
+    keyCode: 38
+  },
+  {
+    code: "ArrowDown",
+    key: "ArrowDown",
+    keyCode: 40
+  },
+  {
+    code: "ArrowLeft",
+    key: "ArrowLeft",
+    keyCode: 37
+  },
+  {
+    code: "ArrowRight",
+    key: "ArrowRight",
+    keyCode: 39
+  },
+  {
+    code: "Home",
+    key: "Home",
+    keyCode: 36
+  },
+  {
+    code: "End",
+    key: "End",
+    keyCode: 35
+  },
+  {
+    code: "Delete",
+    key: "Delete",
+    keyCode: 46
+  },
+  {
+    code: "PageUp",
+    key: "PageUp",
+    keyCode: 33
+  },
+  {
+    code: "PageDown",
+    key: "PageDown",
+    keyCode: 34
+  }
+];
+keyMap.defaultKeyMap = defaultKeyMap;
+var specialCharMap$1 = {};
+Object.defineProperty(specialCharMap$1, "__esModule", {
+  value: true
+});
+specialCharMap$1.specialCharMap = void 0;
+const specialCharMap = {
+  arrowLeft: "{arrowleft}",
+  arrowRight: "{arrowright}",
+  arrowDown: "{arrowdown}",
+  arrowUp: "{arrowup}",
+  enter: "{enter}",
+  escape: "{esc}",
+  delete: "{del}",
+  backspace: "{backspace}",
+  home: "{home}",
+  end: "{end}",
+  selectAll: "{selectall}",
+  space: "{space}",
+  whitespace: " ",
+  pageUp: "{pageUp}",
+  pageDown: "{pageDown}"
+};
+specialCharMap$1.specialCharMap = specialCharMap;
+(function(exports) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.keyboard = keyboard2;
+  exports.keyboardImplementationWrapper = keyboardImplementationWrapper;
+  Object.defineProperty(exports, "specialCharMap", {
+    enumerable: true,
+    get: function() {
+      return _specialCharMap.specialCharMap;
+    }
+  });
+  var _dom2 = require$$0;
+  var _keyboardImplementation = keyboardImplementation$1;
+  var _keyMap = keyMap;
+  var _specialCharMap = specialCharMap$1;
+  function keyboard2(text, options) {
+    var _options$delay;
+    const {
+      promise,
+      state
+    } = keyboardImplementationWrapper(text, options);
+    if (((_options$delay = options == null ? void 0 : options.delay) != null ? _options$delay : 0) > 0) {
+      return (0, _dom2.getConfig)().asyncWrapper(() => promise.then(() => state));
+    } else {
+      promise.catch(console.error);
+      return state;
+    }
+  }
+  function keyboardImplementationWrapper(text, config2 = {}) {
+    const {
+      keyboardState: state = createKeyboardState(),
+      delay = 0,
+      document: doc = document,
+      autoModify = false,
+      keyboardMap = _keyMap.defaultKeyMap
+    } = config2;
+    const options = {
+      delay,
+      document: doc,
+      autoModify,
+      keyboardMap
+    };
+    return {
+      promise: (0, _keyboardImplementation.keyboardImplementation)(text, options, state),
+      state,
+      releaseAllKeys: () => (0, _keyboardImplementation.releaseAllKeys)(options, state)
+    };
+  }
+  function createKeyboardState() {
+    return {
+      activeElement: null,
+      pressed: [],
+      carryChar: "",
+      modifiers: {
+        alt: false,
+        caps: false,
+        ctrl: false,
+        meta: false,
+        shift: false
+      }
+    };
+  }
+})(keyboard);
+Object.defineProperty(typeImplementation$1, "__esModule", {
+  value: true
+});
+typeImplementation$1.typeImplementation = typeImplementation;
+var _utils$5 = utils;
+var _click$2 = click$1;
+var _keyboard = keyboard;
+async function typeImplementation(element, text, {
+  delay,
+  skipClick = false,
+  skipAutoClose = false,
+  initialSelectionStart = void 0,
+  initialSelectionEnd = void 0
+}) {
+  if (element.disabled)
+    return;
+  if (!skipClick)
+    (0, _click$2.click)(element);
+  const currentElement = () => (0, _utils$5.getActiveElement)(element.ownerDocument);
+  const value = (0, _utils$5.getValue)(currentElement());
+  const {
+    selectionStart,
+    selectionEnd
+  } = (0, _utils$5.getSelectionRange)(element);
+  if (value != null && (selectionStart === null || selectionStart === 0) && (selectionEnd === null || selectionEnd === 0)) {
+    (0, _utils$5.setSelectionRange)(currentElement(), initialSelectionStart != null ? initialSelectionStart : value.length, initialSelectionEnd != null ? initialSelectionEnd : value.length);
+  }
+  const {
+    promise,
+    releaseAllKeys: releaseAllKeys2
+  } = (0, _keyboard.keyboardImplementationWrapper)(text, {
+    delay,
+    document: element.ownerDocument
+  });
+  if (delay > 0) {
+    await promise;
+  }
+  if (!skipAutoClose) {
+    releaseAllKeys2();
+  }
+  return promise;
+}
+Object.defineProperty(type$1, "__esModule", {
+  value: true
+});
+type$1.type = type;
+var _dom$4 = require$$0;
+var _typeImplementation = typeImplementation$1;
+function type(element, text, {
+  delay = 0,
+  ...options
+} = {}) {
+  if (delay > 0) {
+    return (0, _dom$4.getConfig)().asyncWrapper(() => (0, _typeImplementation.typeImplementation)(element, text, {
+      delay,
+      ...options
+    }));
+  } else {
+    return void (0, _typeImplementation.typeImplementation)(element, text, {
+      delay,
+      ...options
+    }).catch(console.error);
+  }
+}
+var clear$1 = {};
+Object.defineProperty(clear$1, "__esModule", {
+  value: true
+});
+clear$1.clear = clear;
+var _utils$4 = utils;
+var _type = type$1;
+function clear(element) {
+  var _element$selectionSta, _element$selectionEnd;
+  if (!(0, _utils$4.isElementType)(element, ["input", "textarea"])) {
+    throw new Error("clear currently only supports input and textarea elements.");
+  }
+  if ((0, _utils$4.isDisabled)(element)) {
+    return;
+  }
+  const elementType = element.type;
+  if (elementType !== "textarea") {
+    element.type = "text";
+  }
+  (0, _type.type)(element, "{selectall}{del}", {
+    delay: 0,
+    initialSelectionStart: (_element$selectionSta = element.selectionStart) != null ? _element$selectionSta : void 0,
+    initialSelectionEnd: (_element$selectionEnd = element.selectionEnd) != null ? _element$selectionEnd : void 0
+  });
+  if (elementType !== "textarea") {
+    element.type = elementType;
+  }
+}
+var tab$1 = {};
+Object.defineProperty(tab$1, "__esModule", {
+  value: true
+});
+tab$1.tab = tab;
+var _dom$3 = require$$0;
+var _utils$3 = utils;
+var _focus$2 = focus$1;
+var _blur$1 = blur$1;
+function getNextElement(currentIndex, shift, elements, focusTrap) {
+  if ((0, _utils$3.isDocument)(focusTrap) && (currentIndex === 0 && shift || currentIndex === elements.length - 1 && !shift)) {
+    return focusTrap.body;
+  }
+  const nextIndex = shift ? currentIndex - 1 : currentIndex + 1;
+  const defaultIndex = shift ? elements.length - 1 : 0;
+  return elements[nextIndex] || elements[defaultIndex];
+}
+function tab({
+  shift = false,
+  focusTrap
+} = {}) {
+  var _focusTrap$ownerDocum, _focusTrap;
+  const doc = (_focusTrap$ownerDocum = (_focusTrap = focusTrap) == null ? void 0 : _focusTrap.ownerDocument) != null ? _focusTrap$ownerDocum : document;
+  const previousElement = (0, _utils$3.getActiveElement)(doc);
+  if (!focusTrap) {
+    focusTrap = doc;
+  }
+  const focusableElements = focusTrap.querySelectorAll(_utils$3.FOCUSABLE_SELECTOR);
+  const enabledElements = Array.from(focusableElements).filter((el) => el === previousElement || el.getAttribute("tabindex") !== "-1" && !(0, _utils$3.isDisabled)(el) && (0, _utils$3.isVisible)(el));
+  if (enabledElements.length === 0)
+    return;
+  const orderedElements = enabledElements.map((el, idx) => ({
+    el,
+    idx
+  })).sort((a, b2) => {
+    if (previousElement && previousElement.getAttribute("tabindex") === "-1") {
+      return a.idx - b2.idx;
+    }
+    const tabIndexA = Number(a.el.getAttribute("tabindex"));
+    const tabIndexB = Number(b2.el.getAttribute("tabindex"));
+    const diff = tabIndexA - tabIndexB;
+    return diff === 0 ? a.idx - b2.idx : diff;
+  }).map(({
+    el
+  }) => el);
+  const checkedRadio = {};
+  let prunedElements = [];
+  orderedElements.forEach((currentElement) => {
+    const el = currentElement;
+    if (el.type === "radio" && el.name) {
+      const prev = previousElement;
+      if (prev && prev.type === el.type && prev.name === el.name) {
+        if (el === prev) {
+          prunedElements.push(el);
+        }
+        return;
+      }
+      if (el.checked) {
+        prunedElements = prunedElements.filter((e2) => e2.type !== el.type || e2.name !== el.name);
+        prunedElements.push(el);
+        checkedRadio[el.name] = el;
+        return;
+      }
+      if (typeof checkedRadio[el.name] !== "undefined") {
+        return;
+      }
+    }
+    prunedElements.push(el);
+  });
+  const index2 = prunedElements.findIndex((el) => el === previousElement);
+  const nextElement = getNextElement(index2, shift, prunedElements, focusTrap);
+  const shiftKeyInit = {
+    key: "Shift",
+    keyCode: 16,
+    shiftKey: true
+  };
+  const tabKeyInit = {
+    key: "Tab",
+    keyCode: 9,
+    shiftKey: shift
+  };
+  let continueToTab = true;
+  if (previousElement) {
+    if (shift)
+      _dom$3.fireEvent.keyDown(previousElement, {
+        ...shiftKeyInit
+      });
+    continueToTab = _dom$3.fireEvent.keyDown(previousElement, {
+      ...tabKeyInit
+    });
+  }
+  const keyUpTarget = !continueToTab && previousElement ? previousElement : nextElement;
+  if (continueToTab) {
+    if (nextElement === doc.body) {
+      if (previousElement) {
+        (0, _blur$1.blur)(previousElement);
+      }
+    } else {
+      (0, _focus$2.focus)(nextElement);
+    }
+  }
+  _dom$3.fireEvent.keyUp(keyUpTarget, {
+    ...tabKeyInit
+  });
+  if (shift) {
+    _dom$3.fireEvent.keyUp(keyUpTarget, {
+      ...shiftKeyInit,
+      shiftKey: false
+    });
+  }
+}
+var upload$1 = {};
+Object.defineProperty(upload$1, "__esModule", {
+  value: true
+});
+upload$1.upload = upload;
+var _dom$2 = require$$0;
+var _click$1 = click$1;
+var _blur = blur$1;
+var _focus$1 = focus$1;
+var _utils$2 = utils;
+function upload(element, fileOrFiles, init, {
+  applyAccept = false
+} = {}) {
+  var _input$files;
+  const input = (0, _utils$2.isElementType)(element, "label") ? element.control : element;
+  if (!input || !(0, _utils$2.isElementType)(input, "input", {
+    type: "file"
+  })) {
+    throw new TypeError(`The ${input === element ? "given" : "associated"} ${input == null ? void 0 : input.tagName} element does not accept file uploads`);
+  }
+  if ((0, _utils$2.isDisabled)(element))
+    return;
+  (0, _click$1.click)(element, init == null ? void 0 : init.clickInit);
+  const files = (Array.isArray(fileOrFiles) ? fileOrFiles : [fileOrFiles]).filter((file) => !applyAccept || isAcceptableFile(file, input.accept)).slice(0, input.multiple ? void 0 : 1);
+  (0, _blur.blur)(element);
+  (0, _focus$1.focus)(element);
+  if (files.length === ((_input$files = input.files) == null ? void 0 : _input$files.length) && files.every((f2, i) => {
+    var _input$files2;
+    return f2 === ((_input$files2 = input.files) == null ? void 0 : _input$files2.item(i));
+  })) {
+    return;
+  }
+  const inputFiles = {
+    ...files,
+    length: files.length,
+    item: (index2) => files[index2],
+    [Symbol.iterator]() {
+      let i = 0;
+      return {
+        next: () => ({
+          done: i >= files.length,
+          value: files[i++]
+        })
+      };
+    }
+  };
+  (0, _dom$2.fireEvent)(input, (0, _dom$2.createEvent)("input", input, {
+    target: {
+      files: inputFiles
+    },
+    bubbles: true,
+    cancelable: false,
+    composed: true
+  }));
+  _dom$2.fireEvent.change(input, {
+    target: {
+      files: inputFiles
+    },
+    ...init == null ? void 0 : init.changeInit
+  });
+}
+function isAcceptableFile(file, accept) {
+  if (!accept) {
+    return true;
+  }
+  const wildcards = ["audio/*", "image/*", "video/*"];
+  return accept.split(",").some((acceptToken) => {
+    if (acceptToken.startsWith(".")) {
+      return file.name.endsWith(acceptToken);
+    } else if (wildcards.includes(acceptToken)) {
+      return file.type.startsWith(acceptToken.substr(0, acceptToken.length - 1));
+    }
+    return file.type === acceptToken;
+  });
+}
+var selectOptions$1 = {};
+Object.defineProperty(selectOptions$1, "__esModule", {
+  value: true
+});
+selectOptions$1.selectOptions = selectOptions$1.deselectOptions = void 0;
+var _dom$1 = require$$0;
+var _utils$1 = utils;
+var _click = click$1;
+var _focus = focus$1;
+var _hover = hover$1;
+function selectOptionsBase(newValue, select, values6, init, {
+  skipPointerEventsCheck = false
+} = {}) {
+  if (!newValue && !select.multiple) {
+    throw (0, _dom$1.getConfig)().getElementError(`Unable to deselect an option in a non-multiple select. Use selectOptions to change the selection instead.`, select);
+  }
+  const valArray = Array.isArray(values6) ? values6 : [values6];
+  const allOptions = Array.from(select.querySelectorAll('option, [role="option"]'));
+  const selectedOptions = valArray.map((val) => {
+    if (typeof val !== "string" && allOptions.includes(val)) {
+      return val;
+    } else {
+      const matchingOption = allOptions.find((o) => o.value === val || o.innerHTML === val);
+      if (matchingOption) {
+        return matchingOption;
+      } else {
+        throw (0, _dom$1.getConfig)().getElementError(`Value "${String(val)}" not found in options`, select);
+      }
+    }
+  }).filter((option) => !(0, _utils$1.isDisabled)(option));
+  if ((0, _utils$1.isDisabled)(select) || !selectedOptions.length)
+    return;
+  if ((0, _utils$1.isElementType)(select, "select")) {
+    if (select.multiple) {
+      for (const option of selectedOptions) {
+        const withPointerEvents = skipPointerEventsCheck ? true : (0, _utils$1.hasPointerEvents)(option);
+        if (withPointerEvents) {
+          _dom$1.fireEvent.pointerOver(option, init);
+          _dom$1.fireEvent.pointerEnter(select, init);
+          _dom$1.fireEvent.mouseOver(option);
+          _dom$1.fireEvent.mouseEnter(select);
+          _dom$1.fireEvent.pointerMove(option, init);
+          _dom$1.fireEvent.mouseMove(option, init);
+          _dom$1.fireEvent.pointerDown(option, init);
+          _dom$1.fireEvent.mouseDown(option, init);
+        }
+        (0, _focus.focus)(select);
+        if (withPointerEvents) {
+          _dom$1.fireEvent.pointerUp(option, init);
+          _dom$1.fireEvent.mouseUp(option, init);
+        }
+        selectOption(option);
+        if (withPointerEvents) {
+          _dom$1.fireEvent.click(option, init);
+        }
+      }
+    } else if (selectedOptions.length === 1) {
+      const withPointerEvents = skipPointerEventsCheck ? true : (0, _utils$1.hasPointerEvents)(select);
+      if (withPointerEvents) {
+        (0, _click.click)(select, init, {
+          skipPointerEventsCheck
+        });
+      } else {
+        (0, _focus.focus)(select);
+      }
+      selectOption(selectedOptions[0]);
+      if (withPointerEvents) {
+        _dom$1.fireEvent.pointerOver(select, init);
+        _dom$1.fireEvent.pointerEnter(select, init);
+        _dom$1.fireEvent.mouseOver(select);
+        _dom$1.fireEvent.mouseEnter(select);
+        _dom$1.fireEvent.pointerUp(select, init);
+        _dom$1.fireEvent.mouseUp(select, init);
+        _dom$1.fireEvent.click(select, init);
+      }
+    } else {
+      throw (0, _dom$1.getConfig)().getElementError(`Cannot select multiple options on a non-multiple select`, select);
+    }
+  } else if (select.getAttribute("role") === "listbox") {
+    selectedOptions.forEach((option) => {
+      (0, _hover.hover)(option, init, {
+        skipPointerEventsCheck
+      });
+      (0, _click.click)(option, init, {
+        skipPointerEventsCheck
+      });
+      (0, _hover.unhover)(option, init, {
+        skipPointerEventsCheck
+      });
+    });
+  } else {
+    throw (0, _dom$1.getConfig)().getElementError(`Cannot select options on elements that are neither select nor listbox elements`, select);
+  }
+  function selectOption(option) {
+    option.selected = newValue;
+    (0, _dom$1.fireEvent)(select, (0, _dom$1.createEvent)("input", select, {
+      bubbles: true,
+      cancelable: false,
+      composed: true,
+      ...init
+    }));
+    _dom$1.fireEvent.change(select, init);
+  }
+}
+const selectOptions = selectOptionsBase.bind(null, true);
+selectOptions$1.selectOptions = selectOptions;
+const deselectOptions = selectOptionsBase.bind(null, false);
+selectOptions$1.deselectOptions = deselectOptions;
+var paste$1 = {};
+Object.defineProperty(paste$1, "__esModule", {
+  value: true
+});
+paste$1.paste = paste;
+var _dom = require$$0;
+var _utils = utils;
+function isSupportedElement(element) {
+  return (0, _utils.isElementType)(element, "input") && Boolean(_utils.editableInputTypes[element.type]) || (0, _utils.isElementType)(element, "textarea");
+}
+function paste(element, text, init, {
+  initialSelectionStart,
+  initialSelectionEnd
+} = {}) {
+  if (!isSupportedElement(element)) {
+    throw new TypeError(`The given ${element.tagName} element is currently unsupported.
+      A PR extending this implementation would be very much welcome at https://github.com/testing-library/user-event`);
+  }
+  if ((0, _utils.isDisabled)(element)) {
+    return;
+  }
+  (0, _utils.eventWrapper)(() => element.focus());
+  if (element.selectionStart === 0 && element.selectionEnd === 0) {
+    (0, _utils.setSelectionRange)(element, initialSelectionStart != null ? initialSelectionStart : element.value.length, initialSelectionEnd != null ? initialSelectionEnd : element.value.length);
+  }
+  _dom.fireEvent.paste(element, init);
+  if (element.readOnly) {
+    return;
+  }
+  text = text.substr(0, (0, _utils.getSpaceUntilMaxLength)(element));
+  const {
+    newValue,
+    newSelectionStart
+  } = (0, _utils.calculateNewValue)(text, element);
+  _dom.fireEvent.input(element, {
+    inputType: "insertFromPaste",
+    target: {
+      value: newValue
+    }
+  });
+  (0, _utils.setSelectionRange)(
+    element,
+    {
+      newSelectionStart,
+      selectionEnd: newSelectionStart
+    },
+    {}
+  );
+}
+(function(exports) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  Object.defineProperty(exports, "specialChars", {
+    enumerable: true,
+    get: function() {
+      return _keyboard2.specialCharMap;
+    }
+  });
+  var _click2 = click$1;
+  var _type2 = type$1;
+  var _clear = clear$1;
+  var _tab = tab$1;
+  var _hover2 = hover$1;
+  var _upload = upload$1;
+  var _selectOptions = selectOptions$1;
+  var _paste = paste$1;
+  var _keyboard2 = keyboard;
+  const userEvent2 = {
+    click: _click2.click,
+    dblClick: _click2.dblClick,
+    type: _type2.type,
+    clear: _clear.clear,
+    tab: _tab.tab,
+    hover: _hover2.hover,
+    unhover: _hover2.unhover,
+    upload: _upload.upload,
+    selectOptions: _selectOptions.selectOptions,
+    deselectOptions: _selectOptions.deselectOptions,
+    paste: _paste.paste,
+    keyboard: _keyboard2.keyboard
+  };
+  var _default2 = userEvent2;
+  exports.default = _default2;
+})(dist);
+const _userEvent = /* @__PURE__ */ getDefaultExportFromCjs(dist);
+var __makeTemplateObject = globalThis && globalThis.__makeTemplateObject || function(cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", { value: raw });
+  } else {
+    cooked.raw = raw;
+  }
+  return cooked;
+};
+var __assign = globalThis && globalThis.__assign || function() {
+  __assign = Object.assign || function(t) {
+    for (var s, i = 1, n2 = arguments.length; i < n2; i++) {
+      s = arguments[i];
+      for (var p2 in s)
+        if (Object.prototype.hasOwnProperty.call(s, p2))
+          t[p2] = s[p2];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+const once = __STORYBOOK_MODULE_CLIENT_LOGGER__.once;
+var testingLibrary = instrument(__assign({}, domTestingLibrary), {
+  intercept: function(method, path) {
+    return path[0] === "fireEvent" || method.startsWith("findBy") || method.startsWith("waitFor");
+  }
+});
+testingLibrary.screen = Object.entries(testingLibrary.screen).reduce(function(acc, _a2) {
+  var key = _a2[0], val = _a2[1];
+  return Object.defineProperty(acc, key, {
+    get: function() {
+      once.warn(dedent(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n          You are using Testing Library's `screen` object. Use `within(canvasElement)` instead.\n          More info: https://storybook.js.org/docs/react/essentials/interactions\n        "], ["\n          You are using Testing Library's \\`screen\\` object. Use \\`within(canvasElement)\\` instead.\n          More info: https://storybook.js.org/docs/react/essentials/interactions\n        "]))));
+      return val;
+    }
+  });
+}, __assign({}, testingLibrary.screen));
+testingLibrary.buildQueries;
+testingLibrary.configure;
+testingLibrary.createEvent;
+testingLibrary.findAllByAltText;
+testingLibrary.findAllByDisplayValue;
+testingLibrary.findAllByLabelText;
+testingLibrary.findAllByPlaceholderText;
+testingLibrary.findAllByRole;
+testingLibrary.findAllByTestId;
+testingLibrary.findAllByText;
+testingLibrary.findAllByTitle;
+testingLibrary.findByAltText;
+testingLibrary.findByDisplayValue;
+testingLibrary.findByLabelText;
+testingLibrary.findByPlaceholderText;
+testingLibrary.findByRole;
+testingLibrary.findByTestId;
+testingLibrary.findByText;
+testingLibrary.findByTitle;
+testingLibrary.fireEvent;
+testingLibrary.getAllByAltText;
+testingLibrary.getAllByDisplayValue;
+testingLibrary.getAllByLabelText;
+testingLibrary.getAllByPlaceholderText;
+testingLibrary.getAllByRole;
+testingLibrary.getAllByTestId;
+testingLibrary.getAllByText;
+testingLibrary.getAllByTitle;
+testingLibrary.getByAltText;
+testingLibrary.getByDisplayValue;
+testingLibrary.getByLabelText;
+testingLibrary.getByPlaceholderText;
+testingLibrary.getByRole;
+testingLibrary.getByTestId;
+testingLibrary.getByText;
+testingLibrary.getByTitle;
+testingLibrary.getConfig;
+testingLibrary.getDefaultNormalizer;
+testingLibrary.getElementError;
+testingLibrary.getNodeText;
+testingLibrary.getQueriesForElement;
+testingLibrary.getRoles;
+testingLibrary.getSuggestedQuery;
+testingLibrary.isInaccessible;
+testingLibrary.logDOM;
+testingLibrary.logRoles;
+testingLibrary.prettyDOM;
+testingLibrary.queries;
+testingLibrary.queryAllByAltText;
+testingLibrary.queryAllByAttribute;
+testingLibrary.queryAllByDisplayValue;
+testingLibrary.queryAllByLabelText;
+testingLibrary.queryAllByPlaceholderText;
+testingLibrary.queryAllByRole;
+testingLibrary.queryAllByTestId;
+testingLibrary.queryAllByText;
+testingLibrary.queryAllByTitle;
+testingLibrary.queryByAltText;
+testingLibrary.queryByAttribute;
+testingLibrary.queryByDisplayValue;
+testingLibrary.queryByLabelText;
+testingLibrary.queryByPlaceholderText;
+testingLibrary.queryByRole;
+testingLibrary.queryByTestId;
+testingLibrary.queryByText;
+testingLibrary.queryByTitle;
+testingLibrary.queryHelpers;
+testingLibrary.screen;
+testingLibrary.waitFor;
+testingLibrary.waitForElementToBeRemoved;
+var within = testingLibrary.within;
+testingLibrary.prettyFormat;
+var userEvent = instrument({ userEvent: _userEvent }, { intercept: true }).userEvent;
+var templateObject_1;
+const page = "";
+const Page = () => {
+  const [user, setUser] = React.useState();
+  return /* @__PURE__ */ jsxs("article", {
+    children: [/* @__PURE__ */ jsx(Header, {
+      user,
+      onLogin: () => setUser({
+        name: "Jane Doe"
+      }),
+      onLogout: () => setUser(void 0),
+      onCreateAccount: () => setUser({
+        name: "Jane Doe"
+      })
+    }), /* @__PURE__ */ jsxs("section", {
+      children: [/* @__PURE__ */ jsx("h2", {
+        children: "Pages in Storybook"
+      }), /* @__PURE__ */ jsxs("p", {
+        children: ["We recommend building UIs with a", " ", /* @__PURE__ */ jsx("a", {
+          href: "https://componentdriven.org",
+          target: "_blank",
+          rel: "noopener noreferrer",
+          children: /* @__PURE__ */ jsx("strong", {
+            children: "component-driven"
+          })
+        }), " ", "process starting with atomic components and ending with pages."]
+      }), /* @__PURE__ */ jsx("p", {
+        children: "Render pages with mock data. This makes it easy to build and review page states without needing to navigate to them in your app. Here are some handy patterns for managing page data in Storybook:"
+      }), /* @__PURE__ */ jsxs("ul", {
+        children: [/* @__PURE__ */ jsx("li", {
+          children: 'Use a higher-level connected component. Storybook helps you compose such data from the "args" of child component stories'
+        }), /* @__PURE__ */ jsx("li", {
+          children: "Assemble data in the page component from your services. You can mock these services out using Storybook."
+        })]
+      }), /* @__PURE__ */ jsxs("p", {
+        children: ["Get a guided tutorial on component-driven development at", " ", /* @__PURE__ */ jsx("a", {
+          href: "https://storybook.js.org/tutorials/",
+          target: "_blank",
+          rel: "noopener noreferrer",
+          children: "Storybook tutorials"
+        }), ". Read more in the", " ", /* @__PURE__ */ jsx("a", {
+          href: "https://storybook.js.org/docs",
+          target: "_blank",
+          rel: "noopener noreferrer",
+          children: "docs"
+        }), "."]
+      }), /* @__PURE__ */ jsxs("div", {
+        className: "tip-wrapper",
+        children: [/* @__PURE__ */ jsx("span", {
+          className: "tip",
+          children: "Tip"
+        }), " Adjust the width of the canvas with the", " ", /* @__PURE__ */ jsx("svg", {
+          width: "10",
+          height: "10",
+          viewBox: "0 0 12 12",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /* @__PURE__ */ jsx("g", {
+            fill: "none",
+            fillRule: "evenodd",
+            children: /* @__PURE__ */ jsx("path", {
+              d: "M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z",
+              id: "a",
+              fill: "#999"
+            })
+          })
+        }), "Viewports addon in the toolbar"]
+      })]
+    })]
+  });
+};
+try {
+  Page.displayName = "Page";
+  Page.__docgenInfo = { "description": "", "displayName": "Page", "props": {} };
+} catch (__react_docgen_typescript_loader_error) {
+}
+const Page_stories = {
+  title: "Example/Page",
+  component: Page,
+  parameters: {
+    layout: "fullscreen"
+  }
+};
+const Template = (args) => /* @__PURE__ */ jsx(Page, {
+  ...args
+});
+const LoggedOut = Template.bind({});
+const LoggedIn = Template.bind({});
+LoggedIn.play = async ({
+  canvasElement
+}) => {
+  const canvas = within(canvasElement);
+  const loginButton = await canvas.getByRole("button", {
+    name: /Log in/i
+  });
+  await userEvent.click(loginButton);
+};
+LoggedOut.parameters = {
+  ...LoggedOut.parameters,
+  storySource: {
+    source: "args => <Page {...args} />",
+    ...(_a = LoggedOut.parameters) == null ? void 0 : _a.storySource
+  }
+};
+LoggedIn.parameters = {
+  ...LoggedIn.parameters,
+  storySource: {
+    source: "args => <Page {...args} />",
+    ...(_b = LoggedIn.parameters) == null ? void 0 : _b.storySource
+  }
+};
+const __namedExportsOrder = ["LoggedOut", "LoggedIn"];
+export {
+  LoggedIn,
+  LoggedOut,
+  __namedExportsOrder,
+  Page_stories as default
+};
 //# sourceMappingURL=Page.stories.6c8ce263.js.map

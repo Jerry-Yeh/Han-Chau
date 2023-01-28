@@ -1,2 +1,1373 @@
-import{e as M,W as ue,T as Ee,F as Me,I as Ce,g as $e}from"./chunk-MA2MUXQN.648116b1.js";import{R as h,r as b}from"./index.2e2f892a.js";import{w as Ne,m as J,n as Ie}from"./_getTag.d1b75f35.js";import"./iframe.4bd8a3e9.js";import"../sb-preview/runtime.mjs";import"./index.31ab949d.js";import"./_commonjsHelpers.712cc82f.js";import"./index.e850844b.js";function $(){return($=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}function Q(e,t){if(e==null)return{};var n,r,o={},a=Object.keys(e);for(r=0;r<a.length;r++)t.indexOf(n=a[r])>=0||(o[n]=e[n]);return o}function K(e){var t=b.exports.useRef(e),n=b.exports.useRef(function(r){t.current&&t.current(r)});return t.current=e,n.current}var S=function(e,t,n){return t===void 0&&(t=0),n===void 0&&(n=1),e>n?n:e<t?t:e},j=function(e){return"touches"in e},V=function(e){return e&&e.ownerDocument.defaultView||self},ne=function(e,t,n){var r=e.getBoundingClientRect(),o=j(t)?function(a,s){for(var l=0;l<a.length;l++)if(a[l].identifier===s)return a[l];return a[0]}(t.touches,n):t;return{left:S((o.pageX-(r.left+V(e).pageXOffset))/r.width),top:S((o.pageY-(r.top+V(e).pageYOffset))/r.height)}},re=function(e){!j(e)&&e.preventDefault()},Z=h.memo(function(e){var t=e.onMove,n=e.onKey,r=Q(e,["onMove","onKey"]),o=b.exports.useRef(null),a=K(t),s=K(n),l=b.exports.useRef(null),i=b.exports.useRef(!1),c=b.exports.useMemo(function(){var k=function(v){re(v),(j(v)?v.touches.length>0:v.buttons>0)&&o.current?a(ne(o.current,v,l.current)):_(!1)},N=function(){return _(!1)};function _(v){var m=i.current,y=V(o.current),C=v?y.addEventListener:y.removeEventListener;C(m?"touchmove":"mousemove",k),C(m?"touchend":"mouseup",N)}return[function(v){var m=v.nativeEvent,y=o.current;if(y&&(re(m),!function(X,R){return R&&!j(X)}(m,i.current)&&y)){if(j(m)){i.current=!0;var C=m.changedTouches||[];C.length&&(l.current=C[0].identifier)}y.focus(),a(ne(y,m,l.current)),_(!0)}},function(v){var m=v.which||v.keyCode;m<37||m>40||(v.preventDefault(),s({left:m===39?.05:m===37?-.05:0,top:m===40?.05:m===38?-.05:0}))},_]},[s,a]),d=c[0],f=c[1],g=c[2];return b.exports.useEffect(function(){return g},[g]),h.createElement("div",$({},r,{onTouchStart:d,onMouseDown:d,className:"react-colorful__interactive",ref:o,onKeyDown:f,tabIndex:0,role:"slider"}))}),F=function(e){return e.filter(Boolean).join(" ")},ee=function(e){var t=e.color,n=e.left,r=e.top,o=r===void 0?.5:r,a=F(["react-colorful__pointer",e.className]);return h.createElement("div",{className:a,style:{top:100*o+"%",left:100*n+"%"}},h.createElement("div",{className:"react-colorful__pointer-fill",style:{backgroundColor:t}}))},x=function(e,t,n){return t===void 0&&(t=0),n===void 0&&(n=Math.pow(10,t)),Math.round(n*e)/n},Oe={grad:.9,turn:360,rad:360/(2*Math.PI)},Se=function(e){return de(A(e))},A=function(e){return e[0]==="#"&&(e=e.substring(1)),e.length<6?{r:parseInt(e[0]+e[0],16),g:parseInt(e[1]+e[1],16),b:parseInt(e[2]+e[2],16),a:e.length===4?x(parseInt(e[3]+e[3],16)/255,2):1}:{r:parseInt(e.substring(0,2),16),g:parseInt(e.substring(2,4),16),b:parseInt(e.substring(4,6),16),a:e.length===8?x(parseInt(e.substring(6,8),16)/255,2):1}},Re=function(e,t){return t===void 0&&(t="deg"),Number(e)*(Oe[t]||1)},Te=function(e){var t=/hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i.exec(e);return t?je({h:Re(t[1],t[2]),s:Number(t[3]),l:Number(t[4]),a:t[5]===void 0?1:Number(t[5])/(t[6]?100:1)}):{h:0,s:0,v:0,a:1}},je=function(e){var t=e.s,n=e.l;return{h:e.h,s:(t*=(n<50?n:100-n)/100)>0?2*t/(n+t)*100:0,v:n+t,a:e.a}},ze=function(e){return He(he(e))},fe=function(e){var t=e.s,n=e.v,r=e.a,o=(200-t)*n/100;return{h:x(e.h),s:x(o>0&&o<200?t*n/100/(o<=100?o:200-o)*100:0),l:x(o/2),a:x(r,2)}},G=function(e){var t=fe(e);return"hsl("+t.h+", "+t.s+"%, "+t.l+"%)"},q=function(e){var t=fe(e);return"hsla("+t.h+", "+t.s+"%, "+t.l+"%, "+t.a+")"},he=function(e){var t=e.h,n=e.s,r=e.v,o=e.a;t=t/360*6,n/=100,r/=100;var a=Math.floor(t),s=r*(1-n),l=r*(1-(t-a)*n),i=r*(1-(1-t+a)*n),c=a%6;return{r:x(255*[r,l,s,s,i,r][c]),g:x(255*[i,r,r,l,s,s][c]),b:x(255*[s,s,i,r,r,l][c]),a:x(o,2)}},Fe=function(e){var t=/rgba?\(?\s*(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i.exec(e);return t?de({r:Number(t[1])/(t[2]?100/255:1),g:Number(t[3])/(t[4]?100/255:1),b:Number(t[5])/(t[6]?100/255:1),a:t[7]===void 0?1:Number(t[7])/(t[8]?100:1)}):{h:0,s:0,v:0,a:1}},H=function(e){var t=e.toString(16);return t.length<2?"0"+t:t},He=function(e){var t=e.r,n=e.g,r=e.b,o=e.a,a=o<1?H(x(255*o)):"";return"#"+H(t)+H(n)+H(r)+a},de=function(e){var t=e.r,n=e.g,r=e.b,o=e.a,a=Math.max(t,n,r),s=a-Math.min(t,n,r),l=s?a===t?(n-r)/s:a===n?2+(r-t)/s:4+(t-n)/s:0;return{h:x(60*(l<0?l+6:l)),s:x(a?s/a*100:0),v:x(a/255*100),a:o}},ge=h.memo(function(e){var t=e.hue,n=e.onChange,r=F(["react-colorful__hue",e.className]);return h.createElement("div",{className:r},h.createElement(Z,{onMove:function(o){n({h:360*o.left})},onKey:function(o){n({h:S(t+360*o.left,0,360)})},"aria-label":"Hue","aria-valuenow":x(t),"aria-valuemax":"360","aria-valuemin":"0"},h.createElement(ee,{className:"react-colorful__hue-pointer",left:t/360,color:G({h:t,s:100,v:100,a:1})})))}),me=h.memo(function(e){var t=e.hsva,n=e.onChange,r={backgroundColor:G({h:t.h,s:100,v:100,a:1})};return h.createElement("div",{className:"react-colorful__saturation",style:r},h.createElement(Z,{onMove:function(o){n({s:100*o.left,v:100-100*o.top})},onKey:function(o){n({s:S(t.s+100*o.left,0,100),v:S(t.v-100*o.top,0,100)})},"aria-label":"Color","aria-valuetext":"Saturation "+x(t.s)+"%, Brightness "+x(t.v)+"%"},h.createElement(ee,{className:"react-colorful__saturation-pointer",top:1-t.v/100,left:t.s/100,color:G(t)})))}),be=function(e,t){if(e===t)return!0;for(var n in e)if(e[n]!==t[n])return!1;return!0},pe=function(e,t){return e.replace(/\s/g,"")===t.replace(/\s/g,"")},Pe=function(e,t){return e.toLowerCase()===t.toLowerCase()||be(A(e),A(t))};function ve(e,t,n){var r=K(n),o=b.exports.useState(function(){return e.toHsva(t)}),a=o[0],s=o[1],l=b.exports.useRef({color:t,hsva:a});b.exports.useEffect(function(){if(!e.equal(t,l.current.color)){var c=e.toHsva(t);l.current={hsva:c,color:t},s(c)}},[t,e]),b.exports.useEffect(function(){var c;be(a,l.current.hsva)||e.equal(c=e.fromHsva(a),l.current.color)||(l.current={hsva:a,color:c},r(c))},[a,e,r]);var i=b.exports.useCallback(function(c){s(function(d){return Object.assign({},d,c)})},[]);return[a,i]}var Le=typeof window<"u"?b.exports.useLayoutEffect:b.exports.useEffect,qe=function(){return typeof __webpack_nonce__<"u"?__webpack_nonce__:void 0},oe=new Map,xe=function(e){Le(function(){var t=e.current?e.current.ownerDocument:document;if(t!==void 0&&!oe.has(t)){var n=t.createElement("style");n.innerHTML=`.react-colorful{position:relative;display:flex;flex-direction:column;width:200px;height:200px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.react-colorful__saturation{position:relative;flex-grow:1;border-color:transparent;border-bottom:12px solid #000;border-radius:8px 8px 0 0;background-image:linear-gradient(0deg,#000,transparent),linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}.react-colorful__alpha-gradient,.react-colorful__pointer-fill{content:"";position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;border-radius:inherit}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}.react-colorful__alpha,.react-colorful__hue{position:relative;height:24px}.react-colorful__hue{background:linear-gradient(90deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{position:absolute;left:0;top:0;right:0;bottom:0;border-radius:inherit;outline:none;touch-action:none}.react-colorful__pointer{position:absolute;z-index:1;box-sizing:border-box;width:28px;height:28px;transform:translate(-50%,-50%);background-color:#fff;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 4px rgba(0,0,0,.2)}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%) scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>')}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}`,oe.set(t,n);var r=qe();r&&n.setAttribute("nonce",r),t.head.appendChild(n)}},[])},Be=function(e){var t=e.className,n=e.colorModel,r=e.color,o=r===void 0?n.defaultColor:r,a=e.onChange,s=Q(e,["className","colorModel","color","onChange"]),l=b.exports.useRef(null);xe(l);var i=ve(n,o,a),c=i[0],d=i[1],f=F(["react-colorful",t]);return h.createElement("div",$({},s,{ref:l,className:f}),h.createElement(me,{hsva:c,onChange:d}),h.createElement(ge,{hue:c.h,onChange:d,className:"react-colorful__last-control"}))},We={defaultColor:"000",toHsva:Se,fromHsva:function(e){return ze({h:e.h,s:e.s,v:e.v,a:1})},equal:Pe},Xe=function(e){return h.createElement(Be,$({},e,{colorModel:We}))},De=function(e){var t=e.className,n=e.hsva,r=e.onChange,o={backgroundImage:"linear-gradient(90deg, "+q(Object.assign({},n,{a:0}))+", "+q(Object.assign({},n,{a:1}))+")"},a=F(["react-colorful__alpha",t]),s=x(100*n.a);return h.createElement("div",{className:a},h.createElement("div",{className:"react-colorful__alpha-gradient",style:o}),h.createElement(Z,{onMove:function(l){r({a:l.left})},onKey:function(l){r({a:S(n.a+l.left)})},"aria-label":"Alpha","aria-valuetext":s+"%","aria-valuenow":s,"aria-valuemin":"0","aria-valuemax":"100"},h.createElement(ee,{className:"react-colorful__alpha-pointer",left:n.a,color:q(n)})))},ye=function(e){var t=e.className,n=e.colorModel,r=e.color,o=r===void 0?n.defaultColor:r,a=e.onChange,s=Q(e,["className","colorModel","color","onChange"]),l=b.exports.useRef(null);xe(l);var i=ve(n,o,a),c=i[0],d=i[1],f=F(["react-colorful",t]);return h.createElement("div",$({},s,{ref:l,className:f}),h.createElement(me,{hsva:c,onChange:d}),h.createElement(ge,{hue:c.h,onChange:d}),h.createElement(De,{hsva:c,onChange:d,className:"react-colorful__last-control"}))},Ke={defaultColor:"hsla(0, 0%, 0%, 1)",toHsva:Te,fromHsva:q,equal:pe},Ve=function(e){return h.createElement(ye,$({},e,{colorModel:Ke}))},Ae={defaultColor:"rgba(0, 0, 0, 1)",toHsva:Fe,fromHsva:function(e){var t=he(e);return"rgba("+t.r+", "+t.g+", "+t.b+", "+t.a+")"},equal:pe},Ge=function(e){return h.createElement(ye,$({},e,{colorModel:Ae}))},Ue={aliceblue:[240,248,255],antiquewhite:[250,235,215],aqua:[0,255,255],aquamarine:[127,255,212],azure:[240,255,255],beige:[245,245,220],bisque:[255,228,196],black:[0,0,0],blanchedalmond:[255,235,205],blue:[0,0,255],blueviolet:[138,43,226],brown:[165,42,42],burlywood:[222,184,135],cadetblue:[95,158,160],chartreuse:[127,255,0],chocolate:[210,105,30],coral:[255,127,80],cornflowerblue:[100,149,237],cornsilk:[255,248,220],crimson:[220,20,60],cyan:[0,255,255],darkblue:[0,0,139],darkcyan:[0,139,139],darkgoldenrod:[184,134,11],darkgray:[169,169,169],darkgreen:[0,100,0],darkgrey:[169,169,169],darkkhaki:[189,183,107],darkmagenta:[139,0,139],darkolivegreen:[85,107,47],darkorange:[255,140,0],darkorchid:[153,50,204],darkred:[139,0,0],darksalmon:[233,150,122],darkseagreen:[143,188,143],darkslateblue:[72,61,139],darkslategray:[47,79,79],darkslategrey:[47,79,79],darkturquoise:[0,206,209],darkviolet:[148,0,211],deeppink:[255,20,147],deepskyblue:[0,191,255],dimgray:[105,105,105],dimgrey:[105,105,105],dodgerblue:[30,144,255],firebrick:[178,34,34],floralwhite:[255,250,240],forestgreen:[34,139,34],fuchsia:[255,0,255],gainsboro:[220,220,220],ghostwhite:[248,248,255],gold:[255,215,0],goldenrod:[218,165,32],gray:[128,128,128],green:[0,128,0],greenyellow:[173,255,47],grey:[128,128,128],honeydew:[240,255,240],hotpink:[255,105,180],indianred:[205,92,92],indigo:[75,0,130],ivory:[255,255,240],khaki:[240,230,140],lavender:[230,230,250],lavenderblush:[255,240,245],lawngreen:[124,252,0],lemonchiffon:[255,250,205],lightblue:[173,216,230],lightcoral:[240,128,128],lightcyan:[224,255,255],lightgoldenrodyellow:[250,250,210],lightgray:[211,211,211],lightgreen:[144,238,144],lightgrey:[211,211,211],lightpink:[255,182,193],lightsalmon:[255,160,122],lightseagreen:[32,178,170],lightskyblue:[135,206,250],lightslategray:[119,136,153],lightslategrey:[119,136,153],lightsteelblue:[176,196,222],lightyellow:[255,255,224],lime:[0,255,0],limegreen:[50,205,50],linen:[250,240,230],magenta:[255,0,255],maroon:[128,0,0],mediumaquamarine:[102,205,170],mediumblue:[0,0,205],mediumorchid:[186,85,211],mediumpurple:[147,112,219],mediumseagreen:[60,179,113],mediumslateblue:[123,104,238],mediumspringgreen:[0,250,154],mediumturquoise:[72,209,204],mediumvioletred:[199,21,133],midnightblue:[25,25,112],mintcream:[245,255,250],mistyrose:[255,228,225],moccasin:[255,228,181],navajowhite:[255,222,173],navy:[0,0,128],oldlace:[253,245,230],olive:[128,128,0],olivedrab:[107,142,35],orange:[255,165,0],orangered:[255,69,0],orchid:[218,112,214],palegoldenrod:[238,232,170],palegreen:[152,251,152],paleturquoise:[175,238,238],palevioletred:[219,112,147],papayawhip:[255,239,213],peachpuff:[255,218,185],peru:[205,133,63],pink:[255,192,203],plum:[221,160,221],powderblue:[176,224,230],purple:[128,0,128],rebeccapurple:[102,51,153],red:[255,0,0],rosybrown:[188,143,143],royalblue:[65,105,225],saddlebrown:[139,69,19],salmon:[250,128,114],sandybrown:[244,164,96],seagreen:[46,139,87],seashell:[255,245,238],sienna:[160,82,45],silver:[192,192,192],skyblue:[135,206,235],slateblue:[106,90,205],slategray:[112,128,144],slategrey:[112,128,144],snow:[255,250,250],springgreen:[0,255,127],steelblue:[70,130,180],tan:[210,180,140],teal:[0,128,128],thistle:[216,191,216],tomato:[255,99,71],turquoise:[64,224,208],violet:[238,130,238],wheat:[245,222,179],white:[255,255,255],whitesmoke:[245,245,245],yellow:[255,255,0],yellowgreen:[154,205,50]};const z=Ue,we={};for(const e of Object.keys(z))we[z[e]]=e;const u={rgb:{channels:3,labels:"rgb"},hsl:{channels:3,labels:"hsl"},hsv:{channels:3,labels:"hsv"},hwb:{channels:3,labels:"hwb"},cmyk:{channels:4,labels:"cmyk"},xyz:{channels:3,labels:"xyz"},lab:{channels:3,labels:"lab"},lch:{channels:3,labels:"lch"},hex:{channels:1,labels:["hex"]},keyword:{channels:1,labels:["keyword"]},ansi16:{channels:1,labels:["ansi16"]},ansi256:{channels:1,labels:["ansi256"]},hcg:{channels:3,labels:["h","c","g"]},apple:{channels:3,labels:["r16","g16","b16"]},gray:{channels:1,labels:["gray"]}};var ke=u;for(const e of Object.keys(u)){if(!("channels"in u[e]))throw new Error("missing channels property: "+e);if(!("labels"in u[e]))throw new Error("missing channel labels property: "+e);if(u[e].labels.length!==u[e].channels)throw new Error("channel and label counts mismatch: "+e);const{channels:t,labels:n}=u[e];delete u[e].channels,delete u[e].labels,Object.defineProperty(u[e],"channels",{value:t}),Object.defineProperty(u[e],"labels",{value:n})}u.rgb.hsl=function(e){const t=e[0]/255,n=e[1]/255,r=e[2]/255,o=Math.min(t,n,r),a=Math.max(t,n,r),s=a-o;let l,i;a===o?l=0:t===a?l=(n-r)/s:n===a?l=2+(r-t)/s:r===a&&(l=4+(t-n)/s),l=Math.min(l*60,360),l<0&&(l+=360);const c=(o+a)/2;return a===o?i=0:c<=.5?i=s/(a+o):i=s/(2-a-o),[l,i*100,c*100]};u.rgb.hsv=function(e){let t,n,r,o,a;const s=e[0]/255,l=e[1]/255,i=e[2]/255,c=Math.max(s,l,i),d=c-Math.min(s,l,i),f=function(g){return(c-g)/6/d+1/2};return d===0?(o=0,a=0):(a=d/c,t=f(s),n=f(l),r=f(i),s===c?o=r-n:l===c?o=1/3+t-r:i===c&&(o=2/3+n-t),o<0?o+=1:o>1&&(o-=1)),[o*360,a*100,c*100]};u.rgb.hwb=function(e){const t=e[0],n=e[1];let r=e[2];const o=u.rgb.hsl(e)[0],a=1/255*Math.min(t,Math.min(n,r));return r=1-1/255*Math.max(t,Math.max(n,r)),[o,a*100,r*100]};u.rgb.cmyk=function(e){const t=e[0]/255,n=e[1]/255,r=e[2]/255,o=Math.min(1-t,1-n,1-r),a=(1-t-o)/(1-o)||0,s=(1-n-o)/(1-o)||0,l=(1-r-o)/(1-o)||0;return[a*100,s*100,l*100,o*100]};function Ye(e,t){return(e[0]-t[0])**2+(e[1]-t[1])**2+(e[2]-t[2])**2}u.rgb.keyword=function(e){const t=we[e];if(t)return t;let n=1/0,r;for(const o of Object.keys(z)){const a=z[o],s=Ye(e,a);s<n&&(n=s,r=o)}return r};u.keyword.rgb=function(e){return z[e]};u.rgb.xyz=function(e){let t=e[0]/255,n=e[1]/255,r=e[2]/255;t=t>.04045?((t+.055)/1.055)**2.4:t/12.92,n=n>.04045?((n+.055)/1.055)**2.4:n/12.92,r=r>.04045?((r+.055)/1.055)**2.4:r/12.92;const o=t*.4124+n*.3576+r*.1805,a=t*.2126+n*.7152+r*.0722,s=t*.0193+n*.1192+r*.9505;return[o*100,a*100,s*100]};u.rgb.lab=function(e){const t=u.rgb.xyz(e);let n=t[0],r=t[1],o=t[2];n/=95.047,r/=100,o/=108.883,n=n>.008856?n**(1/3):7.787*n+16/116,r=r>.008856?r**(1/3):7.787*r+16/116,o=o>.008856?o**(1/3):7.787*o+16/116;const a=116*r-16,s=500*(n-r),l=200*(r-o);return[a,s,l]};u.hsl.rgb=function(e){const t=e[0]/360,n=e[1]/100,r=e[2]/100;let o,a,s;if(n===0)return s=r*255,[s,s,s];r<.5?o=r*(1+n):o=r+n-r*n;const l=2*r-o,i=[0,0,0];for(let c=0;c<3;c++)a=t+1/3*-(c-1),a<0&&a++,a>1&&a--,6*a<1?s=l+(o-l)*6*a:2*a<1?s=o:3*a<2?s=l+(o-l)*(2/3-a)*6:s=l,i[c]=s*255;return i};u.hsl.hsv=function(e){const t=e[0];let n=e[1]/100,r=e[2]/100,o=n;const a=Math.max(r,.01);r*=2,n*=r<=1?r:2-r,o*=a<=1?a:2-a;const s=(r+n)/2,l=r===0?2*o/(a+o):2*n/(r+n);return[t,l*100,s*100]};u.hsv.rgb=function(e){const t=e[0]/60,n=e[1]/100;let r=e[2]/100;const o=Math.floor(t)%6,a=t-Math.floor(t),s=255*r*(1-n),l=255*r*(1-n*a),i=255*r*(1-n*(1-a));switch(r*=255,o){case 0:return[r,i,s];case 1:return[l,r,s];case 2:return[s,r,i];case 3:return[s,l,r];case 4:return[i,s,r];case 5:return[r,s,l]}};u.hsv.hsl=function(e){const t=e[0],n=e[1]/100,r=e[2]/100,o=Math.max(r,.01);let a,s;s=(2-n)*r;const l=(2-n)*o;return a=n*o,a/=l<=1?l:2-l,a=a||0,s/=2,[t,a*100,s*100]};u.hwb.rgb=function(e){const t=e[0]/360;let n=e[1]/100,r=e[2]/100;const o=n+r;let a;o>1&&(n/=o,r/=o);const s=Math.floor(6*t),l=1-r;a=6*t-s,(s&1)!==0&&(a=1-a);const i=n+a*(l-n);let c,d,f;switch(s){default:case 6:case 0:c=l,d=i,f=n;break;case 1:c=i,d=l,f=n;break;case 2:c=n,d=l,f=i;break;case 3:c=n,d=i,f=l;break;case 4:c=i,d=n,f=l;break;case 5:c=l,d=n,f=i;break}return[c*255,d*255,f*255]};u.cmyk.rgb=function(e){const t=e[0]/100,n=e[1]/100,r=e[2]/100,o=e[3]/100,a=1-Math.min(1,t*(1-o)+o),s=1-Math.min(1,n*(1-o)+o),l=1-Math.min(1,r*(1-o)+o);return[a*255,s*255,l*255]};u.xyz.rgb=function(e){const t=e[0]/100,n=e[1]/100,r=e[2]/100;let o,a,s;return o=t*3.2406+n*-1.5372+r*-.4986,a=t*-.9689+n*1.8758+r*.0415,s=t*.0557+n*-.204+r*1.057,o=o>.0031308?1.055*o**(1/2.4)-.055:o*12.92,a=a>.0031308?1.055*a**(1/2.4)-.055:a*12.92,s=s>.0031308?1.055*s**(1/2.4)-.055:s*12.92,o=Math.min(Math.max(0,o),1),a=Math.min(Math.max(0,a),1),s=Math.min(Math.max(0,s),1),[o*255,a*255,s*255]};u.xyz.lab=function(e){let t=e[0],n=e[1],r=e[2];t/=95.047,n/=100,r/=108.883,t=t>.008856?t**(1/3):7.787*t+16/116,n=n>.008856?n**(1/3):7.787*n+16/116,r=r>.008856?r**(1/3):7.787*r+16/116;const o=116*n-16,a=500*(t-n),s=200*(n-r);return[o,a,s]};u.lab.xyz=function(e){const t=e[0],n=e[1],r=e[2];let o,a,s;a=(t+16)/116,o=n/500+a,s=a-r/200;const l=a**3,i=o**3,c=s**3;return a=l>.008856?l:(a-16/116)/7.787,o=i>.008856?i:(o-16/116)/7.787,s=c>.008856?c:(s-16/116)/7.787,o*=95.047,a*=100,s*=108.883,[o,a,s]};u.lab.lch=function(e){const t=e[0],n=e[1],r=e[2];let o;o=Math.atan2(r,n)*360/2/Math.PI,o<0&&(o+=360);const s=Math.sqrt(n*n+r*r);return[t,s,o]};u.lch.lab=function(e){const t=e[0],n=e[1],o=e[2]/360*2*Math.PI,a=n*Math.cos(o),s=n*Math.sin(o);return[t,a,s]};u.rgb.ansi16=function(e,t=null){const[n,r,o]=e;let a=t===null?u.rgb.hsv(e)[2]:t;if(a=Math.round(a/50),a===0)return 30;let s=30+(Math.round(o/255)<<2|Math.round(r/255)<<1|Math.round(n/255));return a===2&&(s+=60),s};u.hsv.ansi16=function(e){return u.rgb.ansi16(u.hsv.rgb(e),e[2])};u.rgb.ansi256=function(e){const t=e[0],n=e[1],r=e[2];return t===n&&n===r?t<8?16:t>248?231:Math.round((t-8)/247*24)+232:16+36*Math.round(t/255*5)+6*Math.round(n/255*5)+Math.round(r/255*5)};u.ansi16.rgb=function(e){let t=e%10;if(t===0||t===7)return e>50&&(t+=3.5),t=t/10.5*255,[t,t,t];const n=(~~(e>50)+1)*.5,r=(t&1)*n*255,o=(t>>1&1)*n*255,a=(t>>2&1)*n*255;return[r,o,a]};u.ansi256.rgb=function(e){if(e>=232){const a=(e-232)*10+8;return[a,a,a]}e-=16;let t;const n=Math.floor(e/36)/5*255,r=Math.floor((t=e%36)/6)/5*255,o=t%6/5*255;return[n,r,o]};u.rgb.hex=function(e){const n=(((Math.round(e[0])&255)<<16)+((Math.round(e[1])&255)<<8)+(Math.round(e[2])&255)).toString(16).toUpperCase();return"000000".substring(n.length)+n};u.hex.rgb=function(e){const t=e.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);if(!t)return[0,0,0];let n=t[0];t[0].length===3&&(n=n.split("").map(l=>l+l).join(""));const r=parseInt(n,16),o=r>>16&255,a=r>>8&255,s=r&255;return[o,a,s]};u.rgb.hcg=function(e){const t=e[0]/255,n=e[1]/255,r=e[2]/255,o=Math.max(Math.max(t,n),r),a=Math.min(Math.min(t,n),r),s=o-a;let l,i;return s<1?l=a/(1-s):l=0,s<=0?i=0:o===t?i=(n-r)/s%6:o===n?i=2+(r-t)/s:i=4+(t-n)/s,i/=6,i%=1,[i*360,s*100,l*100]};u.hsl.hcg=function(e){const t=e[1]/100,n=e[2]/100,r=n<.5?2*t*n:2*t*(1-n);let o=0;return r<1&&(o=(n-.5*r)/(1-r)),[e[0],r*100,o*100]};u.hsv.hcg=function(e){const t=e[1]/100,n=e[2]/100,r=t*n;let o=0;return r<1&&(o=(n-r)/(1-r)),[e[0],r*100,o*100]};u.hcg.rgb=function(e){const t=e[0]/360,n=e[1]/100,r=e[2]/100;if(n===0)return[r*255,r*255,r*255];const o=[0,0,0],a=t%1*6,s=a%1,l=1-s;let i=0;switch(Math.floor(a)){case 0:o[0]=1,o[1]=s,o[2]=0;break;case 1:o[0]=l,o[1]=1,o[2]=0;break;case 2:o[0]=0,o[1]=1,o[2]=s;break;case 3:o[0]=0,o[1]=l,o[2]=1;break;case 4:o[0]=s,o[1]=0,o[2]=1;break;default:o[0]=1,o[1]=0,o[2]=l}return i=(1-n)*r,[(n*o[0]+i)*255,(n*o[1]+i)*255,(n*o[2]+i)*255]};u.hcg.hsv=function(e){const t=e[1]/100,n=e[2]/100,r=t+n*(1-t);let o=0;return r>0&&(o=t/r),[e[0],o*100,r*100]};u.hcg.hsl=function(e){const t=e[1]/100,r=e[2]/100*(1-t)+.5*t;let o=0;return r>0&&r<.5?o=t/(2*r):r>=.5&&r<1&&(o=t/(2*(1-r))),[e[0],o*100,r*100]};u.hcg.hwb=function(e){const t=e[1]/100,n=e[2]/100,r=t+n*(1-t);return[e[0],(r-t)*100,(1-r)*100]};u.hwb.hcg=function(e){const t=e[1]/100,r=1-e[2]/100,o=r-t;let a=0;return o<1&&(a=(r-o)/(1-o)),[e[0],o*100,a*100]};u.apple.rgb=function(e){return[e[0]/65535*255,e[1]/65535*255,e[2]/65535*255]};u.rgb.apple=function(e){return[e[0]/255*65535,e[1]/255*65535,e[2]/255*65535]};u.gray.rgb=function(e){return[e[0]/100*255,e[0]/100*255,e[0]/100*255]};u.gray.hsl=function(e){return[0,0,e[0]]};u.gray.hsv=u.gray.hsl;u.gray.hwb=function(e){return[0,100,e[0]]};u.gray.cmyk=function(e){return[0,0,0,e[0]]};u.gray.lab=function(e){return[e[0],0,0]};u.gray.hex=function(e){const t=Math.round(e[0]/100*255)&255,r=((t<<16)+(t<<8)+t).toString(16).toUpperCase();return"000000".substring(r.length)+r};u.rgb.gray=function(e){return[(e[0]+e[1]+e[2])/3/255*100]};const B=ke;function Je(){const e={},t=Object.keys(B);for(let n=t.length,r=0;r<n;r++)e[t[r]]={distance:-1,parent:null};return e}function Qe(e){const t=Je(),n=[e];for(t[e].distance=0;n.length;){const r=n.pop(),o=Object.keys(B[r]);for(let a=o.length,s=0;s<a;s++){const l=o[s],i=t[l];i.distance===-1&&(i.distance=t[r].distance+1,i.parent=r,n.unshift(l))}}return t}function Ze(e,t){return function(n){return t(e(n))}}function et(e,t){const n=[t[e].parent,e];let r=B[t[e].parent][e],o=t[e].parent;for(;t[o].parent;)n.unshift(t[o].parent),r=Ze(B[t[o].parent][o],r),o=t[o].parent;return r.conversion=n,r}var tt=function(e){const t=Qe(e),n={},r=Object.keys(t);for(let o=r.length,a=0;a<o;a++){const s=r[a];t[s].parent!==null&&(n[s]=et(s,t))}return n};const U=ke,nt=tt,I={},rt=Object.keys(U);function ot(e){const t=function(...n){const r=n[0];return r==null?r:(r.length>1&&(n=r),e(n))};return"conversion"in e&&(t.conversion=e.conversion),t}function at(e){const t=function(...n){const r=n[0];if(r==null)return r;r.length>1&&(n=r);const o=e(n);if(typeof o=="object")for(let a=o.length,s=0;s<a;s++)o[s]=Math.round(o[s]);return o};return"conversion"in e&&(t.conversion=e.conversion),t}rt.forEach(e=>{I[e]={},Object.defineProperty(I[e],"channels",{value:U[e].channels}),Object.defineProperty(I[e],"labels",{value:U[e].labels});const t=nt(e);Object.keys(t).forEach(r=>{const o=t[r];I[e][r]=at(o),I[e][r].raw=ot(o)})});var w=I,st=Ne,lt=function(){return st.Date.now()},it=lt,ct=/\s/;function ut(e){for(var t=e.length;t--&&ct.test(e.charAt(t)););return t}var ft=ut,ht=ft,dt=/^\s+/;function gt(e){return e&&e.slice(0,ht(e)+1).replace(dt,"")}var mt=gt,bt=mt,ae=J,pt=Ie,se=0/0,vt=/^[-+]0x[0-9a-f]+$/i,xt=/^0b[01]+$/i,yt=/^0o[0-7]+$/i,wt=parseInt;function kt(e){if(typeof e=="number")return e;if(pt(e))return se;if(ae(e)){var t=typeof e.valueOf=="function"?e.valueOf():e;e=ae(t)?t+"":t}if(typeof e!="string")return e===0?e:+e;e=bt(e);var n=xt.test(e);return n||yt.test(e)?wt(e.slice(2),n?2:8):vt.test(e)?se:+e}var _t=kt,Et=J,D=it,le=_t,Mt="Expected a function",Ct=Math.max,$t=Math.min;function Nt(e,t,n){var r,o,a,s,l,i,c=0,d=!1,f=!1,g=!0;if(typeof e!="function")throw new TypeError(Mt);t=le(t)||0,Et(n)&&(d=!!n.leading,f="maxWait"in n,a=f?Ct(le(n.maxWait)||0,t):a,g="trailing"in n?!!n.trailing:g);function k(p){var E=r,T=o;return r=o=void 0,c=p,s=e.apply(T,E),s}function N(p){return c=p,l=setTimeout(m,t),d?k(p):s}function _(p){var E=p-i,T=p-c,te=t-E;return f?$t(te,a-T):te}function v(p){var E=p-i,T=p-c;return i===void 0||E>=t||E<0||f&&T>=a}function m(){var p=D();if(v(p))return y(p);l=setTimeout(m,_(p))}function y(p){return l=void 0,g&&r?k(p):(r=o=void 0,s)}function C(){l!==void 0&&clearTimeout(l),c=0,r=i=o=l=void 0}function X(){return l===void 0?s:y(D())}function R(){var p=D(),E=v(p);if(r=arguments,o=this,i=p,E){if(l===void 0)return N(i);if(f)return clearTimeout(l),l=setTimeout(m,t),k(i)}return l===void 0&&(l=setTimeout(m,t)),s}return R.cancel=C,R.flush=X,R}var It=Nt,Ot=It,St=J,Rt="Expected a function";function Tt(e,t,n){var r=!0,o=!0;if(typeof e!="function")throw new TypeError(Rt);return St(n)&&(r="leading"in n?!!n.leading:r,o="trailing"in n?!!n.trailing:o),Ot(e,t,{leading:r,maxWait:t,trailing:o})}var jt=Tt,zt=M.div({position:"relative",maxWidth:250}),Ft=M(ue)({position:"absolute",zIndex:1,top:4,left:4}),Ht=M.div({width:200,margin:5,".react-colorful__saturation":{borderRadius:"4px 4px 0 0"},".react-colorful__hue":{boxShadow:"inset 0 0 0 1px rgb(0 0 0 / 5%)"},".react-colorful__last-control":{borderRadius:"0 0 4px 4px"}}),Pt=M(Ee)(({theme:e})=>({fontFamily:e.typography.fonts.base})),Lt=M.div({display:"grid",gridTemplateColumns:"repeat(9, 16px)",gap:6,padding:3,marginTop:5,width:200}),qt=M.div(({theme:e,active:t})=>({width:16,height:16,boxShadow:t?`${e.appBorderColor} 0 0 0 1px inset, ${e.textMutedColor}50 0 0 0 4px`:`${e.appBorderColor} 0 0 0 1px inset`,borderRadius:e.appBorderRadius})),Bt=`url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>')`,ie=({value:e,active:t,onClick:n,style:r,...o})=>{let a=`linear-gradient(${e}, ${e}), ${Bt}, linear-gradient(#fff, #fff)`;return h.createElement(qt,{...o,active:t,onClick:n,style:{...r,backgroundImage:a}})},Wt=M(Me.Input)(({theme:e})=>({width:"100%",paddingLeft:30,paddingRight:30,boxSizing:"border-box",fontFamily:e.typography.fonts.base})),Xt=M(Ce)(({theme:e})=>({position:"absolute",zIndex:1,top:6,right:7,width:20,height:20,padding:4,boxSizing:"border-box",cursor:"pointer",color:e.input.color})),_e=(e=>(e.RGB="rgb",e.HSL="hsl",e.HEX="hex",e))(_e||{}),P=Object.values(_e),Dt=/\(([0-9]+),\s*([0-9]+)%?,\s*([0-9]+)%?,?\s*([0-9.]+)?\)/,Kt=/^\s*rgba?\(([0-9]+),\s*([0-9]+),\s*([0-9]+),?\s*([0-9.]+)?\)\s*$/i,Vt=/^\s*hsla?\(([0-9]+),\s*([0-9]+)%,\s*([0-9]+)%,?\s*([0-9.]+)?\)\s*$/i,Y=/^\s*#?([0-9a-f]{3}|[0-9a-f]{6})\s*$/i,At=/^\s*#?([0-9a-f]{3})\s*$/i,Gt={hex:Xe,rgb:Ge,hsl:Ve},L={hex:"transparent",rgb:"rgba(0, 0, 0, 0)",hsl:"hsla(0, 0%, 0%, 0)"},ce=e=>{let t=e==null?void 0:e.match(Dt);if(!t)return[0,0,0,1];let[,n,r,o,a=1]=t;return[n,r,o,a].map(Number)},O=e=>{if(!e)return;let t=!0;if(Kt.test(e)){let[s,l,i,c]=ce(e),[d,f,g]=w.rgb.hsl([s,l,i])||[0,0,0];return{valid:t,value:e,keyword:w.rgb.keyword([s,l,i]),colorSpace:"rgb",rgb:e,hsl:`hsla(${d}, ${f}%, ${g}%, ${c})`,hex:`#${w.rgb.hex([s,l,i]).toLowerCase()}`}}if(Vt.test(e)){let[s,l,i,c]=ce(e),[d,f,g]=w.hsl.rgb([s,l,i])||[0,0,0];return{valid:t,value:e,keyword:w.hsl.keyword([s,l,i]),colorSpace:"hsl",rgb:`rgba(${d}, ${f}, ${g}, ${c})`,hsl:e,hex:`#${w.hsl.hex([s,l,i]).toLowerCase()}`}}let n=e.replace("#",""),r=w.keyword.rgb(n)||w.hex.rgb(n),o=w.rgb.hsl(r),a=e;if(/[^#a-f0-9]/i.test(e)?a=n:Y.test(e)&&(a=`#${n}`),a.startsWith("#"))t=Y.test(a);else try{w.keyword.hex(a)}catch{t=!1}return{valid:t,value:a,keyword:w.rgb.keyword(r),colorSpace:"hex",rgb:`rgba(${r[0]}, ${r[1]}, ${r[2]}, 1)`,hsl:`hsla(${o[0]}, ${o[1]}%, ${o[2]}%, 1)`,hex:a}},Ut=(e,t,n)=>{if(!e||!(t!=null&&t.valid))return L[n];if(n!=="hex")return(t==null?void 0:t[n])||L[n];if(!t.hex.startsWith("#"))try{return`#${w.keyword.hex(t.hex)}`}catch{return L.hex}let r=t.hex.match(At);if(!r)return Y.test(t.hex)?t.hex:L.hex;let[o,a,s]=r[1].split("");return`#${o}${o}${a}${a}${s}${s}`},Yt=(e,t)=>{let[n,r]=b.exports.useState(e||""),[o,a]=b.exports.useState(()=>O(n)),[s,l]=b.exports.useState((o==null?void 0:o.colorSpace)||"hex");b.exports.useEffect(()=>{let f=e||"",g=O(f);r(f),a(g),l((g==null?void 0:g.colorSpace)||"hex")},[e]);let i=b.exports.useMemo(()=>Ut(n,o,s).toLowerCase(),[n,o,s]),c=b.exports.useCallback(f=>{let g=O(f),k=(g==null?void 0:g.value)||f||"";r(k),k===""&&(a(void 0),t(void 0)),g&&(a(g),l(g.colorSpace),t(g.value))},[t]),d=b.exports.useCallback(()=>{let f=P.indexOf(s)+1;f>=P.length&&(f=0),l(P[f]);let g=(o==null?void 0:o[P[f]])||"";r(g),t(g)},[o,s,t]);return{value:n,realValue:i,updateValue:c,color:o,colorSpace:s,cycleColorSpace:d}},W=e=>e.replace(/\s*/,"").toLowerCase(),Jt=(e,t,n)=>{let[r,o]=b.exports.useState(t!=null&&t.valid?[t]:[]);b.exports.useEffect(()=>{t===void 0&&o([])},[t]);let a=b.exports.useMemo(()=>(e||[]).map(l=>typeof l=="string"?O(l):l.title?{...O(l.color),keyword:l.title}:O(l.color)).concat(r).filter(Boolean).slice(-27),[e,r]),s=b.exports.useCallback(l=>{l!=null&&l.valid&&(a.some(i=>W(i[n])===W(l[n]))||o(i=>i.concat(l)))},[n,a]);return{presets:a,addPreset:s}},Qt=({name:e,value:t,onChange:n,onFocus:r,onBlur:o,presetColors:a,startOpen:s=!1})=>{let l=b.exports.useCallback(jt(n,200),[n]),{value:i,realValue:c,updateValue:d,color:f,colorSpace:g,cycleColorSpace:k}=Yt(t,l),{presets:N,addPreset:_}=Jt(a,f,g),v=Gt[g];return h.createElement(zt,null,h.createElement(Ft,{trigger:"click",startOpen:s,closeOnClick:!0,onVisibilityChange:()=>_(f),tooltip:h.createElement(Ht,null,h.createElement(v,{color:c==="transparent"?"#000000":c,onChange:d,onFocus:r,onBlur:o}),N.length>0&&h.createElement(Lt,null,N.map((m,y)=>h.createElement(ue,{key:`${m.value}-${y}`,hasChrome:!1,tooltip:h.createElement(Pt,{note:m.keyword||m.value})},h.createElement(ie,{value:m[g],active:f&&W(m[g])===W(f[g]),onClick:()=>d(m.value)})))))},h.createElement(ie,{value:c,style:{margin:4}})),h.createElement(Wt,{id:$e(e),value:i,onChange:m=>d(m.target.value),onFocus:m=>m.target.select(),placeholder:"Choose color..."}),i?h.createElement(Xt,{icon:"markup",onClick:k}):null)},ln=Qt;export{Qt as ColorControl,ln as default};
+import { e as emotion_styled_browser_esm_default, W as WithTooltip, T as TooltipNote, F as Form, I as Icons, g as getControlId } from "./chunk-MA2MUXQN.648116b1.js";
+import { R as React, r as react } from "./index.2e2f892a.js";
+import { w as _root, m as isObject_1, n as isSymbol_1 } from "./_getTag.d1b75f35.js";
+import "./iframe.4bd8a3e9.js";
+import "../sb-preview/runtime.mjs";
+import "./index.31ab949d.js";
+import "./_commonjsHelpers.712cc82f.js";
+import "./index.e850844b.js";
+function u() {
+  return (u = Object.assign || function(e) {
+    for (var r = 1; r < arguments.length; r++) {
+      var t = arguments[r];
+      for (var n in t)
+        Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+    }
+    return e;
+  }).apply(this, arguments);
+}
+function c(e, r) {
+  if (null == e)
+    return {};
+  var t, n, o = {}, a = Object.keys(e);
+  for (n = 0; n < a.length; n++)
+    r.indexOf(t = a[n]) >= 0 || (o[t] = e[t]);
+  return o;
+}
+function i(e) {
+  var t = react.exports.useRef(e), n = react.exports.useRef(function(e2) {
+    t.current && t.current(e2);
+  });
+  return t.current = e, n.current;
+}
+var s = function(e, r, t) {
+  return void 0 === r && (r = 0), void 0 === t && (t = 1), e > t ? t : e < r ? r : e;
+}, f = function(e) {
+  return "touches" in e;
+}, v = function(e) {
+  return e && e.ownerDocument.defaultView || self;
+}, d = function(e, r, t) {
+  var n = e.getBoundingClientRect(), o = f(r) ? function(e2, r2) {
+    for (var t2 = 0; t2 < e2.length; t2++)
+      if (e2[t2].identifier === r2)
+        return e2[t2];
+    return e2[0];
+  }(r.touches, t) : r;
+  return { left: s((o.pageX - (n.left + v(e).pageXOffset)) / n.width), top: s((o.pageY - (n.top + v(e).pageYOffset)) / n.height) };
+}, h = function(e) {
+  !f(e) && e.preventDefault();
+}, m = React.memo(function(o) {
+  var a = o.onMove, l = o.onKey, s2 = c(o, ["onMove", "onKey"]), m2 = react.exports.useRef(null), g2 = i(a), p2 = i(l), b2 = react.exports.useRef(null), _2 = react.exports.useRef(false), x2 = react.exports.useMemo(function() {
+    var e = function(e2) {
+      h(e2), (f(e2) ? e2.touches.length > 0 : e2.buttons > 0) && m2.current ? g2(d(m2.current, e2, b2.current)) : t(false);
+    }, r = function() {
+      return t(false);
+    };
+    function t(t2) {
+      var n = _2.current, o2 = v(m2.current), a2 = t2 ? o2.addEventListener : o2.removeEventListener;
+      a2(n ? "touchmove" : "mousemove", e), a2(n ? "touchend" : "mouseup", r);
+    }
+    return [function(e2) {
+      var r2 = e2.nativeEvent, n = m2.current;
+      if (n && (h(r2), !function(e3, r3) {
+        return r3 && !f(e3);
+      }(r2, _2.current) && n)) {
+        if (f(r2)) {
+          _2.current = true;
+          var o2 = r2.changedTouches || [];
+          o2.length && (b2.current = o2[0].identifier);
+        }
+        n.focus(), g2(d(n, r2, b2.current)), t(true);
+      }
+    }, function(e2) {
+      var r2 = e2.which || e2.keyCode;
+      r2 < 37 || r2 > 40 || (e2.preventDefault(), p2({ left: 39 === r2 ? 0.05 : 37 === r2 ? -0.05 : 0, top: 40 === r2 ? 0.05 : 38 === r2 ? -0.05 : 0 }));
+    }, t];
+  }, [p2, g2]), C2 = x2[0], E2 = x2[1], H2 = x2[2];
+  return react.exports.useEffect(function() {
+    return H2;
+  }, [H2]), React.createElement("div", u({}, s2, { onTouchStart: C2, onMouseDown: C2, className: "react-colorful__interactive", ref: m2, onKeyDown: E2, tabIndex: 0, role: "slider" }));
+}), g = function(e) {
+  return e.filter(Boolean).join(" ");
+}, p = function(r) {
+  var t = r.color, n = r.left, o = r.top, a = void 0 === o ? 0.5 : o, l = g(["react-colorful__pointer", r.className]);
+  return React.createElement("div", { className: l, style: { top: 100 * a + "%", left: 100 * n + "%" } }, React.createElement("div", { className: "react-colorful__pointer-fill", style: { backgroundColor: t } }));
+}, b = function(e, r, t) {
+  return void 0 === r && (r = 0), void 0 === t && (t = Math.pow(10, r)), Math.round(t * e) / t;
+}, _ = { grad: 0.9, turn: 360, rad: 360 / (2 * Math.PI) }, x = function(e) {
+  return L(C(e));
+}, C = function(e) {
+  return "#" === e[0] && (e = e.substring(1)), e.length < 6 ? { r: parseInt(e[0] + e[0], 16), g: parseInt(e[1] + e[1], 16), b: parseInt(e[2] + e[2], 16), a: 4 === e.length ? b(parseInt(e[3] + e[3], 16) / 255, 2) : 1 } : { r: parseInt(e.substring(0, 2), 16), g: parseInt(e.substring(2, 4), 16), b: parseInt(e.substring(4, 6), 16), a: 8 === e.length ? b(parseInt(e.substring(6, 8), 16) / 255, 2) : 1 };
+}, E = function(e, r) {
+  return void 0 === r && (r = "deg"), Number(e) * (_[r] || 1);
+}, H = function(e) {
+  var r = /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i.exec(e);
+  return r ? N({ h: E(r[1], r[2]), s: Number(r[3]), l: Number(r[4]), a: void 0 === r[5] ? 1 : Number(r[5]) / (r[6] ? 100 : 1) }) : { h: 0, s: 0, v: 0, a: 1 };
+}, N = function(e) {
+  var r = e.s, t = e.l;
+  return { h: e.h, s: (r *= (t < 50 ? t : 100 - t) / 100) > 0 ? 2 * r / (t + r) * 100 : 0, v: t + r, a: e.a };
+}, w = function(e) {
+  return K(I(e));
+}, y = function(e) {
+  var r = e.s, t = e.v, n = e.a, o = (200 - r) * t / 100;
+  return { h: b(e.h), s: b(o > 0 && o < 200 ? r * t / 100 / (o <= 100 ? o : 200 - o) * 100 : 0), l: b(o / 2), a: b(n, 2) };
+}, q = function(e) {
+  var r = y(e);
+  return "hsl(" + r.h + ", " + r.s + "%, " + r.l + "%)";
+}, k = function(e) {
+  var r = y(e);
+  return "hsla(" + r.h + ", " + r.s + "%, " + r.l + "%, " + r.a + ")";
+}, I = function(e) {
+  var r = e.h, t = e.s, n = e.v, o = e.a;
+  r = r / 360 * 6, t /= 100, n /= 100;
+  var a = Math.floor(r), l = n * (1 - t), u2 = n * (1 - (r - a) * t), c2 = n * (1 - (1 - r + a) * t), i2 = a % 6;
+  return { r: b(255 * [n, u2, l, l, c2, n][i2]), g: b(255 * [c2, n, n, u2, l, l][i2]), b: b(255 * [l, l, c2, n, n, u2][i2]), a: b(o, 2) };
+}, z = function(e) {
+  var r = /rgba?\(?\s*(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i.exec(e);
+  return r ? L({ r: Number(r[1]) / (r[2] ? 100 / 255 : 1), g: Number(r[3]) / (r[4] ? 100 / 255 : 1), b: Number(r[5]) / (r[6] ? 100 / 255 : 1), a: void 0 === r[7] ? 1 : Number(r[7]) / (r[8] ? 100 : 1) }) : { h: 0, s: 0, v: 0, a: 1 };
+}, D = function(e) {
+  var r = e.toString(16);
+  return r.length < 2 ? "0" + r : r;
+}, K = function(e) {
+  var r = e.r, t = e.g, n = e.b, o = e.a, a = o < 1 ? D(b(255 * o)) : "";
+  return "#" + D(r) + D(t) + D(n) + a;
+}, L = function(e) {
+  var r = e.r, t = e.g, n = e.b, o = e.a, a = Math.max(r, t, n), l = a - Math.min(r, t, n), u2 = l ? a === r ? (t - n) / l : a === t ? 2 + (n - r) / l : 4 + (r - t) / l : 0;
+  return { h: b(60 * (u2 < 0 ? u2 + 6 : u2)), s: b(a ? l / a * 100 : 0), v: b(a / 255 * 100), a: o };
+}, S = React.memo(function(r) {
+  var t = r.hue, n = r.onChange, o = g(["react-colorful__hue", r.className]);
+  return React.createElement("div", { className: o }, React.createElement(m, { onMove: function(e) {
+    n({ h: 360 * e.left });
+  }, onKey: function(e) {
+    n({ h: s(t + 360 * e.left, 0, 360) });
+  }, "aria-label": "Hue", "aria-valuenow": b(t), "aria-valuemax": "360", "aria-valuemin": "0" }, React.createElement(p, { className: "react-colorful__hue-pointer", left: t / 360, color: q({ h: t, s: 100, v: 100, a: 1 }) })));
+}), T = React.memo(function(r) {
+  var t = r.hsva, n = r.onChange, o = { backgroundColor: q({ h: t.h, s: 100, v: 100, a: 1 }) };
+  return React.createElement("div", { className: "react-colorful__saturation", style: o }, React.createElement(m, { onMove: function(e) {
+    n({ s: 100 * e.left, v: 100 - 100 * e.top });
+  }, onKey: function(e) {
+    n({ s: s(t.s + 100 * e.left, 0, 100), v: s(t.v - 100 * e.top, 0, 100) });
+  }, "aria-label": "Color", "aria-valuetext": "Saturation " + b(t.s) + "%, Brightness " + b(t.v) + "%" }, React.createElement(p, { className: "react-colorful__saturation-pointer", top: 1 - t.v / 100, left: t.s / 100, color: q(t) })));
+}), F = function(e, r) {
+  if (e === r)
+    return true;
+  for (var t in e)
+    if (e[t] !== r[t])
+      return false;
+  return true;
+}, P = function(e, r) {
+  return e.replace(/\s/g, "") === r.replace(/\s/g, "");
+}, X = function(e, r) {
+  return e.toLowerCase() === r.toLowerCase() || F(C(e), C(r));
+};
+function Y(e, t, l) {
+  var u2 = i(l), c2 = react.exports.useState(function() {
+    return e.toHsva(t);
+  }), s2 = c2[0], f2 = c2[1], v2 = react.exports.useRef({ color: t, hsva: s2 });
+  react.exports.useEffect(function() {
+    if (!e.equal(t, v2.current.color)) {
+      var r = e.toHsva(t);
+      v2.current = { hsva: r, color: t }, f2(r);
+    }
+  }, [t, e]), react.exports.useEffect(function() {
+    var r;
+    F(s2, v2.current.hsva) || e.equal(r = e.fromHsva(s2), v2.current.color) || (v2.current = { hsva: s2, color: r }, u2(r));
+  }, [s2, e, u2]);
+  var d2 = react.exports.useCallback(function(e2) {
+    f2(function(r) {
+      return Object.assign({}, r, e2);
+    });
+  }, []);
+  return [s2, d2];
+}
+var V = "undefined" != typeof window ? react.exports.useLayoutEffect : react.exports.useEffect, $ = function() {
+  return "undefined" != typeof __webpack_nonce__ ? __webpack_nonce__ : void 0;
+}, J = /* @__PURE__ */ new Map(), Q = function(e) {
+  V(function() {
+    var r = e.current ? e.current.ownerDocument : document;
+    if (void 0 !== r && !J.has(r)) {
+      var t = r.createElement("style");
+      t.innerHTML = `.react-colorful{position:relative;display:flex;flex-direction:column;width:200px;height:200px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.react-colorful__saturation{position:relative;flex-grow:1;border-color:transparent;border-bottom:12px solid #000;border-radius:8px 8px 0 0;background-image:linear-gradient(0deg,#000,transparent),linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}.react-colorful__alpha-gradient,.react-colorful__pointer-fill{content:"";position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;border-radius:inherit}.react-colorful__alpha-gradient,.react-colorful__saturation{box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}.react-colorful__alpha,.react-colorful__hue{position:relative;height:24px}.react-colorful__hue{background:linear-gradient(90deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.react-colorful__last-control{border-radius:0 0 8px 8px}.react-colorful__interactive{position:absolute;left:0;top:0;right:0;bottom:0;border-radius:inherit;outline:none;touch-action:none}.react-colorful__pointer{position:absolute;z-index:1;box-sizing:border-box;width:28px;height:28px;transform:translate(-50%,-50%);background-color:#fff;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 4px rgba(0,0,0,.2)}.react-colorful__interactive:focus .react-colorful__pointer{transform:translate(-50%,-50%) scale(1.1)}.react-colorful__alpha,.react-colorful__alpha-pointer{background-color:#fff;background-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>')}.react-colorful__saturation-pointer{z-index:3}.react-colorful__hue-pointer{z-index:2}`, J.set(r, t);
+      var n = $();
+      n && t.setAttribute("nonce", n), r.head.appendChild(t);
+    }
+  }, []);
+}, U = function(t) {
+  var n = t.className, o = t.colorModel, a = t.color, l = void 0 === a ? o.defaultColor : a, i2 = t.onChange, s2 = c(t, ["className", "colorModel", "color", "onChange"]), f2 = react.exports.useRef(null);
+  Q(f2);
+  var v2 = Y(o, l, i2), d2 = v2[0], h2 = v2[1], m2 = g(["react-colorful", n]);
+  return React.createElement("div", u({}, s2, { ref: f2, className: m2 }), React.createElement(T, { hsva: d2, onChange: h2 }), React.createElement(S, { hue: d2.h, onChange: h2, className: "react-colorful__last-control" }));
+}, W = { defaultColor: "000", toHsva: x, fromHsva: function(e) {
+  return w({ h: e.h, s: e.s, v: e.v, a: 1 });
+}, equal: X }, Z = function(r) {
+  return React.createElement(U, u({}, r, { colorModel: W }));
+}, ee = function(r) {
+  var t = r.className, n = r.hsva, o = r.onChange, a = { backgroundImage: "linear-gradient(90deg, " + k(Object.assign({}, n, { a: 0 })) + ", " + k(Object.assign({}, n, { a: 1 })) + ")" }, l = g(["react-colorful__alpha", t]), u2 = b(100 * n.a);
+  return React.createElement("div", { className: l }, React.createElement("div", { className: "react-colorful__alpha-gradient", style: a }), React.createElement(m, { onMove: function(e) {
+    o({ a: e.left });
+  }, onKey: function(e) {
+    o({ a: s(n.a + e.left) });
+  }, "aria-label": "Alpha", "aria-valuetext": u2 + "%", "aria-valuenow": u2, "aria-valuemin": "0", "aria-valuemax": "100" }, React.createElement(p, { className: "react-colorful__alpha-pointer", left: n.a, color: k(n) })));
+}, re = function(t) {
+  var n = t.className, o = t.colorModel, a = t.color, l = void 0 === a ? o.defaultColor : a, i2 = t.onChange, s2 = c(t, ["className", "colorModel", "color", "onChange"]), f2 = react.exports.useRef(null);
+  Q(f2);
+  var v2 = Y(o, l, i2), d2 = v2[0], h2 = v2[1], m2 = g(["react-colorful", n]);
+  return React.createElement("div", u({}, s2, { ref: f2, className: m2 }), React.createElement(T, { hsva: d2, onChange: h2 }), React.createElement(S, { hue: d2.h, onChange: h2 }), React.createElement(ee, { hsva: d2, onChange: h2, className: "react-colorful__last-control" }));
+}, le = { defaultColor: "hsla(0, 0%, 0%, 1)", toHsva: H, fromHsva: k, equal: P }, ue = function(r) {
+  return React.createElement(re, u({}, r, { colorModel: le }));
+}, Ee = { defaultColor: "rgba(0, 0, 0, 1)", toHsva: z, fromHsva: function(e) {
+  var r = I(e);
+  return "rgba(" + r.r + ", " + r.g + ", " + r.b + ", " + r.a + ")";
+}, equal: P }, He = function(r) {
+  return React.createElement(re, u({}, r, { colorModel: Ee }));
+};
+var colorName = {
+  "aliceblue": [240, 248, 255],
+  "antiquewhite": [250, 235, 215],
+  "aqua": [0, 255, 255],
+  "aquamarine": [127, 255, 212],
+  "azure": [240, 255, 255],
+  "beige": [245, 245, 220],
+  "bisque": [255, 228, 196],
+  "black": [0, 0, 0],
+  "blanchedalmond": [255, 235, 205],
+  "blue": [0, 0, 255],
+  "blueviolet": [138, 43, 226],
+  "brown": [165, 42, 42],
+  "burlywood": [222, 184, 135],
+  "cadetblue": [95, 158, 160],
+  "chartreuse": [127, 255, 0],
+  "chocolate": [210, 105, 30],
+  "coral": [255, 127, 80],
+  "cornflowerblue": [100, 149, 237],
+  "cornsilk": [255, 248, 220],
+  "crimson": [220, 20, 60],
+  "cyan": [0, 255, 255],
+  "darkblue": [0, 0, 139],
+  "darkcyan": [0, 139, 139],
+  "darkgoldenrod": [184, 134, 11],
+  "darkgray": [169, 169, 169],
+  "darkgreen": [0, 100, 0],
+  "darkgrey": [169, 169, 169],
+  "darkkhaki": [189, 183, 107],
+  "darkmagenta": [139, 0, 139],
+  "darkolivegreen": [85, 107, 47],
+  "darkorange": [255, 140, 0],
+  "darkorchid": [153, 50, 204],
+  "darkred": [139, 0, 0],
+  "darksalmon": [233, 150, 122],
+  "darkseagreen": [143, 188, 143],
+  "darkslateblue": [72, 61, 139],
+  "darkslategray": [47, 79, 79],
+  "darkslategrey": [47, 79, 79],
+  "darkturquoise": [0, 206, 209],
+  "darkviolet": [148, 0, 211],
+  "deeppink": [255, 20, 147],
+  "deepskyblue": [0, 191, 255],
+  "dimgray": [105, 105, 105],
+  "dimgrey": [105, 105, 105],
+  "dodgerblue": [30, 144, 255],
+  "firebrick": [178, 34, 34],
+  "floralwhite": [255, 250, 240],
+  "forestgreen": [34, 139, 34],
+  "fuchsia": [255, 0, 255],
+  "gainsboro": [220, 220, 220],
+  "ghostwhite": [248, 248, 255],
+  "gold": [255, 215, 0],
+  "goldenrod": [218, 165, 32],
+  "gray": [128, 128, 128],
+  "green": [0, 128, 0],
+  "greenyellow": [173, 255, 47],
+  "grey": [128, 128, 128],
+  "honeydew": [240, 255, 240],
+  "hotpink": [255, 105, 180],
+  "indianred": [205, 92, 92],
+  "indigo": [75, 0, 130],
+  "ivory": [255, 255, 240],
+  "khaki": [240, 230, 140],
+  "lavender": [230, 230, 250],
+  "lavenderblush": [255, 240, 245],
+  "lawngreen": [124, 252, 0],
+  "lemonchiffon": [255, 250, 205],
+  "lightblue": [173, 216, 230],
+  "lightcoral": [240, 128, 128],
+  "lightcyan": [224, 255, 255],
+  "lightgoldenrodyellow": [250, 250, 210],
+  "lightgray": [211, 211, 211],
+  "lightgreen": [144, 238, 144],
+  "lightgrey": [211, 211, 211],
+  "lightpink": [255, 182, 193],
+  "lightsalmon": [255, 160, 122],
+  "lightseagreen": [32, 178, 170],
+  "lightskyblue": [135, 206, 250],
+  "lightslategray": [119, 136, 153],
+  "lightslategrey": [119, 136, 153],
+  "lightsteelblue": [176, 196, 222],
+  "lightyellow": [255, 255, 224],
+  "lime": [0, 255, 0],
+  "limegreen": [50, 205, 50],
+  "linen": [250, 240, 230],
+  "magenta": [255, 0, 255],
+  "maroon": [128, 0, 0],
+  "mediumaquamarine": [102, 205, 170],
+  "mediumblue": [0, 0, 205],
+  "mediumorchid": [186, 85, 211],
+  "mediumpurple": [147, 112, 219],
+  "mediumseagreen": [60, 179, 113],
+  "mediumslateblue": [123, 104, 238],
+  "mediumspringgreen": [0, 250, 154],
+  "mediumturquoise": [72, 209, 204],
+  "mediumvioletred": [199, 21, 133],
+  "midnightblue": [25, 25, 112],
+  "mintcream": [245, 255, 250],
+  "mistyrose": [255, 228, 225],
+  "moccasin": [255, 228, 181],
+  "navajowhite": [255, 222, 173],
+  "navy": [0, 0, 128],
+  "oldlace": [253, 245, 230],
+  "olive": [128, 128, 0],
+  "olivedrab": [107, 142, 35],
+  "orange": [255, 165, 0],
+  "orangered": [255, 69, 0],
+  "orchid": [218, 112, 214],
+  "palegoldenrod": [238, 232, 170],
+  "palegreen": [152, 251, 152],
+  "paleturquoise": [175, 238, 238],
+  "palevioletred": [219, 112, 147],
+  "papayawhip": [255, 239, 213],
+  "peachpuff": [255, 218, 185],
+  "peru": [205, 133, 63],
+  "pink": [255, 192, 203],
+  "plum": [221, 160, 221],
+  "powderblue": [176, 224, 230],
+  "purple": [128, 0, 128],
+  "rebeccapurple": [102, 51, 153],
+  "red": [255, 0, 0],
+  "rosybrown": [188, 143, 143],
+  "royalblue": [65, 105, 225],
+  "saddlebrown": [139, 69, 19],
+  "salmon": [250, 128, 114],
+  "sandybrown": [244, 164, 96],
+  "seagreen": [46, 139, 87],
+  "seashell": [255, 245, 238],
+  "sienna": [160, 82, 45],
+  "silver": [192, 192, 192],
+  "skyblue": [135, 206, 235],
+  "slateblue": [106, 90, 205],
+  "slategray": [112, 128, 144],
+  "slategrey": [112, 128, 144],
+  "snow": [255, 250, 250],
+  "springgreen": [0, 255, 127],
+  "steelblue": [70, 130, 180],
+  "tan": [210, 180, 140],
+  "teal": [0, 128, 128],
+  "thistle": [216, 191, 216],
+  "tomato": [255, 99, 71],
+  "turquoise": [64, 224, 208],
+  "violet": [238, 130, 238],
+  "wheat": [245, 222, 179],
+  "white": [255, 255, 255],
+  "whitesmoke": [245, 245, 245],
+  "yellow": [255, 255, 0],
+  "yellowgreen": [154, 205, 50]
+};
+const cssKeywords = colorName;
+const reverseKeywords = {};
+for (const key of Object.keys(cssKeywords)) {
+  reverseKeywords[cssKeywords[key]] = key;
+}
+const convert$1 = {
+  rgb: { channels: 3, labels: "rgb" },
+  hsl: { channels: 3, labels: "hsl" },
+  hsv: { channels: 3, labels: "hsv" },
+  hwb: { channels: 3, labels: "hwb" },
+  cmyk: { channels: 4, labels: "cmyk" },
+  xyz: { channels: 3, labels: "xyz" },
+  lab: { channels: 3, labels: "lab" },
+  lch: { channels: 3, labels: "lch" },
+  hex: { channels: 1, labels: ["hex"] },
+  keyword: { channels: 1, labels: ["keyword"] },
+  ansi16: { channels: 1, labels: ["ansi16"] },
+  ansi256: { channels: 1, labels: ["ansi256"] },
+  hcg: { channels: 3, labels: ["h", "c", "g"] },
+  apple: { channels: 3, labels: ["r16", "g16", "b16"] },
+  gray: { channels: 1, labels: ["gray"] }
+};
+var conversions$2 = convert$1;
+for (const model of Object.keys(convert$1)) {
+  if (!("channels" in convert$1[model])) {
+    throw new Error("missing channels property: " + model);
+  }
+  if (!("labels" in convert$1[model])) {
+    throw new Error("missing channel labels property: " + model);
+  }
+  if (convert$1[model].labels.length !== convert$1[model].channels) {
+    throw new Error("channel and label counts mismatch: " + model);
+  }
+  const { channels, labels } = convert$1[model];
+  delete convert$1[model].channels;
+  delete convert$1[model].labels;
+  Object.defineProperty(convert$1[model], "channels", { value: channels });
+  Object.defineProperty(convert$1[model], "labels", { value: labels });
+}
+convert$1.rgb.hsl = function(rgb) {
+  const r = rgb[0] / 255;
+  const g2 = rgb[1] / 255;
+  const b2 = rgb[2] / 255;
+  const min = Math.min(r, g2, b2);
+  const max = Math.max(r, g2, b2);
+  const delta = max - min;
+  let h2;
+  let s2;
+  if (max === min) {
+    h2 = 0;
+  } else if (r === max) {
+    h2 = (g2 - b2) / delta;
+  } else if (g2 === max) {
+    h2 = 2 + (b2 - r) / delta;
+  } else if (b2 === max) {
+    h2 = 4 + (r - g2) / delta;
+  }
+  h2 = Math.min(h2 * 60, 360);
+  if (h2 < 0) {
+    h2 += 360;
+  }
+  const l = (min + max) / 2;
+  if (max === min) {
+    s2 = 0;
+  } else if (l <= 0.5) {
+    s2 = delta / (max + min);
+  } else {
+    s2 = delta / (2 - max - min);
+  }
+  return [h2, s2 * 100, l * 100];
+};
+convert$1.rgb.hsv = function(rgb) {
+  let rdif;
+  let gdif;
+  let bdif;
+  let h2;
+  let s2;
+  const r = rgb[0] / 255;
+  const g2 = rgb[1] / 255;
+  const b2 = rgb[2] / 255;
+  const v2 = Math.max(r, g2, b2);
+  const diff = v2 - Math.min(r, g2, b2);
+  const diffc = function(c2) {
+    return (v2 - c2) / 6 / diff + 1 / 2;
+  };
+  if (diff === 0) {
+    h2 = 0;
+    s2 = 0;
+  } else {
+    s2 = diff / v2;
+    rdif = diffc(r);
+    gdif = diffc(g2);
+    bdif = diffc(b2);
+    if (r === v2) {
+      h2 = bdif - gdif;
+    } else if (g2 === v2) {
+      h2 = 1 / 3 + rdif - bdif;
+    } else if (b2 === v2) {
+      h2 = 2 / 3 + gdif - rdif;
+    }
+    if (h2 < 0) {
+      h2 += 1;
+    } else if (h2 > 1) {
+      h2 -= 1;
+    }
+  }
+  return [
+    h2 * 360,
+    s2 * 100,
+    v2 * 100
+  ];
+};
+convert$1.rgb.hwb = function(rgb) {
+  const r = rgb[0];
+  const g2 = rgb[1];
+  let b2 = rgb[2];
+  const h2 = convert$1.rgb.hsl(rgb)[0];
+  const w2 = 1 / 255 * Math.min(r, Math.min(g2, b2));
+  b2 = 1 - 1 / 255 * Math.max(r, Math.max(g2, b2));
+  return [h2, w2 * 100, b2 * 100];
+};
+convert$1.rgb.cmyk = function(rgb) {
+  const r = rgb[0] / 255;
+  const g2 = rgb[1] / 255;
+  const b2 = rgb[2] / 255;
+  const k2 = Math.min(1 - r, 1 - g2, 1 - b2);
+  const c2 = (1 - r - k2) / (1 - k2) || 0;
+  const m2 = (1 - g2 - k2) / (1 - k2) || 0;
+  const y2 = (1 - b2 - k2) / (1 - k2) || 0;
+  return [c2 * 100, m2 * 100, y2 * 100, k2 * 100];
+};
+function comparativeDistance(x2, y2) {
+  return (x2[0] - y2[0]) ** 2 + (x2[1] - y2[1]) ** 2 + (x2[2] - y2[2]) ** 2;
+}
+convert$1.rgb.keyword = function(rgb) {
+  const reversed = reverseKeywords[rgb];
+  if (reversed) {
+    return reversed;
+  }
+  let currentClosestDistance = Infinity;
+  let currentClosestKeyword;
+  for (const keyword of Object.keys(cssKeywords)) {
+    const value = cssKeywords[keyword];
+    const distance = comparativeDistance(rgb, value);
+    if (distance < currentClosestDistance) {
+      currentClosestDistance = distance;
+      currentClosestKeyword = keyword;
+    }
+  }
+  return currentClosestKeyword;
+};
+convert$1.keyword.rgb = function(keyword) {
+  return cssKeywords[keyword];
+};
+convert$1.rgb.xyz = function(rgb) {
+  let r = rgb[0] / 255;
+  let g2 = rgb[1] / 255;
+  let b2 = rgb[2] / 255;
+  r = r > 0.04045 ? ((r + 0.055) / 1.055) ** 2.4 : r / 12.92;
+  g2 = g2 > 0.04045 ? ((g2 + 0.055) / 1.055) ** 2.4 : g2 / 12.92;
+  b2 = b2 > 0.04045 ? ((b2 + 0.055) / 1.055) ** 2.4 : b2 / 12.92;
+  const x2 = r * 0.4124 + g2 * 0.3576 + b2 * 0.1805;
+  const y2 = r * 0.2126 + g2 * 0.7152 + b2 * 0.0722;
+  const z2 = r * 0.0193 + g2 * 0.1192 + b2 * 0.9505;
+  return [x2 * 100, y2 * 100, z2 * 100];
+};
+convert$1.rgb.lab = function(rgb) {
+  const xyz = convert$1.rgb.xyz(rgb);
+  let x2 = xyz[0];
+  let y2 = xyz[1];
+  let z2 = xyz[2];
+  x2 /= 95.047;
+  y2 /= 100;
+  z2 /= 108.883;
+  x2 = x2 > 8856e-6 ? x2 ** (1 / 3) : 7.787 * x2 + 16 / 116;
+  y2 = y2 > 8856e-6 ? y2 ** (1 / 3) : 7.787 * y2 + 16 / 116;
+  z2 = z2 > 8856e-6 ? z2 ** (1 / 3) : 7.787 * z2 + 16 / 116;
+  const l = 116 * y2 - 16;
+  const a = 500 * (x2 - y2);
+  const b2 = 200 * (y2 - z2);
+  return [l, a, b2];
+};
+convert$1.hsl.rgb = function(hsl) {
+  const h2 = hsl[0] / 360;
+  const s2 = hsl[1] / 100;
+  const l = hsl[2] / 100;
+  let t2;
+  let t3;
+  let val;
+  if (s2 === 0) {
+    val = l * 255;
+    return [val, val, val];
+  }
+  if (l < 0.5) {
+    t2 = l * (1 + s2);
+  } else {
+    t2 = l + s2 - l * s2;
+  }
+  const t1 = 2 * l - t2;
+  const rgb = [0, 0, 0];
+  for (let i2 = 0; i2 < 3; i2++) {
+    t3 = h2 + 1 / 3 * -(i2 - 1);
+    if (t3 < 0) {
+      t3++;
+    }
+    if (t3 > 1) {
+      t3--;
+    }
+    if (6 * t3 < 1) {
+      val = t1 + (t2 - t1) * 6 * t3;
+    } else if (2 * t3 < 1) {
+      val = t2;
+    } else if (3 * t3 < 2) {
+      val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
+    } else {
+      val = t1;
+    }
+    rgb[i2] = val * 255;
+  }
+  return rgb;
+};
+convert$1.hsl.hsv = function(hsl) {
+  const h2 = hsl[0];
+  let s2 = hsl[1] / 100;
+  let l = hsl[2] / 100;
+  let smin = s2;
+  const lmin = Math.max(l, 0.01);
+  l *= 2;
+  s2 *= l <= 1 ? l : 2 - l;
+  smin *= lmin <= 1 ? lmin : 2 - lmin;
+  const v2 = (l + s2) / 2;
+  const sv = l === 0 ? 2 * smin / (lmin + smin) : 2 * s2 / (l + s2);
+  return [h2, sv * 100, v2 * 100];
+};
+convert$1.hsv.rgb = function(hsv) {
+  const h2 = hsv[0] / 60;
+  const s2 = hsv[1] / 100;
+  let v2 = hsv[2] / 100;
+  const hi = Math.floor(h2) % 6;
+  const f2 = h2 - Math.floor(h2);
+  const p2 = 255 * v2 * (1 - s2);
+  const q2 = 255 * v2 * (1 - s2 * f2);
+  const t = 255 * v2 * (1 - s2 * (1 - f2));
+  v2 *= 255;
+  switch (hi) {
+    case 0:
+      return [v2, t, p2];
+    case 1:
+      return [q2, v2, p2];
+    case 2:
+      return [p2, v2, t];
+    case 3:
+      return [p2, q2, v2];
+    case 4:
+      return [t, p2, v2];
+    case 5:
+      return [v2, p2, q2];
+  }
+};
+convert$1.hsv.hsl = function(hsv) {
+  const h2 = hsv[0];
+  const s2 = hsv[1] / 100;
+  const v2 = hsv[2] / 100;
+  const vmin = Math.max(v2, 0.01);
+  let sl;
+  let l;
+  l = (2 - s2) * v2;
+  const lmin = (2 - s2) * vmin;
+  sl = s2 * vmin;
+  sl /= lmin <= 1 ? lmin : 2 - lmin;
+  sl = sl || 0;
+  l /= 2;
+  return [h2, sl * 100, l * 100];
+};
+convert$1.hwb.rgb = function(hwb) {
+  const h2 = hwb[0] / 360;
+  let wh = hwb[1] / 100;
+  let bl = hwb[2] / 100;
+  const ratio = wh + bl;
+  let f2;
+  if (ratio > 1) {
+    wh /= ratio;
+    bl /= ratio;
+  }
+  const i2 = Math.floor(6 * h2);
+  const v2 = 1 - bl;
+  f2 = 6 * h2 - i2;
+  if ((i2 & 1) !== 0) {
+    f2 = 1 - f2;
+  }
+  const n = wh + f2 * (v2 - wh);
+  let r;
+  let g2;
+  let b2;
+  switch (i2) {
+    default:
+    case 6:
+    case 0:
+      r = v2;
+      g2 = n;
+      b2 = wh;
+      break;
+    case 1:
+      r = n;
+      g2 = v2;
+      b2 = wh;
+      break;
+    case 2:
+      r = wh;
+      g2 = v2;
+      b2 = n;
+      break;
+    case 3:
+      r = wh;
+      g2 = n;
+      b2 = v2;
+      break;
+    case 4:
+      r = n;
+      g2 = wh;
+      b2 = v2;
+      break;
+    case 5:
+      r = v2;
+      g2 = wh;
+      b2 = n;
+      break;
+  }
+  return [r * 255, g2 * 255, b2 * 255];
+};
+convert$1.cmyk.rgb = function(cmyk) {
+  const c2 = cmyk[0] / 100;
+  const m2 = cmyk[1] / 100;
+  const y2 = cmyk[2] / 100;
+  const k2 = cmyk[3] / 100;
+  const r = 1 - Math.min(1, c2 * (1 - k2) + k2);
+  const g2 = 1 - Math.min(1, m2 * (1 - k2) + k2);
+  const b2 = 1 - Math.min(1, y2 * (1 - k2) + k2);
+  return [r * 255, g2 * 255, b2 * 255];
+};
+convert$1.xyz.rgb = function(xyz) {
+  const x2 = xyz[0] / 100;
+  const y2 = xyz[1] / 100;
+  const z2 = xyz[2] / 100;
+  let r;
+  let g2;
+  let b2;
+  r = x2 * 3.2406 + y2 * -1.5372 + z2 * -0.4986;
+  g2 = x2 * -0.9689 + y2 * 1.8758 + z2 * 0.0415;
+  b2 = x2 * 0.0557 + y2 * -0.204 + z2 * 1.057;
+  r = r > 31308e-7 ? 1.055 * r ** (1 / 2.4) - 0.055 : r * 12.92;
+  g2 = g2 > 31308e-7 ? 1.055 * g2 ** (1 / 2.4) - 0.055 : g2 * 12.92;
+  b2 = b2 > 31308e-7 ? 1.055 * b2 ** (1 / 2.4) - 0.055 : b2 * 12.92;
+  r = Math.min(Math.max(0, r), 1);
+  g2 = Math.min(Math.max(0, g2), 1);
+  b2 = Math.min(Math.max(0, b2), 1);
+  return [r * 255, g2 * 255, b2 * 255];
+};
+convert$1.xyz.lab = function(xyz) {
+  let x2 = xyz[0];
+  let y2 = xyz[1];
+  let z2 = xyz[2];
+  x2 /= 95.047;
+  y2 /= 100;
+  z2 /= 108.883;
+  x2 = x2 > 8856e-6 ? x2 ** (1 / 3) : 7.787 * x2 + 16 / 116;
+  y2 = y2 > 8856e-6 ? y2 ** (1 / 3) : 7.787 * y2 + 16 / 116;
+  z2 = z2 > 8856e-6 ? z2 ** (1 / 3) : 7.787 * z2 + 16 / 116;
+  const l = 116 * y2 - 16;
+  const a = 500 * (x2 - y2);
+  const b2 = 200 * (y2 - z2);
+  return [l, a, b2];
+};
+convert$1.lab.xyz = function(lab) {
+  const l = lab[0];
+  const a = lab[1];
+  const b2 = lab[2];
+  let x2;
+  let y2;
+  let z2;
+  y2 = (l + 16) / 116;
+  x2 = a / 500 + y2;
+  z2 = y2 - b2 / 200;
+  const y22 = y2 ** 3;
+  const x22 = x2 ** 3;
+  const z22 = z2 ** 3;
+  y2 = y22 > 8856e-6 ? y22 : (y2 - 16 / 116) / 7.787;
+  x2 = x22 > 8856e-6 ? x22 : (x2 - 16 / 116) / 7.787;
+  z2 = z22 > 8856e-6 ? z22 : (z2 - 16 / 116) / 7.787;
+  x2 *= 95.047;
+  y2 *= 100;
+  z2 *= 108.883;
+  return [x2, y2, z2];
+};
+convert$1.lab.lch = function(lab) {
+  const l = lab[0];
+  const a = lab[1];
+  const b2 = lab[2];
+  let h2;
+  const hr = Math.atan2(b2, a);
+  h2 = hr * 360 / 2 / Math.PI;
+  if (h2 < 0) {
+    h2 += 360;
+  }
+  const c2 = Math.sqrt(a * a + b2 * b2);
+  return [l, c2, h2];
+};
+convert$1.lch.lab = function(lch) {
+  const l = lch[0];
+  const c2 = lch[1];
+  const h2 = lch[2];
+  const hr = h2 / 360 * 2 * Math.PI;
+  const a = c2 * Math.cos(hr);
+  const b2 = c2 * Math.sin(hr);
+  return [l, a, b2];
+};
+convert$1.rgb.ansi16 = function(args, saturation = null) {
+  const [r, g2, b2] = args;
+  let value = saturation === null ? convert$1.rgb.hsv(args)[2] : saturation;
+  value = Math.round(value / 50);
+  if (value === 0) {
+    return 30;
+  }
+  let ansi = 30 + (Math.round(b2 / 255) << 2 | Math.round(g2 / 255) << 1 | Math.round(r / 255));
+  if (value === 2) {
+    ansi += 60;
+  }
+  return ansi;
+};
+convert$1.hsv.ansi16 = function(args) {
+  return convert$1.rgb.ansi16(convert$1.hsv.rgb(args), args[2]);
+};
+convert$1.rgb.ansi256 = function(args) {
+  const r = args[0];
+  const g2 = args[1];
+  const b2 = args[2];
+  if (r === g2 && g2 === b2) {
+    if (r < 8) {
+      return 16;
+    }
+    if (r > 248) {
+      return 231;
+    }
+    return Math.round((r - 8) / 247 * 24) + 232;
+  }
+  const ansi = 16 + 36 * Math.round(r / 255 * 5) + 6 * Math.round(g2 / 255 * 5) + Math.round(b2 / 255 * 5);
+  return ansi;
+};
+convert$1.ansi16.rgb = function(args) {
+  let color = args % 10;
+  if (color === 0 || color === 7) {
+    if (args > 50) {
+      color += 3.5;
+    }
+    color = color / 10.5 * 255;
+    return [color, color, color];
+  }
+  const mult = (~~(args > 50) + 1) * 0.5;
+  const r = (color & 1) * mult * 255;
+  const g2 = (color >> 1 & 1) * mult * 255;
+  const b2 = (color >> 2 & 1) * mult * 255;
+  return [r, g2, b2];
+};
+convert$1.ansi256.rgb = function(args) {
+  if (args >= 232) {
+    const c2 = (args - 232) * 10 + 8;
+    return [c2, c2, c2];
+  }
+  args -= 16;
+  let rem;
+  const r = Math.floor(args / 36) / 5 * 255;
+  const g2 = Math.floor((rem = args % 36) / 6) / 5 * 255;
+  const b2 = rem % 6 / 5 * 255;
+  return [r, g2, b2];
+};
+convert$1.rgb.hex = function(args) {
+  const integer = ((Math.round(args[0]) & 255) << 16) + ((Math.round(args[1]) & 255) << 8) + (Math.round(args[2]) & 255);
+  const string = integer.toString(16).toUpperCase();
+  return "000000".substring(string.length) + string;
+};
+convert$1.hex.rgb = function(args) {
+  const match = args.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
+  if (!match) {
+    return [0, 0, 0];
+  }
+  let colorString = match[0];
+  if (match[0].length === 3) {
+    colorString = colorString.split("").map((char) => {
+      return char + char;
+    }).join("");
+  }
+  const integer = parseInt(colorString, 16);
+  const r = integer >> 16 & 255;
+  const g2 = integer >> 8 & 255;
+  const b2 = integer & 255;
+  return [r, g2, b2];
+};
+convert$1.rgb.hcg = function(rgb) {
+  const r = rgb[0] / 255;
+  const g2 = rgb[1] / 255;
+  const b2 = rgb[2] / 255;
+  const max = Math.max(Math.max(r, g2), b2);
+  const min = Math.min(Math.min(r, g2), b2);
+  const chroma = max - min;
+  let grayscale;
+  let hue;
+  if (chroma < 1) {
+    grayscale = min / (1 - chroma);
+  } else {
+    grayscale = 0;
+  }
+  if (chroma <= 0) {
+    hue = 0;
+  } else if (max === r) {
+    hue = (g2 - b2) / chroma % 6;
+  } else if (max === g2) {
+    hue = 2 + (b2 - r) / chroma;
+  } else {
+    hue = 4 + (r - g2) / chroma;
+  }
+  hue /= 6;
+  hue %= 1;
+  return [hue * 360, chroma * 100, grayscale * 100];
+};
+convert$1.hsl.hcg = function(hsl) {
+  const s2 = hsl[1] / 100;
+  const l = hsl[2] / 100;
+  const c2 = l < 0.5 ? 2 * s2 * l : 2 * s2 * (1 - l);
+  let f2 = 0;
+  if (c2 < 1) {
+    f2 = (l - 0.5 * c2) / (1 - c2);
+  }
+  return [hsl[0], c2 * 100, f2 * 100];
+};
+convert$1.hsv.hcg = function(hsv) {
+  const s2 = hsv[1] / 100;
+  const v2 = hsv[2] / 100;
+  const c2 = s2 * v2;
+  let f2 = 0;
+  if (c2 < 1) {
+    f2 = (v2 - c2) / (1 - c2);
+  }
+  return [hsv[0], c2 * 100, f2 * 100];
+};
+convert$1.hcg.rgb = function(hcg) {
+  const h2 = hcg[0] / 360;
+  const c2 = hcg[1] / 100;
+  const g2 = hcg[2] / 100;
+  if (c2 === 0) {
+    return [g2 * 255, g2 * 255, g2 * 255];
+  }
+  const pure = [0, 0, 0];
+  const hi = h2 % 1 * 6;
+  const v2 = hi % 1;
+  const w2 = 1 - v2;
+  let mg = 0;
+  switch (Math.floor(hi)) {
+    case 0:
+      pure[0] = 1;
+      pure[1] = v2;
+      pure[2] = 0;
+      break;
+    case 1:
+      pure[0] = w2;
+      pure[1] = 1;
+      pure[2] = 0;
+      break;
+    case 2:
+      pure[0] = 0;
+      pure[1] = 1;
+      pure[2] = v2;
+      break;
+    case 3:
+      pure[0] = 0;
+      pure[1] = w2;
+      pure[2] = 1;
+      break;
+    case 4:
+      pure[0] = v2;
+      pure[1] = 0;
+      pure[2] = 1;
+      break;
+    default:
+      pure[0] = 1;
+      pure[1] = 0;
+      pure[2] = w2;
+  }
+  mg = (1 - c2) * g2;
+  return [
+    (c2 * pure[0] + mg) * 255,
+    (c2 * pure[1] + mg) * 255,
+    (c2 * pure[2] + mg) * 255
+  ];
+};
+convert$1.hcg.hsv = function(hcg) {
+  const c2 = hcg[1] / 100;
+  const g2 = hcg[2] / 100;
+  const v2 = c2 + g2 * (1 - c2);
+  let f2 = 0;
+  if (v2 > 0) {
+    f2 = c2 / v2;
+  }
+  return [hcg[0], f2 * 100, v2 * 100];
+};
+convert$1.hcg.hsl = function(hcg) {
+  const c2 = hcg[1] / 100;
+  const g2 = hcg[2] / 100;
+  const l = g2 * (1 - c2) + 0.5 * c2;
+  let s2 = 0;
+  if (l > 0 && l < 0.5) {
+    s2 = c2 / (2 * l);
+  } else if (l >= 0.5 && l < 1) {
+    s2 = c2 / (2 * (1 - l));
+  }
+  return [hcg[0], s2 * 100, l * 100];
+};
+convert$1.hcg.hwb = function(hcg) {
+  const c2 = hcg[1] / 100;
+  const g2 = hcg[2] / 100;
+  const v2 = c2 + g2 * (1 - c2);
+  return [hcg[0], (v2 - c2) * 100, (1 - v2) * 100];
+};
+convert$1.hwb.hcg = function(hwb) {
+  const w2 = hwb[1] / 100;
+  const b2 = hwb[2] / 100;
+  const v2 = 1 - b2;
+  const c2 = v2 - w2;
+  let g2 = 0;
+  if (c2 < 1) {
+    g2 = (v2 - c2) / (1 - c2);
+  }
+  return [hwb[0], c2 * 100, g2 * 100];
+};
+convert$1.apple.rgb = function(apple) {
+  return [apple[0] / 65535 * 255, apple[1] / 65535 * 255, apple[2] / 65535 * 255];
+};
+convert$1.rgb.apple = function(rgb) {
+  return [rgb[0] / 255 * 65535, rgb[1] / 255 * 65535, rgb[2] / 255 * 65535];
+};
+convert$1.gray.rgb = function(args) {
+  return [args[0] / 100 * 255, args[0] / 100 * 255, args[0] / 100 * 255];
+};
+convert$1.gray.hsl = function(args) {
+  return [0, 0, args[0]];
+};
+convert$1.gray.hsv = convert$1.gray.hsl;
+convert$1.gray.hwb = function(gray) {
+  return [0, 100, gray[0]];
+};
+convert$1.gray.cmyk = function(gray) {
+  return [0, 0, 0, gray[0]];
+};
+convert$1.gray.lab = function(gray) {
+  return [gray[0], 0, 0];
+};
+convert$1.gray.hex = function(gray) {
+  const val = Math.round(gray[0] / 100 * 255) & 255;
+  const integer = (val << 16) + (val << 8) + val;
+  const string = integer.toString(16).toUpperCase();
+  return "000000".substring(string.length) + string;
+};
+convert$1.rgb.gray = function(rgb) {
+  const val = (rgb[0] + rgb[1] + rgb[2]) / 3;
+  return [val / 255 * 100];
+};
+const conversions$1 = conversions$2;
+function buildGraph() {
+  const graph = {};
+  const models2 = Object.keys(conversions$1);
+  for (let len = models2.length, i2 = 0; i2 < len; i2++) {
+    graph[models2[i2]] = {
+      distance: -1,
+      parent: null
+    };
+  }
+  return graph;
+}
+function deriveBFS(fromModel) {
+  const graph = buildGraph();
+  const queue = [fromModel];
+  graph[fromModel].distance = 0;
+  while (queue.length) {
+    const current = queue.pop();
+    const adjacents = Object.keys(conversions$1[current]);
+    for (let len = adjacents.length, i2 = 0; i2 < len; i2++) {
+      const adjacent = adjacents[i2];
+      const node = graph[adjacent];
+      if (node.distance === -1) {
+        node.distance = graph[current].distance + 1;
+        node.parent = current;
+        queue.unshift(adjacent);
+      }
+    }
+  }
+  return graph;
+}
+function link(from, to) {
+  return function(args) {
+    return to(from(args));
+  };
+}
+function wrapConversion(toModel, graph) {
+  const path = [graph[toModel].parent, toModel];
+  let fn = conversions$1[graph[toModel].parent][toModel];
+  let cur = graph[toModel].parent;
+  while (graph[cur].parent) {
+    path.unshift(graph[cur].parent);
+    fn = link(conversions$1[graph[cur].parent][cur], fn);
+    cur = graph[cur].parent;
+  }
+  fn.conversion = path;
+  return fn;
+}
+var route$1 = function(fromModel) {
+  const graph = deriveBFS(fromModel);
+  const conversion = {};
+  const models2 = Object.keys(graph);
+  for (let len = models2.length, i2 = 0; i2 < len; i2++) {
+    const toModel = models2[i2];
+    const node = graph[toModel];
+    if (node.parent === null) {
+      continue;
+    }
+    conversion[toModel] = wrapConversion(toModel, graph);
+  }
+  return conversion;
+};
+const conversions = conversions$2;
+const route = route$1;
+const convert = {};
+const models = Object.keys(conversions);
+function wrapRaw(fn) {
+  const wrappedFn = function(...args) {
+    const arg0 = args[0];
+    if (arg0 === void 0 || arg0 === null) {
+      return arg0;
+    }
+    if (arg0.length > 1) {
+      args = arg0;
+    }
+    return fn(args);
+  };
+  if ("conversion" in fn) {
+    wrappedFn.conversion = fn.conversion;
+  }
+  return wrappedFn;
+}
+function wrapRounded(fn) {
+  const wrappedFn = function(...args) {
+    const arg0 = args[0];
+    if (arg0 === void 0 || arg0 === null) {
+      return arg0;
+    }
+    if (arg0.length > 1) {
+      args = arg0;
+    }
+    const result = fn(args);
+    if (typeof result === "object") {
+      for (let len = result.length, i2 = 0; i2 < len; i2++) {
+        result[i2] = Math.round(result[i2]);
+      }
+    }
+    return result;
+  };
+  if ("conversion" in fn) {
+    wrappedFn.conversion = fn.conversion;
+  }
+  return wrappedFn;
+}
+models.forEach((fromModel) => {
+  convert[fromModel] = {};
+  Object.defineProperty(convert[fromModel], "channels", { value: conversions[fromModel].channels });
+  Object.defineProperty(convert[fromModel], "labels", { value: conversions[fromModel].labels });
+  const routes = route(fromModel);
+  const routeModels = Object.keys(routes);
+  routeModels.forEach((toModel) => {
+    const fn = routes[toModel];
+    convert[fromModel][toModel] = wrapRounded(fn);
+    convert[fromModel][toModel].raw = wrapRaw(fn);
+  });
+});
+var colorConvert = convert;
+var root = _root;
+var now$1 = function() {
+  return root.Date.now();
+};
+var now_1 = now$1;
+var reWhitespace = /\s/;
+function trimmedEndIndex$1(string) {
+  var index = string.length;
+  while (index-- && reWhitespace.test(string.charAt(index))) {
+  }
+  return index;
+}
+var _trimmedEndIndex = trimmedEndIndex$1;
+var trimmedEndIndex = _trimmedEndIndex;
+var reTrimStart = /^\s+/;
+function baseTrim$1(string) {
+  return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, "") : string;
+}
+var _baseTrim = baseTrim$1;
+var baseTrim = _baseTrim, isObject$2 = isObject_1, isSymbol = isSymbol_1;
+var NAN = 0 / 0;
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+var reIsBinary = /^0b[01]+$/i;
+var reIsOctal = /^0o[0-7]+$/i;
+var freeParseInt = parseInt;
+function toNumber$1(value) {
+  if (typeof value == "number") {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject$2(value)) {
+    var other = typeof value.valueOf == "function" ? value.valueOf() : value;
+    value = isObject$2(other) ? other + "" : other;
+  }
+  if (typeof value != "string") {
+    return value === 0 ? value : +value;
+  }
+  value = baseTrim(value);
+  var isBinary = reIsBinary.test(value);
+  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+}
+var toNumber_1 = toNumber$1;
+var isObject$1 = isObject_1, now = now_1, toNumber = toNumber_1;
+var FUNC_ERROR_TEXT$1 = "Expected a function";
+var nativeMax = Math.max, nativeMin = Math.min;
+function debounce$1(func, wait, options) {
+  var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+  if (typeof func != "function") {
+    throw new TypeError(FUNC_ERROR_TEXT$1);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject$1(options)) {
+    leading = !!options.leading;
+    maxing = "maxWait" in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = "trailing" in options ? !!options.trailing : trailing;
+  }
+  function invokeFunc(time) {
+    var args = lastArgs, thisArg = lastThis;
+    lastArgs = lastThis = void 0;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+  function leadingEdge(time) {
+    lastInvokeTime = time;
+    timerId = setTimeout(timerExpired, wait);
+    return leading ? invokeFunc(time) : result;
+  }
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, timeWaiting = wait - timeSinceLastCall;
+    return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
+  }
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+    return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+  }
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+  function trailingEdge(time) {
+    timerId = void 0;
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = void 0;
+    return result;
+  }
+  function cancel() {
+    if (timerId !== void 0) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = void 0;
+  }
+  function flush() {
+    return timerId === void 0 ? result : trailingEdge(now());
+  }
+  function debounced() {
+    var time = now(), isInvoking = shouldInvoke(time);
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+    if (isInvoking) {
+      if (timerId === void 0) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        clearTimeout(timerId);
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === void 0) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+var debounce_1 = debounce$1;
+var debounce = debounce_1, isObject = isObject_1;
+var FUNC_ERROR_TEXT = "Expected a function";
+function throttle(func, wait, options) {
+  var leading = true, trailing = true;
+  if (typeof func != "function") {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  if (isObject(options)) {
+    leading = "leading" in options ? !!options.leading : leading;
+    trailing = "trailing" in options ? !!options.trailing : trailing;
+  }
+  return debounce(func, wait, {
+    "leading": leading,
+    "maxWait": wait,
+    "trailing": trailing
+  });
+}
+var throttle_1 = throttle;
+var Wrapper = emotion_styled_browser_esm_default.div({ position: "relative", maxWidth: 250 }), PickerTooltip = emotion_styled_browser_esm_default(WithTooltip)({ position: "absolute", zIndex: 1, top: 4, left: 4 }), TooltipContent = emotion_styled_browser_esm_default.div({ width: 200, margin: 5, ".react-colorful__saturation": { borderRadius: "4px 4px 0 0" }, ".react-colorful__hue": { boxShadow: "inset 0 0 0 1px rgb(0 0 0 / 5%)" }, ".react-colorful__last-control": { borderRadius: "0 0 4px 4px" } }), Note = emotion_styled_browser_esm_default(TooltipNote)(({ theme }) => ({ fontFamily: theme.typography.fonts.base })), Swatches = emotion_styled_browser_esm_default.div({ display: "grid", gridTemplateColumns: "repeat(9, 16px)", gap: 6, padding: 3, marginTop: 5, width: 200 }), SwatchColor = emotion_styled_browser_esm_default.div(({ theme, active }) => ({ width: 16, height: 16, boxShadow: active ? `${theme.appBorderColor} 0 0 0 1px inset, ${theme.textMutedColor}50 0 0 0 4px` : `${theme.appBorderColor} 0 0 0 1px inset`, borderRadius: theme.appBorderRadius })), swatchBackground = `url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>')`, Swatch = ({ value, active, onClick, style, ...props }) => {
+  let backgroundImage = `linear-gradient(${value}, ${value}), ${swatchBackground}, linear-gradient(#fff, #fff)`;
+  return React.createElement(SwatchColor, { ...props, active, onClick, style: { ...style, backgroundImage } });
+}, Input = emotion_styled_browser_esm_default(Form.Input)(({ theme }) => ({ width: "100%", paddingLeft: 30, paddingRight: 30, boxSizing: "border-box", fontFamily: theme.typography.fonts.base })), ToggleIcon = emotion_styled_browser_esm_default(Icons)(({ theme }) => ({ position: "absolute", zIndex: 1, top: 6, right: 7, width: 20, height: 20, padding: 4, boxSizing: "border-box", cursor: "pointer", color: theme.input.color })), ColorSpace = ((ColorSpace2) => (ColorSpace2.RGB = "rgb", ColorSpace2.HSL = "hsl", ColorSpace2.HEX = "hex", ColorSpace2))(ColorSpace || {}), COLOR_SPACES = Object.values(ColorSpace), COLOR_REGEXP = /\(([0-9]+),\s*([0-9]+)%?,\s*([0-9]+)%?,?\s*([0-9.]+)?\)/, RGB_REGEXP = /^\s*rgba?\(([0-9]+),\s*([0-9]+),\s*([0-9]+),?\s*([0-9.]+)?\)\s*$/i, HSL_REGEXP = /^\s*hsla?\(([0-9]+),\s*([0-9]+)%,\s*([0-9]+)%,?\s*([0-9.]+)?\)\s*$/i, HEX_REGEXP = /^\s*#?([0-9a-f]{3}|[0-9a-f]{6})\s*$/i, SHORTHEX_REGEXP = /^\s*#?([0-9a-f]{3})\s*$/i, ColorPicker = { ["hex"]: Z, ["rgb"]: He, ["hsl"]: ue }, fallbackColor = { ["hex"]: "transparent", ["rgb"]: "rgba(0, 0, 0, 0)", ["hsl"]: "hsla(0, 0%, 0%, 0)" }, stringToArgs = (value) => {
+  let match = value == null ? void 0 : value.match(COLOR_REGEXP);
+  if (!match)
+    return [0, 0, 0, 1];
+  let [, x2, y2, z2, a = 1] = match;
+  return [x2, y2, z2, a].map(Number);
+}, parseValue = (value) => {
+  if (!value)
+    return;
+  let valid = true;
+  if (RGB_REGEXP.test(value)) {
+    let [r, g2, b2, a] = stringToArgs(value), [h2, s2, l] = colorConvert.rgb.hsl([r, g2, b2]) || [0, 0, 0];
+    return { valid, value, keyword: colorConvert.rgb.keyword([r, g2, b2]), colorSpace: "rgb", ["rgb"]: value, ["hsl"]: `hsla(${h2}, ${s2}%, ${l}%, ${a})`, ["hex"]: `#${colorConvert.rgb.hex([r, g2, b2]).toLowerCase()}` };
+  }
+  if (HSL_REGEXP.test(value)) {
+    let [h2, s2, l, a] = stringToArgs(value), [r, g2, b2] = colorConvert.hsl.rgb([h2, s2, l]) || [0, 0, 0];
+    return { valid, value, keyword: colorConvert.hsl.keyword([h2, s2, l]), colorSpace: "hsl", ["rgb"]: `rgba(${r}, ${g2}, ${b2}, ${a})`, ["hsl"]: value, ["hex"]: `#${colorConvert.hsl.hex([h2, s2, l]).toLowerCase()}` };
+  }
+  let plain = value.replace("#", ""), rgb = colorConvert.keyword.rgb(plain) || colorConvert.hex.rgb(plain), hsl = colorConvert.rgb.hsl(rgb), mapped = value;
+  if (/[^#a-f0-9]/i.test(value) ? mapped = plain : HEX_REGEXP.test(value) && (mapped = `#${plain}`), mapped.startsWith("#"))
+    valid = HEX_REGEXP.test(mapped);
+  else
+    try {
+      colorConvert.keyword.hex(mapped);
+    } catch {
+      valid = false;
+    }
+  return { valid, value: mapped, keyword: colorConvert.rgb.keyword(rgb), colorSpace: "hex", ["rgb"]: `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 1)`, ["hsl"]: `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, 1)`, ["hex"]: mapped };
+}, getRealValue = (value, color, colorSpace) => {
+  if (!value || !(color == null ? void 0 : color.valid))
+    return fallbackColor[colorSpace];
+  if (colorSpace !== "hex")
+    return (color == null ? void 0 : color[colorSpace]) || fallbackColor[colorSpace];
+  if (!color.hex.startsWith("#"))
+    try {
+      return `#${colorConvert.keyword.hex(color.hex)}`;
+    } catch {
+      return fallbackColor.hex;
+    }
+  let short = color.hex.match(SHORTHEX_REGEXP);
+  if (!short)
+    return HEX_REGEXP.test(color.hex) ? color.hex : fallbackColor.hex;
+  let [r, g2, b2] = short[1].split("");
+  return `#${r}${r}${g2}${g2}${b2}${b2}`;
+}, useColorInput = (initialValue, onChange) => {
+  let [value, setValue] = react.exports.useState(initialValue || ""), [color, setColor] = react.exports.useState(() => parseValue(value)), [colorSpace, setColorSpace] = react.exports.useState((color == null ? void 0 : color.colorSpace) || "hex");
+  react.exports.useEffect(() => {
+    let nextValue = initialValue || "", nextColor = parseValue(nextValue);
+    setValue(nextValue), setColor(nextColor), setColorSpace((nextColor == null ? void 0 : nextColor.colorSpace) || "hex");
+  }, [initialValue]);
+  let realValue = react.exports.useMemo(() => getRealValue(value, color, colorSpace).toLowerCase(), [value, color, colorSpace]), updateValue = react.exports.useCallback((update) => {
+    let parsed = parseValue(update), v2 = (parsed == null ? void 0 : parsed.value) || update || "";
+    setValue(v2), v2 === "" && (setColor(void 0), onChange(void 0)), parsed && (setColor(parsed), setColorSpace(parsed.colorSpace), onChange(parsed.value));
+  }, [onChange]), cycleColorSpace = react.exports.useCallback(() => {
+    let next = COLOR_SPACES.indexOf(colorSpace) + 1;
+    next >= COLOR_SPACES.length && (next = 0), setColorSpace(COLOR_SPACES[next]);
+    let update = (color == null ? void 0 : color[COLOR_SPACES[next]]) || "";
+    setValue(update), onChange(update);
+  }, [color, colorSpace, onChange]);
+  return { value, realValue, updateValue, color, colorSpace, cycleColorSpace };
+}, id = (value) => value.replace(/\s*/, "").toLowerCase(), usePresets = (presetColors, currentColor, colorSpace) => {
+  let [selectedColors, setSelectedColors] = react.exports.useState((currentColor == null ? void 0 : currentColor.valid) ? [currentColor] : []);
+  react.exports.useEffect(() => {
+    currentColor === void 0 && setSelectedColors([]);
+  }, [currentColor]);
+  let presets = react.exports.useMemo(() => (presetColors || []).map((preset) => typeof preset == "string" ? parseValue(preset) : preset.title ? { ...parseValue(preset.color), keyword: preset.title } : parseValue(preset.color)).concat(selectedColors).filter(Boolean).slice(-27), [presetColors, selectedColors]), addPreset = react.exports.useCallback((color) => {
+    (color == null ? void 0 : color.valid) && (presets.some((preset) => id(preset[colorSpace]) === id(color[colorSpace])) || setSelectedColors((arr) => arr.concat(color)));
+  }, [colorSpace, presets]);
+  return { presets, addPreset };
+}, ColorControl = ({ name, value: initialValue, onChange, onFocus, onBlur, presetColors, startOpen = false }) => {
+  let throttledOnChange = react.exports.useCallback(throttle_1(onChange, 200), [onChange]), { value, realValue, updateValue, color, colorSpace, cycleColorSpace } = useColorInput(initialValue, throttledOnChange), { presets, addPreset } = usePresets(presetColors, color, colorSpace), Picker = ColorPicker[colorSpace];
+  return React.createElement(Wrapper, null, React.createElement(PickerTooltip, { trigger: "click", startOpen, closeOnClick: true, onVisibilityChange: () => addPreset(color), tooltip: React.createElement(TooltipContent, null, React.createElement(Picker, { color: realValue === "transparent" ? "#000000" : realValue, onChange: updateValue, onFocus, onBlur }), presets.length > 0 && React.createElement(Swatches, null, presets.map((preset, index) => React.createElement(WithTooltip, { key: `${preset.value}-${index}`, hasChrome: false, tooltip: React.createElement(Note, { note: preset.keyword || preset.value }) }, React.createElement(Swatch, { value: preset[colorSpace], active: color && id(preset[colorSpace]) === id(color[colorSpace]), onClick: () => updateValue(preset.value) }))))) }, React.createElement(Swatch, { value: realValue, style: { margin: 4 } })), React.createElement(Input, { id: getControlId(name), value, onChange: (e) => updateValue(e.target.value), onFocus: (e) => e.target.select(), placeholder: "Choose color..." }), value ? React.createElement(ToggleIcon, { icon: "markup", onClick: cycleColorSpace }) : null);
+}, Color_default = ColorControl;
+export {
+  ColorControl,
+  Color_default as default
+};
 //# sourceMappingURL=Color-32FDEX32.c17a97af.js.map

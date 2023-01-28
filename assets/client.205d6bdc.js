@@ -1,2 +1,42 @@
-import{r as l}from"./index.31ab949d.js";function u(o,n){for(var a=0;a<n.length;a++){const e=n[a];if(typeof e!="string"&&!Array.isArray(e)){for(const t in e)if(t!=="default"&&!(t in o)){const c=Object.getOwnPropertyDescriptor(e,t);c&&Object.defineProperty(o,t,c.get?c:{enumerable:!0,get:()=>e[t]})}}}return Object.freeze(Object.defineProperty(o,Symbol.toStringTag,{value:"Module"}))}var r={},i,s,f=l.exports;s=r.createRoot=f.createRoot,i=r.hydrateRoot=f.hydrateRoot;const d=u({__proto__:null,get createRoot(){return s},get hydrateRoot(){return i},default:r},[r]);export{d as c};
+import { r as reactDom } from "./index.31ab949d.js";
+function _mergeNamespaces(n, m2) {
+  for (var i = 0; i < m2.length; i++) {
+    const e = m2[i];
+    if (typeof e !== "string" && !Array.isArray(e)) {
+      for (const k in e) {
+        if (k !== "default" && !(k in n)) {
+          const d = Object.getOwnPropertyDescriptor(e, k);
+          if (d) {
+            Object.defineProperty(n, k, d.get ? d : {
+              enumerable: true,
+              get: () => e[k]
+            });
+          }
+        }
+      }
+    }
+  }
+  return Object.freeze(Object.defineProperty(n, Symbol.toStringTag, { value: "Module" }));
+}
+var client$1 = {};
+var hydrateRoot;
+var createRoot;
+var m = reactDom.exports;
+{
+  createRoot = client$1.createRoot = m.createRoot;
+  hydrateRoot = client$1.hydrateRoot = m.hydrateRoot;
+}
+const client = /* @__PURE__ */ _mergeNamespaces({
+  __proto__: null,
+  get createRoot() {
+    return createRoot;
+  },
+  get hydrateRoot() {
+    return hydrateRoot;
+  },
+  default: client$1
+}, [client$1]);
+export {
+  client as c
+};
 //# sourceMappingURL=client.205d6bdc.js.map

@@ -1,2 +1,26 @@
-import{s as i}from"./index.e850844b.js";import"./_getTag.d1b75f35.js";import"./_commonjsHelpers.712cc82f.js";module&&module.hot&&module.hot.decline&&module.hot.decline();var O="links";const r=__STORYBOOK_MODULE_PREVIEW_API__.addons,m=__STORYBOOK_MODULE_PREVIEW_API__.makeDecorator,c=__STORYBOOK_MODULE_CORE_EVENTS__.STORY_CHANGED,d=__STORYBOOK_MODULE_CORE_EVENTS__.SELECT_STORY;var{document:a,HTMLElement:l}=i,L=e=>r.getChannel().emit(d,e),s=e=>{let{target:t}=e;if(!(t instanceof l))return;let E=t,{sbKind:o,sbStory:_}=E.dataset;(o||_)&&(e.preventDefault(),L({kind:o,story:_}))},n=!1,R=()=>{n||(n=!0,a.addEventListener("click",s))},S=()=>{n&&(n=!1,a.removeEventListener("click",s))},T=m({name:"withLinks",parameterName:O,wrapper:(e,t)=>(R(),r.getChannel().once(c,S),e(t))}),D=[T];export{D as decorators};
+import { s as scope } from "./index.e850844b.js";
+import "./_getTag.d1b75f35.js";
+import "./_commonjsHelpers.712cc82f.js";
+module && module.hot && module.hot.decline && module.hot.decline();
+var PARAM_KEY = "links";
+const addons = __STORYBOOK_MODULE_PREVIEW_API__.addons;
+const makeDecorator = __STORYBOOK_MODULE_PREVIEW_API__.makeDecorator;
+const STORY_CHANGED = __STORYBOOK_MODULE_CORE_EVENTS__.STORY_CHANGED;
+const SELECT_STORY = __STORYBOOK_MODULE_CORE_EVENTS__.SELECT_STORY;
+var { document, HTMLElement } = scope;
+var navigate = (params) => addons.getChannel().emit(SELECT_STORY, params), linksListener = (e) => {
+  let { target } = e;
+  if (!(target instanceof HTMLElement))
+    return;
+  let element = target, { sbKind: kind, sbStory: story } = element.dataset;
+  (kind || story) && (e.preventDefault(), navigate({ kind, story }));
+}, hasListener = false, on = () => {
+  hasListener || (hasListener = true, document.addEventListener("click", linksListener));
+}, off = () => {
+  hasListener && (hasListener = false, document.removeEventListener("click", linksListener));
+}, withLinks = makeDecorator({ name: "withLinks", parameterName: PARAM_KEY, wrapper: (getStory, context) => (on(), addons.getChannel().once(STORY_CHANGED, off), getStory(context)) });
+var decorators = [withLinks];
+export {
+  decorators
+};
 //# sourceMappingURL=preview.ea334bcc.js.map
