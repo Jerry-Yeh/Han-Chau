@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { BeakerIcon } from '@heroicons/react/24/outline';
 
 // import {
 //   signInWithGoogle,
@@ -41,17 +42,7 @@ const Login: React.FC<Props> = () => {
   //   };
   // }, []);
 
-  return (
-    <div>
-      {/* <h1 className='text-2xl'>test</h1>
-      <button className='text-heading-xl' onClick={signInWithGoogle}>
-        Sign in with Google
-      </button>
-      <button onClick={signInWithFacebook}>Sign in with Facebook</button>
-      <button onClick={lineAuth}>Sign in with LINE</button>
-      <button onClick={lineAccessToken}>Test</button> */}
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Login;

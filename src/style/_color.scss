@@ -27,9 +27,6 @@
     pressed: 'slate-200',
     disabled: 'slate-50',
     hover: 'slate-100',
-    success: 'emerald-700',
-    destructive: 'rose-700',
-    warning: 'amber-700',
   );
 
   @each $name, $value in $background-config {
@@ -50,12 +47,12 @@
   );
 
   .bg-highlight {
-    @apply #{$highlight};
+    @apply bg-#{$highlight};
   }
 
   @each $name, $value in $background-highlight-config {
-    .bg-#{$name} {
-      @apply bg-highlight-#{$value};
+    .bg-highlight-#{$name} {
+      @apply bg-#{$value};
     }
   }
 
@@ -71,12 +68,12 @@
   );
 
   .bg-success {
-    @apply #{$success};
+    @apply bg-#{$success};
   }
 
   @each $name, $value in $background-success-config {
-    .bg-#{$name} {
-      @apply bg-success-#{$value};
+    .bg-success-#{$name} {
+      @apply bg-#{$value};
     }
   }
 
@@ -92,12 +89,12 @@
   );
 
   .bg-destructive {
-    @apply #{$destructive};
+    @apply bg-#{$destructive};
   }
 
   @each $name, $value in $background-destructive-config {
-    .bg-#{$name} {
-      @apply bg-destructive-#{$value};
+    .bg-destructive-#{$name} {
+      @apply bg-#{$value};
     }
   }
 
@@ -113,12 +110,12 @@
   );
 
   .bg-warning {
-    @apply #{$warning};
+    @apply bg-#{$warning};
   }
 
   @each $name, $value in $background-warning-config {
-    .bg-#{$name} {
-      @apply bg-warning-#{$value};
+    .bg-warning-#{$name} {
+      @apply bg-#{$value};
     }
   }
 

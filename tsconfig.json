@@ -26,6 +26,6 @@
       "~/*": ["src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/stories/Introduction.stories.mdx"],
   "exclude": ["node_modules", "vite.config.ts"]
 }

@@ -1,18 +1,12 @@
-import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { ConfigProvider } from 'antd';
 
 const App = () => {
-  // const [user, setUser] = useState<User | null>(null);
-
-  // useEffect(() => {
-  //   firebase.auth().onAuthStateChanged((user: User | null) => {
-  //     setUser(user);
-  //   });
-  // });
-
-  // console.log(user);
-
-  return <Outlet />;
+  return (
+    <ConfigProvider autoInsertSpaceInButton={false}>
+      <Outlet />
+    </ConfigProvider>
+  );
 };
 
 export default App;
