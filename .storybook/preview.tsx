@@ -1,4 +1,6 @@
-// import '!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { ConfigProvider } from 'antd';
+
 import '../src/style/index.scss';
 
 export const parameters = {
@@ -8,5 +10,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
   },
 };

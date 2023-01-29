@@ -1,0 +1,26 @@
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+  &:focus,
+  &:active,
+  &:hover {
+    @apply border-2 border-active outline-active;
+  }
+
+  @apply border-secondary;
+
+  .ant-input-prefix {
+    @apply me-4;
+  }
+
+  .ant-input-suffix {
+    @apply text-body-bold-s;
+  }
+}
+
+.ant-input,
+.ant-input-affix-wrapper-focused {
+  &:focus,
+  &:active,
+  &:hover {
+    @apply border-2 border-active outline-active;
+  }
+}

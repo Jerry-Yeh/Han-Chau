@@ -10,8 +10,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-rtl')],
   corePlugins: {
     preflight: false,
   },
+  important: true,
 };

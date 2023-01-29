@@ -1,7 +1,8 @@
-import { Outlet } from 'react-router-dom';
+import React from 'react';
 import { ConfigProvider } from 'antd';
+import { StoryFn } from '@storybook/react';
 
-const App = () => {
+const AntdDecorator = (Story: StoryFn) => {
   return (
     <ConfigProvider
       autoInsertSpaceInButton={false}
@@ -12,9 +13,9 @@ const App = () => {
         hashed: false,
       }}
     >
-      <Outlet />
+      <Story />
     </ConfigProvider>
   );
 };
 
-export default App;
+export default AntdDecorator;

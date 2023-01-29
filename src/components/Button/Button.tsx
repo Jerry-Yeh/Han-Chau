@@ -83,7 +83,6 @@ HCButton.defaultProps = {
   color: 'primary',
   disabled: false,
   block: true,
-  
 };
 
 export default HCButton;

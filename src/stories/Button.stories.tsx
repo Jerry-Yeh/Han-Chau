@@ -23,7 +23,7 @@ export default {
         'warning',
         'warning-light',
       ],
-      description: 'Adjust background color',
+      description: 'Adjust background color.',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'primary' },
@@ -31,7 +31,7 @@ export default {
     },
     children: {
       control: 'text',
-      description: 'Content in button',
+      description: 'Content in button.',
       defaultValue: { summary: 'Button' },
       table: {
         type: { summary: 'any' },
@@ -39,7 +39,7 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Disabled state of button',
+      description: 'Disabled state of button.',
       defaultValue: { summary: false },
       table: {
         type: { summary: 'boolean' },

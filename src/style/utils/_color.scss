@@ -140,8 +140,19 @@
     }
   }
 
-  /* Border */
+  /* Border、Outline & Ring */
   $border-config: (
+    primary: 'slate-400',
+    secondary: 'slate-200',
+    disabled: 'slate-300',
+    onColor: 'white',
+    hover: 'slate-500',
+    pressed: 'slate-600',
+    active: 'teal-500',
+    destructive: 'rose-500',
+  );
+
+  $outline-config: (
     primary: 'slate-400',
     secondary: 'slate-200',
     disabled: 'slate-300',
@@ -160,6 +171,12 @@
   @each $name, $value in $border-config {
     .border-#{$name} {
       @apply border-#{$value};
+    }
+  }
+
+  @each $name, $value in $outline-config {
+    .outline-#{$name} {
+      @apply outline-#{$value};
     }
   }
 
