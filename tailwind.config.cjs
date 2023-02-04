@@ -8,11 +8,14 @@ module.exports = {
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
       },
+      transitionProperty: {
+        border: 'border',
+      },
     },
   },
   plugins: [require('tailwindcss-rtl')],
   corePlugins: {
-    preflight: false,
+    // preflight: false,
   },
   important: true,
 };
