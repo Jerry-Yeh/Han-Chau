@@ -1,4 +1,4 @@
-import { _ as __vitePreload } from "./iframe.f7ec9901.js";
+import { _ as __vitePreload } from "./iframe.183c8338.js";
 import { s as scope } from "./index.e850844b.js";
 import { R as React, r as react } from "./index.2e2f892a.js";
 import { r as reactDom, R as ReactDOM } from "./index.36b4d5ff.js";
@@ -11609,4 +11609,4 @@ export {
   render,
   renderToCanvas
 };
-//# sourceMappingURL=config.9eaa3510.js.map
+//# sourceMappingURL=config.6fad75dc.js.map

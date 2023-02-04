@@ -107,6 +107,7 @@ body {
 }
 /* Icon */
 /* Border、Outline & Ring */
+/* Accent */
 *, ::before, ::after{
     --tw-border-spacing-x: 0;
     --tw-border-spacing-y: 0;
@@ -289,6 +290,78 @@ body {
     border-color: rgb(20 184 166 / var(--tw-border-opacity));
     outline-color: #14b8a6;
     border-width: 2px;
+}
+.radio{
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgb(226 232 240 / var(--tw-border-opacity));
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    height: 3rem;
+    width: 100%;
+    align-items: center;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 1rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 100ms;
+}
+.radio:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgb(100 116 139 / var(--tw-border-opacity));
+    border-width: 2px;
+}
+.radio input[type=radio]{
+    accent-color: #475569;
+    margin-right: 1rem;
+    height: 1rem;
+    width: 1rem;
+}
+.radio label{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    padding-left: 2rem;
+}
+.radio label:hover{
+    cursor: pointer;
+}
+.radio:has(> input[type=radio]:checked){
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 253 250 / var(--tw-bg-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgb(20 184 166 / var(--tw-border-opacity));
+    border-width: 2px;
+}
+.radio:has(> input[type=radio]:checked) input[type=radio]{
+    accent-color: #14b8a6;
+}
+.radio:has(> input[type=radio][disabled]){
+    --tw-text-opacity: 1;
+    color: rgb(203 213 225 / var(--tw-text-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgb(203 213 225 / var(--tw-border-opacity));
+}
+.radio:has(> input[type=radio][disabled]) label:hover{
+    cursor: not-allowed;
+}
+.radio-group{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
 }
 .hover\:bg-hover:hover{
     --tw-bg-opacity: 1;
