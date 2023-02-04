@@ -1,5 +1,5 @@
-import { S, c, s } from "./chunk-MA2MUXQN.e2a605a8.js";
-import "./iframe.183c8338.js";
+import { S, c, s } from "./chunk-MA2MUXQN.efbcfd4c.js";
+import "./iframe.bff41132.js";
 import "../sb-preview/runtime.mjs";
 import "./index.2e2f892a.js";
 import "./_commonjsHelpers.712cc82f.js";
@@ -13,4 +13,4 @@ export {
   c as createCopyToClipboardFunction,
   s as default
 };
-//# sourceMappingURL=syntaxhighlighter-6JBF4TYN.d87da925.js.map
+//# sourceMappingURL=syntaxhighlighter-6JBF4TYN.e4a60d36.js.map
