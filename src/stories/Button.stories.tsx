@@ -50,14 +50,25 @@ export default {
 
 type Story = StoryObj<typeof HCButton>;
 
-export const Basic: Story = {};
-Basic.args = {
-  color: 'primary',
-  children: 'Button',
-  disabled: false,
+export const Basic: Story = {
+  args: {
+    color: 'primary',
+    children: 'Button',
+    disabled: false,
+  },
 };
 
 export const Icon: Story = {
+  args: {
+    color: 'highlight',
+    disabled: false,
+    children: (
+      <Fragment>
+        <span className='mr-2'>Button</span>
+        <ArrowSmallRightIcon className='h-6 w-6' />
+      </Fragment>
+    ),
+  },
   // render: () => (
   //   <HCButton color='highlight'>
   //     <span className='mr-2'>Button</span>
@@ -65,25 +76,3 @@ export const Icon: Story = {
   //   </HCButton>
   // ),
 };
-Icon.args = {
-  color: 'highlight',
-  disabled: false,
-  children: (
-    <Fragment>
-      <span className='mr-2'>Button</span>
-      <ArrowSmallRightIcon className='h-6 w-6' />
-    </Fragment>
-  ),
-};
-
-// export const Large = meta.bind({});
-// Large.args = {
-//   size: 'large',
-//   label: 'Button',
-// };
-
-// export const Small = meta.bind({});
-// Small.args = {
-//   size: 'small',
-//   label: 'Button',
-// };

@@ -24,6 +24,12 @@
     }
   }
 
+  .ant-picker-date-panel {
+    .ant-picker-body {
+      // @apply px-6;
+    }
+  }
+
   .ant-picker-cell {
     .ant-picker-cell-inner {
       @apply text-body-s hover:bg-tertiary;

@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import HCRadio from '~/components/Radio';
+import { HCRadio, HCRadioGroup } from '~/components/Radio';
 
 export default {
   title: 'Components/RadioGroup',
   component: HCRadio,
+  parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
     value: {
       control: 'text',
@@ -24,16 +25,16 @@ export default {
   },
 } as Meta<typeof HCRadio>;
 
-type Story = StoryObj<typeof HCRadio.Group>;
+type Story = StoryObj<typeof HCRadioGroup>;
 
 export const Basic: Story = {
   args: {
     value: '1',
   },
   render: () => (
-    <HCRadio.Group>
+    <HCRadioGroup>
       <HCRadio label='caption1' value='1' />
       <HCRadio label='caption2' value='2' />
-    </HCRadio.Group>
+    </HCRadioGroup>
   ),
 };

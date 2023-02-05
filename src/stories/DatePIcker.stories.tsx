@@ -4,22 +4,53 @@ import HCDatePicker from '~/components/DatePicker';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 
 import type { DatePickerProps } from '~/components/DatePicker';
+import dayjs from 'dayjs';
 
 export default {
   title: 'Components/DatePicker',
   component: HCDatePicker,
   decorators: [AntdDecorator],
-  argTypes: {},
+  parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
+  argTypes: {
+    // picker: {
+    //   control: 'select',
+    //   options: ['date', 'week', 'month', 'quarter', 'year'],
+    //   description: 'Set picker type.',
+    //   table: {
+    //     type: { summary: 'string' },
+    //     defaultValue: { summary: 'date' },
+    //   },
+    // },
+    disabled: {
+      control: 'boolean',
+      description: 'Determine whether the DatePicker is disabled.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    disabledDate: {
+      control: false,
+      action: 'clicked',
+      description: 'Specify the date that cannot be selected.',
+      table: {
+        type: { summary: '(currentDate: dayjs) => boolean' },
+      },
+    },
+  },
 } as Meta<typeof HCDatePicker>;
 
 type Story = StoryObj<typeof HCDatePicker>;
 
 export const Basic: Story = {
-  render: () => {
-    const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-      console.log(date, dateString);
-    };
+  args: {
+    disabled: false,
+  },
+};
 
-    return <HCDatePicker onChange={onChange} />;
+export const DisabledDate: Story = {
+  args: {
+    disabled: false,
+    disabledDate: (current) => current && current < dayjs().endOf('day'),
   },
 };

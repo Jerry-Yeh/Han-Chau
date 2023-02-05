@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import HCRadio from '~/components/Radio';
+import { HCRadio } from '~/components/Radio';
 
 export default {
   title: 'Components/Radio',

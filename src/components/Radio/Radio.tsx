@@ -4,7 +4,7 @@ import RadioGroupContext from './context';
 
 import type { RadioProps, InputChangeEvent } from './interface';
 
-const Radio: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = (
+const HCRadio: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = (
   props: RadioProps,
   ref,
 ) => {
@@ -36,4 +36,4 @@ const Radio: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = (
   );
 };
 
-export default React.forwardRef(Radio);
+export default React.forwardRef(HCRadio);

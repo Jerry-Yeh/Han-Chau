@@ -4,7 +4,7 @@ import { RadioGroupContextProvider } from './context';
 
 import type { GroupProps, InputChangeEvent } from './interface';
 
-const Group: React.FC<GroupProps> = (props: GroupProps) => {
+const HCRadioGroup: React.FC<GroupProps> = (props: GroupProps) => {
   const [value, setValue] = useState<any>();
 
   const onRadioChange = (e: InputChangeEvent) => {
@@ -25,4 +25,4 @@ const Group: React.FC<GroupProps> = (props: GroupProps) => {
   );
 };
 
-export default Group;
+export default HCRadioGroup;

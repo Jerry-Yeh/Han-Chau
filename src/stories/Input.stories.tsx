@@ -7,6 +7,7 @@ export default {
   title: 'Components/Input',
   component: HCInput,
   decorators: [AntdDecorator],
+  parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
     label: {
       control: 'text',
@@ -58,8 +59,13 @@ export default {
 
 type Story = StoryObj<typeof HCInput>;
 
-export const Basic: Story = {};
-Basic.args = {
-  label: 'caption',
-  disabled: false,
+export const Basic: Story = {
+  args: {
+    label: 'caption',
+    disabled: false,
+  },
 };
+// Basic.args = {
+//   label: 'caption',
+//   disabled: false,
+// };
