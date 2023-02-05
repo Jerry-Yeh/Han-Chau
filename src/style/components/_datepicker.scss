@@ -1,0 +1,60 @@
+.ant-picker {
+  @apply w-full h-12 px-4
+    rounded-lg hover:border-hover;
+
+  &.ant-picker-focused {
+    @apply border-active;
+  }
+}
+
+.ant-picker-dropdown {
+  .ant-picker-header-view {
+    @apply flex justify-center items-center;
+
+    button + button {
+      @apply ml-3;
+    }
+
+    button {
+      @apply text-body-bold-m;
+
+      &:hover {
+        @apply text-inherit;
+      }
+    }
+  }
+
+  .ant-picker-cell {
+    .ant-picker-cell-inner {
+      @apply text-body-s hover:bg-tertiary;
+    }
+
+    &:is(.ant-picker-dropdown .ant-picker-cell-today) {
+      .ant-picker-cell-inner {
+        @apply text-present text-body-bold-s;
+
+        &::before {
+          @apply border-0;
+        }
+      }
+    }
+
+    &:is(.ant-picker-dropdown .ant-picker-cell-selected) {
+      .ant-picker-cell-inner {
+        @apply text-highlight text-body-bold-s bg-inherit;
+      }
+    }
+
+    &.ant-picker-cell-disabled {
+      @apply hover:cursor-not-allowed;
+
+      &::before {
+        @apply bg-inherit;
+      }
+    }
+  }
+
+  .ant-picker-footer {
+    @apply hidden;
+  }
+}
