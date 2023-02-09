@@ -21,21 +21,20 @@ export default {
       description: 'A short hint that describes the expected value of an input field.',
       table: {
         type: { summary: 'string' },
-        // defaultValue: { summary: 'placeholder' },
       },
     },
     prefix: {
-      control: 'text',
+      control: false,
       description: 'The prefix icon or text for the input field.',
       table: {
-        type: { summary: 'ReactNode | string' },
+        type: { summary: 'ReactNode' },
       },
     },
     suffix: {
-      control: 'text',
+      control: false,
       description: 'The suffix icon or text for the input field.',
       table: {
-        type: { summary: 'ReactNode | string' },
+        type: { summary: 'ReactNode' },
       },
     },
     type: {

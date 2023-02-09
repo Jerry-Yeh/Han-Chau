@@ -10,8 +10,8 @@ interface Props {
   value: Ref<InputRef>;
   type?: string;
   placeholder?: string;
-  prefix?: string | ReactNode;
-  suffix?: string | ReactNode;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
   disabled?: boolean;
 }
 

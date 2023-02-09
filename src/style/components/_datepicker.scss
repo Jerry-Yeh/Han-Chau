@@ -37,7 +37,7 @@
 
     &:is(.ant-picker-dropdown .ant-picker-cell-today) {
       .ant-picker-cell-inner {
-        @apply text-present text-body-bold-s;
+        @apply text-highlight text-body-bold-s;
 
         &::before {
           @apply border-0;
@@ -46,6 +46,7 @@
     }
 
     &:is(.ant-picker-dropdown .ant-picker-cell-selected) {
+      @apply text-body-bold-s bg-highlight-light;
       .ant-picker-cell-inner {
         @apply text-highlight text-body-bold-s bg-inherit;
       }

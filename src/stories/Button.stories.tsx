@@ -34,7 +34,7 @@ export default {
       description: 'Content in button.',
       defaultValue: { summary: 'Button' },
       table: {
-        type: { summary: 'any' },
+        type: { summary: 'ReactNode' },
       },
     },
     disabled: {
