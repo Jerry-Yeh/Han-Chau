@@ -1,14 +1,14 @@
-import { e as emotion_styled_browser_esm_default, W as WithTooltip, T as TooltipNote, F as Form, I as Icons, g as getControlId } from "./DocsRenderer-QMFTTPNP.9a430647.js";
+import { e as emotion_styled_browser_esm_default, W as WithTooltip, T as TooltipNote, F as Form, I as Icons, g as getControlId } from "./DocsRenderer-QMFTTPNP.21a4e8b6.js";
 import { R as React, r as react } from "./index.2e2f892a.js";
 import { w as _root, m as isObject_1, n as isSymbol_1 } from "./_baseToString.8c140835.js";
-import "./iframe.d3d7fcd1.js";
+import "./iframe.e65413c7.js";
 import "../sb-preview/runtime.mjs";
 import "./index.36b4d5ff.js";
 import "./_commonjsHelpers.712cc82f.js";
 import "./index.e850844b.js";
 import "./_getPrototype.41fab05a.js";
 import "./extends.8d0a382a.js";
-import "./preview.df1e7136.js";
+import "./preview.6da0ae8b.js";
 function u() {
   return (u = Object.assign || function(e) {
     for (var r = 1; r < arguments.length; r++) {
@@ -1373,4 +1373,4 @@ export {
   ColorControl,
   Color_default as default
 };
-//# sourceMappingURL=Color-32FDEX32.73adb9a5.js.map
+//# sourceMappingURL=Color-32FDEX32.aaf07bc7.js.map

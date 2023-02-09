@@ -2,7 +2,8 @@ var _a;
 import { r as react, R as React } from "./index.2e2f892a.js";
 import { c as classNames } from "./index.0579b088.js";
 import { a as jsxs, j as jsx, F as Fragment } from "./jsx-runtime.db436af5.js";
-import { i as index, p as _inherits, q as _createSuper, a as _classCallCheck, _ as _createClass, s as supportRef, h as composeRef, d as _objectSpread2, r as findDOMNode, Z as toArray, N as AntdIcon, v as ConfigContext, $ as useStyle, Q as FormItemInputContext, b as _defineProperty, j as _typeof, o as _objectWithoutProperties, t as useMergedState, f as _slicedToArray, a0 as omit, z as _toConsumableArray, O as useCompactItemContext, S as SizeContext, P as DisabledContext, X as getMergedStatus, a1 as NoCompactStyle, a2 as NoFormStyle, W as getStatusClassNames, V as CloseCircleFilled, a3 as cloneElement, M as Button, u as useLayoutEffect, w as wrapperRaf, Y as AntdDecorator } from "./AntdDecorator.93551762.js";
+import { l as _inherits, m as _createSuper, a as _classCallCheck, _ as _createClass, d as _objectSpread2, I as toArray, C as ConfigContext, b as _defineProperty, g as _typeof, k as _objectWithoutProperties, f as _slicedToArray, p as _toConsumableArray, S as SizeContext, D as DisabledContext, A as AntdDecorator } from "./AntdDecorator.5606f600.js";
+import { i as index, s as supportRef, c as composeRef, f as findDOMNode, A as AntdIcon, r as useStyle, F as FormItemInputContext, d as useMergedState, t as omit, n as useCompactItemContext, q as getMergedStatus, N as NoCompactStyle, v as NoFormStyle, p as getStatusClassNames, o as CloseCircleFilled, x as cloneElement, B as Button, u as useLayoutEffect, w as wrapperRaf } from "./index.222549b6.js";
 import { _ as _extends } from "./extends.8d0a382a.js";
 import "./_commonjsHelpers.712cc82f.js";
 import "./index.36b4d5ff.js";
@@ -1546,20 +1547,20 @@ const Input_stories = {
       }
     },
     prefix: {
-      control: "text",
+      control: false,
       description: "The prefix icon or text for the input field.",
       table: {
         type: {
-          summary: "ReactNode | string"
+          summary: "ReactNode"
         }
       }
     },
     suffix: {
-      control: "text",
+      control: false,
       description: "The suffix icon or text for the input field.",
       table: {
         type: {
-          summary: "ReactNode | string"
+          summary: "ReactNode"
         }
       }
     },
@@ -1608,4 +1609,4 @@ export {
   __namedExportsOrder,
   Input_stories as default
 };
-//# sourceMappingURL=Input.stories.d4add890.js.map
+//# sourceMappingURL=Input.stories.299d2661.js.map

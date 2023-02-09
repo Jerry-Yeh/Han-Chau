@@ -1,5 +1,5 @@
-import { _ as __commonJS, a as __toESM, m as memoize } from "./DocsRenderer-QMFTTPNP.9a430647.js";
-import "./iframe.d3d7fcd1.js";
+import { _ as __commonJS, a as __toESM, m as memoize } from "./DocsRenderer-QMFTTPNP.21a4e8b6.js";
+import "./iframe.e65413c7.js";
 import "../sb-preview/runtime.mjs";
 import "./index.2e2f892a.js";
 import "./_commonjsHelpers.712cc82f.js";
@@ -8,7 +8,7 @@ import "./index.e850844b.js";
 import "./_baseToString.8c140835.js";
 import "./_getPrototype.41fab05a.js";
 import "./extends.8d0a382a.js";
-import "./preview.df1e7136.js";
+import "./preview.6da0ae8b.js";
 var require_parser_html = __commonJS({ "node_modules/prettier/parser-html.js"(exports, module) {
   (function(e) {
     if (typeof exports == "object" && typeof module == "object")
@@ -14423,4 +14423,4 @@ var formatter = memoize(2)((type, source) => type === false ? source : type === 
 export {
   formatter
 };
-//# sourceMappingURL=formatter-GBS43WFC.ae1488d3.js.map
+//# sourceMappingURL=formatter-GBS43WFC.8cab6dd0.js.map

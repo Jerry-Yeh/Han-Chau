@@ -91,7 +91,7 @@ const Button_stories = {
       },
       table: {
         type: {
-          summary: "any"
+          summary: "ReactNode"
         }
       }
     },
@@ -151,4 +151,4 @@ export {
   __namedExportsOrder,
   Button_stories as default
 };
-//# sourceMappingURL=Button.stories.50dc3676.js.map
+//# sourceMappingURL=Button.stories.14f33dc6.js.map
