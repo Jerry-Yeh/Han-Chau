@@ -2,7 +2,7 @@
   &:focus,
   &:active,
   &:hover {
-    @apply border-2 border-active outline-active;
+    @apply border-active outline-active;
   }
 
   @apply border-secondary;
@@ -21,6 +21,6 @@
   &:focus,
   &:active,
   &:hover {
-    @apply border-2 border-active outline-active;
+    @apply border-active outline-active;
   }
 }

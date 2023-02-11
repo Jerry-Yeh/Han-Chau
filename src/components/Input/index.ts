@@ -1,6 +1,5 @@
 import HCInput from './Input';
-import { InputRef } from 'antd';
 
-export type InputType = InputRef;
+export type { InputRef } from 'antd';
 
 export default HCInput;

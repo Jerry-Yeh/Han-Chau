@@ -1,4 +1,13 @@
 {
-  "hello": "hello!!!",
-  "tag": "Tag"
+  "tag": "Tag",
+  "skip": "Skip",
+  "next-step": "Next Step",
+  "height-heading": "",
+  "height-subheading": "",
+  "height": "Height",
+  "weight-heading": "",
+  "weight-subheading": "",
+  "weight": "Weight",
+  "male": "Male",
+  "female": "Female"
 }

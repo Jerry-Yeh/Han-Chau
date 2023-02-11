@@ -10,18 +10,18 @@ export default {
   decorators: [AntdDecorator],
   parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
-    left: {
+    toPrev: {
       control: false,
-      description: 'Left action of header.',
+      description: 'Handle previous action of header.',
       table: {
-        type: { summary: 'ReactNode' },
+        type: { summary: 'function' },
       },
     },
-    right: {
+    toNext: {
       control: false,
-      description: 'Left action of header.',
+      description: 'Handle next action of header.',
       table: {
-        type: { summary: 'ReactNode' },
+        type: { summary: 'function' },
       },
     },
     fractionClass: {
@@ -37,23 +37,23 @@ type Story = StoryObj<typeof HCHeader>;
 
 export const Basic: Story = {};
 
-export const Left: Story = {
+export const Previous: Story = {
   args: {
-    left: <ArrowLeftIcon className='w-8 h-8' />,
+    toPrev: () => ({}),
   },
 };
 
-export const Right: Story = {
+export const Next: Story = {
   args: {
-    left: <ArrowLeftIcon className='w-8 h-8' />,
-    right: <span className='text-tertiary text-body-bold-s'>跳過</span>,
+    toPrev: () => ({}),
+    toNext: () => ({}),
   },
 };
 
 export const Progress: Story = {
   args: {
-    left: <ArrowLeftIcon className='w-8 h-8' />,
-    right: <span className='text-tertiary text-body-bold-s'>跳過</span>,
+    toPrev: () => ({}),
+    toNext: () => ({}),
     fractionClass: 'w-1/9',
   },
 };

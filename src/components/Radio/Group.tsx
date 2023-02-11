@@ -9,10 +9,11 @@ const HCRadioGroup: React.FC<GroupProps> = (props: GroupProps) => {
 
   const onRadioChange = (e: InputChangeEvent) => {
     setValue(e.target.value);
+    props.onChange && props.onChange(e);
   };
 
   return (
-    <div className='radio-group'>
+    <div className={`${props.className} radio-group`}>
       <RadioGroupContextProvider
         value={{
           onChange: onRadioChange,

@@ -1,5 +1,5 @@
-import React, { Fragment, ReactNode, Ref } from 'react';
-import { Input, InputRef } from 'antd';
+import React, { Fragment, ReactNode } from 'react';
+import { Input } from 'antd';
 import classNames from 'classnames';
 
 // import classes from './Input.module.scss';
@@ -7,12 +7,13 @@ import classNames from 'classnames';
 interface Props {
   className?: string;
   label?: string;
-  value: Ref<InputRef>;
   type?: string;
   placeholder?: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
   disabled?: boolean;
+  value: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const HCInput: React.FC<Props> = (props: Props) => {
@@ -29,7 +30,7 @@ const HCInput: React.FC<Props> = (props: Props) => {
       )}
       <Input
         id={props.label}
-        ref={props.value}
+        value={props.value}
         type={props.type}
         placeholder={props.placeholder}
         prefix={props.prefix}
@@ -42,6 +43,7 @@ const HCInput: React.FC<Props> = (props: Props) => {
           text-body-s
           h-12
           rounded-lg`}
+        onChange={props.onChange}
       />
     </Fragment>
   );

@@ -1,4 +1,13 @@
 {
-  "hello": "你好!",
-  "tag": "標籤"
+  "tag": "標籤",
+  "skip": "跳過",
+  "next-step": "下一步",
+  "height-heading": "你的身高多少呢？",
+  "height-subheading": "填入你的身高能夠幫助我們計算適合你的運動量&攝取量",
+  "height": "身高",
+  "weight-heading": "你的體重多少呢？",
+  "weight-subheading": "填入你的體重能夠幫助我們計算適合你的運動量&攝取量",
+  "weight": "體重",
+  "male": "男",
+  "female": "女"
 }

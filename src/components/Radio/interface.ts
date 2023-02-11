@@ -53,6 +53,7 @@ export interface GroupProps {
   onChange?: (e: InputChangeEvent) => void;
   value?: any;
   disabled?: boolean;
+  className?: string;
 }
 
 export interface RadioGroupContextProps {

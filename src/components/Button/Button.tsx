@@ -19,6 +19,7 @@ interface Props {
   disabled?: boolean;
   block?: boolean;
   textColor?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const HCButton: React.FC<Props> = (props: Props) => {
@@ -72,6 +73,8 @@ const HCButton: React.FC<Props> = (props: Props) => {
         transition-colors
         rounded-lg
         flex justify-center items-center`}
+      disabled={props.disabled}
+      onClick={props.onClick}
     >
       {props.children}
     </button>
