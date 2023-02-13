@@ -3,7 +3,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import HCDatePicker from '~/components/DatePicker';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 
-import type { DatePickerProps } from '~/components/DatePicker';
 import dayjs from 'dayjs';
 
 export default {
@@ -12,6 +11,13 @@ export default {
   decorators: [AntdDecorator],
   parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
+    value: {
+      control: false,
+      description: 'To set date.',
+      table: {
+        type: { summary: 'Dayjs' },
+      },
+    },
     // picker: {
     //   control: 'select',
     //   options: ['date', 'week', 'month', 'quarter', 'year'],

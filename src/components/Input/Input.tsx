@@ -2,8 +2,6 @@ import React, { Fragment, ReactNode } from 'react';
 import { Input } from 'antd';
 import classNames from 'classnames';
 
-// import classes from './Input.module.scss';
-
 interface Props {
   className?: string;
   label?: string;
@@ -12,7 +10,7 @@ interface Props {
   prefix?: ReactNode;
   suffix?: ReactNode;
   disabled?: boolean;
-  value: string;
+  value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -30,7 +28,7 @@ const HCInput: React.FC<Props> = (props: Props) => {
       )}
       <Input
         id={props.label}
-        value={props.value}
+        value={props.value || ''}
         type={props.type}
         placeholder={props.placeholder}
         prefix={props.prefix}

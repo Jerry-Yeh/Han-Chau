@@ -1,15 +1,18 @@
 import React from 'react';
 import { DatePicker } from 'antd';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 import type { DatePickerProps } from 'antd';
 import type { RangePickerProps } from 'antd/es/date-picker';
+import type { Nullable } from '~/typings/utils';
 
 interface Props {
+  className?: string;
+  value?: Nullable<Dayjs>;
   picker?: 'date' | 'week' | 'month' | 'quarter' | 'year';
   disabled?: boolean;
   disabledDate?: RangePickerProps['disabledDate'];
-  onChange: DatePickerProps['onChange'];
+  onChange?: DatePickerProps['onChange'];
 }
 
 const HCDatePicker: React.FC<Props> = (props: Props) => {
@@ -24,6 +27,8 @@ const HCDatePicker: React.FC<Props> = (props: Props) => {
       format='YYYY/MM/DD'
       placeholder='YYYY / MM / DD'
       disabledDate={props.disabledDate}
+      onChange={props.onChange}
+      showToday={false}
     />
   );
 };

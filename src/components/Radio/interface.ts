@@ -1,5 +1,7 @@
 import { ChangeEvent } from 'react';
 
+import type { Item } from '~/typings/utils';
+
 export type RadioGroupOptionType = 'default' | 'button';
 
 export interface AbstractCheckboxProps<T> {
@@ -60,6 +62,10 @@ export interface RadioGroupContextProps {
   onChange?: (e: InputChangeEvent) => void;
   value: any;
   disabled?: boolean;
+}
+
+export interface RadioItem extends Item {
+  content?: string;
 }
 
 export type InputChangeEvent = ChangeEvent<HTMLInputElement>;

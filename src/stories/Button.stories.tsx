@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { ArrowSmallRightIcon } from '@heroicons/react/20/solid';
 
 import HCButton from '~/components/Button';
+import google from '~/assets/img/google.svg';
 
 export default {
   title: 'Components/Button',
@@ -45,6 +45,14 @@ export default {
         type: { summary: 'boolean' },
       },
     },
+    next: {
+      control: 'boolean',
+      description: 'Set the next icon of button.',
+      defaultValue: { summary: false },
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
   },
 } as Meta<typeof HCButton>;
 
@@ -55,24 +63,27 @@ export const Basic: Story = {
     color: 'primary',
     children: 'Button',
     disabled: false,
+    next: false,
   },
 };
 
-export const Icon: Story = {
+export const Next: Story = {
   args: {
     color: 'highlight',
     disabled: false,
+    next: true,
     children: (
       <Fragment>
-        <span className='mr-2'>Button</span>
-        <ArrowSmallRightIcon className='h-6 w-6' />
+        <span>Button</span>
       </Fragment>
     ),
   },
-  // render: () => (
-  //   <HCButton color='highlight'>
-  //     <span className='mr-2'>Button</span>
-  //     <ArrowSmallRightIcon className='h-6 w-6' />
-  //   </HCButton>
-  // ),
+};
+
+export const Prefix: Story = {
+  args: {
+    color: 'primary',
+    prefix: <img src={google} alt='icon' />,
+    children: <span>繼續以 Google 登入</span>,
+  },
 };

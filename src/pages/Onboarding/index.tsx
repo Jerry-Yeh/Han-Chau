@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Outlet, useOutletContext } from 'react-router-dom';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 
 import HCHeader from '~/components/Header';
 
-import type { ContextType } from './interface';
+import type { ContextType, User } from './interface';
+import HCProgress from '~/components/Progress';
 
 interface Props {
   children?: React.ReactNode;
@@ -16,30 +19,63 @@ export const useUser = () => {
 const Onboarding: React.FC<Props> = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
 
   /** Data */
-  const [user, setUser] = useState({
-    height: '',
-    weight: '',
+  const [user, setUser] = useState<User>({
     gender: '',
+    name: '',
+    login: '',
   });
 
   /** Path & Style */
   const [prevPath, setPrevPath] = useState('');
-  const [headerFractionClass, setHeaderFractionClass] = useState('');
+  const [nextPath, setNextPath] = useState('');
+  const [progressClass, setProgressClass] = useState('');
 
   useEffect(() => {
+    setNextPath('');
+
     switch (location.pathname) {
       case '/onboarding/height':
-        setHeaderFractionClass('w-1/9');
+        setProgressClass('w-1/9');
         break;
       case '/onboarding/weight':
         setPrevPath('/onboarding/height');
-        setHeaderFractionClass('w-2/9');
+        setProgressClass('w-2/9');
         break;
       case '/onboarding/gender':
         setPrevPath('/onboarding/weight');
-        setHeaderFractionClass('w-3/9');
+        setProgressClass('w-3/9');
+        break;
+      case '/onboarding/age':
+        setPrevPath('/onboarding/gender');
+        setNextPath('/onboarding/amount');
+        setProgressClass('w-4/9');
+        break;
+      case '/onboarding/amount':
+        setPrevPath('/onboarding/age');
+        setProgressClass('w-5/9');
+        break;
+      case '/onboarding/level':
+        setPrevPath('/onboarding/amount');
+        setProgressClass('w-6/9');
+        break;
+      case '/onboarding/target':
+        setPrevPath('/onboarding/level');
+        setProgressClass('w-7/9');
+        break;
+      case '/onboarding/name':
+        setPrevPath('/onboarding/target');
+        setProgressClass('w-8/9');
+        break;
+      case '/onboarding/login':
+        setPrevPath('/onboarding/name');
+        setProgressClass('w-full');
+        break;
+      case '/onboarding/terms':
+        setPrevPath('/onboarding/login');
+        setProgressClass('w-0');
         break;
       default:
         break;
@@ -50,9 +86,17 @@ const Onboarding: React.FC<Props> = () => {
     navigate(prevPath);
   };
 
+  const toNext = () => {
+    navigate(nextPath);
+  };
+
   return (
     <div className='bg-secondary h-full'>
-      <HCHeader toPrev={toPrev} fractionClass={headerFractionClass} />
+      <HCHeader
+        left={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
+        right={nextPath && <button onClick={toNext}>{t('skip')}</button>}
+      />
+      <HCProgress widthClass={progressClass} />
       <Outlet context={{ user, setUser }} />
     </div>
   );

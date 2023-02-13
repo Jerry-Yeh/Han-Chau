@@ -1,29 +1,44 @@
-import React, { useRef } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// import { ArrowSmallRightIcon } from '@heroicons/react/20/solid';
 
-// import HCButton from '~/components/Button';
-import HCInput, { InputType } from '~/components/Input';
-
+import logomark from '~/assets/img/logomark.svg';
+import logo from '~/assets/img/logo.svg';
+import HCProgress from '~/components/Progress';
 interface Props {
   children?: React.ReactNode;
 }
 
 const Welcome: React.FC<Props> = () => {
-  // const { t } = useTranslation();
-  const inputRef = useRef<InputType>(null);
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const [showSlogan, setShowSlogan] = useState(false);
+
+  useEffect(() => {
+    const delayTimer = setTimeout(() => {
+      setShowSlogan(true);
+    }, 800);
+
+    return () => clearTimeout(delayTimer);
+  }, [navigate]);
 
   return (
-    <div>
-      {/* <HCButton className='text-body-bold-s' color='highlight' disabled>
-        <span className='mr-2'>{t('tag')}</span>
-        <ArrowSmallRightIcon className='h-6 w-6' />
-      </HCButton>
-      <HCButton className='text-body-bold-s' color='success'>
-        <span className='mr-2'>{t('tag')}</span>
-        <ArrowSmallRightIcon className='h-6 w-6' />
-      </HCButton> */}
-      <HCInput label='caption' value={inputRef} prefix='$' suffix='CM' />
+    <div className='bg-secondary h-screen pb-10 flex flex-col items-center justify-between'>
+      <HCProgress widthClass='w-1/9' />
+      <div className='flex flex-col items-center'>
+        <img src={logomark} alt='logomark' className='mb-6' />
+        <span
+          className={`
+            text-body-m text-placeholder
+            ease-in duration-1000 ${showSlogan ? 'visible opacity-100' : 'invisible opacity-0'}`}
+        >
+          {t('slogan')}
+        </span>
+      </div>
+      <div className=''>
+        <img src={logo} alt='logo' />
+      </div>
     </div>
   );
 };

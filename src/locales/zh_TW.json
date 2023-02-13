@@ -1,13 +1,94 @@
 {
+  "slogan": "少年袂曉想，食老漢草毋成樣",
   "tag": "標籤",
   "skip": "跳過",
   "next-step": "下一步",
-  "height-heading": "你的身高多少呢？",
-  "height-subheading": "填入你的身高能夠幫助我們計算適合你的運動量&攝取量",
+  "onboarding": {
+    "height": {
+      "heading": "你的身高多少呢？",
+      "subheading": "填入你的身高能夠幫助我們計算適合你的運動量&攝取量"
+    },
+    "weight": {
+      "heading": "你的體重多少呢？",
+      "subheading": "填入你的體重能夠幫助我們計算適合你的運動量&攝取量"
+    },
+    "gender": {
+      "heading": "你的性別是什麼呢？",
+      "subheading": "填入你的性別能夠幫助我們計算適合你的運動量&攝取量"
+    },
+    "age": {
+      "heading": "請選擇你的出生年月日",
+      "subheading": "填入你的出生日期能夠幫助我們計算適合你的運動量&攝取量"
+    },
+    "amount": {
+      "heading": "你一天的活動量大概是什麼呢？",
+      "subheading": "填入你的一天的活動量能夠幫助我們計算適合你的運動量&攝取量",
+      "selection": {
+        "bedridden": {
+          "heading": "臥床",
+          "content": "幾乎不動"
+        },
+        "sedentary": {
+          "heading": "上班族久坐居多",
+          "content": "只有上下班走路，沒有運動習慣"
+        },
+        "light": {
+          "heading": "輕度活動",
+          "content": "簡單運動（散步、快走）頻率大概一星期1-3天"
+        },
+        "moderate": {
+          "heading": "中度活動",
+          "content": "中度運動（有氧、徒手健身）頻率大概一星期3-5天"
+        },
+        "heavy": {
+          "heading": "高度活動",
+          "content": "高度運動（重訓、拳擊）頻率大概一星期6-7天"
+        },
+        "athlete": {
+          "heading": "超高度活動",
+          "content": "專業運動員"
+        }
+      }
+    },
+    "level": {
+      "heading": "你的運動程度大概是什麼呢？",
+      "subheading": "填入你的運動程度能夠幫助我們計算適合你的運動量&攝取量",
+      "selection": {
+        "beginner": "健身新手 (Beginner)",
+        "intermediate": "健身中手 (Intermediate)",
+        "advanced": "健身老手 (Advanced)"
+      }
+    },
+    "target": {
+      "heading": "你的目標體重是多少呢？",
+      "subheading": "填入你的目標體重能夠幫助我們計算適合你的運動量&攝取量"
+    },
+    "name": {
+      "heading": "你的名字叫什麼？",
+      "subheading": "我們想知道怎麼稱呼你"
+    },
+    "login": {
+      "heading": "選擇一個註冊方式",
+      "subheading": "按一按，咻咻咻就註冊好了",
+      "content": {
+        "front": "如果按下任一繼續則同意我們的",
+        "key": "使用條款",
+        "end": "，啊其實我們也沒有什麼使用條款啦我們根本沒有門路賣資料哈哈哈"
+      },
+      "method": {
+        "google": "繼續以 Google 註冊",
+        "facebook": "繼續以 Facebook 註冊",
+        "line": "繼續以 LINE 註冊"
+      }
+    },
+    "terms": {
+      "heading": "就說沒有使用條款了還按"
+    }
+  },
   "height": "身高",
-  "weight-heading": "你的體重多少呢？",
-  "weight-subheading": "填入你的體重能夠幫助我們計算適合你的運動量&攝取量",
   "weight": "體重",
   "male": "男",
-  "female": "女"
+  "female": "女",
+  "target-weight": "目標體重",
+  "your-name": "你的名字"
 }

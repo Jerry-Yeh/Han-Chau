@@ -10,24 +10,18 @@ export default {
   decorators: [AntdDecorator],
   parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
-    toPrev: {
+    left: {
       control: false,
-      description: 'Handle previous action of header.',
+      description: 'Handle left action of header.',
       table: {
         type: { summary: 'function' },
       },
     },
-    toNext: {
+    right: {
       control: false,
-      description: 'Handle next action of header.',
+      description: 'Handle right action of header.',
       table: {
         type: { summary: 'function' },
-      },
-    },
-    fractionClass: {
-      description: 'Set progress width by Tailwind CSS class.',
-      table: {
-        type: { summary: 'string' },
       },
     },
   },
@@ -39,21 +33,13 @@ export const Basic: Story = {};
 
 export const Previous: Story = {
   args: {
-    toPrev: () => ({}),
+    left: <ArrowLeftIcon className='w-8 h-8' onClick={() => ({})} />,
   },
 };
 
 export const Next: Story = {
   args: {
-    toPrev: () => ({}),
-    toNext: () => ({}),
-  },
-};
-
-export const Progress: Story = {
-  args: {
-    toPrev: () => ({}),
-    toNext: () => ({}),
-    fractionClass: 'w-1/9',
+    left: <ArrowLeftIcon className='w-8 h-8' onClick={() => ({})} />,
+    right: <button className='text-tertiary'>跳過</button>,
   },
 };

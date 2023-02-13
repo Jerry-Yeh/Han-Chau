@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { ArrowSmallRightIcon } from '@heroicons/react/20/solid';
 
 interface Props {
   children?: React.ReactNode;
@@ -19,6 +20,9 @@ interface Props {
   disabled?: boolean;
   block?: boolean;
   textColor?: string;
+  next?: boolean;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -59,24 +63,35 @@ const HCButton: React.FC<Props> = (props: Props) => {
         ? 'bg-warning-light hover:bg-warning-light-hover active:bg-warning-light-pressed'
         : 'bg-warning-disabled text-disabled',
     }[color]);
-  const btnClass = classNames(props.disabled ? 'cursor-not-allowed' : 'cursor-pointer');
+  const cursorClass = classNames(props.disabled ? 'cursor-not-allowed' : 'cursor-pointer');
+  const borderMapping = ['primary', 'secondary', 'tertiary'];
+  const borderClass = classNames(
+    borderMapping.includes(props.color) ? 'border border-secondary' : '',
+  );
 
   return (
     <button
       className={`
         ${props.className}
         ${colorVariants(props.color, props.disabled)}
-        ${btnClass}
+        ${cursorClass}
+        ${borderClass}
         ${props.block && 'w-full'}
         h-12
-        border-none
         transition-colors
         rounded-lg
-        flex justify-center items-center`}
+        px-4`}
       disabled={props.disabled}
       onClick={props.onClick}
     >
-      {props.children}
+      <div className='flex justify-between items-center'>
+        <div>{props.prefix}</div>
+        <div className='flex justify-center '>
+          {props.children}
+          {props.next && <ArrowSmallRightIcon className='h-6 w-6 ml-2' />}
+        </div>
+        <div>{props.suffix}</div>
+      </div>
     </button>
   );
 };
@@ -86,6 +101,7 @@ HCButton.defaultProps = {
   color: 'primary',
   disabled: false,
   block: true,
+  next: false,
 };
 
 export default HCButton;

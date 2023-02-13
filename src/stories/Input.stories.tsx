@@ -24,14 +24,14 @@ export default {
       },
     },
     prefix: {
-      control: false,
+      control: 'text',
       description: 'The prefix icon or text for the input field.',
       table: {
         type: { summary: 'ReactNode' },
       },
     },
     suffix: {
-      control: false,
+      control: 'text',
       description: 'The suffix icon or text for the input field.',
       table: {
         type: { summary: 'ReactNode' },
@@ -64,7 +64,3 @@ export const Basic: Story = {
     disabled: false,
   },
 };
-// Basic.args = {
-//   label: 'caption',
-//   disabled: false,
-// };

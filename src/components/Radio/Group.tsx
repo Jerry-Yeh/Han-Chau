@@ -5,7 +5,7 @@ import { RadioGroupContextProvider } from './context';
 import type { GroupProps, InputChangeEvent } from './interface';
 
 const HCRadioGroup: React.FC<GroupProps> = (props: GroupProps) => {
-  const [value, setValue] = useState<any>();
+  const [value, setValue] = useState<any>(props.value);
 
   const onRadioChange = (e: InputChangeEvent) => {
     setValue(e.target.value);
@@ -13,7 +13,7 @@ const HCRadioGroup: React.FC<GroupProps> = (props: GroupProps) => {
   };
 
   return (
-    <div className={`${props.className} radio-group`}>
+    <div className={`${props.className} flex flex-col gap-y-2`}>
       <RadioGroupContextProvider
         value={{
           onChange: onRadioChange,

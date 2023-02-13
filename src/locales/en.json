@@ -1,13 +1,90 @@
 {
+  "slogan": "",
   "tag": "Tag",
   "skip": "Skip",
   "next-step": "Next Step",
-  "height-heading": "",
-  "height-subheading": "",
-  "height": "Height",
-  "weight-heading": "",
-  "weight-subheading": "",
-  "weight": "Weight",
-  "male": "Male",
-  "female": "Female"
+  "onboarding": {
+    "height": {
+      "heading": "",
+      "subheading": ""
+    },
+    "gender": {
+      "heading": "",
+      "subheading": ""
+    },
+    "age": {
+      "heading": "",
+      "subheading": ""
+    },
+    "amount": {
+      "heading": "",
+      "subheading": "",
+      "selection": {
+        "bedridden": {
+          "heading": "",
+          "content": ""
+        },
+        "sedentary": {
+          "heading": "",
+          "content": ""
+        },
+        "light": {
+          "heading": "",
+          "content": ""
+        },
+        "moderate": {
+          "heading": "",
+          "content": ""
+        },
+        "heavy": {
+          "heading": "",
+          "content": ""
+        },
+        "athlete": {
+          "heading": "",
+          "content": ""
+        }
+      }
+    },
+    "level": {
+      "heading": "",
+      "subheading": "",
+      "selection": {
+        "beginner": "",
+        "intermediate": "",
+        "advanced": ""
+      }
+    },
+    "target": {
+      "heading": "",
+      "subheading": ""
+    },
+    "name": {
+      "heading": "",
+      "subheading": ""
+    },
+    "login": {
+      "heading": "",
+      "subheading": "",
+      "content": {
+        "front": "",
+        "key": "",
+        "end": ""
+      },
+      "method": {
+        "google": "",
+        "facebook": "",
+        "line": ""
+      }
+    },
+    "terms": {
+      "heading": ""
+    }
+  },
+  "height": "",
+  "weight": "",
+  "male": "",
+  "female": "",
+  "target-weight": "",
+  "your-name": ""
 }
