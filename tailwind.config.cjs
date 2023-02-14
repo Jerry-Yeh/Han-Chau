@@ -22,6 +22,13 @@ module.exports = {
         '7/9': '77.777777%',
         '8/9': '88.888888%',
       },
+      dropShadow: {
+        // reversed: ['0 -10px 15px -3px rgba(0, 0, 0, 0.03)', '0 -4px 6px -2px rgba(0, 0, 0, 0.08)'],
+        reversed: ['0 -10px 15px rgba(0, 0, 0, 0.03)', '0 -4px 6px rgba(0, 0, 0, 0.08)'],
+      },
+      transitionDuration: {
+        800: '800ms',
+      },
     },
   },
   plugins: [require('tailwindcss-rtl')],
