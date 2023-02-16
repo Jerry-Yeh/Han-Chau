@@ -37,7 +37,9 @@ const Onboarding: React.FC<Props> = () => {
     setNextPath('');
 
     switch (location.pathname) {
+      case '/onboarding':
       case '/onboarding/height':
+        setPrevPath('/welcome/landing');
         setProgressClass('w-1/9');
         break;
       case '/onboarding/weight':
@@ -93,10 +95,11 @@ const Onboarding: React.FC<Props> = () => {
   return (
     <div className='bg-secondary h-full'>
       <HCHeader
+        size='s'
         left={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
         right={nextPath && <button onClick={toNext}>{t('skip')}</button>}
       />
-      <HCProgress widthClass={progressClass} />
+      <HCProgress rateClass={progressClass} />
       <Outlet context={{ user, setUser }} />
     </div>
   );

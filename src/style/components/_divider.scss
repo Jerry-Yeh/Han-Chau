@@ -1,0 +1,5 @@
+.ant-divider-horizontal {
+  &.ant-divider-with-text {
+    @apply text-tertiary my-0;
+  }
+}

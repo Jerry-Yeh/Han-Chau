@@ -1,0 +1,19 @@
+.ant-carousel {
+  .slick-dots {
+    li {
+      &.slick-active {
+        button {
+          @apply bg-highlight;
+        }
+      }
+
+      button {
+        @apply bg-tertiary;
+      }
+    }
+  }
+
+  .slick-dots-bottom {
+    @apply bottom-6;
+  }
+}

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Layout from '../Layout';
 import HCButton from '~/components/Button';
 import { useUser } from '../..';
+
 import google from '~/assets/img/google.svg';
 import facebook from '~/assets/img/facebook.svg';
 
@@ -37,7 +38,7 @@ const Login: React.FC<Props> = () => {
         className='mb-2'
         prefix={<img src={google} alt='icon' />}
       >
-        <span>{t('onboarding.login.method.google')}</span>
+        <span>{t('login.google')}</span>
       </HCButton>
       <HCButton
         className='mb-6'
@@ -45,7 +46,7 @@ const Login: React.FC<Props> = () => {
         onClick={toNext}
         prefix={<img src={facebook} alt='icon' />}
       >
-        <span>{t('onboarding.login.method.facebook')}</span>
+        <span>{t('login.facebook')}</span>
       </HCButton>
       <h4 className='text-body-xs text-tertiary'>
         {t('onboarding.login.content.front')}

@@ -3,6 +3,20 @@
   "tag": "Tag",
   "skip": "Skip",
   "next-step": "Next Step",
+  "welcome": {
+    "landing": {
+      "carousel": [
+        { "heading": "", "subheading": "" },
+        { "heading": "", "subheading": "" },
+        { "heading": "", "subheading": "" }
+      ],
+      "start": "",
+      "heading": "",
+      "subheading": "",
+      "register": "",
+      "divider": ""
+    }
+  },
   "onboarding": {
     "height": {
       "heading": "",
@@ -70,16 +84,16 @@
         "front": "",
         "key": "",
         "end": ""
-      },
-      "method": {
-        "google": "",
-        "facebook": "",
-        "line": ""
       }
     },
     "terms": {
       "heading": ""
     }
+  },
+  "login": {
+    "google": "",
+    "facebook": "",
+    "line": ""
   },
   "height": "",
   "weight": "",

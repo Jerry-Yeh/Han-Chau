@@ -1,8 +1,11 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import App from '~/App';
-// import Login from '~/pages/Login';
+
+/** Welcome */
 import Welcome from '~/pages/Welcome';
+import Landing from '~/pages/Welcome/components/Landing';
+import Loading from '~/pages/Welcome/components/Loading';
 
 /** Onboarding */
 import Onboarding from '~/pages/Onboarding';
@@ -22,7 +25,16 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      { path: '', element: <Welcome /> },
+      {
+        path: 'welcome',
+        element: <Welcome />,
+        children: [
+          { path: '*', element: <Navigate to='loading' replace /> },
+          { index: true, element: <Loading /> },
+          { path: 'loading', element: <Loading /> },
+          { path: 'landing', element: <Landing /> },
+        ],
+      },
       {
         path: 'onboarding',
         element: <Onboarding />,

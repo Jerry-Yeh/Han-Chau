@@ -24,6 +24,15 @@ export default {
         type: { summary: 'function' },
       },
     },
+    size: {
+      control: 'select',
+      options: ['l', 'm', 's'],
+      description: 'Set the size of header.',
+      defaultValue: { summary: 'm' },
+      table: {
+        type: { summary: 'string' },
+      },
+    },
   },
 } as Meta<typeof HCHeader>;
 

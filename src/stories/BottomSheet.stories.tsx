@@ -1,15 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import HCActionStack from '~/components/ActionStack';
+import HCBottomSheet from '~/components/BottomSheet';
 import HCButton from '~/components/Button';
 
 export default {
-  title: 'Components/ActionStack',
-  component: HCActionStack,
+  title: 'Components/BottomSheet',
+  component: HCBottomSheet,
   argTypes: {
     children: {
       control: false,
-      description: 'Actions in action stack.',
+      description: 'Actions in the action stack.',
       table: {
         type: { summary: 'ReactNode' },
       },
@@ -23,16 +23,16 @@ export default {
       },
     },
   },
-} as Meta<typeof HCActionStack>;
+} as Meta<typeof HCBottomSheet>;
 
-type Story = StoryObj<typeof HCActionStack>;
+type Story = StoryObj<typeof HCBottomSheet>;
 
 export const Basic: Story = {
   // render: () => (
   //   <div className='h-screen'>
-  //     <HCActionStack show={true}>
+  //     <HCBottomSheet show={true}>
   //       <HCButton color='highlight'>馬上前往測試</HCButton>
-  //     </HCActionStack>
+  //     </HCBottomSheet>
   //   </div>
   // ),
   args: {

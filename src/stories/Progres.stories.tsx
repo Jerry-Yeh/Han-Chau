@@ -9,9 +9,9 @@ export default {
   // decorators: [AntdDecorator],
   // parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
-    widthClass: {
+    rateClass: {
       control: 'text',
-      description: 'Set progress width by Tailwind CSS class.',
+      description: 'Set progress rate by Tailwind CSS class.',
       table: {
         type: { summary: 'string' },
       },
@@ -25,12 +25,12 @@ export const Basic: Story = {};
 
 export const InProgress: Story = {
   args: {
-    widthClass: 'w-1/9',
+    rateClass: 'w-1/9',
   },
 };
 
 export const Full: Story = {
   args: {
-    widthClass: 'w-full',
+    rateClass: 'w-full',
   },
 };

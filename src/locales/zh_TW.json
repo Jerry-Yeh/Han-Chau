@@ -1,8 +1,22 @@
 {
-  "slogan": "少年袂曉想，食老漢草毋成樣",
   "tag": "標籤",
   "skip": "跳過",
   "next-step": "下一步",
+  "welcome": {
+    "slogan": "少年袂曉想，食老漢草毋成樣",
+    "landing": {
+      "carousel": [
+        { "heading": "策略性的規劃運動", "subheading": "跟著老師動次動次動" },
+        { "heading": "規劃你的飲食", "subheading": "聽講Lucy時常做運動" },
+        { "heading": "紀錄你的歷程", "subheading": "一袋米扛幾樓" }
+      ],
+      "start": "馬上開始",
+      "heading": "歡迎來到 HANCHAU！",
+      "subheading": "現在填寫一些問題讓我們更了解你，成為你的健身好朋朋",
+      "register": "馬上前往註冊",
+      "divider": "如果已經有帳號"
+    }
+  },
   "onboarding": {
     "height": {
       "heading": "你的身高多少呢？",
@@ -74,16 +88,16 @@
         "front": "如果按下任一繼續則同意我們的",
         "key": "使用條款",
         "end": "，啊其實我們也沒有什麼使用條款啦我們根本沒有門路賣資料哈哈哈"
-      },
-      "method": {
-        "google": "繼續以 Google 註冊",
-        "facebook": "繼續以 Facebook 註冊",
-        "line": "繼續以 LINE 註冊"
       }
     },
     "terms": {
       "heading": "就說沒有使用條款了還按"
     }
+  },
+  "login": {
+    "google": "繼續以 Google 註冊",
+    "facebook": "繼續以 Facebook 註冊",
+    "line": "繼續以 LINE 註冊"
   },
   "height": "身高",
   "weight": "體重",

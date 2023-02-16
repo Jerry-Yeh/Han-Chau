@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Props {
-  widthClass?: string;
+  rateClass?: string;
 }
 
 const HCProgress: React.FC<Props> = (props: Props) => {
@@ -9,8 +9,8 @@ const HCProgress: React.FC<Props> = (props: Props) => {
     <div className='w-full bg-tertiary'>
       <div
         className={`
-      h-1 ${props.widthClass ? 'bg-highlight' : 'bg-transparent'}
-      ${props.widthClass} transition-all duration-300
+      h-1 ${props.rateClass ? 'bg-highlight' : 'bg-transparent'}
+      ${props.rateClass} transition-all duration-300
     `}
       ></div>
     </div>
