@@ -13,5 +13,6 @@ export const parameters = {
   },
   viewport: {
     viewports: INITIAL_VIEWPORTS,
+    defaultViewport: 'iphonex',
   },
 };
