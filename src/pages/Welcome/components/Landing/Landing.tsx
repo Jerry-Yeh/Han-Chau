@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import HCHeader from '~/components/Header';
@@ -24,6 +24,7 @@ interface CarouselItem {
 
 const Landing: React.FC<Props> = (props: Props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
 
   const [showActions, setShowActions] = useState(false);
@@ -40,6 +41,12 @@ const Landing: React.FC<Props> = (props: Props) => {
     navigate('/onboarding');
   };
 
+  useEffect(() => {
+    if (location.state && location.state.from === '/onboarding') {
+      setShowActions(true);
+    }
+  }, [location.state]);
+
   return (
     <div className='bg-secondary h-screen flex flex-col relative'>
       <div className={`${!showActions ? 'opacity-100' : 'opacity-0'} duration-800`}>
@@ -47,7 +54,11 @@ const Landing: React.FC<Props> = (props: Props) => {
         <HCCarousel className='mb-auto'>
           {carouselWordingList.map((item, idx) => (
             <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
-              <img src={`/src/assets/img/welcome${idx + 1}.svg`} alt='img' className='mb-12' />
+              <img
+                src={`/src/assets/img/welcome_page_${idx + 1}.svg`}
+                alt='img'
+                className='mb-12'
+              />
               <h2 className='text-heading-m text-tertiary mb-2'>{item.heading}</h2>
               <h3 className='text-body-m text-tertiary'>{item.subheading}</h3>
             </div>
@@ -69,12 +80,12 @@ const Landing: React.FC<Props> = (props: Props) => {
         <HCButton color='highlight' className='mb-4' onClick={toRegister}>
           {t('welcome.landing.register')}
         </HCButton>
-        <HCDivider className='mb-4'>{t('welcome.landing.divider')}</HCDivider>
+        <HCDivider className='text-body-bold-s mb-4'>{t('welcome.landing.divider')}</HCDivider>
         <HCButton color='secondary' prefix={<img src={google} alt='icon' />} className='mb-2'>
-          {t('login.google')}
+          {t('welcome.landing.actions.google')}
         </HCButton>
         <HCButton color='secondary' prefix={<img src={facebook} alt='icon' />}>
-          {t('login.facebook')}
+          {t('welcome.landing.actions.facebook')}
         </HCButton>
       </HCBottomSheet>
       <div className='pt-4 pb-6 px-4 mt-auto'>

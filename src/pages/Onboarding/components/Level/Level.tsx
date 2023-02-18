@@ -48,7 +48,7 @@ const Level: React.FC<Props> = () => {
 
   return (
     <Layout heading={t('onboarding.amount.heading')} subheading={t('onboarding.amount.subheading')}>
-      <HCRadioGroup className='mb-3' value={user.gender} onChange={onChangeHandler}>
+      <HCRadioGroup className='mb-3' value={user.level} onChange={onChangeHandler}>
         {list.map((item) => (
           <HCRadio {...item} key={item.value} />
         ))}

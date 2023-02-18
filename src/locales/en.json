@@ -84,16 +84,30 @@
         "front": "",
         "key": "",
         "end": ""
+      },
+      "actions": {
+        "google": "",
+        "facebook": "",
+        "line": ""
       }
     },
     "terms": {
       "heading": ""
+    },
+    "results": {
+      "heading": "{{name}}👋",
+      "subheading": "",
+      "section1": {
+        "heading": "",
+        "unit": "cal"
+      },
+      "section2": {
+        "heading": "",
+        "subheading": "",
+        "items": ["", "", ""]
+      },
+      "action": ""
     }
-  },
-  "login": {
-    "google": "",
-    "facebook": "",
-    "line": ""
   },
   "height": "",
   "weight": "",

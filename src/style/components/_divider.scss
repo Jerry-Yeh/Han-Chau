@@ -1,4 +1,11 @@
+.ant-divider {
+  .ant-divider-inner-text {
+    @apply px-2;
+  }
+}
+
 .ant-divider-horizontal {
+  @apply my-0;
   &.ant-divider-with-text {
     @apply text-tertiary my-0;
   }

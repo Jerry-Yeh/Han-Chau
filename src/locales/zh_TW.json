@@ -14,7 +14,12 @@
       "heading": "歡迎來到 HANCHAU！",
       "subheading": "現在填寫一些問題讓我們更了解你，成為你的健身好朋朋",
       "register": "馬上前往註冊",
-      "divider": "如果已經有帳號"
+      "divider": "如果已經有帳號",
+      "actions": {
+        "google": "繼續以 Google 登入",
+        "facebook": "繼續以 Facebook 登入",
+        "line": "繼續以 LINE 登入"
+      }
     }
   },
   "onboarding": {
@@ -88,16 +93,30 @@
         "front": "如果按下任一繼續則同意我們的",
         "key": "使用條款",
         "end": "，啊其實我們也沒有什麼使用條款啦我們根本沒有門路賣資料哈哈哈"
+      },
+      "actions": {
+        "google": "繼續以 Google 註冊",
+        "facebook": "繼續以 Facebook 註冊",
+        "line": "繼續以 LINE 註冊"
       }
     },
     "terms": {
       "heading": "就說沒有使用條款了還按"
+    },
+    "results": {
+      "heading": "你好，{{name}} 👋",
+      "subheading": "你的客製化健身計畫已經準備好了，現在馬上開始，就可以離你的目標體態更進一步！",
+      "section1": {
+        "heading": "每日所需攝取熱量",
+        "unit": "cal"
+      },
+      "section2": {
+        "heading": "如何達到你的目標",
+        "subheading": "好的漢草就從好的生活作息開始！透過 HANCHAU，我們可以幫你：",
+        "items": ["規劃你的飲食", "策略性的規律運動", "紀錄你的歷程"]
+      },
+      "action": "開始計畫"
     }
-  },
-  "login": {
-    "google": "繼續以 Google 註冊",
-    "facebook": "繼續以 Facebook 註冊",
-    "line": "繼續以 LINE 註冊"
   },
   "height": "身高",
   "weight": "體重",

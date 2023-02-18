@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { useNavigate, useLocation, Outlet, useOutletContext } from 'react-router-dom';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
@@ -22,11 +22,7 @@ const Onboarding: React.FC<Props> = () => {
   const { t } = useTranslation();
 
   /** Data */
-  const [user, setUser] = useState<User>({
-    gender: '',
-    name: '',
-    login: '',
-  });
+  const [user, setUser] = useState<User>({});
 
   /** Path & Style */
   const [prevPath, setPrevPath] = useState('');
@@ -50,13 +46,13 @@ const Onboarding: React.FC<Props> = () => {
         setPrevPath('/onboarding/weight');
         setProgressClass('w-3/9');
         break;
-      case '/onboarding/age':
+      case '/onboarding/birth':
         setPrevPath('/onboarding/gender');
         setNextPath('/onboarding/amount');
         setProgressClass('w-4/9');
         break;
       case '/onboarding/amount':
-        setPrevPath('/onboarding/age');
+        setPrevPath('/onboarding/birth');
         setProgressClass('w-5/9');
         break;
       case '/onboarding/level':
@@ -85,7 +81,7 @@ const Onboarding: React.FC<Props> = () => {
   }, [location]);
 
   const toPrev = () => {
-    navigate(prevPath);
+    navigate(prevPath, { state: { from: location.pathname } });
   };
 
   const toNext = () => {
@@ -94,12 +90,16 @@ const Onboarding: React.FC<Props> = () => {
 
   return (
     <div className='bg-secondary h-full'>
-      <HCHeader
-        size='s'
-        left={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
-        right={nextPath && <button onClick={toNext}>{t('skip')}</button>}
-      />
-      <HCProgress rateClass={progressClass} />
+      {location.pathname !== '/onboarding/results' && (
+        <Fragment>
+          <HCHeader
+            size='s'
+            left={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
+            right={nextPath && <button onClick={toNext}>{t('skip')}</button>}
+          />
+          <HCProgress rateClass={progressClass} />
+        </Fragment>
+      )}
       <Outlet context={{ user, setUser }} />
     </div>
   );

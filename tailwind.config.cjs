@@ -10,6 +10,7 @@ module.exports = {
       },
       transitionProperty: {
         border: 'border',
+        bottom: 'bottom',
       },
       spacing: {
         13: '3.25rem',

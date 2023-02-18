@@ -6,6 +6,7 @@ import Layout from '../Layout';
 import { HCRadio, HCRadioGroup } from '~/components/Radio';
 import HCButton from '~/components/Button';
 import { useUser } from '../..';
+import { GENDER } from '~/enums/user';
 
 interface Props {
   children?: React.ReactNode;
@@ -13,14 +14,14 @@ interface Props {
 
 const Gender: React.FC<Props> = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t } = useTranslation() ;
 
   const { user, setUser } = useUser();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser((prevUser) => ({
       ...prevUser,
-      gender: e.target.value,
+      gender: +e.target.value,
     }));
   };
 
@@ -31,8 +32,8 @@ const Gender: React.FC<Props> = () => {
   return (
     <Layout heading={t('onboarding.gender.heading')} subheading={t('onboarding.gender.subheading')}>
       <HCRadioGroup className='mb-3' value={user.gender} onChange={onChangeHandler}>
-        <HCRadio label={t('male') as string} value='male' />
-        <HCRadio label={t('female') as string} value='female' />
+        <HCRadio label={t('male') as string} value={GENDER.MALE} />
+        <HCRadio label={t('female') as string} value={GENDER.FEMALE} />
       </HCRadioGroup>
       <HCButton color='highlight' onClick={toNext} disabled={!user.gender} next>
         <span>{t('next-step')}</span>

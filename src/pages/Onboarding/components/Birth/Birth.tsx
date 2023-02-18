@@ -12,7 +12,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Age: React.FC<Props> = () => {
+const Birth: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -21,7 +21,7 @@ const Age: React.FC<Props> = () => {
   const onChangeHandler: DatePickerProps['onChange'] = (date) => {
     setUser((prevUser) => ({
       ...prevUser,
-      age: dayjs(date).valueOf(),
+      birth: dayjs(date).valueOf(),
     }));
   };
 
@@ -32,15 +32,15 @@ const Age: React.FC<Props> = () => {
   return (
     <Layout heading={t('onboarding.age.heading')} subheading={t('onboarding.age.subheading')}>
       <DatePicker
-        value={user.age ? dayjs(user.age) : null}
+        value={user.birth ? dayjs(user.birth) : null}
         className='mb-3'
         onChange={onChangeHandler}
       />
-      <HCButton color='highlight' onClick={toNext} disabled={!user.age} next>
+      <HCButton color='highlight' onClick={toNext} disabled={!user.birth} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>
   );
 };
 
-export default Age;
+export default Birth;
