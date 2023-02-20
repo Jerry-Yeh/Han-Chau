@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
@@ -12,18 +12,10 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Results: React.FC<Props> = (props: Props) => {
+const Results: React.FC<Props> = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'onboarding.results' });
 
-  // const { user } = useUser();
-  const user = {
-    name: 'Jerry',
-    height: 181,
-    weight: 70,
-    gender: 1,
-    amount: 2,
-    birth: 788240229153,
-  };
+  const { user } = useUser();
 
   return (
     <Fragment>

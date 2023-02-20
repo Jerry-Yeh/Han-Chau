@@ -30,7 +30,7 @@ const Birth: React.FC<Props> = () => {
   };
 
   return (
-    <Layout heading={t('onboarding.age.heading')} subheading={t('onboarding.age.subheading')}>
+    <Layout heading={t('onboarding.birth.heading')} subheading={t('onboarding.birth.subheading')}>
       <DatePicker
         value={user.birth ? dayjs(user.birth) : null}
         className='mb-3'

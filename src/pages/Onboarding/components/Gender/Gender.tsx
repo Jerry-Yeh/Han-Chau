@@ -14,7 +14,7 @@ interface Props {
 
 const Gender: React.FC<Props> = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation() ;
+  const { t } = useTranslation();
 
   const { user, setUser } = useUser();
 
@@ -26,7 +26,7 @@ const Gender: React.FC<Props> = () => {
   };
 
   const toNext = () => {
-    navigate('/onboarding/age');
+    navigate('/onboarding/birth');
   };
 
   return (

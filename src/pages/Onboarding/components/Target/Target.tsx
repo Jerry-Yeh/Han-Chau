@@ -32,12 +32,12 @@ const Target: React.FC<Props> = () => {
     <Layout heading={t('onboarding.target.heading')} subheading={t('onboarding.target.subheading')}>
       <HCInput
         className='mb-3'
-        value={user.target}
+        value={user.targetWeight}
         placeholder={t('target-weight') as string}
         suffix='kg'
         onChange={onChangeHandler}
       />
-      <HCButton color='highlight' onClick={toNext} disabled={!user.target} next>
+      <HCButton color='highlight' onClick={toNext} disabled={!user.targetWeight} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>

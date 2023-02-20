@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Layout from '../Layout';
 import HCButton from '~/components/Button';
 import { useUser } from '../..';
-import { signInWithGoogle, redirectResult } from '~/services/authentication';
+import AuthService from '~/services/auth';
 
 import google from '~/assets/img/google.svg';
 import facebook from '~/assets/img/facebook.svg';
@@ -16,18 +16,14 @@ interface Props {
 
 const Login: React.FC<Props> = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation('translation', { keyPrefix: 'onborading.login' });
+  const { t: tOri } = useTranslation();
+  const { t } = useTranslation('translation', { keyPrefix: 'onboarding.login' });
 
   const { user, setUser } = useUser();
 
-  const signUp = () => {
-    console.log('signUp', user);
-  };
-
   useEffect(() => {
     const setUserId = async () => {
-      const result = await redirectResult();
-      console.log('result', result);
+      const result = await AuthService.redirectResult();
 
       if (result) {
         const id = result.user.uid;
@@ -37,18 +33,19 @@ const Login: React.FC<Props> = () => {
           id,
         }));
         localStorage.setItem('id', id);
+        await AuthService.saveUser({ ...user, id });
         navigate('/onboarding/results');
       }
     };
 
     setUserId();
-  }, [setUser, navigate]);
+  }, [user, setUser, navigate]);
 
   return (
     <Layout heading={t('heading')} subheading={t('subheading')}>
       <HCButton
         color='secondary'
-        onClick={signInWithGoogle}
+        onClick={AuthService.signInWithGoogle}
         className='mb-2'
         prefix={<img src={google} alt='icon' />}
       >
@@ -57,7 +54,7 @@ const Login: React.FC<Props> = () => {
       <HCButton
         className='mb-6'
         color='secondary'
-        onClick={signUp}
+        onClick={AuthService.signInWithFacebook}
         prefix={<img src={facebook} alt='icon' />}
       >
         <span>{t('actions.facebook')}</span>

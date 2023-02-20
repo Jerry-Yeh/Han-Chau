@@ -10,7 +10,7 @@ export type User = {
   birth?: number;
   amount?: AMOUNT;
   level?: number;
-  target?: number;
+  targetWeight?: number;
   name?: string;
   login?: string;
 };

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import ReactPlayer from 'react-player';
 
-import WorkExerciseApi from '~/services/workoutExercise';
+import WorkExerciseApi from '~/services/exercise';
 import FoodApi from '~/services/food';
 
 const Hello = () => {
