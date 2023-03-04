@@ -6,7 +6,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-mobile',
+    // 'storybook-mobile',
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -15,9 +15,9 @@ module.exports = {
   docs: {
     autodocs: true,
   },
-  core: {
-    builder: '@storybook/builder-vite', // 👈 The builder enabled here.
-  },
+  // core: {
+  //   builder: '@storybook/builder-vite', // 👈 The builder enabled here.
+  // },
   async viteFinal(config) {
     // Merge custom configuration into the default config
     return mergeConfig(config, {
@@ -26,9 +26,9 @@ module.exports = {
         include: ['storybook-addon-designs'],
       },
       base: './',
-      build: {
-        minify: false,
-      },
+      // build: {
+      //   minify: false,
+      // },
     });
   },
 };

@@ -60,3 +60,10 @@ export const DisabledDate: Story = {
     disabledDate: (current) => current && current < dayjs().endOf('day'),
   },
 };
+
+export const Word: Story = {
+  args: {
+    label: '標題',
+    hint: '小提示',
+  },
+};

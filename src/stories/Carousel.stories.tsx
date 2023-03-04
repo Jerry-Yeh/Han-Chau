@@ -1,11 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Fragment } from 'react';
 
 import HCCarousel from '~/components/Carousel';
 
-import welcome1 from '~/assets/img/welcome1.svg';
-import welcome2 from '~/assets/img/welcome2.svg';
-import welcome3 from '~/assets/img/welcome3.svg';
+import welcomePage1 from '~/assets/img/welcome_page_1.svg';
+import welcomePage2 from '~/assets/img/welcome_page_2.svg';
+import welcomePage3 from '~/assets/img/welcome_page_3.svg';
 
 export default {
   title: 'Components/Carousel',
@@ -41,7 +40,7 @@ export const Basic: Story = {
 
 export const Picture: Story = {
   render: () => {
-    const imgList = [welcome1, welcome2, welcome3];
+    const imgList = [welcomePage1, welcomePage2, welcomePage3];
 
     return (
       <HCCarousel>
