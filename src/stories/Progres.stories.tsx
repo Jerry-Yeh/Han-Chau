@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import HCProgress from '~/components/Progress';
-import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
+// import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 
 export default {
   title: 'Components/Progress',

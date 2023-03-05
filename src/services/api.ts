@@ -1,35 +1,34 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { merge } from 'lodash';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, query, addDoc, getDocs, setDoc, doc } from 'firebase/firestore';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+export default class ApiService {
+  static firebaseConfig = {
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_APP_ID,
+    measurementId: import.meta.env.VITE_MEASUREMENTID,
+  };
+  static app = initializeApp(this.firebaseConfig);
+  static db = getFirestore(this.app);
+  static functions = getFunctions(this.app);
 
-const idbInstance = axios.create({
-  baseURL: `https://gw.openapi.org.tw`,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  timeout: 20000,
-});
-
-const idbResHeaders = () => ({
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Access-Control-Allow-Origin': '*',
-  },
-});
-
-export default class Api {
-  static idbReq(
-    method: string,
-    url: string,
-    data = null,
-    config?: AxiosRequestConfig<null> | undefined,
-  ) {
-    switch (method) {
-      case 'post':
-        return idbInstance.post(url, data, merge({}, idbResHeaders(), config));
-      case 'get':
-        return idbInstance.get(url, { params: data });
+  static lang(): string {
+    switch (navigator.language) {
+      case 'zh-TW':
+        return 'zh';
+      case 'en-US':
+        return 'en';
       default:
-        return Promise.reject();
+        return 'zh';
     }
+  }
+
+  static async query(collectionName: string) {
+    const querySnapshot = await getDocs(query(collection(this.db, collectionName)));
+
+    return querySnapshot.docs.map((doc) => doc.data());
   }
 }

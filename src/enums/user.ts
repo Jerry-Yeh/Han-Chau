@@ -1,5 +1,5 @@
 export enum AMOUNT {
-  BEDRIDDEN,
+  BEDRIDDEN = 1,
   SEDENTARY,
   LIGHT,
   MODERATE,
@@ -8,18 +8,18 @@ export enum AMOUNT {
 }
 
 export enum LEVEL {
-  BEGINNER,
+  BEGINNER = 1,
   INTERMEDIATE,
   ADVANCED,
 }
 
 export enum GENDER {
-  MALE,
+  MALE = 1,
   FEMALE,
 }
 
 export enum LOGIN {
-  GOOGLE,
+  GOOGLE = 1,
   FACEBOOK,
   LINE,
 }

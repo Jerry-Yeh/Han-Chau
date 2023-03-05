@@ -16,7 +16,6 @@ interface Props {
 
 const Login: React.FC<Props> = () => {
   const navigate = useNavigate();
-  const { t: tOri } = useTranslation();
   const { t } = useTranslation('translation', { keyPrefix: 'onboarding.login' });
 
   const { user, setUser } = useUser();
@@ -37,7 +36,6 @@ const Login: React.FC<Props> = () => {
         navigate('/onboarding/results');
       }
     };
-
     setUserId();
   }, [user, setUser, navigate]);
 

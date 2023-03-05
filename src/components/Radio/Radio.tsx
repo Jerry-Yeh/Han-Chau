@@ -11,7 +11,6 @@ const HCRadio: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = (
   const groupContext = useContext(RadioGroupContext);
 
   const onChange = (e: InputChangeEvent) => {
-    console.log(e.target.value);
     groupContext?.onChange?.(e);
   };
 

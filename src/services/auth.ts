@@ -1,40 +1,24 @@
-import firebase from 'firebase/compat/app';
+
 import {
   getAuth,
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithRedirect,
-  onAuthStateChanged,
   getRedirectResult,
-  signInWithCustomToken,
 } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, setDoc, doc } from 'firebase/firestore';
-import { getFunctions, httpsCallable } from 'firebase/functions';
+import { setDoc, doc } from 'firebase/firestore';
 
+import ApiService from './api';
 import { parseJwt } from './utiles';
 import { LOGIN } from '~/enums/user';
 
 import type { User } from '~/pages/Onboarding/interface';
 
-export default class Auth {
-  /** Firebase initialize */
-  static firebaseConfig = {
-    apiKey: import.meta.env.VITE_API_KEY,
-    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_APP_ID,
-    measurementId: import.meta.env.VITE_MEASUREMENTID,
-  };
-  static app = initializeApp(this.firebaseConfig);
-  static db = getFirestore(this.app);
+export default class AuthService {
   static auth = getAuth();
-  static functions = getFunctions(this.app);
 
-  static setSignInType = (type: string) => {
-    localStorage.setItem('signInType', type);
+  static setSignInType = (type: number) => {
+    localStorage.setItem('signInType', type.toString());
   };
 
   /** Google */
@@ -109,6 +93,6 @@ export default class Auth {
   };
 
   static saveUser = async (user: User) => {
-    await setDoc(doc(this.db, 'users', user.id as string), user);
+    await setDoc(doc(ApiService.db, 'users', user.id as string), user);
   };
 }
