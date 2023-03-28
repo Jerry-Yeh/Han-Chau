@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 storybook-static
+package-lock.json
+Collections.drawio
+Language.drawio
 
 # Editor directories and files
 !.vscode/extensions.json
