@@ -28,6 +28,7 @@
     pressed: 'gray-200',
     disabled: 'gray-50',
     hover: 'gray-100',
+    backdrop: 'gray-900/65',
   );
 
   @each $name, $value in $background-config {
