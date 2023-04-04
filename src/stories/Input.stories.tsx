@@ -1,7 +1,11 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj, StoryFn } from '@storybook/react';
+import { FocusEvent, ChangeEvent, useState } from 'react';
 
 import HCInput from '~/components/Input';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
+import MagnifyingGlass from '~/assets/img/heroicons/mini/magnifying-glass';
+import XMark from '~/assets/img/heroicons/mini/x-mark';
+import AdjustmentsHorizontal from '~/assets/img/heroicons/mini/adjustments-horizontal';
 
 export default {
   title: 'Components/Input',
@@ -24,14 +28,14 @@ export default {
       },
     },
     prefix: {
-      control: 'text',
+      control: false,
       description: 'The prefix icon or text for the input field.',
       table: {
         type: { summary: 'ReactNode' },
       },
     },
     suffix: {
-      control: 'text',
+      control: false,
       description: 'The suffix icon or text for the input field.',
       table: {
         type: { summary: 'ReactNode' },
@@ -63,4 +67,33 @@ export const Basic: Story = {
     label: 'caption',
     disabled: false,
   },
+};
+
+export const SearchBar: StoryFn<typeof HCInput> = () => {
+  const [focus, setFocus] = useState(false);
+  const [searchText, setSearchText] = useState('');
+
+  const onFocusHandler = () => setFocus(true);
+  const onBlurHandler = () => setFocus(false);
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setSearchText(e.target.value);
+  const onClearHandler = () => setSearchText('');
+
+  return (
+    <HCInput
+      value={searchText}
+      prefix={<MagnifyingGlass className='icon-secondary' />}
+      suffix={
+        focus ? (
+          <button onClick={onClearHandler}>
+            <XMark className={`${searchText ? 'icon-tertiary' : 'icon-disabled'}`} />
+          </button>
+        ) : (
+          <AdjustmentsHorizontal className='icon-secondary' />
+        )
+      }
+      onFocus={onFocusHandler}
+      onBlur={onBlurHandler}
+      onChange={onChangeHandler}
+    />
+  );
 };
