@@ -45,6 +45,10 @@ module.exports = {
       opacity: {
         65: '0.65',
       },
+      borderRadius: {
+        md: '5px',
+        xm: '6px',
+      },
     },
   },
   plugins: [require('tailwindcss-rtl')],
@@ -52,4 +56,5 @@ module.exports = {
     // preflight: false,
   },
   important: true,
+  purge: false,
 };
