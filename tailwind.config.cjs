@@ -39,8 +39,9 @@ module.exports = {
         800: '800ms',
       },
       screens: {
-        s: '375px',
-        m: '390px',
+        'mobile-xs': '321px',
+        'mobile-sm': '375px',
+        'mobile-md': '390px',
       },
       opacity: {
         65: '0.65',

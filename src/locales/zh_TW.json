@@ -123,5 +123,8 @@
   "male": "男",
   "female": "女",
   "target-weight": "目標體重",
-  "your-name": "你的名字"
+  "your-name": "你的名字",
+  "training-program": "訓練課表",
+  "diet-calculation": "飲食計算",
+  "profile": "個人檔案"
 }

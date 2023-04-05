@@ -114,5 +114,8 @@
   "male": "",
   "female": "",
   "target-weight": "",
-  "your-name": ""
+  "your-name": "",
+  "training-program": "Training Program",
+  "diet-calculation": "Diet Calculation",
+  "profile": "Profile"
 }

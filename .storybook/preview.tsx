@@ -1,7 +1,21 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { ConfigProvider } from 'antd';
+import { I18nextProvider } from 'react-i18next';
+import React, { Suspense } from 'react';
+
+import i18n from '../src/i18n';
 
 import '../src/style/index.scss';
+
+const withI18next = (Story) => {
+  return (
+    <Suspense>
+      <I18nextProvider i18n={i18n}>
+        <Story />
+      </I18nextProvider>
+    </Suspense>
+  );
+};
 
 export const parameters = {
   actions: { argTypesRegex: '^on.*' },
@@ -15,4 +29,5 @@ export const parameters = {
     viewports: INITIAL_VIEWPORTS,
     defaultViewport: 'iphonex',
   },
+  decorators: [withI18next],
 };

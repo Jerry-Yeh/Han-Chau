@@ -22,7 +22,7 @@ const Pill: React.FC<Props> = (props: Props) => {
           >
             <div
               className={`
-                px-4 py-2 rounded text-body-s whitespace-nowrap
+                px-4 py-2 rounded text-body-s whitespace-nowrap transition-all delay-800
                 ${
                   props.value === item.value
                     ? 'bg-highlight-light text-highlight'

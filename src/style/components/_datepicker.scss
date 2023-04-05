@@ -67,14 +67,14 @@
   .ant-picker-month-panel,
   .ant-picker-year-panel,
   .ant-picker-decade-panel {
-    @apply w-77 s:w-86 m:w-89;
+    @apply w-77 mobile-sm:w-86 mobile-md:w-89;
 
     .ant-picker-header {
-      @apply h-14 px-0 s:px-4 m:px-6;
+      @apply h-14 px-0 mobile-sm:px-4 mobile-md:px-6;
     }
 
     .ant-picker-body {
-      @apply px-0 pt-0 pb-2 s:px-4 m:px-6;
+      @apply px-0 pt-0 pb-2 mobile-sm:px-4 mobile-md:px-6;
     }
 
     .ant-picker-content {

@@ -138,7 +138,7 @@
 
   @each $name, $value in $icon-config {
     .icon-#{$name} {
-      @apply fill-#{$value};
+      @apply fill-#{$value} text-#{$value};
     }
   }
 
