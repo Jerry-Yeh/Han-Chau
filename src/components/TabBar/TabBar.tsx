@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { BoltIcon, CalculatorIcon, UserCircleIcon } from '@heroicons/react/20/solid';
+import {
+  BoltIcon as BoltIconSolid,
+  CalculatorIcon as CalculatorIconSolid,
+  UserCircleIcon as UserCircleIconSolid,
+} from '@heroicons/react/24/solid';
+import {
+  BoltIcon as BoltIconOutline,
+  CalculatorIcon as CalculatorIconOutline,
+  UserCircleIcon as UserCircleIconOutline,
+} from '@heroicons/react/24/outline';
 
 interface Props {
   children?: React.ReactNode;
@@ -11,9 +20,24 @@ const TabBar: React.FC<Props> = (props: Props) => {
   const { t } = useTranslation();
   const [value, setValue] = useState('trainingProgram');
   const list = [
-    { icon: <BoltIcon />, text: t('training-program'), value: 'trainingProgram' },
-    { icon: <CalculatorIcon />, text: t('diet-calculation'), value: 'dietCalculation' },
-    { icon: <UserCircleIcon />, text: t('profile'), value: 'profile' },
+    {
+      icon: <BoltIconOutline />,
+      activedIcon: <BoltIconSolid />,
+      text: t('workout-plan'),
+      value: 'trainingProgram',
+    },
+    {
+      icon: <CalculatorIconOutline />,
+      activedIcon: <CalculatorIconSolid />,
+      text: t('diet-calculation'),
+      value: 'dietCalculation',
+    },
+    {
+      icon: <UserCircleIconOutline />,
+      activedIcon: <UserCircleIconSolid />,
+      text: t('profile'),
+      value: 'profile',
+    },
   ];
 
   const onClickHandler = (value: string) => setValue(value);
@@ -31,7 +55,7 @@ const TabBar: React.FC<Props> = (props: Props) => {
               value === item.value ? 'icon-highlight' : 'icon-secondary'
             }  transition-all delay-800`}
           >
-            {item.icon}
+            {value === item.value ? item.activedIcon : item.icon}
           </div>
           <span
             className={`text-body-bold-xs ${

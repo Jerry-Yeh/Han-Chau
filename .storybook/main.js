@@ -1,20 +1,13 @@
 import { mergeConfig } from 'vite';
-
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-actions',
-    // 'storybook-mobile',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-mdx-gfm'],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
+    options: {}
   },
   docs: {
-    autodocs: true,
+    autodocs: true
   },
   // core: {
   //   builder: '@storybook/builder-vite', // 👈 The builder enabled here.
@@ -24,12 +17,12 @@ module.exports = {
     return mergeConfig(config, {
       // Add storybook-specific dependencies to pre-optimization
       optimizeDeps: {
-        include: ['storybook-addon-designs'],
+        include: ['storybook-addon-designs']
       },
-      base: './',
+      base: './'
       // build: {
       //   minify: false,
       // },
     });
-  },
+  }
 };

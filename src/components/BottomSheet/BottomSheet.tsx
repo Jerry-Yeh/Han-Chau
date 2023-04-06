@@ -1,16 +1,19 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import xMark from '~/assets/img/heroicons/mini/x-mark.svg';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
 export interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   show: boolean;
   header?: string;
-  content?: string;
+  description?: string;
   backdrop?: boolean;
   handle?: boolean;
   keyboard?: boolean;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
   onClose?: () => void;
+  onPrefix?: () => void;
+  onSuffix?: () => void;
 }
 
 const HCBottomSheet: React.FC<Props> = (props: Props) => {
@@ -43,8 +46,6 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
         // Down
         if (full) {
           setFull(false);
-        } else if (props.onClose) {
-          props.onClose();
         }
       }
     },
@@ -151,22 +152,26 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
             )}
             <div
               className={`
-                ${!props.handle && 'pt-3'}
+                ${!props.handle && 'pt-3'} pb-3
                 flex justify-between border-b border-secondary`}
             >
-              <div className='py-3.5 px-4'>
-                <div className='w-5'></div>
-              </div>
-              <div className='flex justify-center items-center flex-col pb-2'>
-                <span className='text-body-bold-l'>{props.header}</span>
-                <span className='text-body-s text-tertiary'>{props.content}</span>
-              </div>
               <div
-                className='py-3.5 px-4 cursor-pointer'
-                onClick={props.onClose}
+                className={`py-3.5 px-4 ${props.onPrefix ? 'cursor-pointer' : ''}`}
+                onClick={props.onPrefix}
                 aria-hidden='true'
               >
-                <img className='w-5' src={xMark} alt='cancel' />
+                <div className='w-5'>{props.prefix}</div>
+              </div>
+              <div className='flex justify-center items-center flex-col'>
+                <span className='text-body-bold-l'>{props.header}</span>
+                <span className='text-body-s text-tertiary'>{props.description}</span>
+              </div>
+              <div
+                className={`py-3.5 px-4 ${props.onSuffix ? 'cursor-pointer' : ''}`}
+                onClick={props.onSuffix}
+                aria-hidden='true'
+              >
+                <div className='w-5'>{props.suffix}</div>
               </div>
             </div>
           </div>
@@ -181,7 +186,7 @@ HCBottomSheet.defaultProps = {
   show: false,
   className: '',
   header: '',
-  content: '',
+  description: '',
   backdrop: true,
   handle: false,
   keyboard: false,

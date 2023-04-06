@@ -5,7 +5,7 @@ import { Nullable } from '~/typings/utils';
 
 interface Props {
   children?: React.ReactNode;
-  value: Nullable<string | number>;
+  activeKey: Nullable<string | number>;
   list: PillItem[];
   onChange: (value: string | number) => void;
 }
@@ -24,7 +24,7 @@ const Pill: React.FC<Props> = (props: Props) => {
               className={`
                 px-4 py-2 rounded text-body-s whitespace-nowrap transition-all delay-800
                 ${
-                  props.value === item.value
+                  props.activeKey === item.value
                     ? 'bg-highlight-light text-highlight'
                     : 'bg-secondary text-secondary'
                 }`}
