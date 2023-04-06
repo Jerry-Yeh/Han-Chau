@@ -2,9 +2,11 @@ import { Fragment } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/store';
 
-import HCBottomSheet from '~/components/BottomSheet';
+import HCBottomSheet, { Props } from '~/components/BottomSheet';
 import HCButton from '~/components/Button';
 import HCInput from '~/components/Input';
+import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
+import XMark from '~/assets/img/heroicons/mini/x-mark';
 
 export default {
   title: 'Components/BottomSheet',
@@ -32,9 +34,9 @@ export default {
         type: { summary: 'string' },
       },
     },
-    content: {
+    description: {
       control: 'text',
-      description: 'The header content for the bottom sheet.',
+      description: 'The header description for the bottom sheet.',
       table: {
         type: { summary: 'string' },
       },
@@ -48,24 +50,61 @@ export default {
       },
     },
     handle: {
-      control: 'boolean',
+      control: false,
       description: 'Add an icon on the header that can drag to the top.',
       table: {
         type: { summary: 'boolean' },
+        defaultValue: { summary: false },
       },
     },
     keyboard: {
-      control: 'boolean',
+      control: false,
       description: 'Set default height for keyboard showing',
       table: {
         type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    prefix: {
+      control: false,
+      description: 'The prefix icon or text for the header.',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+    suffix: {
+      control: false,
+      description: 'The suffix icon or text for the header.',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+    onClose: {
+      control: false,
+      description: 'Specify a function that will close the bottom sheet.',
+      table: {
+        type: { summary: 'Function' },
+      },
+    },
+    onPrefix: {
+      control: false,
+      description: 'Specify a function that will be called when a user clicks prefix icon.',
+      table: {
+        type: { summary: 'Function' },
+      },
+    },
+    onSuffix: {
+      control: false,
+      description: 'Specify a function that will be called when a user clicks prefix icon.',
+      table: {
+        type: { summary: 'Function' },
       },
     },
   },
   args: {
     show: false,
     header: '標題',
-    content: '解說',
+    description: '解說',
     backdrop: true,
     handle: false,
     keyboard: false,
@@ -100,7 +139,7 @@ export const Basic: Story = () => {
   );
 };
 
-export const Header: Story = () => {
+export const Header: Story = (args: Props) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -108,7 +147,12 @@ export const Header: Story = () => {
   };
 
   return (
-    <HCBottomSheet show={show} header='標題' content='解說' onClose={handleClose}>
+    <HCBottomSheet
+      show={show}
+      header={args.header}
+      description={args.description}
+      onClose={handleClose}
+    >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
       <HCButton color='primary' disabled>
         建立菜單
@@ -117,7 +161,7 @@ export const Header: Story = () => {
   );
 };
 
-export const Keyboard: Story = () => {
+export const HeaderPrefixAndSuffix: Story = (args: Props) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -125,7 +169,15 @@ export const Keyboard: Story = () => {
   };
 
   return (
-    <HCBottomSheet show={show} header='標題' content='解說' onClose={handleClose} keyboard>
+    <HCBottomSheet
+      show={show}
+      header={args.header}
+      description={args.description}
+      prefix={<ArrowLeft />}
+      suffix={<XMark />}
+      onSuffix={handleClose}
+      onClose={handleClose}
+    >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
       <HCButton color='primary' disabled>
         建立菜單
@@ -134,7 +186,7 @@ export const Keyboard: Story = () => {
   );
 };
 
-export const Handle: Story = () => {
+export const Keyboard: Story = (args: Props) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -142,7 +194,37 @@ export const Handle: Story = () => {
   };
 
   return (
-    <HCBottomSheet show={show} header='標題' content='解說' onClose={handleClose} handle>
+    <HCBottomSheet
+      show={show}
+      header={args.header}
+      description={args.description}
+      backdrop={args.backdrop}
+      keyboard
+      onClose={handleClose}
+    >
+      <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
+      <HCButton color='primary' disabled>
+        建立菜單
+      </HCButton>
+    </HCBottomSheet>
+  );
+};
+
+export const Handle: Story = (args: Props) => {
+  const [{ show }, updateArgs] = useArgs();
+
+  const handleClose = () => {
+    updateArgs({ show: false });
+  };
+
+  return (
+    <HCBottomSheet
+      show={show}
+      header={args.header}
+      description={args.description}
+      onClose={handleClose}
+      handle
+    >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
       <HCButton color='primary' disabled>
         建立菜單

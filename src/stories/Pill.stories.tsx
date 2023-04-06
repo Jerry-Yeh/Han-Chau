@@ -7,7 +7,31 @@ import { Nullable } from '~/typings/utils';
 export default {
   title: 'Components/Pill',
   component: HCPill,
-  argTypes: {},
+  argTypes: {
+    list: {
+      control: false,
+      description: 'Data array for pill.',
+      table: {
+        type: { summary: 'array' },
+        defaultValue: { summary: '[]' },
+      },
+    },
+    activeKey: {
+      control: false,
+      description: 'Current active key.',
+      table: {
+        type: { summary: 'Nullable<string | number>' },
+        defaultValue: { summary: 'null' },
+      },
+    },
+    onChange: {
+      control: false,
+      description: 'Callback executed when pill is clicked.',
+      table: {
+        type: { summary: 'Function' },
+      },
+    },
+  },
 } as Meta<typeof HCPill>;
 
 type Story = StoryFn<typeof HCPill>;
@@ -44,5 +68,5 @@ export const Basic: Story = () => {
 
   const onChangeHandler = (value: PillValue) => setValue(value);
 
-  return <HCPill value={value} list={dummyList} onChange={onChangeHandler} />;
+  return <HCPill activeKey={value} list={dummyList} onChange={onChangeHandler} />;
 };
