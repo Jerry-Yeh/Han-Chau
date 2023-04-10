@@ -140,6 +140,10 @@
     .icon-#{$name} {
       @apply fill-#{$value} text-#{$value};
     }
+
+    .icon-bg-#{$name} {
+      @apply bg-#{$value};
+    }
   }
 
   /* Border、Outline & Ring */

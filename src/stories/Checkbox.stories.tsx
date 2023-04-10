@@ -1,9 +1,10 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
 import { useArgs } from '@storybook/store';
 
 import { HCCheckbox } from '~/components/Checkbox';
 import type { CheckboxProps, InputChangeEvent } from '~/components/Checkbox/interface';
+
+import Chest from '~/assets/img/body/chest.svg';
 
 export default {
   title: 'Components/Checkbox',
@@ -69,6 +70,25 @@ export const Basic: Story = ({ label, description, disabled }: CheckboxProps) =>
       disabled={disabled}
       label={label}
       description={description}
+      onChange={onChangeHandler}
+      onClick={onClickHandler}
+    />
+  );
+};
+
+export const Image: Story = ({ label, disabled }: CheckboxProps) => {
+  const [{ checked }, updateArgs] = useArgs();
+
+  const onChangeHandler = (e: InputChangeEvent) => updateArgs({ show: e.target.checked });
+  const onClickHandler = () => updateArgs({ checked: !checked });
+
+  return (
+    <HCCheckbox
+      value={0}
+      checked={checked}
+      disabled={disabled}
+      label={label}
+      image={<img src={Chest} alt='chest' />}
       onChange={onChangeHandler}
       onClick={onClickHandler}
     />

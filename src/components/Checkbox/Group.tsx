@@ -24,11 +24,12 @@ const HCCheckboxGroup: React.FC<GroupProps> = (props: GroupProps) => {
       : props.children;
 
   return (
-    <div className={`${props.className} flex flex-col gap-y-2`}>
+    <div className={`${props.className} grid ${props.image ? 'grid-cols-3 gap-4' : 'gap-y-2'}`}>
       <CheckboxGroupContextProvider
         value={{
-          onChange: onCheckboxChange,
           value: props.value,
+          disabled: props.disabled,
+          onChange: onCheckboxChange,
         }}
       >
         {children}

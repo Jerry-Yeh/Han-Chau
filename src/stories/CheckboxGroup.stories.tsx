@@ -1,18 +1,21 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
+import { useArgs } from '@storybook/store';
 
-import { HCCheckbox, HCCheckboxGroup, CheckboxValueType } from '~/components/Checkbox';
+import { HCCheckboxGroup, CheckboxValueType } from '~/components/Checkbox';
+import type { GroupProps } from '~/components/Checkbox/interface';
+
+import Chest from '~/assets/img/body/chest.svg';
 
 export default {
   title: 'Components/CheckboxGroup',
-  component: HCCheckbox,
+  component: HCCheckboxGroup,
   parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
     value: {
-      control: 'text',
+      control: false,
       description: 'Used for selected value.',
       table: {
-        type: { summary: 'any' },
+        type: { summary: 'Array<string | number | boolean>' },
       },
     },
     disabled: {
@@ -31,20 +34,51 @@ export default {
       },
     },
   },
-} as Meta<typeof HCCheckbox>;
+  args: {
+    value: [],
+    disabled: false,
+  },
+} as Meta<typeof HCCheckboxGroup>;
 
 type Story = StoryFn<typeof HCCheckboxGroup>;
 
 const dummyList = [
-  { label: 'Option1', value: 1 },
-  { label: 'Option2', value: 2 },
-  { label: 'Option3', value: 3 },
+  { label: '標籤', value: 1 },
+  { label: '標籤', value: 2 },
+  { label: '標籤', value: 3 },
 ];
 
-export const Basic: Story = () => {
-  const [value, setValue] = useState<CheckboxValueType[]>([]);
+export const Basic: Story = ({ disabled }: GroupProps) => {
+  const [{ value }, updateArgs] = useArgs();
 
-  const onChange = (list: CheckboxValueType[]) => setValue(list);
+  const onChange = (list: CheckboxValueType[]) => updateArgs({ value: list });
 
-  return <HCCheckboxGroup value={value} onChange={onChange} options={dummyList} />;
+  return (
+    <HCCheckboxGroup value={value} onChange={onChange} options={dummyList} disabled={disabled} />
+  );
+};
+
+const dummyImageList = [
+  { label: '標籤', value: 1, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 2, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 3, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 4, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 5, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 6, image: <img src={Chest} alt='chest' /> },
+];
+
+export const Image: Story = ({ disabled }: GroupProps) => {
+  const [{ value }, updateArgs] = useArgs();
+
+  const onChange = (list: CheckboxValueType[]) => updateArgs({ value: list });
+
+  return (
+    <HCCheckboxGroup
+      value={value}
+      options={dummyImageList}
+      disabled={disabled}
+      image
+      onChange={onChange}
+    />
+  );
 };

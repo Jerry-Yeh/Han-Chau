@@ -8,6 +8,7 @@ export interface AbstractCheckboxProps<T> {
   children?: React.ReactNode;
   id?: string;
   checked?: boolean;
+  image?: React.ReactNode;
   onChange?: (e: T) => void;
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
@@ -41,5 +42,6 @@ export interface GroupProps {
   disabled?: boolean;
   className?: string;
   options?: CheckboxOptionType[];
+  image?: boolean;
   onChange?: (value: CheckboxValueType[]) => void;
 }

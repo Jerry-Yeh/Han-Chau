@@ -11,6 +11,7 @@ const HCCheckbox: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxProps> 
   const groupContext = useContext(CheckboxGroupContext);
   const [valueType, setValueType] = useState('');
   const [borderClass, setBorderClass] = useState('');
+  const [bgClass, setBgClass] = useState('');
   const [iconClass, setIconClass] = useState('');
   const [labelClass, setLabelClass] = useState('');
 
@@ -42,9 +43,7 @@ const HCCheckbox: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxProps> 
   };
 
   const onClickHandler = (e: InputMouseEvent) => {
-    if (props.onClick) {
-      props.onClick(e);
-    }
+    if (props.onClick) props.onClick(e);
   };
 
   // Replace value type because input value only receives string and number type.
@@ -68,19 +67,23 @@ const HCCheckbox: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxProps> 
         setBorderClass('border border-disabled');
         setIconClass('icon-bg-tertiary');
         setLabelClass('text-disabled');
+        setBgClass('bg-disabled');
       } else {
         setBorderClass('border-2 border-active');
         setIconClass('icon-bg-highlight');
         setLabelClass('text-highlight');
+        setBgClass('bg-highlight-light');
       }
     } else {
       setIconClass('');
       if (checkboxProps.disabled) {
         setBorderClass('border border-disabled');
         setLabelClass('text-disabled');
+        setBgClass('bg-disabled');
       } else {
         setBorderClass('border');
         setLabelClass('text-secondary');
+        setBgClass('bg-primary');
       }
     }
   }, [checkboxProps.checked, checkboxProps.disabled]);
@@ -88,40 +91,57 @@ const HCCheckbox: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxProps> 
   return (
     <div
       className={`
-        checkbox w-full text-secondary
-        rounded-lg border-solid hover:border-2 ${borderClass}
+        w-full text-secondary
+        rounded-lg border-solid hover:border-2 ${borderClass} ${bgClass}
         hover:border-hover hover:bg-hover
         transition duration-300
-        pl-4 py-3.5 flex bg-primary relative`}
+        flex relative`}
     >
-      <input {...checkboxProps} type='checkbox' id={`${props.value}`} className='appearance-none' />
-      <div
-        className={`input w-4 h-4 mr-4 flex items-center justify-center
-          border ${
-            checkboxProps.disabled ? 'border-disabled' : 'border-primary'
-          } rounded hover:border-hover`}
-      >
-        <div className={`rounded ${iconClass}`}>
-          {checkboxProps.checked && <Check className='icon-onColor' />}
-        </div>
-      </div>
+      {/* Form element */}
       <label
         htmlFor={`${props.value}`}
-        className={`
-          absolute inset-0 w-full h-full pl-12 py-3.5 text-body-s flex hover:cursor-pointer
-          ${labelClass}`}
+        className={`absolute inset-0 w-full h-full flex ${
+          checkboxProps.disabled ? 'hover:cursor-not-allowed' : 'hover:cursor-pointer'
+        }`}
       >
-        {props.label}
+        <input
+          type='checkbox'
+          id={`${props.value}`}
+          {...checkboxProps}
+          className='appearance-none'
+        />
       </label>
-      {props.description && (
-        <p
-          className={`text-body-xs mt-6 ${
-            checkboxProps.disabled ? 'text-disabled' : 'text-tertiary'
-          }`}
-        >
-          {props.description}
-        </p>
-      )}
+      {/* UI layout */}
+      <div className={`flex grow ${props.image ? 'flex-col' : 'pl-4 py-4'}`}>
+        <div className={`flex ${props.image ? 'grow shrink-0' : 'mr-4'}`}>
+          {props.image && <div className='w-8 mr-auto'></div>}
+          {props.image && <div className='pt-4'>{props.image}</div>}
+          <div className={`${props.image ? 'p-2 ml-auto' : ''}`}>
+            <div
+              className={`
+                input w-4 h-4 flex items-center justify-center
+                border ${checkboxProps.disabled ? 'border-disabled' : 'border-primary'}
+                rounded hover:border-hover`}
+            >
+              <div className={`rounded ${iconClass}`}>
+                {checkboxProps.checked && <Check className='icon-onColor' />}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`flex flex-col items-center ${props.image ? 'py-4' : ''}`}>
+          <span className={`text-body-s ${labelClass}`}>{props.label}</span>
+          {props.description && (
+            <span
+              className={`text-body-xs mt-1 ${
+                checkboxProps.disabled ? 'text-disabled' : 'text-tertiary'
+              }`}
+            >
+              {props.description}
+            </span>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
