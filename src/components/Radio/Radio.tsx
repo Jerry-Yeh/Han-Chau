@@ -11,7 +11,7 @@ const HCRadio: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = (
   const groupContext = useContext(RadioGroupContext);
 
   const onChange = (e: InputChangeEvent) => {
-    groupContext?.onChange?.(e);
+    groupContext!.onChange?.(e);
   };
 
   const radioProps: RadioProps = {
@@ -51,7 +51,7 @@ const HCRadio: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = (
       >
         {props.label}
       </label>
-      {props.content && <p className='text-tertiary text-body-xs mt-6'>{props.content}</p>}
+      {props.description && <p className='text-tertiary text-body-xs mt-6'>{props.description}</p>}
     </div>
   );
 };

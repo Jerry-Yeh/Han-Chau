@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { HCRadio } from '~/components/Radio';
+import { HCCheckbox } from '~/components/Checkbox';
 
 export default {
-  title: 'Components/Radio',
-  component: HCRadio,
+  title: 'Components/Checkbox',
+  component: HCCheckbox,
   argTypes: {
     label: {
       control: 'text',
-      description: 'A caption for radio.',
+      description: 'A caption for checkbox.',
       table: {
         type: { summary: 'string' },
       },
@@ -22,7 +22,7 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Disabled radio.',
+      description: 'Disabled checkbox.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -30,15 +30,15 @@ export default {
     },
     description: {
       control: 'text',
-      description: 'Description for radio.',
+      description: 'Description for checkbox.',
       table: {
         type: { summary: 'string' },
       },
     },
   },
-} as Meta<typeof HCRadio>;
+} as Meta<typeof HCCheckbox>;
 
-type Story = StoryObj<typeof HCRadio>;
+type Story = StoryObj<typeof HCCheckbox>;
 
 export const Basic: Story = {
   args: {

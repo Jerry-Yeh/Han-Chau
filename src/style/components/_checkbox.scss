@@ -1,0 +1,33 @@
+.checkbox:has(> input[type='checkbox']:checked) {
+  @apply border-active bg-highlight-light;
+
+  label {
+    @apply text-highlight text-body-bold-s;
+  }
+
+  input[type='checkbox'] {
+    @apply accent-active;
+  }
+
+  .input {
+    @apply border-active;
+    .core {
+      @apply bg-highlight;
+    }
+  }
+}
+
+.checkbox:has(> input[type='checkbox'][disabled]) {
+  @apply border-disabled bg-disabled text-disabled;
+
+  label {
+    @apply hover:cursor-not-allowed text-disabled;
+  }
+
+  .input {
+    @apply border-disabled;
+    .core {
+      @apply bg-disabled;
+    }
+  }
+}
