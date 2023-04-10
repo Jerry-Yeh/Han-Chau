@@ -44,10 +44,7 @@ const dummyList = [
 export const Basic: Story = () => {
   const [value, setValue] = useState<CheckboxValueType[]>([]);
 
-  const onChange = (list: CheckboxValueType[]) => {
-    setValue(list);
-    console.log('list', list);
-  };
+  const onChange = (list: CheckboxValueType[]) => setValue(list);
 
   return <HCCheckboxGroup value={value} onChange={onChange} options={dummyList} />;
 };
