@@ -121,7 +121,7 @@ export default {
 
 type Story = StoryFn<typeof HCBottomSheet>;
 
-export const Basic: Story = () => {
+export const Basic: Story = ({ backdrop }: Props) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -129,7 +129,7 @@ export const Basic: Story = () => {
   };
 
   return (
-    <HCBottomSheet show={show} onClose={handleClose} backdrop={false}>
+    <HCBottomSheet show={show} onClose={handleClose} backdrop={backdrop}>
       <h3 className='text-heading-xs text-secondary mb-2'>歡迎來到 HANCHAU！</h3>
       <h4 className='text-body-xs text-tertiary mb-3'>跟著老師動次動次動</h4>
       <HCButton color='highlight' className='mb-4'>
@@ -151,6 +151,7 @@ export const Header: Story = (args: Props) => {
       show={show}
       header={args.header}
       description={args.description}
+      backdrop={args.backdrop}
       onClose={handleClose}
     >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
@@ -175,6 +176,7 @@ export const HeaderPrefixAndSuffix: Story = (args: Props) => {
       description={args.description}
       prefix={<ArrowLeft />}
       suffix={<XMark />}
+      backdrop={args.backdrop}
       onSuffix={handleClose}
       onClose={handleClose}
     >
@@ -222,8 +224,9 @@ export const Handle: Story = (args: Props) => {
       show={show}
       header={args.header}
       description={args.description}
-      onClose={handleClose}
+      backdrop={args.backdrop}
       handle
+      onClose={handleClose}
     >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
       <HCButton color='primary' disabled>
