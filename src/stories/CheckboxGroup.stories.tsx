@@ -1,8 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/store';
 
-import { HCCheckboxGroup, CheckboxValueType } from '~/components/Checkbox';
-import type { GroupProps } from '~/components/Checkbox/interface';
+import { HCCheckboxGroup, CheckboxValueType, GroupProps } from '~/components/Checkbox';
 
 import Chest from '~/assets/img/body/chest.svg';
 

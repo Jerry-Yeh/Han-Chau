@@ -1,28 +1,30 @@
-import { useState } from 'react';
-
 import { RadioGroupContextProvider } from './context';
+import HCRadio from './Radio';
 
-import type { GroupProps, InputChangeEvent } from './interface';
+import type { GroupProps, RadioValueType } from './interface';
 
 const HCRadioGroup: React.FC<GroupProps> = (props: GroupProps) => {
-  const [value, setValue] = useState<any>(props.value);
-
-  const onRadioChange = (e: InputChangeEvent) => {
-    setValue(e.target.value);
+  const onRadioChange = (newValue: RadioValueType) => {
     if (props.onChange) {
-      props.onChange(e);
+      props.onChange(newValue);
     }
   };
 
+  const children =
+    props.options && props.options.length > 0
+      ? props.options.map((item, index) => <HCRadio key={index} {...item} />)
+      : props.children;
+
   return (
-    <div className={`${props.className} flex flex-col gap-y-2`}>
+    <div className={`${props.className} grid ${props.image ? 'grid-cols-3 gap-4' : 'gap-y-2'}`}>
       <RadioGroupContextProvider
         value={{
+          value: props.value,
+          disabled: props.disabled,
           onChange: onRadioChange,
-          value,
         }}
       >
-        {props.children}
+        {children}
       </RadioGroupContextProvider>
     </div>
   );

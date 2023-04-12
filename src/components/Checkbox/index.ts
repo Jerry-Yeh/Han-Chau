@@ -3,6 +3,8 @@ import Group from './Group';
 
 import type { CheckboxProps, GroupProps } from './interface';
 
+export type { CheckboxProps, GroupProps } from './interface';
+
 export type Checkbox = React.ForwardRefExoticComponent<CheckboxProps>;
 export type CheckboxGroup = React.ForwardRefExoticComponent<GroupProps>;
 export type { CheckboxValueType } from './interface';

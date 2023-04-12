@@ -2,7 +2,8 @@ import { Meta, StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/store';
 
 import { HCCheckbox } from '~/components/Checkbox';
-import type { CheckboxProps, InputChangeEvent } from '~/components/Checkbox/interface';
+import type { CheckboxProps } from '~/components/Checkbox/interface';
+import type { InputChangeEvent } from '~/components/ControlItem/interface';
 
 import Chest from '~/assets/img/body/chest.svg';
 

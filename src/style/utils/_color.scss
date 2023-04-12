@@ -28,7 +28,7 @@
     pressed: 'gray-200',
     disabled: 'gray-50',
     hover: 'gray-100',
-    backdrop: 'gray-900/65',
+    backdrop: 'gray-400/65',
   );
 
   @each $name, $value in $background-config {
@@ -208,6 +208,43 @@
   @each $name, $value in $accent-config {
     .accent-#{$name} {
       @apply accent-#{$value};
+    }
+  }
+
+  /* Control item */
+  .control-item {
+    @apply bg-transparent;
+    @apply border-gray-400;
+  }
+
+  .control-item-bg {
+    @apply bg-transparent;
+  }
+
+  .control-item-border {
+    @apply border-gray-400;
+  }
+
+  $control-item-config: (
+    selected: 'teal-600',
+    pressed: 'gray-600',
+    disabled: 'gray-300',
+    hover: 'gray-800',
+    disenabled: 'gray-400',
+  );
+
+  @each $name, $value in $control-item-config {
+    .control-item-#{$name} {
+      @apply bg-#{$value};
+      @apply border-#{$value};
+    }
+
+    .control-item-bg-#{$name} {
+      @apply bg-#{$value};
+    }
+
+    .control-item-border-#{$name} {
+      @apply border-#{$value};
     }
   }
 }

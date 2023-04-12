@@ -1,6 +1,9 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
+import { useArgs } from '@storybook/store';
 
-import { HCRadio, HCRadioGroup } from '~/components/Radio';
+import { HCRadio, HCRadioGroup, RadioValueType, GroupProps } from '~/components/Radio';
+
+import Chest from '~/assets/img/body/chest.svg';
 
 export default {
   title: 'Components/RadioGroup',
@@ -8,10 +11,10 @@ export default {
   parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
     value: {
-      control: 'text',
+      control: false,
       description: 'Used for selected value.',
       table: {
-        type: { summary: 'any' },
+        type: { summary: 'Nullable<RadioValueType>' },
       },
     },
     disabled: {
@@ -23,18 +26,51 @@ export default {
       },
     },
   },
-} as Meta<typeof HCRadio>;
-
-type Story = StoryObj<typeof HCRadioGroup>;
-
-export const Basic: Story = {
   args: {
-    value: '1',
+    value: null,
+    disabled: false,
   },
-  render: () => (
-    <HCRadioGroup>
-      <HCRadio label='caption1' value='1' />
-      <HCRadio label='caption2' value='2' />
-    </HCRadioGroup>
-  ),
+} as Meta<typeof HCRadioGroup>;
+
+type Story = StoryFn<typeof HCRadioGroup>;
+
+const dummyList = [
+  { label: '標籤', value: 1 },
+  { label: '標籤', value: 2 },
+  { label: '標籤', value: 3 },
+];
+
+export const Basic: Story = ({ disabled }: GroupProps) => {
+  const [{ value }, updateArgs] = useArgs();
+
+  const onChange = (newValue: RadioValueType) => {
+    updateArgs({ value: newValue });
+  };
+
+  return <HCRadioGroup value={value} onChange={onChange} options={dummyList} disabled={disabled} />;
+};
+
+const dummyImageList = [
+  { label: '標籤', value: 1, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 2, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 3, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 4, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 5, image: <img src={Chest} alt='chest' /> },
+  { label: '標籤', value: 6, image: <img src={Chest} alt='chest' /> },
+];
+
+export const Image: Story = ({ disabled }: GroupProps) => {
+  const [{ value }, updateArgs] = useArgs();
+
+  const onChange = (list: RadioValueType) => updateArgs({ value: list });
+
+  return (
+    <HCRadioGroup
+      value={value}
+      options={dummyImageList}
+      disabled={disabled}
+      image
+      onChange={onChange}
+    />
+  );
 };

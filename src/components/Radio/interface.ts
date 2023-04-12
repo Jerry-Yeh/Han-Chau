@@ -1,12 +1,13 @@
 import { ChangeEvent } from 'react';
 
 import type { Item } from '~/typings/utils';
-import type { AbstractCheckboxProps } from '../Checkbox/interface';
+import type { AbstractContorlItemProps } from '../ControlItem/interface';
+import type { Nullable } from '~/typings/utils';
 
 export type RadioGroupOptionType = 'default' | 'button';
-export interface RadioProps extends AbstractCheckboxProps<InputChangeEvent> {
-  label?: string;
-  description?: string;
+export type RadioValueType = string | number | boolean;
+export interface RadioProps extends AbstractContorlItemProps {
+  value: RadioValueType;
 }
 
 // export interface RadioChangeEventTarget extends RadioProps {
@@ -20,22 +21,26 @@ export interface RadioProps extends AbstractCheckboxProps<InputChangeEvent> {
 //   nativeEvent: MouseEvent;
 // }
 
-export type InputChangeEvent = ChangeEvent<HTMLInputElement>;
+// export type InputChangeEvent = ChangeEvent<HTMLInputElement>;
 
-export interface GroupProps {
-  children?: React.ReactNode;
-  value?: any;
-  disabled?: boolean;
-  className?: string;
-  onChange?: (e: InputChangeEvent) => void;
+export interface RadioOptionType {
+  label: string;
+  description?: string;
+  value: RadioValueType;
 }
 
 export interface RadioGroupContextProps {
-  value: any;
+  value: Nullable<RadioValueType>;
   disabled?: boolean;
-  onChange?: (e: InputChangeEvent) => void;
+  onChange?: (e: RadioValueType) => void;
 }
 
-export interface RadioItem extends Item {
-  content?: string;
+export interface GroupProps {
+  children?: React.ReactNode;
+  value: Nullable<RadioValueType>;
+  disabled?: boolean;
+  className?: string;
+  options?: RadioOptionType[];
+  image?: boolean;
+  onChange?: (e: RadioValueType) => void;
 }
