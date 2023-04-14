@@ -28,11 +28,12 @@ export enum MUSCLES {
   GLUTES,
   ADDUCTORS,
   ABDUCTORS,
+  ARMS,
 }
 
 export enum MODALITY {
   FREEWEIGHT = 1,
-  CORE,
+  CABLE,
   MACHINE,
 }
 
