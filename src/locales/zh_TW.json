@@ -127,5 +127,7 @@
   "workout-plan": "訓練計畫",
   "diet-calculation": "飲食計算",
   "profile": "個人檔案",
-  "search-exercise": "尋找健身動作"
+  "workout": {
+    "search-exercise": "尋找健身動作"
+  }
 }

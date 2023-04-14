@@ -43,7 +43,7 @@ const TabBar: React.FC<Props> = (props: Props) => {
   const onClickHandler = (value: string) => setValue(value);
 
   return (
-    <div className={`flex justify-between px-8 mobile-xs:px-14 py-3`}>
+    <div className={`fixed left-0 bottom-0 w-full flex justify-between px-8 mobile-xs:px-14 py-3`}>
       {list.map((item, index) => (
         <button
           className='cursor-pointer flex flex-col items-center'

@@ -118,5 +118,7 @@
   "workout-plan": "Workout Plan",
   "diet-calculation": "Diet Calculation",
   "profile": "Profile",
-  "search-exercise": ""
+  "workout": {
+    "search-exercise": ""
+  }
 }

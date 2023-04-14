@@ -42,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
       <input
         type='search'
         value={props.value}
-        placeholder={props.placeholder ? props.placeholder : t('search-exercise')}
+        placeholder={props.placeholder ? props.placeholder : t('workout.search-exercise')}
         className={`
           search-cancel:appearance-none search-cancel:bg-[url('~/assets/img/heroicons/mini/x-circle.svg')] search-cancel:w-5 search-cancel:h-5 search-cancel:icon-tertiary
           w-full h-12 border border-transparent rounded-lg outline-0 bg-secondary placeholder:text-placeholder text-body-s pl-13 
