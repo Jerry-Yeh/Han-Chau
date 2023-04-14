@@ -52,7 +52,12 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-rtl')],
+  plugins: [
+    require('tailwindcss-rtl'),
+    require('tailwindcss/plugin')(({ addVariant }) => {
+      addVariant('search-cancel', '&::-webkit-search-cancel-button');
+    }),
+  ],
   corePlugins: {
     // preflight: false,
   },

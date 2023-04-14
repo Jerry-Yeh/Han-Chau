@@ -41,7 +41,6 @@ const HCInput: React.FC<Props> = (props: Props) => {
         className={`
           ${props.className}
           ${btnClass}
-          w-full
           text-body-s
           h-12
           rounded-lg`}

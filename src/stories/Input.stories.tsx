@@ -1,11 +1,7 @@
-import { Meta, StoryObj, StoryFn } from '@storybook/react';
-import { FocusEvent, ChangeEvent, useState } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import HCInput from '~/components/Input';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
-import MagnifyingGlass from '~/assets/img/heroicons/mini/magnifying-glass';
-import XMark from '~/assets/img/heroicons/mini/x-mark';
-import AdjustmentsHorizontal from '~/assets/img/heroicons/mini/adjustments-horizontal';
 
 export default {
   title: 'Components/Input',
@@ -13,6 +9,13 @@ export default {
   decorators: [AntdDecorator],
   parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
+    value: {
+      control: 'text',
+      description: 'The input content value.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
     label: {
       control: 'text',
       description: 'A caption for input field.',
@@ -67,33 +70,4 @@ export const Basic: Story = {
     label: 'caption',
     disabled: false,
   },
-};
-
-export const SearchBar: StoryFn<typeof HCInput> = () => {
-  const [focus, setFocus] = useState(false);
-  const [searchText, setSearchText] = useState('');
-
-  const onFocusHandler = () => setFocus(true);
-  const onBlurHandler = () => setFocus(false);
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setSearchText(e.target.value);
-  const onClearHandler = () => setSearchText('');
-
-  return (
-    <HCInput
-      value={searchText}
-      prefix={<MagnifyingGlass className='icon-secondary' />}
-      suffix={
-        focus ? (
-          <button onClick={onClearHandler}>
-            <XMark className={`${searchText ? 'icon-tertiary' : 'icon-disabled'}`} />
-          </button>
-        ) : (
-          <AdjustmentsHorizontal className='icon-secondary' />
-        )
-      }
-      onFocus={onFocusHandler}
-      onBlur={onBlurHandler}
-      onChange={onChangeHandler}
-    />
-  );
 };
