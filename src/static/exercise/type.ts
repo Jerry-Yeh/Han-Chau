@@ -1,5 +1,5 @@
-import { LEVEL } from '../enums/user';
-import { JOINT, PART, MUSCLES, MODALITY, PULLPUSH } from '../enums/exercise';
+import { LEVEL } from '../../enums/user';
+import { JOINT, PART, MUSCLES, MODALITY, PULLPUSH } from '../../enums/exercise';
 
 /**
  * chinese wording: joint[JOINT.MULTIPLE].zh
