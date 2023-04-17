@@ -50,7 +50,7 @@ const Landing: React.FC<Props> = (props: Props) => {
   return (
     <div className='bg-secondary h-screen flex flex-col relative'>
       <div className={`${!showActions ? 'opacity-100' : 'opacity-0'} duration-800`}>
-        <HCHeader size='l' center={<img src={logo} alt='logo' />} />
+        <HCHeader size='l' title={<img src={logo} alt='logo' />} />
         <HCCarousel className='mb-auto'>
           {carouselWordingList.map((item, idx) => (
             <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
@@ -74,7 +74,7 @@ const Landing: React.FC<Props> = (props: Props) => {
         </div>
         <span className='text-body-m text-placeholder'>{t('welcome.slogan')}</span>
       </div>
-      <HCBottomSheet show={showActions}>
+      <HCBottomSheet show={showActions} backdrop={false}>
         <h3 className='text-heading-xs text-secondary mb-2'>{t('welcome.landing.heading')}</h3>
         <h4 className='text-body-xs text-tertiary mb-3'>{t('welcome.landing.subheading')}</h4>
         <HCButton color='highlight' className='mb-4' onClick={toRegister}>
