@@ -1,5 +1,8 @@
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
+import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
+import XMark from '~/assets/img/heroicons/mini/x-mark';
+
 export interface Props {
   children?: ReactNode;
   className?: string;
@@ -9,11 +12,10 @@ export interface Props {
   backdrop?: boolean;
   handle?: boolean;
   keyboard?: boolean;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
+  prefix?: boolean;
+  suffix?: boolean;
   onClose?: () => void;
   onPrefix?: () => void;
-  onSuffix?: () => void;
 }
 
 const HCBottomSheet: React.FC<Props> = (props: Props) => {
@@ -99,7 +101,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
    * Shadow & Backdrop
    */
   const [shadowClass, setShadowClass] = useState('');
-  const [backdrop, setBackdrop] = useState('invisible');
+  const [backdropClass, setBackdropClass] = useState('invisible');
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
@@ -107,12 +109,12 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
     if (props.show) {
       timer = setTimeout(() => {
         setShadowClass('drop-shadow-reversed');
-        setBackdrop('visible');
+        setBackdropClass('visible');
       }, 0);
     } else {
       timer = setTimeout(() => {
         setShadowClass('');
-        setBackdrop('invisible');
+        setBackdropClass('invisible');
       }, 800);
     }
 
@@ -122,13 +124,16 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
   }, [props.show]);
 
   return (
-    <div className={`${props.className} w-full h-full`}>
+    <div
+      className={`${props.className}
+      ${props.show ? 'h-full' : 'h-0'} w-full absolute left-0 top-0`}
+    >
       {props.backdrop && (
         <div
           className={`
-            ${backdrop}
+            ${backdropClass}
             ${props.show ? 'opacity-100' : 'opacity-0'}
-            w-full h-full bg-backdrop absolute left-0 top-0 transition-opacity duration-800`}
+            w-screen h-screen bg-backdrop absolute left-0 top-0 transition-opacity duration-800`}
         ></div>
       )}
       <div
@@ -160,18 +165,21 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
                 onClick={props.onPrefix}
                 aria-hidden='true'
               >
-                <div className='w-5'>{props.prefix}</div>
+                <div className='w-5'>{props.prefix && <ArrowLeft />}</div>
               </div>
-              <div className='flex justify-center items-center flex-col'>
+              <div
+                className={`flex justify-center items-center flex-col
+                ${!props.description && 'py-2.5'}`}
+              >
                 <span className='text-body-bold-l'>{props.header}</span>
                 <span className='text-body-s text-tertiary'>{props.description}</span>
               </div>
               <div
-                className={`py-3.5 px-4 ${props.onSuffix ? 'cursor-pointer' : ''}`}
-                onClick={props.onSuffix}
+                className={`py-3.5 px-4 ${props.onClose ? 'cursor-pointer' : ''}`}
+                onClick={props.onClose}
                 aria-hidden='true'
               >
-                <div className='w-5'>{props.suffix}</div>
+                <div className='w-5'>{props.suffix && <XMark />}</div>
               </div>
             </div>
           </div>
@@ -190,6 +198,8 @@ HCBottomSheet.defaultProps = {
   backdrop: true,
   handle: false,
   keyboard: false,
+  suffix: true,
+  prefix: false,
 };
 
 export default HCBottomSheet;

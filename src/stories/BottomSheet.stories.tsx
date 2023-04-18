@@ -1,12 +1,10 @@
 import { Fragment } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { useArgs } from '@storybook/store';
+import { useArgs, useEffect } from '@storybook/store';
 
 import HCBottomSheet, { Props } from '~/components/BottomSheet';
 import HCButton from '~/components/Button';
 import HCInput from '~/components/Input';
-import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
-import XMark from '~/assets/img/heroicons/mini/x-mark';
 
 export default {
   title: 'Components/BottomSheet',
@@ -66,17 +64,17 @@ export default {
       },
     },
     prefix: {
-      control: false,
-      description: 'The prefix icon or text for the header.',
+      control: 'boolean',
+      description: 'The prefix previous icon for the header.',
       table: {
-        type: { summary: 'ReactNode' },
+        type: { summary: 'boolean' },
       },
     },
     suffix: {
-      control: false,
-      description: 'The suffix icon or text for the header.',
+      control: 'boolean',
+      description: 'The suffix close icon for the header.',
       table: {
-        type: { summary: 'ReactNode' },
+        type: { summary: 'boolean' },
       },
     },
     onClose: {
@@ -93,13 +91,6 @@ export default {
         type: { summary: 'Function' },
       },
     },
-    onSuffix: {
-      control: false,
-      description: 'Specify a function that will be called when a user clicks prefix icon.',
-      table: {
-        type: { summary: 'Function' },
-      },
-    },
   },
   args: {
     show: false,
@@ -108,6 +99,8 @@ export default {
     backdrop: true,
     handle: false,
     keyboard: false,
+    prefix: false,
+    suffix: true,
     children: (
       <Fragment>
         <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
@@ -129,7 +122,7 @@ export const Basic: Story = ({ backdrop }: Props) => {
   };
 
   return (
-    <HCBottomSheet show={show} onClose={handleClose} backdrop={backdrop}>
+    <HCBottomSheet show={show} onClose={handleClose} backdrop={backdrop} header=''>
       <h3 className='text-heading-xs text-secondary mb-2'>歡迎來到 HANCHAU！</h3>
       <h4 className='text-body-xs text-tertiary mb-3'>跟著老師動次動次動</h4>
       <HCButton color='highlight' className='mb-4'>
@@ -152,6 +145,8 @@ export const Header: Story = (args: Props) => {
       header={args.header}
       description={args.description}
       backdrop={args.backdrop}
+      prefix={false}
+      suffix={false}
       onClose={handleClose}
     >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
@@ -163,7 +158,11 @@ export const Header: Story = (args: Props) => {
 };
 
 export const HeaderPrefixAndSuffix: Story = (args: Props) => {
-  const [{ show }, updateArgs] = useArgs();
+  const [{ show, prefix }, updateArgs] = useArgs();
+
+  useEffect(() => {
+    updateArgs({ prefix: true });
+  }, [updateArgs]);
 
   const handleClose = () => {
     updateArgs({ show: false });
@@ -174,10 +173,9 @@ export const HeaderPrefixAndSuffix: Story = (args: Props) => {
       show={show}
       header={args.header}
       description={args.description}
-      prefix={<ArrowLeft />}
-      suffix={<XMark />}
+      prefix={prefix}
+      suffix={args.suffix}
       backdrop={args.backdrop}
-      onSuffix={handleClose}
       onClose={handleClose}
     >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
@@ -202,6 +200,8 @@ export const Keyboard: Story = (args: Props) => {
       description={args.description}
       backdrop={args.backdrop}
       keyboard
+      prefix={args.prefix}
+      suffix={args.suffix}
       onClose={handleClose}
     >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
@@ -226,6 +226,8 @@ export const Handle: Story = (args: Props) => {
       description={args.description}
       backdrop={args.backdrop}
       handle
+      prefix={args.prefix}
+      suffix={args.suffix}
       onClose={handleClose}
     >
       <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
