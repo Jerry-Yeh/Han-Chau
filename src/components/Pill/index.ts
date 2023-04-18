@@ -1,4 +1,4 @@
-import Pill from './Pill';
+import HCPill from './Pill';
 
 export type PillValue = string | number;
 
@@ -7,4 +7,4 @@ export interface PillItem {
   value: PillValue;
 }
 
-export default Pill;
+export default HCPill;

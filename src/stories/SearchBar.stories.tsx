@@ -31,6 +31,13 @@ export default {
         type: { summary: 'string' },
       },
     },
+    filter: {
+      control: 'boolean',
+      description: 'Whether the search bar has a filter suffix icon or not.',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
     onChange: {
       control: false,
       description: 'Callback when user input.',
@@ -43,6 +50,7 @@ export default {
     value: '',
     prefixType: 'search',
     placeholder: '尋找健身動作',
+    filter: true,
   },
 } as Meta<typeof HCSearchBar>;
 

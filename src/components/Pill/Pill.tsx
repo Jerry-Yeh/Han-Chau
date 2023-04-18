@@ -1,13 +1,13 @@
 import React from 'react';
 
-import type { PillItem } from '.';
+import type { PillItem, PillValue } from '.';
 import { Nullable } from '~/typings/utils';
 
 interface Props {
   children?: React.ReactNode;
-  activeKey: Nullable<string | number>;
+  activeKey: Nullable<PillValue>;
   list: PillItem[];
-  onChange: (value: string | number) => void;
+  onChange: (value: PillValue) => void;
 }
 
 const Pill: React.FC<Props> = (props: Props) => {

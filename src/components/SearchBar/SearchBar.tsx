@@ -37,12 +37,12 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
   };
 
   return (
-    <div className='relative'>
+    <div className={`${props.className} relative`}>
       <div className='absolute py-3.5 px-4 top-0 left-0 cursor-pointer'>{prefix}</div>
       <input
         type='search'
         value={props.value}
-        placeholder={props.placeholder ? props.placeholder : t('workout.search-exercise')}
+        placeholder={props.placeholder ? props.placeholder : t('search')}
         className={`
           search-cancel:appearance-none search-cancel:bg-[url('~/assets/img/heroicons/mini/x-circle.svg')] search-cancel:w-5 search-cancel:h-5 search-cancel:icon-tertiary
           w-full h-12 border border-transparent rounded-lg outline-0 bg-secondary placeholder:text-placeholder text-body-s pl-13 
@@ -56,7 +56,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
           <XCircle className='icon-disabled' />
         </div>
       )}
-      {!focus && (
+      {!focus && props.filter && (
         <div className='w-13 h-12 absolute top-0 right-0 py-3.5 px-4 cursor-pointer'>
           <AdjustmentsHorizontal className='icon-secondary' />
         </div>
@@ -67,6 +67,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
 
 SearchBar.defaultProps = {
   prefixType: 'search',
+  filter: true,
 };
 
 export default SearchBar;
