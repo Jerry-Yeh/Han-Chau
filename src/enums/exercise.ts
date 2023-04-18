@@ -53,3 +53,10 @@ export enum JOINT {
   MULTIPLE = 1,
   SINGLE,
 }
+
+export enum WORKOUTPLAN {
+  MINE = 1,
+  CHEST,
+  LEGS,
+  BACK,
+}

@@ -127,7 +127,17 @@
   "workout-plan": "訓練計畫",
   "diet-calculation": "飲食計算",
   "profile": "個人檔案",
-  "workout": {
-    "search-exercise": "尋找健身動作"
+  "search": "搜尋",
+  "exercise": {
+    "search-exercise": "尋找健身動作",
+    "my-workout-plan": "我的訓練計畫",
+    "chest-workout-plan": "胸日計畫",
+    "legs-workout-plan": "腿日計畫",
+    "back-workout-plan": "背日計畫",
+    "empty-fitness-plan": "創造一個屬於你自己的訓練計畫",
+    "make-workout-plan-immediately": "馬上建立計畫",
+    "make-new-workout-plan": "建立新計畫",
+    "make-workout-plan": "建立計畫",
+    "input-workout-plan-name": "輸入你的訓練菜單名稱"
   }
 }

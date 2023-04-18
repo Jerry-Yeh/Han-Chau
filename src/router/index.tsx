@@ -4,8 +4,8 @@ import App from '~/App';
 
 /** Welcome */
 import Welcome from '~/pages/Welcome';
-import Landing from '~/pages/Welcome/components/Landing';
 import Loading from '~/pages/Welcome/components/Loading';
+import Done from '~/pages/Welcome/components/Done';
 
 /** Onboarding */
 import Onboarding from '~/pages/Onboarding';
@@ -21,6 +21,10 @@ import Login from '~/pages/Onboarding/components/Login';
 import Terms from '~/pages/Onboarding/components/Terms';
 import Results from '~/pages/Onboarding/components/Results';
 
+/** Exercise */
+import Exercise from '~/pages/Exercise';
+import Plan from '~/pages/Exercise/components/Plan';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
           { path: '*', element: <Navigate to='loading' replace /> },
           { index: true, element: <Loading /> },
           { path: 'loading', element: <Loading /> },
-          { path: 'landing', element: <Landing /> },
+          { path: 'done', element: <Done /> },
         ],
       },
       {
@@ -54,6 +58,11 @@ const router = createBrowserRouter([
           { path: 'terms', element: <Terms /> },
           { path: 'results', element: <Results /> },
         ],
+      },
+      {
+        path: 'exercise',
+        element: <Exercise />,
+        children: [{ index: true, element: <Plan /> }],
       },
     ],
   },

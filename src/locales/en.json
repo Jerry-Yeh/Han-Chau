@@ -118,7 +118,17 @@
   "workout-plan": "Workout Plan",
   "diet-calculation": "Diet Calculation",
   "profile": "Profile",
-  "workout": {
-    "search-exercise": ""
+  "search": "",
+  "exercise": {
+    "search-exercise": "",
+    "my-workout-plan": "",
+    "chest-workout-plan": "",
+    "legs-workout-plan": "",
+    "back-workout-plan": "",
+    "empty-fitness-plan": "",
+    "make-workout-plan-immediately": "",
+    "make-new-workout-plan": "",
+    "make-workout-plan": "",
+    "input-workout-plan-name": ""
   }
 }
