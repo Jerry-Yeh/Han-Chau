@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -22,7 +22,7 @@ interface CarouselItem {
   subheading: string;
 }
 
-const Landing: React.FC<Props> = (props: Props) => {
+const Done: React.FC<Props> = (props: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
@@ -97,4 +97,4 @@ const Landing: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default Landing;
+export default Done;
