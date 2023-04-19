@@ -55,7 +55,7 @@ const Done: React.FC<Props> = (props: Props) => {
           {carouselWordingList.map((item, idx) => (
             <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
               <img
-                src={`/src/assets/img/welcome_page_${idx + 1}.svg`}
+                src={`/src/assets/img/welcome-page-${idx + 1}.svg`}
                 alt='img'
                 className='mb-12'
               />

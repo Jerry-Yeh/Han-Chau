@@ -28,7 +28,7 @@ const Loading: React.FC<Props> = (props: Props) => {
     }, 1600);
 
     const navigateDelayTimer = setTimeout(() => {
-      navigate('/welcome/landing');
+      navigate('/welcome/done');
     }, 2400);
 
     return () => {

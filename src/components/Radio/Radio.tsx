@@ -3,8 +3,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import HCControlItem from '../ControlItem';
 import RadioGroupContext from './context';
 
-import type { RadioValueType, RadioProps, InputChangeEvent } from './interface';
-import type { InputMouseEvent } from '../ControlItem/interface';
+import type { RadioValueType, RadioProps } from './interface';
+import type { InputMouseEvent, InputChangeEvent } from '../ControlItem/interface';
 
 const HCRadio: React.ForwardRefRenderFunction<HTMLDivElement, RadioProps> = (
   props: RadioProps,
