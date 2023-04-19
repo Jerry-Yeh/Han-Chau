@@ -38,7 +38,7 @@ const Level: React.FC<Props> = () => {
   const onChangeHandler = (newValue: RadioValueType) => {
     setUser((prevUser) => ({
       ...prevUser,
-      level: +newValue,
+      level: newValue as number,
     }));
   };
 

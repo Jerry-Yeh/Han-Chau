@@ -2,6 +2,8 @@ import React, { Fragment, ReactNode, useRef, ChangeEvent, FocusEvent } from 'rea
 import { Input, InputRef } from 'antd';
 import classNames from 'classnames';
 
+import type { Nullable } from '~/typings/utils';
+
 interface Props {
   className?: string;
   label?: string;
@@ -10,7 +12,7 @@ interface Props {
   prefix?: ReactNode;
   suffix?: ReactNode;
   disabled?: boolean;
-  value?: string | number;
+  value?: Nullable<string | number>;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import Layout from '../Layout';
-import { HCRadio, HCRadioGroup } from '~/components/Radio';
+import { HCRadio, HCRadioGroup, RadioValueType } from '~/components/Radio';
 import HCButton from '~/components/Button';
 import { useUser } from '../..';
 import { GENDER } from '~/enums/user';
@@ -18,10 +18,10 @@ const Gender: React.FC<Props> = () => {
 
   const { user, setUser } = useUser();
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (newValue: RadioValueType) => {
     setUser((prevUser) => ({
       ...prevUser,
-      gender: +e.target.value,
+      gender: newValue as number,
     }));
   };
 

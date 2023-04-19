@@ -20,7 +20,7 @@ const Target: React.FC<Props> = () => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser((prevUser) => ({
       ...prevUser,
-      target: +e.target.value,
+      targetWeight: +e.target.value,
     }));
   };
 
@@ -33,6 +33,7 @@ const Target: React.FC<Props> = () => {
       <HCInput
         className='mb-3'
         value={user.targetWeight}
+        type='number'
         placeholder={t('target-weight') as string}
         suffix='kg'
         onChange={onChangeHandler}

@@ -33,6 +33,7 @@ const Height: React.FC<Props> = () => {
       <HCInput
         className='mb-3'
         value={user.height}
+        type='number'
         placeholder={t('height')}
         suffix='cm'
         onChange={onChangeHandler}
