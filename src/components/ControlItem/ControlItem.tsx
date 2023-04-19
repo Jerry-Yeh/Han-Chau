@@ -66,7 +66,7 @@ const ControlItem: React.FC<Props> = (props: Props) => {
           {props.image && <div className='pt-4'>{props.image}</div>}
           <div className={`${props.image ? 'p-2 ml-auto' : ''}`}>{props.controller}</div>
         </div>
-        <div className={`flex flex-col items-center ${props.image ? 'py-4' : ''}`}>
+        <div className={`flex flex-col ${props.image ? 'py-4 items-center' : ''}`}>
           <span className={`text-body-s ${labelClass}`}>{props.label}</span>
           {props.description && (
             <span
