@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '~/store/hook';
 
 import Layout from '../Layout';
 import HCButton from '~/components/Button';
-import { useUser } from '../..';
 import AuthService from '~/services/auth';
+import { setUser } from '~/store/features/uesr';
 
 import google from '~/assets/img/google.svg';
 import facebook from '~/assets/img/facebook.svg';
@@ -17,8 +18,9 @@ interface Props {
 const Login: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation('translation', { keyPrefix: 'onboarding.login' });
+  const dispatch = useAppDispatch();
 
-  const { user, setUser } = useUser();
+  const user = useAppSelector((state) => state.user.user);
 
   useEffect(() => {
     const setUserId = async () => {
@@ -27,10 +29,7 @@ const Login: React.FC<Props> = () => {
       if (result) {
         const id = result.user.uid;
 
-        setUser((prevUser) => ({
-          ...prevUser,
-          id,
-        }));
+        dispatch(setUser({ id }));
         localStorage.setItem('id', id);
         await AuthService.saveUser({ ...user, id });
         navigate('/onboarding/results');

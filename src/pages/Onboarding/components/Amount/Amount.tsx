@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '~/store/hook';
 
 import Layout from '../Layout';
 import { HCRadio, HCRadioGroup } from '~/components/Radio';
 import HCButton from '~/components/Button';
-import { useUser } from '../..';
 import { AMOUNT } from '~/enums/user';
+import { setUser } from '~/store/features/uesr';
 
 import type { RadioOptionType, RadioValueType } from '~/components/Radio';
 
@@ -17,8 +18,9 @@ interface Props {
 const Amount: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const { user, setUser } = useUser();
+  const user = useAppSelector((state) => state.user.user);
   const list: RadioOptionType[] = [
     {
       label: t('onboarding.amount.selection.bedridden.heading'),
@@ -53,10 +55,7 @@ const Amount: React.FC<Props> = () => {
   ];
 
   const onChangeHandler = (newValue: RadioValueType) => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      amount: +newValue,
-    }));
+    dispatch(setUser({ amount: +newValue }));
   };
 
   const toNext = () => {

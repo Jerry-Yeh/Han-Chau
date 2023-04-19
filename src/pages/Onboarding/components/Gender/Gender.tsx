@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '~/store/hook';
 
 import Layout from '../Layout';
 import { HCRadio, HCRadioGroup, RadioValueType } from '~/components/Radio';
 import HCButton from '~/components/Button';
-import { useUser } from '../..';
 import { GENDER } from '~/enums/user';
+import { setUser } from '~/store/features/uesr';
 
 interface Props {
   children?: React.ReactNode;
@@ -15,14 +16,12 @@ interface Props {
 const Gender: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const { user, setUser } = useUser();
+  const user = useAppSelector((state) => state.user.user);
 
   const onChangeHandler = (newValue: RadioValueType) => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      gender: newValue as number,
-    }));
+    dispatch(setUser({ gender: newValue }));
   };
 
   const toNext = () => {

@@ -2,11 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
+import { useAppDispatch, useAppSelector } from '~/store/hook';
 
 import Layout from '../Layout';
 import DatePicker, { DatePickerProps } from '~/components/DatePicker';
 import HCButton from '~/components/Button';
-import { useUser } from '../..';
+import { setUser } from '~/store/features/uesr';
 
 interface Props {
   children?: React.ReactNode;
@@ -15,14 +16,12 @@ interface Props {
 const Birth: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const { user, setUser } = useUser();
+  const user = useAppSelector((state) => state.user.user);
 
   const onChangeHandler: DatePickerProps['onChange'] = (date) => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      birth: dayjs(date).valueOf(),
-    }));
+    dispatch(setUser({ birth: dayjs(date).valueOf() }));
   };
 
   const toNext = () => {

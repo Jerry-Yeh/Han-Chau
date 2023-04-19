@@ -1,46 +1,20 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { useNavigate, useLocation, Outlet, useOutletContext } from 'react-router-dom';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 
 import HCHeader from '~/components/Header';
 
-import type { ContextType, User } from './interface';
 import HCProgress from '~/components/Progress';
 
 interface Props {
   children?: React.ReactNode;
 }
 
-export const useUser = () => {
-  return useOutletContext<ContextType>();
-};
-
 const Onboarding: React.FC<Props> = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
-
-  /** Data */
-  const [user, setUser] = useState<User>(() =>
-    localStorage.getItem('user')
-      ? JSON.parse(localStorage.getItem('user') as string)
-      : {
-          height: null,
-          weight: null,
-          gender: null,
-          amount: null,
-          level: null,
-          name: '',
-        },
-  );
-
-  useEffect(() => {
-    if (user) {
-      // console.log('set', user.name);
-      localStorage.setItem('user', JSON.stringify(user));
-    }
-  }, [user]);
 
   /** Path & Style */
   const [prevPath, setPrevPath] = useState('');
@@ -118,7 +92,7 @@ const Onboarding: React.FC<Props> = () => {
           <HCProgress rateClass={progressClass} />
         </Fragment>
       )}
-      <Outlet context={{ user, setUser }} />
+      <Outlet />
     </div>
   );
 };

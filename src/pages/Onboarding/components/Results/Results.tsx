@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '~/store/hook';
 
-import { useUser } from '../..';
 import Layout from '../Layout';
 import { getTDEE } from '~/services/formula';
 import HCDivider from '~/components/Divider';
@@ -14,8 +15,9 @@ interface Props {
 
 const Results: React.FC<Props> = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'onboarding.results' });
+  const navigate = useNavigate();
 
-  const { user } = useUser();
+  const user = useAppSelector((state) => state.user.user);
 
   return (
     <Fragment>
@@ -30,7 +32,7 @@ const Results: React.FC<Props> = () => {
             </span>
             <span className='text-body-bold-xs'>{t('section1.unit')}</span>
           </div>
-          <img src='/src/assets/img/onboarding_final.svg' alt='img' />
+          <img src='/src/assets/img/onboarding-final.svg' alt='img' />
         </section>
         <section className='p-6'>
           <h4 className='text-heading-s mb-2'>{t('section2.heading')}</h4>
@@ -46,7 +48,9 @@ const Results: React.FC<Props> = () => {
         </section>
       </div>
       <div className='px-4 pt-4 pb-6'>
-        <HCButton color='highlight'>{t('action')}</HCButton>
+        <HCButton color='highlight' onClick={() => navigate('/exercise')}>
+          {t('action')}
+        </HCButton>
       </div>
     </Fragment>
   );

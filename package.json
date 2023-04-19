@@ -19,6 +19,7 @@
   "dependencies": {
     "@heroicons/react": "2.0.13",
     "@line/liff": "2.21.4",
+    "@reduxjs/toolkit": "1.9.5",
     "@types/estree": "1.0.0",
     "antd": "5.1.4",
     "axios": "1.2.0",
@@ -40,6 +41,7 @@
     "react-router-dom": "6.4.3",
     "react-youtube": "10.1.0",
     "redux": "4.2.1",
+    "redux-persist": "6.0.0",
     "upgrade": "^1.1.0",
     "url": "0.11.0"
   },
