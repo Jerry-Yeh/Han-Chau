@@ -31,17 +31,17 @@ const HCHeader: React.FC<Props> = (props: Props) => {
     };
 
     initSizeClass();
-  });
+  }, [props.size]);
 
   return (
     <div className={`bg-secondary ${sizeClass}`}>
-      <div className={`h-12 flex text-secondary`}>
+      <div className={`h-11 flex text-secondary`}>
         <div className='flex-1 hover:cursor-pointer flex justify-start items-center pl-1'>
           {props.prefix}
         </div>
         {!props.expand && (
           <div className='flex justify-center items-center text-heading-xs text-primary'>
-            {props.title}
+            {!props.expand && props.title}
           </div>
         )}
         <div className='flex-1 flex justify-end items-center hover:cursor-pointer pr-1'>
@@ -55,7 +55,7 @@ const HCHeader: React.FC<Props> = (props: Props) => {
 
 HCHeader.defaultProps = {
   title: <img className='w-7' src={logomark} alt='LOGO' />,
-  size: 'm',
+  size: 's',
   expand: false,
 };
 
