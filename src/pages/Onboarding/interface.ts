@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { AMOUNT } from '~/enums/user';
+import type { Nullable } from '~/typings/utils';
 
 export type User = {
   id?: string;
-  height?: number;
-  weight?: number;
-  gender?: number;
-  birth?: number;
-  amount?: AMOUNT;
-  level?: number;
+  height: Nullable<number>;
+  weight: Nullable<number>;
+  gender: Nullable<number>;
+  birth?: Nullable<number>;
+  amount: Nullable<number>;
+  level: Nullable<number>;
   targetWeight?: number;
-  name?: string;
+  name: string;
   login?: string;
 };
 

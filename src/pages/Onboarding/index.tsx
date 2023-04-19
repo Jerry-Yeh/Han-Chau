@@ -22,7 +22,25 @@ const Onboarding: React.FC<Props> = () => {
   const { t } = useTranslation();
 
   /** Data */
-  const [user, setUser] = useState<User>({});
+  const [user, setUser] = useState<User>(() =>
+    localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user') as string)
+      : {
+          height: null,
+          weight: null,
+          gender: null,
+          amount: null,
+          level: null,
+          name: '',
+        },
+  );
+
+  useEffect(() => {
+    if (user) {
+      // console.log('set', user.name);
+      localStorage.setItem('user', JSON.stringify(user));
+    }
+  }, [user]);
 
   /** Path & Style */
   const [prevPath, setPrevPath] = useState('');
@@ -94,8 +112,8 @@ const Onboarding: React.FC<Props> = () => {
         <Fragment>
           <HCHeader
             size='s'
-            left={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
-            right={nextPath && <button onClick={toNext}>{t('skip')}</button>}
+            prefix={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
+            suffix={nextPath && <button onClick={toNext}>{t('skip')}</button>}
           />
           <HCProgress rateClass={progressClass} />
         </Fragment>
