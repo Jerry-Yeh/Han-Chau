@@ -140,8 +140,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
         ref={ref}
         className={`
           ${shadowClass} ${topClass} ${bottomClass}
-          w-full
-          pb-6 box-border rounded-t-3xl
+          w-full box-border rounded-t-3xl
           first-letter:w-full bg-primary
           fixed left-0 transition-top duration-800`}
         style={{
@@ -184,7 +183,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
             </div>
           </div>
         )}
-        <div className={`px-4 ${props.header ? 'pt-4' : 'pt-9'}`}>{props.children}</div>
+        {props.children}
       </div>
     </div>
   );

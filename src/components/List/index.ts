@@ -6,8 +6,9 @@ export interface ListItemType {
   title: string;
   description?: string;
   value?: string | number;
-  type?: string;
+  actionType?: string;
   key?: string;
+  type?: 'warning';
   onClick?: () => void;
   onControl?: () => void;
 }

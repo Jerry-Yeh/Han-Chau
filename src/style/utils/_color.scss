@@ -132,13 +132,17 @@
     pressed: 'gray-900',
     highlight: 'teal-600',
     success: 'emerald-600',
-    destructive: 'rose-800',
+    destructive: 'rose-600',
     warning: 'amber-600',
   );
 
   @each $name, $value in $icon-config {
     .icon-#{$name} {
-      @apply fill-#{$value} text-#{$value};
+      @apply text-#{$value};
+    }
+
+    .icon-fill-#{$name} {
+      @apply fill-#{$value};
     }
 
     .icon-bg-#{$name} {

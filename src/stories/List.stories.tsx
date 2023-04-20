@@ -33,11 +33,21 @@ type Story = StoryObj<typeof HCList>;
 
 const dummyData = [
   { img: <img src={DefaultImage} alt='img' />, title: '標題', description: '描述' },
-  { img: <img src={DefaultImage} alt='img' />, title: '標題', description: '描述', type: 'add' },
-  { img: <img src={DefaultImage} alt='img' />, title: '標題', description: '描述', type: 'next' },
+  {
+    img: <img src={DefaultImage} alt='img' />,
+    title: '標題',
+    description: '描述',
+    actionType: 'add',
+  },
+  {
+    img: <img src={DefaultImage} alt='img' />,
+    title: '標題',
+    description: '描述',
+    actionType: 'next',
+  },
   { img: <img src={DefaultImage} alt='img' />, title: '標題' },
-  { img: <img src={DefaultImage} alt='img' />, title: '標題', type: 'add' },
-  { img: <img src={DefaultImage} alt='img' />, title: '標題', type: 'next' },
+  { img: <img src={DefaultImage} alt='img' />, title: '標題', actionType: 'add' },
+  { img: <img src={DefaultImage} alt='img' />, title: '標題', actionType: 'next' },
 ];
 
 export const Basic: Story = {
