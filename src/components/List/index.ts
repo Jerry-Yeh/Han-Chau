@@ -1,4 +1,5 @@
 import List from './List';
+import Item from './Item';
 
 export interface ListItem {
   img: React.ReactNode;
@@ -6,6 +7,9 @@ export interface ListItem {
   description?: string;
   value?: string | number;
   type?: string;
+  onClick?: () => void;
+  onControl?: () => void;
 }
 
-export default List;
+export const HCList = List;
+export const HCListItem = Item;

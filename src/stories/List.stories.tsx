@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import HCList from '~/components/List';
+import { HCList, HCListItem } from '~/components/List';
 
 import DefaultImage from '~/assets/img/defaultImage.svg';
 
@@ -8,7 +8,7 @@ export default {
   title: 'Components/List',
   component: HCList,
   argTypes: {
-    list: {
+    data: {
       control: false,
       description: 'Data array for list.',
       table: {
@@ -18,6 +18,13 @@ export default {
     bleed: {
       control: 'boolean',
       description: 'Whether the List bleeds or not.',
+    },
+    renderItem: {
+      control: false,
+      description: 'Customize list item.',
+      table: {
+        type: { summary: 'function' },
+      },
     },
   },
 } as Meta<typeof HCList>;
@@ -36,13 +43,15 @@ const dummyData = [
 export const Basic: Story = {
   args: {
     className: 'bg-tertiary',
-    list: dummyData,
+    data: dummyData,
+    renderItem: (item) => <HCListItem {...item}></HCListItem>,
   },
 };
 
 export const Bleed: Story = {
   args: {
-    list: dummyData,
+    data: dummyData,
     bleed: true,
+    renderItem: (item) => <HCListItem {...item}></HCListItem>,
   },
 };
