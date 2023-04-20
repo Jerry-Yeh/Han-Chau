@@ -2,9 +2,9 @@ import React from 'react';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
-import type { ListItem } from '.';
+import type { ListItemType } from '.';
 
-const Item: React.FC<ListItem> = (props: ListItem) => {
+const Item: React.FC<ListItemType> = (props: ListItemType) => {
   return (
     <div
       className='flex items-center px-4 py-2 cursor-pointer bg-primary rounded-lg'

@@ -1,18 +1,22 @@
 import React, { Fragment } from 'react';
 
-import type { ListItem } from '.';
+import type { ListItemType } from '.';
 
 interface Props {
   children?: React.ReactNode;
   className?: string;
-  data: ListItem[];
+  data: ListItemType[];
   bleed?: boolean;
-  renderItem: (item: ListItem, index: number) => React.ReactNode;
+  renderItem: (item: ListItemType, index: number) => React.ReactNode;
 }
 
 const List: React.FC<Props> = (props: Props) => {
-  const renderInnerItem = (item: ListItem, index: number) => {
-    return <Fragment key={`list-item-${index}`}>{props.renderItem(item, index)}</Fragment>;
+  const renderInnerItem = (item: ListItemType, index: number) => {
+    return (
+      <Fragment key={item.key ? item.key : `list-item-${index}`}>
+        {props.renderItem(item, index)}
+      </Fragment>
+    );
   };
 
   return (
