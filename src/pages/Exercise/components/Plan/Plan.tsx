@@ -10,17 +10,17 @@ import HCButton from '~/components/Button';
 import HCBottomSheet from '~/components/BottomSheet';
 import HCInput from '~/components/Input';
 import PlanDetail from '../PlanDetail';
-import HCList from '~/components/List';
+import { HCList, HCListItem, ListItemType } from '~/components/List';
+import ExerciseService, { WorkoutPlan } from '~/services/exercise';
 
 import { WORKOUTPLAN } from '~/enums/exercise';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
+import DefaultPlan from '~/assets/img/default-plan.svg';
 
 interface Props {
   children?: React.ReactNode;
 }
-
-const dummyPlanList = [{ name: '國際練胸日', idList: [1, 10] }];
 
 const Plan: React.FC<Props> = (props: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
@@ -37,9 +37,14 @@ const Plan: React.FC<Props> = (props: Props) => {
   ];
   const [searchText, setSearchText] = useState('');
   const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLAN.ALL);
-  const [planList, setPlanList] = useState([]);
+  const [planList, setPlanList] = useState<WorkoutPlan[]>([]);
   const [showCreatePlan, setShowCreatePlan] = useState(false);
-  const [planName, setPlanName] = useState('');
+  const [plan, setPlan] = useState<WorkoutPlan>({
+    id: '',
+    userId: '',
+    name: '',
+    exerciseIdList: [],
+  });
   const user = useAppSelector((state) => state.user.user);
 
   useEffect(() => {
@@ -47,19 +52,43 @@ const Plan: React.FC<Props> = (props: Props) => {
     if (footerRef.current) setFooterHeight(footerRef.current.clientHeight);
   }, [headerRef, footerRef]);
 
+  useEffect(() => {
+    const queryWorkoutPlans = async () => {
+      if (user.id) {
+        const data = await ExerciseService.queryWorkoutPlans(user.id);
+
+        setPlanList(data);
+      }
+    };
+
+    queryWorkoutPlans();
+  }, [user.id]);
+
   const closeAddPlanHandler = () => {
     setShowCreatePlan(false);
-    setPlanName('');
+    setPlan((prev) => ({ ...prev, name: '' }));
   };
 
   const addPlanHandler = () => {
-    console.log({ userId: user.id, name: planName, exerciseIdList: [] });
+    if (user.id) {
+      const { id, ...rest } = plan;
+      ExerciseService.addWorkoutPlan(rest);
+    }
     setShowCreatePlan(false);
-    setShowAddPage(true);
+    setShowDetailPage(true);
   };
 
-  /** Add page */
-  const [showAddPage, setShowAddPage] = useState(false);
+  const clickItemHandler = (item: ListItemType) => {
+    const clickedPlan = planList.find((plan) => plan.id === item.key);
+
+    if (clickedPlan) {
+      setPlan(clickedPlan);
+      setShowDetailPage(true);
+    }
+  };
+
+  /** Detail page */
+  const [showDetailPage, setShowDetailPage] = useState(false);
 
   return (
     <div className='relative h-screen flex flex-col overflow-hidden'>
@@ -93,8 +122,17 @@ const Plan: React.FC<Props> = (props: Props) => {
             </HCButton>
           </div>
         ) : (
-          // <HCList />
-          ''
+          <HCList
+            data={planList.map((item) => ({
+              key: item.id,
+              title: item.name,
+              img: <img src={DefaultPlan} alt='default' />,
+            }))}
+            bleed={false}
+            renderItem={(item) => (
+              <HCListItem {...item} actionType='next' onClick={() => clickItemHandler(item)} />
+            )}
+          />
         )}
       </main>
       <footer ref={footerRef} className='fixed left-0 bottom-0 w-full'>
@@ -109,18 +147,23 @@ const Plan: React.FC<Props> = (props: Props) => {
         onClose={closeAddPlanHandler}
       >
         <HCInput
-          value={planName}
+          value={plan.name}
           placeholder={t('input-workout-plan-name')}
-          onChange={(e) => setPlanName(e.target.value)}
+          onChange={(e) => setPlan((prev) => ({ ...prev, name: e.target.value }))}
           className='mb-3'
         />
-        <HCButton color='highlight' disabled={!planName} onClick={addPlanHandler}>
+        <HCButton color='highlight' disabled={!plan.name} onClick={addPlanHandler}>
           {t('make-workout-plan')}
         </HCButton>
       </HCBottomSheet>
 
       {/* Add or edit page */}
-      <PlanDetail show={showAddPage} title={planName} onClose={() => setShowAddPage(false)} />
+      <PlanDetail
+        show={showDetailPage}
+        plan={plan}
+        setPlan={setPlan}
+        onClose={() => setShowDetailPage(false)}
+      />
     </div>
   );
 };
