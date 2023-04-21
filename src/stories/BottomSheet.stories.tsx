@@ -77,6 +77,13 @@ export default {
         type: { summary: 'boolean' },
       },
     },
+    fullContent: {
+      control: 'boolean',
+      description: 'Whether the content is full or not.',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
     onClose: {
       control: false,
       description: 'Specify a function that will close the bottom sheet.',
@@ -101,6 +108,7 @@ export default {
     keyboard: false,
     prefix: false,
     suffix: true,
+    fullContent: false,
     children: (
       <Fragment>
         <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />

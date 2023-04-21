@@ -14,6 +14,7 @@ export interface Props {
   keyboard?: boolean;
   prefix?: boolean;
   suffix?: boolean;
+  fullContent?: boolean;
   onClose?: () => void;
   onPrefix?: () => void;
 }
@@ -183,7 +184,9 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
             </div>
           </div>
         )}
-        {props.children}
+        <div className={`${props.fullContent ? '' : `px-4 ${props.header ? 'pt-4' : 'pt-9'}`}`}>
+          {props.children}
+        </div>
       </div>
     </div>
   );
@@ -199,6 +202,7 @@ HCBottomSheet.defaultProps = {
   keyboard: false,
   suffix: true,
   prefix: false,
+  fullContent: false,
 };
 
 export default HCBottomSheet;
