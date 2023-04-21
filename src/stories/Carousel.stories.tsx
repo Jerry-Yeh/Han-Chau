@@ -2,9 +2,9 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import HCCarousel from '~/components/Carousel';
 
-import welcomePage1 from '~/assets/img/welcome_page_1.svg';
-import welcomePage2 from '~/assets/img/welcome_page_2.svg';
-import welcomePage3 from '~/assets/img/welcome_page_3.svg';
+import welcomePage1 from '~/assets/img/welcome-page-1.svg';
+import welcomePage2 from '~/assets/img/welcome-page-2.svg';
+import welcomePage3 from '~/assets/img/welcome-page-3.svg';
 
 export default {
   title: 'Components/Carousel',
