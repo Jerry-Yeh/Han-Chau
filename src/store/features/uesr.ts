@@ -38,12 +38,6 @@ const userSlice = createSlice({
     setUser(state, action) {
       state.user = { ...state.user, ...action.payload };
     },
-    // changeHeight(state, action: PayloadAction<number>) {
-    //   state.user.height = action.payload;
-    // },
-    // changeName(state, action: PayloadAction<string>) {
-    //   state.user.name = action.payload;
-    // },
   },
 });
 
