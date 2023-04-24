@@ -19,6 +19,34 @@ export default {
       options: ['warning', 'success', 'error'],
       description: 'Set type of the modal.',
       table: {
+        type: { summary: 'warning | success | error' },
+      },
+    },
+    title: {
+      control: 'text',
+      description: "The modal dialog's title.",
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    description: {
+      control: 'text',
+      description: "The modal dialog's description.",
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    cancel: {
+      control: 'text',
+      description: 'Text of the cancel button.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    confirm: {
+      control: 'text',
+      description: 'Text of the confirm button.',
+      table: {
         type: { summary: 'string' },
       },
     },
