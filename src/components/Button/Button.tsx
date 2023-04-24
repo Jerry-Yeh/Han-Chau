@@ -64,7 +64,7 @@ const HCButton: React.FC<Props> = (props: Props) => {
         : 'bg-warning-disabled text-disabled',
     }[color]);
   const cursorClass = classNames(props.disabled ? 'cursor-not-allowed' : 'cursor-pointer');
-  const borderMapping = ['primary', 'secondary', 'tertiary'];
+  const borderMapping = ['primary', 'secondary'];
   const borderClass = classNames(
     borderMapping.includes(props.color) ? 'border border-secondary' : '',
   );
