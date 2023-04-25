@@ -143,6 +143,9 @@
       "edit-name": "",
       "delete-plan": "",
       "confirm-edit": "",
+      "challenge": "",
+      "add-exercise": "",
+      "start-fitness": "",
       "delete": {
         "title": "",
         "description": "",

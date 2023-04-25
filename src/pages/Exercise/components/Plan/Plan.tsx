@@ -19,7 +19,6 @@ import { getPlanChallenge } from '~/services/formula';
 import HCBadge from '~/components/Badge';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
-// import DefaultPlan from '~/assets/img/default-plan.svg';
 import Upper from '~/assets/img/exercise/upper.png';
 
 interface Props {
@@ -245,7 +244,7 @@ const Plan: React.FC<Props> = (props: Props) => {
               title: item.name,
               description: `${t(`plan.exercises`, {
                 number: item.exerciseList.length,
-              })}·${ExerciseService.getPlanUpperLowerCore(item.upperLowerCoreList)}`,
+              })}·${ExerciseService.getPlanUpperLowerCoreText(item.upperLowerCoreList)}`,
               img: (
                 <div className='relative'>
                   <img src={Upper} alt='default' />

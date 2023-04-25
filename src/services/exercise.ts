@@ -11,8 +11,8 @@ import {
 } from 'firebase/firestore';
 
 import ApiService from './api';
-import { UPPERLOWERCORE } from '~/enums/exercise';
-import { upperLowerCore } from '~/static/exercise/dataType';
+import { UPPERLOWERCORE, MODALITY } from '~/enums/exercise';
+import { upperLowerCore, modality } from '~/static/exercise/dataType';
 import { store } from '~/store';
 import { getLanguage } from '~/store/features/language';
 
@@ -56,10 +56,17 @@ export default class ExerciseService {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), { name: planName });
   }
 
-  static getPlanUpperLowerCore(upperLowerCoreList: UPPERLOWERCORE[]) {
+  static getPlanUpperLowerCoreText(upperLowerCoreList: UPPERLOWERCORE[]) {
     const state = store.getState();
     const language = getLanguage(state);
 
     return upperLowerCoreList.map((id) => upperLowerCore[id][language]).join('/');
+  }
+
+  static getPlanModalityText(modalityList: MODALITY[]) {
+    const state = store.getState();
+    const language = getLanguage(state);
+
+    return modalityList.map((id) => modality[id][language]).join('/');
   }
 }

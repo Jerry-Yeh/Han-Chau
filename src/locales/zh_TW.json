@@ -153,6 +153,9 @@
       "delete-plan": "刪除計劃",
       "confirm-edit": "確認編輯",
       "input-workout-plan-name": "輸入你的訓練菜單名稱",
+      "challenge": "挑戰度",
+      "add-exercise": "新增動作",
+      "start-fitness": "開始健身",
       "delete": {
         "title": "確認刪除",
         "description": "你確定要刪除「{{name}}」計劃？如果確定，請按下確認刪除，刪除後則無法復原。",

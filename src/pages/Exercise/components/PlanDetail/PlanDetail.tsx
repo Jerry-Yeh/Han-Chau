@@ -1,6 +1,6 @@
 import React, { useState, Dispatch, SetStateAction, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { PencilIcon, TrashIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
 import { useAppSelector } from '~/store/hook';
 
 import HCHeader from '~/components/Header';
@@ -12,10 +12,12 @@ import HCInput from '~/components/Input';
 import ExerciseService from '~/services/exercise';
 import HCModal from '~/components/Modal';
 import type { WorkoutPlan } from '../../interface';
+import HCRate from '~/components/Rate';
 
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
 import Logomark from '~/assets/img/logomark.svg';
+import Upper from '~/assets/img/exercise/upper.png';
 
 interface Props {
   children?: React.ReactNode;
@@ -113,7 +115,28 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
             <EllipsisVertical />
           </HCHeaderIconButton>
         }
-      />
+      >
+        <div className='px-4 py-2 flex items-center'>
+          <img src={Upper} alt='default' />
+          <div className='text-body-s text-tertiary'>
+            <div className='mb-2 flex'>
+              <span>
+                {ExerciseService.getPlanUpperLowerCoreText(props.plan.upperLowerCoreList)}
+              </span>
+              <span className='mr-1'>{`·${t('challenge')}`}</span>
+              <HCRate level={props.plan.challenge} />
+            </div>
+            <div>{ExerciseService.getPlanModalityText(props.plan.modalityList)}</div>
+          </div>
+        </div>
+        <div className='flex p-4 gap-x-2'>
+          <HCButton color='tertiary'>
+            <span className='mr-2 break-keep'>{t('add-exercise')}</span>
+            <PlusSmallIcon className='w-5 h-5' />
+          </HCButton>
+          <HCButton color='highlight'>{t('start-fitness')}</HCButton>
+        </div>
+      </HCHeader>
       {props.plan.exerciseList.length === 0 ? (
         <div className='px-4 pt-3'>
           <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
