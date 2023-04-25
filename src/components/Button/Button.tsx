@@ -86,7 +86,7 @@ const HCButton: React.FC<Props> = (props: Props) => {
     >
       <div className='flex justify-between items-center'>
         <div>{props.prefix}</div>
-        <div className='flex justify-center '>
+        <div className='flex justify-center items-center'>
           {props.children}
           {props.next && <ArrowSmallRightIcon className='h-6 w-6 ml-2' />}
         </div>
