@@ -5,17 +5,14 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import type { ListItemType } from '.';
 
 const Item: React.FC<ListItemType> = (props: ListItemType) => {
-  const [imgClass, setImgClass] = useState('');
   const [titleClass, setTitleClass] = useState('');
 
   useEffect(() => {
     switch (props.type) {
       case 'warning':
-        setImgClass('bg-destructive-light icon-destructive');
         setTitleClass('text-destructive');
         break;
       default:
-        setImgClass('bg-tertiary icon-secondary');
         setTitleClass('text-secondary');
         break;
     }
@@ -31,12 +28,11 @@ const Item: React.FC<ListItemType> = (props: ListItemType) => {
     >
       <div
         className={`
-          ${imgClass}
-          ${props.description ? 'w-16 h-16 rounded' : 'w-9 h-9 rounded-lg p-1.5'} aspect-square`}
+          ${props.description ? 'w-16 h-16 rounded' : 'w-9 h-9 rounded-lg'} overflow-hidden`}
       >
         {props.img}
       </div>
-      <div className='w-full flex flex-col p-4'>
+      <div className='grow flex flex-col p-4'>
         <span className={`text-body-bold-m ${titleClass} ${props.description && 'mb-1'}`}>
           {props.title}
         </span>
