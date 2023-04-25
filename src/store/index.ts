@@ -4,20 +4,16 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
+import languageReducer from './features/language';
 import userReducer from './features/uesr';
 
-const rootPersistConfig = {
-  key: 'root',
-  storage,
-};
-
-const userPersistConfig = {
-  key: 'user',
-  storage,
-};
+const rootPersistConfig = { key: 'root', storage };
+const userPersistConfig = { key: 'user', storage };
+const languagePersistConfig = { key: 'language', storage };
 
 const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
+  language: persistReducer(languagePersistConfig, languageReducer),
 });
 
 export const store = configureStore({
