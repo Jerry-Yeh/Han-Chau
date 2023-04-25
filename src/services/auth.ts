@@ -1,4 +1,3 @@
-
 import {
   getAuth,
   GoogleAuthProvider,
@@ -64,7 +63,6 @@ export default class AuthService {
     // onRequest
     fetch(`http://127.0.0.1:5001/fitness-78b04/us-central1/getLineAccessToken?code=${code}`).then(
       (response) => {
-        console.log('response', response);
         this.getFirebaseUser(response);
       },
     );
