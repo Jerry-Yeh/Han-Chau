@@ -3,7 +3,7 @@ import { useArgs } from '@storybook/store';
 
 import { HCRadio, HCRadioGroup, RadioValueType, GroupProps } from '~/components/Radio';
 
-import Chest from '~/assets/img/body/chest.svg';
+import Chest from '~/assets/img/exercise/chest.svg';
 
 export default {
   title: 'Components/RadioGroup',

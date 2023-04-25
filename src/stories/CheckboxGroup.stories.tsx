@@ -3,7 +3,7 @@ import { useArgs } from '@storybook/store';
 
 import { HCCheckboxGroup, CheckboxValueType, GroupProps } from '~/components/Checkbox';
 
-import Chest from '~/assets/img/body/chest.svg';
+import Chest from '~/assets/img/exercise/chest.svg';
 
 export default {
   title: 'Components/CheckboxGroup',

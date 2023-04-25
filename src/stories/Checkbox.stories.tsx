@@ -5,7 +5,7 @@ import { HCCheckbox } from '~/components/Checkbox';
 import type { CheckboxProps } from '~/components/Checkbox/interface';
 import type { InputChangeEvent } from '~/components/ControlItem/interface';
 
-import Chest from '~/assets/img/body/chest.svg';
+import Chest from '~/assets/img/exercise/chest.svg';
 
 export default {
   title: 'Components/Checkbox',

@@ -20,7 +20,6 @@ const HCModal: React.FC<ModalProps> = (props: ModalProps) => {
     class: 'bg-warning-light icon-warning',
     icon: <ExclamationTriangleIcon />,
   });
-  console.log('type', props.type);
 
   useEffect(() => {
     switch (props.type) {

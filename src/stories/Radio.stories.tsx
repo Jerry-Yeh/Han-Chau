@@ -6,7 +6,7 @@ import { HCRadio } from '~/components/Radio';
 import type { RadioProps } from '~/components/Radio/interface';
 import type { InputChangeEvent } from '~/components/ControlItem/interface';
 
-import Chest from '~/assets/img/body/chest.svg';
+import Chest from '~/assets/img/exercise/chest.svg';
 
 export default {
   title: 'Components/Radio',
