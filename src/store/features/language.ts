@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { store } from '~/store';
-import { capitalize } from '~/services/utiles';
+import { capitalize } from '~/services/utilities';
 
 type Language = 'en' | 'zh';
 type CapitalizeLanguage = 'En' | 'Zh';

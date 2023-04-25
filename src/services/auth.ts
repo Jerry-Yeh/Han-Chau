@@ -8,7 +8,7 @@ import {
 import { setDoc, doc } from 'firebase/firestore';
 
 import ApiService from './api';
-import { parseJwt } from './utiles';
+import { parseJwt } from './utilities';
 import { LOGIN } from '~/enums/user';
 
 import type { User } from '~/pages/Onboarding/interface';
