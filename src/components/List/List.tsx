@@ -20,14 +20,14 @@ const List: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <div className={`flex flex-col ${props.className} ${!props.bleed && 'p-4 gap-y-4'}`}>
+    <div className={`flex flex-col ${props.className} ${!props.bleed ? 'p-4 gap-y-4' : ''}`}>
       {props.data.map(renderInnerItem)}
     </div>
   );
 };
 
 List.defaultProps = {
-  bleed: true,
+  bleed: false,
 };
 
 export default List;
