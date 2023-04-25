@@ -130,6 +130,9 @@
     "make-new-workout-plan": "",
     "make-workout-plan": "",
     "input-workout-plan-name": "",
+    "plan": {
+      "exercises": ""
+    },
     "detail": {
       "empty": {
         "title": "",
@@ -140,7 +143,12 @@
       "edit-name": "",
       "delete-plan": "",
       "confirm-edit": "",
-      "confirm-delete": ""
+      "delete": {
+        "title": "",
+        "description": "",
+        "cancel": "",
+        "confirm": ""
+      }
     }
   }
 }

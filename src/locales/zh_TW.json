@@ -139,6 +139,9 @@
     "make-new-workout-plan": "建立新計劃",
     "make-workout-plan": "建立計劃",
     "input-workout-plan-name": "輸入你的訓練菜單名稱",
+    "plan": {
+      "exercises": "{{number}}項動作"
+    },
     "detail": {
       "empty": {
         "title": "讓我們一起打健康人生",
@@ -150,7 +153,12 @@
       "delete-plan": "刪除計劃",
       "confirm-edit": "確認編輯",
       "input-workout-plan-name": "輸入你的訓練菜單名稱",
-      "confirm-delete": "確認刪除"
+      "delete": {
+        "title": "確認刪除",
+        "description": "你確定要刪除「{{name}}」計劃？如果確定，請按下確認刪除，刪除後則無法復原。",
+        "cancel": "取消",
+        "confirm": "確認刪除"
+      }
     }
   }
 }

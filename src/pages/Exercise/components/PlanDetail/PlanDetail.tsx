@@ -1,6 +1,7 @@
 import React, { useState, Dispatch, SetStateAction, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { useAppSelector } from '~/store/hook';
 
 import HCHeader from '~/components/Header';
 import HCHeaderIconButton from '~/components/Header/HeaderIconButton';
@@ -8,7 +9,9 @@ import HCButton from '~/components/Button';
 import HCBottomSheet from '~/components/BottomSheet';
 import { HCList, HCListItem, ListItemType } from '~/components/List';
 import HCInput from '~/components/Input';
-import ExerciseService, { WorkoutPlan } from '~/services/exercise';
+import ExerciseService from '~/services/exercise';
+import HCModal from '~/components/Modal';
+import type { WorkoutPlan } from '../../interface';
 
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
@@ -32,7 +35,11 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   const [editActions] = useState<ListItemType[]>([
     {
       title: t('edit-name'),
-      img: <PencilIcon />,
+      img: (
+        <div className='bg-tertiary icon-secondary p-1.5'>
+          <PencilIcon />
+        </div>
+      ),
       onClick: () => {
         setShowEditPlan(false);
         setShowEditName(true);
@@ -40,7 +47,11 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     },
     {
       title: t('delete-plan'),
-      img: <TrashIcon />,
+      img: (
+        <div className='bg-destructive-light icon-destructive p-1.5'>
+          <TrashIcon />
+        </div>
+      ),
       type: 'warning',
       onClick: () => {
         setShowEditPlan(false);
@@ -49,6 +60,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     },
   ]);
   const [newName, setNewName] = useState('');
+  const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
 
   useEffect(() => {
     setNewName(props.plan.name);
@@ -56,6 +68,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
 
   const editNameHandler = () => {
     props.setPlan((prev) => ({ ...prev, name: newName }));
+    ExerciseService.updateWorkoutPlanName(props.plan.id as string, newName);
     setShowEditName(false);
   };
 
@@ -64,10 +77,28 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     setShowEditPlan(true);
   };
 
+  const closeEditNameHandler = () => {
+    setNewName(props.plan.name);
+    setShowEditName(false);
+  };
+
+  const cancelDeleteHandler = () => {
+    setShowDeletePlan(false);
+  };
+
+  const confirmDeleteHandler = async () => {
+    console.log('plan id', props.plan.id);
+    if (props.plan.id) {
+      ExerciseService.deleteWorkoutPlan(props.plan.id);
+    }
+    setShowDeletePlan(false);
+    props.onClose();
+  };
+
   return (
     <div
-      className={`w-screen h-screen bg-primary z-10 transition-all duration-800
-      absolute top-0 ${props.show ? 'right-0' : '-right-full'}`}
+      className={`flex flex-col w-screen h-screen bg-primary z-10 transition-all duration-800
+        absolute top-0 ${props.show ? 'right-0' : '-right-full'}`}
     >
       <HCHeader
         expand
@@ -83,14 +114,34 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
           </HCHeaderIconButton>
         }
       />
-      <div className='px-4 pt-3'>
-        <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
-          <img src={Logomark} alt='logomark' className='w-13 mb-2' />
-          <h3 className='text-heading-xs text-secondary mb-2'>{t('empty.title')}</h3>
-          <h4 className='text-tertiary mb-6'>{t('empty.subtitle')}</h4>
-          <HCButton color='highlight'>{t('create-exercise')}</HCButton>
+      {props.plan.exerciseList.length === 0 ? (
+        <div className='px-4 pt-3'>
+          <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
+            <img src={Logomark} alt='logomark' className='w-13 mb-2' />
+            <h3 className='text-heading-xs text-secondary mb-2'>{t('empty.title')}</h3>
+            <p className='text-tertiary text-body-s mb-6'>{t('empty.subtitle')}</p>
+            <HCButton color='highlight'>{t('create-exercise')}</HCButton>
+          </div>
         </div>
-      </div>
+      ) : (
+        <HCList
+          data={props.plan.exerciseList.map((item) => ({
+            key: item.id,
+            title: item[`name${capitalizeLanguage}`],
+            description: `${item.sets} sets·${item.reps} reps`,
+            img: (
+              <img
+                src={`https://storage.cloud.google.com/${
+                  import.meta.env.VITE_STORAGE_BUCKET
+                }/exercise/${item.id}.png`}
+                alt='img'
+              />
+            ),
+          }))}
+          renderItem={(item) => <HCListItem {...item}></HCListItem>}
+          className='grow bg-tertiary'
+        />
+      )}
 
       {/* Edit plan */}
       <HCBottomSheet
@@ -99,10 +150,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
         fullContent={true}
         onClose={() => setShowEditPlan(false)}
       >
-        <HCList
-          data={editActions}
-          renderItem={(item) => <HCListItem {...item}></HCListItem>}
-        ></HCList>
+        <HCList data={editActions} renderItem={(item) => <HCListItem {...item}></HCListItem>} />
       </HCBottomSheet>
 
       {/* Edit name */}
@@ -112,7 +160,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
         keyboard
         prefix
         onPrefix={editNamePreviousHandler}
-        onClose={() => setShowEditName(false)}
+        onClose={closeEditNameHandler}
       >
         <HCInput
           value={newName}
@@ -124,6 +172,18 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
           {t('confirm-edit')}
         </HCButton>
       </HCBottomSheet>
+
+      {/* Delete plan */}
+      <HCModal
+        open={showDeletePlan}
+        type='warning'
+        title={t('delete.title')}
+        description={t('delete.description', { name: props.plan.name })}
+        cancel={t('delete.cancel')}
+        confirm={t('delete.confirm')}
+        onCancel={cancelDeleteHandler}
+        onConfirm={confirmDeleteHandler}
+      />
     </div>
   );
 };

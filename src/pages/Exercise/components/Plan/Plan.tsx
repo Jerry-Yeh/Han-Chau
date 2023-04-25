@@ -11,12 +11,16 @@ import HCBottomSheet from '~/components/BottomSheet';
 import HCInput from '~/components/Input';
 import PlanDetail from '../PlanDetail';
 import { HCList, HCListItem, ListItemType } from '~/components/List';
-import ExerciseService, { WorkoutPlan } from '~/services/exercise';
-
-import { WORKOUTPLAN } from '~/enums/exercise';
+import ExerciseService, { WorkoutPlanData } from '~/services/exercise';
+import { WORKOUTPLANFILTER, UPPERLOWERCORE, MODALITY } from '~/enums/exercise';
+import { exerciseList, Exercise } from '~/static/exercise/data';
+import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import { getPlanChallenge } from '~/services/formula';
+import HCBadge from '~/components/Badge';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
-import DefaultPlan from '~/assets/img/default-plan.svg';
+// import DefaultPlan from '~/assets/img/default-plan.svg';
+import Upper from '~/assets/img/exercise/upper.png';
 
 interface Props {
   children?: React.ReactNode;
@@ -25,27 +29,64 @@ interface Props {
 const Plan: React.FC<Props> = (props: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
 
+  const user = useAppSelector((state) => state.user.user);
   const headerRef = useRef<HTMLElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const footerRef = useRef<HTMLElement>(null);
   const [footerHeight, setFooterHeight] = useState(0);
   const pillList: PillItem[] = [
-    { label: t('all-workout-plan'), value: WORKOUTPLAN.ALL },
-    { label: t('upper-workout-plan'), value: WORKOUTPLAN.UPPER },
-    { label: t('lower-workout-plan'), value: WORKOUTPLAN.LOWER },
-    { label: t('core-workout-plan'), value: WORKOUTPLAN.CORE },
+    { label: t('all-workout-plan'), value: WORKOUTPLANFILTER.ALL },
+    { label: t('upper-workout-plan'), value: WORKOUTPLANFILTER.UPPER },
+    { label: t('lower-workout-plan'), value: WORKOUTPLANFILTER.LOWER },
+    { label: t('core-workout-plan'), value: WORKOUTPLANFILTER.CORE },
   ];
   const [searchText, setSearchText] = useState('');
-  const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLAN.ALL);
+  const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
   const [planList, setPlanList] = useState<WorkoutPlan[]>([]);
   const [showCreatePlan, setShowCreatePlan] = useState(false);
   const [plan, setPlan] = useState<WorkoutPlan>({
     id: '',
-    userId: '',
+    userId: user.id as string,
     name: '',
-    exerciseIdList: [],
+    challenge: 1,
+    upperLowerCoreList: [],
+    modalityList: [],
+    exerciseList: [
+      {
+        id: 1,
+        sets: 4,
+        reps: 8,
+        nameZh: '反向捲腹',
+        start: null,
+        joint: 1,
+        pushPull: 1,
+        nameEn: 'Full Reverse Crunch',
+        level: 3,
+        muscles: [1, 12],
+        url: '',
+        modality: 1,
+        end: null,
+        upperLowerCore: 3,
+      },
+      {
+        id: 42,
+        sets: 4,
+        reps: 8,
+        nameZh: '反握滑輪下拉',
+        pushPull: 2,
+        modality: 2,
+        url: 'https://www.youtube.com/watch?v=Bq6V2WLVl5I&ab_channel=%E5%81%A5%E4%BA%BA%E8%93%8B%E4%BC%8A',
+        level: 2,
+        nameEn: 'Reverse-Grip Lat Pulldown',
+        muscles: [2, 16],
+        end: 666,
+        start: 633,
+        upperLowerCore: 1,
+        joint: 1,
+      },
+    ],
   });
-  const user = useAppSelector((state) => state.user.user);
+  const [showDetailPage, setShowDetailPage] = useState(false);
 
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.clientHeight);
@@ -53,16 +94,95 @@ const Plan: React.FC<Props> = (props: Props) => {
   }, [headerRef, footerRef]);
 
   useEffect(() => {
+    const resetCurrentPlan = () => {
+      setPlan({
+        id: '',
+        userId: user.id as string,
+        name: '',
+        challenge: 1,
+        upperLowerCoreList: [],
+        modalityList: [],
+        exerciseList: [
+          {
+            id: 1,
+            sets: 4,
+            reps: 8,
+            nameZh: '反向捲腹',
+            start: null,
+            joint: 1,
+            pushPull: 1,
+            nameEn: 'Full Reverse Crunch',
+            level: 3,
+            muscles: [1, 12],
+            url: '',
+            modality: 1,
+            end: null,
+            upperLowerCore: 3,
+          },
+          {
+            id: 42,
+            sets: 4,
+            reps: 8,
+            nameZh: '反握滑輪下拉',
+            pushPull: 2,
+            modality: 2,
+            url: 'https://www.youtube.com/watch?v=Bq6V2WLVl5I&ab_channel=%E5%81%A5%E4%BA%BA%E8%93%8B%E4%BC%8A',
+            level: 2,
+            nameEn: 'Reverse-Grip Lat Pulldown',
+            muscles: [2, 16],
+            end: 666,
+            start: 633,
+            upperLowerCore: 1,
+            joint: 1,
+          },
+        ],
+      });
+    };
+
+    const transExerciseData = (data: WorkoutPlanData[]): WorkoutPlan[] => {
+      // Get exercise raw data.
+      const result = data.map((item) => ({
+        ...item,
+        exerciseList: item.exerciseList.map((exercise) => {
+          const exerciseData = exerciseList.find(
+            (exerciseData) => exerciseData.id === exercise.id,
+          ) as Exercise;
+
+          return { ...exercise, ...exerciseData };
+        }),
+      }));
+
+      // Calculate other plan data.
+      return result.map(({ id, ...rest }) => ({
+        id: id as string,
+        ...rest,
+        challenge: getPlanChallenge(rest.exerciseList),
+        upperLowerCoreList: rest.exerciseList.reduce((acc: UPPERLOWERCORE[], cur) => {
+          if (!acc.includes(cur.upperLowerCore)) {
+            acc.push(cur.upperLowerCore);
+          }
+          return acc;
+        }, []),
+        modalityList: rest.exerciseList.reduce((acc: MODALITY[], cur) => {
+          if (!acc.includes(cur.modality)) {
+            acc.push(cur.modality);
+          }
+          return acc;
+        }, []),
+      }));
+    };
+
     const queryWorkoutPlans = async () => {
-      if (user.id) {
+      if (user.id && !showDetailPage) {
         const data = await ExerciseService.queryWorkoutPlans(user.id);
 
-        setPlanList(data);
+        setPlanList(transExerciseData(data));
+        resetCurrentPlan();
       }
     };
 
     queryWorkoutPlans();
-  }, [user.id]);
+  }, [user.id, showDetailPage]);
 
   const closeAddPlanHandler = () => {
     setShowCreatePlan(false);
@@ -86,9 +206,6 @@ const Plan: React.FC<Props> = (props: Props) => {
       setShowDetailPage(true);
     }
   };
-
-  /** Detail page */
-  const [showDetailPage, setShowDetailPage] = useState(false);
 
   return (
     <div className='relative h-screen flex flex-col overflow-hidden'>
@@ -126,9 +243,20 @@ const Plan: React.FC<Props> = (props: Props) => {
             data={planList.map((item) => ({
               key: item.id,
               title: item.name,
-              img: <img src={DefaultPlan} alt='default' />,
+              description: `${t(`plan.exercises`, {
+                number: item.exerciseList.length,
+              })}·${ExerciseService.getPlanUpperLowerCore(item.upperLowerCoreList)}`,
+              img: (
+                <div className='relative'>
+                  <img src={Upper} alt='default' />
+                  <HCBadge
+                    type='star'
+                    level={item.challenge}
+                    className='absolute bottom-0 right-1/2 translate-x-1/2'
+                  />
+                </div>
+              ),
             }))}
-            bleed={false}
             renderItem={(item) => (
               <HCListItem {...item} actionType='next' onClick={() => clickItemHandler(item)} />
             )}
@@ -157,7 +285,7 @@ const Plan: React.FC<Props> = (props: Props) => {
         </HCButton>
       </HCBottomSheet>
 
-      {/* Add or edit page */}
+      {/* Add or edit plan pag */}
       <PlanDetail
         show={showDetailPage}
         plan={plan}

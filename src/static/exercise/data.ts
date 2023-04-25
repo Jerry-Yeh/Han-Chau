@@ -1,6 +1,22 @@
-import type { Exercise } from '~/services/exercise';
+import { Nullable } from '~/typings/utils';
+import { LEVEL, MUSCLES, MODALITY, UPPERLOWERCORE, PULLPUSH, JOINT } from '~/enums/exercise';
 
-export const mockExerciseList: Exercise[] = [
+export interface Exercise {
+  id: number;
+  nameEn: string;
+  nameZh: string;
+  level: LEVEL;
+  muscles: MUSCLES[];
+  modality: MODALITY;
+  upperLowerCore: UPPERLOWERCORE;
+  pushPull: PULLPUSH;
+  joint: JOINT;
+  url: Nullable<string>;
+  start: Nullable<number>;
+  end: Nullable<number>;
+}
+
+export const exerciseList: Exercise[] = [
   {
     id: 77,
     level: 3,

@@ -1,3 +1,9 @@
+export enum LEVEL {
+  BEGINNER = 1,
+  INTERMEDIATE,
+  ADVANCED,
+}
+
 export enum MUSCLES {
   ABDOMINALS = 1,
   BACK,
@@ -37,7 +43,7 @@ export enum MODALITY {
   MACHINE,
 }
 
-export enum PART {
+export enum UPPERLOWERCORE {
   UPPER = 1,
   CORE,
   LOWER,
@@ -54,9 +60,26 @@ export enum JOINT {
   SINGLE,
 }
 
-export enum WORKOUTPLAN {
+export enum WORKOUTPLANFILTER {
   ALL = 1,
   UPPER,
   LOWER,
   CORE,
+}
+
+export enum CHALLENGE {
+  EASY = 1,
+  MEDIUM,
+  HARD,
+}
+
+export enum CHALLENGERANGE {
+  ONE = 2.22,
+  TWO = 2.44,
+}
+
+export enum CHALLENGEWEIGHTED {
+  BEGINNER = Math.pow(1.1, 0),
+  INTERMEDIATE = Math.pow(1.1, 1),
+  ADVANCED = Math.pow(1.1, 2),
 }

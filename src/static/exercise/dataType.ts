@@ -1,5 +1,5 @@
 import { LEVEL } from '../../enums/user';
-import { JOINT, PART, MUSCLES, MODALITY, PULLPUSH } from '../../enums/exercise';
+import { JOINT, UPPERLOWERCORE, MUSCLES, MODALITY, PULLPUSH } from '../../enums/exercise';
 
 /**
  * chinese wording: joint[JOINT.MULTIPLE].zh
@@ -159,16 +159,16 @@ export const modality = {
   },
 };
 
-export const part = {
-  [PART.UPPER]: {
+export const upperLowerCore = {
+  [UPPERLOWERCORE.UPPER]: {
     en: 'Upper',
     zh: '上半身',
   },
-  [PART.LOWER]: {
+  [UPPERLOWERCORE.LOWER]: {
     en: 'Lower',
     zh: '下半身',
   },
-  [PART.CORE]: {
+  [UPPERLOWERCORE.CORE]: {
     en: 'Core',
     zh: '核心',
   },
