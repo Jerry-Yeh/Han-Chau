@@ -38,6 +38,7 @@ const Rate: React.FC<RateProps> = (props: RateProps) => {
     <div className={`flex ${props.className}`}>
       {Array.from(new Array(totalLevel), (_value, index) => (
         <StarIcon
+          key={index}
           className={`
           ${sizeClass} ${index <= props.level - 1 ? enabledColorClass : disabledColorClass}`}
         />
