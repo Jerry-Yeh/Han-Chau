@@ -12,11 +12,9 @@ import HCBottomSheet from '~/components/BottomSheet';
 import HCInput from '~/components/Input';
 import PlanDetail from '../PlanDetail';
 import { HCList, HCListItem, ListItemType } from '~/components/List';
-import ExerciseService, { WorkoutPlanData } from '~/services/exercise';
-import { WORKOUTPLANFILTER, UPPERLOWERCORE, MODALITY } from '~/enums/exercise';
-import { exerciseList, Exercise } from '~/static/exercise/data';
+import ExerciseService from '~/services/exercise';
+import { WORKOUTPLANFILTER } from '~/enums/exercise';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
-import { getPlanChallenge } from '~/services/formula';
 import HCBadge from '~/components/Badge';
 import HCFloatButton from '~/components/FloatButton';
 
@@ -107,44 +105,11 @@ const Plan: React.FC<Props> = (props: Props) => {
       });
     };
 
-    const transPlanFromRawData = (data: WorkoutPlanData[]): WorkoutPlan[] => {
-      // Get exercise raw data.
-      const result = data.map((item) => ({
-        ...item,
-        exerciseList: item.exerciseList.map((exercise) => {
-          const exerciseData = exerciseList.find(
-            (exerciseData) => exerciseData.id === exercise.id,
-          ) as Exercise;
-
-          return { ...exercise, ...exerciseData };
-        }),
-      }));
-
-      // Calculate other plan data.
-      return result.map(({ id, ...rest }) => ({
-        id: id as string,
-        ...rest,
-        challenge: getPlanChallenge(rest.exerciseList),
-        upperLowerCoreList: rest.exerciseList.reduce((acc: UPPERLOWERCORE[], cur) => {
-          if (!acc.includes(cur.upperLowerCore)) {
-            acc.push(cur.upperLowerCore);
-          }
-          return acc;
-        }, []),
-        modalityList: rest.exerciseList.reduce((acc: MODALITY[], cur) => {
-          if (!acc.includes(cur.modality)) {
-            acc.push(cur.modality);
-          }
-          return acc;
-        }, []),
-      }));
-    };
-
     const queryWorkoutPlans = async () => {
       if (user.id && !showDetailPage) {
         const data = await ExerciseService.queryWorkoutPlans(user.id);
 
-        setPlanList(transPlanFromRawData(data));
+        setPlanList(data.map((item) => ExerciseService.transPlanFromRawData(item)));
         resetCurrentPlan();
       }
     };
@@ -159,7 +124,7 @@ const Plan: React.FC<Props> = (props: Props) => {
 
   const addPlanHandler = () => {
     if (user.id) {
-      const { id, ...rest } = plan;
+      const { id, ...rest } = ExerciseService.transPlanToRawData(plan);
       ExerciseService.addWorkoutPlan(rest);
     }
     setShowAddPlan(false);
@@ -195,7 +160,7 @@ const Plan: React.FC<Props> = (props: Props) => {
       </header>
 
       <main
-        className='bg-tertiary relative'
+        className='bg-tertiary'
         style={{ height: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }}
       >
         {planList.length === 0 ? (
@@ -207,36 +172,38 @@ const Plan: React.FC<Props> = (props: Props) => {
             </HCButton>
           </div>
         ) : (
-          <HCList
-            data={planList.map((item) => ({
-              key: item.id,
-              title: item.name,
-              description: `${t(`plan.exercises`, {
-                number: item.exerciseList.length,
-              })}·${
-                item.upperLowerCoreList.length > 0
-                  ? ExerciseService.getPlanUpperLowerCoreText(item.upperLowerCoreList)
-                  : t('plan.without-training-parts')
-              }`,
-              img: (
-                <div className='relative'>
-                  <img src={Upper} alt='default' />
-                  <HCBadge
-                    type='star'
-                    level={item.challenge}
-                    className='absolute bottom-0 right-1/2 translate-x-1/2'
-                  />
-                </div>
-              ),
-            }))}
-            renderItem={(item) => (
-              <HCListItem {...item} actionType='next' onClick={() => clickItemHandler(item)} />
-            )}
-          />
+          <div className='relative h-full'>
+            <HCList
+              data={planList.map((item) => ({
+                key: item.id,
+                title: item.name,
+                description: `${t(`plan.exercises`, {
+                  number: item.exerciseList.length,
+                })} · ${
+                  item.upperLowerCoreList.length > 0
+                    ? ExerciseService.getPlanUpperLowerCoreText(item.upperLowerCoreList)
+                    : t('plan.without-training-parts')
+                }`,
+                img: (
+                  <div className='relative'>
+                    <img src={Upper} alt='default' />
+                    <HCBadge
+                      type='rate'
+                      level={item.challenge}
+                      className='absolute bottom-0 right-1/2 translate-x-1/2'
+                    />
+                  </div>
+                ),
+              }))}
+              renderItem={(item) => (
+                <HCListItem {...item} actionType='next' onClick={() => clickItemHandler(item)} />
+              )}
+            />
+            <HCFloatButton onClick={() => setShowAddPlan(true)}>
+              <PlusIcon />
+            </HCFloatButton>
+          </div>
         )}
-        <HCFloatButton onClick={() => setShowAddPlan(true)}>
-          <PlusIcon />
-        </HCFloatButton>
       </main>
       <footer ref={footerRef} className='fixed left-0 bottom-0 w-full'>
         <HCTabBar />

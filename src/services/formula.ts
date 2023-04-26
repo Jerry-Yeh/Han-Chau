@@ -47,6 +47,8 @@ export const getTDEE = (user: User): number | null => {
 };
 
 export const getPlanChallenge = (exerciseList: Array<Exercise & PlanExerciseData>): CHALLENGE => {
+  if (exerciseList.length === 0) return 0;
+
   let beginner = 0;
   let intermediate = 0;
   let advanced = 0;
@@ -66,9 +68,10 @@ export const getPlanChallenge = (exerciseList: Array<Exercise & PlanExerciseData
   });
 
   const result =
-    beginner * CHALLENGEWEIGHTED.BEGINNER +
-    intermediate * CHALLENGEWEIGHTED.INTERMEDIATE +
-    advanced * CHALLENGEWEIGHTED.ADVANCED;
+    (beginner * CHALLENGEWEIGHTED.BEGINNER +
+      intermediate * CHALLENGEWEIGHTED.INTERMEDIATE +
+      advanced * CHALLENGEWEIGHTED.ADVANCED) /
+    (CHALLENGEWEIGHTED.BEGINNER + CHALLENGEWEIGHTED.INTERMEDIATE + CHALLENGEWEIGHTED.ADVANCED);
 
   if (result < CHALLENGERANGE.ONE) {
     return CHALLENGE.EASY;
