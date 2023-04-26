@@ -8,7 +8,7 @@ export default {
   argTypes: {
     type: {
       control: 'select',
-      options: ['star'],
+      options: ['rate'],
       description: 'Type of the badge.',
       table: {
         type: { summary: 'string' },
@@ -16,7 +16,7 @@ export default {
     },
     level: {
       control: 'select',
-      options: [1, 2, 3],
+      options: [0, 1, 2, 3],
       description: 'Level of the star type badge.',
       table: {
         type: { summary: 'number' },
@@ -29,6 +29,6 @@ type Story = StoryObj<typeof HCBadge>;
 
 export const Basic: Story = {
   args: {
-    type: 'star',
+    type: 'rate',
   },
 };

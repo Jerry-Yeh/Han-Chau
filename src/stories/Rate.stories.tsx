@@ -8,7 +8,7 @@ export default {
   argTypes: {
     level: {
       control: 'select',
-      options: [1, 2, 3],
+      options: [0, 1, 2, 3],
       description: 'Level of the star level.',
       table: {
         type: { summary: 'number' },

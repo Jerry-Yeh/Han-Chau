@@ -7,8 +7,8 @@ import StarIcon from '~/assets/img/heroicons/mini/star';
 interface Props {
   children?: React.ReactNode;
   className?: string;
-  type: 'star';
-  level: 1 | 2 | 3;
+  type: 'rate';
+  level: 0 | 1 | 2 | 3;
 }
 
 const Badge: React.FC<Props> = (props: Props) => {
@@ -16,7 +16,7 @@ const Badge: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     switch (props.type) {
-      case 'star':
+      case 'rate':
         setContent(<HCStarLevel level={props.level} size='s' onColor />);
         break;
     }
