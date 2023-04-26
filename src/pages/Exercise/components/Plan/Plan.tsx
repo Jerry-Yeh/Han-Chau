@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '~/store/hook';
+import { PlusIcon } from '@heroicons/react/20/solid';
 
 import PageHeader from '../PageHeader';
 import HCSearchBar from '~/components/SearchBar';
@@ -17,6 +18,7 @@ import { exerciseList, Exercise } from '~/static/exercise/data';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
 import { getPlanChallenge } from '~/services/formula';
 import HCBadge from '~/components/Badge';
+import HCFloatButton from '~/components/FloatButton';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
 import Upper from '~/assets/img/exercise/upper.png';
@@ -42,7 +44,7 @@ const Plan: React.FC<Props> = (props: Props) => {
   const [searchText, setSearchText] = useState('');
   const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
   const [planList, setPlanList] = useState<WorkoutPlan[]>([]);
-  const [showCreatePlan, setShowCreatePlan] = useState(false);
+  const [showAddPlan, setShowAddPlan] = useState(false);
   const [plan, setPlan] = useState<WorkoutPlan>({
     id: '',
     userId: user.id as string,
@@ -50,40 +52,7 @@ const Plan: React.FC<Props> = (props: Props) => {
     challenge: 1,
     upperLowerCoreList: [],
     modalityList: [],
-    exerciseList: [
-      {
-        id: 1,
-        sets: 4,
-        reps: 8,
-        nameZh: '反向捲腹',
-        start: null,
-        joint: 1,
-        pushPull: 1,
-        nameEn: 'Full Reverse Crunch',
-        level: 3,
-        muscles: [1, 12],
-        url: '',
-        modality: 1,
-        end: null,
-        upperLowerCore: 3,
-      },
-      {
-        id: 42,
-        sets: 4,
-        reps: 8,
-        nameZh: '反握滑輪下拉',
-        pushPull: 2,
-        modality: 2,
-        url: 'https://www.youtube.com/watch?v=Bq6V2WLVl5I&ab_channel=%E5%81%A5%E4%BA%BA%E8%93%8B%E4%BC%8A',
-        level: 2,
-        nameEn: 'Reverse-Grip Lat Pulldown',
-        muscles: [2, 16],
-        end: 666,
-        start: 633,
-        upperLowerCore: 1,
-        joint: 1,
-      },
-    ],
+    exerciseList: [],
   });
   const [showDetailPage, setShowDetailPage] = useState(false);
 
@@ -102,43 +71,43 @@ const Plan: React.FC<Props> = (props: Props) => {
         upperLowerCoreList: [],
         modalityList: [],
         exerciseList: [
-          {
-            id: 1,
-            sets: 4,
-            reps: 8,
-            nameZh: '反向捲腹',
-            start: null,
-            joint: 1,
-            pushPull: 1,
-            nameEn: 'Full Reverse Crunch',
-            level: 3,
-            muscles: [1, 12],
-            url: '',
-            modality: 1,
-            end: null,
-            upperLowerCore: 3,
-          },
-          {
-            id: 42,
-            sets: 4,
-            reps: 8,
-            nameZh: '反握滑輪下拉',
-            pushPull: 2,
-            modality: 2,
-            url: 'https://www.youtube.com/watch?v=Bq6V2WLVl5I&ab_channel=%E5%81%A5%E4%BA%BA%E8%93%8B%E4%BC%8A',
-            level: 2,
-            nameEn: 'Reverse-Grip Lat Pulldown',
-            muscles: [2, 16],
-            end: 666,
-            start: 633,
-            upperLowerCore: 1,
-            joint: 1,
-          },
+          // {
+          //   id: 1,
+          //   sets: 4,
+          //   reps: 8,
+          //   nameZh: '反向捲腹',
+          //   start: null,
+          //   joint: 1,
+          //   pushPull: 1,
+          //   nameEn: 'Full Reverse Crunch',
+          //   level: 3,
+          //   muscles: [1, 12],
+          //   url: '',
+          //   modality: 1,
+          //   end: null,
+          //   upperLowerCore: 3,
+          // },
+          // {
+          //   id: 42,
+          //   sets: 4,
+          //   reps: 8,
+          //   nameZh: '反握滑輪下拉',
+          //   pushPull: 2,
+          //   modality: 2,
+          //   url: 'https://www.youtube.com/watch?v=Bq6V2WLVl5I&ab_channel=%E5%81%A5%E4%BA%BA%E8%93%8B%E4%BC%8A',
+          //   level: 2,
+          //   nameEn: 'Reverse-Grip Lat Pulldown',
+          //   muscles: [2, 16],
+          //   end: 666,
+          //   start: 633,
+          //   upperLowerCore: 1,
+          //   joint: 1,
+          // },
         ],
       });
     };
 
-    const transExerciseData = (data: WorkoutPlanData[]): WorkoutPlan[] => {
+    const transPlanFromRawData = (data: WorkoutPlanData[]): WorkoutPlan[] => {
       // Get exercise raw data.
       const result = data.map((item) => ({
         ...item,
@@ -175,7 +144,7 @@ const Plan: React.FC<Props> = (props: Props) => {
       if (user.id && !showDetailPage) {
         const data = await ExerciseService.queryWorkoutPlans(user.id);
 
-        setPlanList(transExerciseData(data));
+        setPlanList(transPlanFromRawData(data));
         resetCurrentPlan();
       }
     };
@@ -184,7 +153,7 @@ const Plan: React.FC<Props> = (props: Props) => {
   }, [user.id, showDetailPage]);
 
   const closeAddPlanHandler = () => {
-    setShowCreatePlan(false);
+    setShowAddPlan(false);
     setPlan((prev) => ({ ...prev, name: '' }));
   };
 
@@ -193,7 +162,7 @@ const Plan: React.FC<Props> = (props: Props) => {
       const { id, ...rest } = plan;
       ExerciseService.addWorkoutPlan(rest);
     }
-    setShowCreatePlan(false);
+    setShowAddPlan(false);
     setShowDetailPage(true);
   };
 
@@ -226,14 +195,14 @@ const Plan: React.FC<Props> = (props: Props) => {
       </header>
 
       <main
-        className='bg-tertiary'
+        className='bg-tertiary relative'
         style={{ height: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }}
       >
         {planList.length === 0 ? (
           <div className='h-full flex flex-col items-center justify-center px-4'>
             <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
             <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-fitness-plan')}</h3>
-            <HCButton color='highlight' block={false} onClick={() => setShowCreatePlan(true)}>
+            <HCButton color='highlight' block={false} onClick={() => setShowAddPlan(true)}>
               {t('make-workout-plan-immediately')}
             </HCButton>
           </div>
@@ -244,7 +213,11 @@ const Plan: React.FC<Props> = (props: Props) => {
               title: item.name,
               description: `${t(`plan.exercises`, {
                 number: item.exerciseList.length,
-              })}·${ExerciseService.getPlanUpperLowerCoreText(item.upperLowerCoreList)}`,
+              })}·${
+                item.upperLowerCoreList.length > 0
+                  ? ExerciseService.getPlanUpperLowerCoreText(item.upperLowerCoreList)
+                  : t('plan.without-training-parts')
+              }`,
               img: (
                 <div className='relative'>
                   <img src={Upper} alt='default' />
@@ -261,14 +234,17 @@ const Plan: React.FC<Props> = (props: Props) => {
             )}
           />
         )}
+        <HCFloatButton onClick={() => setShowAddPlan(true)}>
+          <PlusIcon />
+        </HCFloatButton>
       </main>
       <footer ref={footerRef} className='fixed left-0 bottom-0 w-full'>
         <HCTabBar />
       </footer>
 
-      {/* Bottom sheet */}
+      {/* Add plan */}
       <HCBottomSheet
-        show={showCreatePlan}
+        show={showAddPlan}
         header={t('make-new-workout-plan')}
         keyboard
         onClose={closeAddPlanHandler}
@@ -284,7 +260,7 @@ const Plan: React.FC<Props> = (props: Props) => {
         </HCButton>
       </HCBottomSheet>
 
-      {/* Add or edit plan pag */}
+      {/* Add or edit plan page */}
       <PlanDetail
         show={showDetailPage}
         plan={plan}
