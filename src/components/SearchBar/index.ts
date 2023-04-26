@@ -2,6 +2,8 @@ import { ChangeEvent } from 'react';
 
 import SearchBar from './SearchBar';
 
+export type SearchEventType = ChangeEvent<HTMLInputElement>;
+
 export interface SearchBarProps {
   children?: React.ReactNode;
   className?: string;
@@ -9,7 +11,7 @@ export interface SearchBarProps {
   placeholder?: string;
   prefixType?: 'search' | 'previous';
   filter?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: SearchEventType) => void;
 }
 
 export default SearchBar;
