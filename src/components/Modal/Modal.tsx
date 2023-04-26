@@ -62,6 +62,7 @@ const HCModal: React.FC<ModalProps> = (props: ModalProps) => {
           </HCButton>
         </div>
       }
+      maskClosable={false}
       onCancel={props.onCancel}
     >
       <div className='p-6 flex flex-col items-center'>
