@@ -5,6 +5,8 @@ import logomark from '~/assets/img/logomark.svg';
 import type { HeaderSize } from '.';
 
 interface Props {
+  children?: React.ReactNode;
+  className?: string;
   prefix?: React.ReactNode;
   title?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -34,7 +36,7 @@ const HCHeader: React.FC<Props> = (props: Props) => {
   }, [props.size]);
 
   return (
-    <div className={`bg-secondary ${sizeClass}`}>
+    <div className={`${props.className} bg-primary border-secondary ${sizeClass}`}>
       <div className={`h-11 flex text-secondary`}>
         <div className='flex-1 hover:cursor-pointer flex justify-start items-center pl-1'>
           {props.prefix}
@@ -49,6 +51,7 @@ const HCHeader: React.FC<Props> = (props: Props) => {
         </div>
       </div>
       {props.expand && <div className='text-heading-m text-primary pl-4 pb-3'>{props.title}</div>}
+      {props.children}
     </div>
   );
 };
