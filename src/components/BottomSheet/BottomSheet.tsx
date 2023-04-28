@@ -34,15 +34,20 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
   const [topClass, setTopClass] = useState('top-full');
   const [bottomClass, setBottomClass] = useState('');
 
-  const onMouseDown = (event: React.MouseEvent) => {
+  const handleTouchDownHeader = (event: React.TouchEvent | React.MouseEvent) => {
+    setDragging(true);
+    setDraggingPosY((event as React.TouchEvent).changedTouches[0].pageY);
+  };
+
+  const handleMouseDownHeader = (event: React.MouseEvent) => {
     setDragging(true);
     setDraggingPosY(event.pageY);
   };
 
-  const onMouseUp = useCallback(
-    (event: MouseEvent) => {
+  const handlePosition = useCallback(
+    (position: number) => {
       setDragging(false);
-      if (event.pageY < draggingPosY) {
+      if (position < draggingPosY) {
         // Up
         setFull(true);
       } else {
@@ -52,7 +57,21 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
         }
       }
     },
-    [draggingPosY, full, props.onClose],
+    [draggingPosY, full],
+  );
+
+  const handleTouchEnd = useCallback(
+    (event: TouchEvent) => {
+      handlePosition(event.changedTouches[0].pageY);
+    },
+    [handlePosition],
+  );
+
+  const handleMouseUp = useCallback(
+    (event: MouseEvent) => {
+      handlePosition(event.pageY);
+    },
+    [handlePosition],
   );
 
   useEffect(() => {
@@ -63,13 +82,15 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     if (props.handle && dragging) {
-      document.addEventListener('mouseup', onMouseUp);
+      document.addEventListener('touchend', handleTouchEnd);
+      document.addEventListener('mouseup', handleMouseUp);
     }
 
     return () => {
-      document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('touchstart', handleTouchEnd);
+      document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [props.handle, dragging, onMouseUp]);
+  }, [props.handle, dragging, handleTouchEnd, handleMouseUp]);
 
   // Handle top class in the different case
   useEffect(() => {
@@ -149,7 +170,11 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
         }}
       >
         {props.header && (
-          <div onMouseDown={onMouseDown} aria-hidden='true'>
+          <div
+            onTouchStart={handleTouchDownHeader}
+            onMouseDown={handleMouseDownHeader}
+            aria-hidden='true'
+          >
             {props.handle && (
               <div className='flex justify-center py-2'>
                 <div className='w-10 h-1 rounded bg-pressed'></div>
@@ -200,8 +225,8 @@ HCBottomSheet.defaultProps = {
   backdrop: true,
   handle: false,
   keyboard: false,
-  suffix: true,
   prefix: false,
+  suffix: true,
   fullContent: false,
 };
 
