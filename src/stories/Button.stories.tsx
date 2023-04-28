@@ -53,6 +53,13 @@ export default {
         type: { summary: 'boolean' },
       },
     },
+    onClick: {
+      control: false,
+      description: 'Set the handler to handle click event.',
+      table: {
+        type: { summary: '(e: React.MouseEventHandler<HTMLButtonElement>) => void' },
+      },
+    },
   },
 } as Meta<typeof HCButton>;
 
