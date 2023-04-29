@@ -185,14 +185,9 @@ const Plan: React.FC<Props> = (props: Props) => {
                     : t('plan.without-training-parts')
                 }`,
                 img: (
-                  <div className='relative'>
+                  <HCBadge type='rate' level={item.challenge}>
                     <img src={Upper} alt='default' />
-                    <HCBadge
-                      type='rate'
-                      level={item.challenge}
-                      className='absolute bottom-0 right-1/2 translate-x-1/2'
-                    />
-                  </div>
+                  </HCBadge>
                 ),
               }))}
               renderItem={(item) => (
@@ -216,15 +211,17 @@ const Plan: React.FC<Props> = (props: Props) => {
         keyboard
         onClose={closeAddPlanHandler}
       >
-        <HCInput
-          value={plan.name}
-          placeholder={t('input-workout-plan-name')}
-          onChange={(e) => setPlan((prev) => ({ ...prev, name: e.target.value }))}
-          className='mb-3'
-        />
-        <HCButton color='highlight' disabled={!plan.name} onClick={addPlanHandler}>
-          {t('make-workout-plan')}
-        </HCButton>
+        <div className='px-4 pt-4'>
+          <HCInput
+            value={plan.name}
+            placeholder={t('input-workout-plan-name')}
+            onChange={(e) => setPlan((prev) => ({ ...prev, name: e.target.value }))}
+            className='mb-3'
+          />
+          <HCButton color='highlight' disabled={!plan.name} onClick={addPlanHandler}>
+            {t('make-workout-plan')}
+          </HCButton>
+        </div>
       </HCBottomSheet>
 
       {/* Add or edit plan page */}

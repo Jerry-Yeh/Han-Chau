@@ -131,24 +131,39 @@
     "make-workout-plan": "",
     "input-workout-plan-name": "",
     "plan": {
-      "exercises": ""
+      "exercises": "",
+      "without-training-parts": "",
+      "detail": {
+        "empty": {
+          "title": "",
+          "subtitle": ""
+        },
+        "edit-plan": "",
+        "edit-name": "",
+        "delete-plan": "",
+        "confirm-edit": "",
+        "input-workout-plan-name": "",
+        "challenge": "",
+        "add-exercise": "",
+        "start-fitness": "",
+        "delete": {
+          "title": "",
+          "description": "",
+          "cancel": "",
+          "confirm": ""
+        }
+      }
     },
-    "detail": {
-      "empty": {
+    "add": {
+      "header": "",
+      "list-title": "",
+      "filter": {
         "title": "",
-        "subtitle": ""
-      },
-      "create-exercise": "",
-      "edit-plan": "",
-      "edit-name": "",
-      "delete-plan": "",
-      "confirm-edit": "",
-      "challenge": "",
-      "add-exercise": "",
-      "start-fitness": "",
-      "delete": {
-        "title": "",
-        "description": "",
+        "muscle-group": "",
+        "modality": "",
+        "muscle-group-title": "",
+        "modality-title": "",
+        "level-title": "",
         "cancel": "",
         "confirm": ""
       }

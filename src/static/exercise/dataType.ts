@@ -9,15 +9,15 @@ import { JOINT, UPPERLOWERCORE, MUSCLES, MODALITY, PULLPUSH } from '../../enums/
 export const level = {
   [LEVEL.BEGINNER]: {
     en: 'Beginner',
-    zh: '健身新手',
+    zh: '初階動作',
   },
   [LEVEL.INTERMEDIATE]: {
     en: 'Intermediate',
-    zh: '健身中手',
+    zh: '中階動作',
   },
   [LEVEL.ADVANCED]: {
     en: 'Advanced',
-    zh: '健身老手',
+    zh: '高階動作',
   },
 };
 

@@ -37,6 +37,17 @@ export enum MUSCLES {
   ARMS,
 }
 
+export enum MUSCLEGROUP {
+  ABDOMINALS = 1,
+  BACK,
+  BICEPS,
+  CLAVES,
+  CHEST,
+  LEGS,
+  SHOULDERS = 8,
+  ARMS = 30,
+}
+
 export enum MODALITY {
   FREEWEIGHT = 1,
   CABLE,

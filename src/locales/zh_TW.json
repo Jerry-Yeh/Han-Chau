@@ -140,27 +140,41 @@
     "make-workout-plan": "建立計劃",
     "input-workout-plan-name": "輸入你的訓練菜單名稱",
     "plan": {
-      "exercises": "{{number}}項動作"
+      "exercises": "{{number}}項動作",
+      "without-training-parts": "無訓練部位",
+      "detail": {
+        "empty": {
+          "title": "讓我們一起打健康人生",
+          "subtitle": "健康的人生就從漢草開始"
+        },
+        "edit-plan": "編輯計劃",
+        "edit-name": "編輯名稱",
+        "delete-plan": "刪除計劃",
+        "confirm-edit": "確認編輯",
+        "input-workout-plan-name": "輸入你的訓練菜單名稱",
+        "challenge": "挑戰度",
+        "add-exercise": "新增動作",
+        "start-fitness": "開始健身",
+        "delete": {
+          "title": "確認刪除",
+          "description": "你確定要刪除「{{name}}」計劃？如果確定，請按下確認刪除，刪除後則無法復原。",
+          "cancel": "取消",
+          "confirm": "確認刪除"
+        }
+      }
     },
-    "detail": {
-      "empty": {
-        "title": "讓我們一起打健康人生",
-        "subtitle": "健康的人生就從漢草開始"
-      },
-      "create-exercise": "新增動作",
-      "edit-plan": "編輯計劃",
-      "edit-name": "編輯名稱",
-      "delete-plan": "刪除計劃",
-      "confirm-edit": "確認編輯",
-      "input-workout-plan-name": "輸入你的訓練菜單名稱",
-      "challenge": "挑戰度",
-      "add-exercise": "新增動作",
-      "start-fitness": "開始健身",
-      "delete": {
-        "title": "確認刪除",
-        "description": "你確定要刪除「{{name}}」計劃？如果確定，請按下確認刪除，刪除後則無法復原。",
-        "cancel": "取消",
-        "confirm": "確認刪除"
+    "add": {
+      "header": "新增動作",
+      "list-title": "肌力訓練 ({{number}})",
+      "filter": {
+        "title": "篩選條件",
+        "muscle-group": "肌群部位",
+        "modality": "器材",
+        "muscle-group-title": "你想要的訓練部位是什麼呢？",
+        "modality-title": "你想要的訓練模式是什麼呢？",
+        "level-title": "你健身程度什麼呢？",
+        "cancel": "清空條件",
+        "confirm": "套用條件"
       }
     }
   }
