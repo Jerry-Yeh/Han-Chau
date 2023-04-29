@@ -10,6 +10,7 @@ export interface CheckboxOptionType {
   label: string;
   description?: string;
   value: CheckboxValueType;
+  image?: React.ReactNode;
 }
 
 export interface CheckboxGroupContextProps {

@@ -24,7 +24,6 @@ const HCSnackBar: React.ForwardRefRenderFunction<HandleMessage, SnackBarProps> =
   const [height, setHeight] = useState(0);
   const messageRef = useCallback((node: HTMLDivElement) => {
     if (node && node.getBoundingClientRect()) {
-      console.log(node.getBoundingClientRect());
       setHeight(node.getBoundingClientRect().height);
     }
   }, []);

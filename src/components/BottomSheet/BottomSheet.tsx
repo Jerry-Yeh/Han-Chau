@@ -163,7 +163,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
           ${shadowClass} ${topClass} ${bottomClass}
           w-full box-border rounded-t-3xl
           first-letter:w-full bg-primary
-          fixed left-0 transition-top duration-800
+          fixed left-0 transition-top duration-500
           flex flex-col`}
         style={{
           top: props.show ? `calc(100% - ${height}px)` : `100%`,
