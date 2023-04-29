@@ -77,13 +77,6 @@ export default {
         type: { summary: 'boolean' },
       },
     },
-    fullContent: {
-      control: 'boolean',
-      description: 'Whether the content is full or not.',
-      table: {
-        type: { summary: 'boolean' },
-      },
-    },
     onClose: {
       control: false,
       description: 'Specify a function that will close the bottom sheet.',
@@ -108,7 +101,6 @@ export default {
     keyboard: false,
     prefix: false,
     suffix: true,
-    fullContent: false,
     children: (
       <Fragment>
         <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
@@ -130,12 +122,14 @@ export const Basic: Story = ({ backdrop }: Props) => {
   };
 
   return (
-    <HCBottomSheet show={show} onClose={handleClose} backdrop={backdrop} header=''>
-      <h3 className='text-heading-xs text-secondary mb-2'>歡迎來到 HANCHAU！</h3>
-      <h4 className='text-body-xs text-tertiary mb-3'>跟著老師動次動次動</h4>
-      <HCButton color='highlight' className='mb-4'>
-        馬上開始
-      </HCButton>
+    <HCBottomSheet show={show} onClose={handleClose} backdrop={backdrop}>
+      <div className='px-4 pt-9'>
+        <h3 className='text-heading-xs text-secondary mb-2'>歡迎來到 HANCHAU！</h3>
+        <h4 className='text-body-xs text-tertiary mb-3'>跟著老師動次動次動</h4>
+        <HCButton color='highlight' className='mb-4'>
+          馬上開始
+        </HCButton>
+      </div>
     </HCBottomSheet>
   );
 };
@@ -157,10 +151,12 @@ export const Header: Story = (args: Props) => {
       suffix={false}
       onClose={handleClose}
     >
-      <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
-      <HCButton color='primary' disabled>
-        建立菜單
-      </HCButton>
+      <div className='p-4'>
+        <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
+        <HCButton color='primary' disabled>
+          建立菜單
+        </HCButton>
+      </div>
     </HCBottomSheet>
   );
 };
@@ -186,10 +182,12 @@ export const HeaderPrefixAndSuffix: Story = (args: Props) => {
       backdrop={args.backdrop}
       onClose={handleClose}
     >
-      <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
-      <HCButton color='primary' disabled>
-        建立菜單
-      </HCButton>
+      <div className='p-4'>
+        <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
+        <HCButton color='primary' disabled>
+          建立菜單
+        </HCButton>
+      </div>
     </HCBottomSheet>
   );
 };
@@ -212,10 +210,12 @@ export const Keyboard: Story = (args: Props) => {
       suffix={args.suffix}
       onClose={handleClose}
     >
-      <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
-      <HCButton color='primary' disabled>
-        建立菜單
-      </HCButton>
+      <div className='px-4 pt-4'>
+        <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
+        <HCButton color='primary' disabled>
+          建立菜單
+        </HCButton>
+      </div>
     </HCBottomSheet>
   );
 };
@@ -238,10 +238,12 @@ export const Handle: Story = (args: Props) => {
       suffix={args.suffix}
       onClose={handleClose}
     >
-      <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
-      <HCButton color='primary' disabled>
-        建立菜單
-      </HCButton>
+      <div className='px-4 pt-4'>
+        <HCInput placeholder='輸入你的訓練菜單名稱' className='mb-3' />
+        <HCButton color='primary' disabled>
+          建立菜單
+        </HCButton>
+      </div>
     </HCBottomSheet>
   );
 };

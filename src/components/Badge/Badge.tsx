@@ -1,30 +1,35 @@
 import React, { useState, ReactNode, useEffect } from 'react';
 
-import HCStarLevel from '../Rate';
-
-import StarIcon from '~/assets/img/heroicons/mini/star';
+import HCRate, { RateLevel } from '../Rate';
 
 interface Props {
   children?: React.ReactNode;
   className?: string;
-  type: 'rate';
-  level: 0 | 1 | 2 | 3;
+  type: 'rate' | 'dot';
+  level?: RateLevel;
 }
 
-const Badge: React.FC<Props> = (props: Props) => {
+const Badge: React.FC<Props> = ({ children, type, level }: Props) => {
   const [content, setContent] = useState<ReactNode>();
+  const [styleClass, setStyleClass] = useState('');
 
   useEffect(() => {
-    switch (props.type) {
+    switch (type) {
       case 'rate':
-        setContent(<HCStarLevel level={props.level} size='s' onColor />);
+        setStyleClass('px-1 py-0.5 rounded-lg bottom-0 right-1/2 translate-x-1/2');
+        setContent(<HCRate level={level as RateLevel} size='s' onColor />);
+        break;
+      case 'dot':
+        setStyleClass('w-2 h-2 rounded-full right-0 translate-x-1/2 top-0 -translate-y-1/2');
+        setContent('');
         break;
     }
-  }, [props.type, props.level]);
+  }, [type, level]);
 
   return (
-    <div className={`${props.className} px-1 py-0.5 bg-highlight rounded-lg inline-block`}>
-      {content}
+    <div className='relative inline-block'>
+      {children}
+      <div className={`${styleClass} absolute bg-highlight inline-block`}>{content}</div>
     </div>
   );
 };

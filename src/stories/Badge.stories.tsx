@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import HCBadge from '~/components/Badge';
 
@@ -8,7 +8,7 @@ export default {
   argTypes: {
     type: {
       control: 'select',
-      options: ['rate'],
+      options: ['rate', 'dot'],
       description: 'Type of the badge.',
       table: {
         type: { summary: 'string' },
@@ -17,7 +17,7 @@ export default {
     level: {
       control: 'select',
       options: [0, 1, 2, 3],
-      description: 'Level of the star type badge.',
+      description: 'Level of the rate type badge.',
       table: {
         type: { summary: 'number' },
       },
@@ -25,10 +25,22 @@ export default {
   },
 } as Meta<typeof HCBadge>;
 
-type Story = StoryObj<typeof HCBadge>;
+type Story = StoryFn<typeof HCBadge>;
 
-export const Basic: Story = {
-  args: {
-    type: 'rate',
-  },
+export const Rate: Story = () => {
+  return (
+    <HCBadge type='rate'>
+      <div className='w-16 h-16 bg-tertiary rounded'></div>
+    </HCBadge>
+  );
+};
+
+export const Dot: Story = () => {
+  return (
+    <div className='p-4'>
+      <HCBadge type='dot'>
+        <div className='w-5 h-5 bg-tertiary rounded'></div>
+      </HCBadge>
+    </div>
+  );
 };

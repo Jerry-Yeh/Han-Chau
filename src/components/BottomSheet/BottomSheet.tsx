@@ -14,7 +14,6 @@ export interface Props {
   keyboard?: boolean;
   prefix?: boolean;
   suffix?: boolean;
-  fullContent?: boolean;
   onClose?: () => void;
   onPrefix?: () => void;
 }
@@ -164,7 +163,8 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
           ${shadowClass} ${topClass} ${bottomClass}
           w-full box-border rounded-t-3xl
           first-letter:w-full bg-primary
-          fixed left-0 transition-top duration-800`}
+          fixed left-0 transition-top duration-800
+          flex flex-col`}
         style={{
           top: props.show ? `calc(100% - ${height}px)` : `100%`,
         }}
@@ -209,9 +209,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
             </div>
           </div>
         )}
-        <div className={`${props.fullContent ? '' : `px-4 ${props.header ? 'pt-4' : 'pt-9'}`}`}>
-          {props.children}
-        </div>
+        <div className='overflow-y-scroll'>{props.children}</div>
       </div>
     </div>
   );
@@ -227,7 +225,6 @@ HCBottomSheet.defaultProps = {
   keyboard: false,
   prefix: false,
   suffix: true,
-  fullContent: false,
 };
 
 export default HCBottomSheet;

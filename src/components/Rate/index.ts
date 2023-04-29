@@ -1,9 +1,11 @@
 import HCRate from './Rate';
 
+export type RateLevel = 0 | 1 | 2 | 3;
+
 export interface RateProps {
   children?: React.ReactNode;
   className?: string;
-  level: 0 | 1 | 2 | 3;
+  level: RateLevel;
   onColor?: boolean;
   size?: 's' | 'm' | 'l';
 }
