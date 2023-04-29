@@ -51,12 +51,11 @@ const ControlItem: React.FC<Props> = (props: Props) => {
     >
       {/* Form element */}
       <label
-        htmlFor={`${props.value}`}
         className={`absolute inset-0 w-full h-full flex ${
           props.disabled ? 'hover:cursor-not-allowed' : 'hover:cursor-pointer'
         }`}
       >
-        <input id={`${props.value}`} {...inputProps} className='appearance-none' />
+        <input {...inputProps} className='appearance-none' />
       </label>
 
       {/* UI layout */}
