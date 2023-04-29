@@ -75,18 +75,20 @@ const Done: React.FC<Props> = (props: Props) => {
         <span className='text-body-m text-placeholder'>{t('welcome.slogan')}</span>
       </div>
       <HCBottomSheet show={showActions} backdrop={false}>
-        <h3 className='text-heading-xs text-secondary mb-2'>{t('welcome.landing.heading')}</h3>
-        <h4 className='text-body-xs text-tertiary mb-3'>{t('welcome.landing.subheading')}</h4>
-        <HCButton color='highlight' className='mb-4' onClick={toRegister}>
-          {t('welcome.landing.register')}
-        </HCButton>
-        <HCDivider className='text-body-bold-s mb-4'>{t('welcome.landing.divider')}</HCDivider>
-        <HCButton color='secondary' prefix={<img src={google} alt='icon' />} className='mb-2'>
-          {t('welcome.landing.actions.google')}
-        </HCButton>
-        <HCButton color='secondary' prefix={<img src={facebook} alt='icon' />}>
-          {t('welcome.landing.actions.facebook')}
-        </HCButton>
+        <div className='px-4 pt-9'>
+          <h3 className='text-heading-xs text-secondary mb-2'>{t('welcome.landing.heading')}</h3>
+          <h4 className='text-body-xs text-tertiary mb-3'>{t('welcome.landing.subheading')}</h4>
+          <HCButton color='highlight' className='mb-4' onClick={toRegister}>
+            {t('welcome.landing.register')}
+          </HCButton>
+          <HCDivider className='text-body-bold-s mb-4'>{t('welcome.landing.divider')}</HCDivider>
+          <HCButton color='secondary' prefix={<img src={google} alt='icon' />} className='mb-2'>
+            {t('welcome.landing.actions.google')}
+          </HCButton>
+          <HCButton color='secondary' prefix={<img src={facebook} alt='icon' />}>
+            {t('welcome.landing.actions.facebook')}
+          </HCButton>
+        </div>
       </HCBottomSheet>
       <div className='pt-4 pb-6 px-4 mt-auto'>
         <HCButton color='highlight' onClick={showActionsHandler}>
