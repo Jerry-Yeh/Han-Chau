@@ -24,8 +24,15 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
-    }
+    },
+    "types": ["vite-plugin-svgr/client"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/stories/Introduction.stories.mdx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "src/stories/Introduction.stories.mdx",
+    "src/components/Player/index.ts",
+    "src/components/Player/index.ts"
+  ],
   "exclude": ["node_modules", "vite.config.ts"]
 }

@@ -14,12 +14,17 @@ module.exports = {
         top: 'top',
         height: 'height',
       },
+      transitionDuration: {
+        400: '400ms',
+      },
       spacing: {
         13: '3.25rem',
         15: '3.75rem',
         17: '4.25rem',
         18: '4.5rem',
         19: '4.75rem',
+        19.5: '4.875rem',
+        27: '6.75rem',
         50: '12.5rem',
         77: '19.25rem',
         86: '21.5rem',
