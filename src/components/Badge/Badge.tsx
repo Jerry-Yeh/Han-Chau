@@ -7,9 +7,10 @@ interface Props {
   className?: string;
   type: 'rate' | 'dot';
   level?: RateLevel;
+  show?: boolean;
 }
 
-const Badge: React.FC<Props> = ({ children, type, level }: Props) => {
+const Badge: React.FC<Props> = ({ className, children, type, level, show }: Props) => {
   const [content, setContent] = useState<ReactNode>();
   const [styleClass, setStyleClass] = useState('');
 
@@ -29,9 +30,13 @@ const Badge: React.FC<Props> = ({ children, type, level }: Props) => {
   return (
     <div className='relative inline-block'>
       {children}
-      <div className={`${styleClass} absolute bg-highlight inline-block`}>{content}</div>
+      {show && <div className={`${styleClass} absolute bg-highlight inline-block`}>{content}</div>}
     </div>
   );
+};
+
+Badge.defaultProps = {
+  show: true,
 };
 
 export default Badge;

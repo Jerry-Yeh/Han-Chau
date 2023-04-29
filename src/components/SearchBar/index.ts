@@ -11,7 +11,9 @@ export interface SearchBarProps {
   placeholder?: string;
   prefixType?: 'search' | 'previous';
   filter?: boolean;
+  filtering?: boolean;
   onChange?: (e: SearchEventType) => void;
+  onFilter?: () => void;
 }
 
 export default SearchBar;

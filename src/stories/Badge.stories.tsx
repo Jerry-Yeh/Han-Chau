@@ -22,6 +22,17 @@ export default {
         type: { summary: 'number' },
       },
     },
+    show: {
+      control: 'boolean',
+      description: 'Whether the badge is visiable or not.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: true },
+      },
+    },
+  },
+  args: {
+    show: true,
   },
 } as Meta<typeof HCBadge>;
 

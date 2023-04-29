@@ -5,6 +5,7 @@ import MagnifyingGlass from '~/assets/img/heroicons/mini/magnifying-glass';
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import XCircle from '~/assets/img/heroicons/mini/x-circle';
 import AdjustmentsHorizontal from '~/assets/img/heroicons/mini/adjustments-horizontal';
+import HCBadge from '~/components/Badge';
 
 import type { SearchBarProps } from '.';
 
@@ -57,9 +58,14 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
         </div>
       )}
       {!focus && props.filter && (
-        <div className='w-13 h-12 absolute top-0 right-0 py-3.5 px-4 cursor-pointer'>
-          <AdjustmentsHorizontal className='icon-secondary' />
-        </div>
+        <button
+          className='absolute top-0 right-0 w-13 h-12 py-3.5 px-4 cursor-pointer'
+          onClick={props.onFilter}
+        >
+          <HCBadge type='dot' show={props.filtering} className=''>
+            <AdjustmentsHorizontal className='icon-secondary' />
+          </HCBadge>
+        </button>
       )}
     </div>
   );
@@ -68,6 +74,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
 SearchBar.defaultProps = {
   prefixType: 'search',
   filter: true,
+  filtering: false,
 };
 
 export default SearchBar;

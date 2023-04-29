@@ -38,11 +38,25 @@ export default {
         type: { summary: 'boolean' },
       },
     },
+    filtering: {
+      control: 'boolean',
+      description: 'Whether the search bar filter is filtering or not.',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
     onChange: {
       control: false,
-      description: 'Callback when user input.',
+      description: 'Specify a function that will be called when a user input.',
       table: {
-        type: { summary: 'function' },
+        type: { summary: '(e: ChangeEvent<HTMLInputElement>) => void' },
+      },
+    },
+    onFilter: {
+      control: false,
+      description: 'Specify a function that will be called when a user click filter icon.',
+      table: {
+        type: { summary: '() => void' },
       },
     },
   },
@@ -51,12 +65,13 @@ export default {
     prefixType: 'search',
     placeholder: '尋找健身動作',
     filter: true,
+    filtering: false,
   },
 } as Meta<typeof HCSearchBar>;
 
 type Story = StoryFn<typeof HCSearchBar>;
 
-export const Basic: Story = ({ prefixType, placeholder }: SearchBarProps) => {
+export const Basic: Story = ({ prefixType, placeholder, filtering }: SearchBarProps) => {
   const [{ value }, updateArgs] = useArgs();
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -68,6 +83,7 @@ export const Basic: Story = ({ prefixType, placeholder }: SearchBarProps) => {
       value={value}
       prefixType={prefixType}
       placeholder={placeholder}
+      filtering={filtering}
       onChange={onChangeHandler}
     />
   );
