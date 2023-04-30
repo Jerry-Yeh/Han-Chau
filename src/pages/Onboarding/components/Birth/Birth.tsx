@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '~/store/hook';
 import Layout from '../Layout';
 import DatePicker, { DatePickerProps } from '~/components/DatePicker';
 import HCButton from '~/components/Button';
-import { setUser } from '~/store/features/uesr';
+import { setUser } from '~/store/features/user';
 
 interface Props {
   children?: React.ReactNode;

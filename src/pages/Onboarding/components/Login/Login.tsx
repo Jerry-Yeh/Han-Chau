@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '~/store/hook';
 import Layout from '../Layout';
 import HCButton from '~/components/Button';
 import AuthService from '~/services/auth';
-import { setUser } from '~/store/features/uesr';
+import { setUser } from '~/store/features/user';
 
 import google from '~/assets/img/google.svg';
 import facebook from '~/assets/img/facebook.svg';

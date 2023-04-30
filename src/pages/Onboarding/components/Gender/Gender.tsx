@@ -7,7 +7,7 @@ import Layout from '../Layout';
 import { HCRadio, HCRadioGroup, RadioValueType } from '~/components/Radio';
 import HCButton from '~/components/Button';
 import { GENDER } from '~/enums/user';
-import { setUser } from '~/store/features/uesr';
+import { setUser } from '~/store/features/user';
 
 interface Props {
   children?: React.ReactNode;

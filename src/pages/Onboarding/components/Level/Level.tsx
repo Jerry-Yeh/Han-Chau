@@ -7,7 +7,7 @@ import Layout from '../Layout';
 import { HCRadio, HCRadioGroup, RadioValueType } from '~/components/Radio';
 import HCButton from '~/components/Button';
 import { LEVEL } from '~/enums/user';
-import { setUser } from '~/store/features/uesr';
+import { setUser } from '~/store/features/user';
 
 import type { RadioOptionType } from '~/components/Radio';
 
