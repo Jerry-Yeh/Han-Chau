@@ -9,9 +9,10 @@ import {
   deleteDoc,
   updateDoc,
 } from 'firebase/firestore';
+import { ReactNode } from 'react';
 
 import ApiService from './api';
-import { UPPERLOWERCORE, MODALITY, MUSCLES } from '~/enums/exercise';
+import { UPPERLOWERCORE, MODALITY, MUSCLES, MUSCLEGROUP } from '~/enums/exercise';
 import { upperLowerCore, modality, muscles } from '~/static/exercise/dataType';
 import { store } from '~/store';
 import { getLanguage } from '~/store/features/language';
@@ -72,7 +73,7 @@ export default class ExerciseService {
     return modalityList.map((id) => modality[id][language]).join('/');
   }
 
-  static getExerciseMusclesText(muscleList: MUSCLES[]) {
+  static getExerciseMusclesText(muscleList: Array<MUSCLES | MUSCLEGROUP>) {
     const state = store.getState();
     const language = getLanguage(state);
 
@@ -126,5 +127,11 @@ export default class ExerciseService {
       name,
       exerciseList: exerciseList.map(({ id, sets, reps, ...rest }) => ({ id, sets, reps })),
     };
+  }
+
+  static getExerciseImageUrl(imageName: string): string {
+    return `https://storage.cloud.google.com/${
+      import.meta.env.VITE_STORAGE_BUCKET
+    }/exercise/${imageName}`;
   }
 }

@@ -1,12 +1,20 @@
 import { Nullable } from '~/typings/utils';
-import { LEVEL, MUSCLES, MODALITY, UPPERLOWERCORE, PULLPUSH, JOINT } from '~/enums/exercise';
+import {
+  LEVEL,
+  MUSCLES,
+  MUSCLEGROUP,
+  MODALITY,
+  UPPERLOWERCORE,
+  PULLPUSH,
+  JOINT,
+} from '~/enums/exercise';
 
 export interface Exercise {
   id: number;
   nameEn: string;
   nameZh: string;
   level: LEVEL;
-  muscles: MUSCLES[];
+  muscles: Array<MUSCLES | MUSCLEGROUP>;
   modality: MODALITY;
   upperLowerCore: UPPERLOWERCORE;
   pushPull: PULLPUSH;

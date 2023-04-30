@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '~/store/hook';
+import { useAppSelector, useAppDispatch } from '~/store/hook';
 import { PlusIcon } from '@heroicons/react/20/solid';
 
 import PageHeader from '../PageHeader';
@@ -11,15 +11,14 @@ import HCButton from '~/components/Button';
 import HCBottomSheet from '~/components/BottomSheet';
 import HCInput from '~/components/Input';
 import PlanDetail from '../PlanDetail';
-import { HCList, HCListItem, ListItemType } from '~/components/List';
 import ExerciseService from '~/services/exercise';
 import { WORKOUTPLANFILTER } from '~/enums/exercise';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
-import HCBadge from '~/components/Badge';
 import HCFloatButton from '~/components/FloatButton';
+import PlanList from '~/pages/Exercise/components/PlanList';
+import { ListItemType } from '~/components/List';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
-import Upper from '~/assets/img/exercise/upper.png';
 
 interface Props {
   children?: React.ReactNode;
@@ -27,6 +26,7 @@ interface Props {
 
 const Plan: React.FC<Props> = (props: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
+  const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.user.user);
   const headerRef = useRef<HTMLElement>(null);
@@ -41,7 +41,7 @@ const Plan: React.FC<Props> = (props: Props) => {
   ];
   const [searchText, setSearchText] = useState('');
   const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
-  const [planList, setPlanList] = useState<WorkoutPlan[]>([]);
+  const planList = useAppSelector((state) => state.exercise.planList);
   const [showAddPlan, setShowAddPlan] = useState(false);
   const [plan, setPlan] = useState<WorkoutPlan>({
     id: '',
@@ -109,13 +109,16 @@ const Plan: React.FC<Props> = (props: Props) => {
       if (user.id && !showDetailPage) {
         const data = await ExerciseService.queryWorkoutPlans(user.id);
 
-        setPlanList(data.map((item) => ExerciseService.transPlanFromRawData(item)));
+        dispatch({
+          type: 'exercise/setPlanList',
+          payload: data.map((item) => ExerciseService.transPlanFromRawData(item)),
+        });
         resetCurrentPlan();
       }
     };
 
     queryWorkoutPlans();
-  }, [user.id, showDetailPage]);
+  }, [user.id, showDetailPage, dispatch]);
 
   const closeAddPlanHandler = () => {
     setShowAddPlan(false);
@@ -131,7 +134,7 @@ const Plan: React.FC<Props> = (props: Props) => {
     setShowDetailPage(true);
   };
 
-  const clickItemHandler = (item: ListItemType) => {
+  const handleClickItem = (item: ListItemType) => {
     const clickedPlan = planList.find((plan) => plan.id === item.key);
 
     if (clickedPlan) {
@@ -173,27 +176,7 @@ const Plan: React.FC<Props> = (props: Props) => {
           </div>
         ) : (
           <div className='relative h-full'>
-            <HCList
-              data={planList.map((item) => ({
-                key: item.id,
-                title: item.name,
-                description: `${t(`plan.exercises`, {
-                  number: item.exerciseList.length,
-                })} · ${
-                  item.upperLowerCoreList.length > 0
-                    ? ExerciseService.getPlanUpperLowerCoreText(item.upperLowerCoreList)
-                    : t('plan.without-training-parts')
-                }`,
-                img: (
-                  <HCBadge type='rate' level={item.challenge}>
-                    <img src={Upper} alt='default' />
-                  </HCBadge>
-                ),
-              }))}
-              renderItem={(item) => (
-                <HCListItem {...item} actionType='next' onClick={() => clickItemHandler(item)} />
-              )}
-            />
+            <PlanList data={planList} onClick={handleClickItem} />
             <HCFloatButton onClick={() => setShowAddPlan(true)}>
               <PlusIcon />
             </HCFloatButton>
