@@ -5,15 +5,16 @@ import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import languageReducer from './features/language';
-import userReducer from './features/uesr';
+import userReducer from './features/user';
+import exerciseReducer from './features/exercise';
 
 const rootPersistConfig = { key: 'root', storage };
 const userPersistConfig = { key: 'user', storage };
-const languagePersistConfig = { key: 'language', storage };
 
 const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
-  language: persistReducer(languagePersistConfig, languageReducer),
+  language: languageReducer,
+  exercise: exerciseReducer,
 });
 
 export const store = configureStore({
