@@ -28,6 +28,7 @@ const Item: React.FC<ListItemType> = (props: ListItemType) => {
     >
       <div
         className={`
+          ${props.imgClass}
           ${props.description ? 'w-16 h-16 rounded' : 'w-9 h-9 rounded-lg'} overflow-hidden`}
       >
         {props.img}

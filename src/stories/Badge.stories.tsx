@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 
-import HCBadge from '~/components/Badge';
+import HCBadge, { BadgeProps } from '~/components/Badge';
 
 export default {
   title: 'Components/Badge',
@@ -40,16 +40,18 @@ type Story = StoryFn<typeof HCBadge>;
 
 export const Rate: Story = () => {
   return (
-    <HCBadge type='rate'>
-      <div className='w-16 h-16 bg-tertiary rounded'></div>
-    </HCBadge>
+    <div className='p-4'>
+      <HCBadge type='rate'>
+        <div className='w-16 h-16 bg-tertiary rounded'></div>
+      </HCBadge>
+    </div>
   );
 };
 
-export const Dot: Story = () => {
+export const Dot: Story = ({ show }: BadgeProps) => {
   return (
     <div className='p-4'>
-      <HCBadge type='dot'>
+      <HCBadge type='dot' show={show}>
         <div className='w-5 h-5 bg-tertiary rounded'></div>
       </HCBadge>
     </div>

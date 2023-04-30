@@ -9,6 +9,7 @@ export interface ListItemType {
   actionType?: string;
   key?: string | number;
   type?: 'warning';
+  imgClass?: string;
   onClick?: () => void;
   onControl?: () => void;
 }

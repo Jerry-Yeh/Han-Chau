@@ -2,15 +2,9 @@ import React, { useState, ReactNode, useEffect } from 'react';
 
 import HCRate, { RateLevel } from '../Rate';
 
-interface Props {
-  children?: React.ReactNode;
-  className?: string;
-  type: 'rate' | 'dot';
-  level?: RateLevel;
-  show?: boolean;
-}
+import type { BadgeProps } from '.';
 
-const Badge: React.FC<Props> = ({ className, children, type, level, show }: Props) => {
+const Badge: React.FC<BadgeProps> = ({ children, type, level, show }: BadgeProps) => {
   const [content, setContent] = useState<ReactNode>();
   const [styleClass, setStyleClass] = useState('');
 

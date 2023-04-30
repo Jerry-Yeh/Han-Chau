@@ -67,6 +67,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
           </HCBadge>
         </button>
       )}
+      {props.filtering}
     </div>
   );
 };
