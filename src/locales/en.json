@@ -167,6 +167,17 @@
         "cancel": "",
         "confirm": ""
       }
+    },
+    "detail": {
+      "title": "",
+      "training-muscle-group": "",
+      "tutorial": "",
+      "add-to-plan": "",
+      "added-plan": "",
+      "confirm": ""
+    },
+    "join": {
+      "title": ""
     }
   }
 }

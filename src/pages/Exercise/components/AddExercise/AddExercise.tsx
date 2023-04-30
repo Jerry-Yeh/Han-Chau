@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState, ReactNode, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '~/store/hook';
 
@@ -12,8 +12,10 @@ import { LEVEL } from '~/enums/user';
 import { MODALITY, MUSCLEGROUP, MUSCLES } from '~/enums/exercise';
 import type { Nullable } from '~/typings/utils';
 import { HCCheckboxGroup } from '~/components/Checkbox';
-import { HCRadioGroup, HCRadio } from '~/components/Radio';
+import { HCRadioGroup } from '~/components/Radio';
 import { muscles, modality, level } from '~/static/exercise/dataType';
+import ExerciseDetail from '../ExerciseDetail';
+import JoinPlan from '../JoinPlan';
 
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 import Abdominals from '~/assets/img/muscle-group/abdominals.png';
@@ -23,7 +25,6 @@ import Chest from '~/assets/img/muscle-group/chest.png';
 import Shoulders from '~/assets/img/muscle-group/shoulders.png';
 import Legs from '~/assets/img/muscle-group/legs.png';
 import Calves from '~/assets/img/muscle-group/calves.png';
-import { render } from 'react-dom';
 import HCButton from '~/components/Button';
 
 interface Props {
@@ -161,6 +162,11 @@ const AddExercise: React.FC<Props> = (props: Props) => {
     setShowFilterExercises(false);
   };
 
+  const handlerCancelFilter = () => {
+    handleCloseFilter();
+    setFilter({ muscleGroup: [], modalities: [], level: null });
+  };
+
   const handlerConfirmFilter = () => {
     setFilter(tempFilter);
     setShowFilterExercises(false);
@@ -168,7 +174,7 @@ const AddExercise: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     const isCorrectName = (name: string): boolean => name.includes(searchText);
-    const isCorrectMuscle = (muscles: MUSCLES[]): boolean =>
+    const isCorrectMuscle = (muscles: Array<MUSCLES | MUSCLEGROUP>): boolean =>
       filter.muscleGroup.length === 0 ||
       muscles.some((muscle) => filter.muscleGroup.includes(muscle));
     const isCorrectModality = (modality: MODALITY): boolean =>
@@ -185,6 +191,33 @@ const AddExercise: React.FC<Props> = (props: Props) => {
 
     setResult(searchResult);
   }, [searchText, capitalizeLanguage, filter]);
+
+  /** Exercise details */
+  const [isShowExerciseDetail, setShowExerciseDetail] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState<Exercise>();
+  const [isShowJoinPlan, setShowJoinPlan] = useState(false);
+
+  const handleShowExerciseDetail = (key: ListItemType['key']) => {
+    const exercise = result.find((item) => item.id === key);
+
+    if (exercise) {
+      setSelectedExercise(exercise);
+      setShowExerciseDetail(true);
+    }
+  };
+
+  const handleCloseExerciseDetail = () => {
+    setShowExerciseDetail(false);
+  };
+
+  const handleConfirmExerciseDetail = () => {
+    setShowExerciseDetail(false);
+    setShowJoinPlan(true);
+  };
+
+  const handleCloseJoinPlan = () => {
+    setShowJoinPlan(false);
+  };
 
   return (
     <div
@@ -224,16 +257,15 @@ const AddExercise: React.FC<Props> = (props: Props) => {
             description: `${level[item.level][language]} · ${ExerciseService.getExerciseMusclesText(
               item.muscles,
             )}`,
-            img: (
-              <img
-                src={`https://storage.cloud.google.com/${
-                  import.meta.env.VITE_STORAGE_BUCKET
-                }/exercise/1.png`}
-                alt='img'
-              />
-            ),
+            img: <img src={ExerciseService.getExerciseImageUrl('1.png')} alt='img' />,
           }))}
-          renderItem={(item) => <HCListItem {...item} actionType='add' />}
+          renderItem={(item) => (
+            <HCListItem
+              {...item}
+              actionType='add'
+              onClick={() => handleShowExerciseDetail(item.key)}
+            />
+          )}
           bleed
         />
       </div>
@@ -249,7 +281,7 @@ const AddExercise: React.FC<Props> = (props: Props) => {
         handle
         onClose={handleCloseFilter}
       >
-        <div className='bg-secondary flex flex-col gap-y-2'>
+        <div className='bg-tertiary flex flex-col gap-y-2'>
           {renderFilter.map((item, index) => (
             <div className='bg-primary px-4 pt-4 pb-6' key={index}>
               <h3 className='text-heading-s text-primary mb-4'>{item.title}</h3>
@@ -258,7 +290,7 @@ const AddExercise: React.FC<Props> = (props: Props) => {
           ))}
         </div>
         <div className='p-4 flex gap-x-2 border-t border-secondary'>
-          <HCButton color='secondary' onClick={handleCloseFilter}>
+          <HCButton color='secondary' onClick={handlerCancelFilter}>
             {t('filter.cancel')}
           </HCButton>
           <HCButton color='highlight' onClick={handlerConfirmFilter}>
@@ -266,6 +298,15 @@ const AddExercise: React.FC<Props> = (props: Props) => {
           </HCButton>
         </div>
       </HCBottomSheet>
+
+      <ExerciseDetail
+        show={isShowExerciseDetail}
+        exercise={selectedExercise}
+        onClose={handleCloseExerciseDetail}
+        onConfirm={handleConfirmExerciseDetail}
+      />
+
+      <JoinPlan show={isShowJoinPlan} onClose={handleCloseJoinPlan} />
     </div>
   );
 };

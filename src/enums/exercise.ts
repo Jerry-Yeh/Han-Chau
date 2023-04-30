@@ -39,11 +39,10 @@ export enum MUSCLES {
 
 export enum MUSCLEGROUP {
   ABDOMINALS = 1,
-  BACK,
-  BICEPS,
-  CLAVES,
-  CHEST,
-  LEGS,
+  BACK = 2,
+  CLAVES = 4,
+  CHEST = 5,
+  LEGS = 6,
   SHOULDERS = 8,
   ARMS = 30,
 }

@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-
-import type { Exercise } from '~/services/exercise';
 
 interface Props {
   children?: React.ReactNode;
