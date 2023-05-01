@@ -1,11 +1,20 @@
-import { useRef } from 'react';
-import YouTube, { YouTubeProps } from 'react-youtube';
+import { useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import ReactPlayer from 'react-player';
 
-import type { PlayerProps } from '.';
+import type { PlayerProps, HandlePlayer } from '.';
 
-const HCPlayer: React.FC<PlayerProps> = ({ url, start, end }: PlayerProps) => {
+const HCPlayer: React.ForwardRefRenderFunction<HandlePlayer, PlayerProps> = (
+  { className, url, start, end }: PlayerProps,
+  ref,
+) => {
   const reactPlayerRef = useRef<ReactPlayer>(null);
+  const [key, updateKey] = useState(0);
+
+  useImperativeHandle(ref, () => ({
+    reRender() {
+      updateKey(key + 1);
+    },
+  }));
 
   const handlePlay = () => {
     console.log('play');
@@ -38,9 +47,15 @@ const HCPlayer: React.FC<PlayerProps> = ({ url, start, end }: PlayerProps) => {
     reactPlayerRef.current?.seekTo(60);
   };
 
+  const handleStop = () => {
+    console.log('handleStop', reactPlayerRef.current);
+    // setPlaying(false);
+  };
+
   return (
-    <div className='rounded-lg overflow-hidden aspect-video'>
+    <div className={`${className} rounded-lg aspect-video`}>
       <ReactPlayer
+        key={key}
         ref={reactPlayerRef}
         url={url}
         width='100%'
@@ -53,6 +68,7 @@ const HCPlayer: React.FC<PlayerProps> = ({ url, start, end }: PlayerProps) => {
             },
           },
         }}
+        // playing={playing}
         // controls={true}
         // onPlay={handlePlay}
         // onSeek={handleSeek}
@@ -66,4 +82,4 @@ const HCPlayer: React.FC<PlayerProps> = ({ url, start, end }: PlayerProps) => {
   );
 };
 
-export default HCPlayer;
+export default forwardRef(HCPlayer);
