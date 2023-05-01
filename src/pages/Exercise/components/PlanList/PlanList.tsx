@@ -10,11 +10,12 @@ import Upper from '~/assets/img/exercise/upper.png';
 
 interface Props {
   children?: React.ReactNode;
+  className?: string;
   data: WorkoutPlan[];
   onClick?: (item: ListItemType) => void;
 }
 
-const PlanList: React.FC<Props> = ({ data, onClick }: Props) => {
+const PlanList: React.FC<Props> = ({ data, className, onClick }: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
 
   const handleClickItem = (item: ListItemType) => {
@@ -42,6 +43,7 @@ const PlanList: React.FC<Props> = ({ data, onClick }: Props) => {
       renderItem={(item) => (
         <HCListItem {...item} actionType='next' onClick={() => handleClickItem(item)} />
       )}
+      className={className}
     />
   );
 };

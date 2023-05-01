@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '~/store/hook';
 
@@ -8,7 +8,7 @@ import { Exercise } from '~/static/exercise/data';
 import ExerciseService from '~/services/exercise';
 import { level, modality, upperLowerCore, muscles } from '~/static/exercise/dataType';
 import { MUSCLEGROUP } from '~/enums/exercise';
-import HCPlayer from '~/components/Player/Player';
+import HCPlayer, { HandlePlayer } from '~/components/Player';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import HCButton from '~/components/Button';
@@ -29,6 +29,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
   const muscleGroupImages = useAppSelector((state) => state.exercise.muscleGroupImages);
   const planList = useAppSelector((state) => state.exercise.planList);
   const [joinedPlanList, setJoinedPlanList] = useState<WorkoutPlan[]>([]);
+  const playerRef = useRef<HandlePlayer>(null);
 
   const getMusclesDescription = () => {
     return exercise?.muscles
@@ -48,6 +49,11 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
   const handleConfirm = () => {
     onConfirm();
   };
+
+  useEffect(() => {
+    console.log('re-render');
+    playerRef.current?.reRender();
+  }, [show]);
 
   return (
     <HCBottomSheet show={show} header={t('title')} handle onClose={onClose}>
@@ -97,11 +103,16 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
             <div className='bg-primary p-4'>
               <h3 className='text-heading-xs mb-4'>{t('tutorial')}</h3>
               {exercise.url && (
-                <HCPlayer url={exercise.url} start={exercise.start} end={exercise.end} />
+                <HCPlayer
+                  ref={playerRef}
+                  url={exercise.url}
+                  start={exercise.start}
+                  end={exercise.end}
+                />
               )}
             </div>
             <div className='bg-primary'>
-              <h3 className='text-heading-xs p-4 mb-4'>{t('add-to-plan')}</h3>
+              <h3 className='text-heading-xs p-4'>{t('add-to-plan')}</h3>
               <PlanList data={joinedPlanList} />
             </div>
           </div>
