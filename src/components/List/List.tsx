@@ -20,7 +20,11 @@ const List: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <div className={`flex flex-col ${props.className} ${!props.bleed ? 'p-4 gap-y-4' : ''}`}>
+    <div
+      className={`flex flex-col ${props.className} ${
+        !props.bleed && props.data.length > 0 ? 'p-4 gap-y-4' : ''
+      }`}
+    >
       {props.data.map(renderInnerItem)}
     </div>
   );

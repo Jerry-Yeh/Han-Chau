@@ -26,12 +26,15 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
    *
    * top, bottom & height
    */
-  const [height, setHeight] = useState(0);
+  const [heightClass, setHeightClass] = useState('h-0');
   const [dragging, setDragging] = useState(false);
   const [draggingPosY, setDraggingPosY] = useState(0);
   const [full, setFull] = useState(false);
-  const [topClass, setTopClass] = useState('top-full');
+  const [topStyle, setTopStyle] = useState('100%');
   const [bottomClass, setBottomClass] = useState('');
+  const [shadowClass, setShadowClass] = useState('');
+  const [backdropClass, setBackdropClass] = useState('invisible');
+  const [backdropOpacityClass, setBackdropOpacityClass] = useState('opacity-0');
 
   const handleTouchDownHeader = (event: React.TouchEvent | React.MouseEvent) => {
     setDragging(true);
@@ -73,11 +76,11 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
     [handlePosition],
   );
 
-  useEffect(() => {
-    if (ref.current) {
-      setHeight(ref.current?.clientHeight);
-    }
-  }, [ref.current?.children]);
+  // useEffect(() => {
+  //   if (ref.current) {
+  //     setHeight(ref.current?.clientHeight);
+  //   }
+  // }, [ref.current?.children]);
 
   useEffect(() => {
     if (props.handle && dragging) {
@@ -95,20 +98,31 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
 
-    if (!props.show) {
-      setTopClass('top-full');
+    if (props.show) {
+      setHeightClass('h-full');
+      setBackdropOpacityClass('opacity-100');
+      setBottomClass('bottom-0');
+      // TailwindCSS doesn't support dynamic class, so we handle this top case by style.
+      if (full) {
+        setTopStyle('24px');
+      } else if (props.keyboard || props.handle) {
+        setTopStyle('200px');
+      } else {
+        setTopStyle(`calc(100% - ${ref.current?.clientHeight}px)`);
+      }
+      timer = setTimeout(() => {
+        setShadowClass('drop-shadow-reversed');
+        setBackdropClass('visible');
+      }, 0);
+    } else {
+      setTopStyle('100%');
+      setHeightClass('h-0');
+      setBackdropOpacityClass('opacity-0');
       timer = setTimeout(() => {
         setBottomClass('');
+        setShadowClass('');
+        setBackdropClass('invisible');
       }, 800);
-    } else if (full) {
-      setTopClass('top-6');
-      setBottomClass('bottom-0');
-    } else if (props.keyboard || props.handle) {
-      setTopClass('top-50');
-      setBottomClass('bottom-0');
-    } else {
-      // TailwindCSS doesn't support dynamic class, so we handle this case by style.
-      setTopClass(``);
     }
 
     return () => {
@@ -116,57 +130,33 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
         clearTimeout(timer);
       }
     };
-  }, [props.show, props.handle, props.keyboard, full, height]);
-
-  /**
-   * Shadow & Backdrop
-   */
-  const [shadowClass, setShadowClass] = useState('');
-  const [backdropClass, setBackdropClass] = useState('invisible');
-
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-
-    if (props.show) {
-      timer = setTimeout(() => {
-        setShadowClass('drop-shadow-reversed');
-        setBackdropClass('visible');
-      }, 0);
-    } else {
-      timer = setTimeout(() => {
-        setShadowClass('');
-        setBackdropClass('invisible');
-      }, 800);
-    }
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [props.show]);
+  }, [props.show, props.handle, props.keyboard, full]);
 
   return (
     <div
-      className={`${props.className}
-      ${props.show ? 'h-full' : 'h-0'} w-full absolute left-0 top-0`}
+      className={`${props.className} ${heightClass}
+      w-full absolute left-0 top-0`}
     >
+      {/* Backdrop */}
       {props.backdrop && (
         <div
           className={`
-            ${backdropClass}
-            ${props.show ? 'opacity-100' : 'opacity-0'}
+            ${backdropClass} ${backdropOpacityClass}
             w-screen h-screen bg-backdrop absolute left-0 top-0 transition-opacity duration-800`}
         ></div>
       )}
+
+      {/* Content */}
       <div
         ref={ref}
         className={`
-          ${shadowClass} ${topClass} ${bottomClass}
+          ${shadowClass} ${bottomClass}
           w-full box-border rounded-t-3xl
           first-letter:w-full bg-primary
-          fixed left-0 transition-top duration-500
+          fixed left-0 transition-all duration-500
           flex flex-col`}
         style={{
-          top: props.show ? `calc(100% - ${height}px)` : `100%`,
+          top: topStyle,
         }}
       >
         {props.header && (
@@ -209,7 +199,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
             </div>
           </div>
         )}
-        <div className='overflow-y-scroll'>{props.children}</div>
+        <div className='grow overflow-y-scroll'>{props.children}</div>
       </div>
     </div>
   );

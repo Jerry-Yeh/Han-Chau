@@ -2,17 +2,15 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useState,
-  useEffect,
-  useRef,
   ReactElement,
   useCallback,
   useLayoutEffect,
 } from 'react';
 import { CheckCircleIcon, XCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/20/solid';
 
-import type { HandleMessage, SnackBarProps } from '.';
+import type { HandleSnackBar, SnackBarProps } from '.';
 
-const HCSnackBar: React.ForwardRefRenderFunction<HandleMessage, SnackBarProps> = (
+const HCSnackBar: React.ForwardRefRenderFunction<HandleSnackBar, SnackBarProps> = (
   { className, type = 'success', content }: SnackBarProps,
   ref,
 ) => {

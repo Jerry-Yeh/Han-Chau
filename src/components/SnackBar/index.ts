@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import SnackBar from './SnackBar';
 
-export interface HandleMessage {
+export interface HandleSnackBar {
   open: () => void;
 }
 

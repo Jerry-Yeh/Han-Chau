@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Fragment, useRef } from 'react';
 
-import HCSnackBar, { HandleMessage, SnackBarProps } from '~/components/SnackBar';
+import HCSnackBar, { HandleSnackBar, SnackBarProps } from '~/components/SnackBar';
 import HCButton from '~/components/Button';
 
 export default {
@@ -32,7 +32,7 @@ export const Success: Story = ({
   type = 'success',
   content = '成功加入國際練胸日',
 }: SnackBarProps) => {
-  const snackBarRef = useRef<HandleMessage>(null);
+  const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
     snackBarRef.current?.open();
@@ -54,7 +54,7 @@ export const Error: Story = ({
   type = 'error',
   content = '無法將動作加入至國際練胸日',
 }: SnackBarProps) => {
-  const snackBarRef = useRef<HandleMessage>(null);
+  const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
     snackBarRef.current?.open();
@@ -76,7 +76,7 @@ export const Warning: Story = ({
   type = 'warning',
   content = '即將達到免費版上限',
 }: SnackBarProps) => {
-  const snackBarRef = useRef<HandleMessage>(null);
+  const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
     snackBarRef.current?.open();
@@ -98,7 +98,7 @@ export const LongMessage: Story = ({
   type = 'success',
   content = '這是一個超級長的訊息但應該來說不應該有這麼長這個是來確認說當今天訊息太長怎麼辦',
 }: SnackBarProps) => {
-  const snackBarRef = useRef<HandleMessage>(null);
+  const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
     snackBarRef.current?.open();
