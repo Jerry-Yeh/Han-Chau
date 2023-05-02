@@ -24,7 +24,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Plan: React.FC<Props> = (props: Props) => {
+const Plan: React.FC<Props> = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
   const dispatch = useAppDispatch();
 

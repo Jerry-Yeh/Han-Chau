@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { HCList, HCListItem } from '~/components/List';
+import { HCList, HCListItem, ListItemType } from '~/components/List';
 
 import DefaultImage from '~/assets/img/defaultImage.svg';
 
@@ -31,7 +31,7 @@ export default {
 
 type Story = StoryObj<typeof HCList>;
 
-const dummyData = [
+const dummyData: ListItemType[] = [
   { img: <img src={DefaultImage} alt='img' />, title: '標題', description: '描述' },
   {
     img: <img src={DefaultImage} alt='img' />,

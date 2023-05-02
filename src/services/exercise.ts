@@ -1,7 +1,7 @@
 import {
   query,
   collection,
-  getDoc,
+  // getDoc,
   getDocs,
   where,
   addDoc,
@@ -20,7 +20,6 @@ import { exerciseList, Exercise } from '~/static/exercise/data';
 import { getPlanChallenge } from '~/services/formula';
 
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
-import { theme } from 'antd';
 
 export interface PlanExerciseData {
   id: number;
@@ -130,13 +129,13 @@ export default class ExerciseService {
 
   static transPlanToRawData(data: WorkoutPlan): WorkoutPlanData {
     // To improve the clarity of database data.
-    const { id, userId, name, exerciseList, ...planRest } = data;
+    const { id, userId, name, exerciseList } = data;
 
     return {
       id,
       userId,
       name,
-      exerciseList: exerciseList.map(({ id, sets, reps, ...rest }) => ({ id, sets, reps })),
+      exerciseList: exerciseList.map(({ id, sets, reps }) => ({ id, sets, reps })),
     };
   }
 

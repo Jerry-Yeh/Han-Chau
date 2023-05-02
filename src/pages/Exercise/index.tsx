@@ -5,7 +5,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Exercise: React.FC<Props> = (props: Props) => {
+const Exercise: React.FC<Props> = () => {
   return (
     <div>
       <Outlet />

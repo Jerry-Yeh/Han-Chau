@@ -40,8 +40,8 @@ export default {
 
 type Story = StoryFn<typeof HCRate>;
 
-export const Basic: Story = ({ level, size }: RateProps) => {
-  return <HCRate level={level} size={(size = 'm')} />;
+export const Basic: Story = ({ level, size = 'm' }: RateProps) => {
+  return <HCRate level={level} size={size} />;
 };
 
 export const OnColor: Story = (props) => {

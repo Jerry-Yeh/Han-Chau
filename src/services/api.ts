@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, query, addDoc, getDocs, setDoc, doc } from 'firebase/firestore';
-import { getFunctions, httpsCallable } from 'firebase/functions';
+import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
+import { getFunctions } from 'firebase/functions';
 export default class ApiService {
   static firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,

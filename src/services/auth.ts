@@ -8,7 +8,7 @@ import {
 import { setDoc, doc } from 'firebase/firestore';
 
 import ApiService from './api';
-import { parseJwt } from './utilities';
+// import { parseJwt } from './utilities';
 import { LOGIN } from '~/enums/user';
 
 import type { User } from '~/pages/Onboarding/interface';
@@ -62,8 +62,8 @@ export default class AuthService {
 
     // onRequest
     fetch(`http://127.0.0.1:5001/fitness-78b04/us-central1/getLineAccessToken?code=${code}`).then(
-      (response) => {
-        this.getFirebaseUser(response);
+      () => {
+        // this.getFirebaseUser(response);
       },
     );
   };
@@ -84,11 +84,11 @@ export default class AuthService {
   };
 
   /** User */
-  static getFirebaseUser = (accessTokenRes: any) => {
-    const data = parseJwt(accessTokenRes.id_token);
-    // const uid = data.sub;
-    // const userRecord = await auth.getUser(uid);
-  };
+  // static getFirebaseUser = (accessTokenRes: any) => {
+  //   const data = parseJwt(accessTokenRes.id_token);
+  //   const uid = data.sub;
+  //   const userRecord = await auth.getUser(uid);
+  // };
 
   static saveUser = async (user: User) => {
     await setDoc(doc(ApiService.db, 'users', user.id as string), user);

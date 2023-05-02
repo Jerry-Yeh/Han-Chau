@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import StarIcon from '~/assets/img/heroicons/mini/star';
 

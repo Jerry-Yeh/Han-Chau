@@ -16,41 +16,41 @@ const HCPlayer: React.ForwardRefRenderFunction<HandlePlayer, PlayerProps> = (
     },
   }));
 
-  const handlePlay = () => {
-    console.log('play');
-  };
+  // const handlePlay = () => {
+  //   console.log('play');
+  // };
 
-  const handleSeek = () => {
-    console.log('seek');
-  };
+  // const handleSeek = () => {
+  //   console.log('seek');
+  // };
 
-  const handleReady = () => {
-    console.log('ready');
-  };
+  // const handleReady = () => {
+  //   console.log('ready');
+  // };
 
-  const handleCustomizeBtn = () => {
-    console.log('test', reactPlayerRef.current);
-    reactPlayerRef.current?.seekTo(60);
-  };
+  // const handleCustomizeBtn = () => {
+  //   console.log('test', reactPlayerRef.current);
+  //   reactPlayerRef.current?.seekTo(60);
+  // };
 
-  const handleDuration = () => {
-    console.log('duration');
-  };
+  // const handleDuration = () => {
+  //   console.log('duration');
+  // };
 
-  const handleProgress = () => {
-    console.log('progress');
-  };
+  // const handleProgress = () => {
+  //   console.log('progress');
+  // };
 
-  const handleEnd = () => {
-    console.log('end');
-    // reactPlayerRef.current?.showPreview();
-    reactPlayerRef.current?.seekTo(60);
-  };
+  // const handleEnd = () => {
+  //   console.log('end');
+  //   // reactPlayerRef.current?.showPreview();
+  //   reactPlayerRef.current?.seekTo(60);
+  // };
 
-  const handleStop = () => {
-    console.log('handleStop', reactPlayerRef.current);
-    // setPlaying(false);
-  };
+  // const handleStop = () => {
+  //   console.log('handleStop', reactPlayerRef.current);
+  //   // setPlaying(false);
+  // };
 
   return (
     <div className={`${className} rounded-lg aspect-video`}>

@@ -22,7 +22,7 @@ interface CarouselItem {
   subheading: string;
 }
 
-const Done: React.FC<Props> = (props: Props) => {
+const Done: React.FC<Props> = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();

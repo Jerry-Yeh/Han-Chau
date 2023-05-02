@@ -1,6 +1,3 @@
-import { ChangeEvent } from 'react';
-
-import type { Item } from '~/typings/utils';
 import type { AbstractContorlItemProps } from '../ControlItem/interface';
 import type { Nullable } from '~/typings/utils';
 

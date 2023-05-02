@@ -10,7 +10,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Loading: React.FC<Props> = (props: Props) => {
+const Loading: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 

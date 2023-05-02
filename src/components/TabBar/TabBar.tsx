@@ -16,7 +16,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const TabBar: React.FC<Props> = (props: Props) => {
+const TabBar: React.FC<Props> = () => {
   const { t } = useTranslation();
   const [value, setValue] = useState('trainingProgram');
   const list = [

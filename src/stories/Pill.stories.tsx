@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import HCPill, { PillValue, PillItem } from '~/components/Pill';
+import HCPill, { PillValue } from '~/components/Pill';
 import { Nullable } from '~/typings/utils';
 
 export default {
