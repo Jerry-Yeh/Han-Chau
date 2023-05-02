@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -51,7 +51,7 @@ const Loading: React.FC<Props> = (props: Props) => {
           {t('welcome.slogan')}
         </span>
       </div>
-      <div className=''>
+      <div>
         <img src={logo} alt='logo' />
       </div>
     </div>

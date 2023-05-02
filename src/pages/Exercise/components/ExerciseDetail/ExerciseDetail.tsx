@@ -15,6 +15,7 @@ import type { WorkoutPlan } from '~/pages/Exercise/interface';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import HCButton from '~/components/Button';
 import HCTags from '~/components/Tags';
+import HCLogo from '~/components/Logo';
 
 import { ReactComponent as ChevronDown } from '~/assets/img/heroicons/mini/chevron-down.svg';
 
@@ -168,6 +169,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
               ) : (
                 <div className='p-4'>
                   <div className='flex flex-col items-center p-6'>
+                    <HCLogo size='s' className='mb-4' />
                     <h4 className='text-body-bold-m mb-2'>{t('added-plan.subtitle')}</h4>
                     <p className='text-body-s text-placeholder'>{t('added-plan.description')}</p>
                   </div>

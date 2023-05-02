@@ -1,7 +1,8 @@
 import React from 'react';
 import Icon from '@ant-design/icons';
 
-import Logomark from '~/assets/img/logomark.svg';
+import HCLogo from '~/components/Logo';
+
 import { ReactComponent as SpinM } from '~/assets/img/spin-m.svg';
 
 interface Props {
@@ -17,9 +18,7 @@ const SpinIcon: React.FC = (props: any) => {
 const Loading: React.FC<Props> = (props: Props) => {
   return (
     <div className='w-screen h-screen bg-secondary flex flex-col justify-center items-center'>
-      <div className='w-27 h-27 bg-primary mb-18 flex justify-center items-center rounded-3xl'>
-        <img src={Logomark} alt='logo' className='w-19.5' />
-      </div>
+      <HCLogo className='mb-18' />
       <Icon
         spin
         component={SpinIcon}
