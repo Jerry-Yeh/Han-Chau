@@ -1,0 +1,16 @@
+@layer base {
+  $shadow-config: (
+    card: '',
+    media-imagery: '-md',
+    pop-over: '-lg',
+    modal: '-2xl',
+    bottom-sheeet: '-reversed-lg',
+    media-inner: '-inner',
+  );
+
+  @each $name, $value in $shadow-config {
+    .shadow-#{$name} {
+      @apply shadow#{$value};
+    }
+  }
+}

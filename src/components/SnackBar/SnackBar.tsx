@@ -65,7 +65,7 @@ const HCSnackBar: React.ForwardRefRenderFunction<HandleSnackBar, SnackBarProps> 
         bottom: positionStyle,
       }}
     >
-      <div className={`${colorClass} rounded-lg flex shadow-lg px-4`}>
+      <div className={`${colorClass} rounded-lg flex shadow-pop-over px-4`}>
         <div className='shrink-0 w-6 h-6 py-3 mr-4'>{icon}</div>
         <p className='text-body-s py-3.5'>{content}</p>
       </div>
