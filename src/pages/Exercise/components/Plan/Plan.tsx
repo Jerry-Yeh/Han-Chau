@@ -16,6 +16,7 @@ import { WORKOUTPLANFILTER } from '~/enums/exercise';
 import HCFloatButton from '~/components/FloatButton';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import { ListItemType } from '~/components/List';
+import type { WorkoutPlan } from '~/pages/Exercise/interface';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
 
@@ -41,6 +42,7 @@ const Plan: React.FC<Props> = (props: Props) => {
   const [searchText, setSearchText] = useState('');
   const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
   const planList = useAppSelector((state) => state.exercise.planList);
+  const [filteredPlanList, setFilteredPlanList] = useState<WorkoutPlan[]>([]);
   const [showAddPlan, setShowAddPlan] = useState(false);
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
   const [showDetailPage, setShowDetailPage] = useState(false);
@@ -80,6 +82,16 @@ const Plan: React.FC<Props> = (props: Props) => {
 
     queryWorkoutPlans();
   }, [user.id, showDetailPage, dispatch]);
+
+  useEffect(() => {
+    setFilteredPlanList(
+      activePillKey === WORKOUTPLANFILTER.ALL
+        ? planList
+        : planList.filter((plan) =>
+            plan.exerciseList.some((exercise) => exercise.modality === activePillKey),
+          ),
+    );
+  }, [activePillKey, planList]);
 
   const closeAddPlanHandler = () => {
     setShowAddPlan(false);
@@ -154,7 +166,7 @@ const Plan: React.FC<Props> = (props: Props) => {
           </div>
         ) : (
           <div className='relative h-full'>
-            <PlanList data={planList} onClick={handleClickItem} />
+            <PlanList data={filteredPlanList} onClick={handleClickItem} />
             <HCFloatButton onClick={() => setShowAddPlan(true)}>
               <PlusIcon />
             </HCFloatButton>
