@@ -36,7 +36,7 @@ const HCHeader: React.FC<Props> = (props: Props) => {
   }, [props.size]);
 
   return (
-    <div className={`${props.className} bg-primary border-secondary ${sizeClass}`}>
+    <div className={`${props.className} bg-primary border-b border-secondary ${sizeClass}`}>
       <div className={`h-11 flex text-secondary`}>
         <div className='flex-1 hover:cursor-pointer flex justify-start items-center pl-1'>
           {props.prefix}
