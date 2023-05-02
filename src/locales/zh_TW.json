@@ -179,11 +179,18 @@
     },
     "detail": {
       "title": "認識動作",
+      "to-tutorial": "動作教學影片",
+      "without-tutorial": "尚無動作教學影片",
       "training-muscle-group": "訓練肌群",
       "tutorial": "動作教學",
-      "add-to-plan": "已加入訓練計劃",
-      "added-plan": "已加入訓練計劃 ({{number}})",
-      "confirm": "選擇動作"
+      "confirm": "選擇動作",
+      "added-plan": {
+        "added": "已加入訓練計劃 ({{number}})",
+        "without": "尚未加入訓練計劃 ({{number}})",
+        "title": "已加入訓練計劃",
+        "subtitle": "尚未被加入任何計劃",
+        "description": "當有任何訓練計劃包含此動作，都會顯示在這邊"
+      }
     },
     "join": {
       "title": "加入訓練計劃"

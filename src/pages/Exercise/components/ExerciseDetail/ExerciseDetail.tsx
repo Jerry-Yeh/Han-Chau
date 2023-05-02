@@ -1,6 +1,8 @@
 import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '~/store/hook';
+import { BookmarkIcon, PlayCircleIcon } from '@heroicons/react/24/solid';
+import { BookmarkIcon as OutlinedBookmarkIcon } from '@heroicons/react/24/outline';
 
 import HCBottomSheet from '~/components/BottomSheet';
 import { HCList, HCListItem } from '~/components/List';
@@ -12,6 +14,9 @@ import HCPlayer, { HandlePlayer } from '~/components/Player';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import HCButton from '~/components/Button';
+import HCTags from '~/components/Tags';
+
+import { ReactComponent as ChevronDown } from '~/assets/img/heroicons/mini/chevron-down.svg';
 
 interface Props {
   children?: React.ReactNode;
@@ -51,12 +56,29 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
   };
 
   useEffect(() => {
-    console.log('re-render');
     playerRef.current?.reRender();
   }, [show]);
 
+  const handleClickScrollToPlayer = () => {
+    const element = document.getElementById('player');
+
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <HCBottomSheet show={show} header={t('title')} handle onClose={onClose}>
+    <HCBottomSheet
+      show={show}
+      title={t('title')}
+      handle
+      footer={
+        <HCButton color='highlight' onClick={handleConfirm}>
+          {t('confirm')}
+        </HCButton>
+      }
+      onClose={onClose}
+    >
       {exercise && (
         <Fragment>
           <div className='bg-tertiary flex flex-col gap-y-2'>
@@ -70,14 +92,40 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
               </div>
               <div className='p-4 bg-primary'>
                 <h3 className='text-heading-m mb-2'>{exercise[`name${capitalizeLanguage}`]}</h3>
-                <p className='text-tertiary mb-2'>
-                  {`${level[exercise.level][language]} ·
-                ${modality[exercise.modality][language]} ·
-                ${upperLowerCore[exercise.upperLowerCore][language]}`}
-                </p>
-                <p className='text-body-bold-xs text-secondary'>
-                  {t('added-plan', { number: joinedPlanList.length })}
-                </p>
+                <HCTags
+                  data={[
+                    level[exercise.level][language],
+                    modality[exercise.modality][language],
+                    upperLowerCore[exercise.upperLowerCore][language],
+                  ]}
+                  className='mb-6'
+                />
+                <div className='text-body-s text-tertiary'>
+                  <p className='flex items-center mb-4'>
+                    {joinedPlanList.length > 0 ? (
+                      <Fragment>
+                        <BookmarkIcon className='w-5 h-5 icon-tertiary mr-2' />
+                        <span>{t('added-plan.added', { number: joinedPlanList.length })}</span>
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        <OutlinedBookmarkIcon className='w-5 h-5 icon-tertiary mr-2' />
+                        <span>{t('added-plan.without', { number: 0 })}</span>
+                      </Fragment>
+                    )}
+                  </p>
+                  <button className='flex items-center' onClick={handleClickScrollToPlayer}>
+                    <PlayCircleIcon className='w-5 h-5 icon-tertiary mr-2' />
+                    {exercise.url ? (
+                      <Fragment>
+                        <span className='mr-1'>{t('to-tutorial')}</span>
+                        <ChevronDown />
+                      </Fragment>
+                    ) : (
+                      t('without-tutorial')
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
             <div className='bg-primary'>
@@ -96,30 +144,36 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
                     ),
                   },
                 ]}
-                renderItem={(item) => <HCListItem {...item} imgClass='shadow-inner' />}
+                renderItem={(item) => <HCListItem {...item} imgClass='shadow-media-inner' />}
                 bleed
               />
             </div>
-            <div className='bg-primary p-4'>
-              <h3 className='text-heading-xs mb-4'>{t('tutorial')}</h3>
-              {exercise.url && (
-                <HCPlayer
-                  ref={playerRef}
-                  url={exercise.url}
-                  start={exercise.start}
-                  end={exercise.end}
-                />
+            {exercise.url && (
+              <div id='player' className='bg-primary p-4'>
+                <h3 className='text-heading-xs mb-4'>{t('tutorial')}</h3>
+                {exercise.url && (
+                  <HCPlayer
+                    ref={playerRef}
+                    url={exercise.url}
+                    start={exercise.start}
+                    end={exercise.end}
+                  />
+                )}
+              </div>
+            )}
+            <div className='bg-primary'>
+              <h3 className='text-heading-xs p-4'>{t('added-plan.title')}</h3>
+              {joinedPlanList.length > 0 ? (
+                <PlanList data={joinedPlanList} />
+              ) : (
+                <div className='p-4'>
+                  <div className='flex flex-col items-center p-6'>
+                    <h4 className='text-body-bold-m mb-2'>{t('added-plan.subtitle')}</h4>
+                    <p className='text-body-s text-placeholder'>{t('added-plan.description')}</p>
+                  </div>
+                </div>
               )}
             </div>
-            <div className='bg-primary'>
-              <h3 className='text-heading-xs p-4'>{t('add-to-plan')}</h3>
-              <PlanList data={joinedPlanList} />
-            </div>
-          </div>
-          <div className='p-4 border-t border-secondary'>
-            <HCButton color='highlight' onClick={handleConfirm}>
-              {t('confirm')}
-            </HCButton>
           </div>
         </Fragment>
       )}

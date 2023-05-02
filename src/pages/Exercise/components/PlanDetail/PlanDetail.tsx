@@ -178,7 +178,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
       {/* Edit plan */}
       <HCBottomSheet
         show={showEditPlan}
-        header={t('edit-plan')}
+        title={t('edit-plan')}
         onClose={() => setShowEditPlan(false)}
       >
         <HCList
@@ -191,7 +191,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
       {/* Edit name */}
       <HCBottomSheet
         show={showEditName}
-        header={t('edit-name')}
+        title={t('edit-name')}
         keyboard
         prefix
         onPrefix={editNamePreviousHandler}

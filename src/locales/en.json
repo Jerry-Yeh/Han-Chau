@@ -170,11 +170,18 @@
     },
     "detail": {
       "title": "",
+      "to-tutorial": "",
+      "without-tutorial": "",
       "training-muscle-group": "",
       "tutorial": "",
-      "add-to-plan": "",
-      "added-plan": "",
-      "confirm": ""
+      "confirm": "",
+      "added-plan": {
+        "added": "",
+        "without": "",
+        "title": "",
+        "subtitle": "",
+        "description": ""
+      }
     },
     "join": {
       "title": ""

@@ -3,23 +3,25 @@ import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'reac
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 
-export interface Props {
+export interface BottomSheetProps {
   children?: ReactNode;
   className?: string;
   show: boolean;
-  header?: string;
+  title?: string;
   description?: string;
   backdrop?: boolean;
   handle?: boolean;
   keyboard?: boolean;
   prefix?: boolean;
   suffix?: boolean;
+  footer?: ReactNode;
   onClose?: () => void;
   onPrefix?: () => void;
 }
 
-const HCBottomSheet: React.FC<Props> = (props: Props) => {
+const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   /**
    * Position
@@ -35,6 +37,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
   const [shadowClass, setShadowClass] = useState('');
   const [backdropClass, setBackdropClass] = useState('invisible');
   const [backdropOpacityClass, setBackdropOpacityClass] = useState('opacity-0');
+  const [footerTopStyle, setFooterTopStyle] = useState('100%');
 
   const handleTouchDownHeader = (event: React.TouchEvent | React.MouseEvent) => {
     setDragging(true);
@@ -76,12 +79,6 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
     [handlePosition],
   );
 
-  // useEffect(() => {
-  //   if (ref.current) {
-  //     setHeight(ref.current?.clientHeight);
-  //   }
-  // }, [ref.current?.children]);
-
   useEffect(() => {
     if (props.handle && dragging) {
       document.addEventListener('touchend', handleTouchEnd);
@@ -102,7 +99,9 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
       setHeightClass('h-full');
       setBackdropOpacityClass('opacity-100');
       setBottomClass('bottom-0');
+
       // TailwindCSS doesn't support dynamic class, so we handle this top case by style.
+      setFooterTopStyle(`calc(100% - ${footerRef.current?.clientHeight}px)`);
       if (full) {
         setTopStyle('24px');
       } else if (props.keyboard || props.handle) {
@@ -118,6 +117,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
       setTopStyle('100%');
       setHeightClass('h-0');
       setBackdropOpacityClass('opacity-0');
+      setFooterTopStyle('100%');
       timer = setTimeout(() => {
         setBottomClass('');
         setShadowClass('');
@@ -146,7 +146,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
         ></div>
       )}
 
-      {/* Content */}
+      {/* Main */}
       <div
         ref={ref}
         className={`
@@ -159,7 +159,8 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
           top: topStyle,
         }}
       >
-        {props.header && (
+        {/* Header */}
+        {props.title && (
           <div
             onTouchStart={handleTouchDownHeader}
             onMouseDown={handleMouseDownHeader}
@@ -186,7 +187,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
                 className={`flex justify-center items-center flex-col
                 ${!props.description && 'py-2.5'}`}
               >
-                <span className='text-body-bold-l'>{props.header}</span>
+                <span className='text-body-bold-l'>{props.title}</span>
                 <span className='text-body-s text-tertiary'>{props.description}</span>
               </div>
               <div
@@ -199,7 +200,29 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
             </div>
           </div>
         )}
-        <div className='grow overflow-y-scroll'>{props.children}</div>
+
+        {/* Content */}
+        <div
+          className='grow overflow-y-scroll'
+          style={{
+            paddingBottom: props.footer ? `${footerRef.current?.clientHeight}px` : 0,
+          }}
+        >
+          {props.children}
+        </div>
+
+        {/* Footer */}
+        {props.footer && (
+          <div
+            ref={footerRef}
+            className='w-full fixed transition-all duration-500 border-t border-secondary bg-primary p-4'
+            style={{
+              top: footerTopStyle,
+            }}
+          >
+            {props.footer}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -208,7 +231,7 @@ const HCBottomSheet: React.FC<Props> = (props: Props) => {
 HCBottomSheet.defaultProps = {
   show: false,
   className: '',
-  header: '',
+  title: '',
   description: '',
   backdrop: true,
   handle: false,

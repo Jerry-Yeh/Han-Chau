@@ -190,7 +190,7 @@ const Plan: React.FC<Props> = (props: Props) => {
       {/* Add plan */}
       <HCBottomSheet
         show={showAddPlan}
-        header={t('make-new-workout-plan')}
+        title={t('make-new-workout-plan')}
         keyboard
         onClose={closeAddPlanHandler}
       >

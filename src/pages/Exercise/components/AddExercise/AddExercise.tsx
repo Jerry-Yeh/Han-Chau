@@ -273,12 +273,22 @@ const AddExercise: React.FC<Props> = (props: Props) => {
       {/* Filter exercises */}
       <HCBottomSheet
         show={isShowFilterExercises}
-        header={t('filter.title')}
+        title={t('filter.title')}
         description={`
           ${t('filter.muscle-group')}*${tempFilter.muscleGroup.length}、
           ${t('filter.modality')}*${tempFilter.modalities.length}
           ${tempFilter.level ? `、${level[tempFilter.level][language]}` : ''}`}
         handle
+        footer={
+          <div className='flex gap-x-2'>
+            <HCButton color='secondary' onClick={handlerCancelFilter}>
+              {t('filter.cancel')}
+            </HCButton>
+            <HCButton color='highlight' onClick={handlerConfirmFilter}>
+              {t('filter.confirm')}
+            </HCButton>
+          </div>
+        }
         onClose={handleCloseFilter}
       >
         <div className='bg-tertiary flex flex-col gap-y-2'>
@@ -288,14 +298,6 @@ const AddExercise: React.FC<Props> = (props: Props) => {
               {item.content}
             </div>
           ))}
-        </div>
-        <div className='p-4 flex gap-x-2 border-t border-secondary'>
-          <HCButton color='secondary' onClick={handlerCancelFilter}>
-            {t('filter.cancel')}
-          </HCButton>
-          <HCButton color='highlight' onClick={handlerConfirmFilter}>
-            {t('filter.confirm')}
-          </HCButton>
         </div>
       </HCBottomSheet>
 

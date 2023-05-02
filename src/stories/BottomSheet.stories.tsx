@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { useArgs, useEffect } from '@storybook/store';
 
-import HCBottomSheet, { Props } from '~/components/BottomSheet';
+import HCBottomSheet, { BottomSheetProps } from '~/components/BottomSheet';
 import HCButton from '~/components/Button';
 import HCInput from '~/components/Input';
 
@@ -25,7 +25,7 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    header: {
+    title: {
       control: 'text',
       description: 'The header title for the bottom sheet.',
       table: {
@@ -94,7 +94,7 @@ export default {
   },
   args: {
     show: false,
-    header: '標題',
+    title: '標題',
     description: '解說',
     backdrop: true,
     handle: false,
@@ -114,7 +114,7 @@ export default {
 
 type Story = StoryFn<typeof HCBottomSheet>;
 
-export const Basic: Story = ({ backdrop }: Props) => {
+export const Basic: Story = ({ backdrop }: BottomSheetProps) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -134,7 +134,7 @@ export const Basic: Story = ({ backdrop }: Props) => {
   );
 };
 
-export const Header: Story = (args: Props) => {
+export const Header: Story = (args: BottomSheetProps) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -144,7 +144,7 @@ export const Header: Story = (args: Props) => {
   return (
     <HCBottomSheet
       show={show}
-      header={args.header}
+      title={args.title}
       description={args.description}
       backdrop={args.backdrop}
       prefix={false}
@@ -161,7 +161,7 @@ export const Header: Story = (args: Props) => {
   );
 };
 
-export const HeaderPrefixAndSuffix: Story = (args: Props) => {
+export const HeaderPrefixAndSuffix: Story = (args: BottomSheetProps) => {
   const [{ show, prefix }, updateArgs] = useArgs();
 
   useEffect(() => {
@@ -175,7 +175,7 @@ export const HeaderPrefixAndSuffix: Story = (args: Props) => {
   return (
     <HCBottomSheet
       show={show}
-      header={args.header}
+      title={args.title}
       description={args.description}
       prefix={prefix}
       suffix={args.suffix}
@@ -192,7 +192,7 @@ export const HeaderPrefixAndSuffix: Story = (args: Props) => {
   );
 };
 
-export const Keyboard: Story = (args: Props) => {
+export const Keyboard: Story = (args: BottomSheetProps) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -202,7 +202,7 @@ export const Keyboard: Story = (args: Props) => {
   return (
     <HCBottomSheet
       show={show}
-      header={args.header}
+      title={args.title}
       description={args.description}
       backdrop={args.backdrop}
       keyboard
@@ -220,7 +220,7 @@ export const Keyboard: Story = (args: Props) => {
   );
 };
 
-export const Handle: Story = (args: Props) => {
+export const Handle: Story = (args: BottomSheetProps) => {
   const [{ show }, updateArgs] = useArgs();
 
   const handleClose = () => {
@@ -230,7 +230,7 @@ export const Handle: Story = (args: Props) => {
   return (
     <HCBottomSheet
       show={show}
-      header={args.header}
+      title={args.title}
       description={args.description}
       backdrop={args.backdrop}
       handle
@@ -243,6 +243,33 @@ export const Handle: Story = (args: Props) => {
         <HCButton color='primary' disabled>
           建立菜單
         </HCButton>
+      </div>
+    </HCBottomSheet>
+  );
+};
+
+export const Footer: Story = (args: BottomSheetProps) => {
+  const [{ show }, updateArgs] = useArgs();
+
+  const handleClose = () => {
+    updateArgs({ show: false });
+  };
+
+  return (
+    <HCBottomSheet
+      show={show}
+      title={args.title}
+      description={args.description}
+      backdrop={args.backdrop}
+      handle
+      prefix={args.prefix}
+      suffix={args.suffix}
+      footer={<HCButton color='highlight'>確認</HCButton>}
+      onClose={handleClose}
+    >
+      <div className='p-4 h-screen bg-secondary flex flex-col justify-between items-center text-heading-xs'>
+        <h3>Content start</h3>
+        <h3>Content end</h3>
       </div>
     </HCBottomSheet>
   );
