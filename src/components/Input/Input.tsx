@@ -1,7 +1,8 @@
-import React, { Fragment, ReactNode, useRef, ChangeEvent, FocusEvent } from 'react';
+import React, { Fragment, ReactNode, useRef, FocusEvent } from 'react';
 import { Input, InputRef } from 'antd';
 import classNames from 'classnames';
 
+import type { InputChangeEventType } from '.';
 import type { Nullable } from '~/typings/utils';
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
   suffix?: ReactNode;
   disabled?: boolean;
   value?: Nullable<string | number>;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: InputChangeEventType) => void;
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 }
@@ -27,7 +28,10 @@ const HCInput: React.FC<Props> = (props: Props) => {
   return (
     <Fragment>
       {props.label && (
-        <label htmlFor={props.label} className={`inline-block mb-2 text-body-bold-s`}>
+        <label
+          htmlFor={props.label}
+          className={`inline-block mb-2 text-body-bold-s text-secondary`}
+        >
           {props.label}
         </label>
       )}
