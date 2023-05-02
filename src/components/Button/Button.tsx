@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import classNames from 'classnames';
 import { ArrowSmallRightIcon } from '@heroicons/react/20/solid';
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   color:
     | 'primary'
@@ -21,9 +21,9 @@ interface Props {
   block?: boolean;
   textColor?: string;
   next?: boolean;
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const HCButton: React.FC<Props> = (props: Props) => {
@@ -69,6 +69,13 @@ const HCButton: React.FC<Props> = (props: Props) => {
     borderMapping.includes(props.color) ? 'border border-secondary' : '',
   );
 
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (props.onClick) {
+      props.onClick(e);
+    }
+  };
+
   return (
     <button
       className={`
@@ -82,7 +89,7 @@ const HCButton: React.FC<Props> = (props: Props) => {
         rounded-lg
         px-4`}
       disabled={props.disabled}
-      onClick={props.onClick}
+      onClick={handleClick}
     >
       <div className='flex justify-between items-center'>
         <div>{props.prefix}</div>

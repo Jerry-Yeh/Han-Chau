@@ -215,7 +215,7 @@ const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
         {props.footer && (
           <div
             ref={footerRef}
-            className='w-full fixed transition-all duration-500 border-t border-secondary bg-primary p-4'
+            className='w-full fixed transition-all duration-500 border-t border-secondary bg-primary z-10 p-4'
             style={{
               top: footerTopStyle,
             }}
