@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ReactNode, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '~/store/hook';
+import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import HCHeader, { HCHeaderIconButton } from '~/components/Header';
 import HCSearchBar, { SearchEventType } from '~/components/SearchBar';
@@ -44,9 +44,11 @@ const AddExercise: React.FC<Props> = (props: Props) => {
 
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const language = useAppSelector((state) => state.language.language);
+  const dispatch = useAppDispatch();
 
   const [searchText, setSearchText] = useState('');
   const [result, setResult] = useState<Exercise[]>([]);
+  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
   const searchTextChangeHandler = (e: SearchEventType) => {
     setSearchText(e.target.value);
@@ -229,7 +231,21 @@ const AddExercise: React.FC<Props> = (props: Props) => {
   const handleConfirmJoinPlan = (value: TempSetsAndReps) => {
     setShowJoinPlan(false);
 
-    // TBC
+    if (selectedExercise) {
+      const data = { id: selectedExercise.id, ...value };
+
+      ExerciseService.addExerciseToPlan(selectedPlan.id, data);
+
+      dispatch({
+        type: 'exercise/setSelectedPlan',
+        payload: {
+          ...selectedPlan,
+          exerciseList: selectedPlan.exerciseList.concat([
+            ExerciseService.transExerciseFromRawData(data),
+          ]),
+        },
+      });
+    }
   };
 
   return (

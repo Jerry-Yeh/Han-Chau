@@ -78,7 +78,8 @@ export enum WORKOUTPLANFILTER {
 }
 
 export enum CHALLENGE {
-  EASY = 1,
+  DEFAULT,
+  EASY,
   MEDIUM,
   HARD,
 }

@@ -8,8 +8,8 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  arrayUnion,
 } from 'firebase/firestore';
-import { ReactNode } from 'react';
 
 import ApiService from './api';
 import { UPPERLOWERCORE, MODALITY, MUSCLES, MUSCLEGROUP } from '~/enums/exercise';
@@ -20,6 +20,7 @@ import { exerciseList, Exercise } from '~/static/exercise/data';
 import { getPlanChallenge } from '~/services/formula';
 
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import { theme } from 'antd';
 
 export interface PlanExerciseData {
   id: number;
@@ -59,6 +60,12 @@ export default class ExerciseService {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), { name: planName });
   }
 
+  static async addExerciseToPlan(planId: string, exercise: PlanExerciseData) {
+    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
+      exerciseList: arrayUnion(exercise),
+    });
+  }
+
   static getPlanUpperLowerCoreText(upperLowerCoreList: UPPERLOWERCORE[]) {
     const state = store.getState();
     const language = getLanguage(state);
@@ -80,6 +87,14 @@ export default class ExerciseService {
     return muscleList.map((id) => muscles[id][language]).join('、');
   }
 
+  static transExerciseFromRawData(data: PlanExerciseData): PlanExerciseData & Exercise {
+    const exerciseData = exerciseList.find(
+      (exerciseData) => exerciseData.id === data.id,
+    ) as Exercise;
+
+    return { ...data, ...exerciseData };
+  }
+
   static transPlanFromRawData(data: WorkoutPlanData): WorkoutPlan {
     /**
      * Translating database data types to match UI requirements.
@@ -90,11 +105,7 @@ export default class ExerciseService {
     const { id, ...rest } = {
       ...data,
       exerciseList: data.exerciseList.map((exercise) => {
-        const exerciseData = exerciseList.find(
-          (exerciseData) => exerciseData.id === exercise.id,
-        ) as Exercise;
-
-        return { ...exercise, ...exerciseData };
+        return this.transExerciseFromRawData(exercise);
       }),
     };
 

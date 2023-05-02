@@ -34,6 +34,7 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious, onConf
     reps: 0,
   });
   const [isDisabled, setDisabled] = useState(false);
+  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
   const handleChangeSets = (e: InputChangeEventType) => {
     setTempValue((prev) => ({ ...prev, sets: +e.target.value }));
@@ -63,7 +64,7 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious, onConf
       prefix
       footer={
         <HCButton color='highlight' disabled={isDisabled} onClick={handleConfirm}>
-          {t('confirm', { name: exercise[`name${capitalizeLanguage}`] })}
+          {t('confirm', { name: selectedPlan.name })}
         </HCButton>
       }
       onClose={onClose}

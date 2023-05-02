@@ -9,11 +9,10 @@ import HCPill, { PillItem, PillValue } from '~/components/Pill';
 import HCTabBar from '~/components/TabBar';
 import HCButton from '~/components/Button';
 import HCBottomSheet from '~/components/BottomSheet';
-import HCInput from '~/components/Input';
+import HCInput, { InputChangeEventType } from '~/components/Input';
 import PlanDetail from '../PlanDetail';
 import ExerciseService from '~/services/exercise';
 import { WORKOUTPLANFILTER } from '~/enums/exercise';
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
 import HCFloatButton from '~/components/FloatButton';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import { ListItemType } from '~/components/List';
@@ -43,15 +42,7 @@ const Plan: React.FC<Props> = (props: Props) => {
   const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
   const planList = useAppSelector((state) => state.exercise.planList);
   const [showAddPlan, setShowAddPlan] = useState(false);
-  const [plan, setPlan] = useState<WorkoutPlan>({
-    id: '',
-    userId: user.id as string,
-    name: '',
-    challenge: 1,
-    upperLowerCoreList: [],
-    modalityList: [],
-    exerciseList: [],
-  });
+  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
   const [showDetailPage, setShowDetailPage] = useState(false);
 
   useEffect(() => {
@@ -61,47 +52,17 @@ const Plan: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     const resetCurrentPlan = () => {
-      setPlan({
-        id: '',
-        userId: user.id as string,
-        name: '',
-        challenge: 1,
-        upperLowerCoreList: [],
-        modalityList: [],
-        exerciseList: [
-          // {
-          //   id: 1,
-          //   sets: 4,
-          //   reps: 8,
-          //   nameZh: '反向捲腹',
-          //   start: null,
-          //   joint: 1,
-          //   pushPull: 1,
-          //   nameEn: 'Full Reverse Crunch',
-          //   level: 3,
-          //   muscles: [1, 12],
-          //   url: '',
-          //   modality: 1,
-          //   end: null,
-          //   upperLowerCore: 3,
-          // },
-          // {
-          //   id: 42,
-          //   sets: 4,
-          //   reps: 8,
-          //   nameZh: '反握滑輪下拉',
-          //   pushPull: 2,
-          //   modality: 2,
-          //   url: 'https://www.youtube.com/watch?v=Bq6V2WLVl5I&ab_channel=%E5%81%A5%E4%BA%BA%E8%93%8B%E4%BC%8A',
-          //   level: 2,
-          //   nameEn: 'Reverse-Grip Lat Pulldown',
-          //   muscles: [2, 16],
-          //   end: 666,
-          //   start: 633,
-          //   upperLowerCore: 1,
-          //   joint: 1,
-          // },
-        ],
+      dispatch({
+        type: 'exercise/setSelectedPlan',
+        payload: {
+          id: '',
+          userId: user.id as string,
+          name: '',
+          challenge: 1,
+          upperLowerCoreList: [],
+          modalityList: [],
+          exerciseList: [],
+        },
       });
     };
 
@@ -122,12 +83,18 @@ const Plan: React.FC<Props> = (props: Props) => {
 
   const closeAddPlanHandler = () => {
     setShowAddPlan(false);
-    setPlan((prev) => ({ ...prev, name: '' }));
+    dispatch({
+      type: 'exercise/setSelectedPlan',
+      payload: {
+        ...selectedPlan,
+        name: '',
+      },
+    });
   };
 
   const addPlanHandler = () => {
     if (user.id) {
-      const { id, ...rest } = ExerciseService.transPlanToRawData(plan);
+      const { id: _id, ...rest } = ExerciseService.transPlanToRawData(selectedPlan);
       ExerciseService.addWorkoutPlan(rest);
     }
     setShowAddPlan(false);
@@ -138,9 +105,20 @@ const Plan: React.FC<Props> = (props: Props) => {
     const clickedPlan = planList.find((plan) => plan.id === item.key);
 
     if (clickedPlan) {
-      setPlan(clickedPlan);
+      // setPlan(clickedPlan);
+      dispatch({
+        type: 'exercise/setSelectedPlan',
+        payload: clickedPlan,
+      });
       setShowDetailPage(true);
     }
+  };
+
+  const handleChangePlanName = (e: InputChangeEventType) => {
+    dispatch({
+      type: 'exercise/setSelectedPlan',
+      payload: { ...selectedPlan, name: e.target.value },
+    });
   };
 
   return (
@@ -196,24 +174,19 @@ const Plan: React.FC<Props> = (props: Props) => {
       >
         <div className='px-4 pt-4'>
           <HCInput
-            value={plan.name}
+            value={selectedPlan.name}
             placeholder={t('input-workout-plan-name')}
-            onChange={(e) => setPlan((prev) => ({ ...prev, name: e.target.value }))}
+            onChange={handleChangePlanName}
             className='mb-3'
           />
-          <HCButton color='highlight' disabled={!plan.name} onClick={addPlanHandler}>
+          <HCButton color='highlight' disabled={!selectedPlan.name} onClick={addPlanHandler}>
             {t('make-workout-plan')}
           </HCButton>
         </div>
       </HCBottomSheet>
 
       {/* Add or edit plan page */}
-      <PlanDetail
-        show={showDetailPage}
-        plan={plan}
-        setPlan={setPlan}
-        onClose={() => setShowDetailPage(false)}
-      />
+      <PlanDetail show={showDetailPage} onClose={() => setShowDetailPage(false)} />
     </div>
   );
 };

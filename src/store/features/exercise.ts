@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { store } from '~/store';
-import { MUSCLEGROUP } from '~/enums/exercise';
+import { MUSCLEGROUP, CHALLENGE } from '~/enums/exercise';
 
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
 
@@ -16,6 +15,7 @@ import Calves from '~/assets/img/muscle-group/calves.png';
 export interface ExerciseState {
   muscleGroupImages: Record<MUSCLEGROUP, string>;
   planList: WorkoutPlan[];
+  selectedPlan: WorkoutPlan;
 }
 
 const initialState: ExerciseState = {
@@ -29,6 +29,15 @@ const initialState: ExerciseState = {
     [MUSCLEGROUP.CLAVES]: Calves,
   },
   planList: [],
+  selectedPlan: {
+    id: '',
+    userId: '',
+    name: '',
+    challenge: CHALLENGE.DEFAULT,
+    upperLowerCoreList: [],
+    modalityList: [],
+    exerciseList: [],
+  },
 };
 
 const exerciseSlice = createSlice({
@@ -37,6 +46,9 @@ const exerciseSlice = createSlice({
   reducers: {
     setPlanList(state, action) {
       state.planList = action.payload;
+    },
+    setSelectedPlan(state, action) {
+      state.selectedPlan = action.payload;
     },
   },
 });

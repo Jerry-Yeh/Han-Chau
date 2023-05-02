@@ -1,7 +1,7 @@
-import React, { useState, Dispatch, SetStateAction, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PencilIcon, TrashIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
-import { useAppSelector } from '~/store/hook';
+import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import HCHeader from '~/components/Header';
 import HCHeaderIconButton from '~/components/Header/HeaderIconButton';
@@ -11,7 +11,6 @@ import { HCList, HCListItem, ListItemType } from '~/components/List';
 import HCInput from '~/components/Input';
 import ExerciseService from '~/services/exercise';
 import HCModal from '~/components/Modal';
-import type { WorkoutPlan } from '../../interface';
 import HCRate from '~/components/Rate';
 import AddExercise from '../AddExercise';
 
@@ -23,13 +22,14 @@ import Upper from '~/assets/img/exercise/upper.png';
 interface Props {
   children?: React.ReactNode;
   show: boolean;
-  plan: WorkoutPlan;
-  setPlan: Dispatch<SetStateAction<WorkoutPlan>>;
   onClose: () => void;
 }
 
 const PlanDetail: React.FC<Props> = (props: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.plan.detail' });
+  const dispatch = useAppDispatch();
+
+  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
   /** Edit */
   const [showEditPlan, setShowEditPlan] = useState(false);
@@ -66,12 +66,18 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
 
   useEffect(() => {
-    setNewName(props.plan.name);
-  }, [props.plan.name]);
+    setNewName(selectedPlan.name);
+  }, [selectedPlan.name]);
 
   const editNameHandler = () => {
-    props.setPlan((prev) => ({ ...prev, name: newName }));
-    ExerciseService.updateWorkoutPlanName(props.plan.id as string, newName);
+    dispatch({
+      type: 'exercise/setSelectedPlan',
+      payload: {
+        ...selectedPlan,
+        name: newName,
+      },
+    });
+    ExerciseService.updateWorkoutPlanName(selectedPlan.id as string, newName);
     setShowEditName(false);
   };
 
@@ -81,7 +87,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   };
 
   const closeEditNameHandler = () => {
-    setNewName(props.plan.name);
+    setNewName(selectedPlan.name);
     setShowEditName(false);
   };
 
@@ -90,8 +96,8 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   };
 
   const confirmDeleteHandler = async () => {
-    if (props.plan.id) {
-      ExerciseService.deleteWorkoutPlan(props.plan.id);
+    if (selectedPlan.id) {
+      ExerciseService.deleteWorkoutPlan(selectedPlan.id);
     }
     setShowDeletePlan(false);
     props.onClose();
@@ -107,7 +113,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     >
       <HCHeader
         expand
-        title={props.plan.name}
+        title={selectedPlan.name}
         prefix={
           <HCHeaderIconButton onClick={props.onClose}>
             <ArrowLeft />
@@ -119,19 +125,19 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
           </HCHeaderIconButton>
         }
       >
-        {props.plan.exerciseList.length > 0 && (
+        {selectedPlan.exerciseList.length > 0 && (
           <Fragment>
             <div className='px-4 py-2 flex items-center'>
               <img src={Upper} alt='default' />
               <div className='text-body-s text-tertiary'>
                 <div className='mb-2 flex'>
                   <span className='mr-1'>
-                    {ExerciseService.getPlanUpperLowerCoreText(props.plan.upperLowerCoreList)}
+                    {ExerciseService.getPlanUpperLowerCoreText(selectedPlan.upperLowerCoreList)}
                     {` · ${t('challenge')}`}
                   </span>
-                  <HCRate level={props.plan.challenge} />
+                  <HCRate level={selectedPlan.challenge} />
                 </div>
-                <div>{ExerciseService.getPlanModalityText(props.plan.modalityList)}</div>
+                <div>{ExerciseService.getPlanModalityText(selectedPlan.modalityList)}</div>
               </div>
             </div>
             <div className='flex p-4 gap-x-2'>
@@ -144,7 +150,9 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
           </Fragment>
         )}
       </HCHeader>
-      {props.plan.exerciseList.length === 0 ? (
+
+      {/* Content */}
+      {selectedPlan.exerciseList.length === 0 ? (
         <div className='px-4 pt-3'>
           <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
             <img src={Logomark} alt='logomark' className='w-13 mb-2' />
@@ -157,8 +165,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
         </div>
       ) : (
         <HCList
-          data={props.plan.exerciseList.map((item) => ({
-            key: item.id,
+          data={selectedPlan.exerciseList.map((item) => ({
             title: item[`name${capitalizeLanguage}`],
             description: `${item.sets} sets·${item.reps} reps`,
             img: (
@@ -170,8 +177,8 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
               />
             ),
           }))}
-          renderItem={(item) => <HCListItem {...item}></HCListItem>}
-          className='grow bg-tertiary'
+          renderItem={(item) => <HCListItem {...item} actionType='info' />}
+          className='grow bg-tertiary overflow-y-scroll'
         />
       )}
 
@@ -204,7 +211,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
             onChange={(e) => setNewName(e.target.value)}
             className='mb-3'
           />
-          <HCButton color='highlight' disabled={!props.plan.name} onClick={editNameHandler}>
+          <HCButton color='highlight' disabled={!selectedPlan.name} onClick={editNameHandler}>
             {t('confirm-edit')}
           </HCButton>
         </div>
@@ -215,7 +222,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
         open={showDeletePlan}
         type='warning'
         title={t('delete.title')}
-        description={t('delete.description', { name: props.plan.name })}
+        description={t('delete.description', { name: selectedPlan.name })}
         cancel={t('delete.cancel')}
         confirm={t('delete.confirm')}
         onCancel={cancelDeleteHandler}
