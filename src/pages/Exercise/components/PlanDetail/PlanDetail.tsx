@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, SyntheticEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PencilIcon, TrashIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
@@ -103,6 +103,10 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     props.onClose();
   };
 
+  const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = Logomark;
+  };
+
   /** Add Exercise */
   const [showAddExercise, setShowAddExercise] = useState(false);
 
@@ -170,10 +174,12 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
             description: `${item.sets} sets·${item.reps} reps`,
             img: (
               <img
+                onError={handleImageError}
                 src={`https://storage.cloud.google.com/${
                   import.meta.env.VITE_STORAGE_BUCKET
                 }/exercise/${item.id}.png`}
                 alt='img'
+                className='w-full'
               />
             ),
           }))}
