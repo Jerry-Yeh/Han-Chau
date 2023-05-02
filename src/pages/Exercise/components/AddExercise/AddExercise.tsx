@@ -15,7 +15,7 @@ import { HCCheckboxGroup } from '~/components/Checkbox';
 import { HCRadioGroup } from '~/components/Radio';
 import { muscles, modality, level } from '~/static/exercise/dataType';
 import ExerciseDetail from '../ExerciseDetail';
-import JoinPlan from '../JoinPlan';
+import JoinPlan, { TempSetsAndReps } from '../JoinPlan';
 
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 import Abdominals from '~/assets/img/muscle-group/abdominals.png';
@@ -215,8 +215,21 @@ const AddExercise: React.FC<Props> = (props: Props) => {
     setShowJoinPlan(true);
   };
 
+  /** Join plan */
+
   const handleCloseJoinPlan = () => {
     setShowJoinPlan(false);
+  };
+
+  const handleClickJoinPlanPrevious = () => {
+    setShowJoinPlan(false);
+    setShowExerciseDetail(true);
+  };
+
+  const handleConfirmJoinPlan = (value: TempSetsAndReps) => {
+    setShowJoinPlan(false);
+
+    // TBC
   };
 
   return (
@@ -308,7 +321,15 @@ const AddExercise: React.FC<Props> = (props: Props) => {
         onConfirm={handleConfirmExerciseDetail}
       />
 
-      <JoinPlan show={isShowJoinPlan} onClose={handleCloseJoinPlan} />
+      {selectedExercise && (
+        <JoinPlan
+          show={isShowJoinPlan}
+          exercise={selectedExercise}
+          onClose={handleCloseJoinPlan}
+          onPrevious={handleClickJoinPlanPrevious}
+          onConfirm={handleConfirmJoinPlan}
+        />
+      )}
     </div>
   );
 };

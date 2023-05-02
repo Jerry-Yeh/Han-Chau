@@ -184,7 +184,17 @@
       }
     },
     "join": {
-      "title": ""
+      "title": "",
+      "sets": {
+        "label": "",
+        "placeholder": ""
+      },
+      "reps": {
+        "label": "",
+        "placeholder": ""
+      },
+      "description": "",
+      "confirm": ""
     }
   }
 }
