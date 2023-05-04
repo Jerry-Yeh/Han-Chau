@@ -27,7 +27,7 @@ export const parameters = {
   },
   viewport: {
     viewports: INITIAL_VIEWPORTS,
-    defaultViewport: 'iphonex',
+    defaultViewport: 'iphone6',
   },
   decorators: [withI18next],
 };
