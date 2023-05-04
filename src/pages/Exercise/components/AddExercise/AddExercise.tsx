@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState, ReactNode, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 
@@ -44,11 +44,9 @@ const AddExercise: React.FC<Props> = (props: Props) => {
 
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const language = useAppSelector((state) => state.language.language);
-  const dispatch = useAppDispatch();
 
   const [searchText, setSearchText] = useState('');
   const [result, setResult] = useState<Exercise[]>([]);
-  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
   const searchTextChangeHandler = (e: SearchEventType) => {
     setSearchText(e.target.value);
@@ -218,7 +216,6 @@ const AddExercise: React.FC<Props> = (props: Props) => {
   };
 
   /** Join plan */
-
   const handleCloseJoinPlan = () => {
     setShowJoinPlan(false);
   };
@@ -226,26 +223,6 @@ const AddExercise: React.FC<Props> = (props: Props) => {
   const handleClickJoinPlanPrevious = () => {
     setShowJoinPlan(false);
     setShowExerciseDetail(true);
-  };
-
-  const handleConfirmJoinPlan = (value: TempSetsAndReps) => {
-    setShowJoinPlan(false);
-
-    if (selectedExercise) {
-      const data = { id: selectedExercise.id, ...value };
-
-      ExerciseService.addExerciseToPlan(selectedPlan.id, data);
-
-      dispatch({
-        type: 'exercise/setSelectedPlan',
-        payload: {
-          ...selectedPlan,
-          exerciseList: selectedPlan.exerciseList.concat([
-            ExerciseService.transExerciseFromRawData(data),
-          ]),
-        },
-      });
-    }
   };
 
   return (
@@ -343,7 +320,6 @@ const AddExercise: React.FC<Props> = (props: Props) => {
           exercise={selectedExercise}
           onClose={handleCloseJoinPlan}
           onPrevious={handleClickJoinPlanPrevious}
-          onConfirm={handleConfirmJoinPlan}
         />
       )}
     </div>

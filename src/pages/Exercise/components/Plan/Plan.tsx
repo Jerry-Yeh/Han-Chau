@@ -71,6 +71,7 @@ const Plan: React.FC<Props> = () => {
     const queryWorkoutPlans = async () => {
       if (user.id && !showDetailPage) {
         const data = await ExerciseService.queryWorkoutPlans(user.id);
+        console.log();
 
         dispatch({
           type: 'exercise/setPlanList',

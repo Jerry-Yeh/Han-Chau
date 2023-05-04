@@ -28,14 +28,11 @@ export default {
 
 type Story = StoryFn<typeof HCSnackBar>;
 
-export const Success: Story = ({
-  type = 'success',
-  content = '成功加入國際練胸日',
-}: SnackBarProps) => {
+export const Success: Story = () => {
   const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
-    snackBarRef.current?.open();
+    snackBarRef.current?.open({ type: 'success', content: '成功加入國際練胸日' });
   };
 
   return (
@@ -45,19 +42,16 @@ export const Success: Story = ({
           Success
         </HCButton>
       </div>
-      <HCSnackBar ref={snackBarRef} type={type} content={content} />
+      <HCSnackBar ref={snackBarRef} />
     </Fragment>
   );
 };
 
-export const Error: Story = ({
-  type = 'error',
-  content = '無法將動作加入至國際練胸日',
-}: SnackBarProps) => {
+export const Error: Story = () => {
   const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
-    snackBarRef.current?.open();
+    snackBarRef.current?.open({ type: 'error', content: '無法將動作加入至國際練胸日' });
   };
 
   return (
@@ -67,19 +61,16 @@ export const Error: Story = ({
           Error
         </HCButton>
       </div>
-      <HCSnackBar ref={snackBarRef} type={type} content={content} />
+      <HCSnackBar ref={snackBarRef} />
     </Fragment>
   );
 };
 
-export const Warning: Story = ({
-  type = 'warning',
-  content = '即將達到免費版上限',
-}: SnackBarProps) => {
+export const Warning: Story = () => {
   const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
-    snackBarRef.current?.open();
+    snackBarRef.current?.open({ type: 'warning', content: '即將達到免費版上限' });
   };
 
   return (
@@ -89,19 +80,19 @@ export const Warning: Story = ({
           Warning
         </HCButton>
       </div>
-      <HCSnackBar ref={snackBarRef} type={type} content={content} />
+      <HCSnackBar ref={snackBarRef} />
     </Fragment>
   );
 };
 
-export const LongMessage: Story = ({
-  type = 'success',
-  content = '這是一個超級長的訊息但應該來說不應該有這麼長這個是來確認說當今天訊息太長怎麼辦',
-}: SnackBarProps) => {
+export const LongMessage: Story = () => {
   const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleOpenSnackBar = () => {
-    snackBarRef.current?.open();
+    snackBarRef.current?.open({
+      type: 'success',
+      content: '這是一個超級長的訊息但應該來說不應該有這麼長這個是來確認說當今天訊息太長怎麼辦',
+    });
   };
 
   return (
@@ -111,7 +102,7 @@ export const LongMessage: Story = ({
           Long Message
         </HCButton>
       </div>
-      <HCSnackBar ref={snackBarRef} type={type} content={content} />
+      <HCSnackBar ref={snackBarRef} />
     </Fragment>
   );
 };

@@ -194,7 +194,17 @@
         "placeholder": ""
       },
       "description": "",
-      "confirm": ""
+      "confirm": "",
+      "snackbar": {
+        "success": "",
+        "error": ""
+      },
+      "modal": {
+        "title": "",
+        "description": "",
+        "cancel": "",
+        "confirm": ""
+      }
     }
   }
 }

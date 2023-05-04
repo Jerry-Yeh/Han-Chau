@@ -1,16 +1,19 @@
-import { ReactNode } from 'react';
-
 import SnackBar from './SnackBar';
 
 export interface HandleSnackBar {
-  open: () => void;
+  open: (value: SnackBarHandler) => void;
+}
+
+export type SnackBarType = 'success' | 'error' | 'warning';
+
+export interface SnackBarHandler {
+  type: SnackBarType;
+  content: string;
 }
 
 export interface SnackBarProps {
   children?: React.ReactNode;
   className?: string;
-  type: 'success' | 'error' | 'warning';
-  content: ReactNode;
 }
 
 export default SnackBar;
