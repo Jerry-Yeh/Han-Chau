@@ -13,6 +13,8 @@ import ExerciseService from '~/services/exercise';
 import HCModal from '~/components/Modal';
 import HCRate from '~/components/Rate';
 import AddExercise from '../AddExercise';
+import ExerciseSetting from '../ExerciseSetting';
+import ExerciseDetail from '../ExerciseDetail';
 
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
@@ -38,11 +40,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   const [editActions] = useState<ListItemType[]>([
     {
       title: t('edit-name'),
-      img: (
-        <div className='bg-tertiary icon-secondary p-1.5'>
-          <PencilIcon />
-        </div>
-      ),
+      img: <PencilIcon />,
       onClick: () => {
         setShowEditPlan(false);
         setShowEditName(true);
@@ -50,12 +48,8 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     },
     {
       title: t('delete-plan'),
-      img: (
-        <div className='bg-destructive-light icon-destructive p-1.5'>
-          <TrashIcon />
-        </div>
-      ),
-      type: 'warning',
+      img: <TrashIcon />,
+      category: 'warning',
       onClick: () => {
         setShowEditPlan(false);
         setShowDeletePlan(true);
@@ -108,7 +102,50 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   };
 
   /** Add Exercise */
-  const [showAddExercise, setShowAddExercise] = useState(false);
+  const [isShowAddExercise, setShowAddExercise] = useState(false);
+
+  /** Exercise settings */
+  const [isShowExerciseSetting, setShowExerciseSetting] = useState(false);
+
+  const handleClickItemControl = (item: ListItemType, index: number) => {
+    setShowExerciseSetting(true);
+  };
+
+  const handleCloseExerciseSetting = () => {
+    setShowExerciseSetting(false);
+  };
+
+  const handleKnowExerciseSetting = () => {
+    setShowExerciseSetting(false);
+    setShowExerciseDetail(true);
+  };
+
+  const handleEditExerciseSetting = () => {
+    setShowExerciseSetting(false);
+    setShowEditExercise(true);
+  };
+
+  const handleDeleteExerciseSetting = () => {
+    setShowExerciseSetting(false);
+    setShowDeleteExercise(true);
+  };
+
+  /** Exercise detail */
+  const [isShowExerciseDetail, setShowExerciseDetail] = useState(false);
+
+  const handleCloseExerciseDetail = () => {
+    setShowExerciseDetail(false);
+  };
+
+  const handleConfirmExerciseDetail = () => {
+    setShowExerciseDetail(false);
+  };
+
+  /** Edit exercise */
+  const [isShowEditExercise, setShowEditExercise] = useState(false);
+
+  /** Delete exercise */
+  const [isShowDeleteExercise, setShowDeleteExercise] = useState(false);
 
   return (
     <div
@@ -183,7 +220,13 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
               />
             ),
           }))}
-          renderItem={(item) => <HCListItem {...item} actionType='info' />}
+          renderItem={(item, index) => (
+            <HCListItem
+              {...item}
+              actionType='info'
+              onControl={() => handleClickItemControl(item, index)}
+            />
+          )}
           className='grow bg-tertiary overflow-y-scroll'
         />
       )}
@@ -194,11 +237,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
         title={t('edit-plan')}
         onClose={() => setShowEditPlan(false)}
       >
-        <HCList
-          data={editActions}
-          renderItem={(item) => <HCListItem {...item}></HCListItem>}
-          bleed
-        />
+        <HCList data={editActions} bleed renderItem={(item) => <HCListItem {...item} />} />
       </HCBottomSheet>
 
       {/* Edit name */}
@@ -235,8 +274,28 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
         onConfirm={confirmDeleteHandler}
       />
 
-      {/* Add Exercise */}
-      <AddExercise show={showAddExercise} onClose={() => setShowAddExercise(false)} />
+      {/* Add exercise */}
+      <AddExercise show={isShowAddExercise} onClose={() => setShowAddExercise(false)} />
+
+      {/* Exercise setting */}
+      <ExerciseSetting
+        show={isShowExerciseSetting}
+        onClose={handleCloseExerciseSetting}
+        onKnow={handleKnowExerciseSetting}
+        onEdit={handleEditExerciseSetting}
+        onDelete={handleDeleteExerciseSetting}
+      />
+
+      {/* Exercise detail */}
+      <ExerciseDetail
+        show={isShowExerciseDetail}
+        onClose={handleCloseExerciseDetail}
+        onConfirm={handleConfirmExerciseDetail}
+      />
+
+      {/* Edit Exercise */}
+
+      {/* Delete Exercise */}
     </div>
   );
 };

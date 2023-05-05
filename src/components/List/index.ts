@@ -1,6 +1,7 @@
 import List from './List';
 import Item from './Item';
 
+export type ListItemCategoryType = 'warning';
 export type ListItemActionType = 'add' | 'next' | 'info';
 
 export interface ListItemType {
@@ -10,7 +11,7 @@ export interface ListItemType {
   value?: string | number;
   actionType?: ListItemActionType;
   key?: string | number;
-  type?: 'warning';
+  category?: ListItemCategoryType;
   imgClass?: string;
   onClick?: () => void;
   onControl?: () => void;
