@@ -15,6 +15,10 @@ import HCRate from '~/components/Rate';
 import AddExercise from '../AddExercise';
 import ExerciseSetting from '../ExerciseSetting';
 import ExerciseDetail from '../ExerciseDetail';
+import SetExercise from '../SetExercise';
+import type { Exercise } from '~/static/exercise/data';
+import type { Nullable } from '~/typings/utils';
+import DeleteExercise from '../DeleteExercise';
 
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
@@ -106,8 +110,23 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
 
   /** Exercise settings */
   const [isShowExerciseSetting, setShowExerciseSetting] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState<Exercise>();
+  const [selectedExerciseData, setSelectedExerciseData] = useState<{
+    index: Nullable<number>;
+    sets: number;
+    reps: number;
+  }>({
+    index: null,
+    sets: 0,
+    reps: 0,
+  });
 
-  const handleClickItemControl = (item: ListItemType, index: number) => {
+  const handleClickItemControl = (index: number) => {
+    const data = selectedPlan.exerciseList[index];
+
+    setSelectedExercise(data);
+    // setSelectedExerciseIndex(index);
+    setSelectedExerciseData((prev) => ({ ...prev, index, sets: data.sets, reps: data.reps }));
     setShowExerciseSetting(true);
   };
 
@@ -144,8 +163,16 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   /** Edit exercise */
   const [isShowEditExercise, setShowEditExercise] = useState(false);
 
+  const handleCloseEditExercise = () => {
+    setShowEditExercise(false);
+  };
+
   /** Delete exercise */
   const [isShowDeleteExercise, setShowDeleteExercise] = useState(false);
+
+  const handleCloseDeleteExercise = () => {
+    setShowDeleteExercise(false);
+  };
 
   return (
     <div
@@ -207,6 +234,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
       ) : (
         <HCList
           data={selectedPlan.exerciseList.map((item) => ({
+            id: item.id,
             title: item[`name${capitalizeLanguage}`],
             description: `${item.sets} sets·${item.reps} reps`,
             img: (
@@ -224,7 +252,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
             <HCListItem
               {...item}
               actionType='info'
-              onControl={() => handleClickItemControl(item, index)}
+              onControl={() => handleClickItemControl(index)}
             />
           )}
           className='grow bg-tertiary overflow-y-scroll'
@@ -294,8 +322,26 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
       />
 
       {/* Edit Exercise */}
+      {selectedExercise && (
+        <SetExercise
+          show={isShowEditExercise}
+          exercise={selectedExercise}
+          type='edit'
+          index={selectedExerciseData.index}
+          sets={selectedExerciseData.sets}
+          reps={selectedExerciseData.reps}
+          onClose={handleCloseEditExercise}
+        />
+      )}
 
       {/* Delete Exercise */}
+      {selectedExerciseData.index !== null && (
+        <DeleteExercise
+          show={isShowDeleteExercise}
+          index={selectedExerciseData.index}
+          onClose={handleCloseDeleteExercise}
+        />
+      )}
     </div>
   );
 };

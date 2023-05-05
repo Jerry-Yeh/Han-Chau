@@ -43,6 +43,7 @@ const PlanList: React.FC<Props> = ({ data, className, onClick }: Props) => {
       renderItem={(item) => (
         <HCListItem {...item} actionType='next' onClick={() => handleClickItem(item)} />
       )}
+      bleed
       className={className}
     />
   );

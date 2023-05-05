@@ -15,7 +15,8 @@ import { HCCheckboxGroup } from '~/components/Checkbox';
 import { HCRadioGroup } from '~/components/Radio';
 import { muscles, modality, level } from '~/static/exercise/dataType';
 import ExerciseDetail from '../ExerciseDetail';
-import JoinPlan, { TempSetsAndReps } from '../JoinPlan';
+import SetExercise from '../SetExercise';
+import type { PlanExerciseData } from '~/services/exercise';
 
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 import Abdominals from '~/assets/img/muscle-group/abdominals.png';
@@ -195,7 +196,6 @@ const AddExercise: React.FC<Props> = (props: Props) => {
   /** Exercise details */
   const [isShowExerciseDetail, setShowExerciseDetail] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<Exercise>();
-  const [isShowJoinPlan, setShowJoinPlan] = useState(false);
 
   const handleShowExerciseDetail = (key: ListItemType['key']) => {
     const exercise = result.find((item) => item.id === key);
@@ -216,11 +216,13 @@ const AddExercise: React.FC<Props> = (props: Props) => {
   };
 
   /** Join plan */
-  const handleCloseJoinPlan = () => {
+  const [isShowJoinPlan, setShowJoinPlan] = useState(false);
+
+  const handleClose = () => {
     setShowJoinPlan(false);
   };
 
-  const handleClickJoinPlanPrevious = () => {
+  const handleClickJoinPlan = () => {
     setShowJoinPlan(false);
     setShowExerciseDetail(true);
   };
@@ -314,12 +316,14 @@ const AddExercise: React.FC<Props> = (props: Props) => {
         onConfirm={handleConfirmExerciseDetail}
       />
 
+      {/* Join plan */}
       {selectedExercise && (
-        <JoinPlan
+        <SetExercise
           show={isShowJoinPlan}
           exercise={selectedExercise}
-          onClose={handleCloseJoinPlan}
-          onPrevious={handleClickJoinPlanPrevious}
+          type='add'
+          onClose={handleClose}
+          onPrevious={handleClickJoinPlan}
         />
       )}
     </div>

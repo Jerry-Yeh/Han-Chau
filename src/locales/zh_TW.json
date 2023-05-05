@@ -160,6 +160,12 @@
           "description": "你確定要刪除「{{name}}」計劃？如果確定，請按下確認刪除，刪除後則無法復原。",
           "cancel": "取消",
           "confirm": "確認刪除"
+        },
+        "exercise-setting": {
+          "title": "更多設定",
+          "know": "認識動作",
+          "edit": "編輯動作",
+          "delete": "刪除動作"
         }
       }
     },
@@ -192,8 +198,7 @@
         "description": "當有任何訓練計劃包含此動作，都會顯示在這邊"
       }
     },
-    "join": {
-      "title": "加入訓練計劃",
+    "setting": {
       "sets": {
         "label": "預計組數",
         "placeholder": "輸入你的預計訓練組數"
@@ -204,15 +209,43 @@
       },
       "description": "所有組數以及次數都可以在紀錄運動時調整，透過這邊的輸入可以預先幫你設立好所需要的欄位數目，讓你在運動是更好上手。",
       "confirm": "加入訓練計畫 - {{name}}",
-      "snackbar": {
-        "success": "成功加入{{name}}",
-        "error": "無法將動作加入至{{name}}"
+      "add": {
+        "title": "加入訓練計劃",
+        "modal": {
+          "title": "放棄加入動作",
+          "description": "你確定要放棄加入動作？如果確定，請按下確認放棄，放棄後將不保留任何編輯紀錄。",
+          "cancel": "取消",
+          "confirm": "確認放棄"
+        },
+        "snack-bar": {
+          "success": "成功加入{{name}}",
+          "error": "無法將動作加入至{{name}}"
+        }
       },
-      "modal": {
-        "title": "放棄加入動作",
-        "description": "你確定要放棄加入動作？如果確定，請按下確認放棄，放棄後將不保留任何編輯紀錄。",
-        "cancel": "取消",
-        "confirm": "確認放棄"
+      "edit": {
+        "title": "編輯動作",
+        "modal": {
+          "title": "確認放棄編輯",
+          "description": "你確定要放棄編輯「{{name}}」的健身動作？如果確定，請按下確認放棄，放棄後將不保留新編輯紀錄。",
+          "cancel": "取消",
+          "confirm": "確認放棄"
+        },
+        "snack-bar": {
+          "success": "成功編輯{{name}}",
+          "error": "無法編輯{{name}}"
+        }
+      },
+      "delete": {
+        "modal": {
+          "title": "確認刪除？",
+          "description": "你確定要刪除「{{name}}」的健身動作？如果確定，請按下確認刪除，刪除後則無法復原。",
+          "cancel": "取消",
+          "confirm": "確認刪除"
+        },
+        "snack-bar": {
+          "success": "成功刪除{{name}}",
+          "error": "刪除{{name}}失敗"
+        }
       }
     }
   }

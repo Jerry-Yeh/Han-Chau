@@ -1,7 +1,6 @@
 import {
   query,
   collection,
-  // getDoc,
   getDocs,
   where,
   addDoc,
@@ -9,6 +8,8 @@ import {
   deleteDoc,
   updateDoc,
   arrayUnion,
+  arrayRemove,
+  FieldValue,
 } from 'firebase/firestore';
 
 import ApiService from './api';
@@ -43,7 +44,7 @@ export default class ExerciseService {
     return await addDoc(collection(ApiService.db, 'workoutPlans'), workoutPlan);
   }
 
-  static async queryWorkoutPlans(userId: string) {
+  static async queryWorkoutPlans(userId: string): Promise<WorkoutPlanData[]> {
     const snapshot = await getDocs(
       query(collection(ApiService.db, 'workoutPlans'), where('userId', '==', userId)),
     );
@@ -62,6 +63,20 @@ export default class ExerciseService {
   static async addExerciseToPlan(planId: string, exercise: PlanExerciseData) {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
       exerciseList: arrayUnion(exercise),
+    });
+  }
+
+  static async editExerciseInPlan(planId: string, exerciseList: PlanExerciseData[]) {
+    // Firestore can not edit specific data in an array.
+    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
+      exerciseList,
+    });
+  }
+
+  static async deleteExerciseInPlan(planId: string, exerciseList: PlanExerciseData[]) {
+    // Firestore can not delete data of an array by index.
+    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
+      exerciseList,
     });
   }
 

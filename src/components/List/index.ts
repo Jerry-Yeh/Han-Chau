@@ -5,6 +5,7 @@ export type ListItemCategoryType = 'warning';
 export type ListItemActionType = 'add' | 'next' | 'info';
 
 export interface ListItemType {
+  id?: string | number;
   img: React.ReactNode;
   title: string;
   description?: string;

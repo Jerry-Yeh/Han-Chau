@@ -9,36 +9,57 @@ import ExerciseService from '~/services/exercise';
 import { level, muscles } from '~/static/exercise/dataType';
 import HCInput, { InputChangeEventType } from '~/components/Input';
 import HCButton from '~/components/Button';
-import HCSnackBar, { HandleSnackBar, SnackBarHandler } from '~/components/SnackBar';
+import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
+import type { PlanExerciseData } from '~/services/exercise';
+import type { Nullable } from '~/typings/utils';
 
-export interface TempSetsAndReps {
-  sets: number;
-  reps: number;
-}
+// export interface TempSetsAndReps {
+//   sets: number;
+//   reps: number;
+// }
 
 interface Props {
   children?: React.ReactNode;
   show: boolean;
   exercise: Exercise;
+  type: 'add' | 'edit';
+  index?: Nullable<number>;
+  sets?: number;
+  reps?: number;
   onClose: () => void;
-  onPrevious: () => void;
+  onPrevious?: () => void;
 }
 
-const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious }: Props) => {
-  const { t } = useTranslation('translation', { keyPrefix: 'exercise.join' });
+const SetExercise: React.FC<Props> = ({
+  show,
+  exercise,
+  type,
+  index,
+  sets,
+  reps,
+  onClose,
+  onPrevious,
+}: Props) => {
+  const { t } = useTranslation('translation', { keyPrefix: 'exercise.setting' });
   const language = useAppSelector((state) => state.language.language);
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const dispatch = useAppDispatch();
 
-  const [tempValue, setTempValue] = useState<TempSetsAndReps>({
-    sets: 0,
-    reps: 0,
+  const [tempValue, setTempValue] = useState<Omit<PlanExerciseData, 'id'>>({
+    sets: sets ? sets : 0,
+    reps: reps ? reps : 0,
   });
   const [isDisabled, setDisabled] = useState(false);
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
   const snackBarRef = useRef<HandleSnackBar>(null);
   const [isOpenAbandon, setOpenAbandon] = useState(false);
+  const [modalContext, setModalContext] = useState({
+    title: '',
+    description: '',
+    cancel: '',
+    confirm: '',
+  });
 
   const handleChangeSets = (e: InputChangeEventType) => {
     setTempValue((prev) => ({ ...prev, sets: +e.target.value }));
@@ -56,33 +77,81 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious }: Prop
     }
   }, [tempValue]);
 
+  useEffect(() => {
+    setModalContext((prev) => ({
+      ...prev,
+      title: t(`${type}.modal.title`),
+      description: t(`${type}.modal.description`),
+      cancel: t(`${type}.modal.cancel`),
+      confirm: t(`${type}.modal.confirm`),
+    }));
+  }, [type, t]);
+
   const handleConfirm = () => {
     if (exercise) {
       const data = { id: exercise.id, ...tempValue };
+      const existIndex = index || index === 0;
+      const changed = tempValue.sets !== sets || tempValue.reps !== reps;
 
-      ExerciseService.addExerciseToPlan(selectedPlan.id, data)
-        .then(() => {
-          dispatch({
-            type: 'exercise/setSelectedPlan',
-            payload: {
-              ...selectedPlan,
-              exerciseList: selectedPlan.exerciseList.concat([
-                ExerciseService.transExerciseFromRawData(data),
-              ]),
-            },
-          });
+      switch (type) {
+        case 'add':
+          ExerciseService.addExerciseToPlan(selectedPlan.id, data)
+            .then(() => {
+              dispatch({
+                type: 'exercise/setSelectedPlan',
+                payload: {
+                  ...selectedPlan,
+                  exerciseList: selectedPlan.exerciseList.concat([
+                    ExerciseService.transExerciseFromRawData(data),
+                  ]),
+                },
+              });
 
-          snackBarRef.current?.open({
-            type: 'success',
-            content: t('snackbar.success', { name: selectedPlan.name }),
-          });
-        })
-        .catch(() => {
-          snackBarRef.current?.open({
-            type: 'error',
-            content: t('snackbar.error', { name: selectedPlan.name }),
-          });
-        });
+              snackBarRef.current?.open({
+                type: 'success',
+                content: t('add.snackbar.success', { name: selectedPlan.name }),
+              });
+            })
+            .catch(() => {
+              snackBarRef.current?.open({
+                type: 'error',
+                content: t('add.snackbar.error', { name: selectedPlan.name }),
+              });
+            });
+          break;
+        case 'edit':
+          if (existIndex && changed) {
+            const exerciseList = [...selectedPlan.exerciseList];
+            exerciseList[index] = { ...exerciseList[index], ...tempValue };
+
+            ExerciseService.editExerciseInPlan(selectedPlan.id, exerciseList)
+              .then(() => {
+                dispatch({
+                  type: 'exercise/setSelectedPlan',
+                  payload: {
+                    ...selectedPlan,
+                    exerciseList,
+                  },
+                });
+
+                snackBarRef.current?.open({
+                  type: 'success',
+                  content: t('edit.snackbar.success', {
+                    name: exercise[`name${capitalizeLanguage}`],
+                  }),
+                });
+              })
+              .catch(() => {
+                snackBarRef.current?.open({
+                  type: 'error',
+                  content: t('edit.snackbar.error', {
+                    name: exercise[`name${capitalizeLanguage}`],
+                  }),
+                });
+              });
+          }
+          break;
+      }
     }
 
     onClose();
@@ -96,7 +165,14 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious }: Prop
     setOpenAbandon(false);
   };
 
+  const resetTempValue = () => {
+    if (sets && reps) {
+      setTempValue({ sets, reps });
+    }
+  };
+
   const handleConfirmAbandon = () => {
+    resetTempValue();
     setOpenAbandon(false);
     onClose();
   };
@@ -105,9 +181,9 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious }: Prop
     <Fragment>
       <HCBottomSheet
         show={show}
-        title={t('title')}
+        title={t(`${type}.title`)}
         handle
-        prefix
+        prefix={!!onPrevious}
         footer={
           <HCButton color='highlight' disabled={isDisabled} onClick={handleConfirm}>
             {t('confirm', { name: selectedPlan.name })}
@@ -138,7 +214,7 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious }: Prop
             />
           </div>
           <div className='px-4 py-2'>
-            <div className='border-t border-secondary'></div>
+            <div className='border-t border-secondary' />
           </div>
           <div className='p-4'>
             <HCInput
@@ -162,16 +238,15 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious }: Prop
         </Fragment>
       </HCBottomSheet>
 
-      {/* <HCSnackBar ref={snackBarRef} type={snackBarHandler.type} content={snackBarHandler.content} /> */}
       <HCSnackBar ref={snackBarRef} />
 
       <HCModal
         open={isOpenAbandon}
         type='warning'
-        title={t('modal.title')}
-        description={t('modal.description')}
-        cancel={t('modal.cancel')}
-        confirm={t('modal.confirm')}
+        title={modalContext.title}
+        description={modalContext.description}
+        cancel={modalContext.cancel}
+        confirm={modalContext.confirm}
         onCancel={handleCancelAbandon}
         onConfirm={handleConfirmAbandon}
       />
@@ -179,4 +254,4 @@ const JoinPlan: React.FC<Props> = ({ show, exercise, onClose, onPrevious }: Prop
   );
 };
 
-export default JoinPlan;
+export default SetExercise;

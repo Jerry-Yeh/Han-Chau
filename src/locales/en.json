@@ -151,6 +151,12 @@
           "description": "",
           "cancel": "",
           "confirm": ""
+        },
+        "exercise-setting": {
+          "title": "",
+          "know": "",
+          "edit": "",
+          "delete": ""
         }
       }
     },
@@ -183,8 +189,7 @@
         "description": ""
       }
     },
-    "join": {
-      "title": "",
+    "setting": {
       "sets": {
         "label": "",
         "placeholder": ""
@@ -195,15 +200,40 @@
       },
       "description": "",
       "confirm": "",
-      "snackbar": {
-        "success": "",
-        "error": ""
-      },
-      "modal": {
+      "add": {
         "title": "",
-        "description": "",
-        "cancel": "",
-        "confirm": ""
+        "modal": {
+          "title": "",
+          "description": "",
+          "cancel": "",
+          "confirm": ""
+        },
+        "snack-bar": {
+          "success": "",
+          "error": ""
+        }
+      },
+      "edit": {
+        "title": "",
+        "modal": {
+          "title": "",
+          "description": "",
+          "cancel": "",
+          "confirm": ""
+        },
+        "snack-bar": {
+          "success": "",
+          "error": ""
+        }
+      },
+      "delete": {
+        "modal": {
+          "title": "",
+          "description": "",
+          "cancel": "",
+          "confirm": ""
+        },
+        "snack-bar": ""
       }
     }
   }
