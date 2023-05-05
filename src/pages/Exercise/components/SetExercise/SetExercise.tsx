@@ -87,6 +87,11 @@ const SetExercise: React.FC<Props> = ({
     }));
   }, [type, t]);
 
+  useEffect(() => {
+    if (sets) setTempValue((prev) => ({ ...prev, sets }));
+    if (reps) setTempValue((prev) => ({ ...prev, reps }));
+  }, [sets, reps]);
+
   const handleConfirm = () => {
     if (exercise) {
       const data = { id: exercise.id, ...tempValue };
@@ -109,13 +114,13 @@ const SetExercise: React.FC<Props> = ({
 
               snackBarRef.current?.open({
                 type: 'success',
-                content: t('add.snackbar.success', { name: selectedPlan.name }),
+                content: t('add.snack-bar.success', { name: selectedPlan.name }),
               });
             })
             .catch(() => {
               snackBarRef.current?.open({
                 type: 'error',
-                content: t('add.snackbar.error', { name: selectedPlan.name }),
+                content: t('add.snack-bar.error', { name: selectedPlan.name }),
               });
             });
           break;
@@ -136,7 +141,7 @@ const SetExercise: React.FC<Props> = ({
 
                 snackBarRef.current?.open({
                   type: 'success',
-                  content: t('edit.snackbar.success', {
+                  content: t('edit.snack-bar.success', {
                     name: exercise[`name${capitalizeLanguage}`],
                   }),
                 });
@@ -144,7 +149,7 @@ const SetExercise: React.FC<Props> = ({
               .catch(() => {
                 snackBarRef.current?.open({
                   type: 'error',
-                  content: t('edit.snackbar.error', {
+                  content: t('edit.snack-bar.error', {
                     name: exercise[`name${capitalizeLanguage}`],
                   }),
                 });
@@ -165,14 +170,7 @@ const SetExercise: React.FC<Props> = ({
     setOpenAbandon(false);
   };
 
-  const resetTempValue = () => {
-    if (sets && reps) {
-      setTempValue({ sets, reps });
-    }
-  };
-
   const handleConfirmAbandon = () => {
-    resetTempValue();
     setOpenAbandon(false);
     onClose();
   };
@@ -186,7 +184,7 @@ const SetExercise: React.FC<Props> = ({
         prefix={!!onPrevious}
         footer={
           <HCButton color='highlight' disabled={isDisabled} onClick={handleConfirm}>
-            {t('confirm', { name: selectedPlan.name })}
+            {t(`${type}.confirm`, { name: selectedPlan.name })}
           </HCButton>
         }
         onClose={handleClose}
