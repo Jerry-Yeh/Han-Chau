@@ -53,7 +53,7 @@ const HCPlayer: React.ForwardRefRenderFunction<HandlePlayer, PlayerProps> = (
   // };
 
   return (
-    <div className={`${className} rounded-lg aspect-video`}>
+    <div className={`${className} rounded-lg aspect-video overflow-hidden`}>
       <ReactPlayer
         key={key}
         ref={reactPlayerRef}

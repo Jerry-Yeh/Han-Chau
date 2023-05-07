@@ -67,7 +67,7 @@ const Item: React.FC<ListItemType> = ({
         <div
           className={`
             ${imgClass}
-            w-16 h-16 rounded`}
+            w-16 h-16 rounded overflow-hidden`}
         >
           {img}
         </div>
