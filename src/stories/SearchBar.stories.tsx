@@ -59,6 +59,13 @@ export default {
         type: { summary: '() => void' },
       },
     },
+    onPrefix: {
+      control: false,
+      description: 'Specify a function that will be called when a user click prefix icon.',
+      table: {
+        type: { summary: '() => void' },
+      },
+    },
   },
   args: {
     value: '',
