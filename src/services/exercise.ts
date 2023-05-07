@@ -8,8 +8,6 @@ import {
   deleteDoc,
   updateDoc,
   arrayUnion,
-  arrayRemove,
-  FieldValue,
 } from 'firebase/firestore';
 
 import ApiService from './api';
@@ -40,8 +38,10 @@ export default class ExerciseService {
     return (await ApiService.query('exercise')) as Exercise[];
   }
 
-  static async addWorkoutPlan(workoutPlan: WorkoutPlanData) {
-    return await addDoc(collection(ApiService.db, 'workoutPlans'), workoutPlan);
+  static async addWorkoutPlan(workoutPlan: WorkoutPlanData): Promise<string> {
+    return await addDoc(collection(ApiService.db, 'workoutPlans'), workoutPlan).then((response) => {
+      return response.id;
+    });
   }
 
   static async queryWorkoutPlans(userId: string): Promise<WorkoutPlanData[]> {
@@ -109,6 +109,24 @@ export default class ExerciseService {
     return { ...data, ...exerciseData };
   }
 
+  static calculatePlan(exerciseList: (PlanExerciseData & Exercise)[]) {
+    return {
+      challenge: getPlanChallenge(exerciseList),
+      upperLowerCoreList: exerciseList.reduce((acc: UPPERLOWERCORE[], cur) => {
+        if (!acc.includes(cur.upperLowerCore)) {
+          acc.push(cur.upperLowerCore);
+        }
+        return acc;
+      }, []),
+      modalityList: exerciseList.reduce((acc: MODALITY[], cur) => {
+        if (!acc.includes(cur.modality)) {
+          acc.push(cur.modality);
+        }
+        return acc;
+      }, []),
+    };
+  }
+
   static transPlanFromRawData(data: WorkoutPlanData): WorkoutPlan {
     /**
      * Translating database data types to match UI requirements.
@@ -118,27 +136,13 @@ export default class ExerciseService {
      */
     const { id, ...rest } = {
       ...data,
-      exerciseList: data.exerciseList.map((exercise) => {
-        return this.transExerciseFromRawData(exercise);
-      }),
+      exerciseList: data.exerciseList.map((exercise) => this.transExerciseFromRawData(exercise)),
     };
 
     return {
       id: id as string,
       ...rest,
-      challenge: getPlanChallenge(rest.exerciseList),
-      upperLowerCoreList: rest.exerciseList.reduce((acc: UPPERLOWERCORE[], cur) => {
-        if (!acc.includes(cur.upperLowerCore)) {
-          acc.push(cur.upperLowerCore);
-        }
-        return acc;
-      }, []),
-      modalityList: rest.exerciseList.reduce((acc: MODALITY[], cur) => {
-        if (!acc.includes(cur.modality)) {
-          acc.push(cur.modality);
-        }
-        return acc;
-      }, []),
+      ...this.calculatePlan(rest.exerciseList),
     };
   }
 

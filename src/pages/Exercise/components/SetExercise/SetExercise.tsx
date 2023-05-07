@@ -14,11 +14,6 @@ import HCModal from '~/components/Modal';
 import type { PlanExerciseData } from '~/services/exercise';
 import type { Nullable } from '~/typings/utils';
 
-// export interface TempSetsAndReps {
-//   sets: number;
-//   reps: number;
-// }
-
 interface Props {
   children?: React.ReactNode;
   show: boolean;
@@ -86,6 +81,12 @@ const SetExercise: React.FC<Props> = ({
       confirm: t(`${type}.modal.confirm`),
     }));
   }, [type, t]);
+
+  useEffect(() => {
+    if (!show) {
+      setTempValue({ sets: 0, reps: 0 });
+    }
+  }, [show]);
 
   useEffect(() => {
     if (sets) setTempValue((prev) => ({ ...prev, sets }));

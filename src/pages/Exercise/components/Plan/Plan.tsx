@@ -43,7 +43,7 @@ const Plan: React.FC<Props> = () => {
   const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
   const planList = useAppSelector((state) => state.exercise.planList);
   const [filteredPlanList, setFilteredPlanList] = useState<WorkoutPlan[]>([]);
-  const [showAddPlan, setShowAddPlan] = useState(false);
+  const [showMakePlan, setShowMakePlan] = useState(false);
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
   const [showDetailPage, setShowDetailPage] = useState(false);
 
@@ -71,7 +71,6 @@ const Plan: React.FC<Props> = () => {
     const queryWorkoutPlans = async () => {
       if (user.id && !showDetailPage) {
         const data = await ExerciseService.queryWorkoutPlans(user.id);
-        console.log();
 
         dispatch({
           type: 'exercise/setPlanList',
@@ -95,7 +94,7 @@ const Plan: React.FC<Props> = () => {
   }, [activePillKey, planList]);
 
   const closeAddPlanHandler = () => {
-    setShowAddPlan(false);
+    setShowMakePlan(false);
     dispatch({
       type: 'exercise/setSelectedPlan',
       payload: {
@@ -105,12 +104,20 @@ const Plan: React.FC<Props> = () => {
     });
   };
 
-  const addPlanHandler = () => {
+  const addPlanHandler = async () => {
     if (user.id) {
       const { id: _id, ...rest } = ExerciseService.transPlanToRawData(selectedPlan);
-      ExerciseService.addWorkoutPlan(rest);
+      const id = await ExerciseService.addWorkoutPlan(rest);
+
+      dispatch({
+        type: 'exercise/setSelectedPlan',
+        payload: {
+          ...selectedPlan,
+          id,
+        },
+      });
     }
-    setShowAddPlan(false);
+    setShowMakePlan(false);
     setShowDetailPage(true);
   };
 
@@ -161,14 +168,14 @@ const Plan: React.FC<Props> = () => {
           <div className='h-full flex flex-col items-center justify-center px-4'>
             <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
             <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-fitness-plan')}</h3>
-            <HCButton color='highlight' block={false} onClick={() => setShowAddPlan(true)}>
+            <HCButton color='highlight' block={false} onClick={() => setShowMakePlan(true)}>
               {t('make-workout-plan-immediately')}
             </HCButton>
           </div>
         ) : (
           <div className='relative h-full'>
             <PlanList data={filteredPlanList} onClick={handleClickItem} />
-            <HCFloatButton onClick={() => setShowAddPlan(true)}>
+            <HCFloatButton onClick={() => setShowMakePlan(true)}>
               <PlusIcon />
             </HCFloatButton>
           </div>
@@ -178,9 +185,9 @@ const Plan: React.FC<Props> = () => {
         <HCTabBar />
       </footer>
 
-      {/* Add plan */}
+      {/* Make plan */}
       <HCBottomSheet
-        show={showAddPlan}
+        show={showMakePlan}
         title={t('make-new-workout-plan')}
         keyboard
         onClose={closeAddPlanHandler}

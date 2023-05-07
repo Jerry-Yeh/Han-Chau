@@ -174,6 +174,17 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     setShowDeleteExercise(false);
   };
 
+  /** Recalculate plan data */
+  useEffect(() => {
+    dispatch({
+      type: 'exercise/setSelectedPlan',
+      payload: {
+        ...selectedPlan,
+        ...ExerciseService.calculatePlan(selectedPlan.exerciseList),
+      },
+    });
+  }, [selectedPlan.exerciseList.length, dispatch]);
+
   return (
     <div
       className={`flex flex-col w-screen h-screen bg-primary z-10 transition-all duration-800

@@ -179,7 +179,7 @@ const AddExercise: React.FC<Props> = (props: Props) => {
       filter.muscleGroup.length === 0 ||
       muscles.some((muscle) => filter.muscleGroup.includes(muscle));
     const isCorrectModality = (modality: MODALITY): boolean =>
-      filter.modalities.length === 0 || filter.muscleGroup.includes(modality);
+      filter.modalities.length === 0 || filter.modalities.includes(modality);
     const isCorrectLevel = (level: LEVEL): boolean => !filter.level || filter.level === level;
 
     const searchResult = exerciseList.filter(
