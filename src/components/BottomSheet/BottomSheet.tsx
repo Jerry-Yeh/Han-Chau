@@ -39,57 +39,46 @@ const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
   const [backdropOpacityClass, setBackdropOpacityClass] = useState('opacity-0');
   const [footerTopStyle, setFooterTopStyle] = useState('100%');
 
-  const handleTouchDownHeader = (event: React.TouchEvent | React.MouseEvent) => {
+  const handleTouchDownHeader = useCallback((event: React.TouchEvent | React.MouseEvent) => {
     setDragging(true);
     setDraggingPosY((event as React.TouchEvent).changedTouches[0].pageY);
-  };
+  }, []);
 
-  const handleMouseDownHeader = (event: React.MouseEvent) => {
+  const handleMouseDownHeader = useCallback((event: React.MouseEvent) => {
     setDragging(true);
     setDraggingPosY(event.pageY);
-  };
+  }, []);
 
-  const handlePosition = useCallback(
-    (position: number) => {
+  useEffect(() => {
+    const handlePosition = (position: number) => {
       setDragging(false);
       if (position < draggingPosY) {
-        // Up
         setFull(true);
       } else {
-        // Down
         if (full) {
           setFull(false);
         }
       }
-    },
-    [draggingPosY, full],
-  );
+    };
 
-  const handleTouchEnd = useCallback(
-    (event: TouchEvent) => {
+    const handleTouchEnd = (event: TouchEvent) => {
       handlePosition(event.changedTouches[0].pageY);
-    },
-    [handlePosition],
-  );
+    };
 
-  const handleMouseUp = useCallback(
-    (event: MouseEvent) => {
+    const handleMouseUp = (event: MouseEvent) => {
       handlePosition(event.pageY);
-    },
-    [handlePosition],
-  );
+    };
 
-  useEffect(() => {
     if (props.handle && dragging) {
       document.addEventListener('touchend', handleTouchEnd);
       document.addEventListener('mouseup', handleMouseUp);
     }
 
     return () => {
-      document.removeEventListener('touchstart', handleTouchEnd);
+      document.removeEventListener('touchend', handleTouchEnd);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [props.handle, dragging, handleTouchEnd, handleMouseUp]);
+  }, [props.handle, dragging, draggingPosY, full]);
 
   // Handle top class in the different case
   useEffect(() => {
