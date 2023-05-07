@@ -1,6 +1,6 @@
-import React, { useEffect, useState, ReactNode, useRef } from 'react';
+import React, { useEffect, useState, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector, useAppDispatch } from '~/store/hook';
+import { useAppSelector } from '~/store/hook';
 
 import HCHeader, { HCHeaderIconButton } from '~/components/Header';
 import HCSearchBar, { SearchEventType } from '~/components/SearchBar';
@@ -16,7 +16,6 @@ import { HCRadioGroup } from '~/components/Radio';
 import { muscles, modality, level } from '~/static/exercise/dataType';
 import ExerciseDetail from '../ExerciseDetail';
 import SetExercise from '../SetExercise';
-import type { PlanExerciseData } from '~/services/exercise';
 
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 import Abdominals from '~/assets/img/muscle-group/abdominals.png';
@@ -27,6 +26,7 @@ import Shoulders from '~/assets/img/muscle-group/shoulders.png';
 import Legs from '~/assets/img/muscle-group/legs.png';
 import Calves from '~/assets/img/muscle-group/calves.png';
 import HCButton from '~/components/Button';
+import ExerciseList from '../ExerciseList';
 
 interface Props {
   children?: React.ReactNode;
@@ -193,16 +193,25 @@ const AddExercise: React.FC<Props> = (props: Props) => {
     setResult(searchResult);
   }, [searchText, capitalizeLanguage, filter]);
 
-  /** Exercise details */
+  /** Exercise list */
   const [isShowExerciseDetail, setShowExerciseDetail] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<Exercise>();
 
-  const handleShowExerciseDetail = (key: ListItemType['key']) => {
-    const exercise = result.find((item) => item.id === key);
+  const handleClickExercise = (id: number) => {
+    const exercise = result.find((item) => item.id === id);
 
     if (exercise) {
       setSelectedExercise(exercise);
       setShowExerciseDetail(true);
+    }
+  };
+
+  const handleControlExercise = (id: number) => {
+    const exercise = result.find((item) => item.id === id);
+
+    if (exercise) {
+      setSelectedExercise(exercise);
+      setShowJoinPlan(true);
     }
   };
 
@@ -254,29 +263,7 @@ const AddExercise: React.FC<Props> = (props: Props) => {
         </div>
       </HCHeader>
 
-      <div className='bg-primary grow overflow-y-scroll'>
-        <h3 className='text-heading-s text-primary px-4 pt-4 pb-2'>
-          {t('list-title', { number: result.length })}
-        </h3>
-        <HCList
-          data={result.map((item) => ({
-            key: item.id,
-            title: item[`name${capitalizeLanguage}`],
-            description: `${level[item.level][language]} · ${ExerciseService.getExerciseMusclesText(
-              item.muscles,
-            )}`,
-            img: <img src={ExerciseService.getExerciseImageUrl('1.png')} alt='img' />,
-          }))}
-          renderItem={(item) => (
-            <HCListItem
-              {...item}
-              actionType='add'
-              onClick={() => handleShowExerciseDetail(item.key)}
-            />
-          )}
-          bleed
-        />
-      </div>
+      <ExerciseList data={result} onClick={handleClickExercise} onControl={handleControlExercise} />
 
       {/* Filter exercises */}
       <HCBottomSheet
