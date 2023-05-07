@@ -22,7 +22,7 @@ import DeleteExercise from '../DeleteExercise';
 
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
-import Logomark from '~/assets/img/logomark.svg';
+import LogoMark from '~/assets/img/logo-mark.svg';
 import Upper from '~/assets/img/exercise/upper.png';
 
 interface Props {
@@ -102,7 +102,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   };
 
   const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = Logomark;
+    e.currentTarget.src = LogoMark;
   };
 
   /** Add Exercise */
@@ -223,7 +223,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
       {selectedPlan.exerciseList.length === 0 ? (
         <div className='px-4 pt-3'>
           <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
-            <img src={Logomark} alt='logomark' className='w-13 mb-2' />
+            <img src={LogoMark} alt='logoMark' className='w-13 mb-2' />
             <h3 className='text-heading-xs text-secondary mb-2'>{t('empty.title')}</h3>
             <p className='text-tertiary text-body-s mb-6'>{t('empty.subtitle')}</p>
             <HCButton color='highlight' onClick={() => setShowAddExercise(true)}>

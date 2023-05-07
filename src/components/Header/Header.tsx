@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import logomark from '~/assets/img/logomark.svg';
+import LogoMark from '~/assets/img/logo-mark.svg';
 
 import type { HeaderSize } from '.';
 
@@ -57,7 +57,7 @@ const HCHeader: React.FC<Props> = (props: Props) => {
 };
 
 HCHeader.defaultProps = {
-  title: <img className='w-7' src={logomark} alt='LOGO' />,
+  title: <img className='w-7' src={LogoMark} alt='LOGO' />,
   size: 's',
   expand: false,
 };

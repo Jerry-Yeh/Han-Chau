@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import type { LogoProps } from '.';
 
-import Logomark from '~/assets/img/logomark.svg';
+import LogoMark from '~/assets/img/logo-mark.svg';
 
 const Logo: React.FC<LogoProps> = ({ className, size }: LogoProps) => {
   const [sizeClass, setSizeClass] = useState('');
@@ -13,17 +13,17 @@ const Logo: React.FC<LogoProps> = ({ className, size }: LogoProps) => {
         setSizeClass('');
         break;
       case 'm':
-        setSizeClass('w-27 h-27 rounded-3xl shadow-pop-over');
+        setSizeClass('w-24 h-24 rounded-3xl shadow-pop-over p-6');
         break;
       case 's':
-        setSizeClass('w-14 h-14 rounded-2xl shadow-pop-over');
+        setSizeClass('w-14 h-14 rounded-2xl shadow-pop-over p-3.5');
         break;
     }
   }, [size]);
 
   return (
     <div className={`${className} ${sizeClass} bg-primary flex justify-center items-center`}>
-      <img src={Logomark} alt='logo' className='w-19.5' />
+      <img src={LogoMark} alt='logo' />
     </div>
   );
 };
