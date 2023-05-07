@@ -55,8 +55,8 @@ export enum MODALITY {
 
 export enum UPPERLOWERCORE {
   UPPER = 1,
-  CORE,
   LOWER,
+  CORE,
 }
 
 export enum PULLPUSH {
@@ -71,7 +71,7 @@ export enum JOINT {
 }
 
 export enum WORKOUTPLANFILTER {
-  ALL = 1,
+  ALL,
   UPPER,
   LOWER,
   CORE,

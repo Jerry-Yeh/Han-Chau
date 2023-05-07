@@ -90,7 +90,7 @@ const Plan: React.FC<Props> = () => {
       activePillKey === WORKOUTPLANFILTER.ALL
         ? planList
         : planList.filter((plan) =>
-            plan.exerciseList.some((exercise) => exercise.modality === activePillKey),
+            plan.exerciseList.some((exercise) => exercise.upperLowerCore === activePillKey),
           ),
     );
   }, [activePillKey, planList]);
@@ -168,15 +168,28 @@ const Plan: React.FC<Props> = () => {
       >
         {planList.length === 0 ? (
           <div className='h-full flex flex-col items-center justify-center px-4'>
-            <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
-            <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-fitness-plan')}</h3>
+            <img src={EmptyFitnessPlan} alt='empty plan' className='mb-6' />
+            <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-plan')}</h3>
             <HCButton color='highlight' block={false} onClick={() => setShowMakePlan(true)}>
               {t('make-workout-plan-immediately')}
             </HCButton>
           </div>
         ) : (
-          <div className='relative h-full'>
-            <PlanList data={filteredPlanList} onClick={handleClickItem} />
+          <div className='relative h-full flex flex-col p-4 gap-y-4'>
+            {filteredPlanList.length > 0 && (
+              <PlanList data={filteredPlanList} onClick={handleClickItem} />
+            )}
+            <div className='text-body-s text-tertiary flex justify-center'>
+              <p className='py-4'>{t('without-any-plan')}</p>
+            </div>
+            {filteredPlanList.length === 0 && (
+              <div className='flex flex-col items-center'>
+                <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
+                <h3 className='text-heading-m mb-6 px-15 text-center'>
+                  {t('empty-filtered-plan')}
+                </h3>
+              </div>
+            )}
             <HCFloatButton onClick={() => setShowMakePlan(true)}>
               <PlusIcon />
             </HCFloatButton>
