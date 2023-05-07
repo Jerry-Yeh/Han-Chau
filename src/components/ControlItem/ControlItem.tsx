@@ -33,7 +33,7 @@ const ControlItem: React.FC<Props> = (props: Props) => {
         setBgClass('bg-disabled');
         setLabelClass('text-disabled');
       } else {
-        setBorderClass('border');
+        setBorderClass('');
         setBgClass('bg-primary');
         setLabelClass('text-secondary');
       }
@@ -44,7 +44,7 @@ const ControlItem: React.FC<Props> = (props: Props) => {
     <div
       className={`
         w-full text-secondary
-        rounded-lg border-solid border-2 ${borderClass} ${bgClass}
+        rounded-lg border-solid border ${borderClass} ${bgClass}
         hover:border-hover hover:bg-hover
         transition duration-300
         flex relative`}
