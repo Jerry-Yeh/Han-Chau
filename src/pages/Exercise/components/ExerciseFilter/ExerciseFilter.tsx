@@ -9,7 +9,8 @@ import { HCRadioGroup } from '~/components/Radio';
 import { muscles, modality, level } from '~/static/exercise/dataType';
 import { MODALITY, MUSCLEGROUP, LEVEL } from '~/enums/exercise';
 
-import type { FilterExerciseProps, FilterType } from '.';
+import type { ExerciseFilterProps } from '.';
+import type { FilterType } from '~/pages/Exercise/interface';
 
 import Abdominals from '~/assets/img/muscle-group/abdominals.png';
 import Back from '~/assets/img/muscle-group/back.png';
@@ -19,12 +20,12 @@ import Shoulders from '~/assets/img/muscle-group/shoulders.png';
 import Legs from '~/assets/img/muscle-group/legs.png';
 import Calves from '~/assets/img/muscle-group/calves.png';
 
-const FilterExercise: React.FC<FilterExerciseProps> = ({
+const ExerciseFilter: React.FC<ExerciseFilterProps> = ({
   show,
   onClose,
   onClear,
   onConfirm,
-}: FilterExerciseProps) => {
+}: ExerciseFilterProps) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.add' });
 
   const language = useAppSelector((state) => state.language.language);
@@ -170,4 +171,4 @@ const FilterExercise: React.FC<FilterExerciseProps> = ({
   );
 };
 
-export default FilterExercise;
+export default ExerciseFilter;

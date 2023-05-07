@@ -237,6 +237,9 @@
         },
         "snack-bar": ""
       }
+    },
+    "select-plan": {
+      "title": ""
     }
   }
 }

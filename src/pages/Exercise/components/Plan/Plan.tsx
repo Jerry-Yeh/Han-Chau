@@ -16,9 +16,12 @@ import { WORKOUTPLANFILTER } from '~/enums/exercise';
 import HCFloatButton from '~/components/FloatButton';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import { ListItemType } from '~/components/List';
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import ExerciseFilter from '../ExerciseFilter';
+
+import type { WorkoutPlan, FilterType } from '~/pages/Exercise/interface';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
+import AddExerciseFromList from '../AddExerciseFromList';
 
 interface Props {
   children?: React.ReactNode;
@@ -46,6 +49,11 @@ const Plan: React.FC<Props> = () => {
   const [showMakePlan, setShowMakePlan] = useState(false);
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
   const [showDetailPage, setShowDetailPage] = useState(false);
+  const [filter, setFilter] = useState<FilterType>({
+    muscleGroup: [],
+    modalities: [],
+    level: null,
+  });
 
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.clientHeight);
@@ -127,7 +135,6 @@ const Plan: React.FC<Props> = () => {
     const clickedPlan = planList.find((plan) => plan.id === item.key);
 
     if (clickedPlan) {
-      // setPlan(clickedPlan);
       dispatch({
         type: 'exercise/setSelectedPlan',
         payload: clickedPlan,
@@ -143,16 +150,51 @@ const Plan: React.FC<Props> = () => {
     });
   };
 
+  /** Add exercise from list */
+  const [isShowAddExercise, setShowAddExercise] = useState(false);
+
+  const handleCloseAddExercise = () => {
+    setShowAddExercise(false);
+  };
+
+  const handleFocusSearchBar = () => {
+    setShowAddExercise(true);
+  };
+
+  const handlerShowFilter = () => {
+    setShowAddExercise(true);
+    setShowExerciseFilter(true);
+  };
+
+  /** Exercise filter  */
+  const [isShowExerciseFilter, setShowExerciseFilter] = useState(false);
+
+  const handleCloseFilter = () => {
+    setShowExerciseFilter(false);
+  };
+
+  const handleClearFilter = () => {
+    setFilter({ muscleGroup: [], modalities: [], level: null });
+    handleCloseFilter();
+  };
+
+  const handleConfirmFilter = (value: FilterType) => {
+    setFilter(value);
+    setShowExerciseFilter(false);
+  };
+
   return (
     <div className='relative h-screen flex flex-col overflow-hidden'>
       <header ref={headerRef}>
         <PageHeader>
           <HCSearchBar
             value={searchText}
-            filter={false}
             placeholder={t('search-exercise')}
             className='mb-3'
             onChange={(e) => setSearchText(e.target.value)}
+            onPrefix={handleCloseAddExercise}
+            onFocus={handleFocusSearchBar}
+            onFilter={handlerShowFilter}
           />
           <HCPill
             activeKey={activePillKey}
@@ -228,6 +270,15 @@ const Plan: React.FC<Props> = () => {
 
       {/* Add or edit plan page */}
       <PlanDetail show={showDetailPage} onClose={() => setShowDetailPage(false)} />
+
+      <AddExerciseFromList show={isShowAddExercise} searchText={searchText} filter={filter} />
+
+      <ExerciseFilter
+        show={isShowExerciseFilter}
+        onClose={handleCloseFilter}
+        onClear={handleClearFilter}
+        onConfirm={handleConfirmFilter}
+      />
     </div>
   );
 };
