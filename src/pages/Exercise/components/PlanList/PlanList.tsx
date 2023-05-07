@@ -12,10 +12,11 @@ interface Props {
   children?: React.ReactNode;
   className?: string;
   data: WorkoutPlan[];
+  bleed?: boolean;
   onClick?: (item: ListItemType) => void;
 }
 
-const PlanList: React.FC<Props> = ({ data, className, onClick }: Props) => {
+const PlanList: React.FC<Props> = ({ data, className, bleed, onClick }: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
 
   const handleClickItem = (item: ListItemType) => {
@@ -48,10 +49,14 @@ const PlanList: React.FC<Props> = ({ data, className, onClick }: Props) => {
           onControl={() => handleClickItem(item)}
         />
       )}
-      bleed
+      bleed={bleed}
       className={className}
     />
   );
+};
+
+PlanList.defaultProps = {
+  bleed: false,
 };
 
 export default PlanList;

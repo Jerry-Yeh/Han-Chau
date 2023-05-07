@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 import { PlusIcon } from '@heroicons/react/20/solid';
@@ -175,25 +175,27 @@ const Plan: React.FC<Props> = () => {
             </HCButton>
           </div>
         ) : (
-          <div className='relative h-full flex flex-col p-4 gap-y-4'>
+          <Fragment>
             {filteredPlanList.length > 0 && (
               <PlanList data={filteredPlanList} onClick={handleClickItem} />
             )}
-            <div className='text-body-s text-tertiary flex justify-center'>
-              <p className='py-4'>{t('without-any-plan')}</p>
-            </div>
-            {filteredPlanList.length === 0 && (
-              <div className='flex flex-col items-center'>
-                <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
-                <h3 className='text-heading-m mb-6 px-15 text-center'>
-                  {t('empty-filtered-plan')}
-                </h3>
+            <div className='relative h-full flex flex-col p-4 gap-y-4'>
+              <div className='text-body-s text-tertiary flex justify-center'>
+                <p className='py-4'>{t('without-any-plan')}</p>
               </div>
-            )}
-            <HCFloatButton onClick={() => setShowMakePlan(true)}>
-              <PlusIcon />
-            </HCFloatButton>
-          </div>
+              {filteredPlanList.length === 0 && (
+                <div className='flex flex-col items-center'>
+                  <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
+                  <h3 className='text-heading-m mb-6 px-15 text-center'>
+                    {t('empty-filtered-plan')}
+                  </h3>
+                </div>
+              )}
+              <HCFloatButton onClick={() => setShowMakePlan(true)}>
+                <PlusIcon />
+              </HCFloatButton>
+            </div>
+          </Fragment>
         )}
       </main>
       <footer ref={footerRef} className='fixed left-0 bottom-0 w-full'>

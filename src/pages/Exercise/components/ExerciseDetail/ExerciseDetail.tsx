@@ -165,7 +165,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }:
             <div className='bg-primary'>
               <h3 className='text-heading-xs p-4'>{t('added-plan.title')}</h3>
               {joinedPlanList.length > 0 ? (
-                <PlanList data={joinedPlanList} />
+                <PlanList data={joinedPlanList} bleed />
               ) : (
                 <div className='p-4'>
                   <div className='flex flex-col items-center p-6'>
