@@ -179,7 +179,11 @@ const Plan: React.FC<Props> = () => {
             {filteredPlanList.length > 0 && (
               <PlanList data={filteredPlanList} onClick={handleClickItem} />
             )}
-            <div className='relative h-full flex flex-col p-4 gap-y-4'>
+            <div
+              className={`relative h-full flex flex-col gap-y-4 px-4 ${
+                filteredPlanList.length === 0 && 'pt-4'
+              }`}
+            >
               <div className='text-body-s text-tertiary flex justify-center'>
                 <p className='py-4'>{t('without-any-plan')}</p>
               </div>
