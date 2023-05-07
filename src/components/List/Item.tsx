@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect, ReactNode, MouseEvent } from 'react';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { ChevronRightIcon, EllipsisVerticalIcon } from '@heroicons/react/24/solid';
 
@@ -45,9 +45,19 @@ const Item: React.FC<ListItemType> = ({
     }
   }, [actionType]);
 
+  const handleControl = (e: MouseEvent<HTMLElement>) => {
+    if (actionType) {
+      e.stopPropagation();
+    }
+
+    if (onControl) {
+      onControl();
+    }
+  };
+
   return (
     <div
-      className={`flex items-center px-4 
+      className={`flex items-center pl-4 
         ${description ? 'py-2' : 'py-1.5'}
         cursor-pointer bg-primary rounded-lg`}
       onClick={onClick}
@@ -64,17 +74,17 @@ const Item: React.FC<ListItemType> = ({
       ) : (
         <div className={`${iconImgClass} w-9 h-9 rounded-lg overflow-hidden p-1.5`}>{img}</div>
       )}
-      <div className='grow flex flex-col p-4'>
+      <div className='grow flex flex-col pl-4 py-4'>
         <span className={`text-body-bold-m ${titleClass} ${description && 'mb-1'}`}>{title}</span>
         {description && <span className='text-body-s text-tertiary'>{description}</span>}
       </div>
       {actionType && (
         <div
-          className='justify-self-end icon-secondary w-6 h-6 aspect-square'
-          onClick={onControl}
+          className='justify-self-end flex items-center aspect-square px-4'
+          onClick={handleControl}
           aria-hidden='true'
         >
-          {actionIcon}
+          <div className='w-6 h-6 icon-secondary'>{actionIcon}</div>
         </div>
       )}
     </div>
