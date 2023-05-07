@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import LogoMark from '~/assets/img/logo-mark.svg';
-import Logo from '~/assets/img/logo.svg';
+import logomark from '~/assets/img/logo-mark.svg';
+import logo from '~/assets/img/logo.svg';
 import HCProgress from '~/components/Progress';
 
 interface Props {
@@ -42,7 +42,7 @@ const Loading: React.FC<Props> = () => {
     <div className='bg-secondary h-screen pb-10 flex flex-col items-center justify-between'>
       <HCProgress rateClass={progressRate} />
       <div className='flex flex-col items-center'>
-        <img src={LogoMark} alt='LogoMark' className='mb-6' />
+        <img src={logomark} alt='logomark' className='mb-6' />
         <span
           className={`
             text-body-m text-placeholder
@@ -52,7 +52,7 @@ const Loading: React.FC<Props> = () => {
         </span>
       </div>
       <div>
-        <img src={Logo} alt='logo' />
+        <img src={logo} alt='logo' />
       </div>
     </div>
   );

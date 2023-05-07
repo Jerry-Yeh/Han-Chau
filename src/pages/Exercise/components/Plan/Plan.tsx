@@ -70,6 +70,7 @@ const Plan: React.FC<Props> = () => {
 
     const queryWorkoutPlans = async () => {
       if (user.id && !showDetailPage) {
+        dispatch({ type: 'loading/setShow', payload: true });
         const data = await ExerciseService.queryWorkoutPlans(user.id);
 
         dispatch({
@@ -77,6 +78,7 @@ const Plan: React.FC<Props> = () => {
           payload: data.map((item) => ExerciseService.transPlanFromRawData(item)),
         });
         resetCurrentPlan();
+        dispatch({ type: 'loading/setShow', payload: false });
       }
     };
 

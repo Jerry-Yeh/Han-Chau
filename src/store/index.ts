@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import languageReducer from './features/language';
 import userReducer from './features/user';
 import exerciseReducer from './features/exercise';
+import loadingReducer from './features/loading';
 
 const rootPersistConfig = { key: 'root', storage };
 const userPersistConfig = { key: 'user', storage };
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
   language: languageReducer,
   exercise: exerciseReducer,
+  loading: loadingReducer,
 });
 
 export const store = configureStore({
