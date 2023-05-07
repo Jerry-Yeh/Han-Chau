@@ -35,6 +35,7 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
           payload: {
             ...selectedPlan,
             exerciseList,
+            ...ExerciseService.calculatePlan(exerciseList),
           },
         });
 

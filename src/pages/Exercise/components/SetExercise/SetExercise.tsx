@@ -103,13 +103,15 @@ const SetExercise: React.FC<Props> = ({
         case 'add':
           ExerciseService.addExerciseToPlan(selectedPlan.id, data)
             .then(() => {
+              const newExerciseList = selectedPlan.exerciseList.concat([
+                ExerciseService.transExerciseFromRawData(data),
+              ]);
               dispatch({
                 type: 'exercise/setSelectedPlan',
                 payload: {
                   ...selectedPlan,
-                  exerciseList: selectedPlan.exerciseList.concat([
-                    ExerciseService.transExerciseFromRawData(data),
-                  ]),
+                  exerciseList: newExerciseList,
+                  ...ExerciseService.calculatePlan(newExerciseList),
                 },
               });
 
