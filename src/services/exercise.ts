@@ -44,7 +44,7 @@ export default class ExerciseService {
     });
   }
 
-  static async queryWorkoutPlans(userId: string): Promise<WorkoutPlanData[]> {
+  static async queryPlanList(userId: string): Promise<WorkoutPlanData[]> {
     const snapshot = await getDocs(
       query(collection(ApiService.db, 'workoutPlans'), where('userId', '==', userId)),
     );

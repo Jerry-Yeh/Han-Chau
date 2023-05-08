@@ -23,6 +23,7 @@ import SetExercise from '../SetExercise/SetExercise';
 import ExerciseList from '../ExerciseList';
 
 import useFilterExercise from '~/hooks/Exercise/useFilterExercise';
+import useQueryPlanList from '~/hooks/Exercise/useQueryPlanLsit';
 
 import type { Exercise } from '~/static/exercise/data';
 import type { WorkoutPlan, FilterType } from '~/pages/Exercise/interface';
@@ -66,38 +67,7 @@ const Plan: React.FC<Props> = () => {
     if (footerRef.current) setFooterHeight(footerRef.current.clientHeight);
   }, [headerRef, footerRef]);
 
-  useEffect(() => {
-    const resetCurrentPlan = () => {
-      dispatch({
-        type: 'exercise/setSelectedPlan',
-        payload: {
-          id: '',
-          userId: user.id as string,
-          name: '',
-          challenge: 1,
-          upperLowerCoreList: [],
-          modalityList: [],
-          exerciseList: [],
-        },
-      });
-    };
-
-    const queryWorkoutPlans = async () => {
-      if (user.id && !showDetailPage) {
-        dispatch({ type: 'loading/setShow', payload: true });
-        const data = await ExerciseService.queryWorkoutPlans(user.id);
-
-        dispatch({
-          type: 'exercise/setPlanList',
-          payload: data.map((item) => ExerciseService.transPlanFromRawData(item)),
-        });
-        resetCurrentPlan();
-        dispatch({ type: 'loading/setShow', payload: false });
-      }
-    };
-
-    queryWorkoutPlans();
-  }, [user.id, showDetailPage, dispatch]);
+  useQueryPlanList(!showDetailPage);
 
   useEffect(() => {
     setFilteredPlanList(

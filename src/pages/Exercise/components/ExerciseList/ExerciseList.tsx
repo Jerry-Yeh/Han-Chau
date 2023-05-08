@@ -19,7 +19,7 @@ const ExerciseList: React.FC<ExerciseListProps> = ({
   const language = useAppSelector((state) => state.language.language);
 
   return (
-    <div className='bg-primary grow overflow-y-scroll'>
+    <div className='h-full bg-primary grow overflow-y-scroll'>
       <h3 className='text-heading-s text-primary px-4 pt-4 pb-2'>
         {t('list-title', { number: data.length })}
       </h3>

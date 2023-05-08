@@ -11,6 +11,9 @@ import HCInput, { InputChangeEventType } from '~/components/Input';
 import HCButton from '~/components/Button';
 import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
+
+import useQueryPlanList from '~/hooks/Exercise/useQueryPlanLsit';
+
 import type { PlanExerciseData } from '~/services/exercise';
 import type { Nullable } from '~/typings/utils';
 
@@ -55,6 +58,9 @@ const SetExercise: React.FC<Props> = ({
     cancel: '',
     confirm: '',
   });
+  const [isUpdatePlanList, setUpdatePlanList] = useState(false);
+
+  useQueryPlanList(isUpdatePlanList);
 
   const handleChangeSets = (e: InputChangeEventType) => {
     setTempValue((prev) => ({ ...prev, sets: +e.target.value }));
@@ -99,6 +105,8 @@ const SetExercise: React.FC<Props> = ({
       const existIndex = index || index === 0;
       const changed = tempValue.sets !== sets || tempValue.reps !== reps;
 
+      setUpdatePlanList(false);
+
       switch (type) {
         case 'add':
           ExerciseService.addExerciseToPlan(selectedPlan.id, data)
@@ -119,6 +127,8 @@ const SetExercise: React.FC<Props> = ({
                 type: 'success',
                 content: t('add.snack-bar.success', { name: selectedPlan.name }),
               });
+
+              setUpdatePlanList(true);
             })
             .catch(() => {
               snackBarRef.current?.open({
@@ -148,6 +158,8 @@ const SetExercise: React.FC<Props> = ({
                     name: exercise[`name${capitalizeLanguage}`],
                   }),
                 });
+
+                setUpdatePlanList(true);
               })
               .catch(() => {
                 snackBarRef.current?.open({
