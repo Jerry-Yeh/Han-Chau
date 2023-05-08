@@ -269,7 +269,7 @@ const Plan: React.FC<Props> = () => {
                   </h3>
                 </div>
               )}
-              <HCFloatButton onClick={() => setShowMakePlan(true)}>
+              <HCFloatButton bottomClass='bottom-22' onClick={() => setShowMakePlan(true)}>
                 <PlusIcon />
               </HCFloatButton>
             </div>
