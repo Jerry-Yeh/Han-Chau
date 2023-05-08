@@ -39,74 +39,18 @@ const Plan: React.FC<Props> = () => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.user.user);
+  const planList = useAppSelector((state) => state.exercise.planList);
+  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
   const headerRef = useRef<HTMLElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const footerRef = useRef<HTMLElement>(null);
   const [footerHeight, setFooterHeight] = useState(0);
-  const pillList: PillItem[] = [
-    { label: t('all-workout-plan'), value: WORKOUTPLANFILTER.ALL },
-    { label: t('upper-workout-plan'), value: WORKOUTPLANFILTER.UPPER },
-    { label: t('lower-workout-plan'), value: WORKOUTPLANFILTER.LOWER },
-    { label: t('core-workout-plan'), value: WORKOUTPLANFILTER.CORE },
-  ];
-  const [searchText, setSearchText] = useState('');
-  const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
-  const planList = useAppSelector((state) => state.exercise.planList);
-  const [filteredPlanList, setFilteredPlanList] = useState<WorkoutPlan[]>([]);
-  const [showMakePlan, setShowMakePlan] = useState(false);
-  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
-  const [showDetailPage, setShowDetailPage] = useState(false);
-  const [filter, setFilter] = useState<FilterType>({
-    muscleGroup: [],
-    modalities: [],
-    level: null,
-  });
 
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.clientHeight);
     if (footerRef.current) setFooterHeight(footerRef.current.clientHeight);
   }, [headerRef, footerRef]);
-
-  useQueryPlanList(!showDetailPage);
-
-  useEffect(() => {
-    setFilteredPlanList(
-      activePillKey === WORKOUTPLANFILTER.ALL
-        ? planList
-        : planList.filter((plan) =>
-            plan.exerciseList.some((exercise) => exercise.upperLowerCore === activePillKey),
-          ),
-    );
-  }, [activePillKey, planList]);
-
-  const closeAddPlanHandler = () => {
-    setShowMakePlan(false);
-    dispatch({
-      type: 'exercise/setSelectedPlan',
-      payload: {
-        ...selectedPlan,
-        name: '',
-      },
-    });
-  };
-
-  const addPlanHandler = async () => {
-    if (user.id) {
-      const { id: _id, ...rest } = ExerciseService.transPlanToRawData(selectedPlan);
-      const id = await ExerciseService.addWorkoutPlan(rest);
-
-      dispatch({
-        type: 'exercise/setSelectedPlan',
-        payload: {
-          ...selectedPlan,
-          id,
-        },
-      });
-    }
-    setShowMakePlan(false);
-    setShowDetailPage(true);
-  };
 
   const handleClickItem = (item: ListItemType) => {
     const clickedPlan = planList.find((plan) => plan.id === item.key);
@@ -128,6 +72,7 @@ const Plan: React.FC<Props> = () => {
   };
 
   /** Search bar */
+  const [searchText, setSearchText] = useState('');
   const [isShowFilterIcon, setShowFilterIcon] = useState(false);
 
   const handleCloseExerciseList = () => {
@@ -145,7 +90,68 @@ const Plan: React.FC<Props> = () => {
     setShowExerciseFilter(true);
   };
 
+  /** Filter plan */
+  const pillList: PillItem[] = [
+    { label: t('all-workout-plan'), value: WORKOUTPLANFILTER.ALL },
+    { label: t('upper-workout-plan'), value: WORKOUTPLANFILTER.UPPER },
+    { label: t('lower-workout-plan'), value: WORKOUTPLANFILTER.LOWER },
+    { label: t('core-workout-plan'), value: WORKOUTPLANFILTER.CORE },
+  ];
+  const [activePillKey, setActivePillKey] = useState<PillValue>(WORKOUTPLANFILTER.ALL);
+  const [filteredPlanList, setFilteredPlanList] = useState<WorkoutPlan[]>([]);
+
+  useEffect(() => {
+    setFilteredPlanList(
+      activePillKey === WORKOUTPLANFILTER.ALL
+        ? planList
+        : planList.filter((plan) =>
+            plan.exerciseList.some((exercise) => exercise.upperLowerCore === activePillKey),
+          ),
+    );
+  }, [activePillKey, planList]);
+
+  /** Make plan */
+  const [isShowMakePlan, setShowMakePlan] = useState(false);
+
+  const handleCloseMakePlan = () => {
+    setShowMakePlan(false);
+    dispatch({
+      type: 'exercise/setSelectedPlan',
+      payload: {
+        ...selectedPlan,
+        name: '',
+      },
+    });
+  };
+
+  const handleMakePlan = async () => {
+    if (user.id) {
+      const { id: _id, ...rest } = ExerciseService.transPlanToRawData(selectedPlan);
+      const id = await ExerciseService.addWorkoutPlan(rest);
+
+      dispatch({
+        type: 'exercise/setSelectedPlan',
+        payload: {
+          ...selectedPlan,
+          id,
+        },
+      });
+    }
+    setShowMakePlan(false);
+    setShowDetailPage(true);
+  };
+
+  /** Plan detail */
+  const [isShowDetailPage, setShowDetailPage] = useState(false);
+
+  useQueryPlanList(!isShowDetailPage);
+
   /** Exercise list */
+  const [filter, setFilter] = useState<FilterType>({
+    muscleGroup: [],
+    modalities: [],
+    level: null,
+  });
   const result = useFilterExercise(searchText, filter);
   const [isShowExerciseList, setShowExerciseList] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<Exercise>();
@@ -292,10 +298,10 @@ const Plan: React.FC<Props> = () => {
 
       {/* Make plan */}
       <HCBottomSheet
-        show={showMakePlan}
+        show={isShowMakePlan}
         title={t('make-new-workout-plan')}
         keyboard
-        onClose={closeAddPlanHandler}
+        onClose={handleCloseMakePlan}
       >
         <div className='px-4 pt-4'>
           <HCInput
@@ -304,13 +310,13 @@ const Plan: React.FC<Props> = () => {
             onChange={handleChangePlanName}
             className='mb-3'
           />
-          <HCButton color='highlight' disabled={!selectedPlan.name} onClick={addPlanHandler}>
+          <HCButton color='highlight' disabled={!selectedPlan.name} onClick={handleMakePlan}>
             {t('make-workout-plan')}
           </HCButton>
         </div>
       </HCBottomSheet>
 
-      <PlanDetail show={showDetailPage} onClose={() => setShowDetailPage(false)} />
+      <PlanDetail show={isShowDetailPage} onClose={() => setShowDetailPage(false)} />
 
       <div
         className={`absolute left-0 ${
