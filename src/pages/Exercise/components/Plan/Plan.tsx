@@ -17,11 +17,17 @@ import HCFloatButton from '~/components/FloatButton';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import { ListItemType } from '~/components/List';
 import ExerciseFilter from '../ExerciseFilter';
+import ExerciseDetail from '../ExerciseDetail';
+import SelectPlan from '../SelectPlan';
+import SetExercise from '../SetExercise/SetExercise';
+import ExerciseList from '../ExerciseList';
 
+import useFilterExercise from '~/hooks/Exercise/useFilterExercise';
+
+import type { Exercise } from '~/static/exercise/data';
 import type { WorkoutPlan, FilterType } from '~/pages/Exercise/interface';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
-import AddExerciseFromList from '../AddExerciseFromList';
 
 interface Props {
   children?: React.ReactNode;
@@ -150,19 +156,39 @@ const Plan: React.FC<Props> = () => {
     });
   };
 
-  /** Add exercise from list */
-  const [isShowAddExercise, setShowAddExercise] = useState(false);
+  /** Show exercise list */
+  const result = useFilterExercise(searchText, filter);
+  const [isShowExerciseList, setShowExerciseList] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState<Exercise>();
 
-  const handleCloseAddExercise = () => {
-    setShowAddExercise(false);
+  const handleClickExercise = (id: number) => {
+    const exercise = result.find((item) => item.id === id);
+
+    if (exercise) {
+      setSelectedExercise(exercise);
+      setShowExerciseDetail(true);
+    }
+  };
+
+  const handleControlExercise = (id: number) => {
+    const exercise = result.find((item) => item.id === id);
+
+    if (exercise) {
+      setSelectedExercise(exercise);
+      setShowSelectPlan(true);
+    }
+  };
+
+  const handleCloseExerciseList = () => {
+    setShowExerciseList(false);
   };
 
   const handleFocusSearchBar = () => {
-    setShowAddExercise(true);
+    setShowExerciseList(true);
   };
 
   const handlerShowFilter = () => {
-    setShowAddExercise(true);
+    setShowExerciseList(true);
     setShowExerciseFilter(true);
   };
 
@@ -183,6 +209,42 @@ const Plan: React.FC<Props> = () => {
     setShowExerciseFilter(false);
   };
 
+  /** Exercise detail */
+  const [isShowExerciseDetail, setShowExerciseDetail] = useState(false);
+
+  const handleCloseExerciseDetail = () => {
+    setShowExerciseDetail(false);
+  };
+
+  const handleConfirmExerciseDetail = () => {
+    setShowExerciseDetail(false);
+    setShowSelectPlan(true);
+  };
+
+  /** Select plan */
+  const [isShowSelectPlan, setShowSelectPlan] = useState(false);
+
+  const handleCloseSelectPlan = () => {
+    setShowSelectPlan(false);
+  };
+
+  const handlePreviousSelectPlan = () => {
+    setShowSelectPlan(false);
+    setShowExerciseDetail(true);
+  };
+
+  const handleNextSelectPlan = () => {
+    setShowSelectPlan(false);
+    setShowAddExercise(true);
+  };
+
+  /** Add to plan */
+  const [isShowAddExercise, setShowAddExercise] = useState(false);
+
+  const handleCloseAddExercise = () => {
+    setShowAddExercise(false);
+  };
+
   return (
     <div className='relative h-screen flex flex-col overflow-hidden'>
       <header ref={headerRef}>
@@ -192,7 +254,7 @@ const Plan: React.FC<Props> = () => {
             placeholder={t('search-exercise')}
             className='mb-3'
             onChange={(e) => setSearchText(e.target.value)}
-            onPrefix={handleCloseAddExercise}
+            onPrefix={handleCloseExerciseList}
             onFocus={handleFocusSearchBar}
             onFilter={handlerShowFilter}
           />
@@ -268,10 +330,19 @@ const Plan: React.FC<Props> = () => {
         </div>
       </HCBottomSheet>
 
-      {/* Add or edit plan page */}
       <PlanDetail show={showDetailPage} onClose={() => setShowDetailPage(false)} />
 
-      <AddExerciseFromList show={isShowAddExercise} searchText={searchText} filter={filter} />
+      <div
+        className={`absolute left-0 ${
+          isShowExerciseList ? 'top-21' : 'top-full'
+        } bottom-0 transition-all duration-400 w-screen bg-primary`}
+      >
+        <ExerciseList
+          data={result}
+          onClick={handleClickExercise}
+          onControl={handleControlExercise}
+        />
+      </div>
 
       <ExerciseFilter
         show={isShowExerciseFilter}
@@ -279,6 +350,29 @@ const Plan: React.FC<Props> = () => {
         onClear={handleClearFilter}
         onConfirm={handleConfirmFilter}
       />
+
+      <ExerciseDetail
+        show={isShowExerciseDetail}
+        exercise={selectedExercise}
+        onClose={handleCloseExerciseDetail}
+        onConfirm={handleConfirmExerciseDetail}
+      />
+
+      <SelectPlan
+        show={isShowSelectPlan}
+        onClose={handleCloseSelectPlan}
+        onPrevious={handlePreviousSelectPlan}
+        onNext={handleNextSelectPlan}
+      />
+
+      {selectedExercise && (
+        <SetExercise
+          show={isShowAddExercise}
+          exercise={selectedExercise}
+          type='add'
+          onClose={handleCloseAddExercise}
+        />
+      )}
     </div>
   );
 };
