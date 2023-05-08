@@ -39,6 +39,7 @@ const Plan: React.FC<Props> = () => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.user.user);
+
   const headerRef = useRef<HTMLElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const footerRef = useRef<HTMLElement>(null);
@@ -126,7 +127,25 @@ const Plan: React.FC<Props> = () => {
     });
   };
 
-  /** Show exercise list */
+  /** Search bar */
+  const [isShowFilterIcon, setShowFilterIcon] = useState(false);
+
+  const handleCloseExerciseList = () => {
+    setShowFilterIcon(false);
+    setShowExerciseList(false);
+  };
+
+  const handleFocusSearchBar = () => {
+    setShowExerciseList(true);
+    setShowFilterIcon(true);
+  };
+
+  const handlerShowFilter = () => {
+    setShowExerciseList(true);
+    setShowExerciseFilter(true);
+  };
+
+  /** Exercise list */
   const result = useFilterExercise(searchText, filter);
   const [isShowExerciseList, setShowExerciseList] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<Exercise>();
@@ -147,19 +166,6 @@ const Plan: React.FC<Props> = () => {
       setSelectedExercise(exercise);
       setShowSelectPlan(true);
     }
-  };
-
-  const handleCloseExerciseList = () => {
-    setShowExerciseList(false);
-  };
-
-  const handleFocusSearchBar = () => {
-    setShowExerciseList(true);
-  };
-
-  const handlerShowFilter = () => {
-    setShowExerciseList(true);
-    setShowExerciseFilter(true);
   };
 
   /** Exercise filter  */
@@ -223,6 +229,7 @@ const Plan: React.FC<Props> = () => {
             value={searchText}
             placeholder={t('search-exercise')}
             className='mb-3'
+            filter={isShowFilterIcon}
             onChange={(e) => setSearchText(e.target.value)}
             onPrefix={handleCloseExerciseList}
             onFocus={handleFocusSearchBar}
