@@ -15,6 +15,20 @@ export default {
         type: { summary: 'ReactNode' },
       },
     },
+    rightClass: {
+      control: 'text',
+      description: 'Set the right position of the floating button by Tailwind CSS.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    bottomClass: {
+      control: 'text',
+      description: 'Set the bottom position of the floating button by Tailwind CSS.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
     onClick: {
       control: false,
       description: 'Set the handler to handle click event.',
