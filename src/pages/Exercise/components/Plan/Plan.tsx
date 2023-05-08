@@ -230,6 +230,9 @@ const Plan: React.FC<Props> = () => {
             placeholder={t('search-exercise')}
             className='mb-3'
             filter={isShowFilterIcon}
+            filtering={
+              filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
+            }
             onChange={(e) => setSearchText(e.target.value)}
             onPrefix={handleCloseExerciseList}
             onFocus={handleFocusSearchBar}

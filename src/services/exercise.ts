@@ -60,9 +60,9 @@ export default class ExerciseService {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), { name: planName });
   }
 
-  static async addExerciseToPlan(planId: string, exercise: PlanExerciseData) {
+  static async addExerciseToPlan(planId: string, exerciseList: PlanExerciseData[]) {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
-      exerciseList: arrayUnion(exercise),
+      exerciseList,
     });
   }
 
@@ -146,6 +146,12 @@ export default class ExerciseService {
     };
   }
 
+  static transExerciseToRawData(exercise: Exercise & PlanExerciseData): PlanExerciseData {
+    const { id, sets, reps } = exercise;
+
+    return { id, sets, reps };
+  }
+
   static transPlanToRawData(data: WorkoutPlan): WorkoutPlanData {
     // To improve the clarity of database data.
     const { id, userId, name, exerciseList } = data;
@@ -154,7 +160,7 @@ export default class ExerciseService {
       id,
       userId,
       name,
-      exerciseList: exerciseList.map(({ id, sets, reps }) => ({ id, sets, reps })),
+      exerciseList: exerciseList.map((item) => this.transExerciseToRawData(item)),
     };
   }
 

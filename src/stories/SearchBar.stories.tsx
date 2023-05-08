@@ -66,6 +66,13 @@ export default {
         type: { summary: '() => void' },
       },
     },
+    onFocus: {
+      control: false,
+      description: 'Sepcify a function that will be called when a user focus on search bar.',
+      table: {
+        type: { summary: '() => void' },
+      },
+    },
   },
   args: {
     value: '',
@@ -86,12 +93,14 @@ export const Basic: Story = ({ prefixType, placeholder, filtering }: SearchBarPr
   };
 
   return (
-    <HCSearchBar
-      value={value}
-      prefixType={prefixType}
-      placeholder={placeholder}
-      filtering={filtering}
-      onChange={onChangeHandler}
-    />
+    <div className='p-4'>
+      <HCSearchBar
+        value={value}
+        prefixType={prefixType}
+        placeholder={placeholder}
+        filtering={filtering}
+        onChange={onChangeHandler}
+      />
+    </div>
   );
 };

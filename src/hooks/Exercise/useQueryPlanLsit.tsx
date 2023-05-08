@@ -33,7 +33,7 @@ const useQueryPlanList = (isQuery: boolean) => {
           type: 'exercise/setPlanList',
           payload: data.map((item) => ExerciseService.transPlanFromRawData(item)),
         });
-        resetCurrentPlan();
+        // resetCurrentPlan();
         dispatch({ type: 'loading/setShow', payload: false });
       }
     };

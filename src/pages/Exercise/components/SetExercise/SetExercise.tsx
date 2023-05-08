@@ -104,16 +104,20 @@ const SetExercise: React.FC<Props> = ({
       const data = { id: exercise.id, ...tempValue };
       const existIndex = index || index === 0;
       const changed = tempValue.sets !== sets || tempValue.reps !== reps;
+      const rawExerciseList = ExerciseService.transPlanToRawData(selectedPlan).exerciseList.concat([
+        data,
+      ]);
 
       setUpdatePlanList(false);
 
       switch (type) {
         case 'add':
-          ExerciseService.addExerciseToPlan(selectedPlan.id, data)
+          ExerciseService.addExerciseToPlan(selectedPlan.id, rawExerciseList)
             .then(() => {
               const newExerciseList = selectedPlan.exerciseList.concat([
                 ExerciseService.transExerciseFromRawData(data),
               ]);
+
               dispatch({
                 type: 'exercise/setSelectedPlan',
                 payload: {
