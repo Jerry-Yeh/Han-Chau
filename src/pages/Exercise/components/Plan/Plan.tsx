@@ -21,6 +21,7 @@ import ExerciseDetail from '../ExerciseDetail';
 import SelectPlan from '../SelectPlan';
 import SetExercise from '../SetExercise/SetExercise';
 import ExerciseList from '../ExerciseList';
+import MakePlan from '../MakePlan';
 
 import useFilterExercise from '~/hooks/Exercise/useFilterExercise';
 import useQueryPlanList from '~/hooks/Exercise/useQueryPlanLsit';
@@ -62,13 +63,6 @@ const Plan: React.FC<Props> = () => {
       });
       setShowDetailPage(true);
     }
-  };
-
-  const handleChangePlanName = (e: InputChangeEventType) => {
-    dispatch({
-      type: 'exercise/setSelectedPlan',
-      payload: { ...selectedPlan, name: e.target.value },
-    });
   };
 
   /** Search bar */
@@ -296,25 +290,7 @@ const Plan: React.FC<Props> = () => {
         <HCTabBar />
       </footer>
 
-      {/* Make plan */}
-      <HCBottomSheet
-        show={isShowMakePlan}
-        title={t('make-new-workout-plan')}
-        keyboard
-        onClose={handleCloseMakePlan}
-      >
-        <div className='px-4 pt-4'>
-          <HCInput
-            value={selectedPlan.name}
-            placeholder={t('input-workout-plan-name')}
-            onChange={handleChangePlanName}
-            className='mb-3'
-          />
-          <HCButton color='highlight' disabled={!selectedPlan.name} onClick={handleMakePlan}>
-            {t('make-workout-plan')}
-          </HCButton>
-        </div>
-      </HCBottomSheet>
+      <MakePlan show={isShowMakePlan} onClose={handleCloseMakePlan} onConfirm={handleMakePlan} />
 
       <PlanDetail show={isShowDetailPage} onClose={() => setShowDetailPage(false)} />
 
