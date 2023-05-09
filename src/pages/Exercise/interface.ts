@@ -1,8 +1,8 @@
-import type { PlanExerciseData } from '~/services/exercise';
 import { UPPERLOWERCORE, MODALITY, CHALLENGE } from '~/enums/exercise';
-import type { Exercise } from '~/static/exercise/data';
 import { LEVEL } from '~/enums/user';
 
+import type { Exercise } from '~/static/exercise/data';
+import type { PlanExerciseData } from '~/services/exercise';
 import type { Nullable } from '~/typings/utils';
 
 export interface WorkoutPlan {

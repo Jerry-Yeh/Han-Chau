@@ -8,14 +8,11 @@ import HCSearchBar from '~/components/SearchBar';
 import HCPill, { PillItem, PillValue } from '~/components/Pill';
 import HCTabBar from '~/components/TabBar';
 import HCButton from '~/components/Button';
-import HCBottomSheet from '~/components/BottomSheet';
-import HCInput, { InputChangeEventType } from '~/components/Input';
 import PlanDetail from '../PlanDetail';
 import ExerciseService from '~/services/exercise';
 import { WORKOUTPLANFILTER } from '~/enums/exercise';
 import HCFloatButton from '~/components/FloatButton';
 import PlanList from '~/pages/Exercise/components/PlanList';
-import { ListItemType } from '~/components/List';
 import ExerciseFilter from '../ExerciseFilter';
 import ExerciseDetail from '../ExerciseDetail';
 import SelectPlan from '../SelectPlan';
@@ -26,6 +23,7 @@ import MakePlan from '../MakePlan';
 import useFilterExercise from '~/hooks/Exercise/useFilterExercise';
 import useQueryPlanList from '~/hooks/Exercise/useQueryPlanLsit';
 
+import type { ListItemType } from '~/components/List';
 import type { Exercise } from '~/static/exercise/data';
 import type { WorkoutPlan, FilterType } from '~/pages/Exercise/interface';
 
@@ -137,6 +135,10 @@ const Plan: React.FC<Props> = () => {
 
   /** Plan detail */
   const [isShowDetailPage, setShowDetailPage] = useState(false);
+
+  const handleClosePlanDetail = () => {
+    setShowDetailPage(false);
+  };
 
   useQueryPlanList(!isShowDetailPage);
 
@@ -292,7 +294,7 @@ const Plan: React.FC<Props> = () => {
 
       <MakePlan show={isShowMakePlan} onClose={handleCloseMakePlan} onConfirm={handleMakePlan} />
 
-      <PlanDetail show={isShowDetailPage} onClose={() => setShowDetailPage(false)} />
+      <PlanDetail show={isShowDetailPage} onClose={handleClosePlanDetail} />
 
       <div
         className={`absolute left-0 ${

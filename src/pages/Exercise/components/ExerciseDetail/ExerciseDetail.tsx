@@ -6,16 +6,17 @@ import { BookmarkIcon as OutlinedBookmarkIcon } from '@heroicons/react/24/outlin
 
 import HCBottomSheet from '~/components/BottomSheet';
 import { HCList, HCListItem } from '~/components/List';
-import { Exercise } from '~/static/exercise/data';
 import ExerciseService from '~/services/exercise';
 import { level, modality, upperLowerCore, muscles } from '~/static/exercise/dataType';
 import { MUSCLEGROUP } from '~/enums/exercise';
 import HCPlayer, { HandlePlayer } from '~/components/Player';
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
 import PlanList from '~/pages/Exercise/components/PlanList';
 import HCButton from '~/components/Button';
 import HCTags from '~/components/Tags';
 import HCLogo from '~/components/Logo';
+
+import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import type { Exercise } from '~/static/exercise/data';
 
 import { ReactComponent as ChevronDown } from '~/assets/img/heroicons/mini/chevron-down.svg';
 
@@ -29,11 +30,12 @@ interface Props {
 
 const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm }: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.detail' });
+
   const language = useAppSelector((state) => state.language.language);
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
-
   const muscleGroupImages = useAppSelector((state) => state.exercise.muscleGroupImages);
   const planList = useAppSelector((state) => state.exercise.planList);
+
   const [joinedPlanList, setJoinedPlanList] = useState<WorkoutPlan[]>([]);
   const playerRef = useRef<HandlePlayer>(null);
 

@@ -91,13 +91,11 @@ const SetExercise: React.FC<Props> = ({
   useEffect(() => {
     if (!show) {
       setTempValue({ sets: 0, reps: 0 });
+    } else {
+      if (sets) setTempValue((prev) => ({ ...prev, sets }));
+      if (reps) setTempValue((prev) => ({ ...prev, reps }));
     }
-  }, [show]);
-
-  useEffect(() => {
-    if (sets) setTempValue((prev) => ({ ...prev, sets }));
-    if (reps) setTempValue((prev) => ({ ...prev, reps }));
-  }, [sets, reps]);
+  }, [show, sets, reps]);
 
   const handleConfirm = () => {
     if (exercise) {

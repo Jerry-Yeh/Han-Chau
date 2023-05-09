@@ -16,9 +16,11 @@ import AddExercise from '../AddExercise';
 import ExerciseSetting from '../ExerciseSetting';
 import ExerciseDetail from '../ExerciseDetail';
 import SetExercise from '../SetExercise';
+import DeleteExercise from '../DeleteExercise';
+import ExerciseList from '../ExerciseList';
+
 import type { Exercise } from '~/static/exercise/data';
 import type { Nullable } from '~/typings/utils';
-import DeleteExercise from '../DeleteExercise';
 
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
@@ -37,8 +39,37 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
 
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
+  /** Content */
+  const [selectedExercise, setSelectedExercise] = useState<Exercise>();
+  const [selectedExerciseData, setSelectedExerciseData] = useState<{
+    index: Nullable<number>;
+    sets: number;
+    reps: number;
+  }>({
+    index: null,
+    sets: 0,
+    reps: 0,
+  });
+
+  const handleSelectedExercise = (index: number) => {
+    const data = selectedPlan.exerciseList[index];
+
+    setSelectedExercise(data);
+    setSelectedExerciseData((prev) => ({ ...prev, index, sets: data.sets, reps: data.reps }));
+  };
+
+  const handleClickItem = (index: number) => {
+    handleSelectedExercise(index);
+    setShowEditExercise(true);
+  };
+
+  const handleControlItem = (index: number) => {
+    handleSelectedExercise(index);
+    setShowExerciseSetting(true);
+  };
+
   /** Edit */
-  const [showEditPlan, setShowEditPlan] = useState(false);
+  const [isShowEditPlan, setShowEditPlan] = useState(false);
   const [showEditName, setShowEditName] = useState(false);
   const [showDeletePlan, setShowDeletePlan] = useState(false);
   const [editActions] = useState<ListItemType[]>([
@@ -61,7 +92,6 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     },
   ]);
   const [newName, setNewName] = useState('');
-  const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
 
   useEffect(() => {
     setNewName(selectedPlan.name);
@@ -101,34 +131,11 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
     props.onClose();
   };
 
-  const handleImageError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = LogoMark;
-  };
-
   /** Add Exercise */
   const [isShowAddExercise, setShowAddExercise] = useState(false);
 
   /** Exercise settings */
   const [isShowExerciseSetting, setShowExerciseSetting] = useState(false);
-  const [selectedExercise, setSelectedExercise] = useState<Exercise>();
-  const [selectedExerciseData, setSelectedExerciseData] = useState<{
-    index: Nullable<number>;
-    sets: number;
-    reps: number;
-  }>({
-    index: null,
-    sets: 0,
-    reps: 0,
-  });
-
-  const handleClickItemControl = (index: number) => {
-    const data = selectedPlan.exerciseList[index];
-
-    setSelectedExercise(data);
-    // setSelectedExerciseIndex(index);
-    setSelectedExerciseData((prev) => ({ ...prev, index, sets: data.sets, reps: data.reps }));
-    setShowExerciseSetting(true);
-  };
 
   const handleCloseExerciseSetting = () => {
     setShowExerciseSetting(false);
@@ -232,36 +239,17 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
           </div>
         </div>
       ) : (
-        <HCList
-          data={selectedPlan.exerciseList.map((item) => ({
-            id: item.id,
-            title: item[`name${capitalizeLanguage}`],
-            description: `${item.sets} sets·${item.reps} reps`,
-            img: (
-              <img
-                onError={handleImageError}
-                src={`https://storage.cloud.google.com/${
-                  import.meta.env.VITE_STORAGE_BUCKET
-                }/exercise/${item.id}.png`}
-                alt='img'
-                className='w-full'
-              />
-            ),
-          }))}
-          renderItem={(item, index) => (
-            <HCListItem
-              {...item}
-              actionType='info'
-              onControl={() => handleClickItemControl(index)}
-            />
-          )}
-          className='grow bg-tertiary overflow-y-scroll'
+        <ExerciseList
+          data={selectedPlan.exerciseList}
+          type='info'
+          onClick={handleClickItem}
+          onControl={handleControlItem}
         />
       )}
 
       {/* Edit plan */}
       <HCBottomSheet
-        show={showEditPlan}
+        show={isShowEditPlan}
         title={t('edit-plan')}
         onClose={() => setShowEditPlan(false)}
       >
