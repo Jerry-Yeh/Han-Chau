@@ -12,7 +12,7 @@ import HCButton from '~/components/Button';
 import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
 
-import useQueryPlanList from '~/hooks/Exercise/useQueryPlanLsit';
+import useQueryPlanList from '~/hooks/exercise/useQueryPlanLsit';
 
 import type { PlanExerciseData } from '~/services/exercise';
 import type { Nullable } from '~/typings/utils';

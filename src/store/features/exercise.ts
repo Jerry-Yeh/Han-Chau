@@ -50,6 +50,17 @@ const exerciseSlice = createSlice({
     setSelectedPlan(state, action) {
       state.selectedPlan = action.payload;
     },
+    resestSelectedPlan(state, action) {
+      state.selectedPlan = {
+        id: '',
+        userId: action.payload,
+        name: '',
+        challenge: CHALLENGE.DEFAULT,
+        upperLowerCoreList: [],
+        modalityList: [],
+        exerciseList: [],
+      };
+    },
   },
 });
 

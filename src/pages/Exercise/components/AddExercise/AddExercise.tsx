@@ -9,7 +9,7 @@ import SetExercise from '../SetExercise';
 import FilterExercise from '../ExerciseFilter';
 import ExerciseList from '../ExerciseList';
 
-import useFilterExercise from '~/hooks/Exercise/useFilterExercise';
+import useFilterExercise from '~/hooks/exercise/useFilterExercise';
 
 import type { FilterType } from '~/pages/Exercise/interface';
 

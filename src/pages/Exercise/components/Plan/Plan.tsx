@@ -20,8 +20,8 @@ import SetExercise from '../SetExercise/SetExercise';
 import ExerciseList from '../ExerciseList';
 import MakePlan from '../MakePlan';
 
-import useFilterExercise from '~/hooks/Exercise/useFilterExercise';
-import useQueryPlanList from '~/hooks/Exercise/useQueryPlanLsit';
+import useFilterExercise from '~/hooks/exercise/useFilterExercise';
+import useQueryPlanList from '~/hooks/exercise/useQueryPlanLsit';
 
 import type { ListItemType } from '~/components/List';
 import type { Exercise } from '~/static/exercise/data';
@@ -119,7 +119,7 @@ const Plan: React.FC<Props> = () => {
   const handleMakePlan = async () => {
     if (user.id) {
       const { id: _id, ...rest } = ExerciseService.transPlanToRawData(selectedPlan);
-      const id = await ExerciseService.addWorkoutPlan(rest);
+      const id = await ExerciseService.addWorkoutPlan({ ...rest, userId: user.id });
 
       dispatch({
         type: 'exercise/setSelectedPlan',
@@ -249,7 +249,7 @@ const Plan: React.FC<Props> = () => {
       </header>
 
       <main
-        className='bg-tertiary'
+        className='bg-tertiary overflow-y-scroll'
         style={{ height: `calc(100vh - ${headerHeight}px - ${footerHeight}px)` }}
       >
         {planList.length === 0 ? (
@@ -266,7 +266,7 @@ const Plan: React.FC<Props> = () => {
               <PlanList data={filteredPlanList} onClick={handleClickItem} />
             )}
             <div
-              className={`relative h-full flex flex-col gap-y-4 px-4 ${
+              className={`relative flex flex-col gap-y-4 px-4 ${
                 filteredPlanList.length === 0 && 'pt-4'
               }`}
             >
@@ -301,11 +301,13 @@ const Plan: React.FC<Props> = () => {
           isShowExerciseList ? 'top-21' : 'top-full'
         } bottom-0 transition-all duration-400 w-screen bg-primary`}
       >
-        <ExerciseList
-          data={result}
-          onClick={handleClickExercise}
-          onControl={handleControlExercise}
-        />
+        {isShowExerciseList && (
+          <ExerciseList
+            data={result}
+            onClick={handleClickExercise}
+            onControl={handleControlExercise}
+          />
+        )}
       </div>
 
       <ExerciseFilter
