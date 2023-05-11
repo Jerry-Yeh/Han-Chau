@@ -13,6 +13,7 @@ module.exports = {
         bottom: 'bottom',
         top: 'top',
         height: 'height',
+        'max-height': 'max-height',
       },
       transitionDuration: {
         400: '400ms',

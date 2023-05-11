@@ -1,7 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj, StoryFn } from '@storybook/react';
 
-import HCHeader from '~/components/Header';
-import HCHeaderIconButton from '~/components/Header/HeaderIconButton';
+import HCHeader, { HeaderProps, HCHeaderRegion, HCHeaderIconButton } from '~/components/Header';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import Plus from '~/assets/img/heroicons/mini/plus';
@@ -43,9 +42,18 @@ export default {
         type: { summary: 'string' },
       },
     },
-    expand: {
+    behavior: {
+      control: 'select',
+      options: ['fixed', 'expanded', 'fully'],
+      description: 'Scrolling behaviour of the header title.',
+      table: {
+        type: { summary: 'fixed | expanded | fully' },
+        defaultValue: { summary: 'fixed' },
+      },
+    },
+    toolBar: {
       control: 'boolean',
-      description: 'Whether the header is expanded or not.',
+      description: 'Whether the header tool bar exists or not.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false },
@@ -54,8 +62,8 @@ export default {
   },
   args: {
     title: '標題',
-    expand: false,
     size: 's',
+    toolBar: true,
   },
 } as Meta<typeof HCHeader>;
 
@@ -63,23 +71,44 @@ type Story = StoryObj<typeof HCHeader>;
 
 export const Basic: Story = {};
 
+const PrefixIcon = () => (
+  <HCHeaderIconButton>
+    <ArrowLeft />
+  </HCHeaderIconButton>
+);
+
+const SuffixTwoIcons = () => (
+  <div className='flex'>
+    <HCHeaderIconButton>
+      <Plus />
+    </HCHeaderIconButton>
+    <HCHeaderIconButton>
+      <EllipsisVertical />
+    </HCHeaderIconButton>
+  </div>
+);
+
+const LongContent = () => (
+  <div
+    className='w-full flex flex-col justify-between p-4'
+    style={{
+      height: '1000px',
+    }}
+  >
+    <h3>Content start</h3>
+    <h3>Content end</h3>
+  </div>
+);
+
 export const LeftIcon: Story = {
   args: {
-    prefix: (
-      <HCHeaderIconButton>
-        <ArrowLeft />
-      </HCHeaderIconButton>
-    ),
+    prefix: <PrefixIcon />,
   },
 };
 
 export const LeftIconAndSingleIcon: Story = {
   args: {
-    prefix: (
-      <HCHeaderIconButton>
-        <ArrowLeft />
-      </HCHeaderIconButton>
-    ),
+    prefix: <PrefixIcon />,
     suffix: (
       <div className='flex'>
         <HCHeaderIconButton>
@@ -92,21 +121,8 @@ export const LeftIconAndSingleIcon: Story = {
 
 export const LeftIconAndTwoIcons: Story = {
   args: {
-    prefix: (
-      <HCHeaderIconButton>
-        <ArrowLeft />
-      </HCHeaderIconButton>
-    ),
-    suffix: (
-      <div className='flex'>
-        <HCHeaderIconButton>
-          <Plus />
-        </HCHeaderIconButton>
-        <HCHeaderIconButton>
-          <EllipsisVertical />
-        </HCHeaderIconButton>
-      </div>
-    ),
+    prefix: <PrefixIcon />,
+    suffix: <SuffixTwoIcons />,
   },
 };
 
@@ -126,4 +142,42 @@ export const ActionAndAction: Story = {
     prefix: <HCHeaderIconButton>action</HCHeaderIconButton>,
     suffix: <HCHeaderIconButton>action</HCHeaderIconButton>,
   },
+};
+
+export const Expanded: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
+  return (
+    <div>
+      <HCHeader
+        title={title}
+        prefix={<PrefixIcon />}
+        suffix={<SuffixTwoIcons />}
+        behavior='expanded'
+        toolBar={toolBar}
+      >
+        <HCHeaderRegion region='toolBar' behavior='expanded'>
+          <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
+        </HCHeaderRegion>
+      </HCHeader>
+      <LongContent />
+    </div>
+  );
+};
+
+export const Fully: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
+  return (
+    <div>
+      <HCHeader
+        title={title}
+        prefix={<PrefixIcon />}
+        suffix={<SuffixTwoIcons />}
+        behavior='fully'
+        toolBar={toolBar}
+      >
+        <HCHeaderRegion region='toolBar' behavior='fully'>
+          <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
+        </HCHeaderRegion>
+      </HCHeader>
+      <LongContent />
+    </div>
+  );
 };

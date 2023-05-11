@@ -2,20 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import LogoMark from '~/assets/img/logo-mark.svg';
 
-import type { HeaderSize } from '.';
+import useScrollDirection from '~/hooks/utils/useScrollDirection';
 
-interface Props {
-  children?: React.ReactNode;
-  className?: string;
-  prefix?: React.ReactNode;
-  title?: React.ReactNode;
-  suffix?: React.ReactNode;
-  size?: HeaderSize;
-  expand?: boolean;
-}
+import type { HeaderProps } from '.';
 
-const HCHeader: React.FC<Props> = (props: Props) => {
+const HCHeader: React.FC<HeaderProps> = (props: HeaderProps) => {
+  const [isDown, isFully] = useScrollDirection();
+
   const [sizeClass, setSizeClass] = useState('');
+  const [titleVisibleClass, setTitleVisibleClass] = useState('opacity-0');
 
   useEffect(() => {
     const initSizeClass = () => {
@@ -35,22 +30,43 @@ const HCHeader: React.FC<Props> = (props: Props) => {
     initSizeClass();
   }, [props.size]);
 
+  useEffect(() => {
+    switch (props.behavior) {
+      case 'expanded':
+        isDown ? setTitleVisibleClass('opacity-100') : setTitleVisibleClass('opacity-0');
+        break;
+      case 'fully':
+        isFully ? setTitleVisibleClass('opacity-0') : setTitleVisibleClass('opacity-100');
+        break;
+      default:
+        props.title ? setTitleVisibleClass('opacity-0') : setTitleVisibleClass('opacity-100');
+        break;
+    }
+  }, [props.behavior, props.title, isDown, isFully]);
+
   return (
-    <div className={`${props.className} bg-primary border-b border-secondary ${sizeClass}`}>
-      <div className={`h-11 flex text-secondary`}>
-        <div className='flex-1 hover:cursor-pointer flex justify-start items-center pl-1'>
-          {props.prefix}
-        </div>
-        {!props.expand && (
-          <div className='flex justify-center items-center text-heading-xs text-primary'>
-            {!props.expand && props.title}
+    <div
+      className={`${props.className} overflow-hidden sticky top-0 left-0 w-full bg-primary border-b border-secondary ${sizeClass}`}
+    >
+      {/* Tool bar */}
+      {props.toolBar && (
+        <div className={`h-11 flex text-secondary bg-primary relative z-10`}>
+          <div className='flex-1 hover:cursor-pointer flex justify-start items-center pl-1'>
+            {props.prefix}
           </div>
-        )}
-        <div className='flex-1 flex justify-end items-center hover:cursor-pointer pr-1'>
-          {props.suffix}
+          <div
+            className={`${titleVisibleClass} transition-opacity duration-300
+            flex justify-center items-center text-heading-xs text-primary`}
+          >
+            {props.title}
+          </div>
+          <div className='flex-1 flex justify-end items-center hover:cursor-pointer pr-1'>
+            {props.suffix}
+          </div>
         </div>
-      </div>
-      {props.expand && <div className='text-heading-m text-primary pl-4 pb-3'>{props.title}</div>}
+      )}
+
+      {/* Tab bar or flexible space */}
       {props.children}
     </div>
   );
@@ -59,7 +75,7 @@ const HCHeader: React.FC<Props> = (props: Props) => {
 HCHeader.defaultProps = {
   title: <img className='w-7' src={LogoMark} alt='LOGO' />,
   size: 's',
-  expand: false,
+  toolBar: true,
 };
 
 export default HCHeader;
