@@ -33,11 +33,20 @@ interface Props {
   onClose: () => void;
 }
 
-const PlanDetail: React.FC<Props> = (props: Props) => {
+const PlanDetail: React.FC<Props> = ({ show, onClose }: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.plan.detail' });
   const dispatch = useAppDispatch();
 
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
+  const user = useAppSelector((state) => state.user.user);
+
+  const handleClickPrevious = () => {
+    dispatch({
+      type: 'exercise/resestSelectedPlan',
+      payload: user.id,
+    });
+    onClose();
+  };
 
   /** Content */
   const [selectedExercise, setSelectedExercise] = useState<Exercise>();
@@ -128,7 +137,7 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
       ExerciseService.deleteWorkoutPlan(selectedPlan.id);
     }
     setShowDeletePlan(false);
-    props.onClose();
+    onClose();
   };
 
   /** Add Exercise */
@@ -184,13 +193,13 @@ const PlanDetail: React.FC<Props> = (props: Props) => {
   return (
     <div
       className={`flex flex-col w-screen h-screen bg-primary z-10 transition-all duration-800
-        absolute top-0 ${props.show ? 'right-0' : '-right-full'}`}
+        absolute top-0 ${show ? 'right-0' : '-right-full'}`}
     >
       <HCHeader
-        expand
+        // branding
         title={selectedPlan.name}
         prefix={
-          <HCHeaderIconButton onClick={props.onClose}>
+          <HCHeaderIconButton onClick={handleClickPrevious}>
             <ArrowLeft />
           </HCHeaderIconButton>
         }
