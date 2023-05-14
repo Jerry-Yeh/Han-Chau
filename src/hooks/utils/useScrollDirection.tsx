@@ -32,9 +32,11 @@ const useScrollDirection = () => {
 
     const onScroll = () => window.requestAnimationFrame(updagteScrollingDirection);
 
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, true);
 
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   return [isDoan, isFully];

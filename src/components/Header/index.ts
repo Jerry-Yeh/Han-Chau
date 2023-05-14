@@ -22,7 +22,8 @@ export type HeaderRegionType = 'toolBar' | 'tabBar' | 'flexibleSpace';
 
 export interface HeaderRegionProps {
   children: ReactNode;
-  region: HeaderRegionType;
+  className?: string;
+  region?: HeaderRegionType;
   behavior: HeaderBehaviorType;
 }
 

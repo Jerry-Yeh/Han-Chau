@@ -5,7 +5,11 @@ import useScrollDirection from '~/hooks/utils/useScrollDirection';
 
 import type { HeaderRegionProps } from '.';
 
-const HeaderRegion: React.FC<HeaderRegionProps> = ({ children, behavior }: HeaderRegionProps) => {
+const HeaderRegion: React.FC<HeaderRegionProps> = ({
+  children,
+  className,
+  behavior,
+}: HeaderRegionProps) => {
   const [isDown, isFully] = useScrollDirection();
   const [maxHeightClass, setMaxHeightClass] = useState('max-h-screen');
 
@@ -32,7 +36,11 @@ const HeaderRegion: React.FC<HeaderRegionProps> = ({ children, behavior }: Heade
   }, [behavior, isDown, isFully]);
 
   return (
-    <div className={`w-full ${maxHeightClass} transition-max-height duration-300`}>{children}</div>
+    <div
+      className={`${className} w-full ${maxHeightClass} relative transition-max-height duration-300`}
+    >
+      {children}
+    </div>
   );
 };
 

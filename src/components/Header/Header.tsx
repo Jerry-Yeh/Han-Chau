@@ -6,7 +6,19 @@ import useScrollDirection from '~/hooks/utils/useScrollDirection';
 
 import type { HeaderProps } from '.';
 
-const HCHeader: React.FC<HeaderProps> = (props: HeaderProps) => {
+const HCHeader: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (
+  {
+    children,
+    className,
+    size,
+    title = <img className='w-7' src={LogoMark} alt='LOGO' />,
+    prefix,
+    suffix,
+    behavior,
+    toolBar = true,
+  }: HeaderProps,
+  ref,
+) => {
   const [isDown, isFully] = useScrollDirection();
 
   const [sizeClass, setSizeClass] = useState('');
@@ -14,7 +26,7 @@ const HCHeader: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   useEffect(() => {
     const initSizeClass = () => {
-      switch (props.size) {
+      switch (size) {
         case 'l':
           setSizeClass('py-6');
           break;
@@ -28,10 +40,10 @@ const HCHeader: React.FC<HeaderProps> = (props: HeaderProps) => {
     };
 
     initSizeClass();
-  }, [props.size]);
+  }, [size]);
 
   useEffect(() => {
-    switch (props.behavior) {
+    switch (behavior) {
       case 'expanded':
         isDown ? setTitleVisibleClass('opacity-100') : setTitleVisibleClass('opacity-0');
         break;
@@ -39,43 +51,38 @@ const HCHeader: React.FC<HeaderProps> = (props: HeaderProps) => {
         isFully ? setTitleVisibleClass('opacity-0') : setTitleVisibleClass('opacity-100');
         break;
       default:
-        props.title ? setTitleVisibleClass('opacity-0') : setTitleVisibleClass('opacity-100');
+        setTitleVisibleClass('opacity-100');
         break;
     }
-  }, [props.behavior, props.title, isDown, isFully]);
+  }, [behavior, title, isDown, isFully]);
 
   return (
     <div
-      className={`${props.className} overflow-hidden sticky top-0 left-0 w-full bg-primary border-b border-secondary ${sizeClass}`}
+      className={`${className} ${sizeClass} overflow-hidden fixed top-0 left-0 w-full bg-primary border-b border-secondary z-10`}
+      ref={ref}
     >
       {/* Tool bar */}
-      {props.toolBar && (
-        <div className={`h-11 flex text-secondary bg-primary relative z-10`}>
+      {toolBar && (
+        <div className={`h-11 flex text-secondary bg-primary relative`}>
           <div className='flex-1 hover:cursor-pointer flex justify-start items-center pl-1'>
-            {props.prefix}
+            {prefix}
           </div>
           <div
             className={`${titleVisibleClass} transition-opacity duration-300
             flex justify-center items-center text-heading-xs text-primary`}
           >
-            {props.title}
+            {title}
           </div>
           <div className='flex-1 flex justify-end items-center hover:cursor-pointer pr-1'>
-            {props.suffix}
+            {suffix}
           </div>
         </div>
       )}
 
       {/* Tab bar or flexible space */}
-      {props.children}
+      {children}
     </div>
   );
 };
 
-HCHeader.defaultProps = {
-  title: <img className='w-7' src={LogoMark} alt='LOGO' />,
-  size: 's',
-  toolBar: true,
-};
-
-export default HCHeader;
+export default React.forwardRef(HCHeader);

@@ -165,7 +165,7 @@ export const Expanded: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderPro
 
 export const Fully: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
   return (
-    <div>
+    <div className='relative flex flex-col'>
       <HCHeader
         title={title}
         prefix={<PrefixIcon />}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -7,6 +7,8 @@ import HCCarousel from '~/components/Carousel';
 import HCButton from '~/components/Button';
 import HCBottomSheet from '~/components/BottomSheet';
 import HCDivider from '~/components/Divider';
+
+import useHeight from '~/hooks/utils/useHeight';
 
 import logo from '~/assets/img/logo.svg';
 import google from '~/assets/img/google.svg';
@@ -33,12 +35,12 @@ const Done: React.FC<Props> = () => {
     returnObjects: true,
   });
 
-  const showActionsHandler = () => {
-    setShowActions(true);
+  const handleToRegister = () => {
+    navigate('/onboarding');
   };
 
-  const toRegister = () => {
-    navigate('/onboarding');
+  const handleShowActions = () => {
+    setShowActions(true);
   };
 
   useEffect(() => {
@@ -47,23 +49,31 @@ const Done: React.FC<Props> = () => {
     }
   }, [location.state]);
 
+  /** Header */
+  const headerRef = useRef(null);
+  const headerHeight = useHeight(headerRef);
+
   return (
     <div className='bg-secondary h-screen flex flex-col relative'>
-      <div className={`${!showActions ? 'opacity-100' : 'opacity-0'} duration-800`}>
-        <HCHeader size='l' title={<img src={logo} alt='logo' />} />
-        <HCCarousel className='mb-auto'>
-          {carouselWordingList.map((item, idx) => (
-            <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
-              <img
-                src={`/src/assets/img/welcome-page-${idx + 1}.svg`}
-                alt='img'
-                className='mb-12'
-              />
-              <h2 className='text-heading-m text-tertiary mb-2'>{item.heading}</h2>
-              <h3 className='text-body-m text-tertiary'>{item.subheading}</h3>
-            </div>
-          ))}
-        </HCCarousel>
+      <div
+        className={`${!showActions ? 'opacity-100' : 'opacity-0'} transition-opacity duration-800`}
+      >
+        <HCHeader ref={headerRef} size='l' title={<img src={logo} alt='logo' />} />
+        <div style={{ paddingTop: `${headerHeight}px` }}>
+          <HCCarousel className='mb-auto'>
+            {carouselWordingList.map((item, idx) => (
+              <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
+                <img
+                  src={`/src/assets/img/welcome-page-${idx + 1}.svg`}
+                  alt='img'
+                  className='mb-12'
+                />
+                <h2 className='text-heading-m text-tertiary mb-2'>{item.heading}</h2>
+                <h3 className='text-body-m text-tertiary'>{item.subheading}</h3>
+              </div>
+            ))}
+          </HCCarousel>
+        </div>
       </div>
       <div
         className={`${showActions ? 'opacity-100' : 'opacity-0'} duration-800
@@ -75,10 +85,10 @@ const Done: React.FC<Props> = () => {
         <span className='text-body-m text-placeholder'>{t('welcome.slogan')}</span>
       </div>
       <HCBottomSheet show={showActions} backdrop={false}>
-        <div className='px-4 pt-9'>
+        <div className='px-4 pt-9 pb-6'>
           <h3 className='text-heading-xs text-secondary mb-2'>{t('welcome.landing.heading')}</h3>
           <h4 className='text-body-xs text-tertiary mb-3'>{t('welcome.landing.subheading')}</h4>
-          <HCButton color='highlight' className='mb-4' onClick={toRegister}>
+          <HCButton color='highlight' className='mb-4' onClick={handleToRegister}>
             {t('welcome.landing.register')}
           </HCButton>
           <HCDivider className='text-body-bold-s mb-4'>{t('welcome.landing.divider')}</HCDivider>
@@ -91,7 +101,7 @@ const Done: React.FC<Props> = () => {
         </div>
       </HCBottomSheet>
       <div className='pt-4 pb-6 px-4 mt-auto'>
-        <HCButton color='highlight' onClick={showActionsHandler}>
+        <HCButton color='highlight' onClick={handleShowActions}>
           {t('welcome.landing.start')}
         </HCButton>
       </div>

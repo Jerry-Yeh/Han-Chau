@@ -3,7 +3,7 @@ import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 
-import HCHeader from '~/components/Header';
+import HCHeader, { HCHeaderRegion } from '~/components/Header';
 
 import HCProgress from '~/components/Progress';
 
@@ -89,7 +89,9 @@ const Onboarding: React.FC<Props> = () => {
             prefix={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
             suffix={nextPath && <button onClick={toNext}>{t('skip')}</button>}
           />
-          <HCProgress rateClass={progressClass} />
+          <HCHeaderRegion behavior='fixed'>
+            <HCProgress rateClass={progressClass} />
+          </HCHeaderRegion>
         </Fragment>
       )}
       <Outlet />
