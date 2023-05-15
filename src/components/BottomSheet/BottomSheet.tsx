@@ -131,7 +131,7 @@ const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
         <div
           className={`
             ${backdropClass} ${backdropOpacityClass}
-            w-screen h-screen bg-backdrop absolute left-0 top-0 transition-opacity duration-800`}
+            w-screen h-screen bg-backdrop fixed left-0 top-0 transition-opacity duration-800 z-20`}
         ></div>
       )}
 
@@ -143,7 +143,7 @@ const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
           w-full box-border rounded-t-3xl
           first-letter:w-full bg-primary
           fixed left-0 transition-all duration-500
-          flex flex-col`}
+          flex flex-col z-30`}
         style={{
           top: topStyle,
         }}
