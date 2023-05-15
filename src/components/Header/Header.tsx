@@ -9,7 +9,7 @@ import type { HeaderProps } from '.';
 const HCHeader: React.ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (
   {
     children,
-    className,
+    className = '',
     size,
     title = <img className='w-7' src={LogoMark} alt='LOGO' />,
     prefix,
