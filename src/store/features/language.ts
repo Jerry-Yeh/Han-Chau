@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { store } from '~/store';
-import { capitalize } from '~/services/utilities';
+import UtilsService from '~/services/utils';
 
 type Language = 'en' | 'zh';
 type CapitalizeLanguage = 'En' | 'Zh';
@@ -13,7 +13,7 @@ export interface LanguageState {
 
 const initialState: LanguageState = {
   language: navigator.language.slice(0, 2) as Language,
-  capitalizeLanguage: capitalize(navigator.language.slice(0, 2)) as CapitalizeLanguage,
+  capitalizeLanguage: UtilsService.capitalize(navigator.language.slice(0, 2)) as CapitalizeLanguage,
 };
 
 const languageSlice = createSlice({
