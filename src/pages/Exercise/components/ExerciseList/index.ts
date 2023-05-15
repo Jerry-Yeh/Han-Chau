@@ -7,6 +7,8 @@ export interface ExerciseListProps {
   children?: React.ReactNode;
   data: (Exercise | (PlanExerciseData & Exercise))[];
   type?: 'add' | 'info';
+  bleed?: boolean;
+  title?: boolean;
   onClick: (id: number) => void;
   onControl: (id: number) => void;
 }

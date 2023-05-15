@@ -15,6 +15,8 @@ import LogoMark from '~/assets/img/logo-mark.svg';
 const ExerciseList: React.FC<ExerciseListProps> = ({
   data,
   type,
+  bleed = true,
+  title = true,
   onClick,
   onControl,
 }: ExerciseListProps) => {
@@ -44,12 +46,15 @@ const ExerciseList: React.FC<ExerciseListProps> = ({
   };
 
   return (
-    <div className='h-full bg-primary grow overflow-y-scroll'>
-      <h3 className='text-heading-s text-primary px-4 pt-4 pb-2'>
-        {t('list-title', { number: data.length })}
-      </h3>
+    <div className={`${bleed ? 'bg-primary' : 'bg-tertiary'} h-full grow overflow-y-scroll`}>
+      {title && (
+        <h3 className='text-heading-s px-4 pt-4 pb-2'>
+          {t('list-title', { number: data.length })}
+        </h3>
+      )}
       <HCList
         data={data.map((item) => ({
+          id: item.id,
           title: item[`name${capitalizeLanguage}`],
           description: handleItemDescription(item),
           img: (
@@ -60,15 +65,15 @@ const ExerciseList: React.FC<ExerciseListProps> = ({
             />
           ),
         }))}
-        renderItem={(item, index) => (
+        renderItem={(item) => (
           <HCListItem
             {...item}
             actionType={type}
-            onClick={() => onClick(index)}
-            onControl={() => onControl(index)}
+            onClick={() => onClick(item.id as number)}
+            onControl={() => onControl(item.id as number)}
           />
         )}
-        bleed
+        bleed={bleed}
       />
     </div>
   );

@@ -1,24 +1,27 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import HCModal from '~/components/Modal';
 import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import ExerciseService from '~/services/exercise';
+
+import usePlan from '~/hooks/exercise/usePlan';
+
 import type { DeleteExerciseProps } from '.';
 
 const DeleteExercise: React.FC<DeleteExerciseProps> = ({
   show,
-  index,
+  exercise,
   onClose,
+  onConfirm,
 }: DeleteExerciseProps) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.setting' });
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const dispatch = useAppDispatch();
 
-  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
+  const [selectedPlan] = usePlan();
   const snackBarRef = useRef<HandleSnackBar>(null);
-  const [deletedExercise] = useState(selectedPlan.exerciseList[index]);
 
   const handleCancelDelete = () => {
     onClose();
@@ -26,6 +29,7 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
 
   const handleConfirmDelete = () => {
     const exerciseList = [...selectedPlan.exerciseList];
+    const index = exerciseList.findIndex((item) => item.id === exercise.id);
     exerciseList.splice(index, 1)[0];
 
     ExerciseService.deleteExerciseInPlan(selectedPlan.id, exerciseList)
@@ -42,7 +46,7 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
         snackBarRef.current?.open({
           type: 'success',
           content: t('delete.snack-bar.success', {
-            name: deletedExercise[`name${capitalizeLanguage}`],
+            name: exercise[`name${capitalizeLanguage}`],
           }),
         });
       })
@@ -50,12 +54,12 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
         snackBarRef.current?.open({
           type: 'error',
           content: t('delete.snack-bar.error', {
-            name: deletedExercise[`name${capitalizeLanguage}`],
+            name: exercise[`name${capitalizeLanguage}`],
           }),
         });
       });
 
-    onClose();
+    onConfirm();
   };
 
   return (
@@ -65,7 +69,7 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
         type='warning'
         title={t('delete.modal.title')}
         description={t('delete.modal.description', {
-          name: deletedExercise[`name${capitalizeLanguage}`],
+          name: exercise[`name${capitalizeLanguage}`],
         })}
         cancel={t('delete.modal.cancel')}
         confirm={t('delete.modal.confirm')}

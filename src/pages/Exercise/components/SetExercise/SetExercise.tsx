@@ -3,29 +3,29 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import HCBottomSheet from '~/components/BottomSheet';
-import type { Exercise } from '~/static/exercise/data';
 import { HCList } from '~/components/List';
-import ExerciseService from '~/services/exercise';
+import ExerciseService, { CompleteExerciseData } from '~/services/exercise';
 import { level, muscles } from '~/static/exercise/dataType';
 import HCInput, { InputChangeEventType } from '~/components/Input';
 import HCButton from '~/components/Button';
 import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
+import UtilsService from '~/services/utils';
 
-import useQueryPlanList from '~/hooks/exercise/useQueryPlanLsit';
+import usePlan from '~/hooks/exercise/usePlan';
 
+import type { Exercise } from '~/static/exercise/data';
 import type { PlanExerciseData } from '~/services/exercise';
-import type { Nullable } from '~/typings/utils';
 
 interface Props {
   children?: React.ReactNode;
   show: boolean;
-  exercise: Exercise;
+  exercise: Exercise | CompleteExerciseData;
   type: 'add' | 'edit';
-  index?: Nullable<number>;
   sets?: number;
   reps?: number;
   onClose: () => void;
+  onConfirm: () => void;
   onPrevious?: () => void;
 }
 
@@ -33,10 +33,10 @@ const SetExercise: React.FC<Props> = ({
   show,
   exercise,
   type,
-  index,
   sets,
   reps,
   onClose,
+  onConfirm,
   onPrevious,
 }: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.setting' });
@@ -44,12 +44,13 @@ const SetExercise: React.FC<Props> = ({
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const dispatch = useAppDispatch();
 
-  const [tempValue, setTempValue] = useState<Omit<PlanExerciseData, 'id'>>({
+  const [tempValue, setTempValue] = useState<Omit<PlanExerciseData, 'id' | 'exerciseId'>>({
     sets: sets ? sets : 0,
     reps: reps ? reps : 0,
   });
   const [isDisabled, setDisabled] = useState(false);
-  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
+  // const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
+  const [selectedPlan] = usePlan();
   const snackBarRef = useRef<HandleSnackBar>(null);
   const [isOpenAbandon, setOpenAbandon] = useState(false);
   const [modalContext, setModalContext] = useState({
@@ -58,9 +59,6 @@ const SetExercise: React.FC<Props> = ({
     cancel: '',
     confirm: '',
   });
-  const [isUpdatePlanList, setUpdatePlanList] = useState(false);
-
-  useQueryPlanList(isUpdatePlanList);
 
   const handleChangeSets = (e: InputChangeEventType) => {
     setTempValue((prev) => ({ ...prev, sets: +e.target.value }));
@@ -99,14 +97,11 @@ const SetExercise: React.FC<Props> = ({
 
   const handleConfirm = () => {
     if (exercise) {
-      const data = { id: exercise.id, ...tempValue };
-      const existIndex = index || index === 0;
+      const data = { id: UtilsService.getTimestamp(), exerciseId: exercise.id, ...tempValue };
       const changed = tempValue.sets !== sets || tempValue.reps !== reps;
       const rawExerciseList = ExerciseService.transPlanToRawData(selectedPlan).exerciseList.concat([
         data,
       ]);
-
-      setUpdatePlanList(false);
 
       switch (type) {
         case 'add':
@@ -129,8 +124,6 @@ const SetExercise: React.FC<Props> = ({
                 type: 'success',
                 content: t('add.snack-bar.success', { name: selectedPlan.name }),
               });
-
-              setUpdatePlanList(true);
             })
             .catch(() => {
               snackBarRef.current?.open({
@@ -140,8 +133,11 @@ const SetExercise: React.FC<Props> = ({
             });
           break;
         case 'edit':
-          if (existIndex && changed) {
-            const exerciseList = [...selectedPlan.exerciseList];
+          if (changed) {
+            const exerciseList = selectedPlan.exerciseList.map((item) =>
+              ExerciseService.transExerciseToRawData(item),
+            );
+            const index = exerciseList.findIndex((item) => item.id === exercise.id);
             exerciseList[index] = { ...exerciseList[index], ...tempValue };
 
             ExerciseService.editExerciseInPlan(selectedPlan.id, exerciseList)
@@ -160,8 +156,6 @@ const SetExercise: React.FC<Props> = ({
                     name: exercise[`name${capitalizeLanguage}`],
                   }),
                 });
-
-                setUpdatePlanList(true);
               })
               .catch(() => {
                 snackBarRef.current?.open({
@@ -176,7 +170,7 @@ const SetExercise: React.FC<Props> = ({
       }
     }
 
-    onClose();
+    onConfirm();
   };
 
   const handleClose = () => {

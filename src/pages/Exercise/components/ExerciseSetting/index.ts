@@ -4,7 +4,7 @@ export interface ExerciseSettingProps {
   children?: React.ReactNode;
   show: boolean;
   onClose: () => void;
-  onKnow: () => void;
+  onReview: () => void;
   onEdit: () => void;
   onDelete: () => void;
 }

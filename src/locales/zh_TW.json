@@ -192,6 +192,9 @@
       "training-muscle-group": "訓練肌群",
       "tutorial": "動作教學",
       "confirm": "選擇動作",
+      "sets": "組數",
+      "reps": "次數",
+      "edit": "編輯動作",
       "added-plan": {
         "added": "已加入訓練計劃 ({{number}})",
         "without": "尚未加入訓練計劃 ({{number}})",

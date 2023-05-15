@@ -33,7 +33,14 @@ const SelectPlan: React.FC<SelectPlanProps> = ({
   };
 
   return (
-    <HCBottomSheet show={show} title={t(`title`)} prefix onClose={onClose} onPrefix={onPrevious}>
+    <HCBottomSheet
+      show={show}
+      title={t(`title`)}
+      prefix
+      handle
+      onClose={onClose}
+      onPrefix={onPrevious}
+    >
       <PlanList data={planList} bleed onClick={handleClickItem} />
     </HCBottomSheet>
   );

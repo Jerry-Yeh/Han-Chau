@@ -10,7 +10,7 @@ import type { ExerciseSettingProps } from '.';
 const ExerciseSetting: React.FC<ExerciseSettingProps> = ({
   show,
   onClose,
-  onKnow,
+  onReview,
   onEdit,
   onDelete,
 }: ExerciseSettingProps) => {
@@ -18,12 +18,12 @@ const ExerciseSetting: React.FC<ExerciseSettingProps> = ({
     keyPrefix: 'exercise.plan.detail.exercise-setting',
   });
 
-  const [actions] = useState<ListItemType[]>([
+  const actions: ListItemType[] = [
     {
       title: t('know'),
       img: <PlayIcon />,
       onClick: () => {
-        onKnow();
+        onReview();
       },
     },
     {
@@ -41,7 +41,7 @@ const ExerciseSetting: React.FC<ExerciseSettingProps> = ({
         onDelete();
       },
     },
-  ]);
+  ];
 
   return (
     <HCBottomSheet show={show} title={t('title')} onClose={onClose}>

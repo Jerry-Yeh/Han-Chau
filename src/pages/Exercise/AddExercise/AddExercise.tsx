@@ -1,34 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import HCHeader, { HCHeaderIconButton } from '~/components/Header';
+import HCHeader, { HCHeaderIconButton, HCHeaderRegion } from '~/components/Header';
 import HCSearchBar, { SearchEventType } from '~/components/SearchBar';
 import { Exercise } from '~/static/exercise/data';
-import ExerciseDetail from '../ExerciseDetail';
-import SetExercise from '../SetExercise';
-import FilterExercise from '../ExerciseFilter';
-import ExerciseList from '../ExerciseList';
+import ExerciseDetail from '../components/ExerciseDetail';
+import SetExercise from '../components/SetExercise';
+import FilterExercise from '../components/ExerciseFilter';
+import ExerciseList from '../components/ExerciseList';
+import Layout from '../components/Layout';
 
 import useFilterExercise from '~/hooks/exercise/useFilterExercise';
+import useHeight from '~/hooks/utils/useHeight';
 
 import type { FilterType } from '~/pages/Exercise/interface';
 
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 
-interface Props {
-  children?: React.ReactNode;
-  show: boolean;
-  onClose: () => void;
-}
-
-const AddExercise: React.FC<Props> = (props: Props) => {
+const AddExercise: React.FC = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.add' });
+  const navigate = useNavigate();
+  const { planId, exerciseId } = useParams();
 
+  /** Header */
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerHeight = useHeight(headerRef);
   const [searchText, setSearchText] = useState('');
-  // const [result, setResult] = useState<Exercise[]>([]);
 
   const searchTextChangeHandler = (e: SearchEventType) => {
     setSearchText(e.target.value);
+  };
+
+  const handleClose = () => {
+    navigate(`/workout-plan/${planId}`);
   };
 
   /** Exercise filter */
@@ -65,10 +70,7 @@ const AddExercise: React.FC<Props> = (props: Props) => {
   const handleClickExercise = (id: number) => {
     const exercise = result.find((item) => item.id === id);
 
-    if (exercise) {
-      setSelectedExercise(exercise);
-      setShowExerciseDetail(true);
-    }
+    if (exercise) navigate(`${exercise.id}`);
   };
 
   const handleControlExercise = (id: number) => {
@@ -82,6 +84,7 @@ const AddExercise: React.FC<Props> = (props: Props) => {
 
   const handleCloseExerciseDetail = () => {
     setShowExerciseDetail(false);
+    navigate(`/workout-plan/${planId}/exercises`);
   };
 
   const handleConfirmExerciseDetail = () => {
@@ -89,46 +92,75 @@ const AddExercise: React.FC<Props> = (props: Props) => {
     setShowJoinPlan(true);
   };
 
+  useEffect(() => {
+    if (exerciseId) {
+      const exercise = result.find((item) => item.id === +exerciseId);
+
+      if (exercise) {
+        setSelectedExercise(exercise);
+        setShowExerciseDetail(true);
+      }
+    }
+  }, [exerciseId, result]);
+
   /** Join plan */
   const [isShowJoinPlan, setShowJoinPlan] = useState(false);
 
-  const handleClose = () => {
+  const handleCloseJoinPlan = () => {
     setShowJoinPlan(false);
+    navigate(`/workout-plan/${planId}/exercises`);
+    // navigate(`.`);
   };
 
-  const handleClickJoinPlan = () => {
+  const handleConfirmJoinPlan = () => {
     setShowJoinPlan(false);
-    setShowExerciseDetail(true);
+    navigate(`/workout-plan/${planId}/exercises`);
+  };
+
+  const handleClickJoinPlanPrevious = () => {
+    setShowJoinPlan(false);
+    console.log('preview', selectedExercise);
+    if (selectedExercise) navigate(`${selectedExercise.id}`);
   };
 
   return (
     <div
       className={`
-        w-screen h-screen z-20 absolute transition-bottom duration-400 flex flex-col
-        ${props.show ? 'bottom-0' : '-bottom-full'}`}
+        w-screen h-screen absolute transition-bottom duration-400 flex flex-col`}
+      // ${props.show ? 'bottom-0' : '-bottom-full'}
     >
       <HCHeader
+        ref={headerRef}
         title={t('header')}
         suffix={
-          <HCHeaderIconButton onClick={props.onClose}>
+          <HCHeaderIconButton onClick={handleClose}>
             <XMark />
           </HCHeaderIconButton>
         }
         className='border-b border-secondary'
       >
-        <div className='px-4 pt-3 pb-4'>
-          <HCSearchBar
-            value={searchText}
-            filtering={
-              filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
-            }
-            onChange={searchTextChangeHandler}
-            onFilter={handlerShowFilter}
-          />
-        </div>
+        <HCHeaderRegion behavior='fixed'>
+          <div className='px-4 pt-3 pb-4'>
+            <HCSearchBar
+              value={searchText}
+              filtering={
+                filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
+              }
+              onChange={searchTextChangeHandler}
+              onFilter={handlerShowFilter}
+              onPrefix={handleClose}
+            />
+          </div>
+        </HCHeaderRegion>
       </HCHeader>
 
-      <ExerciseList data={result} onClick={handleClickExercise} onControl={handleControlExercise} />
+      <Layout style={{ paddingTop: `${headerHeight}px` }}>
+        <ExerciseList
+          data={result}
+          onClick={handleClickExercise}
+          onControl={handleControlExercise}
+        />
+      </Layout>
 
       <FilterExercise
         show={isShowExerciseFilter}
@@ -150,8 +182,9 @@ const AddExercise: React.FC<Props> = (props: Props) => {
           show={isShowJoinPlan}
           exercise={selectedExercise}
           type='add'
-          onClose={handleClose}
-          onPrevious={handleClickJoinPlan}
+          onClose={handleCloseJoinPlan}
+          onConfirm={handleConfirmJoinPlan}
+          onPrevious={handleClickJoinPlanPrevious}
         />
       )}
     </div>

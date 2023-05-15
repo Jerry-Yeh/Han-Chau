@@ -7,7 +7,7 @@ import {
   doc,
   deleteDoc,
   updateDoc,
-  arrayUnion,
+  getDoc,
 } from 'firebase/firestore';
 
 import ApiService from './api';
@@ -19,9 +19,11 @@ import { exerciseList, Exercise } from '~/static/exercise/data';
 import { getPlanChallenge } from '~/services/formula';
 
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import Api from './axios';
 
 export interface PlanExerciseData {
   id: number;
+  exerciseId: number;
   sets: number;
   reps: number;
 }
@@ -33,12 +35,14 @@ export interface WorkoutPlanData {
   exerciseList: PlanExerciseData[];
 }
 
-export default class ExerciseService {
-  static async queryExerciseList() {
-    return (await ApiService.query('exercise')) as Exercise[];
-  }
+export type CompleteExerciseData = PlanExerciseData & Omit<Exercise, 'id'>;
 
-  static async addWorkoutPlan(workoutPlan: WorkoutPlanData): Promise<string> {
+export default class ExerciseService {
+  // static async queryExerciseList() {
+  //   return (await ApiService.query('exercise')) as Exercise[];
+  // }
+
+  static async addPlan(workoutPlan: WorkoutPlanData): Promise<string> {
     return await addDoc(collection(ApiService.db, 'workoutPlans'), workoutPlan).then((response) => {
       return response.id;
     });
@@ -52,11 +56,17 @@ export default class ExerciseService {
     return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as WorkoutPlanData[];
   }
 
-  static async deleteWorkoutPlan(planId: string) {
+  static async queryPlan(planId: string): Promise<WorkoutPlanData> {
+    const snapshot = await getDoc(doc(ApiService.db, 'workoutPlans', planId));
+
+    return { id: planId, ...snapshot.data() } as WorkoutPlanData;
+  }
+
+  static async deletePlan(planId: string) {
     return await deleteDoc(doc(ApiService.db, 'workoutPlans', planId));
   }
 
-  static async updateWorkoutPlanName(planId: string, planName: string) {
+  static async updatePlanName(planId: string, planName: string) {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), { name: planName });
   }
 
@@ -101,15 +111,15 @@ export default class ExerciseService {
     return muscleList.map((id) => muscles[id][language]).join('、');
   }
 
-  static transExerciseFromRawData(data: PlanExerciseData): PlanExerciseData & Exercise {
+  static transExerciseFromRawData(data: PlanExerciseData): CompleteExerciseData {
     const exerciseData = exerciseList.find(
-      (exerciseData) => exerciseData.id === data.id,
+      (exerciseData) => exerciseData.id === data.exerciseId,
     ) as Exercise;
 
-    return { ...data, ...exerciseData };
+    return { ...exerciseData, ...data };
   }
 
-  static calculatePlan(exerciseList: (PlanExerciseData & Exercise)[]) {
+  static calculatePlan(exerciseList: CompleteExerciseData[]) {
     return {
       challenge: getPlanChallenge(exerciseList),
       upperLowerCoreList: exerciseList.reduce((acc: UPPERLOWERCORE[], cur) => {
@@ -146,10 +156,10 @@ export default class ExerciseService {
     };
   }
 
-  static transExerciseToRawData(exercise: Exercise & PlanExerciseData): PlanExerciseData {
-    const { id, sets, reps } = exercise;
+  static transExerciseToRawData(exercise: CompleteExerciseData): PlanExerciseData {
+    const { id, exerciseId, sets, reps } = exercise;
 
-    return { id, sets, reps };
+    return { id, exerciseId, sets, reps };
   }
 
   static transPlanToRawData(data: WorkoutPlan): WorkoutPlanData {

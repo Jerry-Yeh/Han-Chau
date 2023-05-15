@@ -21,9 +21,12 @@ import Login from '~/pages/Onboarding/components/Login';
 import Terms from '~/pages/Onboarding/components/Terms';
 import Results from '~/pages/Onboarding/components/Results';
 
-/** Exercise */
+/** Plan */
 import Exercise from '~/pages/Exercise';
-import Plan from '~/pages/Exercise/components/Plan';
+import Plan from '~/pages/Exercise/Plan';
+import PlanDetail from '~/pages/Exercise/PlanDetail';
+import AddExercise from '~/pages/Exercise/AddExercise';
+import Exercises from '~/pages/Exercise/Exercises';
 
 const router = createBrowserRouter([
   {
@@ -60,9 +63,33 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'exercise',
+        path: 'workout-plan',
         element: <Exercise />,
-        children: [{ index: true, element: <Plan /> }],
+        children: [
+          { path: '*', element: <Navigate to='Plan' replace /> },
+          { index: true, element: <Plan /> },
+          {
+            path: ':planId',
+            element: <PlanDetail />,
+          },
+          {
+            path: ':planId/:exerciseId',
+            element: <PlanDetail />,
+          },
+          {
+            path: ':planId/exercises',
+            element: <AddExercise />,
+            children: [{ path: ':exerciseId', element: <AddExercise /> }],
+          },
+          {
+            path: 'exercises',
+            element: <Exercises />,
+          },
+          {
+            path: 'exercises/:exerciseId',
+            element: <Exercises />,
+          },
+        ],
       },
     ],
   },

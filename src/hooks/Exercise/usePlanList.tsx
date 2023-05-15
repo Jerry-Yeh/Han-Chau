@@ -1,18 +1,24 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import ExerciseService from '~/services/exercise';
 
-const useQueryPlanList = (isQuery: boolean) => {
+import type { WorkoutPlanData } from '~/services/exercise';
+
+const usePlanList = () => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.user.user);
+  const [planList, setPlanList] = useState<WorkoutPlanData[]>([]);
 
   useEffect(() => {
     const queryPlanList = async () => {
-      if (user.id && isQuery) {
+      console.log('query plan list');
+      if (user.id) {
         dispatch({ type: 'loading/setShow', payload: true });
         const data = await ExerciseService.queryPlanList(user.id);
+
+        setPlanList(data);
 
         dispatch({
           type: 'exercise/setPlanList',
@@ -23,7 +29,9 @@ const useQueryPlanList = (isQuery: boolean) => {
     };
 
     queryPlanList();
-  }, [user.id, isQuery, dispatch]);
+  }, [user.id, dispatch]);
+
+  return [planList];
 };
 
-export default useQueryPlanList;
+export default usePlanList;
