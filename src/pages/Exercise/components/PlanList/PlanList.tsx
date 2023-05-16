@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { HCList, HCListItem, ListItemType } from '~/components/List';
+import { HCList, HCListItem, ListItemType, ListItemActionType } from '~/components/List';
 import HCBadge from '~/components/Badge';
 import type { WorkoutPlan } from '../../interface';
 import ExerciseService from '~/services/exercise';
@@ -13,10 +13,17 @@ interface Props {
   className?: string;
   data: WorkoutPlan[];
   bleed?: boolean;
+  actionType?: ListItemActionType;
   onClick?: (item: ListItemType) => void;
 }
 
-const PlanList: React.FC<Props> = ({ data, className, bleed, onClick }: Props) => {
+const PlanList: React.FC<Props> = ({
+  data,
+  className,
+  bleed,
+  actionType = 'next',
+  onClick,
+}: Props) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
 
   const handleClickItem = (item: ListItemType) => {
@@ -44,7 +51,7 @@ const PlanList: React.FC<Props> = ({ data, className, bleed, onClick }: Props) =
       renderItem={(item) => (
         <HCListItem
           {...item}
-          actionType='next'
+          actionType={actionType}
           onClick={() => handleClickItem(item)}
           onControl={() => handleClickItem(item)}
         />

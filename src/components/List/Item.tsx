@@ -33,6 +33,9 @@ const Item: React.FC<ListItemType> = ({
 
   useEffect(() => {
     switch (actionType) {
+      case 'default':
+        setActionIcon(null);
+        break;
       case 'add':
         setActionIcon(<PlusCircleIcon />);
         break;

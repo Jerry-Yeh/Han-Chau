@@ -2,7 +2,7 @@ import List from './List';
 import Item from './Item';
 
 export type ListItemCategoryType = 'warning';
-export type ListItemActionType = 'add' | 'next' | 'info';
+export type ListItemActionType = 'default' | 'add' | 'next' | 'info';
 
 export interface ListItemType {
   id?: string | number;
