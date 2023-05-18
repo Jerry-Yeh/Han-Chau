@@ -1,10 +1,14 @@
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
+// import { useRef } from '@storybook/store';
+import { useRef, CSSProperties } from 'react';
 
 import HCHeader, { HeaderProps, HCHeaderRegion, HCHeaderIconButton } from '~/components/Header';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import Plus from '~/assets/img/heroicons/mini/plus';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
+
+import useHeight from '~/hooks/utils/useHeight';
 
 export default {
   title: 'Components/Header',
@@ -88,18 +92,6 @@ const SuffixTwoIcons = () => (
   </div>
 );
 
-const LongContent = () => (
-  <div
-    className='w-full flex flex-col justify-between p-4'
-    style={{
-      height: '1000px',
-    }}
-  >
-    <h3>Content start</h3>
-    <h3>Content end</h3>
-  </div>
-);
-
 export const LeftIcon: Story = {
   args: {
     prefix: <PrefixIcon />,
@@ -144,26 +136,63 @@ export const ActionAndAction: Story = {
   },
 };
 
-export const Expanded: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
+const LongContent = () => (
+  <main className='w-full px-4 pb-4 overflow-y-scroll'>
+    <h3>Content start</h3>
+    <div style={{ height: '800px' }}></div>
+    <h3>Content end</h3>
+  </main>
+);
+
+export const Fixed: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerHeight = useHeight(headerRef);
+
   return (
     <div>
       <HCHeader
+        ref={headerRef}
+        title=''
+        prefix={<PrefixIcon />}
+        suffix={<SuffixTwoIcons />}
+        behavior='expanded'
+        toolBar={toolBar}
+      >
+        <HCHeaderRegion behavior='fixed' top={headerHeight} className='bg-primary'>
+          <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
+        </HCHeaderRegion>
+      </HCHeader>
+
+      <LongContent />
+    </div>
+  );
+};
+
+export const Expanded: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerHeight = useHeight(headerRef);
+
+  return (
+    <div>
+      <HCHeader
+        ref={headerRef}
         title={title}
         prefix={<PrefixIcon />}
         suffix={<SuffixTwoIcons />}
         behavior='expanded'
         toolBar={toolBar}
       >
-        <HCHeaderRegion region='toolBar' behavior='expanded'>
+        <HCHeaderRegion behavior='expanded' top={headerHeight} className='bg-primary'>
           <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
         </HCHeaderRegion>
       </HCHeader>
+
       <LongContent />
     </div>
   );
 };
 
-export const Fully: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
+export const FullyExpanded: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps) => {
   return (
     <div className='relative flex flex-col'>
       <HCHeader
@@ -173,7 +202,7 @@ export const Fully: StoryFn<typeof HCHeader> = ({ title, toolBar }: HeaderProps)
         behavior='fully'
         toolBar={toolBar}
       >
-        <HCHeaderRegion region='toolBar' behavior='fully'>
+        <HCHeaderRegion behavior='fully' className='bg-primary'>
           <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
         </HCHeaderRegion>
       </HCHeader>

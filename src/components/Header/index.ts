@@ -25,6 +25,7 @@ export interface HeaderRegionProps {
   className?: string;
   region?: HeaderRegionType;
   behavior: HeaderBehaviorType;
+  top?: number;
 }
 
 export const HCHeaderIconButton = HeaderIconButton;
