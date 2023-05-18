@@ -124,44 +124,41 @@ const AddExercise: React.FC = () => {
   };
 
   return (
-    <div
-      className={`
-        w-screen h-screen absolute transition-bottom duration-400 flex flex-col`}
-      // ${props.show ? 'bottom-0' : '-bottom-full'}
-    >
-      <HCHeader
-        ref={headerRef}
-        title={t('header')}
-        suffix={
-          <HCHeaderIconButton onClick={handleClose}>
-            <XMark />
-          </HCHeaderIconButton>
-        }
-        className='border-b border-secondary'
-      >
-        <HCHeaderRegion behavior='fixed'>
-          <div className='px-4 pt-3 pb-4'>
-            <HCSearchBar
-              value={searchText}
-              filtering={
-                filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
-              }
-              onChange={searchTextChangeHandler}
-              onFilter={handlerShowFilter}
-              onPrefix={handleClose}
-            />
-          </div>
-        </HCHeaderRegion>
-      </HCHeader>
-
-      <Layout style={{ paddingTop: `${headerHeight}px` }}>
+    <Layout
+      header={
+        <HCHeader
+          ref={headerRef}
+          title={t('header')}
+          suffix={
+            <HCHeaderIconButton onClick={handleClose}>
+              <XMark />
+            </HCHeaderIconButton>
+          }
+          className='border-b border-secondary'
+        >
+          <HCHeaderRegion behavior='fixed' top={headerHeight} className='bg-primary'>
+            <div className='px-4 pt-3 pb-4'>
+              <HCSearchBar
+                value={searchText}
+                filtering={
+                  filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
+                }
+                onChange={searchTextChangeHandler}
+                onFilter={handlerShowFilter}
+                onPrefix={handleClose}
+              />
+            </div>
+          </HCHeaderRegion>
+        </HCHeader>
+      }
+      content={
         <ExerciseList
           data={result}
           onClick={handleClickExercise}
           onControl={handleControlExercise}
         />
-      </Layout>
-
+      }
+    >
       <FilterExercise
         show={isShowExerciseFilter}
         onClose={handleCloseFilter}
@@ -187,7 +184,7 @@ const AddExercise: React.FC = () => {
           onPrevious={handleClickJoinPlanPrevious}
         />
       )}
-    </div>
+    </Layout>
   );
 };
 

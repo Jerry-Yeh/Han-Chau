@@ -32,7 +32,6 @@ const Exercises: React.FC = () => {
   const [isShowFilterIcon, setShowFilterIcon] = useState(false);
   const result = useFilterExercise(searchText, filter);
   const headerRef = useRef(null);
-  const headerHeight = useHeight(headerRef);
 
   const handleClose = () => {
     navigate('..');
@@ -136,39 +135,41 @@ const Exercises: React.FC = () => {
     setShowSelectPlan(true);
   };
 
-  return (
-    <div className='relative'>
-      <HCHeader ref={headerRef} toolBar={false}>
-        <HCHeaderRegion behavior='fixed' className='bg-primary'>
-          <div className='px-4 pt-6 pb-3'>
-            <HCSearchBar
-              value={searchText}
-              placeholder={t('search-exercise')}
-              filter={isShowFilterIcon}
-              filtering={
-                filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
-              }
-              onChange={(e) => setSearchText(e.target.value)}
-              onPrefix={handleClose}
-              onFocus={handleFocusSearchBar}
-              onFilter={handlerShowFilter}
-            />
-          </div>
-        </HCHeaderRegion>
-      </HCHeader>
+  const handleConfirmJoinPlan = () => {
+    setShowAddExercise(false);
+    navigate('/workout-plan/exercises');
+  };
 
-      <Layout
-        style={{
-          paddingTop: `${headerHeight}px`,
-        }}
-      >
+  return (
+    <Layout
+      header={
+        <HCHeader ref={headerRef} toolBar={false}>
+          <HCHeaderRegion behavior='fixed' className='bg-primary'>
+            <div className='px-4 pt-6 pb-3'>
+              <HCSearchBar
+                value={searchText}
+                placeholder={t('search-exercise')}
+                filter={isShowFilterIcon}
+                filtering={
+                  filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
+                }
+                onChange={(e) => setSearchText(e.target.value)}
+                onPrefix={handleClose}
+                onFocus={handleFocusSearchBar}
+                onFilter={handlerShowFilter}
+              />
+            </div>
+          </HCHeaderRegion>
+        </HCHeader>
+      }
+      content={
         <ExerciseList
           data={result}
           onClick={handleClickExercise}
           onControl={handleControlExercise}
         />
-      </Layout>
-
+      }
+    >
       <ExerciseFilter
         show={isShowExerciseFilter}
         onClose={handleCloseFilter}
@@ -198,9 +199,10 @@ const Exercises: React.FC = () => {
           type='add'
           onClose={handleCloseAddExercise}
           onPrevious={handleClickJoinPlanPrevious}
+          onConfirm={handleConfirmJoinPlan}
         />
       )}
-    </div>
+    </Layout>
   );
 };
 

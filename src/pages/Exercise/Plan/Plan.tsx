@@ -17,6 +17,7 @@ import Layout from '../components/Layout';
 import HCHeader, { HCHeaderRegion } from '~/components/Header';
 
 import usePlanList from '~/hooks/exercise/usePlanList';
+import useHeight from '~/hooks/utils/useHeight';
 
 import type { ListItemType } from '~/components/List';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
@@ -29,20 +30,20 @@ const Plan: React.FC = () => {
   const navigate = useNavigate();
 
   const user = useAppSelector((state) => state.user.user);
-  const planList = useAppSelector((state) => state.exercise.planList);
-  // const [rawPlanList] = usePlanList();
-  // const planList = rawPlanList.map((item) => ExerciseService.transPlanFromRawData(item));
+  const [planList] = usePlanList();
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
   const headerRef = useRef<HTMLDivElement>(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  // const [headerHeight, setHeaderHeight] = useState(0);
+  const headerHeight = useHeight(headerRef);
   const footerRef = useRef<HTMLElement>(null);
   const [footerHeight, setFooterHeight] = useState(0);
+  // const footerHeight = useHeight(footerRef);
 
-  useEffect(() => {
-    if (headerRef.current) setHeaderHeight(headerRef.current.clientHeight);
-    if (footerRef.current) setFooterHeight(footerRef.current.clientHeight);
-  }, [headerRef, footerRef]);
+  // useEffect(() => {
+  //   if (headerRef.current) setHeaderHeight(headerRef.current.clientHeight);
+  //   if (footerRef.current) setFooterHeight(footerRef.current.clientHeight);
+  // }, [headerRef, footerRef]);
 
   const handleClickItem = (item: ListItemType) => {
     const clickedPlan = planList.find((plan) => plan.id === item.key);
@@ -115,76 +116,78 @@ const Plan: React.FC = () => {
   };
 
   return (
-    <div className='relative flex flex-col overflow-hidden'>
-      <HCHeader ref={headerRef} toolBar={false}>
-        <HCHeaderRegion behavior='expanded'>
-          <div className='px-4 pt-6'>
-            <HCSearchBar
-              value={''}
-              placeholder={t('search-exercise')}
-              filter={false}
-              onFocus={handleFocusSearchBar}
-            />
-          </div>
-        </HCHeaderRegion>
-
-        <HCHeaderRegion behavior='fixed' className='bg-primary z-20'>
-          <div className='px-4 py-3'>
-            <HCPill
-              activeKey={activePillKey}
-              list={pillList}
-              onChange={(nV) => setActivePillKey(nV)}
-            />
-          </div>
-        </HCHeaderRegion>
-      </HCHeader>
-
+    <div className='relative'>
       <Layout
-        className='bg-tertiary min-h-screen overflow-y-scroll'
-        style={{ paddingTop: `${headerHeight}px`, paddingBottom: `${footerHeight}px` }}
-      >
-        {planList.length === 0 ? (
-          <div className='h-full flex flex-col items-center justify-center px-4'>
-            <img src={EmptyFitnessPlan} alt='empty plan' className='mb-6' />
-            <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-plan')}</h3>
-            <HCButton color='highlight' block={false} onClick={() => setShowMakePlan(true)}>
-              {t('make-workout-plan-immediately')}
-            </HCButton>
-          </div>
-        ) : (
-          <Fragment>
-            {filteredPlanList.length > 0 && (
-              <PlanList data={filteredPlanList} onClick={handleClickItem} />
-            )}
-            <div
-              className={`relative flex flex-col gap-y-4 px-4 ${
-                filteredPlanList.length === 0 && 'pt-4'
-              }`}
-            >
-              <div className='text-body-s text-tertiary flex justify-center'>
-                <p className='py-4'>{t('without-any-plan')}</p>
+        className='bg-tertiary'
+        header={
+          <HCHeader ref={headerRef} toolBar={false}>
+            <HCHeaderRegion behavior='expanded'>
+              <div className='px-4 pt-6'>
+                <HCSearchBar
+                  value={''}
+                  placeholder={t('search-exercise')}
+                  filter={false}
+                  onFocus={handleFocusSearchBar}
+                />
               </div>
-              {filteredPlanList.length === 0 && (
-                <div className='flex flex-col items-center'>
-                  <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
-                  <h3 className='text-heading-m mb-6 px-15 text-center'>
-                    {t('empty-filtered-plan')}
-                  </h3>
-                </div>
-              )}
-              <HCFloatButton bottomClass='bottom-22' onClick={() => setShowMakePlan(true)}>
-                <PlusIcon />
-              </HCFloatButton>
+            </HCHeaderRegion>
+
+            <HCHeaderRegion behavior='fixed' className='bg-primary z-20'>
+              <div className='px-4 py-3'>
+                <HCPill
+                  activeKey={activePillKey}
+                  list={pillList}
+                  onChange={(nV) => setActivePillKey(nV)}
+                />
+              </div>
+            </HCHeaderRegion>
+          </HCHeader>
+        }
+        content={
+          planList.length === 0 ? (
+            <div className='h-full flex flex-col items-center justify-center px-4'>
+              <img src={EmptyFitnessPlan} alt='empty plan' className='mb-6' />
+              <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-plan')}</h3>
+              <HCButton color='highlight' block={false} onClick={() => setShowMakePlan(true)}>
+                {t('make-workout-plan-immediately')}
+              </HCButton>
             </div>
-          </Fragment>
-        )}
+          ) : (
+            <Fragment>
+              {filteredPlanList.length > 0 && (
+                <PlanList data={filteredPlanList} onClick={handleClickItem} />
+              )}
+              <div
+                className={`relative flex flex-col gap-y-4 px-4 ${
+                  filteredPlanList.length === 0 && 'pt-4'
+                }`}
+              >
+                <div className='text-body-s text-tertiary flex justify-center'>
+                  <p className='py-4'>{t('without-any-plan')}</p>
+                </div>
+                {filteredPlanList.length === 0 && (
+                  <div className='flex flex-col items-center'>
+                    <img src={EmptyFitnessPlan} alt='empty fitness plan' className='mb-6' />
+                    <h3 className='text-heading-m mb-6 px-15 text-center'>
+                      {t('empty-filtered-plan')}
+                    </h3>
+                  </div>
+                )}
+                <HCFloatButton bottomClass='bottom-22' onClick={() => setShowMakePlan(true)}>
+                  <PlusIcon />
+                </HCFloatButton>
+              </div>
+            </Fragment>
+          )
+        }
+        footer={
+          <footer ref={footerRef} className='sticky left-0 bottom-0 w-full z-10'>
+            <HCTabBar />
+          </footer>
+        }
+      >
+        <MakePlan show={isShowMakePlan} onClose={handleCloseMakePlan} onConfirm={handleMakePlan} />
       </Layout>
-
-      <footer ref={footerRef} className='fixed left-0 bottom-0 w-full'>
-        <HCTabBar />
-      </footer>
-
-      <MakePlan show={isShowMakePlan} onClose={handleCloseMakePlan} onConfirm={handleMakePlan} />
     </div>
   );
 };

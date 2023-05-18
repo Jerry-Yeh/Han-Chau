@@ -1,11 +1,14 @@
-import { CSSProperties } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 import Layout from './Layout';
 
 export interface LayoutProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   style?: CSSProperties;
+  header?: ReactNode;
+  content: ReactNode;
+  footer?: ReactNode;
 }
 
 export default Layout;

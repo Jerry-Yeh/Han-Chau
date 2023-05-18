@@ -212,6 +212,12 @@ const PlanDetail: React.FC = () => {
     navigate(`/workout-plan/${plan.id}`);
   };
 
+  const handlePreviousEditExercise = () => {
+    setShowEditExercise(false);
+    setShowExerciseDetail(true);
+    if (selectedExercise) navigate(`/workout-plan/${plan.id}/${selectedExercise.id}`);
+  };
+
   /** Delete exercise */
   const [isShowDeleteExercise, setShowDeleteExercise] = useState(false);
 
@@ -225,77 +231,74 @@ const PlanDetail: React.FC = () => {
   };
 
   return (
-    <div
-      className={`flex flex-col w-screen h-screen bg-primary z-10 transition-all duration-800
-        absolute top-0`}
-      // ${show ? 'right-0' : '-right-full'}
-    >
-      <HCHeader
-        ref={headerRef}
-        title={plan.name}
-        prefix={
-          <HCHeaderIconButton onClick={handleClickPrevious}>
-            <ArrowLeft />
-          </HCHeaderIconButton>
-        }
-        suffix={
-          <HCHeaderIconButton onClick={() => setShowEditPlan(true)}>
-            <EllipsisVertical />
-          </HCHeaderIconButton>
-        }
-        behavior='expanded'
-      >
-        {plan.exerciseList.length > 0 ? (
-          <Fragment>
+    // <div
+    //   className={`relative w-screen bg-primary`}
+    //   // transition-all duration-800
+    //   // ${show ? 'right-0' : '-right-full'}
+    // >
+    <Layout
+      className={plan.exerciseList.length === 0 ? 'bg-primary' : 'bg-tertiary'}
+      header={
+        <HCHeader
+          ref={headerRef}
+          title={plan.name}
+          prefix={
+            <HCHeaderIconButton onClick={handleClickPrevious}>
+              <ArrowLeft />
+            </HCHeaderIconButton>
+          }
+          suffix={
+            <HCHeaderIconButton onClick={() => setShowEditPlan(true)}>
+              <EllipsisVertical />
+            </HCHeaderIconButton>
+          }
+          behavior='fully'
+        >
+          {plan.exerciseList.length > 0 ? (
+            <Fragment>
+              <HCHeaderRegion
+                behavior='fully'
+                className='bg-primary text-heading-m text-primary pl-4 pb-3'
+              >
+                {plan.name}
+              </HCHeaderRegion>
+              <HCHeaderRegion behavior='fully' className='bg-primary'>
+                <div className='px-4 py-2 flex items-center'>
+                  <img src={Upper} alt='default' />
+                  <div className='text-body-s text-tertiary'>
+                    <div className='mb-2 flex'>
+                      <span className='mr-1'>
+                        {ExerciseService.getPlanUpperLowerCoreText(plan.upperLowerCoreList)}
+                        {` · ${t('challenge')}`}
+                      </span>
+                      <HCRate level={plan.challenge} />
+                    </div>
+                    <div>{ExerciseService.getPlanModalityText(plan.modalityList)}</div>
+                  </div>
+                </div>
+              </HCHeaderRegion>
+              <HCHeaderRegion behavior='fixed' top={headerHeight} className='bg-primary'>
+                <div className='flex p-4 gap-x-2'>
+                  <HCButton color='tertiary' onClick={handleAddExercise}>
+                    <span className='mr-2 break-keep'>{t('add-exercise')}</span>
+                    <PlusSmallIcon className='w-5 h-5' />
+                  </HCButton>
+                  <HCButton color='highlight'>{t('start-fitness')}</HCButton>
+                </div>
+              </HCHeaderRegion>
+            </Fragment>
+          ) : (
             <HCHeaderRegion
               behavior='fixed'
               className='bg-primary text-heading-m text-primary pl-4 pb-3'
             >
               {plan.name}
             </HCHeaderRegion>
-            <HCHeaderRegion behavior='fully' className='bg-primary'>
-              <div className='px-4 py-2 flex items-center'>
-                <img src={Upper} alt='default' />
-                <div className='text-body-s text-tertiary'>
-                  <div className='mb-2 flex'>
-                    <span className='mr-1'>
-                      {ExerciseService.getPlanUpperLowerCoreText(plan.upperLowerCoreList)}
-                      {` · ${t('challenge')}`}
-                    </span>
-                    <HCRate level={plan.challenge} />
-                  </div>
-                  <div>{ExerciseService.getPlanModalityText(plan.modalityList)}</div>
-                </div>
-              </div>
-            </HCHeaderRegion>
-            <HCHeaderRegion behavior='expanded' className='bg-primary'>
-              <div className='flex p-4 gap-x-2'>
-                <HCButton color='tertiary' onClick={handleAddExercise}>
-                  <span className='mr-2 break-keep'>{t('add-exercise')}</span>
-                  <PlusSmallIcon className='w-5 h-5' />
-                </HCButton>
-                <HCButton color='highlight'>{t('start-fitness')}</HCButton>
-              </div>
-            </HCHeaderRegion>
-          </Fragment>
-        ) : (
-          <HCHeaderRegion
-            behavior='fixed'
-            className='bg-primary text-heading-m text-primary pl-4 pb-3'
-          >
-            {plan.name}
-          </HCHeaderRegion>
-        )}
-      </HCHeader>
-
-      {/* Content */}
-      <Layout
-        className={`relative`}
-        style={{
-          paddingTop: `${headerHeight}px`,
-        }}
-      >
-        {plan.exerciseList.length === 0 ? (
+          )}
+        </HCHeader>
+      }
+      content={
+        plan.exerciseList.length === 0 ? (
           <div className='px-4 pt-3'>
             <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
               <img src={LogoMark} alt='logoMark' className='w-13 mb-2' />
@@ -307,17 +310,20 @@ const PlanDetail: React.FC = () => {
             </div>
           </div>
         ) : (
-          <ExerciseList
-            data={plan.exerciseList}
-            type='info'
-            bleed={false}
-            title={false}
-            onClick={handleClickExercise}
-            onControl={handleControlExercise}
-          />
-        )}
-      </Layout>
-
+          <Fragment>
+            <ExerciseList
+              data={plan.exerciseList}
+              type='info'
+              bleed={false}
+              title={false}
+              onClick={handleClickExercise}
+              onControl={handleControlExercise}
+            />
+            {/* <div className='w-full h-screen'>123</div> */}
+          </Fragment>
+        )
+      }
+    >
       {/* Edit plan */}
       <HCBottomSheet
         show={isShowEditPlan}
@@ -389,6 +395,7 @@ const PlanDetail: React.FC = () => {
           reps={selectedExercise.reps}
           onClose={handleCloseEditExercise}
           onConfirm={handleConfirmEditExercise}
+          onPrevious={handlePreviousEditExercise}
         />
       )}
 
@@ -401,7 +408,9 @@ const PlanDetail: React.FC = () => {
           onConfirm={handleConfirmDeleteExercise}
         />
       )}
-    </div>
+    </Layout>
+
+    // </div>
   );
 };
 
