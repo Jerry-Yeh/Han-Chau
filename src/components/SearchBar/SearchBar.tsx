@@ -12,7 +12,7 @@ import type { SearchBarProps } from '.';
 const SearchBar: React.FC<SearchBarProps> = ({
   value,
   placeholder,
-  className,
+  className = '',
   filter,
   filtering,
   onFilter,
@@ -40,9 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div
-      className={`${className} relative border border-transparent rounded-lg bg-secondary overflow-hidden`}
-    >
+    <div className={`${className} relative rounded-lg bg-secondary overflow-hidden`}>
       <label className='flex'>
         <button
           className='cursor-pointer icon-secondary pointer-events-none py-3.5 px-4'

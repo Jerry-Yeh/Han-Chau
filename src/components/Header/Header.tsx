@@ -60,7 +60,7 @@ const HCHeader: ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (
     <Fragment>
       <div
         ref={ref}
-        className={`${className} ${sizeClass} overflow-hidden sticky top-0 left-0 w-full bg-primary z-20`}
+        className={`${className} ${sizeClass} sticky top-0 left-0 w-full bg-primary z-20`}
         // border-b border-secondary
       >
         {/* Tool bar */}
