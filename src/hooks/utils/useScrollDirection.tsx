@@ -1,25 +1,24 @@
 import { useState, useEffect } from 'react';
 
 const useScrollDirection = () => {
-  const threshold = 100;
-  const [isDoan, setDown] = useState(false);
+  const threshold = 10;
+  const [isDown, setDown] = useState(false);
   const [isFully, setFully] = useState(true);
 
   useEffect(() => {
-    let previousPosition = window.scrollY;
+    let previousPosition = window.pageYOffset;
 
     const scrollMoreThanThreshold = (currentPosition: number) =>
       Math.abs(currentPosition - previousPosition) > threshold;
 
-    const isScrollingUp = (currentPosition: number) => {
-      return previousPosition < currentPosition;
-    };
+    const isScrollingDown = (currentPosition: number) => currentPosition > previousPosition;
 
     const updagteScrollingDirection = () => {
-      const currentPosition = window.scrollY;
+      const currentPosition = window.pageYOffset;
+      // console.log('cur', currentPosition);
 
       if (scrollMoreThanThreshold(currentPosition)) {
-        setDown(isScrollingUp(currentPosition));
+        setDown(isScrollingDown(currentPosition));
         previousPosition = currentPosition > 0 ? currentPosition : 0;
       }
 
@@ -39,7 +38,7 @@ const useScrollDirection = () => {
     };
   }, []);
 
-  return [isDoan, isFully];
+  return [isDown, isFully];
 };
 
 export default useScrollDirection;
