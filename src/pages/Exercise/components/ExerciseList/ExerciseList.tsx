@@ -46,7 +46,7 @@ const ExerciseList: React.FC<ExerciseListProps> = ({
   };
 
   return (
-    <div className={`${bleed ? 'bg-primary' : 'bg-tertiary'} h-full grow overflow-y-scroll`}>
+    <div className={`${bleed ? 'bg-primary' : 'bg-tertiary'}`}>
       {title && (
         <h3 className='text-heading-s px-4 pt-4 pb-2'>
           {t('list-title', { number: data.length })}

@@ -11,9 +11,9 @@ const Layout: React.FC<LayoutProps> = ({
   style,
 }: LayoutProps) => {
   return (
-    <div className='relative flex flex-col'>
+    <div className='relative flex flex-col min-h-screen'>
       {header}
-      <main className={`${className} overflow-y-scroll`} style={style}>
+      <main className={`${className} overflow-y-scroll grow`} style={style}>
         {content}
       </main>
       {footer}
