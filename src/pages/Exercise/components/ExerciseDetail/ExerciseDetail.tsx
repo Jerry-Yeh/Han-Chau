@@ -17,6 +17,8 @@ import HCButton from '~/components/Button';
 import HCTags from '~/components/Tags';
 import HCLogo from '~/components/Logo';
 
+import usePlanList from '~/hooks/exercise/usePlanList';
+
 import type { CompleteExerciseData } from '~/services/exercise';
 
 import { ReactComponent as ChevronDown } from '~/assets/img/heroicons/mini/chevron-down.svg';
@@ -36,7 +38,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
 
   const muscleGroupImages = useAppSelector((state) => state.exercise.muscleGroupImages);
-  const planList = useAppSelector((state) => state.exercise.planList);
+  const [planList] = usePlanList();
   const [joinedPlanList, setJoinedPlanList] = useState<WorkoutPlan[]>([]);
   const playerRef = useRef<HandlePlayer>(null);
 
@@ -50,7 +52,13 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
   useEffect(() => {
     if (exercise) {
       setJoinedPlanList(
-        planList.filter((plan) => plan.exerciseList.some((item) => item.id === exercise.id)),
+        planList.filter((plan) =>
+          plan.exerciseList.some(
+            (item) =>
+              item.exerciseId === exercise.id ||
+              item.exerciseId === (exercise as CompleteExerciseData).exerciseId,
+          ),
+        ),
       );
     }
   }, [planList, exercise]);
@@ -198,7 +206,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
             <div className='bg-primary'>
               <h3 className='text-heading-xs p-4'>{t('added-plan.title')}</h3>
               {joinedPlanList.length > 0 ? (
-                <PlanList data={joinedPlanList} bleed />
+                <PlanList data={joinedPlanList} actionType='default' bleed />
               ) : (
                 <div className='p-4'>
                   <div className='flex flex-col items-center p-6'>
