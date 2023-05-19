@@ -6,7 +6,7 @@ import HCModal from '~/components/Modal';
 import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import ExerciseService from '~/services/exercise';
 
-import usePlan from '~/hooks/exercise/usePlan';
+import useUrlPlan from '~/hooks/exercise/useUrlPlan';
 
 import type { DeleteExerciseProps } from '.';
 
@@ -20,7 +20,7 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const dispatch = useAppDispatch();
 
-  const [selectedPlan] = usePlan();
+  const [selectedPlan] = useUrlPlan();
   const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleCancelDelete = () => {
