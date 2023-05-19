@@ -15,7 +15,7 @@ import useFilterExercise from '~/hooks/exercise/useFilterExercise';
 import useHeight from '~/hooks/utils/useHeight';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
-import type { FilterType } from '~/pages/Exercise/interface';
+import type { FilterType } from '~/pages/WorkoutPlan/interface';
 
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 

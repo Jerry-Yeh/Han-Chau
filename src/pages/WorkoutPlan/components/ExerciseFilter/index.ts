@@ -1,6 +1,6 @@
 import ExerciseFilter from './ExerciseFilter';
 
-import type { FilterType } from '~/pages/Exercise/interface';
+import type { FilterType } from '~/pages/WorkoutPlan/interface';
 
 export interface ExerciseFilterProps {
   children?: React.ReactNode;

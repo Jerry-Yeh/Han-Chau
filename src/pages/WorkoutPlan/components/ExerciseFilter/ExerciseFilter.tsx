@@ -10,7 +10,7 @@ import { muscles, modality, level } from '~/static/exercise/dataType';
 import { MODALITY, MUSCLEGROUP, LEVEL } from '~/enums/exercise';
 
 import type { ExerciseFilterProps } from '.';
-import type { FilterType } from '~/pages/Exercise/interface';
+import type { FilterType } from '~/pages/WorkoutPlan/interface';
 
 import Abdominals from '~/assets/img/muscle-group/abdominals.png';
 import Back from '~/assets/img/muscle-group/back.png';

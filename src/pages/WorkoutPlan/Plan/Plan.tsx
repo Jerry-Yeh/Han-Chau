@@ -11,7 +11,7 @@ import HCButton from '~/components/Button';
 import ExerciseService from '~/services/exercise';
 import { WORKOUTPLANFILTER } from '~/enums/exercise';
 import HCFloatButton from '~/components/FloatButton';
-import PlanList from '~/pages/Exercise/components/PlanList';
+import PlanList from '~/pages/WorkoutPlan/components/PlanList';
 import MakePlan from '../components/MakePlan';
 import Layout from '../components/Layout';
 import HCHeader, { HCHeaderRegion } from '~/components/Header';
@@ -20,7 +20,7 @@ import usePlanList from '~/hooks/exercise/usePlanList';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
 import type { ListItemType } from '~/components/List';
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
 import EmptyFitnessPlan from '~/assets/img/empty-fitnessplan.svg';
 

@@ -14,7 +14,7 @@ import SetExercise from '../components/SetExercise';
 import useFilterExercise from '~/hooks/exercise/useFilterExercise';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
-import type { FilterType } from '~/pages/Exercise/interface';
+import type { FilterType } from '~/pages/WorkoutPlan/interface';
 import type { Exercise } from '~/static/exercise/data';
 
 const Exercises: React.FC = () => {
