@@ -12,7 +12,7 @@ import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
 import UtilsService from '~/services/utils';
 
-import usePlan from '~/hooks/exercise/usePlan';
+import useUrlPlan from '~/hooks/exercise/useUrlPlan';
 
 import type { Exercise } from '~/static/exercise/data';
 import type { PlanExerciseData } from '~/services/exercise';
@@ -49,8 +49,7 @@ const SetExercise: React.FC<Props> = ({
     reps: reps ? reps : 0,
   });
   const [isDisabled, setDisabled] = useState(false);
-  // const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
-  const [selectedPlan] = usePlan();
+  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
   const snackBarRef = useRef<HandleSnackBar>(null);
   const [isOpenAbandon, setOpenAbandon] = useState(false);
   const [modalContext, setModalContext] = useState({

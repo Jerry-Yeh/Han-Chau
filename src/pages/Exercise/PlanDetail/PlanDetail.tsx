@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, useRef, useCallback } from 'react';
+import React, { useState, useEffect, Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PencilIcon, TrashIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
@@ -21,7 +21,7 @@ import ExerciseList from '../components/ExerciseList';
 import Layout from '../components/Layout';
 
 import useHeight from '~/hooks/utils/useHeight';
-import usePlan from '~/hooks/exercise/usePlan';
+import useUrlPlan from '~/hooks/exercise/useUrlPlan';
 
 import type { CompleteExerciseData } from '~/services/exercise';
 
@@ -38,7 +38,7 @@ const PlanDetail: React.FC = () => {
   const { exerciseId } = useParams();
   const user = useAppSelector((state) => state.user.user);
 
-  const [plan, updatePlan] = usePlan();
+  const [plan, updatePlan] = useUrlPlan();
 
   useEffect(() => {
     if (!plan) {
@@ -112,15 +112,16 @@ const PlanDetail: React.FC = () => {
     setNewName(plan.name);
   }, [plan.name]);
 
-  const editNameHandler = () => {
-    dispatch({
-      type: 'exercise/setPlan',
-      payload: {
-        ...plan,
-        name: newName,
-      },
-    });
-    ExerciseService.updatePlanName(plan.id as string, newName);
+  const handleEditName = async () => {
+    // dispatch({
+    //   type: 'exercise/setPlan',
+    //   payload: {
+    //     ...plan,
+    //     name: newName,
+    //   },
+    // });
+    await ExerciseService.updatePlanName(plan.id as string, newName);
+    updatePlan();
     setShowEditName(false);
   };
 
@@ -231,11 +232,6 @@ const PlanDetail: React.FC = () => {
   };
 
   return (
-    // <div
-    //   className={`relative w-screen bg-primary`}
-    //   // transition-all duration-800
-    //   // ${show ? 'right-0' : '-right-full'}
-    // >
     <Layout
       className={plan.exerciseList.length === 0 ? 'bg-primary' : 'bg-tertiary'}
       header={
@@ -264,7 +260,7 @@ const PlanDetail: React.FC = () => {
               </HCHeaderRegion>
               <HCHeaderRegion behavior='fully' className='bg-primary'>
                 <div className='px-4 py-2 flex items-center'>
-                  <img src={Upper} alt='default' />
+                  <img src={Upper} alt='default' className='mr-2' />
                   <div className='text-body-s text-tertiary'>
                     <div className='mb-2 flex'>
                       <span className='mr-1'>
@@ -319,7 +315,6 @@ const PlanDetail: React.FC = () => {
               onClick={handleClickExercise}
               onControl={handleControlExercise}
             />
-            {/* <div className='w-full h-screen'>123</div> */}
           </Fragment>
         )
       }
@@ -349,7 +344,7 @@ const PlanDetail: React.FC = () => {
             onChange={(e) => setNewName(e.target.value)}
             className='mb-3'
           />
-          <HCButton color='highlight' disabled={!plan.name} onClick={editNameHandler}>
+          <HCButton color='highlight' disabled={!plan.name} onClick={handleEditName}>
             {t('confirm-edit')}
           </HCButton>
         </div>
@@ -409,8 +404,6 @@ const PlanDetail: React.FC = () => {
         />
       )}
     </Layout>
-
-    // </div>
   );
 };
 
