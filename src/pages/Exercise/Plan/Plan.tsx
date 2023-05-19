@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 import { PlusIcon } from '@heroicons/react/20/solid';
@@ -17,7 +17,6 @@ import Layout from '../components/Layout';
 import HCHeader, { HCHeaderRegion } from '~/components/Header';
 
 import usePlanList from '~/hooks/exercise/usePlanList';
-import useHeight from '~/hooks/utils/useHeight';
 
 import type { ListItemType } from '~/components/List';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
@@ -33,18 +32,6 @@ const Plan: React.FC = () => {
   const [planList] = usePlanList();
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
-  const headerRef = useRef<HTMLDivElement>(null);
-  // const [headerHeight, setHeaderHeight] = useState(0);
-  const headerHeight = useHeight(headerRef);
-  const footerRef = useRef<HTMLElement>(null);
-  const [footerHeight, setFooterHeight] = useState(0);
-  // const footerHeight = useHeight(footerRef);
-
-  // useEffect(() => {
-  //   if (headerRef.current) setHeaderHeight(headerRef.current.clientHeight);
-  //   if (footerRef.current) setFooterHeight(footerRef.current.clientHeight);
-  // }, [headerRef, footerRef]);
-
   const handleClickItem = (item: ListItemType) => {
     const clickedPlan = planList.find((plan) => plan.id === item.key);
 
@@ -53,7 +40,6 @@ const Plan: React.FC = () => {
         type: 'exercise/setSelectedPlan',
         payload: clickedPlan,
       });
-      // setShowDetailPage(true);
       navigate(`${clickedPlan.id}`);
     }
   };
@@ -119,7 +105,7 @@ const Plan: React.FC = () => {
     <Layout
       className='bg-tertiary'
       header={
-        <HCHeader ref={headerRef} toolBar={false}>
+        <HCHeader toolBar={false}>
           <HCHeaderRegion behavior='expanded'>
             <div className='px-4 pt-6'>
               <HCSearchBar
@@ -180,7 +166,7 @@ const Plan: React.FC = () => {
         )
       }
       footer={
-        <footer ref={footerRef} className='sticky left-0 bottom-0 w-full z-10'>
+        <footer className='sticky left-0 bottom-0 w-full z-10'>
           <HCTabBar />
         </footer>
       }
