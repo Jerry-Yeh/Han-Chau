@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import HCSearchBar from '~/components/SearchBar';
+import HCSearchBar, { HandleSearchBar } from '~/components/SearchBar';
 import HCHeader, { HCHeaderRegion } from '~/components/Header';
 import ExerciseList from '../components/ExerciseList';
 import ExerciseFilter from '../components/ExerciseFilter';
@@ -12,7 +12,6 @@ import SelectPlan from '../components/SelectPlan';
 import SetExercise from '../components/SetExercise';
 
 import useFilterExercise from '~/hooks/exercise/useFilterExercise';
-import useHeight from '~/hooks/utils/useHeight';
 
 import type { FilterType } from '~/pages/Exercise/interface';
 import type { Exercise } from '~/static/exercise/data';
@@ -32,6 +31,11 @@ const Exercises: React.FC = () => {
   const [isShowFilterIcon, setShowFilterIcon] = useState(false);
   const result = useFilterExercise(searchText, filter);
   const headerRef = useRef(null);
+  const searchBarRef = useRef<HandleSearchBar>(null);
+
+  useEffect(() => {
+    searchBarRef.current?.focus();
+  }, []);
 
   const handleClose = () => {
     navigate('..');
@@ -147,12 +151,14 @@ const Exercises: React.FC = () => {
           <HCHeaderRegion behavior='fixed' className='bg-primary'>
             <div className='px-4 pt-6 pb-3'>
               <HCSearchBar
+                ref={searchBarRef}
                 value={searchText}
                 placeholder={t('search-exercise')}
                 filter={isShowFilterIcon}
                 filtering={
                   filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
                 }
+                doneType='previous'
                 onChange={(e) => setSearchText(e.target.value)}
                 onPrefix={handleClose}
                 onFocus={handleFocusSearchBar}

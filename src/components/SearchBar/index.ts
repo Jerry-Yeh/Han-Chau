@@ -4,14 +4,20 @@ import SearchBar from './SearchBar';
 
 export type SearchEventType = ChangeEvent<HTMLInputElement>;
 
+export interface HandleSearchBar {
+  focus: () => void;
+}
+
+export type PrefixType = 'search' | 'previous';
+
 export interface SearchBarProps {
   children?: React.ReactNode;
   className?: string;
   value: string;
   placeholder?: string;
-  prefixType?: 'search' | 'previous';
   filter?: boolean;
   filtering?: boolean;
+  doneType?: PrefixType;
   onChange?: (e: SearchEventType) => void;
   onFilter?: () => void;
   onPrefix?: () => void;
