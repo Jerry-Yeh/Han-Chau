@@ -27,6 +27,7 @@ const AddExercise: React.FC = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerHeight = useHeight(headerRef);
   const [searchText, setSearchText] = useState('');
+  const [isShowFilterIcon, setShowFilterIcon] = useState(true);
 
   const searchTextChangeHandler = (e: SearchEventType) => {
     setSearchText(e.target.value);
@@ -34,6 +35,14 @@ const AddExercise: React.FC = () => {
 
   const handleClose = () => {
     navigate(`/workout-plan/${planId}`);
+  };
+
+  const handlerShowFilter = () => {
+    setShowExerciseFilter(true);
+  };
+
+  const handleFocusSearchBar = () => {
+    setShowFilterIcon(true);
   };
 
   /** Exercise filter */
@@ -44,10 +53,6 @@ const AddExercise: React.FC = () => {
     level: null,
   });
   const result = useFilterExercise(searchText, filter);
-
-  const handlerShowFilter = () => {
-    setShowExerciseFilter(true);
-  };
 
   const handleCloseFilter = () => {
     setShowExerciseFilter(false);
@@ -134,18 +139,19 @@ const AddExercise: React.FC = () => {
               <XMark />
             </HCHeaderIconButton>
           }
-          className='border-b border-secondary'
         >
-          <HCHeaderRegion behavior='fixed' top={headerHeight} className='bg-primary'>
+          <HCHeaderRegion behavior='expanded' top={headerHeight} className='bg-primary'>
             <div className='px-4 pt-3 pb-4'>
               <HCSearchBar
                 value={searchText}
+                filter={isShowFilterIcon}
                 filtering={
                   filter.muscleGroup.length > 0 || filter.modalities.length > 0 || !!filter.level
                 }
                 onChange={searchTextChangeHandler}
                 onFilter={handlerShowFilter}
                 onPrefix={handleClose}
+                onFocus={handleFocusSearchBar}
               />
             </div>
           </HCHeaderRegion>
