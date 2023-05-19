@@ -17,6 +17,7 @@ import Layout from '../components/Layout';
 import HCHeader, { HCHeaderRegion } from '~/components/Header';
 
 import usePlanList from '~/hooks/exercise/usePlanList';
+import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
 import type { ListItemType } from '~/components/List';
 import type { WorkoutPlan } from '~/pages/Exercise/interface';
@@ -100,6 +101,9 @@ const Plan: React.FC = () => {
       navigate(`${id}`);
     }
   };
+
+  /** Disable background events */
+  useDisableBackgroundEvents([isShowMakePlan]);
 
   return (
     <Layout

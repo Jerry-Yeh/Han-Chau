@@ -12,6 +12,7 @@ import SelectPlan from '../components/SelectPlan';
 import SetExercise from '../components/SetExercise';
 
 import useFilterExercise from '~/hooks/exercise/useFilterExercise';
+import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
 import type { FilterType } from '~/pages/Exercise/interface';
 import type { Exercise } from '~/static/exercise/data';
@@ -143,6 +144,14 @@ const Exercises: React.FC = () => {
     setShowAddExercise(false);
     navigate('/workout-plan/exercises');
   };
+
+  /** Disable background events */
+  useDisableBackgroundEvents([
+    isShowExerciseFilter,
+    isShowExerciseDetail,
+    isShowSelectPlan,
+    isShowAddExercise,
+  ]);
 
   return (
     <Layout

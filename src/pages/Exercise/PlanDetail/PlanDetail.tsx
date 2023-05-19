@@ -22,6 +22,7 @@ import Layout from '../components/Layout';
 
 import useHeight from '~/hooks/utils/useHeight';
 import useUrlPlan from '~/hooks/exercise/useUrlPlan';
+import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
 import type { CompleteExerciseData } from '~/services/exercise';
 
@@ -85,8 +86,8 @@ const PlanDetail: React.FC = () => {
 
   /** Edit */
   const [isShowEditPlan, setShowEditPlan] = useState(false);
-  const [showEditName, setShowEditName] = useState(false);
-  const [showDeletePlan, setShowDeletePlan] = useState(false);
+  const [isShowEditName, setShowEditName] = useState(false);
+  const [isShowDeletePlan, setShowDeletePlan] = useState(false);
   const [editActions] = useState<ListItemType[]>([
     {
       title: t('edit-name'),
@@ -161,7 +162,6 @@ const PlanDetail: React.FC = () => {
 
   const handleReviewExerciseSetting = () => {
     setShowExerciseSetting(false);
-    // setShowExerciseDetail(true);
     if (selectedExercise) navigate(`${selectedExercise.id}`);
   };
 
@@ -231,9 +231,20 @@ const PlanDetail: React.FC = () => {
     setShowDeleteExercise(false);
   };
 
+  /** Disable background events */
+  useDisableBackgroundEvents([
+    isShowEditPlan,
+    isShowDeletePlan,
+    isShowEditName,
+    isShowExerciseSetting,
+    isShowExerciseDetail,
+    isShowEditExercise,
+    isShowDeleteExercise,
+  ]);
+
   return (
     <Layout
-      className={plan.exerciseList.length === 0 ? 'bg-primary' : 'bg-tertiary'}
+      className={`${plan.exerciseList.length === 0 ? 'bg-primary' : 'bg-tertiary'}`}
       header={
         <HCHeader
           ref={headerRef}
@@ -330,7 +341,7 @@ const PlanDetail: React.FC = () => {
 
       {/* Edit name */}
       <HCBottomSheet
-        show={showEditName}
+        show={isShowEditName}
         title={t('edit-name')}
         keyboard
         prefix
@@ -352,7 +363,7 @@ const PlanDetail: React.FC = () => {
 
       {/* Delete plan */}
       <HCModal
-        open={showDeletePlan}
+        open={isShowDeletePlan}
         type='warning'
         title={t('delete.title')}
         description={t('delete.description', { name: plan.name })}

@@ -13,6 +13,7 @@ import Layout from '../components/Layout';
 
 import useFilterExercise from '~/hooks/exercise/useFilterExercise';
 import useHeight from '~/hooks/utils/useHeight';
+import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
 import type { FilterType } from '~/pages/Exercise/interface';
 
@@ -124,9 +125,11 @@ const AddExercise: React.FC = () => {
 
   const handleClickJoinPlanPrevious = () => {
     setShowJoinPlan(false);
-    console.log('preview', selectedExercise);
     if (selectedExercise) navigate(`${selectedExercise.id}`);
   };
+
+  /** Disable background events */
+  useDisableBackgroundEvents([isShowExerciseFilter, isShowExerciseDetail, isShowJoinPlan]);
 
   return (
     <Layout
