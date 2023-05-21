@@ -20,7 +20,7 @@ export interface BottomSheetProps {
 }
 
 const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
   /**
@@ -96,7 +96,7 @@ const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
       } else if (props.keyboard || props.handle) {
         setTopStyle('200px');
       } else {
-        setTopStyle(`calc(100% - ${ref.current?.clientHeight}px)`);
+        setTopStyle(`calc(100% - ${contentRef.current?.clientHeight}px)`);
       }
       timer = setTimeout(() => {
         setShadowClass('drop-shadow-reversed');
@@ -130,14 +130,14 @@ const HCBottomSheet: React.FC<BottomSheetProps> = (props: BottomSheetProps) => {
       {props.backdrop && (
         <div
           className={`
-            ${backdropClass} ${backdropOpacityClass}
-            w-screen h-screen bg-backdrop fixed left-0 top-0 transition-opacity duration-800 z-20`}
-        ></div>
+          ${backdropClass} ${backdropOpacityClass}
+          w-screen h-screen bg-backdrop fixed left-0 top-0 transition-opacity duration-800 z-20`}
+        />
       )}
 
       {/* Main */}
       <div
-        ref={ref}
+        ref={contentRef}
         className={`
           ${shadowClass} ${bottomClass}
           w-full box-border rounded-t-3xl
