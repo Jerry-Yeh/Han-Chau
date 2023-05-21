@@ -23,6 +23,8 @@
     "@line/liff": "2.21.4",
     "@reduxjs/toolkit": "1.9.5",
     "@types/estree": "1.0.0",
+    "@xstate/inspect": "0.8.0",
+    "@xstate/react": "3.2.2",
     "antd": "5.1.4",
     "axios": "1.2.0",
     "classnames": "2.3.2",
@@ -46,7 +48,8 @@
     "redux-persist": "6.0.0",
     "upgrade": "^1.1.0",
     "url": "0.11.0",
-    "vite-plugin-svgr": "2.4.0"
+    "vite-plugin-svgr": "2.4.0",
+    "xstate": "4.37.2"
   },
   "devDependencies": {
     "@babel/core": "7.20.12",
