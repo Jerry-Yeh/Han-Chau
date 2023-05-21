@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import ExerciseService from '~/services/exercise';
 
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
 const usePlan = () => {
   const { planId } = useParams();

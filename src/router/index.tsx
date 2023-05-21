@@ -22,11 +22,11 @@ import Terms from '~/pages/Onboarding/components/Terms';
 import Results from '~/pages/Onboarding/components/Results';
 
 /** Plan */
-import Exercise from '~/pages/Exercise';
-import Plan from '~/pages/Exercise/Plan';
-import PlanDetail from '~/pages/Exercise/PlanDetail';
-import AddExercise from '~/pages/Exercise/AddExercise';
-import Exercises from '~/pages/Exercise/Exercises';
+import Exercise from '~/pages/WorkoutPlan';
+import Plan from '~/pages/WorkoutPlan/Plan';
+import PlanDetail from '~/pages/WorkoutPlan/PlanDetail';
+import AddExercise from '~/pages/WorkoutPlan/AddExercise';
+import Exercises from '~/pages/WorkoutPlan/Exercises';
 
 const router = createBrowserRouter([
   {

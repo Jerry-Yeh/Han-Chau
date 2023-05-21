@@ -18,7 +18,7 @@ import { getLanguage } from '~/store/features/language';
 import { exerciseList, Exercise } from '~/static/exercise/data';
 import { getPlanChallenge } from '~/services/formula';
 
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 import Api from './axios';
 
 export interface PlanExerciseData {

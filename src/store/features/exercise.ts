@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { MUSCLEGROUP, CHALLENGE } from '~/enums/exercise';
 
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
 import Abdominals from '~/assets/img/muscle-group/abdominals.png';
 import Back from '~/assets/img/muscle-group/back.png';

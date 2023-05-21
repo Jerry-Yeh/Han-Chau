@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAppSelector } from '~/store/hook';
 
 import { MODALITY, MUSCLEGROUP, MUSCLES, LEVEL } from '~/enums/exercise';
-import { FilterType } from '~/pages/Exercise/interface';
+import { FilterType } from '~/pages/WorkoutPlan/interface';
 import { exerciseList, Exercise } from '~/static/exercise/data';
 
 const useFilterExercise = (searchText: string, filter: FilterType): Exercise[] => {

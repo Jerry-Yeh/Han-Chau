@@ -15,7 +15,6 @@ const useScrollDirection = () => {
 
     const updagteScrollingDirection = () => {
       const currentPosition = window.pageYOffset;
-      // console.log('cur', currentPosition);
 
       if (scrollMoreThanThreshold(currentPosition)) {
         setDown(isScrollingDown(currentPosition));

@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import ExerciseService from '~/services/exercise';
 
-import type { WorkoutPlan } from '~/pages/Exercise/interface';
+import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
 const usePlanList = () => {
   const dispatch = useAppDispatch();
