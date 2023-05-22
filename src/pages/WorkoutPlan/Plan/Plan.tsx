@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 import { PlusIcon } from '@heroicons/react/20/solid';
 import { useNavigate } from 'react-router-dom';
+import { useMachine } from '@xstate/react';
 
 import HCSearchBar from '~/components/SearchBar';
 import HCPill, { PillItem, PillValue } from '~/components/Pill';
@@ -12,12 +13,13 @@ import ExerciseService from '~/services/exercise';
 import { WORKOUTPLANFILTER } from '~/enums/exercise';
 import HCFloatButton from '~/components/FloatButton';
 import PlanList from '~/pages/WorkoutPlan/components/PlanList';
-import MakePlan from '../components/MakePlan';
+import CreatePlan from '../components/CreatePlan';
 import Layout from '../components/Layout';
 import HCHeader, { HCHeaderRegion } from '~/components/Header';
 
 import usePlanList from '~/hooks/exercise/usePlanList';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
+import { machine } from '~/state/machine';
 
 import type { ListItemType } from '~/components/List';
 import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
@@ -28,6 +30,9 @@ const Plan: React.FC = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [_, send] = useMachine(machine, {
+    actions: {},
+  });
 
   const user = useAppSelector((state) => state.user.user);
   const [planList] = usePlanList();
@@ -70,11 +75,11 @@ const Plan: React.FC = () => {
     );
   }, [activePillKey, planList]);
 
-  /** Make plan */
-  const [isShowMakePlan, setShowMakePlan] = useState(false);
+  /** Create plan */
+  const [isShowCreatePlan, setShowCreatePlan] = useState(false);
 
-  const handleCloseMakePlan = () => {
-    setShowMakePlan(false);
+  const handleCloseCreatePlan = () => {
+    setShowCreatePlan(false);
     dispatch({
       type: 'exercise/setSelectedPlan',
       payload: {
@@ -84,7 +89,7 @@ const Plan: React.FC = () => {
     });
   };
 
-  const handleMakePlan = async () => {
+  const handleCreatePlan = async () => {
     if (user.id) {
       const { id: _id, ...rest } = ExerciseService.transPlanToRawData(selectedPlan);
       const id = await ExerciseService.addPlan({ ...rest, userId: user.id });
@@ -97,13 +102,15 @@ const Plan: React.FC = () => {
         },
       });
 
-      setShowMakePlan(false);
+      send('CREATE.PLAN');
+
+      setShowCreatePlan(false);
       navigate(`${id}`);
     }
   };
 
   /** Disable background events */
-  useDisableBackgroundEvents([isShowMakePlan]);
+  useDisableBackgroundEvents([isShowCreatePlan]);
 
   return (
     <Layout
@@ -137,7 +144,7 @@ const Plan: React.FC = () => {
           <div className='h-full flex flex-col items-center justify-center px-4'>
             <img src={EmptyFitnessPlan} alt='empty plan' className='mb-6' />
             <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-plan')}</h3>
-            <HCButton color='highlight' block={false} onClick={() => setShowMakePlan(true)}>
+            <HCButton color='highlight' block={false} onClick={() => setShowCreatePlan(true)}>
               {t('make-workout-plan-immediately')}
             </HCButton>
           </div>
@@ -162,7 +169,7 @@ const Plan: React.FC = () => {
                   </h3>
                 </div>
               )}
-              <HCFloatButton bottomClass='bottom-22' onClick={() => setShowMakePlan(true)}>
+              <HCFloatButton bottomClass='bottom-22' onClick={() => setShowCreatePlan(true)}>
                 <PlusIcon />
               </HCFloatButton>
             </div>
@@ -175,7 +182,11 @@ const Plan: React.FC = () => {
         </footer>
       }
     >
-      <MakePlan show={isShowMakePlan} onClose={handleCloseMakePlan} onConfirm={handleMakePlan} />
+      <CreatePlan
+        show={isShowCreatePlan}
+        onClose={handleCloseCreatePlan}
+        onConfirm={handleCreatePlan}
+      />
     </Layout>
   );
 };

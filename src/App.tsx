@@ -1,25 +1,23 @@
+import { Fragment, useContext, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
-import { useAppSelector } from '~/store/hook';
+// import { useAppSelector } from '~/store/hook';
+import { useActor, useSelector } from '@xstate/react';
 
 import HCLoading from '~/components/Loading';
 
+import { GlobalStateContext } from '~/state/provider';
+
 const App = () => {
-  const showLoading = useAppSelector((state) => state.loading.show);
+  // const showLoading = useAppSelector((state) => state.loading.show);
+  const globalServices = useContext(GlobalStateContext);
+  const [state] = useActor(globalServices.service);
+  // const isLoading = useSelector(globalServices.service, (state) => state.context.isLoading);
 
   return (
-    <ConfigProvider
-      autoInsertSpaceInButton={false}
-      theme={{
-        token: {
-          fontFamily: 'Inter, Noto Sans TC',
-        },
-        hashed: false,
-      }}
-    >
+    <Fragment>
       <Outlet />
-      <HCLoading show={showLoading} />
-    </ConfigProvider>
+      <HCLoading show={state.context.isLoading} />
+    </Fragment>
   );
 };
 
