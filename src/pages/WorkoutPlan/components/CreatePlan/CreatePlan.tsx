@@ -6,9 +6,9 @@ import HCBottomSheet from '~/components/BottomSheet';
 import HCInput, { InputChangeEventType } from '~/components/Input';
 import HCButton from '~/components/Button';
 
-import type { MakePlanProps } from '.';
+import type { CreatePlanProps } from '.';
 
-const MakePlan: React.FC<MakePlanProps> = ({ show, onClose, onConfirm }: MakePlanProps) => {
+const CreatePlan: React.FC<CreatePlanProps> = ({ show, onClose, onConfirm }: CreatePlanProps) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
   const dispatch = useAppDispatch();
 
@@ -38,4 +38,4 @@ const MakePlan: React.FC<MakePlanProps> = ({ show, onClose, onConfirm }: MakePla
   );
 };
 
-export default MakePlan;
+export default CreatePlan;
