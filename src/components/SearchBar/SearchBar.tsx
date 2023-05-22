@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useRef, useImperativeHandle, useEffect } from 'react';
+import React, { useState, ChangeEvent, useRef, useImperativeHandle } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import MagnifyingGlass from '~/assets/img/heroicons/mini/magnifying-glass';

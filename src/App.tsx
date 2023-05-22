@@ -1,7 +1,7 @@
-import { Fragment, useContext, useEffect } from 'react';
+import { Fragment, useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 // import { useAppSelector } from '~/store/hook';
-import { useActor, useSelector } from '@xstate/react';
+import { useActor } from '@xstate/react';
 
 import HCLoading from '~/components/Loading';
 

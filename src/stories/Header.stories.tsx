@@ -1,6 +1,6 @@
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 // import { useRef } from '@storybook/store';
-import { useRef, CSSProperties } from 'react';
+import { useRef } from 'react';
 
 import HCHeader, { HeaderProps, HCHeaderRegion, HCHeaderIconButton } from '~/components/Header';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';

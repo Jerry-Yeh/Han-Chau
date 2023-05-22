@@ -85,7 +85,7 @@ export default {
 
 type Story = StoryFn<typeof HCSearchBar>;
 
-export const Basic: Story = ({ prefixType, placeholder, filtering }: SearchBarProps) => {
+export const Basic: Story = ({ placeholder, filtering }: SearchBarProps) => {
   const [{ value }, updateArgs] = useArgs();
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +96,6 @@ export const Basic: Story = ({ prefixType, placeholder, filtering }: SearchBarPr
     <div className='p-4'>
       <HCSearchBar
         value={value}
-        prefixType={prefixType}
         placeholder={placeholder}
         filtering={filtering}
         onChange={onChangeHandler}

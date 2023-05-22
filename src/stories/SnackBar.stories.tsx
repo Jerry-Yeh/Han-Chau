@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Fragment, useRef } from 'react';
 
-import HCSnackBar, { HandleSnackBar, SnackBarProps } from '~/components/SnackBar';
+import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCButton from '~/components/Button';
 
 export default {

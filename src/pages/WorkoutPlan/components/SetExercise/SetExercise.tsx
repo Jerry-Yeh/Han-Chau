@@ -12,8 +12,6 @@ import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
 import UtilsService from '~/services/utils';
 
-import useUrlPlan from '~/hooks/exercise/useUrlPlan';
-
 import type { Exercise } from '~/static/exercise/data';
 import type { PlanExerciseData } from '~/services/exercise';
 
