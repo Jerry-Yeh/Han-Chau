@@ -16,6 +16,15 @@ package-lock.json
 Collections.drawio
 Language.drawio
 tsconfig.tsbuildinfo
+*.env
+
+# github
+.github
+
+# firebase
+.firebaserc
+.firebase
+firebase.json
 
 # Editor directories and files
 !.vscode/extensions.json
