@@ -4,8 +4,8 @@ import App from '~/App';
 
 /** Welcome */
 import Welcome from '~/pages/Welcome';
-import Loading from '~/pages/Welcome/components/Loading';
-import Done from '~/pages/Welcome/components/Done';
+// import Loading from '~/pages/Welcome/components/Loading';
+// import Done from '~/pages/Welcome/components/Done';
 
 /** Onboarding */
 import Onboarding from '~/pages/Onboarding';
@@ -34,14 +34,9 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: 'welcome',
+        path: '',
         element: <Welcome />,
-        children: [
-          { path: '*', element: <Navigate to='loading' replace /> },
-          { index: true, element: <Loading /> },
-          { path: 'loading', element: <Loading /> },
-          { path: 'done', element: <Done /> },
-        ],
+        children: [{ path: '*', element: <Navigate to='loading' replace /> }],
       },
       {
         path: 'onboarding',

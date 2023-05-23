@@ -49,17 +49,13 @@ const Done: React.FC<Props> = () => {
     }
   }, [location.state]);
 
-  /** Header */
-  const headerRef = useRef(null);
-  const headerHeight = useHeight(headerRef);
-
   return (
     <div className='bg-secondary h-screen flex flex-col relative'>
       <div
         className={`${!showActions ? 'opacity-100' : 'opacity-0'} transition-opacity duration-800`}
       >
-        <HCHeader ref={headerRef} size='l' title={<img src={logo} alt='logo' />} />
-        <div style={{ paddingTop: `${headerHeight}px` }}>
+        <HCHeader size='m' title={<img src={logo} alt='logo' />} className='bg-secondary' />
+        <div>
           <HCCarousel className='mb-auto'>
             {carouselWordingList.map((item, idx) => (
               <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>

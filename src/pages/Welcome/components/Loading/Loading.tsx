@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import logomark from '~/assets/img/logo-mark.svg';
@@ -8,10 +7,10 @@ import HCProgress from '~/components/Progress';
 
 interface Props {
   children?: React.ReactNode;
+  onDone: () => void;
 }
 
-const Loading: React.FC<Props> = () => {
-  const navigate = useNavigate();
+const Loading: React.FC<Props> = ({ onDone }) => {
   const { t } = useTranslation();
 
   const [showSlogan, setShowSlogan] = useState(false);
@@ -28,7 +27,8 @@ const Loading: React.FC<Props> = () => {
     }, 1600);
 
     const navigateDelayTimer = setTimeout(() => {
-      navigate('/welcome/done');
+      // navigate('/done');
+      onDone();
     }, 2400);
 
     return () => {
@@ -36,7 +36,7 @@ const Loading: React.FC<Props> = () => {
       clearTimeout(progressDelayTimer);
       clearTimeout(navigateDelayTimer);
     };
-  }, [navigate]);
+  }, [onDone]);
 
   return (
     <div className='bg-secondary h-screen pb-10 flex flex-col items-center justify-between'>
