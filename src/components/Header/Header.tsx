@@ -65,7 +65,7 @@ const HCHeader: ForwardRefRenderFunction<HTMLDivElement, HeaderProps> = (
       >
         {/* Tool bar */}
         {toolBar && (
-          <div className={`h-11 flex text-secondary bg-primary z-10`}>
+          <div className={`h-11 flex text-secondary z-10`}>
             <div className='flex-1 hover:cursor-pointer flex justify-start items-center pl-1'>
               {prefix}
             </div>
