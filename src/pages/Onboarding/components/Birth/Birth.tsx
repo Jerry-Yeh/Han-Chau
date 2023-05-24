@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 import { useAppDispatch, useAppSelector } from '~/store/hook';
@@ -11,10 +10,10 @@ import { setUser } from '~/store/features/user';
 
 interface Props {
   children?: React.ReactNode;
+  toNext: () => void;
 }
 
-const Birth: React.FC<Props> = () => {
-  const navigate = useNavigate();
+const Birth: React.FC<Props> = ({ toNext }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -22,10 +21,6 @@ const Birth: React.FC<Props> = () => {
 
   const onChangeHandler: DatePickerProps['onChange'] = (date) => {
     dispatch(setUser({ birth: dayjs(date).valueOf() }));
-  };
-
-  const toNext = () => {
-    navigate('/onboarding/amount');
   };
 
   return (

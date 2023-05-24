@@ -48,7 +48,7 @@ const Results: React.FC<Props> = () => {
         </section>
       </div>
       <div className='px-4 pt-4 pb-6'>
-        <HCButton color='highlight' onClick={() => navigate('/exercise')}>
+        <HCButton color='highlight' onClick={() => navigate('/workout-plan')}>
           {t('action')}
         </HCButton>
       </div>

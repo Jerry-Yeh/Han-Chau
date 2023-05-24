@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '~/store/hook';
 
@@ -10,10 +9,10 @@ import { setUser } from '~/store/features/user';
 
 interface Props {
   children?: React.ReactNode;
+  toNext: () => void;
 }
 
-const Target: React.FC<Props> = () => {
-  const navigate = useNavigate();
+const Target: React.FC<Props> = ({ toNext }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -22,11 +21,6 @@ const Target: React.FC<Props> = () => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setUser({ targetWeight: +e.target.value }));
   };
-
-  const toNext = () => {
-    navigate('/onboarding/name');
-  };
-
   return (
     <Layout heading={t('onboarding.target.heading')} subheading={t('onboarding.target.subheading')}>
       <HCInput

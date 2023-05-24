@@ -30,9 +30,7 @@ const Plan: React.FC = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise' });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [_, send] = useMachine(machine, {
-    actions: {},
-  });
+  const [_, send] = useMachine(machine);
 
   const user = useAppSelector((state) => state.user.user);
   const [planList] = usePlanList();

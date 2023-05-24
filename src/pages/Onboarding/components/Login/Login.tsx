@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '~/store/hook';
 
@@ -13,10 +13,10 @@ import facebook from '~/assets/img/facebook.svg';
 
 interface Props {
   children?: React.ReactNode;
+  toNext: () => void;
 }
 
-const Login: React.FC<Props> = () => {
-  const navigate = useNavigate();
+const Login: React.FC<Props> = ({ toNext }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'onboarding.login' });
   const dispatch = useAppDispatch();
 
@@ -30,13 +30,12 @@ const Login: React.FC<Props> = () => {
         const id = result.user.uid;
 
         dispatch(setUser({ id }));
-        localStorage.setItem('id', id);
         await AuthService.saveUser({ ...user, id });
-        navigate('/onboarding/results');
+        toNext();
       }
     };
     setUserId();
-  }, [user, setUser, navigate]);
+  }, [user, dispatch, toNext]);
 
   return (
     <Layout heading={t('heading')} subheading={t('subheading')}>
@@ -58,9 +57,7 @@ const Login: React.FC<Props> = () => {
       </HCButton>
       <h4 className='text-body-xs text-tertiary'>
         {t('content.front')}
-        <NavLink to='/onboarding/terms' className='text-highlight-light'>
-          {t('content.key')}
-        </NavLink>
+        <button className='text-highlight-light'>{t('content.key')}</button>
         {t('content.end')}
       </h4>
     </Layout>

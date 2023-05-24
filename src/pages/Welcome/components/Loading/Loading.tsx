@@ -27,7 +27,6 @@ const Loading: React.FC<Props> = ({ onDone }) => {
     }, 1600);
 
     const navigateDelayTimer = setTimeout(() => {
-      // navigate('/done');
       onDone();
     }, 2400);
 

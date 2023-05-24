@@ -19,12 +19,12 @@ const usePlanList = () => {
   useEffect(() => {
     const queryPlanList = async () => {
       if (user.id) {
-        // dispatch({ type: 'loading/setShow', payload: true });
+        dispatch({ type: 'loading/setShow', payload: true });
         const data = await ExerciseService.queryPlanList(user.id);
 
         setPlanList(data.map((item) => ExerciseService.transPlanFromRawData(item)));
         send('SUCCESS');
-        // dispatch({ type: 'loading/setShow', payload: false });
+        dispatch({ type: 'loading/setShow', payload: false });
       }
     };
 

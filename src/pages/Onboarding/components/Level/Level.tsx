@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '~/store/hook';
 
@@ -13,10 +12,10 @@ import type { RadioOptionType } from '~/components/Radio';
 
 interface Props {
   children?: React.ReactNode;
+  toNext: () => void;
 }
 
-const Level: React.FC<Props> = () => {
-  const navigate = useNavigate();
+const Level: React.FC<Props> = ({ toNext }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -39,10 +38,6 @@ const Level: React.FC<Props> = () => {
 
   const onChangeHandler = (newValue: RadioValueType) => {
     dispatch(setUser({ level: newValue as number }));
-  };
-
-  const toNext = () => {
-    navigate('/onboarding/target');
   };
 
   return (

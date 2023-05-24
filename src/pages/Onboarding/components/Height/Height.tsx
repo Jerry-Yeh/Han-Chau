@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '~/store/hook';
 
@@ -10,10 +9,10 @@ import { setUser } from '~/store/features/user';
 
 interface Props {
   children?: React.ReactNode;
+  toNext: () => void;
 }
 
-const Height: React.FC<Props> = () => {
-  const navigate = useNavigate();
+const Height: React.FC<Props> = ({ toNext }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -21,10 +20,6 @@ const Height: React.FC<Props> = () => {
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setUser({ height: e.target.value }));
-  };
-
-  const toNext = () => {
-    navigate('/onboarding/weight');
   };
 
   return (
