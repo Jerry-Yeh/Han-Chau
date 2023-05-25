@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -7,8 +7,6 @@ import HCCarousel from '~/components/Carousel';
 import HCButton from '~/components/Button';
 import HCBottomSheet from '~/components/BottomSheet';
 import HCDivider from '~/components/Divider';
-
-import useHeight from '~/hooks/utils/useHeight';
 
 import logo from '~/assets/img/logo.svg';
 import google from '~/assets/img/google.svg';
@@ -55,21 +53,19 @@ const Done: React.FC<Props> = () => {
         className={`${!showActions ? 'opacity-100' : 'opacity-0'} transition-opacity duration-800`}
       >
         <HCHeader size='m' title={<img src={logo} alt='logo' />} className='bg-secondary' />
-        <div>
-          <HCCarousel className='mb-auto'>
-            {carouselWordingList.map((item, idx) => (
-              <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
-                <img
-                  src={`/src/assets/img/welcome-page-${idx + 1}.svg`}
-                  alt='img'
-                  className='mb-12'
-                />
-                <h2 className='text-heading-m text-tertiary mb-2'>{item.heading}</h2>
-                <h3 className='text-body-m text-tertiary'>{item.subheading}</h3>
-              </div>
-            ))}
-          </HCCarousel>
-        </div>
+        <HCCarousel className='mb-auto'>
+          {carouselWordingList.map((item, idx) => (
+            <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
+              <img
+                src={`/src/assets/img/welcome-page-${idx + 1}.svg`}
+                alt='img'
+                className='mb-12'
+              />
+              <h2 className='text-heading-m text-tertiary mb-2'>{item.heading}</h2>
+              <h3 className='text-body-m text-tertiary'>{item.subheading}</h3>
+            </div>
+          ))}
+        </HCCarousel>
       </div>
       <div
         className={`${showActions ? 'opacity-100' : 'opacity-0'} duration-800
