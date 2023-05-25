@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '~/store/hook';
 
 import Height from '~/pages/Onboarding/components/Height';
 import Weight from '~/pages/Onboarding/components/Weight';
@@ -25,6 +26,14 @@ interface Props {
 const Onboarding: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const user = useAppSelector((state) => state.user.user);
+
+  useEffect(() => {
+    if (user.id) {
+      navigate('/workout-plan');
+    }
+  }, [user.id, navigate]);
 
   /** Path & Style */
   const [nextPath, setNextPath] = useState('');

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { useAppSelector } from '~/store/hook';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,11 +18,13 @@ const Welcome: React.FC<Props> = () => {
 
   const handleDone = () => {
     setLoading(false);
+  };
 
+  useEffect(() => {
     if (user.id) {
       navigate('/workout-plan');
     }
-  };
+  }, [user.id, navigate]);
 
   return <Fragment>{isLoading ? <Loading onDone={handleDone} /> : <Done />}</Fragment>;
 };
