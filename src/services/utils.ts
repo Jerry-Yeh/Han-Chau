@@ -22,4 +22,8 @@ export default class UtilsService {
   static getTimestamp = () => {
     return Date.now();
   };
+
+  static getImageUrl(name: string) {
+    return new URL(`../assets/img/${name}`, import.meta.url).href;
+  }
 }

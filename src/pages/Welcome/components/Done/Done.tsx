@@ -7,6 +7,7 @@ import HCCarousel from '~/components/Carousel';
 import HCButton from '~/components/Button';
 import HCBottomSheet from '~/components/BottomSheet';
 import HCDivider from '~/components/Divider';
+import UtilsService from '~/services/utils';
 
 import logo from '~/assets/img/logo.svg';
 import google from '~/assets/img/google.svg';
@@ -28,6 +29,7 @@ const Done: React.FC<Props> = () => {
   const { t } = useTranslation();
 
   const [showActions, setShowActions] = useState(false);
+  const [displayClass, setDisplayClass] = useState('hidden');
 
   const carouselWordingList: CarouselItem[] = t('welcome.landing.carousel', {
     returnObjects: true,
@@ -38,12 +40,13 @@ const Done: React.FC<Props> = () => {
   };
 
   const handleShowActions = () => {
-    setShowActions(true);
+    setDisplayClass('block');
+    setTimeout(() => setShowActions(true));
   };
 
   useEffect(() => {
     if (location.state && location.state.from === '/onboarding') {
-      setShowActions(true);
+      handleShowActions();
     }
   }, [location.state]);
 
@@ -57,7 +60,7 @@ const Done: React.FC<Props> = () => {
           {carouselWordingList.map((item, idx) => (
             <div className='pt-6 pb-18 flex flex-col items-center' key={idx}>
               <img
-                src={`/src/assets/img/welcome-page-${idx + 1}.svg`}
+                src={UtilsService.getImageUrl(`welcome-page-${idx + 1}.svg`)}
                 alt='img'
                 className='mb-12'
               />
@@ -67,15 +70,19 @@ const Done: React.FC<Props> = () => {
           ))}
         </HCCarousel>
       </div>
-      <div
-        className={`${showActions ? 'opacity-100' : 'opacity-0'} duration-800
+
+      <div className={displayClass}>
+        <div
+          className={`${showActions ? 'opacity-100' : 'opacity-0'} duration-800
           w-full absolute top-0 flex flex-col items-center pt-16`}
-      >
-        <div className='mb-4'>
-          <img src={logoV} alt='logo' />
+        >
+          <div className='mb-4'>
+            <img src={logoV} alt='logo' />
+          </div>
+          <span className='text-body-m text-placeholder'>{t('welcome.slogan')}</span>
         </div>
-        <span className='text-body-m text-placeholder'>{t('welcome.slogan')}</span>
       </div>
+
       <HCBottomSheet show={showActions} backdrop={false}>
         <div className='px-4 pt-9 pb-6'>
           <h3 className='text-heading-xs text-secondary mb-2'>{t('welcome.landing.heading')}</h3>
