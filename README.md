@@ -1,7 +1,7 @@
 ![image](https://github.com/Jerry-Yeh/Han-Chau/blob/main/Dribble%20show%206.png)
 
 ## Workout Plan
-<img src="https://github.com/Jerry-Yeh/Han-Chau/blob/main/workout%20plan.png"/>
+<img src="workout%20plan.png"/>
 <img src="https://github.com/Jerry-Yeh/Han-Chau/blob/main/workout%20plan_v2.png"/>
 
 <h1 align='center'>Vite + React + TypeScript + Eslint + Prettier Template ⚡</h1>
