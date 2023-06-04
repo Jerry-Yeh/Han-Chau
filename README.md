@@ -8,6 +8,8 @@
 ![react version](https://img.shields.io/badge/react-18.1.0-blue)
 ![vite version](https://img.shields.io/badge/vite-3.2.5-blue)
 
+:blush:
+
 ## **Techniques**
 
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
