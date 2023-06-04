@@ -71,7 +71,7 @@ Working on Hanchau.app has provided the team members with valuable learning expe
 
 Utilizing TailwindCSS as the CSS foundation and integrating certain components from Ant-Design, the component system demonstrates multiple situations in Storybook that you can discuss with designers more efficiently in the early stage of development. Storybook serves as both a component system and exhaustive documentation, allowing you to directly grasp the purpose and the complete usage of each parameter.
 
-You can experience the live demonstration of the component system through this [link](https://jerry-yeh.github.io/Han-Chau).
+You can experience the live demonstration of the component system through this <a href="https://jerry-yeh.github.io/Han-Chau" target="_blank">**link**</a>.
 
 ## **Instructions**
 
