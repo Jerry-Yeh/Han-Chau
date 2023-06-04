@@ -1,12 +1,8 @@
 ![image](READMEimg/Dribble%20show%206.png)
 
-<h1 align="center">
-  <img src="READMEimg/title.png" alt="Han Chau"/>
-</h1>
+![title](READMEimg/title_dark.png#gh-dark-mode-only)
 
-![title](READMEimg/title-dark.png#gh-dark-mode-only)
-
-![title](READMEimg/title.png#gh-light-mode-only)
+![title](READMEimg/title_light.png#gh-light-mode-only)
 
 ![node version](https://img.shields.io/badge/node->=16-blue)
 ![react version](https://img.shields.io/badge/react-18.1.0-blue)
