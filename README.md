@@ -67,6 +67,12 @@ While Hanchau.app is still under development, the team is actively seeking testi
 
 Working on Hanchau.app has provided the team members with valuable learning experiences. As developers, they have had the opportunity to collaborate closely with a designer, gaining insights into product development and enhancing communication skills. Being responsible for the entire development process has allowed them to expand their knowledge and decision-making abilities. As a designer, it is always tricky when it comes to side projects. It is one thing that a designer designs something beautiful, and it is another that a design gets actually developed. Having a dev partner definitely makes a side project so much more meaningful for a designer as product design is never only about creating the visuals but also the consideration of market fit, tech constraints, and how the problems are being solved.
 
+## **[Component System](https://jerry-yeh.github.io/Han-Chau)**
+
+Utilizing TailwindCSS as the CSS foundation and integrating certain components from Ant-Design, the component system demonstrates multiple situations in Storybook that you can discuss with designers more efficiently in the early stage of development. Storybook serves as both a component system and exhaustive documentation, allowing you to directly grasp the purpose and the complete usage of each parameter.
+
+You can experience the live demonstration of the component system through this [link](https://jerry-yeh.github.io/Han-Chau).
+
 ## **Instructions**
 
 1. Clone Project
