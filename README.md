@@ -1,6 +1,6 @@
 ![image](READMEimg/Dribble%20show%206.png)
 
-<h1 style="text-align: center">
+<h1 align="center">
   <img src="READMEimg/title.png" alt="Han Chau"/>
 </h1>
 
