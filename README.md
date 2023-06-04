@@ -1,4 +1,4 @@
-![image](READMEimg/Dribble%20show%206.png)
+![image](READMEimg/GitHub-Cover.png)
 
 ![title](READMEimg/title_dark.png?#gh-dark-mode-only)
 
@@ -8,9 +8,7 @@
 ![react version](https://img.shields.io/badge/react-18.1.0-blue)
 ![vite version](https://img.shields.io/badge/vite-3.2.5-blue)
 
-:blush:
-
-## **Techniques**
+## :computer: **Techniques**
 
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
 [![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
@@ -23,59 +21,57 @@
 [![Ant-Design](https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)](https://ant.design/)
 [![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)](https://firebase.google.com/)
 
-## **Product Introduction**
+## :clipboard: **Product Introduction**
 
 Hanchau.app is a fitness and nutrition tracking application designed to help users monitor their exercise routines and track their nutritional intake. The app aims to simplify the process of recording and analyzing workout data while providing a convenient way to monitor daily food consumption. Whether you are a fitness enthusiast, a beginner, or someone looking to maintain a healthy lifestyle, Hanchau.app offers a comprehensive solution to help you achieve your fitness and nutrition goals.
 
-## **Key Features**
+## :pushpin: **Key Features**
 
-- **Workout Plans**
+### **User Profiles**
 
-  Access pre-built or customizable workout plans tailored to your specific goals and fitness levels. Hanchau.app provides a variety of strength training workouts designed to help you build muscle, increase strength, or improve endurance.
+Create personalized profiles with information such as age, height, weight, fitness goals, and activity levels. This allows Hanchau.app to provide tailored recommendations and track progress based on individual needs.
 
-- **Activity Tracking**
+![Workout Plans](<READMEimg/User-Profiles-(Onboarding).png>)
 
-  Easily track any gym workout activities. Enter details such as sets, reps, weights, and more to keep a comprehensive record of your exercises.
+### **Workout Plans**
 
-- **Exercise Library**
+Access pre-built or customizable workout plans tailored to your specific goals and fitness levels. Hanchau.app provides a variety of strength training workouts designed to help you build muscle, increase strength, or improve endurance.
 
-  Explore a thorough library of exercises with detailed instructions, images, and videos. Whether you're new to a specific exercise or want to perfect your form, the exercise library provides valuable resources to guide you.
+![Workout Plans](READMEimg/Workout-Plan.png)
 
-- **User Profiles**
+### **Activity Tracking**
 
-  Create personalized profiles with information such as age, height, weight, fitness goals, and activity levels. This allows Hanchau.app to provide tailored recommendations and track progress based on individual needs.
+Easily track any gym workout activities. Enter details such as sets, reps, weights, and more to keep a comprehensive record of your exercises.
 
-- **Progress Tracking**
+![Workout Plans](READMEimg/Activity-Tracking.png)
 
-  Keep track of your progress over time with metrics such as weight, body measurements, and fitness achievements. Visualize your progress through graphs or charts to gain insights into your fitness journey and stay motivated.
+### **Exercise Library**
 
-- **Nutrition Tracking**
+Explore a thorough library of exercises with detailed instructions, images, and videos. Whether you're new to a specific exercise or want to perfect your form, the exercise library provides valuable resources to guide you.
 
-  Monitor your daily food intake, calories, macronutrients, and water consumption to ensure a balanced and healthy diet. Hanchau.app helps you track and analyze your nutritional habits, allowing you to make informed choices to support your fitness goals.
+![Workout Plans](READMEimg/Exercise-Library.png)
 
-- **Goals and Milestones**
+### **Progress Tracking**
 
-  Set goals and milestones to track your progress and celebrate achievements along the way. Hanchau.app provides a sense of accomplishment and motivation as you work towards your desired outcomes.
+Keep track of your progress over time with metrics such as weight, body measurements, and fitness achievements. Visualize your progress through graphs or charts to gain insights into your fitness journey and stay motivated.
 
-## **Challenges and Obstacles**
+### **Nutrition Tracking**
 
-During the development of Hanchau.app, several challenges and obstacles were encountered. One of the initial concerns was ensuring the accuracy of the content provided within the app. To address this, reliable open sources funded by governments were extensively researched to obtain verified exercise and nutrition data.
+Monitor your daily food intake, calories, macronutrients, and water consumption to ensure a balanced and healthy diet. Hanchau.app helps you track and analyze your nutritional habits, allowing you to make informed choices to support your fitness goals.
 
-Additionally, time management was a crucial aspect as the project was undertaken while the team members still had full-time jobs. To optimize development efforts, existing development tools such as Firebase were utilized, allowing the team to focus on implementing key features without compromising quality.
+### **Goals and Milestones**
 
-## **Results**
+Set goals and milestones to track your progress and celebrate achievements along the way. Hanchau.app provides a sense of accomplishment and motivation as you work towards your desired outcomes.
 
-While Hanchau.app is still under development, the team is actively seeking testing opportunities among friends and family to gather valuable user feedback. The app's focus on providing a seamless and efficient record-taking experience, without unnecessary features, sets it apart from other fitness and nutrition tracking applications. The team's commitment to privacy and data security is ensured through the utilization of Firebase's robust infrastructure, including authentication and Firestore database.
-
-Working on Hanchau.app has provided the team members with valuable learning experiences. As developers, they have had the opportunity to collaborate closely with a designer, gaining insights into product development and enhancing communication skills. Being responsible for the entire development process has allowed them to expand their knowledge and decision-making abilities. As a designer, it is always tricky when it comes to side projects. It is one thing that a designer designs something beautiful, and it is another that a design gets actually developed. Having a dev partner definitely makes a side project so much more meaningful for a designer as product design is never only about creating the visuals but also the consideration of market fit, tech constraints, and how the problems are being solved.
-
-## **Component System**
+## :bricks: **Component System**
 
 Utilizing TailwindCSS as the CSS foundation and integrating certain components from Ant-Design, the component system demonstrates multiple situations in Storybook that you can discuss with designers more efficiently in the early stage of development. Storybook serves as both a component system and exhaustive documentation, allowing you to directly grasp the purpose and the complete usage of each parameter.
 
-You can experience the live demonstration of the component system through this <a href="https://jerry-yeh.github.io/Han-Chau" target="_blank">**link**</a>.
+You can experience the live demonstration of the component system through this <a href="https://jerry-yeh.github.io/Han-Chau" target="_blank">**link➜**</a>.
 
-## **Instructions**
+![Component Library](READMEimg/Component-Library.png)
+
+## :key: **Instructions**
 
 1. Clone Project
 
@@ -153,7 +149,7 @@ You can experience the live demonstration of the component system through this <
    npm run lint
    ```
 
-## **Structure**
+## :building_construction: **Structure**
 
 ```
 /
@@ -205,7 +201,19 @@ You can experience the live demonstration of the component system through this <
 └─ README.md           # This file
 ```
 
-## **Collaborator**
+## :warning: **Challenges and Obstacles**
+
+During the development of Hanchau.app, several challenges and obstacles were encountered. One of the initial concerns was ensuring the accuracy of the content provided within the app. To address this, reliable open sources funded by governments were extensively researched to obtain verified exercise and nutrition data.
+
+Additionally, time management was a crucial aspect as the project was undertaken while the team members still had full-time jobs. To optimize development efforts, existing development tools such as Firebase were utilized, allowing the team to focus on implementing key features without compromising quality.
+
+## :sparkles: **Results**
+
+While Hanchau.app is still under development, the team is actively seeking testing opportunities among friends and family to gather valuable user feedback. The app's focus on providing a seamless and efficient record-taking experience, without unnecessary features, sets it apart from other fitness and nutrition tracking applications. The team's commitment to privacy and data security is ensured through the utilization of Firebase's robust infrastructure, including authentication and Firestore database.
+
+Working on Hanchau.app has provided the team members with valuable learning experiences. As developers, they have had the opportunity to collaborate closely with a designer, gaining insights into product development and enhancing communication skills. Being responsible for the entire development process has allowed them to expand their knowledge and decision-making abilities. As a designer, it is always tricky when it comes to side projects. It is one thing that a designer designs something beautiful, and it is another that a design gets actually developed. Having a dev partner definitely makes a side project so much more meaningful for a designer as product design is never only about creating the visuals but also the consideration of market fit, tech constraints, and how the problems are being solved.
+
+## :trollface: **Collaborator**
 
 Designer
 
