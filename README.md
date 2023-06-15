@@ -4,9 +4,11 @@
 
 ![title](READMEimg/title_light.png?#gh-light-mode-only)
 
-![node version](https://img.shields.io/badge/node->=16-blue)
-![react version](https://img.shields.io/badge/react-18.1.0-blue)
-![vite version](https://img.shields.io/badge/vite-3.2.5-blue)
+[![visit project](https://img.shields.io/static/v1?label=Visit%20project&message=0.1.0&color=green)](https://hanchau.app/)
+[![node version](https://img.shields.io/badge/node->=16-blue)](https://nodejs.org/en)
+[![react version](https://img.shields.io/badge/react-18.1.0-blue)](https://react.dev/)
+[![vite version](https://img.shields.io/badge/vite-3.2.5-blue)](https://vitejs.dev/)
+
 
 ## :computer: **Techniques**
 
@@ -32,7 +34,7 @@ Hanchau.app is a fitness and nutrition tracking application designed to help use
 Create personalized profiles with information such as age, height, weight, fitness goals, and activity levels. This allows Hanchau.app to provide tailored recommendations and track progress based on individual needs.
 
 ![Workout Plans](<READMEimg/User-Profiles-(Onboarding).png>)
-
+ 
 ### **Workout Plans**
 
 Access pre-built or customizable workout plans tailored to your specific goals and fitness levels. Hanchau.app provides a variety of strength training workouts designed to help you build muscle, increase strength, or improve endurance.
@@ -65,7 +67,7 @@ Set goals and milestones to track your progress and celebrate achievements along
 
 ## :bricks: **Component System**
 
-Utilizing TailwindCSS as the CSS foundation and integrating certain components from Ant-Design, the component system demonstrates multiple situations in Storybook that you can discuss with designers more efficiently in the early stage of development. Storybook serves as both a component system and exhaustive documentation, allowing you to directly grasp the purpose and the complete usage of each parameter.
+Utilizing TailwindCSS as the CSS foundation and integrating certain components from Ant-Design, the component system demonstrates multiple situations in Storybook that you can discuss with designers more efficiently in the early stage of development. Incorporated branding styles into existing component libraries and CSS guidelines to kickstart design system implementation, synchronizing the language between design and development. Storybook serves as both a component system and documentation, allowing you to directly grasp the purpose and the complete usage of each parameter.
 
 You can experience the live demonstration of the component system through this <a href="https://jerry-yeh.github.io/Han-Chau" target="_blank">**link➜**</a>.
 
@@ -215,6 +217,14 @@ Working on Hanchau.app has provided the team members with valuable learning expe
 
 ## :trollface: **Collaborator**
 
-Designer
+**Designer**
 
-Software Engineer
+[Henk Hsieh](https://www.linkedin.com/in/henkhsieh/)
+
+**Software Engineer**
+
+[Jerry Yeh](https://www.linkedin.com/in/jerryyyeh/)
+
+[Button Icon]: https://img.shields.io/badge/Visit%20project-14B8A6?style=for-the-badge&logoColor=white
+
+[![Button Icon]](https://hanchau.app/)
