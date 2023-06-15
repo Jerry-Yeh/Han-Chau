@@ -218,11 +218,11 @@ Working on Hanchau.app has provided the team members with valuable learning expe
 ## :trollface: **Collaborator**
 
 **Designer**
-
+<br/>
 [Henk Hsieh](https://www.linkedin.com/in/henkhsieh/)
 
 **Software Engineer**
-
+<br/>
 [Jerry Yeh](https://www.linkedin.com/in/jerryyyeh/)
 
 [Button Icon]: https://img.shields.io/badge/Visit%20project-14B8A6?style=for-the-badge&logoColor=white
