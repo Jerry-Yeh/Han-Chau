@@ -23,6 +23,7 @@ import Layout from '../components/Layout';
 import useHeight from '~/hooks/utils/useHeight';
 import useUrlPlan from '~/hooks/exercise/useUrlPlan';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
+import usePlanList from '~/hooks/exercise/usePlanList';
 
 import type { CompleteExerciseData } from '~/services/exercise';
 
@@ -40,6 +41,7 @@ const PlanDetail: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
 
   const [plan, updatePlan] = useUrlPlan();
+  const [_, updatePlanList] = usePlanList();
 
   useEffect(() => {
     if (!plan) {
@@ -229,6 +231,7 @@ const PlanDetail: React.FC = () => {
   const handleConfirmDeleteExercise = () => {
     updatePlan();
     setShowDeleteExercise(false);
+    updatePlanList();
   };
 
   /** Disable background events */
