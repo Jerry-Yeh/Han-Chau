@@ -5,7 +5,7 @@ import {
   signInWithRedirect,
   getRedirectResult,
 } from 'firebase/auth';
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
 
 import ApiService from './api';
 // import { parseJwt } from './utilities';
@@ -25,6 +25,7 @@ export default class AuthService {
     const googleAuthProvider = new GoogleAuthProvider();
     googleAuthProvider.setCustomParameters({ prmopt: 'select_account' });
     this.setSignInType(LOGIN.GOOGLE);
+    console.log('signInWithGoogle');
     signInWithRedirect(this.auth, googleAuthProvider);
   };
 
@@ -79,6 +80,7 @@ export default class AuthService {
     // const userRef = await addDoc(collection(db, 'users'), {});
     // }
     const result = await getRedirectResult(this.auth);
+    console.log('result', result);
 
     return result;
   };
@@ -93,4 +95,10 @@ export default class AuthService {
   static saveUser = async (user: User) => {
     await setDoc(doc(ApiService.db, 'users', user.id as string), user);
   };
+
+  static async queryUser(userId: string): Promise<User> {
+    const snapshot = await getDoc(doc(ApiService.db, 'users', userId));
+
+    return snapshot.data() as User;
+  }
 }
