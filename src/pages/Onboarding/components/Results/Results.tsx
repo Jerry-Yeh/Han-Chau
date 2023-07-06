@@ -9,6 +9,8 @@ import { getTDEE } from '~/services/formula';
 import HCDivider from '~/components/Divider';
 import HCButton from '~/components/Button';
 
+import OnboardingFinal from '~/assets/img/onboarding-final.svg';
+
 interface Props {
   children?: React.ReactNode;
 }
@@ -32,7 +34,7 @@ const Results: React.FC<Props> = () => {
             </span>
             <span className='text-body-bold-xs'>{t('section1.unit')}</span>
           </div>
-          <img src='/src/assets/img/onboarding-final.svg' alt='img' />
+          <img src={OnboardingFinal} alt='img' />
         </section>
         <section className='p-6'>
           <h4 className='text-heading-s mb-2'>{t('section2.heading')}</h4>
