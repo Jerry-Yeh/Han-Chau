@@ -25,7 +25,6 @@ export default class AuthService {
     const googleAuthProvider = new GoogleAuthProvider();
     googleAuthProvider.setCustomParameters({ prmopt: 'select_account' });
     this.setSignInType(LOGIN.GOOGLE);
-    console.log('signInWithGoogle');
     signInWithRedirect(this.auth, googleAuthProvider);
   };
 
@@ -75,12 +74,7 @@ export default class AuthService {
    */
 
   static redirectResult = async () => {
-    // if (result) {
-    // const user = result.user;
-    // const userRef = await addDoc(collection(db, 'users'), {});
-    // }
     const result = await getRedirectResult(this.auth);
-    console.log('result', result);
 
     return result;
   };

@@ -1,8 +1,9 @@
 import React, { useEffect, useState, Fragment, useCallback } from 'react';
+import { flushSync } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '~/store/hook';
+import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import Height from '~/pages/Onboarding/components/Height';
 import Weight from '~/pages/Onboarding/components/Weight';
@@ -16,6 +17,8 @@ import Login from '~/pages/Onboarding/components/Login';
 import Results from '~/pages/Onboarding/components/Results';
 import HCHeader, { HCHeaderRegion } from '~/components/Header';
 import HCProgress from '~/components/Progress';
+import AuthService from '~/services/auth';
+import { setUser } from '~/store/features/user';
 
 import { Stage } from '~/enums/onboarding';
 
@@ -26,14 +29,9 @@ interface Props {
 const Onboarding: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.user.user);
-
-  useEffect(() => {
-    if (user.id) {
-      navigate('/workout-plan');
-    }
-  }, [user.id, navigate]);
 
   /** Path & Style */
   const [nextPath, setNextPath] = useState('');
@@ -55,6 +53,12 @@ const Onboarding: React.FC<Props> = () => {
     const map = new Map(values.map((k, i) => [k, values[i + 1]]));
     setStage(map.get(stage) as Stage);
   }, [stage]);
+
+  useEffect(() => {
+    if (user.id && stage !== Stage.RESULTS) {
+      navigate('/workout-plan');
+    }
+  }, [user.id, navigate, stage]);
 
   const [renderComponent, setRenderComponent] = useState(<Height toNext={toNext} />);
 
@@ -96,7 +100,7 @@ const Onboarding: React.FC<Props> = () => {
         setProgressClass('w-8/9');
         break;
       case Stage.LOGIN:
-        setRenderComponent(<Login toNext={toNext} />);
+        setRenderComponent(<Login />);
         setProgressClass('w-full');
         break;
       case Stage.RESULTS:
@@ -107,6 +111,24 @@ const Onboarding: React.FC<Props> = () => {
         break;
     }
   }, [stage, toNext]);
+
+  /** Register and redirect */
+  const setUserId = useCallback(async () => {
+    const result = await AuthService.redirectResult();
+
+    if (result) {
+      const id = result.user.uid;
+
+      flushSync(() => setStage(Stage.RESULTS));
+
+      dispatch(setUser({ id }));
+      await AuthService.saveUser({ ...user, id });
+    }
+  }, [user, dispatch]);
+
+  useEffect(() => {
+    setUserId();
+  }, [setUserId]);
 
   return (
     <div className='bg-secondary h-full'>
