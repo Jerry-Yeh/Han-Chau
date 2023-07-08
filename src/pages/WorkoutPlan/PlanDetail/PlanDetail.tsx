@@ -47,7 +47,12 @@ const PlanDetail: React.FC = () => {
     if (!plan) {
       navigate(-1);
     }
-  }, [plan, navigate]);
+
+    dispatch({
+      type: 'exercise/setSelectedPlan',
+      payload: plan,
+    });
+  }, [plan, navigate, dispatch]);
 
   const handleClickPrevious = () => {
     dispatch({
@@ -146,6 +151,10 @@ const PlanDetail: React.FC = () => {
     if (plan.id) {
       ExerciseService.deletePlan(plan.id);
     }
+    dispatch({
+      type: 'exercise/resestSelectedPlan',
+      payload: user.id,
+    });
     setShowDeletePlan(false);
     navigate('/workout-plan');
   };
