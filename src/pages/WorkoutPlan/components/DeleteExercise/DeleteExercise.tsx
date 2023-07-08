@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector, useAppDispatch } from '~/store/hook';
 
@@ -20,7 +20,7 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const dispatch = useAppDispatch();
 
-  const [selectedPlan] = useUrlPlan();
+  const [plan, updatePlan] = useUrlPlan();
   const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleCancelDelete = () => {
@@ -28,16 +28,16 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
   };
 
   const handleConfirmDelete = () => {
-    const exerciseList = [...selectedPlan.exerciseList];
+    const exerciseList = [...plan.exerciseList];
     const index = exerciseList.findIndex((item) => item.id === exercise.id);
-    exerciseList.splice(index, 1)[0];
+    exerciseList.splice(index, 1);
 
-    ExerciseService.deleteExerciseInPlan(selectedPlan.id, exerciseList)
+    ExerciseService.deleteExerciseInPlan(plan.id, exerciseList)
       .then(() => {
         dispatch({
           type: 'exercise/setSelectedPlan',
           payload: {
-            ...selectedPlan,
+            ...plan,
             exerciseList,
             ...ExerciseService.calculatePlan(exerciseList),
           },
@@ -49,6 +49,9 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
             name: exercise[`name${capitalizeLanguage}`],
           }),
         });
+
+        updatePlan();
+        onConfirm();
       })
       .catch(() => {
         snackBarRef.current?.open({
@@ -58,8 +61,6 @@ const DeleteExercise: React.FC<DeleteExerciseProps> = ({
           }),
         });
       });
-
-    onConfirm();
   };
 
   return (
