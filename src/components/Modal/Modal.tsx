@@ -57,7 +57,7 @@ const HCModal: React.FC<ModalProps> = (props: ModalProps) => {
           <HCButton color='tertiary' onClick={props.onCancel}>
             {props.cancel}
           </HCButton>
-          <HCButton color='highlight' onClick={props.onConfirm}>
+          <HCButton color='primary' onClick={props.onConfirm}>
             {props.confirm}
           </HCButton>
         </div>

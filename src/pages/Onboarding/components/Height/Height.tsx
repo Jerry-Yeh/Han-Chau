@@ -32,7 +32,7 @@ const Height: React.FC<Props> = ({ toNext }) => {
         suffix='cm'
         onChange={onChangeHandler}
       />
-      <HCButton color='highlight' onClick={toNext} disabled={!user.height} next>
+      <HCButton color='primary' onClick={toNext} disabled={!user.height} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>

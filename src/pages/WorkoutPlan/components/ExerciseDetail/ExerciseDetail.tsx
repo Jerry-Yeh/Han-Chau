@@ -82,7 +82,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
       handle
       footer={
         onConfirm && (
-          <HCButton color='highlight' onClick={onConfirm}>
+          <HCButton color='primary' onClick={onConfirm}>
             {t('confirm')}
           </HCButton>
         )

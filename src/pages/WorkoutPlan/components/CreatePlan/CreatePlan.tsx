@@ -30,7 +30,7 @@ const CreatePlan: React.FC<CreatePlanProps> = ({ show, onClose, onConfirm }: Cre
           onChange={handleChangePlanName}
           className='mb-3'
         />
-        <HCButton color='highlight' disabled={!selectedPlan.name} onClick={onConfirm}>
+        <HCButton color='primary' disabled={!selectedPlan.name} onClick={onConfirm}>
           {t('make-workout-plan')}
         </HCButton>
       </div>

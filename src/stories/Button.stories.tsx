@@ -10,19 +10,7 @@ export default {
   argTypes: {
     color: {
       control: 'select',
-      options: [
-        'primary',
-        'secondary',
-        'tertiary',
-        'highlight',
-        'highlight-light',
-        'success',
-        'success-light',
-        'destructive',
-        'destructive-light',
-        'warning',
-        'warning-light',
-      ],
+      options: ['primary', 'secondary', 'tertiary', 'success', 'destructive'],
       description: 'Adjust background color.',
       table: {
         type: { summary: 'string' },
@@ -76,7 +64,7 @@ export const Basic: Story = {
 
 export const Next: Story = {
   args: {
-    color: 'highlight',
+    color: 'primary',
     disabled: false,
     next: true,
     children: (

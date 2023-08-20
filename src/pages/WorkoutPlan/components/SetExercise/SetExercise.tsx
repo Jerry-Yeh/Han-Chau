@@ -191,7 +191,7 @@ const SetExercise: React.FC<Props> = ({
         handle
         prefix={!!onPrevious}
         footer={
-          <HCButton color='highlight' disabled={isDisabled} onClick={handleConfirm}>
+          <HCButton color='primary' disabled={isDisabled} onClick={handleConfirm}>
             {t(`${type}.confirm`, { name: selectedPlan.name })}
           </HCButton>
         }

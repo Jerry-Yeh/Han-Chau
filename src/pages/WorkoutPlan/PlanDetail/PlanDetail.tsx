@@ -302,7 +302,7 @@ const PlanDetail: React.FC = () => {
                     <span className='mr-2 break-keep'>{t('add-exercise')}</span>
                     <PlusSmallIcon className='w-5 h-5' />
                   </HCButton>
-                  <HCButton color='highlight'>{t('start-fitness')}</HCButton>
+                  <HCButton color='primary'>{t('start-fitness')}</HCButton>
                 </div>
               </HCHeaderRegion>
             </Fragment>
@@ -323,7 +323,7 @@ const PlanDetail: React.FC = () => {
               <img src={LogoMark} alt='logoMark' className='w-13 mb-2' />
               <h3 className='text-heading-xs text-secondary mb-2'>{t('empty.title')}</h3>
               <p className='text-tertiary text-body-s mb-6'>{t('empty.subtitle')}</p>
-              <HCButton color='highlight' onClick={handleAddExercise}>
+              <HCButton color='primary' onClick={handleAddExercise}>
                 {t('add-exercise')}
               </HCButton>
             </div>
@@ -367,7 +367,7 @@ const PlanDetail: React.FC = () => {
             onChange={(e) => setNewName(e.target.value)}
             className='mb-3'
           />
-          <HCButton color='highlight' disabled={!plan.name} onClick={handleEditName}>
+          <HCButton color='primary' disabled={!plan.name} onClick={handleEditName}>
             {t('confirm-edit')}
           </HCButton>
         </div>

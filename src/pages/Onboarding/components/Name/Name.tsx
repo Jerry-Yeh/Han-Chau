@@ -30,7 +30,7 @@ const Name: React.FC<Props> = ({ toNext }) => {
         placeholder={t('your-name')}
         onChange={onChangeHandler}
       />
-      <HCButton color='highlight' onClick={toNext} disabled={!user.name} next>
+      <HCButton color='primary' onClick={toNext} disabled={!user.name} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>

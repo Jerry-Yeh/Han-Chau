@@ -30,7 +30,7 @@ const Birth: React.FC<Props> = ({ toNext }) => {
         className='mb-3'
         onChange={onChangeHandler}
       />
-      <HCButton color='highlight' onClick={toNext} disabled={!user.birth} next>
+      <HCButton color='primary' onClick={toNext} disabled={!user.birth} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>

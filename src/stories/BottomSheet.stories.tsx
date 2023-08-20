@@ -126,7 +126,7 @@ export const Basic: Story = ({ backdrop }: BottomSheetProps) => {
       <div className='px-4 pt-9'>
         <h3 className='text-heading-xs text-secondary mb-2'>歡迎來到 HANCHAU！</h3>
         <h4 className='text-body-xs text-tertiary mb-3'>跟著老師動次動次動</h4>
-        <HCButton color='highlight' className='mb-4'>
+        <HCButton color='primary' className='mb-4'>
           馬上開始
         </HCButton>
       </div>
@@ -264,7 +264,7 @@ export const Footer: Story = (args: BottomSheetProps) => {
       handle
       prefix={args.prefix}
       suffix={args.suffix}
-      footer={<HCButton color='highlight'>確認</HCButton>}
+      footer={<HCButton color='primary'>確認</HCButton>}
       onClose={handleClose}
     >
       <div className='p-4 h-screen bg-secondary flex flex-col justify-between items-center text-heading-xs'>

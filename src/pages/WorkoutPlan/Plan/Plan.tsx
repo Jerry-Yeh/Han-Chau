@@ -142,7 +142,7 @@ const Plan: React.FC = () => {
           <div className='h-full flex flex-col items-center justify-center px-4'>
             <img src={EmptyFitnessPlan} alt='empty plan' className='mb-6' />
             <h3 className='text-heading-m mb-6 px-15 text-center'>{t('empty-plan')}</h3>
-            <HCButton color='highlight' block={false} onClick={() => setShowCreatePlan(true)}>
+            <HCButton color='primary' block={false} onClick={() => setShowCreatePlan(true)}>
               {t('make-workout-plan-immediately')}
             </HCButton>
           </div>

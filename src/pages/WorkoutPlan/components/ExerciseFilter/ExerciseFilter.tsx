@@ -152,7 +152,7 @@ const ExerciseFilter: React.FC<ExerciseFilterProps> = ({
           <HCButton color='secondary' onClick={handleClear}>
             {t('filter.cancel')}
           </HCButton>
-          <HCButton color='highlight' onClick={handleConfirm}>
+          <HCButton color='primary' onClick={handleConfirm}>
             {t('filter.confirm')}
           </HCButton>
         </div>

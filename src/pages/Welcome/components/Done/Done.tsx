@@ -105,7 +105,7 @@ const Done: React.FC<Props> = () => {
         <div className='px-4 pt-9 pb-6'>
           <h3 className='text-heading-xs text-secondary mb-2'>{t('welcome.landing.heading')}</h3>
           <h4 className='text-body-xs text-tertiary mb-3'>{t('welcome.landing.subheading')}</h4>
-          <HCButton color='highlight' className='mb-4' onClick={handleToRegister}>
+          <HCButton color='primary' className='mb-4' onClick={handleToRegister}>
             {t('welcome.landing.register')}
           </HCButton>
           <HCDivider className='text-body-bold-s mb-4'>{t('welcome.landing.divider')}</HCDivider>
@@ -127,7 +127,7 @@ const Done: React.FC<Props> = () => {
         </div>
       </HCBottomSheet>
       <div className='pt-4 pb-6 px-4 mt-auto'>
-        <HCButton color='highlight' onClick={handleShowActions}>
+        <HCButton color='primary' onClick={handleShowActions}>
           {t('welcome.landing.start')}
         </HCButton>
       </div>

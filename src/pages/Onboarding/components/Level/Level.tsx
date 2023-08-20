@@ -47,7 +47,7 @@ const Level: React.FC<Props> = ({ toNext }) => {
           <HCRadio {...item} key={item.label} />
         ))}
       </HCRadioGroup>
-      <HCButton color='highlight' onClick={toNext} disabled={!user.level} next>
+      <HCButton color='primary' onClick={toNext} disabled={!user.level} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>

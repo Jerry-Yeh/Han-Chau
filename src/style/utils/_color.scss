@@ -5,7 +5,7 @@
     secondary: 'gray-600',
     tertiary: 'gray-500',
     placeholder: 'gray-400',
-    disabled: 'gray-300',
+    disabled: 'gray-400',
     onColor: 'white',
     highlight: 'teal-700',
     highlight-light: 'teal-500',
@@ -42,7 +42,7 @@
   $background-highlight-config: (
     hover: 'teal-600',
     pressed: 'teal-700',
-    disabled: 'gray-200',
+    disabled: 'gray-100',
     light: 'teal-50',
     light-hover: 'teal-100',
     light-pressed: 'teal-200',
@@ -84,7 +84,7 @@
   $background-destructive-config: (
     hover: 'rose-600',
     pressed: 'rose-700',
-    disabled: 'rose-300',
+    disabled: 'rose-50',
     light: 'rose-50',
     light-hover: 'rose-100',
     light-pressed: 'rose-200',

@@ -64,7 +64,7 @@ const Amount: React.FC<Props> = ({ toNext }) => {
           <HCRadio {...item} key={item.label} />
         ))}
       </HCRadioGroup>
-      <HCButton color='highlight' onClick={toNext} disabled={!user.amount} next>
+      <HCButton color='primary' onClick={toNext} disabled={!user.amount} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>

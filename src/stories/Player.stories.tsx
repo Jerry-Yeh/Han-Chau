@@ -47,7 +47,7 @@ export const Basic: Story = ({
   return (
     <div className='p-4'>
       <HCPlayer ref={ref} url={url} className='mb-2' />
-      <HCButton color='highlight' onClick={reRender}>
+      <HCButton color='primary' onClick={reRender}>
         Re-render
       </HCButton>
     </div>

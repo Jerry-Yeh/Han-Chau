@@ -29,7 +29,7 @@ const Gender: React.FC<Props> = ({ toNext }) => {
         <HCRadio label={t('male') as string} value={GENDER.MALE} />
         <HCRadio label={t('female') as string} value={GENDER.FEMALE} />
       </HCRadioGroup>
-      <HCButton color='highlight' onClick={toNext} disabled={!user.gender} next>
+      <HCButton color='primary' onClick={toNext} disabled={!user.gender} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>

@@ -31,7 +31,7 @@ const Target: React.FC<Props> = ({ toNext }) => {
         suffix='kg'
         onChange={onChangeHandler}
       />
-      <HCButton color='highlight' onClick={toNext} disabled={!user.targetWeight} next>
+      <HCButton color='primary' onClick={toNext} disabled={!user.targetWeight} next>
         <span>{t('next-step')}</span>
       </HCButton>
     </Layout>
