@@ -1,0 +1,41 @@
+$icon-size: 36px;
+$padding-size: 16px;
+$first-tail-size: calc($icon-size + $padding-size / 2);
+
+.step {
+  &__container {
+  }
+
+  &__icon {
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  &__tail {
+    &--before {
+      height: calc(#{$first-tail-size});
+      top: 0;
+    }
+
+    &--after {
+      top: calc(#{$first-tail-size});
+      height: calc(100% - (#{$first-tail-size}));
+    }
+  }
+
+  &__content {
+    &__title {
+      line-height: $icon-size + $padding-size * 2;
+    }
+
+    &__description {
+      // margin-top: -$padding-size;
+      padding-bottom: $padding-size;
+
+      &--titleless {
+        margin-top: 0;
+        padding-top: $padding-size;
+      }
+    }
+  }
+}

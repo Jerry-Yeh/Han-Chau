@@ -1,6 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
+import { useState } from 'react';
 
-import HCInput from '~/components/Input';
+import HCInput, { InputChangeEventType } from '~/components/Input';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 
 export default {
@@ -63,11 +64,14 @@ export default {
   },
 } as Meta<typeof HCInput>;
 
-type Story = StoryObj<typeof HCInput>;
+type Story = StoryFn<typeof HCInput>;
 
-export const Basic: Story = {
-  args: {
-    label: 'caption',
-    disabled: false,
-  },
+export const Basic: Story = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (e: InputChangeEventType) => {
+    setValue(e.target.value);
+  };
+
+  return <HCInput label='caption' value={value} onChange={handleChange} />;
 };

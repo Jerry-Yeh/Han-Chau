@@ -49,7 +49,8 @@ const HCInput: React.FC<Props> = (props: Props) => {
           ${btnClass}
           text-body-s
           h-12
-          rounded-lg`}
+          rounded-lg
+          text-tertiary`}
         onChange={props.onChange}
         onFocus={props.onFocus}
         onBlur={props.onBlur}
