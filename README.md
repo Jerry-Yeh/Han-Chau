@@ -9,7 +9,6 @@
 [![react version](https://img.shields.io/badge/react-18.1.0-blue)](https://react.dev/)
 [![vite version](https://img.shields.io/badge/vite-3.2.5-blue)](https://vitejs.dev/)
 
-
 ## :computer: **Techniques**
 
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
@@ -34,7 +33,7 @@ Hanchau.app is a fitness and nutrition tracking application designed to help use
 Create personalized profiles with information such as age, height, weight, fitness goals, and activity levels. This allows Hanchau.app to provide tailored recommendations and track progress based on individual needs.
 
 ![Workout Plans](<READMEimg/User-Profiles-(Onboarding).png>)
- 
+
 ### **Workout Plans**
 
 Access pre-built or customizable workout plans tailored to your specific goals and fitness levels. Hanchau.app provides a variety of strength training workouts designed to help you build muscle, increase strength, or improve endurance.
@@ -203,6 +202,16 @@ You can experience the live demonstration of the component system through this <
 └─ README.md           # This file
 ```
 
+## :memo: Commit Message
+
+- **feat:** Add/modify the features
+- **fix:** Bug fixes
+- **docs:** Documation
+- **style:** Style adjustments that do not effect functionality
+- **refactor:** Neither new features nor bug fixes
+- **test:** Add the tests
+- **chore:** Adjust the build programs or auxiliary tools
+
 ## :warning: **Challenges and Obstacles**
 
 During the development of Hanchau.app, several challenges and obstacles were encountered. One of the initial concerns was ensuring the accuracy of the content provided within the app. To address this, reliable open sources funded by governments were extensively researched to obtain verified exercise and nutrition data.
@@ -225,6 +234,6 @@ Working on Hanchau.app has provided the team members with valuable learning expe
 <br/>
 [Jerry Yeh](https://www.linkedin.com/in/jerryyyeh/)
 
-[Button Icon]: https://img.shields.io/badge/Visit%20project-14B8A6?style=for-the-badge&logoColor=white
+[button icon]: https://img.shields.io/badge/Visit%20project-14B8A6?style=for-the-badge&logoColor=white
 
 [![Button Icon]](https://hanchau.app/)
