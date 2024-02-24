@@ -59,6 +59,41 @@ module.exports = {
         md: '5px',
         xm: '6px',
       },
+      keyframes: {
+        fadeIn: {
+          '0%': {
+            opacity: 0,
+            transform: ' translate(-20px, 0)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translate(0px, 0px)',
+          },
+        },
+        fadeOut: {
+          '0%': {
+            opacity: 1,
+            transform: ' translate(0px, 0)',
+          },
+          '100%': {
+            opacity: 0,
+            transform: 'translate(-20px, 0px)',
+          },
+        },
+      },
+      animation: {
+        fadeIn: '0.5s fadeIn backwards',
+        fadeOut: '0.5s fadeOut backwards',
+      },
+      height: {
+        screen: '100dvh',
+      },
+      minHeight: {
+        screen: '100dvh',
+      },
+      rotate: {
+        270: '270deg',
+      },
     },
   },
   plugins: [
