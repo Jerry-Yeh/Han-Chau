@@ -22,7 +22,7 @@ const HCButton: React.FC<Props> = (props: Props) => {
         ? 'bg-highlight hover:bg-highlight-hover active:bg-highlight-pressed text-onColor'
         : 'bg-highlight-disabled text-disabled',
       secondary: !disabled
-        ? 'bg-primary hover:bg-hover active:bg-pressed text-secondary'
+        ? 'bg-tertiary hover:bg-hover active:bg-pressed text-secondary'
         : 'bg-disabled text-disabled',
       tertiary: !disabled
         ? 'bg-primary text-secondary hover:bg-hover hover:border-hover active:bg-pressed active:border-pressed  border border-secondary'
