@@ -68,18 +68,18 @@ export const Multiple: Story = () => {
 export const WortoutForm: Story = () => {
   const [{ dark }] = useArgs();
   const [reps, setReps] = useState('');
-  const [sets, setSets] = useState('');
+  const [weight, setWeight] = useState('');
   const handleChangeReps = (e: InputChangeEventType) => setReps(e.target.value);
-  const handleChangeSets = (e: InputChangeEventType) => setSets(e.target.value);
+  const handleChangeWeight = (e: InputChangeEventType) => setWeight(e.target.value);
   const items: StepItem[] = [
     {
       title: (
         <div className='flex pt-2 pr-4 pb-4 gap-x-2'>
           <HCInput value={reps} onChange={handleChangeReps} suffix='reps' />
-          <HCInput value={sets} onChange={handleChangeSets} suffix='kg' />
+          <HCInput value={weight} onChange={handleChangeWeight} suffix='kg' />
         </div>
       ),
-      description: `目前的加乘重量為 ${+reps * +sets} kg`,
+      description: `目前的加乘重量為 ${+reps * +weight} kg`,
     },
   ];
 

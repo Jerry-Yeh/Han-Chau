@@ -1,11 +1,11 @@
 import ExerciseList from './ExerciseList';
 
 import type { Exercise } from '~/static/exercise/data';
-import type { PlanExerciseData } from '~/services/exercise';
+import type { WorkoutPlanTemplateExercise } from '~/services/exercise';
 
 export interface ExerciseListProps {
   children?: React.ReactNode;
-  data: (Exercise | (PlanExerciseData & Exercise))[];
+  data: (Exercise | (WorkoutPlanTemplateExercise & Exercise))[];
   type?: 'add' | 'info';
   bleed?: boolean;
   title?: boolean;

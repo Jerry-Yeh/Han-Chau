@@ -20,45 +20,63 @@ import { getPlanChallenge } from '~/services/formula';
 
 import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
-export interface PlanExerciseData {
+export interface WorkoutPlanTemplateExercise {
   id: number;
   exerciseId: number;
   sets: number;
   reps: number;
 }
 
-export interface WorkoutPlanData {
+export interface WorkoutPlanTemplate {
   id?: string;
   userId: string;
   name: string;
-  exerciseList: PlanExerciseData[];
+  exerciseList: WorkoutPlanTemplateExercise[];
 }
 
-export type CompleteExerciseData = PlanExerciseData & Omit<Exercise, 'id'>;
+export type CompleteExercise = WorkoutPlanTemplateExercise & Omit<Exercise, 'id'>;
+
+export interface WorkoutRecordExerciseSetData {
+  reps: number;
+  weight: number;
+}
+
+export interface WorkoutRecordExerciseData {
+  id: number;
+  exerciseId: number;
+  sets: WorkoutRecordExerciseSetData[];
+}
+
+export interface WorkoutRecordData {
+  id?: string;
+  userId: string;
+  name: string;
+  exerciseList: WorkoutRecordExerciseData[];
+}
 
 export default class ExerciseService {
   // static async queryExerciseList() {
   //   return (await ApiService.query('exercise')) as Exercise[];
   // }
 
-  static async addPlan(workoutPlan: WorkoutPlanData): Promise<string> {
+  static async addPlan(workoutPlan: WorkoutPlanTemplate): Promise<string> {
     return await addDoc(collection(ApiService.db, 'workoutPlans'), workoutPlan).then((response) => {
       return response.id;
     });
   }
 
-  static async queryPlanList(userId: string): Promise<WorkoutPlanData[]> {
+  static async queryPlanList(userId: string): Promise<WorkoutPlanTemplate[]> {
     const snapshot = await getDocs(
       query(collection(ApiService.db, 'workoutPlans'), where('userId', '==', userId)),
     );
 
-    return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as WorkoutPlanData[];
+    return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as WorkoutPlanTemplate[];
   }
 
-  static async queryPlan(planId: string): Promise<WorkoutPlanData> {
+  static async queryPlan(planId: string): Promise<WorkoutPlanTemplate> {
     const snapshot = await getDoc(doc(ApiService.db, 'workoutPlans', planId));
 
-    return { id: planId, ...snapshot.data() } as WorkoutPlanData;
+    return { id: planId, ...snapshot.data() } as WorkoutPlanTemplate;
   }
 
   static async deletePlan(planId: string) {
@@ -69,20 +87,20 @@ export default class ExerciseService {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), { name: planName });
   }
 
-  static async addExerciseToPlan(planId: string, exerciseList: PlanExerciseData[]) {
+  static async addExerciseToPlan(planId: string, exerciseList: WorkoutPlanTemplateExercise[]) {
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
       exerciseList,
     });
   }
 
-  static async editExerciseInPlan(planId: string, exerciseList: PlanExerciseData[]) {
+  static async editExerciseInPlan(planId: string, exerciseList: WorkoutPlanTemplateExercise[]) {
     // Firestore can not edit specific data in an array.
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
       exerciseList,
     });
   }
 
-  static async deleteExerciseInPlan(planId: string, exerciseList: PlanExerciseData[]) {
+  static async deleteExerciseInPlan(planId: string, exerciseList: WorkoutPlanTemplateExercise[]) {
     // Firestore can not delete data of an array by index.
     return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
       exerciseList,
@@ -107,10 +125,10 @@ export default class ExerciseService {
     const state = store.getState();
     const language = getLanguage(state);
 
-    return muscleList.map((id) => muscles[id][language]).join('、');
+    return muscleList.map((id) => muscles[id][language]).join('/');
   }
 
-  static transExerciseFromRawData(data: PlanExerciseData): CompleteExerciseData {
+  static transExerciseFromRawData(data: WorkoutPlanTemplateExercise): CompleteExercise {
     const exerciseData = exerciseList.find(
       (exerciseData) => exerciseData.id === data.exerciseId,
     ) as Exercise;
@@ -118,7 +136,7 @@ export default class ExerciseService {
     return { ...exerciseData, ...data };
   }
 
-  static calculatePlan(exerciseList: CompleteExerciseData[]) {
+  static calculatePlan(exerciseList: CompleteExercise[]) {
     return {
       challenge: getPlanChallenge(exerciseList),
       upperLowerCoreList: exerciseList.reduce((acc: UPPERLOWERCORE[], cur) => {
@@ -136,7 +154,7 @@ export default class ExerciseService {
     };
   }
 
-  static transPlanFromRawData(data: WorkoutPlanData): WorkoutPlan {
+  static transPlanFromRawData(data: WorkoutPlanTemplate): WorkoutPlan {
     /**
      * Translating database data types to match UI requirements.
      *
@@ -155,13 +173,13 @@ export default class ExerciseService {
     };
   }
 
-  static transExerciseToRawData(exercise: CompleteExerciseData): PlanExerciseData {
+  static transExerciseToRawData(exercise: CompleteExercise): WorkoutPlanTemplateExercise {
     const { id, exerciseId, sets, reps } = exercise;
 
     return { id, exerciseId, sets, reps };
   }
 
-  static transPlanToRawData(data: WorkoutPlan): WorkoutPlanData {
+  static transPlanToRawData(data: WorkoutPlan): WorkoutPlanTemplate {
     // To improve the clarity of database data.
     const { id, userId, name, exerciseList } = data;
 
@@ -178,4 +196,6 @@ export default class ExerciseService {
       import.meta.env.VITE_STORAGE_BUCKET
     }/exercise/${imageName}`;
   }
+
+  // static trans
 }

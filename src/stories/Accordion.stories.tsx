@@ -63,3 +63,12 @@ export const Extra: Story = (args: AccordionProps) => {
     </HCAccordion>
   );
 };
+
+export const Multiple: Story = (args: AccordionProps) => {
+  return (
+    <div>
+      <HCAccordion label={args.label}>{args.children}</HCAccordion>
+      <HCAccordion label={args.label}>{args.children}</HCAccordion>
+    </div>
+  );
+};

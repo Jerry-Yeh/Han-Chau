@@ -8,7 +8,7 @@ import { level } from '~/static/exercise/dataType';
 
 import type { ExerciseListProps } from '.';
 import type { Exercise } from '~/static/exercise/data';
-import type { PlanExerciseData } from '~/services/exercise';
+import type { WorkoutPlanTemplateExercise } from '~/services/exercise';
 
 import LogoMark from '~/assets/img/logo-mark.svg';
 
@@ -25,17 +25,18 @@ const ExerciseList: React.FC<ExerciseListProps> = ({
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const language = useAppSelector((state) => state.language.language);
 
-  const handleItemDescription = (item: Exercise | (Exercise & PlanExerciseData)): string => {
+  const handleItemDescription = (
+    item: Exercise | (Exercise & WorkoutPlanTemplateExercise),
+  ): string => {
     switch (type) {
       case 'add':
         return `${level[item.level][language]} · ${ExerciseService.getExerciseMusclesText(
           item.muscles,
         )}`;
       case 'info':
-        return `${(item as Exercise & PlanExerciseData).sets} sets·${
-          (item as Exercise & PlanExerciseData).reps
+        return `${(item as Exercise & WorkoutPlanTemplateExercise).sets} sets·${
+          (item as Exercise & WorkoutPlanTemplateExercise).reps
         } reps`;
-        break;
       default:
         return '';
     }

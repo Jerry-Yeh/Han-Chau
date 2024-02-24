@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import HCBottomSheet from '~/components/BottomSheet';
 import { HCList } from '~/components/List';
-import ExerciseService, { CompleteExerciseData } from '~/services/exercise';
+import ExerciseService, { CompleteExercise } from '~/services/exercise';
 import { level, muscles } from '~/static/exercise/dataType';
 import HCInput, { InputChangeEventType } from '~/components/Input';
 import HCButton from '~/components/Button';
@@ -13,12 +13,12 @@ import HCModal from '~/components/Modal';
 import UtilsService from '~/services/utils';
 
 import type { Exercise } from '~/static/exercise/data';
-import type { PlanExerciseData } from '~/services/exercise';
+import type { WorkoutPlanTemplateExercise } from '~/services/exercise';
 
 interface Props {
   children?: React.ReactNode;
   show: boolean;
-  exercise: Exercise | CompleteExerciseData;
+  exercise: Exercise | CompleteExercise;
   type: 'add' | 'edit';
   sets?: number;
   reps?: number;
@@ -42,7 +42,9 @@ const SetExercise: React.FC<Props> = ({
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
   const dispatch = useAppDispatch();
 
-  const [tempValue, setTempValue] = useState<Omit<PlanExerciseData, 'id' | 'exerciseId'>>({
+  const [tempValue, setTempValue] = useState<
+    Omit<WorkoutPlanTemplateExercise, 'id' | 'exerciseId'>
+  >({
     sets: sets ? sets : 0,
     reps: reps ? reps : 0,
   });

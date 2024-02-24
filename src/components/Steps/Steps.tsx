@@ -9,7 +9,7 @@ const Steps: React.FC<StepsProps> = ({ className, items, dark = false }: StepsPr
     <div className={`${className} ${dark ? 'bg-black' : ''} step`}>
       {items.map((item, index) => (
         <div key={index} className='step__container flex'>
-          <div className='p-4 relative flex justify-center'>
+          <div className='py-4 mr-4 relative flex justify-center'>
             <div className='step__icon relative z-10 w-9 h-9 flex justify-center items-center rounded-full bg-secondary text-secondary'>
               {index < 9 ? 0 : ''}
               {index + 1}

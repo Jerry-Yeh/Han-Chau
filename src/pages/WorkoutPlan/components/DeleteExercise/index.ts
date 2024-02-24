@@ -1,11 +1,11 @@
 import DeleteExercise from './DeleteExercise';
 
-import type { CompleteExerciseData } from '~/services/exercise';
+import type { CompleteExercise } from '~/services/exercise';
 
 export interface DeleteExerciseProps {
   children?: React.ReactNode;
   show: boolean;
-  exercise: CompleteExerciseData;
+  exercise: CompleteExercise;
   onClose: () => void;
   onConfirm: () => void;
 }

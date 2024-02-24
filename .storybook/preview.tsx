@@ -1,5 +1,4 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { ConfigProvider } from 'antd';
 import { I18nextProvider } from 'react-i18next';
 import React, { Suspense } from 'react';
 

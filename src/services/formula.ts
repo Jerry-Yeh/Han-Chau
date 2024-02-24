@@ -5,7 +5,7 @@ import { LEVEL, CHALLENGE, CHALLENGEWEIGHTED, CHALLENGERANGE } from '~/enums/exe
 
 import type { User } from '~/pages/Onboarding/interface';
 import type { Exercise } from '~/static/exercise/data';
-import type { PlanExerciseData } from './exercise';
+import type { WorkoutPlanTemplateExercise } from './exercise';
 
 const getAge = (birth: number): number => {
   return dayjs(Date.now()).diff(birth, 'year');
@@ -46,7 +46,9 @@ export const getTDEE = (user: User): number | null => {
   }
 };
 
-export const getPlanChallenge = (exerciseList: Array<Exercise & PlanExerciseData>): CHALLENGE => {
+export const getPlanChallenge = (
+  exerciseList: Array<Exercise & WorkoutPlanTemplateExercise>,
+): CHALLENGE => {
   if (exerciseList.length === 0) return 0;
 
   let beginner = 0;

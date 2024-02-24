@@ -25,7 +25,7 @@ import useUrlPlan from '~/hooks/exercise/useUrlPlan';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 import usePlanList from '~/hooks/exercise/usePlanList';
 
-import type { CompleteExerciseData } from '~/services/exercise';
+import type { CompleteExercise } from '~/services/exercise';
 
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
@@ -67,7 +67,7 @@ const PlanDetail: React.FC = () => {
   const headerHeight = useHeight(headerRef);
 
   /** Content */
-  const [selectedExercise, setSelectedExercise] = useState<CompleteExerciseData>();
+  const [selectedExercise, setSelectedExercise] = useState<CompleteExercise>();
 
   const handleSelectedExercise = (id: number) => {
     const data = plan.exerciseList.find((exercise) => exercise.id === id);

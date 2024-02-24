@@ -19,14 +19,14 @@ import HCLogo from '~/components/Logo';
 
 import usePlanList from '~/hooks/exercise/usePlanList';
 
-import type { CompleteExerciseData } from '~/services/exercise';
+import type { CompleteExercise } from '~/services/exercise';
 
 import { ReactComponent as ChevronDown } from '~/assets/img/heroicons/mini/chevron-down.svg';
 
 interface Props {
   children?: React.ReactNode;
   show: boolean;
-  exercise?: Exercise | CompleteExerciseData;
+  exercise?: Exercise | CompleteExercise;
   onClose: () => void;
   onConfirm?: () => void;
   onEdit?: () => void;
@@ -56,7 +56,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
           plan.exerciseList.some(
             (item) =>
               item.exerciseId === exercise.id ||
-              item.exerciseId === (exercise as CompleteExerciseData).exerciseId,
+              item.exerciseId === (exercise as CompleteExercise).exerciseId,
           ),
         ),
       );
@@ -147,13 +147,13 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
                   <div className='grow flex flex-col items-center border-r border-secondary'>
                     <span className='text-body-s text-tertiary mb-1'>{t('sets')}</span>
                     <span className='text-body-bold-m text-secondary'>
-                      {(exercise as CompleteExerciseData).sets} sets
+                      {(exercise as CompleteExercise).sets} sets
                     </span>
                   </div>
                   <div className='grow flex flex-col items-center'>
                     <span className='text-body-s text-tertiary mb-1'>{t('reps')}</span>
                     <span className='text-body-bold-m text-secondary'>
-                      {(exercise as CompleteExerciseData).reps} reps
+                      {(exercise as CompleteExercise).reps} reps
                     </span>
                   </div>
                 </div>

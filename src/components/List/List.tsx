@@ -11,12 +11,18 @@ interface Props {
 }
 
 const List: React.FC<Props> = (props: Props) => {
-  const renderInnerItem = (item: ListItemType, index: number) => {
-    return (
-      <Fragment key={item.key ? item.key : `list-item-${index}`}>
-        {props.renderItem ? props.renderItem(item, index) : <HCListItem {...item} />}
-      </Fragment>
-    );
+  const renderInnerItem = (item: ListItemType, index: number): React.ReactNode => {
+    let node: React.ReactNode;
+
+    if (props.renderItem) {
+      node = props.renderItem(item, index);
+    } else if (props.children) {
+      node = props.children;
+    } else {
+      node = <HCListItem {...item} />;
+    }
+
+    return <Fragment key={item.key ? item.key : `list-item-${index}`}>{node}</Fragment>;
   };
 
   return (
@@ -26,6 +32,7 @@ const List: React.FC<Props> = (props: Props) => {
       }`}
     >
       {props.data.map(renderInnerItem)}
+      {props.children}
     </div>
   );
 };

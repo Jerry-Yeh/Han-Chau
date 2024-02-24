@@ -1,12 +1,14 @@
 import { Meta, StoryObj, StoryFn } from '@storybook/react';
 // import { useRef } from '@storybook/store';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import HCHeader, { HeaderProps, HCHeaderRegion, HCHeaderIconButton } from '~/components/Header';
 import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 import ArrowLeft from '~/assets/img/heroicons/mini/arrow-left';
 import Plus from '~/assets/img/heroicons/mini/plus';
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
+import HCProgress from '~/components/Progress';
+import HCTabs, { ActiveKey } from '~/components/Tabs';
 
 import useHeight from '~/hooks/utils/useHeight';
 
@@ -204,6 +206,57 @@ export const FullyExpanded: StoryFn<typeof HCHeader> = ({ title, toolBar }: Head
       >
         <HCHeaderRegion behavior='fully' className='bg-primary'>
           <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
+        </HCHeaderRegion>
+      </HCHeader>
+      <LongContent />
+    </div>
+  );
+};
+
+export const WorkoutRecord: StoryFn<typeof HCHeader> = ({ toolBar }: HeaderProps) => {
+  const title = '開始紀錄你的訓練！';
+  const tabItems = [
+    {
+      label: '4',
+      sublabel: '未完成',
+      value: 'INCOMPLETED',
+    },
+    {
+      label: '0',
+      sublabel: '完成',
+      value: 'COMPLETED',
+    },
+  ];
+  const [activeKey, updateActiveKey] = useState<ActiveKey>(tabItems[0].value);
+  const changeTabHandler = (value: ActiveKey) => {
+    updateActiveKey(value);
+  };
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerHeight = useHeight(headerRef);
+
+  return (
+    <div className='relative flex flex-col'>
+      <HCHeader
+        ref={headerRef}
+        title={title}
+        prefix={<PrefixIcon />}
+        suffix={<SuffixTwoIcons />}
+        behavior='fully'
+        toolBar={toolBar}
+      >
+        <HCHeaderRegion behavior='fully' className='bg-primary'>
+          <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
+        </HCHeaderRegion>
+        <HCHeaderRegion behavior='fully' className='bg-primary px-4'>
+          <div className='text-body-s text-tertiary mb-4'>國際練胸日· 2023/05/17 15:28</div>
+          <HCProgress rateClass='w-1/4' className='mb-2' />
+          <div className='text-body-xs'>
+            <span className='text-placeholder'>完成度 </span>
+            <span className='text-tertiary'></span>
+          </div>
+        </HCHeaderRegion>
+        <HCHeaderRegion behavior='fixed' top={headerHeight} className='bg-primary'>
+          <HCTabs items={tabItems} activeKey={activeKey} onChange={changeTabHandler} />
         </HCHeaderRegion>
       </HCHeader>
       <LongContent />

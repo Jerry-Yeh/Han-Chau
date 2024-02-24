@@ -1,4 +1,4 @@
-import Tabs from './Tabs';
+import HCTabs from './Tabs';
 
 export type ActiveKey = string | number;
 
@@ -21,4 +21,4 @@ export interface TabsProps {
   onChange: (value: ActiveKey) => void;
 }
 
-export default Tabs;
+export default HCTabs;

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import Accordion from './Accordion';
+import HCAccordion from './Accordion';
 
 export interface AccordionProps {
   children?: ReactNode;
@@ -8,4 +8,4 @@ export interface AccordionProps {
   extra?: ReactNode;
 }
 
-export default Accordion;
+export default HCAccordion;
