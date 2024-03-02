@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface LoadingState {
-  show: boolean;
+  isShow: boolean;
 }
 
 const initialState: LoadingState = {
-  show: false,
+  isShow: false,
 };
 
 const loadingSlice = createSlice({
@@ -13,7 +13,7 @@ const loadingSlice = createSlice({
   initialState,
   reducers: {
     setShow(state, action) {
-      state.show = action.payload;
+      state.isShow = action.payload;
     },
   },
 });

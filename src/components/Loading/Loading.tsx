@@ -7,21 +7,21 @@ import { ReactComponent as SpinM } from '~/assets/img/spin-m.svg';
 
 interface Props {
   children?: React.ReactNode;
-  show: boolean;
+  isShow: boolean;
 }
 
 const SpinIcon: React.FC = (props: any) => {
   return <SpinM {...props} />;
 };
 
-const Loading: React.FC<Props> = ({ show }: Props) => {
+const Loading: React.FC<Props> = ({ isShow }: Props) => {
   const [displayClass, setDisplayClass] = useState('hidden');
   const [opacityClsas, setOpacityClass] = useState('opacity-0');
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
 
-    if (show) {
+    if (isShow) {
       setDisplayClass('block');
     } else {
       setOpacityClass('opacity-0');
@@ -34,7 +34,7 @@ const Loading: React.FC<Props> = ({ show }: Props) => {
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [show]);
+  }, [isShow]);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;

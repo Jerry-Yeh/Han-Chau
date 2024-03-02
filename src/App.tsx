@@ -8,7 +8,7 @@ import HCLoading from '~/components/Loading';
 // import { GlobalStateContext } from '~/state/provider';
 
 const App = () => {
-  const showLoading = useAppSelector((state) => state.loading.show);
+  const isShowLoading = useAppSelector((state) => state.loading.isShow);
   // const globalServices = useContext(GlobalStateContext);
   // const [state] = useActor(globalServices.service);
   // const isLoading = useSelector(globalServices.service, (state) => state.context.isLoading);
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Fragment>
       <Outlet />
-      <HCLoading show={showLoading} />
+      <HCLoading isShow={isShowLoading} />
     </Fragment>
   );
 };
