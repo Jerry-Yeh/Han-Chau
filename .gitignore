@@ -17,6 +17,7 @@ Collections.drawio
 Language.drawio
 tsconfig.tsbuildinfo
 *.env
+scripts
 
 # github
 .github

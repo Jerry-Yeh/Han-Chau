@@ -15,8 +15,8 @@
     "tsc": "tsc",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "storybook:deploy": "npm run storybook:build && touch storybook-static/.nojekyll && gh-pages -d storybook-static -t true",
     "deploy": "tsc && vite build && firebase deploy",
+    "deploy:storybook": "bash scripts/deployStorybook.sh",
     "chromatic": "chromatic"
   },
   "dependencies": {
