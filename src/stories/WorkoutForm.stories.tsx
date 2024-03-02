@@ -22,12 +22,12 @@ export const Basic: Story = () => {
       sets: 4,
       reps: 8,
     },
-    // {
-    //   id: 1692522598612,
-    //   exerciseId: 229,
-    //   sets: 4,
-    //   reps: 8,
-    // },
+    {
+      id: 1692522598612,
+      exerciseId: 229,
+      sets: 4,
+      reps: 8,
+    },
   ];
 
   return <HCWorkoutForm data={mockData}></HCWorkoutForm>;

@@ -15,9 +15,9 @@ const Layout: React.FC<LayoutProps> = ({
       {header}
       <main className={`${className} overflow-y-scroll grow`} style={style}>
         {content}
+        {children}
       </main>
       {footer}
-      {children}
     </div>
   );
 };

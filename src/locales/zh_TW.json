@@ -257,6 +257,10 @@
     },
     "select-plan": {
       "title": "選擇訓練計劃"
+    },
+    "record": {
+      "title": "開始訓練",
+      "expanded-title": "開始紀錄你的訓練"
     }
   }
 }

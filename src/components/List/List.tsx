@@ -31,8 +31,7 @@ const List: React.FC<Props> = (props: Props) => {
         !props.bleed && props.data.length > 0 ? 'p-4 gap-y-4' : ''
       }`}
     >
-      {props.data.map(renderInnerItem)}
-      {props.children}
+      {props.children ? props.children : props.data.map(renderInnerItem)}
     </div>
   );
 };

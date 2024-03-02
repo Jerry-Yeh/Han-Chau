@@ -164,6 +164,11 @@ const PlanDetail: React.FC = () => {
     navigate('exercises');
   };
 
+  /** Add Record */
+  const handleAddRecord = () => {
+    navigate('record');
+  };
+
   /** Exercise settings */
   const [isShowExerciseSetting, setShowExerciseSetting] = useState(false);
 
@@ -302,7 +307,9 @@ const PlanDetail: React.FC = () => {
                     <span className='mr-2 break-keep'>{t('add-exercise')}</span>
                     <PlusSmallIcon className='w-5 h-5' />
                   </HCButton>
-                  <HCButton color='primary'>{t('start-fitness')}</HCButton>
+                  <HCButton color='primary' onClick={handleAddRecord}>
+                    {t('start-fitness')}
+                  </HCButton>
                 </div>
               </HCHeaderRegion>
             </Fragment>

@@ -7,7 +7,7 @@ export interface LayoutProps {
   className?: string;
   style?: CSSProperties;
   header?: ReactNode;
-  content: ReactNode;
+  content?: ReactNode;
   footer?: ReactNode;
 }
 
