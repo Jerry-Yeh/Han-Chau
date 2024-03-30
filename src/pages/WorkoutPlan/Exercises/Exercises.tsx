@@ -177,14 +177,13 @@ const Exercises: React.FC = () => {
           </HCHeaderRegion>
         </HCHeader>
       }
-      content={
-        <ExerciseList
-          data={result}
-          onClick={handleClickExercise}
-          onControl={handleControlExercise}
-        />
-      }
     >
+      <ExerciseList
+        data={result}
+        onClick={handleClickExercise}
+        onControl={handleControlExercise}
+      />
+
       <ExerciseFilter
         show={isShowExerciseFilter}
         onClose={handleCloseFilter}

@@ -112,7 +112,7 @@ const Plan: React.FC = () => {
 
   return (
     <Layout
-      className='bg-tertiary'
+      contentClassName='bg-tertiary'
       header={
         <HCHeader toolBar={false}>
           <HCHeaderRegion behavior='expanded'>
@@ -137,7 +137,13 @@ const Plan: React.FC = () => {
           </HCHeaderRegion>
         </HCHeader>
       }
-      content={
+      footer={
+        <footer className='sticky left-0 bottom-0 w-full z-10'>
+          <HCTabBar />
+        </footer>
+      }
+    >
+      {
         planList.length === 0 ? (
           <div className='h-full flex flex-col items-center justify-center px-4'>
             <img src={EmptyFitnessPlan} alt='empty plan' className='mb-6' />
@@ -174,12 +180,7 @@ const Plan: React.FC = () => {
           </Fragment>
         )
       }
-      footer={
-        <footer className='sticky left-0 bottom-0 w-full z-10'>
-          <HCTabBar />
-        </footer>
-      }
-    >
+
       <CreatePlan
         show={isShowCreatePlan}
         onClose={handleCloseCreatePlan}
