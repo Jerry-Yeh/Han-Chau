@@ -9,7 +9,7 @@ import ExerciseFilter from '../components/ExerciseFilter';
 import Layout from '../components/Layout';
 import ExerciseDetail from '../components/ExerciseDetail';
 import SelectPlan from '../components/SelectPlan';
-import SetExercise from '../components/SetExercise';
+import SetExercise, { SET_EXERCISE_ACTION } from '../components/SetExercise';
 
 import useFilterExercise from '~/hooks/exercise/useFilterExercise';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
@@ -210,7 +210,7 @@ const Exercises: React.FC = () => {
         <SetExercise
           show={isShowAddExercise}
           exercise={selectedExercise}
-          type='add'
+          action={SET_EXERCISE_ACTION.ADD}
           onClose={handleCloseAddExercise}
           onPrevious={handleClickJoinPlanPrevious}
           onConfirm={handleConfirmJoinPlan}

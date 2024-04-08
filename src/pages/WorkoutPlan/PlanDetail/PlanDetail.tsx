@@ -15,10 +15,11 @@ import HCModal from '~/components/Modal';
 import HCRate from '~/components/Rate';
 import ExerciseSetting from '../components/ExerciseSetting';
 import ExerciseDetail from '../components/ExerciseDetail';
-import SetExercise from '../components/SetExercise';
+import SetExercise, { SET_EXERCISE_ACTION } from '../components/SetExercise';
 import DeleteExercise from '../components/DeleteExercise';
 import ExerciseList from '../components/ExerciseList';
 import Layout from '../components/Layout';
+import AddExercise from '../AddExercise';
 
 import useHeight from '~/hooks/utils/useHeight';
 import useUrlPlan from '~/hooks/exercise/useUrlPlan';
@@ -160,8 +161,20 @@ const PlanDetail: React.FC = () => {
   };
 
   /** Add Exercise */
+  const [isShowAddExercise, setShowAddExercise] = useState(false);
+
   const handleAddExercise = () => {
-    navigate('exercises');
+    // navigate('exercises');
+    setShowAddExercise(true);
+  };
+
+  const handleCloseAddExercise = () => {
+    setShowAddExercise(false);
+  };
+
+  /** Add Record */
+  const handleAddRecord = () => {
+    navigate('record');
   };
 
   /** Exercise settings */
@@ -302,7 +315,9 @@ const PlanDetail: React.FC = () => {
                     <span className='mr-2 break-keep'>{t('add-exercise')}</span>
                     <PlusSmallIcon className='w-5 h-5' />
                   </HCButton>
-                  <HCButton color='primary'>{t('start-fitness')}</HCButton>
+                  <HCButton color='primary' onClick={handleAddRecord}>
+                    {t('start-fitness')}
+                  </HCButton>
                 </div>
               </HCHeaderRegion>
             </Fragment>
@@ -316,32 +331,32 @@ const PlanDetail: React.FC = () => {
           )}
         </HCHeader>
       }
-      content={
-        plan.exerciseList.length === 0 ? (
-          <div className='px-4 pt-3'>
-            <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
-              <img src={LogoMark} alt='logoMark' className='w-13 mb-2' />
-              <h3 className='text-heading-xs text-secondary mb-2'>{t('empty.title')}</h3>
-              <p className='text-tertiary text-body-s mb-6'>{t('empty.subtitle')}</p>
-              <HCButton color='primary' onClick={handleAddExercise}>
-                {t('add-exercise')}
-              </HCButton>
-            </div>
-          </div>
-        ) : (
-          <Fragment>
-            <ExerciseList
-              data={plan.exerciseList}
-              type='info'
-              bleed={false}
-              title={false}
-              onClick={handleClickExercise}
-              onControl={handleControlExercise}
-            />
-          </Fragment>
-        )
-      }
     >
+      {/* Content */}
+      {plan.exerciseList.length === 0 ? (
+        <div className='px-4 pt-3'>
+          <div className='px-4 py-6 flex flex-col items-center border border-secondary rounded-2xl'>
+            <img src={LogoMark} alt='logoMark' className='w-13 mb-2' />
+            <h3 className='text-heading-xs text-secondary mb-2'>{t('empty.title')}</h3>
+            <p className='text-tertiary text-body-s mb-6'>{t('empty.subtitle')}</p>
+            <HCButton color='primary' onClick={handleAddExercise}>
+              {t('add-exercise')}
+            </HCButton>
+          </div>
+        </div>
+      ) : (
+        <Fragment>
+          <ExerciseList
+            data={plan.exerciseList}
+            type='info'
+            bleed={false}
+            title={false}
+            onClick={handleClickExercise}
+            onControl={handleControlExercise}
+          />
+        </Fragment>
+      )}
+
       {/* Edit plan */}
       <HCBottomSheet
         show={isShowEditPlan}
@@ -408,7 +423,7 @@ const PlanDetail: React.FC = () => {
         <SetExercise
           show={isShowEditExercise}
           exercise={selectedExercise}
-          type='edit'
+          action={SET_EXERCISE_ACTION.EDIT}
           sets={selectedExercise.sets}
           reps={selectedExercise.reps}
           onClose={handleCloseEditExercise}
@@ -426,6 +441,9 @@ const PlanDetail: React.FC = () => {
           onConfirm={handleConfirmDeleteExercise}
         />
       )}
+
+      {/* Add Exercise */}
+      <AddExercise isShow={isShowAddExercise} onClose={handleCloseAddExercise} />
     </Layout>
   );
 };

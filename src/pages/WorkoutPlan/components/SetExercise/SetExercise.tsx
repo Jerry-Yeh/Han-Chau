@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '~/store/hook';
 
 import HCBottomSheet from '~/components/BottomSheet';
 import { HCList } from '~/components/List';
-import ExerciseService, { CompleteExercise } from '~/services/exercise';
+import ExerciseService from '~/services/exercise';
 import { level, muscles } from '~/static/exercise/dataType';
 import HCInput, { InputChangeEventType } from '~/components/Input';
 import HCButton from '~/components/Button';
@@ -12,31 +12,19 @@ import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
 import UtilsService from '~/services/utils';
 
-import type { Exercise } from '~/static/exercise/data';
+import { SetExerciseProps, SET_EXERCISE_ACTION } from '.';
 import type { WorkoutPlanTemplateExercise } from '~/services/exercise';
 
-interface Props {
-  children?: React.ReactNode;
-  show: boolean;
-  exercise: Exercise | CompleteExercise;
-  type: 'add' | 'edit';
-  sets?: number;
-  reps?: number;
-  onClose: () => void;
-  onConfirm: () => void;
-  onPrevious?: () => void;
-}
-
-const SetExercise: React.FC<Props> = ({
+const SetExercise: React.FC<SetExerciseProps> = ({
   show,
   exercise,
-  type,
+  action,
   sets,
   reps,
   onClose,
   onConfirm,
   onPrevious,
-}: Props) => {
+}: SetExerciseProps) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.setting' });
   const language = useAppSelector((state) => state.language.language);
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
@@ -78,12 +66,12 @@ const SetExercise: React.FC<Props> = ({
   useEffect(() => {
     setModalContext((prev) => ({
       ...prev,
-      title: t(`${type}.modal.title`),
-      description: t(`${type}.modal.description`),
-      cancel: t(`${type}.modal.cancel`),
-      confirm: t(`${type}.modal.confirm`),
+      title: t(`${action}.modal.title`),
+      description: t(`${action}.modal.description`),
+      cancel: t(`${action}.modal.cancel`),
+      confirm: t(`${action}.modal.confirm`),
     }));
-  }, [type, t]);
+  }, [action, t]);
 
   useEffect(() => {
     if (!show) {
@@ -102,8 +90,8 @@ const SetExercise: React.FC<Props> = ({
         data,
       ]);
 
-      switch (type) {
-        case 'add':
+      switch (action) {
+        case SET_EXERCISE_ACTION.ADD:
           ExerciseService.addExerciseToPlan(selectedPlan.id, rawExerciseList)
             .then(() => {
               const newExerciseList = selectedPlan.exerciseList.concat([
@@ -131,7 +119,7 @@ const SetExercise: React.FC<Props> = ({
               });
             });
           break;
-        case 'edit':
+        case SET_EXERCISE_ACTION.EDIT:
           if (changed) {
             const exerciseList = selectedPlan.exerciseList.map((item) =>
               ExerciseService.transExerciseToRawData(item),
@@ -189,12 +177,12 @@ const SetExercise: React.FC<Props> = ({
     <Fragment>
       <HCBottomSheet
         show={show}
-        title={t(`${type}.title`)}
+        title={t(`${action}.title`)}
         handle
         prefix={!!onPrevious}
         footer={
           <HCButton color='primary' disabled={isDisabled} onClick={handleConfirm}>
-            {t(`${type}.confirm`, { name: selectedPlan.name })}
+            {t(`${action}.confirm`, { name: selectedPlan.name })}
           </HCButton>
         }
         onClose={handleClose}

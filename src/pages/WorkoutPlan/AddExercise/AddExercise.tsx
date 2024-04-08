@@ -6,7 +6,7 @@ import HCHeader, { HCHeaderIconButton, HCHeaderRegion } from '~/components/Heade
 import HCSearchBar, { SearchEventType } from '~/components/SearchBar';
 import { Exercise } from '~/static/exercise/data';
 import ExerciseDetail from '../components/ExerciseDetail';
-import SetExercise from '../components/SetExercise';
+import SetExercise, { SET_EXERCISE_ACTION } from '../components/SetExercise';
 import FilterExercise from '../components/ExerciseFilter';
 import ExerciseList from '../components/ExerciseList';
 import Layout from '../components/Layout';
@@ -15,11 +15,12 @@ import useFilterExercise from '~/hooks/exercise/useFilterExercise';
 import useHeight from '~/hooks/utils/useHeight';
 import useDisableBackgroundEvents from '~/hooks/utils/useDisableBackgroundEvent';
 
+import type { AddExerciseProps } from '.';
 import type { FilterType } from '~/pages/WorkoutPlan/interface';
 
 import XMark from '~/assets/img/heroicons/mini/x-mark';
 
-const AddExercise: React.FC = () => {
+const AddExercise: React.FC<AddExerciseProps> = (props: AddExerciseProps) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.add' });
   const navigate = useNavigate();
   const { planId, exerciseId } = useParams();
@@ -35,7 +36,8 @@ const AddExercise: React.FC = () => {
   };
 
   const handleClose = () => {
-    navigate(`/workout-plan/${planId}`);
+    // navigate(`/workout-plan/${planId}`);
+    props.onClose();
   };
 
   const handlerShowFilter = () => {
@@ -112,13 +114,12 @@ const AddExercise: React.FC = () => {
   /** Join plan */
   const [isShowJoinPlan, setShowJoinPlan] = useState(false);
 
-  const handleCloseJoinPlan = () => {
+  const handleCloseJoin = () => {
     setShowJoinPlan(false);
     navigate(`/workout-plan/${planId}/exercises`);
-    // navigate(`.`);
   };
 
-  const handleConfirmJoinPlan = () => {
+  const handleConfirmJoin = () => {
     setShowJoinPlan(false);
     navigate(`/workout-plan/${planId}/exercises`);
   };
@@ -133,6 +134,7 @@ const AddExercise: React.FC = () => {
 
   return (
     <Layout
+      className={`${props.isShow ? '' : 'hidden'} w-screen h-screen absolute left-0 top-0 z-20`}
       header={
         <HCHeader
           ref={headerRef}
@@ -160,14 +162,13 @@ const AddExercise: React.FC = () => {
           </HCHeaderRegion>
         </HCHeader>
       }
-      content={
-        <ExerciseList
-          data={result}
-          onClick={handleClickExercise}
-          onControl={handleControlExercise}
-        />
-      }
     >
+      <ExerciseList
+        data={result}
+        onClick={handleClickExercise}
+        onControl={handleControlExercise}
+      />
+
       <FilterExercise
         show={isShowExerciseFilter}
         onClose={handleCloseFilter}
@@ -187,9 +188,9 @@ const AddExercise: React.FC = () => {
         <SetExercise
           show={isShowJoinPlan}
           exercise={selectedExercise}
-          type='add'
-          onClose={handleCloseJoinPlan}
-          onConfirm={handleConfirmJoinPlan}
+          action={SET_EXERCISE_ACTION.ADD}
+          onClose={handleCloseJoin}
+          onConfirm={handleConfirmJoin}
           onPrevious={handleClickJoinPlanPrevious}
         />
       )}
