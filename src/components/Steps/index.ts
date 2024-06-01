@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import Steps from './Steps';
 
 export interface StepItem {
+  id: string;
   title: ReactNode | string;
   description: ReactNode | string;
 }
