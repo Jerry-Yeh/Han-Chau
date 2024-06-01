@@ -12,6 +12,7 @@ export interface HeaderProps {
   className?: string;
   prefix?: ReactNode;
   title?: ReactNode;
+  expandedTitle?: ReactNode;
   suffix?: ReactNode;
   size?: HeaderSize;
   toolBar?: boolean;

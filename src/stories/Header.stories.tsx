@@ -214,7 +214,8 @@ export const FullyExpanded: StoryFn<typeof HCHeader> = ({ title, toolBar }: Head
 };
 
 export const WorkoutRecord: StoryFn<typeof HCHeader> = ({ toolBar }: HeaderProps) => {
-  const title = '開始紀錄你的訓練！';
+  const title = '開始健身';
+  const expandedTitle = '開始紀錄你的訓練！';
   const tabItems = [
     {
       label: '4',
@@ -245,7 +246,7 @@ export const WorkoutRecord: StoryFn<typeof HCHeader> = ({ toolBar }: HeaderProps
         toolBar={toolBar}
       >
         <HCHeaderRegion behavior='fully' className='bg-primary'>
-          <div className='text-heading-m text-primary pl-4 pb-3'>{title}</div>
+          <div className='text-heading-m text-primary pl-4 pb-3'>{expandedTitle}</div>
         </HCHeaderRegion>
         <HCHeaderRegion behavior='fully' className='bg-primary px-4'>
           <div className='text-body-s text-tertiary mb-4'>國際練胸日· 2023/05/17 15:28</div>
