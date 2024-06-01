@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import HCButton from '~/components/Button';
 import google from '~/assets/img/google.svg';
+import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
 
 export default {
   title: 'Components/Button',
@@ -82,3 +83,12 @@ export const Prefix: Story = {
     children: <span>繼續以 Google 登入</span>,
   },
 };
+
+export const Icon: Story = {
+  args: {
+    block: false,
+    color: 'secondary',
+    prefix: <EllipsisVertical />,
+  }
+};
+
