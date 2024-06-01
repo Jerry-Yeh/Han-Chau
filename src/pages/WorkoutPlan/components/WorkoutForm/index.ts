@@ -1,15 +1,21 @@
 import WorkoutForm from './WorkoutForm';
 
-import type { WorkoutPlanTemplateExercise, WorkoutRecordExerciseData } from '~/services/exercise';
+import type { WorkoutRecordExerciseData } from '~/services/exercise';
 import type { Exercise } from '~/static/exercise/data';
 
-export type { WorkoutPlanTemplateExercise } from '~/services/exercise';
+export type { WorkoutRecordExerciseData, WorkoutRecordExerciseSetData } from '~/services/exercise';
 
 export interface WorkoutFormProps {
   children?: React.ReactNode;
-  data: WorkoutPlanTemplateExercise[];
+  className?: string;
+  data: WorkoutFormExercise[];
+  setData: (data: WorkoutFormExercise[]) => void;
 }
 
-export type WorkoutFormExercise = WorkoutRecordExerciseData & Omit<Exercise, 'id'>;
+export interface WorkoutFormExercise extends WorkoutRecordExerciseData, Omit<Exercise, 'id'> {
+  img: React.ReactNode;
+  title: string;
+  description: string;
+};
 
 export default WorkoutForm;
