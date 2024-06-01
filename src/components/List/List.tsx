@@ -1,17 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 import { ListItemType, HCListItem } from '.';
 
 interface Props {
   children?: React.ReactNode;
   className?: string;
-  data: ListItemType[];
+  data: any[];
   bleed?: boolean;
-  renderItem?: (item: ListItemType, index: number) => React.ReactNode;
+  renderItem?: (item: any, index: number) => React.ReactNode;
 }
 
 const List: React.FC<Props> = (props: Props) => {
-  const renderInnerItem = (item: ListItemType, index: number): React.ReactNode => {
+  const renderInnerItem = (item: any, index: number): React.ReactNode => {
     let node: React.ReactNode;
 
     if (props.renderItem) {
@@ -27,12 +27,10 @@ const List: React.FC<Props> = (props: Props) => {
 
   return (
     <div
-      className={`flex flex-col ${props.className} ${
-        !props.bleed && props.data.length > 0 ? 'p-4 gap-y-4' : ''
-      }`}
+      className={`flex flex-col ${props.className} ${!props.bleed && props.data.length > 0 ? 'p-4 gap-y-4' : ''
+        }`}
     >
-      {props.data.map(renderInnerItem)}
-      {props.children}
+      {props.children ? props.children : props.data.map(renderInnerItem)}
     </div>
   );
 };
