@@ -206,7 +206,7 @@ You can experience the live demonstration of the component system through this <
 
 - **feat:** Add/modify the features
 - **fix:** Bug fixes
-- **docs:** Documation
+- **docs:** Documentation
 - **style:** Style adjustments that do not effect functionality
 - **refactor:** Neither new features nor bug fixes
 - **test:** Add the tests
