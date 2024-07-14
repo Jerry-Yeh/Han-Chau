@@ -1,19 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import HCProgress from '~/components/Progress';
-// import AntdDecorator from '../../.storybook/decorators/AntdDecorator';
 
 export default {
   title: 'Components/Progress',
   component: HCProgress,
-  // decorators: [AntdDecorator],
-  // parameters: { docs: { source: { type: 'dynamic', excludeDecorators: true } } },
   argTypes: {
-    rateClass: {
+    percentage: {
       control: 'text',
-      description: 'Set progress rate by Tailwind CSS class.',
+      description: 'Set progress rate from 0 to 100.',
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'number' },
       },
     },
   },
@@ -25,12 +22,12 @@ export const Basic: Story = {};
 
 export const InProgress: Story = {
   args: {
-    rateClass: 'w-1/9',
+    percentage: 25,
   },
 };
 
 export const Full: Story = {
   args: {
-    rateClass: 'w-full',
+    percentage: 100,
   },
 };

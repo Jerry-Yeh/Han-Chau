@@ -23,130 +23,130 @@ import { setUser } from '~/store/features/user';
 import { Stage } from '~/enums/onboarding';
 
 interface Props {
-  children?: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const Onboarding: React.FC<Props> = () => {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-  const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const { t } = useTranslation();
+    const dispatch = useAppDispatch();
 
-  const user = useAppSelector((state) => state.user.user);
+    const user = useAppSelector((state) => state.user.user);
 
-  /** Path & Style */
-  const [nextPath, setNextPath] = useState('');
-  const [progressClass, setProgressClass] = useState('');
-  const [stage, setStage] = useState(Stage.HEIGHT);
+    /** Path & Style */
+    const [nextPath, setNextPath] = useState('');
+    const [progressPercentage, setProgressPercentage] = useState(0);
+    const [stage, setStage] = useState(Stage.HEIGHT);
 
-  const toPrev = () => {
-    const values = Object.values(Stage);
-    const map = new Map(values.map((k, i) => [k, values[i - 1]]));
-    if (stage === Stage.HEIGHT) {
-      navigate('/');
-    } else {
-      setStage(map.get(stage) as Stage);
-    }
-  };
+    const toPrev = () => {
+        const values = Object.values(Stage);
+        const map = new Map(values.map((k, i) => [k, values[i - 1]]));
+        if (stage === Stage.HEIGHT) {
+            navigate('/');
+        } else {
+            setStage(map.get(stage) as Stage);
+        }
+    };
 
-  const toNext = useCallback(() => {
-    const values = Object.values(Stage);
-    const map = new Map(values.map((k, i) => [k, values[i + 1]]));
-    setStage(map.get(stage) as Stage);
-  }, [stage]);
+    const toNext = useCallback(() => {
+        const values = Object.values(Stage);
+        const map = new Map(values.map((k, i) => [k, values[i + 1]]));
+        setStage(map.get(stage) as Stage);
+    }, [stage]);
 
-  useEffect(() => {
-    if (user.id && stage !== Stage.RESULTS) {
-      navigate('/workout-plan');
-    }
-  }, [user.id, navigate, stage]);
+    useEffect(() => {
+        if (user.id && stage !== Stage.RESULTS) {
+            navigate('/workout-plan');
+        }
+    }, [user.id, navigate, stage]);
 
-  const [renderComponent, setRenderComponent] = useState(<Height toNext={toNext} />);
+    const [renderComponent, setRenderComponent] = useState(<Height toNext={toNext} />);
 
-  useEffect(() => {
-    setNextPath('');
+    useEffect(() => {
+        setNextPath('');
 
-    switch (stage) {
-      case Stage.HEIGHT:
-        setRenderComponent(<Height toNext={toNext} />);
-        setProgressClass('w-1/9');
-        break;
-      case Stage.WEIGHT:
-        setRenderComponent(<Weight toNext={toNext} />);
-        setProgressClass('w-2/9');
-        break;
-      case Stage.GENDER:
-        setRenderComponent(<Gender toNext={toNext} />);
-        setProgressClass('w-3/9');
-        break;
-      case Stage.BIRTH:
-        setRenderComponent(<Birth toNext={toNext} />);
-        setNextPath('/onboarding/amount');
-        setProgressClass('w-4/9');
-        break;
-      case Stage.AMOUNT:
-        setRenderComponent(<Amount toNext={toNext} />);
-        setProgressClass('w-5/9');
-        break;
-      case Stage.LEVEL:
-        setRenderComponent(<Level toNext={toNext} />);
-        setProgressClass('w-6/9');
-        break;
-      case Stage.TARGET:
-        setRenderComponent(<Target toNext={toNext} />);
-        setProgressClass('w-7/9');
-        break;
-      case Stage.NAME:
-        setRenderComponent(<Name toNext={toNext} />);
-        setProgressClass('w-8/9');
-        break;
-      case Stage.LOGIN:
-        setRenderComponent(<Login />);
-        setProgressClass('w-full');
-        break;
-      case Stage.RESULTS:
-        setRenderComponent(<Results />);
-        setProgressClass('w-0');
-        break;
-      default:
-        break;
-    }
-  }, [stage, toNext]);
+        switch (stage) {
+            case Stage.HEIGHT:
+                setRenderComponent(<Height toNext={toNext} />);
+                setProgressPercentage(11);
+                break;
+            case Stage.WEIGHT:
+                setRenderComponent(<Weight toNext={toNext} />);
+                setProgressPercentage(22);
+                break;
+            case Stage.GENDER:
+                setRenderComponent(<Gender toNext={toNext} />);
+                setProgressPercentage(33);
+                break;
+            case Stage.BIRTH:
+                setRenderComponent(<Birth toNext={toNext} />);
+                setNextPath('/onboarding/amount');
+                setProgressPercentage(44);
+                break;
+            case Stage.AMOUNT:
+                setRenderComponent(<Amount toNext={toNext} />);
+                setProgressPercentage(55);
+                break;
+            case Stage.LEVEL:
+                setRenderComponent(<Level toNext={toNext} />);
+                setProgressPercentage(66);
+                break;
+            case Stage.TARGET:
+                setRenderComponent(<Target toNext={toNext} />);
+                setProgressPercentage(77);
+                break;
+            case Stage.NAME:
+                setRenderComponent(<Name toNext={toNext} />);
+                setProgressPercentage(88);
+                break;
+            case Stage.LOGIN:
+                setRenderComponent(<Login />);
+                setProgressPercentage(100);
+                break;
+            case Stage.RESULTS:
+                setRenderComponent(<Results />);
+                setProgressPercentage(0);
+                break;
+            default:
+                break;
+        }
+    }, [stage, toNext]);
 
-  /** Register and redirect */
-  const setUserId = useCallback(async () => {
-    const result = await AuthService.redirectResult();
+    /** Register and redirect */
+    const setUserId = useCallback(async () => {
+        const result = await AuthService.redirectResult();
 
-    if (result) {
-      const id = result.user.uid;
+        if (result) {
+            const id = result.user.uid;
 
-      flushSync(() => setStage(Stage.RESULTS));
+            flushSync(() => setStage(Stage.RESULTS));
 
-      dispatch(setUser({ id }));
-      await AuthService.saveUser({ ...user, id });
-    }
-  }, [user, dispatch]);
+            dispatch(setUser({ id }));
+            await AuthService.saveUser({ ...user, id });
+        }
+    }, [user, dispatch]);
 
-  useEffect(() => {
-    setUserId();
-  }, [setUserId]);
+    useEffect(() => {
+        setUserId();
+    }, [setUserId]);
 
-  return (
-    <div className='bg-secondary h-full'>
-      {stage !== Stage.RESULTS && (
-        <Fragment>
-          <HCHeader
-            size='s'
-            prefix={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
-            suffix={nextPath && <button onClick={toNext}>{t('skip')}</button>}
-          />
-          <HCHeaderRegion behavior='fixed'>
-            <HCProgress rateClass={progressClass} />
-          </HCHeaderRegion>
-        </Fragment>
-      )}
-      {renderComponent}
-    </div>
-  );
+    return (
+        <div className='bg-secondary h-full'>
+            {stage !== Stage.RESULTS && (
+                <Fragment>
+                    <HCHeader
+                        size='s'
+                        prefix={<ArrowLeftIcon className='w-8 h-8' onClick={toPrev} />}
+                        suffix={nextPath && <button onClick={toNext}>{t('skip')}</button>}
+                    />
+                    <HCHeaderRegion behavior='fixed'>
+                        <HCProgress percentage={progressPercentage} />
+                    </HCHeaderRegion>
+                </Fragment>
+            )}
+            {renderComponent}
+        </div>
+    );
 };
 
 export default Onboarding;
