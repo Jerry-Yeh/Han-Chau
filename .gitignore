@@ -37,6 +37,7 @@ firebase.json
 *.sln
 *.sw?
 /tsconfig.tsbuildinfo
+.vscode/*
 
 # chromatic
 build-storybook.log
