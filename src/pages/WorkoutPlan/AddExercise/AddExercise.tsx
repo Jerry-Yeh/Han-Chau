@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -6,10 +6,11 @@ import HCHeader, { HCHeaderIconButton, HCHeaderRegion } from '~/components/Heade
 import HCSearchBar, { SearchEventType } from '~/components/SearchBar';
 import { Exercise } from '~/static/exercise/data';
 import ExerciseDetail from '../components/ExerciseDetail';
-import SetExercise, { SET_EXERCISE_ACTION } from '../components/SetExercise';
+import SetExercise, { SET_EXERCISE_ACTION, SetExerciseValue } from '../components/SetExercise';
 import FilterExercise from '../components/ExerciseFilter';
 import ExerciseList from '../components/ExerciseList';
 import Layout from '../components/Layout';
+import UtilsService from '~/services/utils';
 
 import useFilterExercise from '~/hooks/exercise/useFilterExercise';
 import useHeight from '~/hooks/utils/useHeight';
@@ -23,7 +24,7 @@ import XMark from '~/assets/img/heroicons/mini/x-mark';
 const AddExercise: React.FC<AddExerciseProps> = (props: AddExerciseProps) => {
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.add' });
   const navigate = useNavigate();
-  const { planId, exerciseId } = useParams();
+  const { planId } = useParams();
 
   /** Header */
   const headerRef = useRef<HTMLDivElement>(null);
@@ -78,7 +79,9 @@ const AddExercise: React.FC<AddExerciseProps> = (props: AddExerciseProps) => {
   const handleClickExercise = (id: number) => {
     const exercise = result.find((item) => item.id === id);
 
-    if (exercise) navigate(`${exercise.id}`);
+    // if (exercise) navigate(`${exercise.id}`);
+    setSelectedExercise(exercise);
+    setShowExerciseDetail(true);
   };
 
   const handleControlExercise = (id: number) => {
@@ -86,51 +89,44 @@ const AddExercise: React.FC<AddExerciseProps> = (props: AddExerciseProps) => {
 
     if (exercise) {
       setSelectedExercise(exercise);
-      setShowJoinPlan(true);
+      setShowSetExercise(true);
     }
   };
 
   const handleCloseExerciseDetail = () => {
     setShowExerciseDetail(false);
-    navigate(`/workout-plan/${planId}/exercises`);
   };
 
   const handleConfirmExerciseDetail = () => {
     setShowExerciseDetail(false);
-    setShowJoinPlan(true);
+    setShowSetExercise(true);
   };
 
-  useEffect(() => {
-    if (exerciseId) {
-      const exercise = result.find((item) => item.id === +exerciseId);
-
-      if (exercise) {
-        setSelectedExercise(exercise);
-        setShowExerciseDetail(true);
-      }
-    }
-  }, [exerciseId, result]);
-
-  /** Join plan */
-  const [isShowJoinPlan, setShowJoinPlan] = useState(false);
+  /** Set exercise */
+  const [isShowSetExercise, setShowSetExercise] = useState(false);
 
   const handleCloseJoin = () => {
-    setShowJoinPlan(false);
+    setShowSetExercise(false);
     navigate(`/workout-plan/${planId}/exercises`);
   };
 
-  const handleConfirmJoin = () => {
-    setShowJoinPlan(false);
-    navigate(`/workout-plan/${planId}/exercises`);
+  const handleConfirmSetExercise = (tempValue: SetExerciseValue) => {
+    if (selectedExercise) {
+      const data = { id: UtilsService.getTimestamp(), exerciseId: selectedExercise.id, ...tempValue };
+
+      props.onConfirm(data);
+    }
+
+    setShowSetExercise(false);
   };
 
   const handleClickJoinPlanPrevious = () => {
-    setShowJoinPlan(false);
+    setShowSetExercise(false);
     if (selectedExercise) navigate(`${selectedExercise.id}`);
   };
 
   /** Disable background events */
-  useDisableBackgroundEvents([isShowExerciseFilter, isShowExerciseDetail, isShowJoinPlan]);
+  useDisableBackgroundEvents([isShowExerciseFilter, isShowExerciseDetail, isShowSetExercise]);
 
   return (
     <Layout
@@ -183,14 +179,14 @@ const AddExercise: React.FC<AddExerciseProps> = (props: AddExerciseProps) => {
         onConfirm={handleConfirmExerciseDetail}
       />
 
-      {/* Join plan */}
+      {/* Join plan or record */}
       {selectedExercise && (
         <SetExercise
-          show={isShowJoinPlan}
+          show={isShowSetExercise}
           exercise={selectedExercise}
           action={SET_EXERCISE_ACTION.ADD}
           onClose={handleCloseJoin}
-          onConfirm={handleConfirmJoin}
+          onConfirm={handleConfirmSetExercise}
           onPrevious={handleClickJoinPlanPrevious}
         />
       )}

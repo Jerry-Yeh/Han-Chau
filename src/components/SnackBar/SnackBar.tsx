@@ -80,7 +80,7 @@ const HCSnackBar: React.ForwardRefRenderFunction<HandleSnackBar, SnackBarProps> 
   return (
     <div
       ref={messageRef}
-      className={`${className} w-screen fixed left-0 flex justify-center p-4 transition-bottom duration-200`}
+      className={`${className} w-screen fixed left-0 flex justify-center p-4 transition-bottom duration-200 z-40`}
       style={{
         bottom: positionStyle,
       }}

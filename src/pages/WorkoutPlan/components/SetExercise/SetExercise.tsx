@@ -8,12 +8,12 @@ import ExerciseService from '~/services/exercise';
 import { level, muscles } from '~/static/exercise/dataType';
 import HCInput, { InputChangeEventType } from '~/components/Input';
 import HCButton from '~/components/Button';
-import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
+// import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 import HCModal from '~/components/Modal';
-import UtilsService from '~/services/utils';
+// import UtilsService from '~/services/utils';
 
-import { SetExerciseProps, SET_EXERCISE_ACTION } from '.';
-import type { WorkoutPlanTemplateExercise } from '~/services/exercise';
+import { SetExerciseProps, SET_EXERCISE_ACTION, SetExerciseValue } from '.';
+// import type { WorkoutPlanTemplateExercise } from '~/services/exercise';
 
 const SetExercise: React.FC<SetExerciseProps> = ({
   show,
@@ -28,17 +28,13 @@ const SetExercise: React.FC<SetExerciseProps> = ({
   const { t } = useTranslation('translation', { keyPrefix: 'exercise.setting' });
   const language = useAppSelector((state) => state.language.language);
   const capitalizeLanguage = useAppSelector((state) => state.language.capitalizeLanguage);
-  const dispatch = useAppDispatch();
 
-  const [tempValue, setTempValue] = useState<
-    Omit<WorkoutPlanTemplateExercise, 'id' | 'exerciseId'>
-  >({
+  const [tempValue, setTempValue] = useState<SetExerciseValue>({
     sets: sets ? sets : 0,
     reps: reps ? reps : 0,
   });
   const [isDisabled, setDisabled] = useState(false);
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
-  const snackBarRef = useRef<HandleSnackBar>(null);
   const [isOpenAbandon, setOpenAbandon] = useState(false);
   const [modalContext, setModalContext] = useState({
     title: '',
@@ -83,81 +79,7 @@ const SetExercise: React.FC<SetExerciseProps> = ({
   }, [show, sets, reps]);
 
   const handleConfirm = () => {
-    if (exercise) {
-      const data = { id: UtilsService.getTimestamp(), exerciseId: exercise.id, ...tempValue };
-      const changed = tempValue.sets !== sets || tempValue.reps !== reps;
-      const rawExerciseList = ExerciseService.transPlanToRawData(selectedPlan).exerciseList.concat([
-        data,
-      ]);
-
-      switch (action) {
-        case SET_EXERCISE_ACTION.ADD:
-          ExerciseService.addExerciseToPlan(selectedPlan.id, rawExerciseList)
-            .then(() => {
-              const newExerciseList = selectedPlan.exerciseList.concat([
-                ExerciseService.transExerciseFromRawData(data),
-              ]);
-
-              dispatch({
-                type: 'exercise/setSelectedPlan',
-                payload: {
-                  ...selectedPlan,
-                  exerciseList: newExerciseList,
-                  ...ExerciseService.calculatePlan(newExerciseList),
-                },
-              });
-
-              snackBarRef.current?.open({
-                type: 'success',
-                content: t('add.snack-bar.success', { name: selectedPlan.name }),
-              });
-            })
-            .catch(() => {
-              snackBarRef.current?.open({
-                type: 'error',
-                content: t('add.snack-bar.error', { name: selectedPlan.name }),
-              });
-            });
-          break;
-        case SET_EXERCISE_ACTION.EDIT:
-          if (changed) {
-            const exerciseList = selectedPlan.exerciseList.map((item) =>
-              ExerciseService.transExerciseToRawData(item),
-            );
-            const index = exerciseList.findIndex((item) => item.id === exercise.id);
-            exerciseList[index] = { ...exerciseList[index], ...tempValue };
-
-            ExerciseService.editExerciseInPlan(selectedPlan.id, exerciseList)
-              .then(() => {
-                dispatch({
-                  type: 'exercise/setSelectedPlan',
-                  payload: {
-                    ...selectedPlan,
-                    exerciseList,
-                  },
-                });
-
-                snackBarRef.current?.open({
-                  type: 'success',
-                  content: t('edit.snack-bar.success', {
-                    name: exercise[`name${capitalizeLanguage}`],
-                  }),
-                });
-              })
-              .catch(() => {
-                snackBarRef.current?.open({
-                  type: 'error',
-                  content: t('edit.snack-bar.error', {
-                    name: exercise[`name${capitalizeLanguage}`],
-                  }),
-                });
-              });
-          }
-          break;
-      }
-    }
-
-    onConfirm();
+    onConfirm(tempValue);
   };
 
   const handleClose = () => {
@@ -234,7 +156,7 @@ const SetExercise: React.FC<SetExerciseProps> = ({
         </Fragment>
       </HCBottomSheet>
 
-      <HCSnackBar ref={snackBarRef} />
+      {/* <HCSnackBar ref={snackBarRef} /> */}
 
       <HCModal
         open={isOpenAbandon}

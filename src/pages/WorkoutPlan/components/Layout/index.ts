@@ -7,8 +7,8 @@ export interface LayoutProps {
   className?: string;
   style?: CSSProperties;
   header?: ReactNode;
-  content: ReactNode;
   footer?: ReactNode;
+  contentClassName?: string;
 }
 
 export default Layout;

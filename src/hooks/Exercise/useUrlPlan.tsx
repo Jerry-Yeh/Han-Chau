@@ -6,7 +6,7 @@ import ExerciseService from '~/services/exercise';
 
 import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
-const usePlan = () => {
+const useUrlPlan = () => {
   const { planId } = useParams();
 
   const user = useAppSelector((state) => state.user.user);
@@ -36,4 +36,4 @@ const usePlan = () => {
   return [plan, updatePlan] as const;
 };
 
-export default usePlan;
+export default useUrlPlan;

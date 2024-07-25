@@ -12,8 +12,8 @@ import Onboarding from '~/pages/Onboarding';
 import Exercise from '~/pages/WorkoutPlan';
 import Plan from '~/pages/WorkoutPlan/Plan';
 import PlanDetail from '~/pages/WorkoutPlan/PlanDetail';
-import AddExercise from '~/pages/WorkoutPlan/AddExercise';
 import Exercises from '~/pages/WorkoutPlan/Exercises';
+import AddRecord from '~/pages/WorkoutPlan/AddRecord';
 
 const router = createBrowserRouter([
   {
@@ -44,17 +44,18 @@ const router = createBrowserRouter([
             element: <PlanDetail />,
           },
           {
-            path: ':planId/exercises',
-            element: <AddExercise />,
-            children: [{ path: ':exerciseId', element: <AddExercise /> }],
+            path: ':planId/record',
+            element: <AddRecord />,
           },
           {
             path: 'exercises',
             element: <Exercises />,
-          },
-          {
-            path: 'exercises/:exerciseId',
-            element: <Exercises />,
+            children: [
+              {
+                path: ':exerciseId',
+                element: <Exercises />,
+              },
+            ],
           },
         ],
       },

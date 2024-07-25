@@ -2,11 +2,14 @@ import SetExercise from './SetExercise';
 
 import type { Exercise } from '~/static/exercise/data';
 import type { CompleteExercise } from '~/services/exercise';
+import type { WorkoutPlanTemplateExercise } from '~/services/exercise';
 
 export enum SET_EXERCISE_ACTION {
-  ADD,
-  EDIT
+  ADD = 'add',
+  EDIT = 'edit'
 }
+
+export type SetExerciseValue = Omit<WorkoutPlanTemplateExercise, 'id' | 'exerciseId'>;
 
 export interface SetExerciseProps {
   children?: React.ReactNode;
@@ -16,7 +19,7 @@ export interface SetExerciseProps {
   sets?: number;
   reps?: number;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm: (value: SetExerciseValue) => void;
   onPrevious?: () => void;
 }
 

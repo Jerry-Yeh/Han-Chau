@@ -163,11 +163,42 @@
           "cancel": "取消",
           "confirm": "確認刪除"
         },
-        "exercise-setting": {
+        "workout-form": {
           "title": "更多設定",
           "know": "認識動作",
           "edit": "編輯動作",
-          "delete": "刪除動作"
+          "delete": "刪除動作",
+          "view-record": "查看紀錄",
+          "workout-sets": "訓練組數",
+          "delete-set": "刪除此組",
+          "set-result": "目前的加乘重量為 {{number}} kg",
+          "set-remark": "若加乘重量為 0 kg，則此組訓練將不計入紀錄總和",
+          "add-set": "新增組數",
+          "delete-set-modal": {
+            "title": "確認刪除？",
+            "description": "你確定要刪除「{{name}}」的第 {{number}} 組訓練？如果確定，請按下確認刪除，刪除後紀錄將無法復原。",
+            "cancel": "取消",
+            "confirm": "確認刪除"
+          },
+          "delete-exercise-modal": {
+            "title": "確認刪除？",
+            "description": "你確定要刪除「{{name}}」動作？如果確定，請按下確認刪除，刪除後將無法復原。",
+            "cancel": "取消",
+            "confirm": "確認刪除"
+          },
+          "change-exercise-status-modal": {
+            "title": "確認更改狀態？",
+            "description": "確認將「{{name}}」從已完成狀態更改為未完成？如果確定，請點擊「確認更改」來完成動作。",
+            "cancel": "取消",
+            "confirm": "確認更改"
+          },
+          "more": {
+            "title": "更多設定"
+          }
+        },
+        "snack-bar": {
+          "success": "成功加入{{name}}",
+          "error": "無法將動作加入至{{name}}"
         }
       }
     },
@@ -222,10 +253,6 @@
           "description": "你確定要放棄加入動作？如果確定，請按下確認放棄，放棄後將不保留任何編輯紀錄。",
           "cancel": "取消",
           "confirm": "確認放棄"
-        },
-        "snack-bar": {
-          "success": "成功加入{{name}}",
-          "error": "無法將動作加入至{{name}}"
         }
       },
       "edit": {
@@ -257,6 +284,12 @@
     },
     "select-plan": {
       "title": "選擇訓練計劃"
+    },
+    "record": {
+      "title": "開始訓練",
+      "expanded-title": "開始紀錄你的訓練",
+      "end-of-record": "儲存記錄",
+      "completeness": "完成進度"
     }
   }
 }
