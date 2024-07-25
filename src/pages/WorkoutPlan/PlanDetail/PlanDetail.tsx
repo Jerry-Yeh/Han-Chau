@@ -19,7 +19,8 @@ import SetExercise, { SET_EXERCISE_ACTION } from '../components/SetExercise';
 import DeleteExercise from '../components/DeleteExercise';
 import ExerciseList from '../components/ExerciseList';
 import Layout from '../components/Layout';
-import AddExercise from '../AddExercise';
+import AddExercise, { ADD_EXERCISE_TYPE, AddExerciseValue } from '../AddExercise';
+import HCSnackBar, { HandleSnackBar } from '~/components/SnackBar';
 
 import useHeight from '~/hooks/utils/useHeight';
 import useUrlPlan from '~/hooks/exercise/useUrlPlan';
@@ -40,6 +41,7 @@ const PlanDetail: React.FC = () => {
 
   const { exerciseId } = useParams();
   const user = useAppSelector((state) => state.user.user);
+  const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
   const [plan, updatePlan] = useUrlPlan();
   const [_, updatePlanList] = usePlanList();
@@ -162,6 +164,7 @@ const PlanDetail: React.FC = () => {
 
   /** Add Exercise */
   const [isShowAddExercise, setShowAddExercise] = useState(false);
+  const snackBarRef = useRef<HandleSnackBar>(null);
 
   const handleAddExercise = () => {
     // navigate('exercises');
@@ -170,6 +173,37 @@ const PlanDetail: React.FC = () => {
 
   const handleCloseAddExercise = () => {
     setShowAddExercise(false);
+  };
+
+  const handleConfirmAddExercise = (data: AddExerciseValue) => {
+    const rawExerciseList = ExerciseService.transPlanToRawData(selectedPlan).exerciseList.concat([data,]);
+
+    ExerciseService.addExerciseToPlan(selectedPlan.id, rawExerciseList)
+      .then(() => {
+        const newExerciseList = selectedPlan.exerciseList.concat([
+          ExerciseService.transExerciseFromRawData(data),
+        ]);
+
+        dispatch({
+          type: 'exercise/setSelectedPlan',
+          payload: {
+            ...selectedPlan,
+            exerciseList: newExerciseList,
+            ...ExerciseService.calculatePlan(newExerciseList),
+          },
+        });
+
+        snackBarRef.current?.open({
+          type: 'success',
+          content: t('snack-bar.success', { name: selectedPlan.name }),
+        });
+      })
+      .catch(() => {
+        snackBarRef.current?.open({
+          type: 'error',
+          content: t('snack-bar.error', { name: selectedPlan.name }),
+        });
+      });
   };
 
   /** Add Record */
@@ -345,16 +379,14 @@ const PlanDetail: React.FC = () => {
           </div>
         </div>
       ) : (
-        <Fragment>
-          <ExerciseList
-            data={plan.exerciseList}
-            type='info'
-            bleed={false}
-            title={false}
-            onClick={handleClickExercise}
-            onControl={handleControlExercise}
-          />
-        </Fragment>
+        <ExerciseList
+          data={plan.exerciseList}
+          type='info'
+          bleed={false}
+          title={false}
+          onClick={handleClickExercise}
+          onControl={handleControlExercise}
+        />
       )}
 
       {/* Edit plan */}
@@ -415,7 +447,7 @@ const PlanDetail: React.FC = () => {
         exercise={selectedExercise}
         onClose={handleCloseExerciseDetail}
         onEdit={handleEditExerciseDetail}
-        // onConfirm={handleConfirmExerciseDetail}
+      // onConfirm={handleConfirmExerciseDetail}
       />
 
       {/* Edit Exercise */}
@@ -443,7 +475,8 @@ const PlanDetail: React.FC = () => {
       )}
 
       {/* Add Exercise */}
-      <AddExercise isShow={isShowAddExercise} onClose={handleCloseAddExercise} />
+      <AddExercise isShow={isShowAddExercise} type={ADD_EXERCISE_TYPE.PLAN} onClose={handleCloseAddExercise} onConfirm={handleConfirmAddExercise} />
+      <HCSnackBar ref={snackBarRef} />
     </Layout>
   );
 };

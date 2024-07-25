@@ -20,6 +20,7 @@ import { getPlanChallenge } from '~/services/formula';
 
 import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
+/** Workout plan */
 export interface WorkoutPlanTemplateExercise {
   id: number;
   exerciseId: number;
@@ -37,6 +38,7 @@ export interface WorkoutPlanTemplate {
 export type CompleteExercise = WorkoutPlanTemplateExercise & Omit<Exercise, 'id'>;
 
 export interface WorkoutRecordExerciseSetData {
+  id: string;
   reps: number;
   weight: number;
 }
@@ -47,10 +49,10 @@ export interface WorkoutRecordExerciseData {
   sets: WorkoutRecordExerciseSetData[];
 }
 
-export interface WorkoutRecordData {
+export interface WorkoutRecord {
   id?: string;
   userId: string;
-  name: string;
+  note: string;
   exerciseList: WorkoutRecordExerciseData[];
 }
 
@@ -197,5 +199,18 @@ export default class ExerciseService {
     }/exercise/${imageName}`;
   }
 
-  // static trans
+  /** Record */
+  static async addRecord(record: WorkoutRecord) {
+    return await addDoc(collection(ApiService.db, 'records'), record).then((response) => {
+      return response.id;
+    });
+  }
+
+  static addExerciseToRecord() {
+
+  }
+
+  static editExerciseInRecord() {}
+
+  static deleteExerciseInRecord() {}
 }

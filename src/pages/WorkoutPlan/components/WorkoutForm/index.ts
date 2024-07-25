@@ -16,6 +16,7 @@ export interface WorkoutFormExercise extends WorkoutRecordExerciseData, Omit<Exe
   img: React.ReactNode;
   title: string;
   description: string;
+  isCompleted: boolean;
 };
 
 export default WorkoutForm;

@@ -154,11 +154,42 @@
           "cancel": "",
           "confirm": ""
         },
-        "exercise-setting": {
+        "workout-form": {
           "title": "",
           "know": "",
           "edit": "",
-          "delete": ""
+          "delete": "",
+          "view-record": "",
+          "workout-sets": "",
+          "delete-set": "",
+          "set-result": "",
+          "set-remark": "",
+          "add-set": "",
+          "delete-set-modal": {
+            "title": "",
+            "description": "",
+            "cancel": "",
+            "confirm": ""
+          },
+          "delete-exercise-modal": {
+            "title": "",
+            "description": "",
+            "cancel": "",
+            "confirm": ""
+          },
+          "change-exercise-status-modal": {
+            "title": "",
+            "description": "",
+            "cancel": "",
+            "confirm": ""
+          },
+          "more": {
+            "title": ""
+          }
+        },
+        "snack-bar": {
+          "success": "",
+          "error": ""
         }
       }
     },
@@ -212,10 +243,6 @@
           "description": "",
           "cancel": "",
           "confirm": ""
-        },
-        "snack-bar": {
-          "success": "",
-          "error": ""
         }
       },
       "edit": {
@@ -243,6 +270,12 @@
     },
     "select-plan": {
       "title": ""
+    },
+    "record": {
+      "title": "",
+      "expanded-title": "",
+      "end-of-record": "",
+      "completeness": ""
     }
   }
 }
