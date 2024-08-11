@@ -14,6 +14,7 @@ import Plan from '~/pages/WorkoutPlan/Plan';
 import PlanDetail from '~/pages/WorkoutPlan/PlanDetail';
 import Exercises from '~/pages/WorkoutPlan/Exercises';
 import AddRecord from '~/pages/WorkoutPlan/AddRecord';
+import CompletedRecord from '~/pages/WorkoutPlan/CompletedRecord';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
                 element: <Exercises />,
               },
             ],
+          },
+          {
+            path: ':planId/record/:recordId',
+            element: <CompletedRecord />,
           },
         ],
       },

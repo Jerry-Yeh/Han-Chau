@@ -53,6 +53,7 @@ export interface WorkoutRecord {
   id?: string;
   userId: string;
   note: string;
+  time: string;
   exerciseList: WorkoutRecordExerciseData[];
 }
 
@@ -194,9 +195,8 @@ export default class ExerciseService {
   }
 
   static getExerciseImageUrl(imageName: string): string {
-    return `https://storage.cloud.google.com/${
-      import.meta.env.VITE_STORAGE_BUCKET
-    }/exercise/${imageName}`;
+    return `https://storage.cloud.google.com/${import.meta.env.VITE_STORAGE_BUCKET
+      }/exercise/${imageName}`;
   }
 
   /** Record */
@@ -206,11 +206,17 @@ export default class ExerciseService {
     });
   }
 
+  static async getRecord(id: string): Promise<WorkoutRecord> {
+    const snapshot = await getDoc(doc(ApiService.db, 'records', id));
+
+    return { id, ...snapshot.data() } as WorkoutRecord;
+  }
+
   static addExerciseToRecord() {
 
   }
 
-  static editExerciseInRecord() {}
+  static editExerciseInRecord() { }
 
-  static deleteExerciseInRecord() {}
+  static deleteExerciseInRecord() { }
 }

@@ -34,10 +34,10 @@ const AddRecord: React.FC<AddRecordProps> = () => {
   const { planId } = useParams();
 
   const [plan] = useUrlPlan();
-  const current = moment().format('YYYY/MM/DD HH:MM');
   const [record, setRecord] = useState<WorkoutRecord>({
     userId: '',
     note: '',
+    time: moment().format('YYYY/MM/DD HH:MM'),
     exerciseList: []
   });
 
@@ -128,8 +128,9 @@ const AddRecord: React.FC<AddRecordProps> = () => {
 
   /** Save record */
   const handleSaveRecord = async () => {
-    // TBC
-    const id = await ExerciseService.addRecord(record);
+    const recordId = await ExerciseService.addRecord(record);
+
+    navigate(`/workout-plan/${planId}/record/${recordId}`);
   };
 
   return (
@@ -159,7 +160,7 @@ const AddRecord: React.FC<AddRecordProps> = () => {
           </HCHeaderRegion>
           <HCHeaderRegion behavior='fully' className='bg-primary px-4'>
             <div className='text-body-s text-tertiary mb-4'>
-              {plan.name}· {current}
+              {plan.name}· {record.time}
             </div>
             <HCProgress percentage={percentage} className='mb-2' />
             <div className='text-body-xs'>
