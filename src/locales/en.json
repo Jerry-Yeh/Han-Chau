@@ -276,6 +276,12 @@
       "expanded-title": "",
       "end-of-record": "",
       "completeness": ""
+    },
+    "completed-record": {
+      "title": "",
+      "subtitle": "",
+      "note-button": "",
+      "note-title": ""
     }
   }
 }

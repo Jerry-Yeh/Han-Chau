@@ -290,6 +290,12 @@
       "expanded-title": "開始紀錄你的訓練",
       "end-of-record": "儲存記錄",
       "completeness": "完成進度"
+    },
+    "completed-record": {
+      "title": "完成紀錄",
+      "subtitle": "小功告成",
+      "note-button": "記錄想法",
+      "note-title": "訓練心得"
     }
   }
 }
