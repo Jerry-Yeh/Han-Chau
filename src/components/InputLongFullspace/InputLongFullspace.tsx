@@ -12,6 +12,7 @@ const HCInputLongFullspace: React.FC<InputLongFullspaceProps> = (props) => {
         <label>
             {props.label && <div className="text-body-bold-s mb-2">{props.label}</div>}
             <textarea
+                value={props.value || ''}
                 disabled={props.disabled}
                 onInput={handleAutoHeight}
                 onChange={props.onChange}
