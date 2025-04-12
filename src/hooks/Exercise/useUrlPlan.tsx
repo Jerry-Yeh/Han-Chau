@@ -33,7 +33,7 @@ const useUrlPlan = () => {
     updatePlan();
   }, [updatePlan]);
 
-  return [plan, updatePlan] as const;
+  return [plan, setPlan] as const;
 };
 
 export default useUrlPlan;
