@@ -281,7 +281,17 @@
       "title": "",
       "subtitle": "",
       "note-button": "",
-      "note-title": ""
+      "note-title": "",
+      "edit-note": {
+        "title": "",
+        "save": "",
+        "modal": {
+          "title": "",
+          "description": "",
+          "cancel": "",
+          "confirm": ""
+        }
+      }
     }
   }
 }

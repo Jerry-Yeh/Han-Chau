@@ -15,7 +15,7 @@ const ExerciseSetting: React.FC<ExerciseSettingProps> = ({
   onDelete,
 }: ExerciseSettingProps) => {
   const { t } = useTranslation('translation', {
-    keyPrefix: 'exercise.plan.detail.exercise-setting',
+    keyPrefix: 'exercise.plan.detail.workout-form',
   });
 
   const actions: ListItemType[] = [

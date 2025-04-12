@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { Nullable } from '~/typings/utils';
 
 export type User = {
-  id?: string;
+  id: string;
   height: Nullable<number>;
   weight: Nullable<number>;
   gender: Nullable<number>;

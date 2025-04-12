@@ -12,6 +12,7 @@ import HCInput from '~/components/Input';
 import HCButton from '~/components/Button';
 import HCModal from '~/components/Modal';
 import HCBottomSheet from '~/components/BottomSheet';
+import HCLink from '~/components/Link';
 
 import EllipsisVertical from '~/assets/img/heroicons/mini/ellipsis-vertical';
 
@@ -23,6 +24,9 @@ const WorkoutForm: React.FC<WorkoutFormProps> = (props: WorkoutFormProps) => {
   const { t } = useTranslation('translation', {
     keyPrefix: 'exercise.plan.detail.workout-form',
   });
+
+  /** Record */
+  const handleClickRecord = () => { };
 
   /** Edit */
   const handleChangeInput = (value: string, index: number, setId: string, property: 'reps' | 'weight') => {
@@ -163,7 +167,7 @@ const WorkoutForm: React.FC<WorkoutFormProps> = (props: WorkoutFormProps) => {
           <HCAccordion
             className='px-4'
             label={t('workout-sets')}
-            extra={<button className='text-highlight underline'>{t('view-record')}</button>}
+            extra={<HCLink onClick={handleClickRecord}>{t('view-record')}</HCLink>}
           >
             <HCSteps
               className='mb-4'

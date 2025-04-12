@@ -52,6 +52,7 @@ export interface WorkoutRecordExerciseData {
 export interface WorkoutRecord {
   id?: string;
   userId: string;
+  planId: string;
   note: string;
   time: string;
   exerciseList: WorkoutRecordExerciseData[];
@@ -86,8 +87,8 @@ export default class ExerciseService {
     return await deleteDoc(doc(ApiService.db, 'workoutPlans', planId));
   }
 
-  static async updatePlanName(planId: string, planName: string) {
-    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), { name: planName });
+  static async updatePlan(planId: string, plan: Partial<WorkoutPlan>) {
+    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), plan);
   }
 
   static async addExerciseToPlan(planId: string, exerciseList: WorkoutPlanTemplateExercise[]) {
@@ -204,6 +205,10 @@ export default class ExerciseService {
     return await addDoc(collection(ApiService.db, 'records'), record).then((response) => {
       return response.id;
     });
+  }
+
+  static async updateRecord(id: string, record: Partial<WorkoutRecord>) {
+    return await updateDoc(doc(ApiService.db, 'records', id), record);
   }
 
   static async getRecord(id: string): Promise<WorkoutRecord> {

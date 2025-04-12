@@ -15,7 +15,7 @@ import HCModal from '~/components/Modal';
 import HCRate from '~/components/Rate';
 import ExerciseSetting from '../components/ExerciseSetting';
 import ExerciseDetail from '../components/ExerciseDetail';
-import SetExercise, { SET_EXERCISE_ACTION } from '../components/SetExercise';
+import SetExercise, { SET_EXERCISE_ACTION, SetExerciseValue } from '../components/SetExercise';
 import DeleteExercise from '../components/DeleteExercise';
 import ExerciseList from '../components/ExerciseList';
 import Layout from '../components/Layout';
@@ -43,7 +43,7 @@ const PlanDetail: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
   const selectedPlan = useAppSelector((state) => state.exercise.selectedPlan);
 
-  const [plan, updatePlan] = useUrlPlan();
+  const [plan, setPlan] = useUrlPlan();
   const [_, updatePlanList] = usePlanList();
 
   useEffect(() => {
@@ -124,15 +124,7 @@ const PlanDetail: React.FC = () => {
   }, [plan.name]);
 
   const handleEditName = async () => {
-    // dispatch({
-    //   type: 'exercise/setPlan',
-    //   payload: {
-    //     ...plan,
-    //     name: newName,
-    //   },
-    // });
-    await ExerciseService.updatePlanName(plan.id as string, newName);
-    updatePlan();
+    await ExerciseService.updatePlan(plan.id as string, { name: newName });
     setShowEditName(false);
   };
 
@@ -265,8 +257,20 @@ const PlanDetail: React.FC = () => {
     navigate(`/workout-plan/${plan.id}`);
   };
 
-  const handleConfirmEditExercise = () => {
-    updatePlan();
+  const handleConfirmEditExercise = async (value: SetExerciseValue) => {
+    if (selectedExercise) {
+      const newExerciseList = plan.exerciseList.map(item => item.id === selectedExercise.id ? { ...item, sets: value.sets, reps: value.reps } : item);
+      console.log('123123123123123123123123', '123123123123123123123123', '123123123123123123123123', '123123123123123123123123', '123123123123123123123123', '123123123123123123123123', '123123123123123123123123');
+
+      await ExerciseService.updatePlan(plan.id as string, { exerciseList: newExerciseList })
+        .then(() => {
+          setPlan(preState => ({
+            ...preState,
+            exerciseList: newExerciseList
+          }));
+        });
+    }
+
     setShowEditExercise(false);
     navigate(`/workout-plan/${plan.id}`);
   };
@@ -274,7 +278,10 @@ const PlanDetail: React.FC = () => {
   const handlePreviousEditExercise = () => {
     setShowEditExercise(false);
     setShowExerciseDetail(true);
-    if (selectedExercise) navigate(`/workout-plan/${plan.id}/${selectedExercise.id}`);
+
+    if (selectedExercise) {
+      navigate(`/workout-plan/${plan.id}/${selectedExercise.id}`);
+    }
   };
 
   /** Delete exercise */
@@ -285,7 +292,6 @@ const PlanDetail: React.FC = () => {
   };
 
   const handleConfirmDeleteExercise = () => {
-    updatePlan();
     setShowDeleteExercise(false);
     updatePlanList();
   };
@@ -347,7 +353,7 @@ const PlanDetail: React.FC = () => {
                 <div className='flex p-4 gap-x-2'>
                   <HCButton color='tertiary' onClick={handleAddExercise}>
                     <span className='mr-2 break-keep'>{t('add-exercise')}</span>
-                    <PlusSmallIcon className='w-5 h-5' />
+                    <PlusSmallIcon className='w-5 -5' />
                   </HCButton>
                   <HCButton color='primary' onClick={handleAddRecord}>
                     {t('start-fitness')}

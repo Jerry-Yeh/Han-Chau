@@ -295,7 +295,17 @@
       "title": "完成紀錄",
       "subtitle": "小功告成",
       "note-button": "記錄想法",
-      "note-title": "訓練心得"
+      "note-title": "訓練心得",
+      "edit-note": {
+        "title": "健身心得",
+        "save": "儲存",
+        "modal": {
+          "title": "離開心得頁面",
+          "description": "目前尚未儲存你的心得，若現在離開將清空所有內容，無法復原編輯",
+          "cancel": "離開",
+          "confirm": "繼續編輯"
+        }
+      }
     }
   }
 }
