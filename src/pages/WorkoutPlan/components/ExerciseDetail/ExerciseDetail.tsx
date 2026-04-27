@@ -116,7 +116,11 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
                     {joinedPlanList.length > 0 ? (
                       <Fragment>
                         <BookmarkIcon className='w-5 h-5 icon-tertiary mr-2' />
-                        <span>{t('added-plan.added', { number: joinedPlanList.length })}</span>
+                        <span>
+                          {t('added-plan.added', {
+                            number: joinedPlanList.length,
+                          })}
+                        </span>
                       </Fragment>
                     ) : (
                       <Fragment>
@@ -127,7 +131,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
                   </p>
                   <button className='flex items-center' onClick={handleClickScrollToPlayer}>
                     <PlayCircleIcon className='w-5 h-5 icon-tertiary mr-2' />
-                    {exercise.url ? (
+                    {exercise.video ? (
                       <Fragment>
                         <span className='mr-1'>{t('to-tutorial')}</span>
                         <ChevronDown />
@@ -188,17 +192,10 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
             </div>
 
             {/* Video */}
-            {exercise.url && (
+            {exercise.video && (
               <div id='player' className='bg-primary p-4'>
                 <h3 className='text-heading-xs mb-4'>{t('tutorial')}</h3>
-                {exercise.url && (
-                  <HCPlayer
-                    ref={playerRef}
-                    url={exercise.url}
-                    start={exercise.start}
-                    end={exercise.end}
-                  />
-                )}
+                <HCPlayer ref={playerRef} {...exercise.video} />
               </div>
             )}
 
