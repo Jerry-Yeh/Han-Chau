@@ -37,15 +37,15 @@ export enum MUSCLES {
   ARMS,
 }
 
-export enum MUSCLEGROUP {
-  ABDOMINALS = 1,
-  BACK = 2,
-  CLAVES = 4,
-  CHEST = 5,
-  LEGS = 6,
-  SHOULDERS = 8,
-  ARMS = 30,
-}
+export const MUSCLE_GROUPS = new Set<MUSCLES>([
+  MUSCLES.ABDOMINALS,
+  MUSCLES.BACK,
+  MUSCLES.CLAVES,
+  MUSCLES.CHEST,
+  MUSCLES.LEGS,
+  MUSCLES.SHOULDERS,
+  MUSCLES.ARMS,
+]);
 
 export enum MODALITY {
   FREEWEIGHT = 1,

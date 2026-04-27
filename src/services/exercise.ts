@@ -11,7 +11,7 @@ import {
 } from 'firebase/firestore';
 
 import ApiService from './api';
-import { UPPERLOWERCORE, MODALITY, MUSCLES, MUSCLEGROUP } from '~/enums/exercise';
+import { UPPERLOWERCORE, MODALITY, MUSCLES } from '~/enums/exercise';
 import { upperLowerCore, modality, muscles } from '~/static/exercise/dataType';
 import { store } from '~/store';
 import { getLanguage } from '~/store/features/language';
@@ -125,7 +125,7 @@ export default class ExerciseService {
     return modalityList.map((id) => modality[id][language]).join('/');
   }
 
-  static getExerciseMusclesText(muscleList: Array<MUSCLES | MUSCLEGROUP>) {
+  static getExerciseMusclesText(muscleList: Array<MUSCLES>) {
     const state = store.getState();
     const language = getLanguage(state);
 

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { MUSCLEGROUP, CHALLENGE } from '~/enums/exercise';
+import { MUSCLES, CHALLENGE } from '~/enums/exercise';
 
 import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 
@@ -13,19 +13,19 @@ import Legs from '~/assets/img/muscle-group/legs.png';
 import Calves from '~/assets/img/muscle-group/calves.png';
 
 export interface ExerciseState {
-  muscleGroupImages: Record<MUSCLEGROUP, string>;
+  muscleGroupImages: Partial<Record<MUSCLES, string>>;
   selectedPlan: WorkoutPlan;
 }
 
 const initialState: ExerciseState = {
   muscleGroupImages: {
-    [MUSCLEGROUP.ABDOMINALS]: Abdominals,
-    [MUSCLEGROUP.BACK]: Back,
-    [MUSCLEGROUP.ARMS]: Arms,
-    [MUSCLEGROUP.CHEST]: Chest,
-    [MUSCLEGROUP.SHOULDERS]: Shoulders,
-    [MUSCLEGROUP.LEGS]: Legs,
-    [MUSCLEGROUP.CLAVES]: Calves,
+    [MUSCLES.ABDOMINALS]: Abdominals,
+    [MUSCLES.BACK]: Back,
+    [MUSCLES.ARMS]: Arms,
+    [MUSCLES.CHEST]: Chest,
+    [MUSCLES.SHOULDERS]: Shoulders,
+    [MUSCLES.LEGS]: Legs,
+    [MUSCLES.CLAVES]: Calves,
   },
   selectedPlan: {
     id: '',

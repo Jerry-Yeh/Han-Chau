@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAppSelector } from '~/store/hook';
 
-import { MODALITY, MUSCLEGROUP, MUSCLES, LEVEL } from '~/enums/exercise';
+import { MODALITY, MUSCLES, LEVEL } from '~/enums/exercise';
 import { FilterType } from '~/pages/WorkoutPlan/interface';
 import { exerciseList, Exercise } from '~/static/exercise/data';
 
@@ -12,7 +12,7 @@ const useFilterExercise = (searchText: string, filter: FilterType): Exercise[] =
 
   useEffect(() => {
     const isCorrectName = (name: string): boolean => name.includes(searchText);
-    const isCorrectMuscle = (muscles: Array<MUSCLES | MUSCLEGROUP>): boolean =>
+    const isCorrectMuscle = (muscles: Array<MUSCLES>): boolean =>
       filter.muscleGroup.length === 0 ||
       muscles.some((muscle) => filter.muscleGroup.includes(muscle));
     const isCorrectModality = (modality: MODALITY): boolean =>

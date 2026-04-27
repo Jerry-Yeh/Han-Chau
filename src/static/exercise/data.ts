@@ -1,7 +1,6 @@
 import {
   LEVEL,
   MUSCLES,
-  MUSCLEGROUP,
   MODALITY,
   UPPERLOWERCORE,
   PULLPUSH,
@@ -19,7 +18,7 @@ export interface Exercise {
   nameEn: string;
   nameZh: string;
   level: LEVEL;
-  muscles: Array<MUSCLES | MUSCLEGROUP>;
+  muscles: Array<MUSCLES>;
   modality: MODALITY;
   upperLowerCore: UPPERLOWERCORE;
   pushPull: PULLPUSH;

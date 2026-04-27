@@ -7,7 +7,7 @@ import HCButton from '~/components/Button';
 import { HCCheckboxGroup } from '~/components/Checkbox';
 import { HCRadioGroup } from '~/components/Radio';
 import { muscles, modality, level } from '~/static/exercise/dataType';
-import { MODALITY, MUSCLEGROUP, LEVEL } from '~/enums/exercise';
+import { MODALITY, MUSCLES, LEVEL } from '~/enums/exercise';
 
 import type { ExerciseFilterProps } from '.';
 import type { FilterType } from '~/pages/WorkoutPlan/interface';
@@ -32,38 +32,38 @@ const ExerciseFilter: React.FC<ExerciseFilterProps> = ({
 
   const [muscleGroupOptions] = useState([
     {
-      label: muscles[MUSCLEGROUP.ABDOMINALS][language],
-      value: MUSCLEGROUP.ABDOMINALS,
+      label: muscles[MUSCLES.ABDOMINALS][language],
+      value: MUSCLES.ABDOMINALS,
       image: <img src={Abdominals} alt='Abdominals' />,
     },
     {
-      label: muscles[MUSCLEGROUP.BACK][language],
-      value: MUSCLEGROUP.BACK,
+      label: muscles[MUSCLES.BACK][language],
+      value: MUSCLES.BACK,
       image: <img src={Back} alt='Back' />,
     },
     {
-      label: muscles[MUSCLEGROUP.ARMS][language],
-      value: MUSCLEGROUP.ARMS,
+      label: muscles[MUSCLES.ARMS][language],
+      value: MUSCLES.ARMS,
       image: <img src={Arms} alt='Arms' />,
     },
     {
-      label: muscles[MUSCLEGROUP.CHEST][language],
-      value: MUSCLEGROUP.CHEST,
+      label: muscles[MUSCLES.CHEST][language],
+      value: MUSCLES.CHEST,
       image: <img src={Chest} alt='Chest' />,
     },
     {
-      label: muscles[MUSCLEGROUP.SHOULDERS][language],
-      value: MUSCLEGROUP.SHOULDERS,
+      label: muscles[MUSCLES.SHOULDERS][language],
+      value: MUSCLES.SHOULDERS,
       image: <img src={Shoulders} alt='Shoulders' />,
     },
     {
-      label: muscles[MUSCLEGROUP.LEGS][language],
-      value: MUSCLEGROUP.LEGS,
+      label: muscles[MUSCLES.LEGS][language],
+      value: MUSCLES.LEGS,
       image: <img src={Legs} alt='Legs' />,
     },
     {
-      label: muscles[MUSCLEGROUP.CLAVES][language],
-      value: MUSCLEGROUP.CLAVES,
+      label: muscles[MUSCLES.CLAVES][language],
+      value: MUSCLES.CLAVES,
       image: <img src={Calves} alt='Calves' />,
     },
   ]);

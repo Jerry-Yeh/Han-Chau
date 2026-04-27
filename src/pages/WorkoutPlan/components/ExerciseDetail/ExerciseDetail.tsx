@@ -9,7 +9,7 @@ import { HCList, HCListItem } from '~/components/List';
 import { Exercise } from '~/static/exercise/data';
 import ExerciseService from '~/services/exercise';
 import { level, modality, upperLowerCore, muscles } from '~/static/exercise/dataType';
-import { MUSCLEGROUP } from '~/enums/exercise';
+import { MUSCLE_GROUPS } from '~/enums/exercise';
 import HCPlayer, { HandlePlayer } from '~/components/Player';
 import type { WorkoutPlan } from '~/pages/WorkoutPlan/interface';
 import PlanList from '~/pages/WorkoutPlan/components/PlanList';
@@ -44,7 +44,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
 
   const getMusclesDescription = () => {
     return exercise?.muscles
-      .filter((item) => !MUSCLEGROUP[item])
+      .filter((item) => !MUSCLE_GROUPS.has(item))
       .map((item) => muscles[item][language])
       .join('、');
   };
@@ -180,7 +180,7 @@ const ExerciseDetail: React.FC<Props> = ({ show, exercise, onClose, onConfirm, o
                     img: (
                       <img
                         className='w-full'
-                        src={muscleGroupImages[exercise.muscles[0] as MUSCLEGROUP]}
+                        src={muscleGroupImages[exercise.muscles[0]]}
                         alt='muscle'
                       />
                     ),
