@@ -10,7 +10,7 @@ import {
   getDoc,
 } from 'firebase/firestore';
 
-import ApiService from './api';
+import FirebaseService from './firebase';
 import { UPPERLOWERCORE, MODALITY, MUSCLES } from '~/enums/exercise';
 import { upperLowerCore, modality, muscles } from '~/static/exercise/dataType';
 import { store } from '~/store';
@@ -59,54 +59,56 @@ export interface WorkoutRecord {
 }
 
 export default class ExerciseService {
-  // static async queryExerciseList() {
-  //   return (await ApiService.query('exercise')) as Exercise[];
-  // }
+  static async getExercises(): Promise<Exercise[]> {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/exercises`);
+    if (!res.ok) throw new Error(`Failed to fetch exercises: ${res.status}`);
+    return res.json();
+  }
 
   static async addPlan(workoutPlan: WorkoutPlanTemplate): Promise<string> {
-    return await addDoc(collection(ApiService.db, 'workoutPlans'), workoutPlan).then((response) => {
+    return await addDoc(collection(FirebaseService.db, 'workoutPlans'), workoutPlan).then((response) => {
       return response.id;
     });
   }
 
   static async queryPlanList(userId: string): Promise<WorkoutPlanTemplate[]> {
     const snapshot = await getDocs(
-      query(collection(ApiService.db, 'workoutPlans'), where('userId', '==', userId)),
+      query(collection(FirebaseService.db, 'workoutPlans'), where('userId', '==', userId)),
     );
 
     return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as WorkoutPlanTemplate[];
   }
 
   static async queryPlan(planId: string): Promise<WorkoutPlanTemplate> {
-    const snapshot = await getDoc(doc(ApiService.db, 'workoutPlans', planId));
+    const snapshot = await getDoc(doc(FirebaseService.db, 'workoutPlans', planId));
 
     return { id: planId, ...snapshot.data() } as WorkoutPlanTemplate;
   }
 
   static async deletePlan(planId: string) {
-    return await deleteDoc(doc(ApiService.db, 'workoutPlans', planId));
+    return await deleteDoc(doc(FirebaseService.db, 'workoutPlans', planId));
   }
 
   static async updatePlan(planId: string, plan: Partial<WorkoutPlan>) {
-    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), plan);
+    return await updateDoc(doc(FirebaseService.db, 'workoutPlans', planId), plan);
   }
 
   static async addExerciseToPlan(planId: string, exerciseList: WorkoutPlanTemplateExercise[]) {
-    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
+    return await updateDoc(doc(FirebaseService.db, 'workoutPlans', planId), {
       exerciseList,
     });
   }
 
   static async editExerciseInPlan(planId: string, exerciseList: WorkoutPlanTemplateExercise[]) {
     // Firestore can not edit specific data in an array.
-    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
+    return await updateDoc(doc(FirebaseService.db, 'workoutPlans', planId), {
       exerciseList,
     });
   }
 
   static async deleteExerciseInPlan(planId: string, exerciseList: WorkoutPlanTemplateExercise[]) {
     // Firestore can not delete data of an array by index.
-    return await updateDoc(doc(ApiService.db, 'workoutPlans', planId), {
+    return await updateDoc(doc(FirebaseService.db, 'workoutPlans', planId), {
       exerciseList,
     });
   }
@@ -202,17 +204,17 @@ export default class ExerciseService {
 
   /** Record */
   static async addRecord(record: WorkoutRecord) {
-    return await addDoc(collection(ApiService.db, 'records'), record).then((response) => {
+    return await addDoc(collection(FirebaseService.db, 'records'), record).then((response) => {
       return response.id;
     });
   }
 
   static async updateRecord(id: string, record: Partial<WorkoutRecord>) {
-    return await updateDoc(doc(ApiService.db, 'records', id), record);
+    return await updateDoc(doc(FirebaseService.db, 'records', id), record);
   }
 
   static async getRecord(id: string): Promise<WorkoutRecord> {
-    const snapshot = await getDoc(doc(ApiService.db, 'records', id));
+    const snapshot = await getDoc(doc(FirebaseService.db, 'records', id));
 
     return { id, ...snapshot.data() } as WorkoutRecord;
   }

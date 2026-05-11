@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 import { setDoc, doc, getDoc } from 'firebase/firestore';
 
-import ApiService from './api';
+import FirebaseService from './firebase';
 // import { parseJwt } from './utilities';
 import { LOGIN } from '~/enums/user';
 
@@ -87,11 +87,11 @@ export default class AuthService {
   // };
 
   static saveUser = async (user: User) => {
-    await setDoc(doc(ApiService.db, 'users', user.id as string), user);
+    await setDoc(doc(FirebaseService.db, 'users', user.id as string), user);
   };
 
   static async queryUser(userId: string): Promise<User> {
-    const snapshot = await getDoc(doc(ApiService.db, 'users', userId));
+    const snapshot = await getDoc(doc(FirebaseService.db, 'users', userId));
 
     return snapshot.data() as User;
   }
