@@ -10,6 +10,7 @@ import {
   getDoc,
 } from 'firebase/firestore';
 
+import api from './api';
 import FirebaseService from './firebase';
 import { UPPERLOWERCORE, MODALITY, MUSCLES } from '~/enums/exercise';
 import { upperLowerCore, modality, muscles } from '~/static/exercise/dataType';
@@ -60,9 +61,8 @@ export interface WorkoutRecord {
 
 export default class ExerciseService {
   static async getExercises(): Promise<Exercise[]> {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/exercises`);
-    if (!res.ok) throw new Error(`Failed to fetch exercises: ${res.status}`);
-    return res.json();
+    const { data } = await api.get('/api/exercises');
+    return data;
   }
 
   static async addPlan(workoutPlan: WorkoutPlanTemplate): Promise<string> {

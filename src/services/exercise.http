@@ -1,0 +1,5 @@
+@baseUrl = https://han-chau-server-production.up.railway.app
+
+### Get all exercises
+GET {{baseUrl}}/api/exercises
+Content-Type: application/json
